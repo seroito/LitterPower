@@ -310,7 +310,7 @@ BixCPFree(
  *
  ******************************************************************************************/
 
-#ifdef __GNUC__
+#if 1		// Was "#ifdef __GNUC__", but every C compiler needs true constants here
 
 		// Lame gcc can't handle symbolic constants in switch statements
 	#define kJitErrPacketWrongSize	FOUR_CHAR('bSiz')

@@ -45,7 +45,7 @@ const char*			kClassName		= "lp.zzz";			// Class name
 #define LPAssistIn2         "Int (NN factor)"
 #define LPAssistOut1        "Float (Random value, 0 <= x <= 1)"
 
-#ifdef __GNUC__
+#if 1		// Was "#ifdef __GNUC__", but every C compiler needs true constants here
 	// Lame
 	#define		kArraySize	15
 	#define		kArrayMask	0x7fff

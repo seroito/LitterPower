@@ -29,7 +29,7 @@ const char*	kClassName		= "lp.crabelms";			// Class name
 #define LPAssistIn		"List"
 #define LPAssistOut		"itLs"
 
-#ifdef __GNUC__
+#if 1		// Was "#ifdef __GNUC__", but every C compiler needs true constants here
 	// Braindead GCC
 	#define	kMaxListLen		255
 #else

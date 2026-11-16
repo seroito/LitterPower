@@ -39,7 +39,7 @@ const char*			kClassName		= "lp.zzz~";			// Class name
 #define LPAssistOut1		"Signal (Pink noise)"
 
 
-#ifdef __GNUC__
+#if 1		// Was "#ifdef __GNUC__", but every C compiler needs true constants here
 	// Lame
 	#define		kArraySize		16
 	#define		kMaxNN			31

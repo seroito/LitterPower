@@ -33,7 +33,7 @@
 
 const char*			kClassName		= "lp.gruyere~";		// Class name
 
-#ifdef __GNUC__
+#if 1		// Was "#ifdef __GNUC__", but every C compiler needs true constants here
 	// This is so lame
 	#define kTableLen	512
 #else

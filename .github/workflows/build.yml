@@ -53,13 +53,15 @@ jobs:
         run: cmake -B build -A x64
       - name: Build
         shell: bash
-        run: cmake --build build --config Release -- -m -clp:ErrorsOnly\;Summary 2>&1 | tee build-windows.log
+        run: cmake --build build --config Release -- -m -clp:ErrorsOnly\;Summary -flp1:warningsonly\;logfile=build-windows-warnings.log 2>&1 | tee build-windows.log
       - name: Upload build log
         if: always()
         uses: actions/upload-artifact@v4
         with:
           name: build-log-windows
-          path: build-windows.log
+          path: |
+            build-windows.log
+            build-windows-warnings.log
       - name: Upload externals
         uses: actions/upload-artifact@v4
         with:

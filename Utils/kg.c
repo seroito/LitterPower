@@ -58,7 +58,7 @@ enum {
 	};
 */
 	// This is pretty big while allowing use of a reasonably compact representation
-#ifdef __GNUC__
+#if 1		// Was "#ifdef __GNUC__", but every C compiler needs true constants here
 	// ...but this is a lame way of having to do it
 	#define		kMaxItems	256
 #else
