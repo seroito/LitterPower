@@ -40,3 +40,6 @@ xcuserdata/
 sysbuild/externals/lp.qvvv~.maxhelp
 
 vb-stuff
+# CMake build output
+/build/
+/package/

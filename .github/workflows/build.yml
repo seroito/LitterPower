@@ -1,0 +1,59 @@
+name: Build
+
+on:
+  push:
+    branches: [64-bit-version]
+  workflow_dispatch:
+
+jobs:
+  macos:
+    name: macOS (universal)
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          submodules: recursive
+      - name: Configure
+        run: cmake -B build -DCMAKE_BUILD_TYPE=Release
+      - name: Build
+        run: cmake --build build -j 4 -- -k 2>&1 | tee build-macos.log
+      - name: Check architectures
+        if: always()
+        run: |
+          ls package/LitterPower/externals | wc -l
+          lipo -archs "package/LitterPower/externals/lp.shhh~.mxo/Contents/MacOS/lp.shhh~" || true
+      - name: Upload build log
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: build-log-macos
+          path: build-macos.log
+      - name: Upload externals
+        uses: actions/upload-artifact@v4
+        with:
+          name: LitterPower-macos
+          path: package
+
+  windows:
+    name: Windows (x64)
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          submodules: recursive
+      - name: Configure
+        run: cmake -B build -A x64
+      - name: Build
+        shell: bash
+        run: cmake --build build --config Release -- -m -clp:ErrorsOnly\;Summary 2>&1 | tee build-windows.log
+      - name: Upload build log
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: build-log-windows
+          path: build-windows.log
+      - name: Upload externals
+        uses: actions/upload-artifact@v4
+        with:
+          name: LitterPower-windows
+          path: package
