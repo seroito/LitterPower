@@ -12,7 +12,7 @@ concurrency:
 jobs:
   macos:
     name: macOS (universal)
-    runs-on: macos-latest
+    runs-on: macos-15
     steps:
       - uses: actions/checkout@v4
         with:
@@ -61,7 +61,7 @@ jobs:
           name: build-log-windows
           path: |
             build-windows.log
-            build-windows-warnings.log
+            build/build-windows-warnings.log
       - name: Upload externals
         uses: actions/upload-artifact@v4
         with:
