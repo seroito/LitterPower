@@ -313,7 +313,7 @@ DoExpect(
 	{
 	const double kLGammaOneHalf = 0.5723649429;		// aka ln(sqrt(pi))
 	
-	double	result	= 0.0 / 0.0,		// Initially undefined
+	double	result	= NAN,		// Initially undefined
 			dof;						// Only get Degrees of Freedeom when we need it
 	
 	switch(iSel) {
@@ -341,10 +341,10 @@ DoExpect(
 			result = 6.0 / dof;
 		break;
 	case expMin:
-		result = -1.0 / 0.0;
+		result = -INFINITY;
 		break;
 	case expMax:
-		result = 1.0 / 0.0;
+		result = INFINITY;
 		break;
 	case expEntropy:
 		dof = 0.5 * (double) me->dof;		// Here we want dof/2

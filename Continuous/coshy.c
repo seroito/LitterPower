@@ -284,7 +284,7 @@ DoExpect(
 	{
 	const double k4pi = 12.5663706144;
 	
-	double result = 0.0 / 0.0;							// Initially undefined
+	double result = NAN;							// Initially undefined
 	
 	switch (iSel) {
 	case expMedian:

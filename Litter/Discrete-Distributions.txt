@@ -1,0 +1,1 @@
+lp.bernie, Bernoulli distributions\, binary choice;lp.dicey, Dice (variable number of faces);lp.ernie, Arbitrary distributions (“finite urn” model);lp.ginger, I Ching (yarrow stick and coin oracles);lp.lili, Parametric linear congruence;lp.pfishie, Poisson distribution;lp.tata, Tausworthe 88 generator;lp.titi, Matsumoto's TT800 generator;

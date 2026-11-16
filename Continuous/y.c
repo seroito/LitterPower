@@ -193,7 +193,7 @@ DoExpect(
 	const double	kLn2 = 0.6931471806,
 					kEulerGamma	= 0.5772156649;
 	
-	double	result	= 0.0 / 0.0,			// Initially undefined
+	double	result	= NAN,			// Initially undefined
 			scale	= me->scale,
 			shape	= me->oneOverT;			// For our purposes, "shape" is the mult.
 											// inverse of the curve parameter. This
@@ -255,7 +255,7 @@ DoExpect(
 		result = 0.0;
 		break;
 	case expMax:
-		result = 1.0 / 0.0;
+		result = INFINITY;
 		break;
 	case expEntropy:
 		// Start off with a convenient little fib

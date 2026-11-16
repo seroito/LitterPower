@@ -187,7 +187,7 @@ DoExpect(objGauss* me, eExpectSelector iSel)
 		{
 		const double kRoot2PiE	= 4.1327313541;
 		
-		double	result	= 0.0 / 0.0;
+		double	result	= NAN;
 		
 		switch(iSel) {
 		case expMean:
@@ -207,10 +207,10 @@ DoExpect(objGauss* me, eExpectSelector iSel)
 			result = 0.0;
 			break;
 		case expMin:
-			result = -1.0 / 0.0;
+			result = -INFINITY;
 			break;
 		case expMax:
-			result = 1.0 / 0.0;
+			result = INFINITY;
 			break;
 		case expEntropy:
 			result = log(me->stdDev * kRoot2PiE);

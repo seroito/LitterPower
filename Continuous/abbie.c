@@ -309,7 +309,7 @@ DoExpect(
 	objBeta*		me,
 	eExpectSelector iSel)
 	{
-	double	result	= 0.0 / 0.0,					// Initially undefined
+	double	result	= NAN,					// Initially undefined
 			alpha	= me->alpha,
 			beta	= me->beta,
 			x;										// Multi-purpose register

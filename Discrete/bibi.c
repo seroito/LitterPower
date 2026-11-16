@@ -480,7 +480,7 @@ BibiAssist(
 // The math for everything else is extremely funky
 static double DoExpect(objBibi* me, eExpectSelector iSel)
 	{
-	double	result	= 0.0 / 0.0;
+	double	result	= NAN;
 	
 	switch(iSel) {
 	case expMean:

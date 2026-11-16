@@ -43,3 +43,9 @@ vb-stuff
 # CMake build output
 /build/
 /package/
+
+# macOS metadata
+._*
+.DS_Store
+Icon?
+Icon\r

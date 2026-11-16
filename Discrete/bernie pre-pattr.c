@@ -345,7 +345,7 @@ void BernieSeed(objBernie* me, long iSeed)
 		double	p		= me->prob,
 				np		= p * ((double) me->nTrials),
 				q,
-				result	= 0.0 / 0.0;
+				result	= NAN;
 		
 		switch(iSel) {
 		case expMean:

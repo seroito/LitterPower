@@ -349,7 +349,7 @@ static double DoExpect(objLinran* me, eExpectSelector iSel)
 	double	a		= me->a,
 			b		= me->b,
 			c		= me->c,
-			result	= 0.0 / 0.0;					// Initially undefined
+			result	= NAN;					// Initially undefined
 	
 	switch(iSel) {
 	case expMean:

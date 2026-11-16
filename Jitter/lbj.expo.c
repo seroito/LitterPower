@@ -352,7 +352,7 @@ ExpoCharVector(
 	t_jit_op_info*	oMatrix)
 	
 	{
-	const double kInf = 1.0 / 0.0;
+	const double kInf = INFINITY;
 	
 	Byte*	data	= (Byte*) oMatrix->p;
 	long	stride  = oMatrix->stride;

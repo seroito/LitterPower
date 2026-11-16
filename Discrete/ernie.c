@@ -620,7 +620,7 @@ DoExpect(
 	eExpectSelector	iSel)
 	
 	{
-	double	result	= 0.0 / 0.0;
+	double	result	= NAN;
 	long		i, r;
 	
 	if (me->totalBalls > 0) switch(iSel) {
@@ -650,7 +650,7 @@ DoExpect(
 				r = me->master[i];
 				result = i;
 				}
-			else if (r == me->master[i]) result = 0.0 / 0.0;
+			else if (r == me->master[i]) result = NAN;
 			}
 		// !! Doesn't report multiple modes, which we ought to
 		break;

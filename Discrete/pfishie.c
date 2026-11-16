@@ -294,7 +294,7 @@ DoExpect(
 	eExpectSelector iSel)
 	
 	{
-	double	result	= 0.0 / 0.0,
+	double	result	= NAN,
 			lambda	= me->params.lambda;
 	
 	switch(iSel) {
@@ -320,7 +320,7 @@ DoExpect(
 		result = 0.0;
 		break;
 	case expMax:
-		result = 1.0 / 0.0;			// Unbounded
+		result = INFINITY;			// Unbounded
 		break;
 	case expEntropy:
 		// result = lambda * (1-log(lambda)) + exp(-lambda)

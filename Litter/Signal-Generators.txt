@@ -1,0 +1,12 @@
+lp.frrr~, Low frequency noise;
+lp.grrr~, Gray noise;
+lp.gsss~, Gaussian noise;
+lp.lll~, Parametric linear congruence noise;
+lp.pfff~, Brownian noise;
+lp.phhh~, Black noise;
+lp.pvvv~, Variable colored noise;
+lp.ppp~, Popcorn noise (“dust”);
+lp.shhh~, White noise;
+lp.sss~, Pink (1/f) noise using Voss/Gardner algorithm;
+lp.trrr~, Triangular (dithering) noise;
+lp.zzz~, Pink (1/f) noise using McCartney algorithm;

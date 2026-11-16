@@ -217,7 +217,7 @@ DoExpect(objLogiran* me, eExpectSelector iSel)
 	{
 	const double kPiOverRoot3 = 1.8137993642;
 	
-	double	result	= 0.0 / 0.0,					// Initially undefined
+	double	result	= NAN,					// Initially undefined
 			scale	= me->scale;
 	
 	if (scale != 0.) switch(iSel) {
@@ -239,10 +239,10 @@ DoExpect(objLogiran* me, eExpectSelector iSel)
 		result = 1.2;
 		break;
 	case expMin:
-		result = -1.0 / 0.0;
+		result = -INFINITY;
 		break;
 	case expMax:
-		result = 1.0 / 0.0;
+		result = INFINITY;
 		break;
 	case expEntropy:
 		result = 2.0 - log2(scale);

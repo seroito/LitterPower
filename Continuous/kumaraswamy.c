@@ -251,7 +251,7 @@ SwamyTattle(
 static double
 DoExpect(objSwamy* me, eExpectSelector iSel)
 	{
-	double	result	= 0.0 / 0.0,		// Initially undefined
+	double	result	= NAN,		// Initially undefined
 			a1	= me->alpha1,			// Per convention, if alpha/beta were set to
 			b1	= me->beta1;			// zero then alpha1 and beta1 are also zeroed
 	

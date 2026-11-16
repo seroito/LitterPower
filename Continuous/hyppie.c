@@ -227,7 +227,7 @@ static double DoExpect(objHyperan* me, eExpectSelector iSel)
 	const double 	kCatalan		= 0.9159655942,
 					kHypSecEntropy	= 4.0 * kCatalan / kPi;
 	
-	double	result	= 0.0 / 0.0;					// Initially undefined
+	double	result	= NAN;					// Initially undefined
 	
 	switch(iSel) {
 	case expMedian:

@@ -371,7 +371,7 @@ DoExpect(
 	const double	kSqrt2	= 1.4142135624,
 					kLn2	= 0.6931471806;
 	
-	double	result	= 0.0 / 0.0;					// Initialize to NaN
+	double	result	= NAN;					// Initialize to NaN
 	long	dof		= me->dof;						// Need these for all calculations
 	double	ddof	= (double) dof,
 			scale	= me->scale;
@@ -475,7 +475,7 @@ DoExpect(
 												: DigammaInt(dof >> 1) );
 				
 				// Sometimes we get bad results, reset to undefined
-				if (result <= 0.0) result = 0.0 / 0.0;
+				if (result <= 0.0) result = NAN;
 				}
 			break;
 		default:
@@ -535,7 +535,7 @@ DoExpect(
 											: DigammaInt(dof >> 1) );
 			
 			// Sometimes we get bad results, reset to undefined
-			if (result <= 0.0) result = 0.0 / 0.0;
+			if (result <= 0.0) result = NAN;
 			}
 			break;
 		default:
@@ -595,7 +595,7 @@ DoExpect(
 											: DigammaInt(dof >> 1) );
 			
 			// Sometimes we get bad results, reset to undefined
-			if (result <= 0.0) result = 0.0 / 0.0;
+			if (result <= 0.0) result = NAN;
 			}
 			break;
 		default:

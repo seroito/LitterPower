@@ -116,7 +116,7 @@ Factorial(
 	double result;
 	
 	if (n < kMinInput)
-		result = 0.0 / 0.0;					// Value is undefined, return NaN
+		result = NAN;					// Value is undefined, return NaN
 	
 	else if	(n <= kPrecalc)
 		result = kPrecalcVals[n];			// Float-to-double conversion is the price we
@@ -134,7 +134,7 @@ Factorial(
 	else if (n <= kMaxInput)				// Use Gamma function
 		result = exp(lgamma(n + 1.0));
 	
-	else result = 1.0 / 0.0;				// Out of range, which is close enough to
+	else result = INFINITY;				// Out of range, which is close enough to
 											// infinity for all practical purposes
 	return result;
 	}
@@ -160,7 +160,7 @@ LogFactorial(
 	double result;
 	
 	if (n < kMinInput)
-		result = 0.0 / 0.0;					// Value is undefined, return NaN
+		result = NAN;					// Value is undefined, return NaN
 	
 	else if	(n <= 1)						// 0! and 1! are very special cases 
 		result = 0.0;						// Clearing bits is even faster than table
@@ -258,7 +258,7 @@ digamma(
 				result += kPi / tan(kPi * xFract);
 				}
 			}
-		else result = 0.0 / 0.0;
+		else result = NAN;
 		}
 	
 	return result;
@@ -293,7 +293,7 @@ DigammaInt(
 			}
 		}
 		
-	else result = 0.0 / 0.0;							// Undefined
+	else result = NAN;							// Undefined
 	 
 	return result;
 	}
@@ -428,7 +428,7 @@ RiemannZetaFrac(
 		if (w == x && x <= 31.0) {
 			// Use precalculated values
 			const double kPreCalc[] = {	-1.5,
-										1.0 / 0.0,					// infinity
+										INFINITY,					// infinity
 										6.44934066848226436472E-1,
 										2.02056903159594285400E-1,
 										8.23232337111381915160E-2,
@@ -482,7 +482,7 @@ RiemannZetaFrac(
 			}
 
 		else if (x == 1.0)			// Zeta is infinite
-			zeta = 1.0 / 0.0;
+			zeta = INFINITY;
 
 		else if (x <= 10.0) {
 							// 2^x (1 - 1/x) (zeta(x) - 1) = P(1/x)/Q(1/x), 1 <= x <= 10

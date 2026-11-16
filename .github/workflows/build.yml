@@ -5,6 +5,10 @@ on:
     branches: [64-bit-version]
   workflow_dispatch:
 
+concurrency:
+  group: build-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
   macos:
     name: macOS (universal)
@@ -29,11 +33,14 @@ jobs:
         with:
           name: build-log-macos
           path: build-macos.log
+      - name: Zip externals
+        # zip here so that symlinks and permissions inside the .mxo bundles survive
+        run: cd package && zip -qry ../LitterPower-macos.zip LitterPower
       - name: Upload externals
         uses: actions/upload-artifact@v4
         with:
           name: LitterPower-macos
-          path: package
+          path: LitterPower-macos.zip
 
   windows:
     name: Windows (x64)
@@ -58,3 +65,29 @@ jobs:
         with:
           name: LitterPower-windows
           path: package
+
+  package:
+    name: Max package
+    needs: [macos, windows]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with:
+          name: LitterPower-macos
+          path: macos
+      - uses: actions/download-artifact@v4
+        with:
+          name: LitterPower-windows
+          path: package
+      - name: Assemble package
+        run: |
+          mkdir -p package && unzip -q macos/LitterPower-macos.zip -d package
+          python3 tools/make_package.py
+          ls package/LitterPower/externals | wc -l
+          # zip here so that file permissions inside the .mxo bundles survive
+          cd package && zip -qry ../LitterPower.zip LitterPower
+      - uses: actions/upload-artifact@v4
+        with:
+          name: LitterPower-package
+          path: LitterPower.zip

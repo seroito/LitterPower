@@ -1,0 +1,14 @@
+lp.sigma, add (many) numbers;
+lp.delta, differences between numbers;
+lp.pi, multiply (many) numbers;
+lp.logos, division and remainder;
+lp.scampf, Scale/map/limit to floating point;
+lp.scampi, scale/map/limit to integers;
+lp.scamp~, scale/map/limit to signals;
+lp.stacey, statistics;
+lp.c2p~, Cartesian to polar;
+lp.p2c~, Polar to Cartesian;
+lp.grl~, phase unwrapping;
+lp.i, Read text of I Ching oracles;
+lp.kg, map I Ching to other ranges;
+lp.nn~, signal degradation;

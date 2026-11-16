@@ -269,7 +269,7 @@ DoExpect(
 	eExpectSelector iSel)
 	
 	{
-	double	result	= 0.0 / 0.0,
+	double	result	= NAN,
 			rho;
 	
 	switch(iSel) {
@@ -296,7 +296,7 @@ DoExpect(
 		result = 1.0;
 		break;
 	case expMax:
-		result = 1.0 / 0.0;
+		result = INFINITY;
 		break;
 	default:
 		break;

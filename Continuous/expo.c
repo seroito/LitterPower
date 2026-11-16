@@ -335,10 +335,10 @@ DoExpect(
 			result = 3.0;
 			break;
 		case expMin:
-			result = -1.0 / 0.0;
+			result = -INFINITY;
 			break;
 		case expMax:
-			result = 1.0 / 0.0;
+			result = INFINITY;
 			break;
 		case expEntropy:
 			result = (tau > 0.0) ? 1.0 - log(tau + tau) : 0.0;
@@ -369,10 +369,10 @@ DoExpect(
 			result = 6.0;
 			break;
 		case expMin:
-			result = ((me->sym) > 0) ? me->loc : 1.0 / 0.0;
+			result = ((me->sym) > 0) ? me->loc : INFINITY;
 			break;
 		case expMax:
-			result = ((me->sym) < 0) ? me->loc : -1.0 / 0.0;
+			result = ((me->sym) < 0) ? me->loc : -INFINITY;
 			break;
 		case expEntropy:
 			result = (tau > 0.0) ? 1.0 - log(tau) : 0.0;

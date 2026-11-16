@@ -61,7 +61,7 @@ UniformExpectationsDiscrete(
 	eExpectSelector	iSel)
 	
 	{
-	double	result	= 0.0 / 0.0;								// Initially undefined
+	double	result	= NAN;								// Initially undefined
 	
 	switch(iSel) {
 	case expMean:
@@ -117,7 +117,7 @@ UniformExpectationsContinuous(
 	eExpectSelector	iSel)
 	
 	{
-	double	result	= 0.0 / 0.0;				// Initially undefined
+	double	result	= NAN;				// Initially undefined
 	
 	switch(iSel) {
 	case expMean:

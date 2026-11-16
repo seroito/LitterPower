@@ -414,7 +414,7 @@ DoExpect(
 	eExpectSelector iSel)
 	
 	{
-	double	result	= 0.0 / 0.0,					// Initially undefined
+	double	result	= NAN,					// Initially undefined
 			alpha	= GammerGetAlpha(me),
 			beta	= GammerGetBeta(me);
 			
@@ -447,7 +447,7 @@ DoExpect(
 			result += lgamma(alpha);
 			result += (1.0 - alpha) * digamma(alpha);
 			}
-		 else result = -1.0 / 0.0;						// -inf
+		 else result = -INFINITY;						// -inf
 		break;
 	default:
 		// Only thing left is median, which is undefined

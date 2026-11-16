@@ -214,7 +214,7 @@ DoExpect(
 	eExpectSelector iSel)
 	
 	{
-	double	result = 0.0 / 0.0,				// Initialize as undefined
+	double	result = NAN,				// Initialize as undefined
 			f1, f2;							// Copy members to these register if needed
 	
 	switch (iSel) {
@@ -257,7 +257,7 @@ DoExpect(
 		result = 0.0;
 		break;
 	case expMax:
-		result = 1.0 / 0.0;
+		result = INFINITY;
 		break;
 	default:
 		// everything else is undefined

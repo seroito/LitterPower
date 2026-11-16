@@ -1,0 +1,3 @@
+lp.frim~, Frequency-domain (spectral) mutation;
+lp.tim~, Time-domain mutation;
+lp.vim, Interval mutation of numeric values;

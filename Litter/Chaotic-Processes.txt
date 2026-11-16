@@ -1,0 +1,5 @@
+lp.ccc, Schuster/Procaccia sequences;
+lp.ccc~, Schuster/Procaccia 1/f noise;
+lp.lya, Lyapunov spaces;
+lp.poppy, Simple population model;
+lp.poppy~, Population model as signal generator;
