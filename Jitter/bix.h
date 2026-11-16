@@ -19,7 +19,7 @@
 /******************************************************************************************
  ******************************************************************************************/
 
-#pragma mark • Constants
+#pragma mark Constants
 
 const int	kBixDimCount	= 2,				// BIX is always two-dimensional
 			kBixPlaneCount	= 1,				// BIX is always monochrom
@@ -32,7 +32,7 @@ const int	kBixDimCount	= 2,				// BIX is always two-dimensional
 			kMaxBufSize		= 32764;
 
 
-#pragma mark • BIXCP Data
+#pragma mark BIXCP Data
 
 	/**************************************************************************************
 	 *
@@ -113,7 +113,7 @@ const int	kBixDimCount	= 2,				// BIX is always two-dimensional
 #pragma pack(pop)
 
 
-#pragma mark • Network Byte Order Macros
+#pragma mark Network Byte Order Macros
 
 	// These all rely on macros defined in jit.byteorder.h
 	// They might, more properly, belong in MaxUtils.h
@@ -131,7 +131,7 @@ const int	kBixDimCount	= 2,				// BIX is always two-dimensional
 #endif	
 
 
-#pragma mark • Inline Functions
+#pragma mark Inline Functions
 
 static inline long CalcBufSize(int iHeight, int iWidth)
 	// Size of a tBixCPPicture without the place-holder 1x1 array, plus the pixel data

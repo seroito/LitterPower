@@ -20,12 +20,12 @@
 /******************************************************************************************
  ******************************************************************************************/
 
-#pragma mark • Include Files
+#pragma mark Include Files
 
 #include "LitterLib.h"
 
 
-#pragma mark • Constants
+#pragma mark Constants
 
 const char*	kClassName		= "lp.sinker~";			// Class name
 
@@ -59,7 +59,7 @@ enum trigMode {
 	};
 
 
-#pragma mark • Type Definitions
+#pragma mark Type Definitions
 
 typedef enum trigMode eTrigMode;
 
@@ -68,7 +68,7 @@ typedef struct {
 				pending;
 		} tCurPendPair;
 
-#pragma mark • Object Structure
+#pragma mark Object Structure
 
 typedef struct {
 	t_pxobject		coreObject;
@@ -81,9 +81,9 @@ typedef struct {
 	} objSinker;
 
 
-#pragma mark • Global Variables
+#pragma mark Global Variables
 
-#pragma mark • Function Prototypes
+#pragma mark Function Prototypes
 
 	// Class message functions
 void*	SinkerNew(SymbolPtr, short, Atom[]);
@@ -101,7 +101,7 @@ static void	SinkerInfo(objSinker*);
 #pragma mark -
 /*****************************  I M P L E M E N T A T I O N  ******************************/
 
-#pragma mark • Inline Functions
+#pragma mark Inline Functions
 
 #pragma mark -
 
@@ -145,7 +145,7 @@ void ext_main(void* r)
 	}
 
 #pragma mark -
-#pragma mark • Class Message Handlers
+#pragma mark Class Message Handlers
 
 /******************************************************************************************
  *
@@ -208,7 +208,7 @@ punt:
 	}
 
 #pragma mark -
-#pragma mark • Object Message Handlers
+#pragma mark Object Message Handlers
 
 /******************************************************************************************
  *
@@ -288,7 +288,7 @@ void SinkerInfo(objSinker* me)
 	{ LitterInfo(kClassName, (tObjectPtr) me, (method) SinkerTattle); }
 
 #pragma mark -
-#pragma mark • DSP Methods
+#pragma mark DSP Methods
 
 /******************************************************************************************
  *

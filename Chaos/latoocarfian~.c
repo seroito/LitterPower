@@ -26,17 +26,17 @@
 /******************************************************************************************
  ******************************************************************************************/
 
-#pragma mark • Identify Target
+#pragma mark Identify Target
 
 
-#pragma mark • Include Files
+#pragma mark Include Files
 
 #include "LitterLib.h"
 #include "MiscUtils.h"
 #include "Taus88.h"
 
 
-#pragma mark • Constants
+#pragma mark Constants
 
 const char*	kClassName		= "lp.fiana~";			// Class name
 
@@ -108,7 +108,7 @@ const char*		kFuncNames[fnLast + 1]
 							};
 
 
-#pragma mark • Type Definitions
+#pragma mark Type Definitions
 
 typedef enum Function tFunction;
 
@@ -116,7 +116,7 @@ typedef double (*tLatooFunc)(double);
 	
 
 
-#pragma mark • Object Structure
+#pragma mark Object Structure
 
 typedef struct {
 	t_pxobject		coreObject;
@@ -132,11 +132,11 @@ typedef struct {
 	} tfiana;
 
 
-#pragma mark • Global Variables
+#pragma mark Global Variables
 
 
 
-#pragma mark • Function Prototypes
+#pragma mark Function Prototypes
 
 	// Class message functions
 void*		Newfiana(Symbol*, short, Atom*);
@@ -183,7 +183,7 @@ static void Performfiana(tfiana*, t_object*, double**, long, double**, long, lon
 #pragma mark -
 /*****************************  I M P L E M E N T A T I O N  ******************************/
 
-#pragma mark • Inline Functions
+#pragma mark Inline Functions
 
 
 #pragma mark -
@@ -256,7 +256,7 @@ void ext_main(void* r)
 	}
 
 #pragma mark -
-#pragma mark • Utility Functions
+#pragma mark Utility Functions
 
 /******************************************************************************************
  *
@@ -281,7 +281,7 @@ MapStrToFunction(
 
 
 #pragma mark -
-#pragma mark • Class Message Handlers
+#pragma mark Class Message Handlers
 
 /******************************************************************************************
  *
@@ -439,7 +439,7 @@ punt:
 
 
 #pragma mark -
-#pragma mark • Object Message Handlers
+#pragma mark Object Message Handlers
 
 /******************************************************************************************
  *
@@ -656,7 +656,7 @@ void DoInfo(tfiana* me)
 
 
 #pragma mark -
-#pragma mark • DSP Methods
+#pragma mark DSP Methods
 
 /******************************************************************************************
  *

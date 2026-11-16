@@ -62,7 +62,7 @@
 #ifndef LITTERLIB_H
 #define LITTERLIB_H
 
-#pragma mark • Include Files
+#pragma mark Include Files
 
 #include "MaxUtils.h"
 #include "LitterStrings.h"
@@ -73,7 +73,7 @@
 #define LITTER_USE_OBEX 1
 
 
-#pragma mark • Macros
+#pragma mark Macros
 
 	// Historic macros for the entry point. The entry point of every Litter object is now
 	// the standard ext_main(); these remain for any code that still refers to them.
@@ -92,7 +92,7 @@
 #define LITTER_TIMEBOMB
 #define LITTER_CHECKTIMEOUT(NAME)
 
-#pragma mark • Constants
+#pragma mark Constants
 
 	// Generic info string, printed when the class is loaded
 #define LPVERSION "Copyright 2001-08 Peter Castine. Part of Litter Power 1.8 (64-bit, Max 8/9)"
@@ -205,7 +205,7 @@ enum Symmetry {
 #define kAttrFlagsReadOnly	(ATTR_SET_OPAQUE | ATTR_SET_OPAQUE_USER)
 
 
-#pragma mark • Type Definitions
+#pragma mark Type Definitions
 
 #ifndef MAXARG      // Not sure why this is not defined here, must track down
 #define MAXARG 7
@@ -227,12 +227,12 @@ typedef enum CategoryClass	eCategoryClass;
 typedef const tLitterStrList* tStrListPtr;
 
 
-#pragma mark • Global Variables
+#pragma mark Global Variables
 
 extern t_class*			gObjectClass;
 
 
-#pragma mark • Function Prototypes
+#pragma mark Function Prototypes
 
 	// Wrappers for class_new() and class_addmethod()
 void	LitterSetupClass	(const char		iName[],
@@ -281,7 +281,7 @@ void	LitterExpect		(tExpectFunc, t_object*, t_symbol*, t_symbol*, Boolean);
 
 
 #pragma mark -
-#pragma mark • Inline Functions
+#pragma mark Inline Functions
 
 static inline short		LitterGetMaxVersion(void)
 				{ return maxversion() & 0x3fff; }				// Mask out standalone flag

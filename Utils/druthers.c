@@ -38,12 +38,12 @@
 	static inline void DebugPost(char*, ...) { }
 #endif
 
-#pragma mark • Include Files
+#pragma mark Include Files
 
 #include "LitterLib.h"
 
 
-#pragma mark • Constants
+#pragma mark Constants
 
 const char	kClassName[]		= "lp.druthers";			// Class name
 
@@ -63,7 +63,7 @@ const int			kKeyChainLen	= 4;					// "Key Chain", used for
 															// Decoding/Encoding
 
 
-#pragma mark • Type Definitions
+#pragma mark Type Definitions
 
 typedef struct {
 	long	vers,			// Identical in Resource and Memory
@@ -85,14 +85,14 @@ typedef UInt32		tKeyChain[kKeyChainLen];				// "Key Chain", used for
 															// Decoding/Encoding
 
 
-#pragma mark • Object Structure
+#pragma mark Object Structure
 
 typedef struct {
 	Object			coreObject;
 	} tDruthers;
 
 
-#pragma mark • Global Variables
+#pragma mark Global Variables
 
 short		gDlogID			= 0;
 eLitterLicense
@@ -101,7 +101,7 @@ Str255		gName			= "\p",
 			gEMail			= "\p";
 Str15		gAuthCode		= "\p";
 
-#pragma mark • Function Prototypes
+#pragma mark Function Prototypes
 
 	// Registration stuff
 static void		GetLicense();
@@ -117,7 +117,7 @@ static void DoAssist(tDruthers*, void*, long, long, char*);
 #pragma mark -
 /*****************************  I M P L E M E N T A T I O N  ******************************/
 
-#pragma mark • Inline Functions
+#pragma mark Inline Functions
 
 static inline UInt32
 RndLong(void)											// Quick'n'dirty but good enough.
@@ -175,7 +175,7 @@ void ext_main(void* r)
 
 
 #pragma mark -
-#pragma mark • Registration
+#pragma mark Registration
 
 /******************************************************************************************
  *
@@ -443,7 +443,7 @@ punt:
 	}
 		
 #pragma mark -
-#pragma mark • Class Message Handlers
+#pragma mark Class Message Handlers
 
 /******************************************************************************************
  *
@@ -463,7 +463,7 @@ NewDruthers()
 	}
 
 #pragma mark -
-#pragma mark • Object Message Handlers
+#pragma mark Object Message Handlers
 
 /******************************************************************************************
  *

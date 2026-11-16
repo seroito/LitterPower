@@ -30,7 +30,7 @@
             TO GET PFF~ TO RUN ****/
 /**** DOES THAT ALSO WORK FOR THE REST ??? ****/
 
-#pragma mark • Identify Target
+#pragma mark Identify Target
 
 
 
@@ -50,7 +50,7 @@
 #endif
 	
 
-#pragma mark • Include Files
+#pragma mark Include Files
 
 #include <stdlib.h>		// For rand(), RAND_MAX
 
@@ -62,7 +62,7 @@
 #include "z_dsp.h"
 
 
-#pragma mark • Constants
+#pragma mark Constants
 
 #if		defined(BROWN)
 	const char*	kClassName		= "lp.pfff~";			// Class name
@@ -330,7 +330,7 @@ PvvvNew(
 	}
 
 #pragma mark -
-#pragma mark • Object Message Handlers
+#pragma mark Object Message Handlers
 
 /******************************************************************************************
  *
@@ -487,7 +487,7 @@ void PvvvInfo(tBrown* me)
 
 
 #pragma mark -
-#pragma mark • DSP Methods
+#pragma mark DSP Methods
 
 /******************************************************************************************
  *

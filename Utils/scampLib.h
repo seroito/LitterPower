@@ -24,7 +24,7 @@ The object has more
 /******************************************************************************************
  ******************************************************************************************/
 
-#pragma mark • Identify Target
+#pragma mark Identify Target
 
 #define	SCAMPI		1
 #define SCAMPF		2
@@ -56,12 +56,12 @@ The object has more
 #endif
 
 
-#pragma mark • Include Files
+#pragma mark Include Files
 
 #include "LitterLib.h"
 
 
-#pragma mark • Constants
+#pragma mark Constants
 
 extern const char		kClassName[];
 
@@ -105,7 +105,7 @@ enum MapSymmetry {
 #endif
 
 
-#pragma mark • Type Definitions
+#pragma mark Type Definitions
 
 typedef enum MapType		eMapType;
 typedef enum MapSymmetry	eMapSym;
@@ -123,7 +123,7 @@ typedef struct ScampFlags {
 							: 0;
 	} tScampFlags;
 
-#pragma mark • Object Structure
+#pragma mark Object Structure
 
 typedef struct {
 #if (SCAMP_TARGET == SCAMPSIG)
@@ -178,7 +178,7 @@ typedef struct {
 	} objScamp;
 
 
-#pragma mark • Global Variables
+#pragma mark Global Variables
 
 extern SymbolPtr	gSplitSym,
 					gStetSym,
@@ -201,7 +201,7 @@ extern SymbolPtr	gTruncSym,
 					gToInfSym;
 #endif
 
-#pragma mark • Function Prototypes
+#pragma mark Function Prototypes
 
 	// Defined in scampCommon.c
 void	ScampGenSymbols(void);
@@ -261,7 +261,7 @@ void	ScampAssist(objScamp*, void* , long , long , char*);
 void	ScampInfo(objScamp*);
 
 #pragma mark -
-#pragma mark • Inline Functions
+#pragma mark Inline Functions
 
 static inline tOutletPtr LeftOutlet(objScamp* me)
 	{

@@ -77,13 +77,13 @@
 						else that's going on. Wheeeee.
  ******************************************************************************************/
 
-#pragma mark • Include Files
+#pragma mark Include Files
 
 #include "LitterLib.h"
 #include "MiscUtils.h"
 
 
-#pragma mark • Constants
+#pragma mark Constants
 
 const double	kPi			= 3.14159265358979323846264338327950288,
 				k2pi		= 6.2831853071795864769252867665590576,
@@ -95,7 +95,7 @@ const double	kPi			= 3.14159265358979323846264338327950288,
 				kULongMaxInv		= 1.0 / ((double) kULongMax);
 
 
-#pragma mark • Initialize Global Variables
+#pragma mark Initialize Global Variables
 
 t_class*		gObjectClass	= NIL;
 
@@ -103,7 +103,7 @@ t_class*		gObjectClass	= NIL;
 #pragma mark -
 /*****************************  I M P L E M E N T A T I O N  ******************************/
 
-#pragma mark • String Tables
+#pragma mark String Tables
 
 /******************************************************************************************
  *
@@ -173,7 +173,7 @@ LitterGetCStringFromStrList(
 
 
 #pragma mark -
-#pragma mark • Class Setup
+#pragma mark Class Setup
 
 /******************************************************************************************
  *

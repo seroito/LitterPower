@@ -23,7 +23,7 @@
 /******************************************************************************************
  ******************************************************************************************/
 
-#pragma mark • Include Files
+#pragma mark Include Files
 
 #include "LitterLib.h"
 //#include "TrialPeriodUtils.h"
@@ -31,7 +31,7 @@
 #include "MiscUtils.h"
 
 
-#pragma mark • Constants
+#pragma mark Constants
 
 const char*			kClassName		= "lp.zzz~";			// Class name
 
@@ -57,11 +57,11 @@ enum {
 	strIndexLeftOutlet	= strIndexOutPink
 	};
 */
-#pragma mark • Type Definitions
+#pragma mark Type Definitions
 
 
 
-#pragma mark • Object Structure
+#pragma mark Object Structure
 
 typedef struct {
 	t_pxobject		coreObject;
@@ -75,11 +75,11 @@ typedef struct {
 	} tPink;
 
 
-#pragma mark • Global Variables
+#pragma mark Global Variables
 
 
 
-#pragma mark • Function Prototypes
+#pragma mark Function Prototypes
 
 	// Class message functions
 void*	ZzzNew(long);
@@ -100,7 +100,7 @@ void ZzzPerform64(tPink*, t_object *dsp64, double **ins, long numins, double **o
 #pragma mark -
 /*****************************  I M P L E M E N T A T I O N  ******************************/
 
-#pragma mark • Inline Functions
+#pragma mark Inline Functions
 
 
 
@@ -156,7 +156,7 @@ void ext_main(void* r)
 
 
 #pragma mark -
-#pragma mark • Class Message Handlers
+#pragma mark Class Message Handlers
 
 /******************************************************************************************
  *
@@ -204,7 +204,7 @@ ZzzNew(
 	}
 
 #pragma mark -
-#pragma mark • Object Message Handlers
+#pragma mark Object Message Handlers
 
 /******************************************************************************************
  *
@@ -292,7 +292,7 @@ void ZzzInfo(tPink* me)
 
 
 #pragma mark -
-#pragma mark • DSP Methods
+#pragma mark DSP Methods
 
 /******************************************************************************************
  *

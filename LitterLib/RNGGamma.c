@@ -34,30 +34,30 @@
 	
  ******************************************************************************************/
 
-#pragma mark • Include Files
+#pragma mark Include Files
 
 #include "RNGGamma.h"
 #include "RNGGauss.h"
 #include "MoreMath.h"
 
 
-#pragma mark • Constants
+#pragma mark Constants
 
 
-#pragma mark • Type Definitions
+#pragma mark Type Definitions
 
 
-#pragma mark • Static Variables
+#pragma mark Static Variables
 
 
-#pragma mark • Global Variables
+#pragma mark Global Variables
 
 
 
 #pragma mark -
 /*****************************  I M P L E M E N T A T I O N  ******************************/
 
-#pragma mark • Functions
+#pragma mark Functions
 
 /******************************************************************************************
  *

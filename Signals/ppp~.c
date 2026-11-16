@@ -28,7 +28,7 @@
 /******************************************************************************************
  ******************************************************************************************/
 
-#pragma mark • Include Files
+#pragma mark Include Files
 
 #include "LitterLib.h"	// Also #includes MaxUtils.h, ext.h
 //#include "TrialPeriodUtils.h"
@@ -36,7 +36,7 @@
 #include "Taus88.h"
 
 
-#pragma mark • Constants
+#pragma mark Constants
 
 const char*	kClassName		= "lp.ppp~";			// Class name
 
@@ -61,11 +61,11 @@ enum {
 	outletPop
 	};
 
-#pragma mark • Type Definitions
+#pragma mark Type Definitions
 
 
 
-#pragma mark • Object Structure
+#pragma mark Object Structure
 
 typedef struct {
 	t_pxobject		coreObject;
@@ -84,7 +84,7 @@ typedef struct {
 	} tPop;
 
 
-#pragma mark • Global Variables
+#pragma mark Global Variables
 
 
 SymbolPtr	gSymSymbol	= NIL,
@@ -92,7 +92,7 @@ SymbolPtr	gSymSymbol	= NIL,
 			gPosSymbol	= NIL,
 			gNullSymbol	= NIL;
 
-#pragma mark • Function Prototypes
+#pragma mark Function Prototypes
 
 	// Class message functions
 void*	PppNew(double, long, t_symbol*);
@@ -119,7 +119,7 @@ static void PppCalcNext(tPop*);
 #pragma mark -
 /*****************************  I M P L E M E N T A T I O N  ******************************/
 
-#pragma mark • Inline Functions
+#pragma mark Inline Functions
 
 
 
@@ -186,7 +186,7 @@ void ext_main(void* r)
 
 
 #pragma mark -
-#pragma mark • Class Message Handlers
+#pragma mark Class Message Handlers
 
 /******************************************************************************************
  *
@@ -255,7 +255,7 @@ noMoreDefaults:
 	}
 
 #pragma mark -
-#pragma mark • Object Message Handlers
+#pragma mark Object Message Handlers
 
 /******************************************************************************************
  *
@@ -388,7 +388,7 @@ void PppInfo(tPop* me)
 
 
 #pragma mark -
-#pragma mark • DSP Methods
+#pragma mark DSP Methods
 
 /******************************************************************************************
  *

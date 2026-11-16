@@ -18,7 +18,7 @@
 
 #pragma once
 
-#pragma mark • Include Files
+#pragma mark Include Files
 
 #ifndef __LITTERLIB_H__
 	#include "LitterLib.h"
@@ -34,7 +34,7 @@
 
 //#include <math.h>
 
-#pragma mark • Constants
+#pragma mark Constants
 
 enum poissonAlg {
 	algUndef		= -1,		// Caller may need to flag not having asked
@@ -47,7 +47,7 @@ enum poissonAlg {
 	algCount
 	};
 
-#pragma mark • Type Definitions
+#pragma mark Type Definitions
 
 typedef enum poissonAlg ePoisAlg;
 
@@ -73,11 +73,11 @@ typedef struct poisDLParams {
 			delta2;
 			} tPoisDLParams;
 */
-#pragma mark • Global Variables
+#pragma mark Global Variables
 
 
 
-#pragma mark • Function Prototypes
+#pragma mark Function Prototypes
 
 ePoisAlg	RecommendPoisAlg(double);
 
@@ -105,7 +105,7 @@ long	GenPoissonDLTaus88	(const tPoisDLParams*, tTaus88Data*);
 
 
 #pragma mark -
-#pragma mark • Inline Functions & Macros
+#pragma mark Inline Functions & Macros
 
 	
 static inline double CalcPoisDirThresh(double iLambda)

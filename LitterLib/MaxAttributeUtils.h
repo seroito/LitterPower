@@ -16,7 +16,7 @@
 #ifndef LITTER_MAXATTRUTILS_H
 #define LITTER_MAXATTRUTILS_H
 
-#pragma mark • Include Files
+#pragma mark Include Files
 
 #include "ext.h"
 #include "ext_proto.h"
@@ -25,7 +25,7 @@
 #include "ext_obex_util.h"
 
 
-#pragma mark • Constants
+#pragma mark Constants
 
 	// Indices for attribute types
 enum attrType {
@@ -73,7 +73,7 @@ enum attrBooleans {
 	attrNoFlags		= 0
 	};
 
-#pragma mark • Data Structures
+#pragma mark Data Structures
 
 typedef enum attrType	eAttrType;
 typedef enum attrStyle	eAttrStyle;
@@ -111,7 +111,7 @@ typedef struct attrData {
 	char*				category;
 	} tAttrData;
 
-#pragma mark • Functions
+#pragma mark Functions
 
 void	LitterInitClassAttributes(t_class*, const tAttrData[], unsigned long);
 

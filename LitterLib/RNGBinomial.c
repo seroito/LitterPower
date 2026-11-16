@@ -29,7 +29,7 @@
 
  ******************************************************************************************/
 
-#pragma mark • Include Files
+#pragma mark Include Files
 
 #include "RNGBinomial.h"
 #include "MaxUtils.h"							// for CountBits(), etc.
@@ -39,12 +39,12 @@
 #pragma mark -
 /*****************************  I M P L E M E N T A T I O N  ******************************/
 
-#pragma mark • Private & Inline Functions
+#pragma mark Private & Inline Functions
 
 
 
 #pragma mark -
-#pragma mark • Public Functions
+#pragma mark Public Functions
 
 /******************************************************************************************
  *

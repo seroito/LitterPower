@@ -19,34 +19,34 @@
 /******************************************************************************************
  ******************************************************************************************/
 
-#pragma mark • Include Files
+#pragma mark Include Files
 
 #include "MiscUtils.h"
 #include "MaxUtils.h"				// This #includes some stuff we need for Windows
 
 
-#pragma mark • Constants
+#pragma mark Constants
 
 
 
-#pragma mark • Type Definitions
+#pragma mark Type Definitions
 
 
 
-#pragma mark • Static (Private) Variables
+#pragma mark Static (Private) Variables
 
 
 
-#pragma mark • Initialize Global Variables
+#pragma mark Initialize Global Variables
 
 
 
-#pragma mark • Function Prototypes
+#pragma mark Function Prototypes
 
 #pragma mark -
 /*****************************  I M P L E M E N T A T I O N  ******************************/
 
-#pragma mark • Private & Inline Functions
+#pragma mark Private & Inline Functions
 
 /******************************************************************************************
  *
@@ -79,7 +79,7 @@ HashString(
 
 
 #pragma mark -
-#pragma mark • OS Utilities
+#pragma mark OS Utilities
 
 /******************************************************************************************
  *

@@ -29,7 +29,7 @@
 /******************************************************************************************
  ******************************************************************************************/
 
-#pragma mark • Include Files
+#pragma mark Include Files
 
 #include "LitterLib.h"
 #include "RNGDistBeta.h"			// this #includes Taus88.h, MiscUtils.h, and math.h
@@ -37,7 +37,7 @@
 
 
 
-#pragma mark • Constants
+#pragma mark Constants
 
 const char	kClassName[]		= "lp.abbie";			// Class name
 
@@ -59,7 +59,7 @@ enum {
 	};
 */
 
-#pragma mark • Type Definitions
+#pragma mark Type Definitions
 
 typedef union betaParams {
 			tJKParams	jk;
@@ -68,7 +68,7 @@ typedef union betaParams {
 			} uBetaParams;
 
 
-#pragma mark • Object Structure
+#pragma mark Object Structure
 
 typedef struct {
 	LITTER_CORE_OBJECT(t_object, coreObject);
@@ -86,7 +86,7 @@ typedef struct {
 #pragma mark -
 /*****************************  I M P L E M E N T A T I O N  ******************************/
 
-#pragma mark • Object Message Handlers
+#pragma mark Object Message Handlers
 
 /******************************************************************************************
  *
@@ -223,7 +223,7 @@ static void AbbieSeed(objBeta* me, long iSeed)
 
 
 #pragma mark -
-#pragma mark • Attribute/Information Functions
+#pragma mark Attribute/Information Functions
 
 /******************************************************************************************
  *
@@ -496,7 +496,7 @@ static void AbbieTell(objBeta* me, Symbol* iTarget, Symbol* iAttrName)
 
 
 #pragma mark -
-#pragma mark • Class Message Handlers
+#pragma mark Class Message Handlers
 
 /******************************************************************************************
  *

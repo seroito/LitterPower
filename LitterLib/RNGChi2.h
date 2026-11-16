@@ -39,7 +39,7 @@
 #define __RNGCHI2_H__
 
 
-#pragma mark • Include Files
+#pragma mark Include Files
 
 #ifndef __TAUS88_H__
 	#include "Taus88.h"
@@ -54,7 +54,7 @@
 #endif
 
 
-#pragma mark • Constants
+#pragma mark Constants
 
 enum chi2Alg {
 	algChi2Undef	= -1,
@@ -65,16 +65,16 @@ enum chi2Alg {
 
 
 
-#pragma mark • Type Definitions
+#pragma mark Type Definitions
 
 typedef enum chi2Alg eChi2Alg;
 
 
-#pragma mark • Global Variables
+#pragma mark Global Variables
 
 
 
-#pragma mark • Function Prototypes
+#pragma mark Function Prototypes
 
 static inline eChi2Alg	Chi2RecommendAlg(UInt32);
 
@@ -87,7 +87,7 @@ double	GenChi2RejTaus88(UInt32, double, tTaus88Data*);
 
 
 #pragma mark -
-#pragma mark • Inline Functions & Macros
+#pragma mark Inline Functions & Macros
 
 static inline eChi2Alg Chi2RecommendAlg(UInt32 iDoF)
 		{

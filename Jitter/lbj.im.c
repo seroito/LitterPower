@@ -20,7 +20,7 @@
 /******************************************************************************************
  ******************************************************************************************/
 
-#pragma mark • Include Files
+#pragma mark Include Files
 
 #include "TrialPeriodUtils.h"
 #include "imLib.h"										// #includes LitterLib.h
@@ -29,7 +29,7 @@
 #include "MiscUtils.h"
 
 
-#pragma mark • Constants
+#pragma mark Constants
 
 const char	kMaxClassName[]		= "lbj.jim",			// Class name for Max
 			kJitClassName[]		= "lbj-jim";			// Class name for Jitter
@@ -41,11 +41,11 @@ enum {
 	};
 
 
-#pragma mark • Type Definitions
+#pragma mark Type Definitions
 
 
 
-#pragma mark • Object Structure
+#pragma mark Object Structure
 
 typedef struct {
 	Object		coreObject;
@@ -67,12 +67,12 @@ typedef struct {
 	} jcobJim;
 
 
-#pragma mark • Global Variables
+#pragma mark Global Variables
 
 void*			gJimJitClass	= NIL;
 t_class*		gJimMaxClass	= NIL;
 
-#pragma mark • Function Prototypes
+#pragma mark Function Prototypes
 
 	// Max methods/functions
 static void*	JimNewMaxShell	(Symbol*, long, Atom*);
@@ -95,7 +95,7 @@ static t_jit_err	JimJitMatrixCalc(jcobJim*, void*, void*);
 #pragma mark -
 /*****************************  I M P L E M E N T A T I O N  ******************************/
 
-#pragma mark • Inline Functions
+#pragma mark Inline Functions
 
 
 
@@ -150,11 +150,11 @@ void ext_main(void* r)
 
 
 #pragma mark -
-#pragma mark • Internal functions
+#pragma mark Internal functions
 
 
 #pragma mark -
-#pragma mark • Max Shell Methods
+#pragma mark Max Shell Methods
 
 /******************************************************************************************
  *
@@ -276,7 +276,7 @@ void JimAssist(msobJim*, void*, long iDir, long iArgNum, char* oCStr)
 
 
 #pragma mark -
-#pragma mark • Jitter Attributes
+#pragma mark Jitter Attributes
 
 /******************************************************************************************
  *
@@ -384,7 +384,7 @@ JimGetMode(
 	
 
 #pragma mark -
-#pragma mark • Jitter Methods
+#pragma mark Jitter Methods
 
 /******************************************************************************************
  *

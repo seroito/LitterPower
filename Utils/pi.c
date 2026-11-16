@@ -25,13 +25,13 @@
 /******************************************************************************************
  ******************************************************************************************/
 
-#pragma mark • Include Files
+#pragma mark Include Files
 
 #include "LitterLib.h"
 //#include "TrialPeriodUtils.h"
 
 
-#pragma mark • Constants
+#pragma mark Constants
 
 const char*	kClassName		= "lp.pi";			// Class name
 
@@ -55,13 +55,13 @@ enum {
 	};
 */
 
-#pragma mark • Type Definitions
+#pragma mark Type Definitions
 
 	// Should add these to MaxUtils.h
 typedef tWord*		tWordPtr;
 typedef tWordPtr*	tWordHdl;
 
-#pragma mark • Object Structure
+#pragma mark Object Structure
 
 typedef struct {
 	t_object		coreObject;
@@ -77,9 +77,9 @@ typedef struct {
 typedef objPi* objPiPtr;
 
 
-#pragma mark • Global Variables
+#pragma mark Global Variables
 
-#pragma mark • Function Prototypes
+#pragma mark Function Prototypes
 
 	// Class message functions
 objPiPtr	PiNew(SymbolPtr, short, t_atom[]);
@@ -98,7 +98,7 @@ static void	PiInfo(objPi*);
 #pragma mark -
 /*****************************  I M P L E M E N T A T I O N  ******************************/
 
-#pragma mark • Inline Functions
+#pragma mark Inline Functions
 
 #pragma mark -
 
@@ -147,7 +147,7 @@ void ext_main(void* r)
 	}
 
 #pragma mark -
-#pragma mark • Class Message Handlers
+#pragma mark Class Message Handlers
 
 /******************************************************************************************
  *
@@ -248,7 +248,7 @@ void PiFree(objPi* me)
 	{ if (me->data != NIL) freebytes(me->data, me->inletCount * sizeof(tWord)); }
 
 #pragma mark -
-#pragma mark • Utilities
+#pragma mark Utilities
 
 /******************************************************************************************
  *
@@ -328,7 +328,7 @@ UpdateProduct(
 
 
 #pragma mark -
-#pragma mark • Object Message Handlers
+#pragma mark Object Message Handlers
 
 /******************************************************************************************
  *

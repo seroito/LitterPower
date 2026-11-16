@@ -17,13 +17,13 @@
 		18-Feb-2007:	First implementation.
  ******************************************************************************************/
 
-#pragma mark • Include Files
+#pragma mark Include Files
 
 #include "LitterLib.h"
 #include "MoreMath.h"
 //#include "TrialPeriodUtils.h"
 
-#pragma mark • Constants
+#pragma mark Constants
 
 const char	kClassName[]	= "lp.galliard~";	    		// Class name
 
@@ -44,9 +44,9 @@ enum {
 	kMaxListLen = 255
 	};
 
-#pragma mark • Type Definitions
+#pragma mark Type Definitions
 
-#pragma mark • Object Structure
+#pragma mark Object Structure
 
 typedef struct {
 	t_pxobject	coreObject;
@@ -56,10 +56,10 @@ typedef struct {
 	} objPolynom;
 
 
-#pragma mark • Global Variables
+#pragma mark Global Variables
 
 
-#pragma mark • Function Prototypes
+#pragma mark Function Prototypes
 
 objPolynom*	GalliardNew(t_symbol*, short, t_atom[]);
 
@@ -82,7 +82,7 @@ void	GalliardInfo(objPolynom*);
 #pragma mark -
 /*****************************  I M P L E M E N T A T I O N  ******************************/
 
-#pragma mark • Inline Functions
+#pragma mark Inline Functions
 
 #pragma mark -
 
@@ -138,7 +138,7 @@ void ext_main(void* r)
 
 
 #pragma mark -
-#pragma mark • Instantiation
+#pragma mark Instantiation
 
 /******************************************************************************************
  *
@@ -204,11 +204,11 @@ punt:
 	}	
 
 #pragma mark -
-#pragma mark • Utilities
+#pragma mark Utilities
 
 
 #pragma mark -
-#pragma mark • Object Methods
+#pragma mark Object Methods
 
 /******************************************************************************************
  *
@@ -257,7 +257,7 @@ void GalliardConstInt(objPolynom* me, long iConst)
 	{ GalliardConstFt(me, (double) iConst); }
 
 #pragma mark -
-#pragma mark • DSP Methods
+#pragma mark DSP Methods
 
 /******************************************************************************************
  *

@@ -17,32 +17,28 @@
 /******************************************************************************************
  ******************************************************************************************/
 
-#pragma mark • Include Files
+#pragma mark Include Files
 
 #include "UniformExpectations.h"
 
 //#include <math.h>				// For log(), cos(), etc.
 
-#ifdef _WINDOWS_
-	#include "Folders.h"		// For FindFolder(), used in OpenPrefsFile()
-	#include <ShLwApi.h>
-#endif
 
 
-#pragma mark • Constants
+#pragma mark Constants
 
 	
 
 
-#pragma mark • Type Definitions
+#pragma mark Type Definitions
 
 
 
-#pragma mark • Static (Private) Variables
+#pragma mark Static (Private) Variables
 
 
 
-#pragma mark • Function Prototypes
+#pragma mark Function Prototypes
 
 
 

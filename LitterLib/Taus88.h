@@ -26,7 +26,7 @@
 #define __TAUS88_H__
 
 
-#pragma mark • Include Files
+#pragma mark Include Files
 
 
 #ifndef __MAXUTILS_H__
@@ -37,10 +37,10 @@
 	#include "MiscUtils.h"
 #endif
 
-#pragma mark • Constants
+#pragma mark Constants
 
 
-#pragma mark • Type Definitions
+#pragma mark Type Definitions
 
 typedef struct taus88Data {
 					UInt32	seed1,
@@ -51,11 +51,11 @@ typedef tTaus88Data* tTaus88DataPtr;
 
 
 
-#pragma mark • Global Variables
+#pragma mark Global Variables
 
 extern tTaus88Data	gTausData;								// Default seed set
 
-#pragma mark • Function Prototypes
+#pragma mark Function Prototypes
 
 
 	// Tausworthe 88...

@@ -16,35 +16,35 @@
 
 #pragma once
 
-#pragma mark • Include Files
+#pragma mark Include Files
 
 #ifndef __LITTERLIB_H__
 	#include "LitterLib.h"			// for eExpectSelector enumration
 #endif
 
-#pragma mark • Constants
+#pragma mark Constants
 
 
 
-#pragma mark • Type Definitions
-
-
-
-
-
-#pragma mark • Global Variables
+#pragma mark Type Definitions
 
 
 
 
-#pragma mark • Function Prototypes
+
+#pragma mark Global Variables
+
+
+
+
+#pragma mark Function Prototypes
 
 double	UniformExpectationsDiscrete(long, long, eExpectSelector);
 double	UniformExpectationsContinuous(double, double, eExpectSelector);
 
 
 #pragma mark -
-#pragma mark • Inline Functions & Macros
+#pragma mark Inline Functions & Macros
 
 	
 

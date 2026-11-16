@@ -21,7 +21,7 @@
 		30-Jul-2003:		First implementation.
  ******************************************************************************************/
 
-#pragma mark • Identify Target
+#pragma mark Identify Target
 
 #ifdef __MWERKS__
 	#if __ide_target("BIX Unpack (Boron)")								\
@@ -46,7 +46,7 @@
 #endif
 
 
-#pragma mark • Include Files
+#pragma mark Include Files
 
 #include "LitterLib.h"
 #include "TrialPeriodUtils.h"
@@ -57,7 +57,7 @@ t_jit_err jit_ob3d_set(void *x, void *p);
 
 
 
-#pragma mark • Constants
+#pragma mark Constants
 
 #if __EX_LIBRIS__
 	const char	kMaxClassName[]	= "jit.bixcp.from",		// Class name for Max, also used
@@ -80,7 +80,7 @@ enum strIndices {
 	strIndexOutLeft		= strIndexOutMatrix
 	};
 	
-#pragma mark • BIXCP Data
+#pragma mark BIXCP Data
 
 typedef struct {
 	long	magic,
@@ -90,7 +90,7 @@ typedef tBixCPGeneric* tBixCPGenericPtr;
 	
 
 
-#pragma mark • Object Structure
+#pragma mark Object Structure
 
 typedef struct {
 	Object		coreObject;
@@ -105,7 +105,7 @@ typedef struct {
 	} msobBixCP;					// msob == Max Shell Object
 
 
-#pragma mark • Global Variables
+#pragma mark Global Variables
 
 void*			gBixCPJitClass	= NIL;
 t_class*		gBixCPMaxClass	= NIL;
@@ -118,7 +118,7 @@ SymbolPtr		gsymJitMatrix		= NIL,
 				gsymDeviceCtrlOK	= NIL;
 
 
-#pragma mark • Function Prototypes
+#pragma mark Function Prototypes
 
 	// Max methods/functions
 static msobBixCP*	BixCPNew	(Symbol*, long, Atom*);
@@ -138,7 +138,7 @@ static void	BixCPInfo			(msobBixCP*);
 #pragma mark -
 /*****************************  I M P L E M E N T A T I O N  ******************************/
 
-#pragma mark • Inline Functions
+#pragma mark Inline Functions
 
 static inline void* MainOutlet(msobBixCP* me)
 	{ return me->coreObject.o_outlet; }
@@ -218,7 +218,7 @@ void ext_main(void* r)
 
 
 #pragma mark -
-#pragma mark • Max Shell Methods
+#pragma mark Max Shell Methods
 
 /******************************************************************************************
  *
@@ -745,5 +745,5 @@ BixCPTattle(
 
 
 #pragma mark -
-#pragma mark • Jitter Methods
+#pragma mark Jitter Methods
 

@@ -26,12 +26,12 @@
 /******************************************************************************************
  ******************************************************************************************/
 
-#pragma mark • Include Files
+#pragma mark Include Files
 
 #include "LitterLib.h"
 //#include "TrialPeriodUtils.h"
 
-#pragma mark • Constants
+#pragma mark Constants
 
 const char*	kClassName		= "lp.logos";			// Class name
 
@@ -59,10 +59,10 @@ enum {
 	strIndexLeftOut		= strIndexQuotOutlet
 	};*/
 
-#pragma mark • Type Definitions
+#pragma mark Type Definitions
 
 
-#pragma mark • Object Structure
+#pragma mark Object Structure
 
 typedef struct {
 	t_object		coreObject;
@@ -77,9 +77,9 @@ typedef struct {
 typedef objLogos* objLogosPtr;
 
 
-#pragma mark • Global Variables
+#pragma mark Global Variables
 
-#pragma mark • Function Prototypes
+#pragma mark Function Prototypes
 
 	// Class message functions
 objLogosPtr	LogosNew(SymbolPtr, short, t_atom[]);
@@ -97,7 +97,7 @@ static void	LogosInfo(objLogos*);
 #pragma mark -
 /*****************************  I M P L E M E N T A T I O N  ******************************/
 
-#pragma mark • Inline Functions
+#pragma mark Inline Functions
 
 #pragma mark -
 
@@ -146,7 +146,7 @@ void ext_main(void* r)
 	}
 
 #pragma mark -
-#pragma mark • Class Message Handlers
+#pragma mark Class Message Handlers
 
 /******************************************************************************************
  *
@@ -229,7 +229,7 @@ punt:
 	}
 
 #pragma mark -
-#pragma mark • Object Message Handlers
+#pragma mark Object Message Handlers
 
 /******************************************************************************************
  *

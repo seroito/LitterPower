@@ -17,13 +17,13 @@
 /******************************************************************************************
  ******************************************************************************************/
 
-#pragma mark • Include Files
+#pragma mark Include Files
 
 #include "LitterLib.h"									// Also #includes MaxUtils.h, ext.h
 #include "TrialPeriodUtils.h"
 #include "Taus88.h"
 
-#pragma mark • Constants
+#pragma mark Constants
 
 const char		kClassName[]	= "lp.kasar~";		// Class name
 
@@ -44,11 +44,11 @@ enum {
 	strIndexOutLeft		= strIndexOutCymbal
 	};
 
-#pragma mark • Type Definitions
+#pragma mark Type Definitions
 
 
 
-#pragma mark • Object Structure
+#pragma mark Object Structure
 
 typedef struct {
 	t_pxobject		coreObject;
@@ -65,13 +65,13 @@ typedef struct {
 	} tCymbal;
 
 
-#pragma mark • Global Variables
+#pragma mark Global Variables
 
 t_sample	gCosine[kTableLen];
 
 
 
-#pragma mark • Function Prototypes
+#pragma mark Function Prototypes
 
 	// Class message functions
 void*	CymbalNew(double);
@@ -93,7 +93,7 @@ static int*	CymbalPerformMod(int*);
 #pragma mark -
 /*****************************  I M P L E M E N T A T I O N  ******************************/
 
-#pragma mark • Inline Functions
+#pragma mark Inline Functions
 
 
 
@@ -160,7 +160,7 @@ void ext_main(void* r)
 
 
 #pragma mark -
-#pragma mark • Class Message Handlers
+#pragma mark Class Message Handlers
 
 /******************************************************************************************
  *
@@ -193,7 +193,7 @@ CymbalNew(
 	}
 
 #pragma mark -
-#pragma mark • Object Message Handlers
+#pragma mark Object Message Handlers
 
 /******************************************************************************************
  *
@@ -248,7 +248,7 @@ void CymbalInfo(tCymbal* me)
 	{ LitterInfo(kClassName, NIL, NIL); }
 
 #pragma mark -
-#pragma mark • DSP Methods
+#pragma mark DSP Methods
 
 /******************************************************************************************
  *

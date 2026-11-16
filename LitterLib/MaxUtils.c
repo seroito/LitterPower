@@ -40,14 +40,14 @@
 /******************************************************************************************
  ******************************************************************************************/
 
-#pragma mark • Include Files
+#pragma mark Include Files
 
 #include "MaxUtils.h"
 #include "jpatcher_api.h"		// For jkeyboard_getcurrentmodifiers()
 
 #include <time.h>
 
-#pragma mark • Pascal String Utilities
+#pragma mark Pascal String Utilities
 
 /******************************************************************************************
  *
@@ -88,7 +88,7 @@ MoveP2CStr(
 	}
 
 #pragma mark -
-#pragma mark • Bit fiddling
+#pragma mark Bit fiddling
 
 /********************************************************************************
  *
@@ -154,7 +154,7 @@ CountBits(
 	
 
 #pragma mark -
-#pragma mark • Keyboard & Time Utilities
+#pragma mark Keyboard & Time Utilities
 
 /******************************************************************************************
  *
@@ -232,7 +232,7 @@ DateCString(
 	}
 
 #pragma mark -
-#pragma mark • Max-Specific Utilities
+#pragma mark Max-Specific Utilities
 
 /******************************************************************************************
  *

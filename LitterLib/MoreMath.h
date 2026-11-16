@@ -20,7 +20,7 @@
 
 #pragma once
 
-#pragma mark • Include Files
+#pragma mark Include Files
 
 #include "MaxUtils.h"						// For UInt32 & Co.
 
@@ -28,19 +28,19 @@
 
 
 
-#pragma mark • Constants
+#pragma mark Constants
 
 
 
-#pragma mark • Type Definitions
+#pragma mark Type Definitions
 
 
 
-#pragma mark • Global Variables
+#pragma mark Global Variables
 
 
 
-#pragma mark • Function Prototypes
+#pragma mark Function Prototypes
 
 double EvalPoly		(double, const double[], UInt32);
 double EvalPolyNorm	(double, const double[], UInt32);

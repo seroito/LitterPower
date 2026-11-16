@@ -18,7 +18,7 @@
 /******************************************************************************************
  ******************************************************************************************/
 
-#pragma mark • Include Files
+#pragma mark Include Files
 
 #include "LitterLib.h"									// Also #includes MaxUtils.h, ext.h
 //#include "TrialPeriodUtils.h"
@@ -29,7 +29,7 @@
 #define LPAssistIn2			"Signal or number (epsilon: phase shift probability)"
 #define LPAssistOut1		"Signal (Uniform Markov noise)"
 
-#pragma mark • Constants
+#pragma mark Constants
 
 const char*			kClassName		= "lp.gruyere~";		// Class name
 
@@ -74,10 +74,10 @@ enum {
 	};
 	
 	
-#pragma mark • Type Definitions
+#pragma mark Type Definitions
 
 
-#pragma mark • Object Structure
+#pragma mark Object Structure
 
 typedef struct {
 	t_pxobject		coreObject;
@@ -102,12 +102,12 @@ typedef struct {
 	} objGruyere;
 
 
-#pragma mark • Global Variables
+#pragma mark Global Variables
 
 float	gCosine[kTableLen];
 //t_sample	gCosine[kTableLen];
 
-#pragma mark • Function Prototypes
+#pragma mark Function Prototypes
 
 	// Class message functions
 void*	GruyereNew(SymbolPtr, short, t_atom[]);
@@ -133,7 +133,7 @@ void GruyerePerform64(objGruyere*, t_object *dsp64, double **ins, long numins, d
 #pragma mark -
 /*****************************  I M P L E M E N T A T I O N  ******************************/
 
-#pragma mark • Inline Functions
+#pragma mark Inline Functions
 
 
 
@@ -207,7 +207,7 @@ void ext_main(void* r)
 
 
 #pragma mark -
-#pragma mark • Utilities
+#pragma mark Utilities
 
 /******************************************************************************************
  *
@@ -265,7 +265,7 @@ SetEpsilon(
 	}
 
 #pragma mark -
-#pragma mark • Class Message Handlers
+#pragma mark Class Message Handlers
 
 /******************************************************************************************
  *
@@ -364,7 +364,7 @@ GruyereNew(
 	}
 
 #pragma mark -
-#pragma mark • Object Message Handlers
+#pragma mark Object Message Handlers
 
 /******************************************************************************************
  *
@@ -556,7 +556,7 @@ t_max_err GruyereNotify(objGruyere *me, t_symbol *s, t_symbol *msg, void *sender
 
 
 #pragma mark -
-#pragma mark • DSP Methods
+#pragma mark DSP Methods
 
 /******************************************************************************************
  *

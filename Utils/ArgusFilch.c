@@ -30,12 +30,12 @@
  ******************************************************************************************/
 
 
-#pragma mark • Include Files
+#pragma mark Include Files
 
 #include "LitterLib.h"	// Also #includes MaxUtils.h, ext.h
 #include "jpatcher_api.h"
 
-#pragma mark • Constants
+#pragma mark Constants
 
 const char*	kClassName		= "lp.argus";			// Class name
 
@@ -46,7 +46,7 @@ enum {
 	};
 
 
-#pragma mark • Object Structure
+#pragma mark Object Structure
 
 typedef struct {
 	t_object	coreObject;
@@ -55,7 +55,7 @@ typedef struct {
 	} objFilch;
 
 
-#pragma mark • Function Prototypes
+#pragma mark Function Prototypes
 
 	// Class message functions
 void*	ArgusNew(void);
@@ -107,7 +107,7 @@ void ext_main(void* r)
 
 
 #pragma mark -
-#pragma mark • Class Message Handlers
+#pragma mark Class Message Handlers
 
 /******************************************************************************************
  *
@@ -132,7 +132,7 @@ punt:
 	}
 
 #pragma mark -
-#pragma mark • Object Message Handlers
+#pragma mark Object Message Handlers
 
 /******************************************************************************************
  *

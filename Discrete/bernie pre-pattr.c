@@ -28,14 +28,14 @@
 /******************************************************************************************
  ******************************************************************************************/
 
-#pragma mark • Include Files
+#pragma mark Include Files
 
 #include "LitterLib.h"
 #include "TrialPeriodUtils.h"
 #include "Taus88.h"
 #include "RNGBinomial.h"
 
-#pragma mark • Constants
+#pragma mark Constants
 
 const char*		kClassName		= "lp.bernie";		// Class name
 
@@ -62,7 +62,7 @@ enum Generator {								// How to generate deviates
 	};
 
 
-#pragma mark • Type Definitions
+#pragma mark Type Definitions
 
 typedef enum Generator eGenerator;
 
@@ -72,7 +72,7 @@ typedef union genParams {
 	tBTPEParams	btpeStuff;
 	} uGenParams;
 
-#pragma mark • Object Structure
+#pragma mark Object Structure
 
 typedef struct {
 	Object			coreObject;
@@ -86,11 +86,11 @@ typedef struct {
 	} objBernie;
 
 
-#pragma mark • Global Variables
+#pragma mark Global Variables
 
 
 
-#pragma mark • Function Prototypes
+#pragma mark Function Prototypes
 
 	// Class message functions
 void*	BernieNew	(long, double, long);
@@ -116,7 +116,7 @@ static void	BernieInfo	(objBernie*);
 #pragma mark -
 /*****************************  I M P L E M E N T A T I O N  ******************************/
 
-#pragma mark • Inline Functions
+#pragma mark Inline Functions
 
 
 
@@ -170,7 +170,7 @@ void ext_main(void* r)
 
 
 #pragma mark -
-#pragma mark • Class Message Handlers
+#pragma mark Class Message Handlers
 
 /******************************************************************************************
  *
@@ -223,7 +223,7 @@ BernieNew(
 	}
 
 #pragma mark -
-#pragma mark • Object Message Handlers
+#pragma mark Object Message Handlers
 
 /******************************************************************************************
  *

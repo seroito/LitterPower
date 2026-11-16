@@ -13,16 +13,16 @@
 /******************************************************************************************
  ******************************************************************************************/
 
-#pragma mark ‚Ä¢ Include Files
+#pragma mark Include Files
 
 #include "MaxAttributeUtils.h"
 
 
-#pragma mark ‚Ä¢ Constants
+#pragma mark Constants
 
 
 #pragma mark -
-#pragma mark ‚Ä¢ Functions
+#pragma mark Functions
 
 /******************************************************************************************
  *

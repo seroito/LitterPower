@@ -32,7 +32,7 @@
 
  ******************************************************************************************/
 
-#pragma mark • Include Files
+#pragma mark Include Files
 
 //#include "TrialPeriodUtils.h"
 #include "imLib.h"
@@ -46,12 +46,12 @@
 #define LPAssistOut1		"Signal (Mutant)"
 
 
-#pragma mark • Constants
+#pragma mark Constants
 
 const char*	kClassName		= "lp.tim~";			// Class name
 
 
-#pragma mark • Function Prototypes
+#pragma mark Function Prototypes
 
 void*	NewMutator(t_symbol*, short, t_atom*);
 
@@ -177,7 +177,7 @@ void ext_main(void* r)
 	}
 
 #pragma mark -
-#pragma mark • Class Message Handlers
+#pragma mark Class Message Handlers
 
 /******************************************************************************************
  *
@@ -265,7 +265,7 @@ NewMutator(
 	}
 
 #pragma mark -
-#pragma mark • Object Message Handlers
+#pragma mark Object Message Handlers
 
 /******************************************************************************************
  *
@@ -368,7 +368,7 @@ DoTattle(
 
 
 #pragma mark -
-#pragma mark • DSP Methods
+#pragma mark DSP Methods
 
 /******************************************************************************************
  *

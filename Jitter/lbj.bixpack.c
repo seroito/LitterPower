@@ -20,7 +20,7 @@
 		16-Jul-2003:		First implementation.
  ******************************************************************************************/
 
-#pragma mark • Identify Target
+#pragma mark Identify Target
 
 #ifdef __MWERKS__
 	#if __ide_target("BIX Pack (Boron)")								\
@@ -44,7 +44,7 @@
 		#define __EX_LIBRIS__ 0
 #endif
 
-#pragma mark • Include Files
+#pragma mark Include Files
 
 #include "LitterLib.h"
 //#include "TrialPeriodUtils.h"
@@ -59,7 +59,7 @@
 #define LPAssistOut2		"Dump"
 
 
-#pragma mark • Constants
+#pragma mark Constants
 
 #if __EX_LIBRIS__
 	const char	kMaxClassName[]	= "jit.bixcp.to",		// Class name for Max, also used
@@ -83,7 +83,7 @@ enum strIndices {
 	};
 	
 
-#pragma mark • Object Structure
+#pragma mark Object Structure
 
 typedef struct {
 	t_object		coreObject;
@@ -99,7 +99,7 @@ typedef struct {
 	tBixCPPicturePtr bixBuf;
 	} jcobBixCP;						// jcob == Jitter Core Object
 
-#pragma mark • Global Variables
+#pragma mark Global Variables
 
 void*			gBixCPJitClass	= NIL;
 t_class*		gBixCPMaxClass	= NIL;
@@ -107,7 +107,7 @@ t_class*		gBixCPMaxClass	= NIL;
 t_symbol*			gSymFullPacket	= NIL;
 
 
-#pragma mark • Function Prototypes
+#pragma mark Function Prototypes
 
 	// Max methods/functions
 static msobBixCP*	BixCPNewMaxShell	(t_symbol*, long, t_atom*);
@@ -130,7 +130,7 @@ static t_jit_err BixCPTranslate		(jcobBixCP*, void*, long*, tBixCPPicturePtr*);
 #pragma mark -
 /*****************************  I M P L E M E N T A T I O N  ******************************/
 
-#pragma mark • Inline Functions
+#pragma mark Inline Functions
 
 	// ?? Need to make sure how the compiler handles static inside an inline!!
 	// (Should be OK because the function is internal, but watch out)
@@ -198,7 +198,7 @@ void ext_main(void* r)
 
 
 #pragma mark -
-#pragma mark • Internal functions
+#pragma mark Internal functions
 
 /******************************************************************************************
  *
@@ -227,7 +227,7 @@ FullPacketOut(
 
 
 #pragma mark -
-#pragma mark • Max Shell Methods
+#pragma mark Max Shell Methods
 
 /******************************************************************************************
  *
@@ -496,7 +496,7 @@ BixCPTattle(
 
 
 #pragma mark -
-#pragma mark • Jitter Methods
+#pragma mark Jitter Methods
 
 /******************************************************************************************
  *

@@ -20,7 +20,7 @@
 		
  ******************************************************************************************/
 
-#pragma mark • Include Files
+#pragma mark Include Files
 
 	// Tell MaxUtils.h (#included by LitterLib.h) to #include Jitter headers
 	// Jitter includes the most of the Max headers, which we have to explicitly
@@ -32,7 +32,7 @@
 #include "Taus88.h"
 
 
-#pragma mark • Constants
+#pragma mark Constants
 
 const char	kMaxClassName[]		= "lbj.titi",			// Class name for Max
 			kJitClassName[]		= "lbj-titi";			// Class name for Jitter
@@ -51,7 +51,7 @@ enum {
 	};
 
 
-#pragma mark • Type Definitions
+#pragma mark Type Definitions
 
 typedef struct {
 	Atom	min,
@@ -60,7 +60,7 @@ typedef struct {
 typedef tVecData* tVecDataPtr;
 
 
-#pragma mark • Object Structure
+#pragma mark Object Structure
 
 typedef struct {
 	Object		coreObject;
@@ -77,12 +77,12 @@ typedef struct {
 	} jcobTiti;							// Jitter Core Object
 
 
-#pragma mark • Global Variables
+#pragma mark Global Variables
 
 void*			gTitiJitClass	= NIL;
 t_class*		gTitiMaxClass	= NIL;
 
-#pragma mark • Function Prototypes
+#pragma mark Function Prototypes
 
 	// Max methods/functions
 static void*TitiNewMaxShell	(Symbol*, long, Atom*);
@@ -100,7 +100,7 @@ static t_jit_err TitiJitInit		(void);
 #pragma mark -
 /*****************************  I M P L E M E N T A T I O N  ******************************/
 
-#pragma mark • Inline Functions
+#pragma mark Inline Functions
 
 /******************************************************************************************
  *
@@ -432,11 +432,11 @@ void ext_main(void* r)
 
 
 #pragma mark -
-#pragma mark • Internal functions
+#pragma mark Internal functions
 
 
 #pragma mark -
-#pragma mark • Max Shell Methods
+#pragma mark Max Shell Methods
 
 /******************************************************************************************
  *
@@ -563,7 +563,7 @@ void TitiAssist(msobTiti* me, void* unused, long iDir, long iArgNum, char* oCStr
 
 
 #pragma mark -
-#pragma mark • Jitter Methods
+#pragma mark Jitter Methods
 
 /******************************************************************************************
  *
@@ -584,7 +584,7 @@ static void TitiJitFree(jcobTiti* me)
 
 
 #pragma mark -
-#pragma mark • Matrix Calculations
+#pragma mark Matrix Calculations
 
 /******************************************************************************************
  *
@@ -787,7 +787,7 @@ TitiJitMatrixCalc(
 	}
 	
 #pragma mark -
-#pragma mark • Attribute functions
+#pragma mark Attribute functions
 
 /******************************************************************************************
  *
@@ -797,7 +797,7 @@ TitiJitMatrixCalc(
 
 
 #pragma mark -
-#pragma mark • Jitter Initialization
+#pragma mark Jitter Initialization
 
 /******************************************************************************************
  *

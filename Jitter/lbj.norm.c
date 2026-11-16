@@ -23,7 +23,7 @@
 /******************************************************************************************
  ******************************************************************************************/
 
-#pragma mark • Include Files
+#pragma mark Include Files
 
 #include "LitterLib.h"
 //#include "TrialPeriodUtils.h"
@@ -35,7 +35,7 @@
 #define LPAssistOut1		"Gaussian noise"
 #define LPAssistOut2		"Dump"
 
-#pragma mark • Constants
+#pragma mark Constants
 
 const char	kMaxClassName[]		= "lbj.norm",			// Class name for Max
 			kJitClassName[]		= "lbj-norm";			// Class name for Jitter
@@ -52,11 +52,11 @@ enum {
 	};
 
 
-#pragma mark • Type Definitions
+#pragma mark Type Definitions
 
 
 
-#pragma mark • Object Structure
+#pragma mark Object Structure
 
 typedef struct {
 	t_object		coreObject;
@@ -75,13 +75,13 @@ typedef struct {
 	} jcobNorm;							// Jitter Core Object
 
 
-#pragma mark • Global Variables
+#pragma mark Global Variables
 
 void*			gNormJitClass	= NIL;
 t_class*		gNormMaxClass	= NIL;
 
 
-#pragma mark • Function Prototypes
+#pragma mark Function Prototypes
 
 	// Max methods/functions
 static void*NormNewMaxShell	(t_symbol*, long, t_atom*);
@@ -99,7 +99,7 @@ static t_jit_err NormJitInit		(void);
 #pragma mark -
 /*****************************  I M P L E M E N T A T I O N  ******************************/
 
-#pragma mark • Inline Functions
+#pragma mark Inline Functions
 
 // The following const and static inlines should be moved to RNGGauss
 const double	kKRMagic		= 2.2160358672;
@@ -304,11 +304,11 @@ void ext_main(void* r)
 
 
 #pragma mark -
-#pragma mark • Internal functions
+#pragma mark Internal functions
 
 
 #pragma mark -
-#pragma mark • Max Shell Methods
+#pragma mark Max Shell Methods
 
 /******************************************************************************************
  *
@@ -450,7 +450,7 @@ void NormAssist(msobNorm* me, void* box, long iDir, long iArgNum, char* oCStr)
 
 
 #pragma mark -
-#pragma mark • Jitter Methods
+#pragma mark Jitter Methods
 
 /******************************************************************************************
  *
@@ -482,7 +482,7 @@ static void NormJitFree(jcobNorm* me)
 
 
 #pragma mark -
-#pragma mark • Matrix Calculations
+#pragma mark Matrix Calculations
 
 /******************************************************************************************
  *
@@ -961,7 +961,7 @@ NormJitMatrixCalc(
 	
 
 #pragma mark -
-#pragma mark • Attribute functions
+#pragma mark Attribute functions
 
 /******************************************************************************************
  *
@@ -1001,7 +1001,7 @@ NormJitMatrixCalc(
 	
 
 #pragma mark -
-#pragma mark • Jitter Initialization
+#pragma mark Jitter Initialization
 
 /******************************************************************************************
  *

@@ -27,7 +27,7 @@
 
  ******************************************************************************************/
 
-#pragma mark • Include Files
+#pragma mark Include Files
 
 #include "imLib.h"
 //#include "TrialPeriodUtils.h"
@@ -59,7 +59,7 @@
 #define LPAssistOut1		"Signal (Mutant 1)"
 #define LPAssistOut2		"Signal (Mutant 2)"
 
-#pragma mark • Constants
+#pragma mark Constants
 
 const char*	kClassName		= "lp.frim~";			// Class name
 
@@ -76,7 +76,7 @@ enum {
 };
 
 
-#pragma mark • Function Prototypes
+#pragma mark Function Prototypes
 
 void*	NewMutator(t_symbol*, short, t_atom*);
 void	FreeMutator(tMutator*);
@@ -188,7 +188,7 @@ void ext_main(void* r)
 	}
 
 #pragma mark -
-#pragma mark • Helper functions
+#pragma mark Helper functions
 
 /******************************************************************************************
  *
@@ -290,7 +290,7 @@ void ext_main(void* r)
 
 
 #pragma mark -
-#pragma mark • Class Message Handlers
+#pragma mark Class Message Handlers
 
 /******************************************************************************************
  *
@@ -453,7 +453,7 @@ FreeMutator(
 	}
 
 #pragma mark -
-#pragma mark • Object Message Handlers
+#pragma mark Object Message Handlers
 
 /******************************************************************************************
  *
@@ -569,7 +569,7 @@ DoOBands(
 	}
 
 #pragma mark -
-#pragma mark • DSP Utilities
+#pragma mark DSP Utilities
 
 /******************************************************************************************
  *
@@ -720,7 +720,7 @@ DoOBands(
 	
 	
 #pragma mark -
-#pragma mark • DSP Methods
+#pragma mark DSP Methods
 
 /******************************************************************************************
  *

@@ -29,13 +29,13 @@
 /******************************************************************************************
  ******************************************************************************************/
 
-#pragma mark • Include Files
+#pragma mark Include Files
 
 #include "scampLib.h"
 //#include "TrialPeriodUtils.h"
 
 
-#pragma mark • Constants
+#pragma mark Constants
 
 #if (SCAMP_TARGET == SCAMPI)
 	const char		kClassName[]	= "lp.scampi";			// Class name
@@ -106,13 +106,13 @@ enum {
 	};
 
 
-#pragma mark • Global Variables
+#pragma mark Global Variables
 
 
 #pragma mark -
 /*****************************  I M P L E M E N T A T I O N  ******************************/
 
-#pragma mark • Inline Functions
+#pragma mark Inline Functions
 
 #pragma mark -
 
@@ -188,7 +188,7 @@ void ext_main(void* r)
 
 
 #pragma mark -
-#pragma mark • Instantiation
+#pragma mark Instantiation
 
 /******************************************************************************************
  *
@@ -278,7 +278,7 @@ punt:
 
 	
 #pragma mark -
-#pragma mark • Calculation Methods
+#pragma mark Calculation Methods
 
 /******************************************************************************************
  *
@@ -461,7 +461,7 @@ ScampSet(
 
 
 #pragma mark -
-#pragma mark • Split Message
+#pragma mark Split Message
 
 /******************************************************************************************
  *
@@ -509,7 +509,7 @@ ScampSplit(
 
 
 #pragma mark -
-#pragma mark • Rounding messages
+#pragma mark Rounding messages
 /******************************************************************************************
  *
  *	ScampRound(me);
@@ -530,7 +530,7 @@ ScampSplit(
 
 
 #pragma mark -
-#pragma mark • Information Messaages
+#pragma mark Information Messaages
 
 /******************************************************************************************
  *

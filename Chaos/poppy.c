@@ -30,12 +30,12 @@ Previous history:
  ******************************************************************************************/
 
 
-#pragma mark • Include Files
+#pragma mark Include Files
 
 #include "LitterLib.h"
 #include <math.h>			// For fabs(), log()
 
-#pragma mark • Constants
+#pragma mark Constants
 
 	// These are common to all varieties
 const char	kClassName[]		= "lp.poppy";			// Class name
@@ -73,11 +73,11 @@ enum {
 	};
 
 
-#pragma mark • Type Definitions
+#pragma mark Type Definitions
 
 
 
-#pragma mark • Object Structure
+#pragma mark Object Structure
 
 typedef struct {
 	t_object		coreObject;
@@ -96,7 +96,7 @@ typedef struct {
 
 
 
-#pragma mark • Function Prototypes
+#pragma mark Function Prototypes
 
 	// Class message functions
 void*		NewPoppy(t_symbol*, short, t_atom*);
@@ -121,7 +121,7 @@ static Boolean SetRates(tPoppy*, short, t_atom*);
 #pragma mark -
 /*****************************  I M P L E M E N T A T I O N  ******************************/
 
-#pragma mark • Inline Functions
+#pragma mark Inline Functions
 
 static inline double NextPop(double iPop, double iGrowth)
 			{ return iGrowth * iPop * (1.0 - iPop); }
@@ -175,7 +175,7 @@ void ext_main(void* r)
 	}
 
 #pragma mark -
-#pragma mark • Class Message Handlers
+#pragma mark Class Message Handlers
 
 /******************************************************************************************
  *
@@ -286,13 +286,13 @@ FreePoppy(
 		return;		
 	
 	if (me->rates)
-		freebytes(me->rates, me->allocation);
+		sysmem_freeptr(me->rates);
 		
 	}
 	
 
 #pragma mark -
-#pragma mark • Object Message Handlers
+#pragma mark Object Message Handlers
 
 /******************************************************************************************
  *

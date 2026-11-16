@@ -23,7 +23,7 @@
 /******************************************************************************************
  ******************************************************************************************/
 
-#pragma mark • Include Files
+#pragma mark Include Files
 
 #include <stdlib.h>		// For rand(), RAND_MAX
 #include <math.h>		// For pow()
@@ -37,7 +37,7 @@
 #define LPAssistOut1        "Signal (Real component)"
 #define LPAssistOut2        "Signal (Imaginary component)"
 
-#pragma mark • Global Constants
+#pragma mark Global Constants
 
 const char*	kClassName		= "lp.p2c~";				// Class name
 
@@ -61,18 +61,18 @@ enum {
 	};
 
 
-#pragma mark • Type Definitions
+#pragma mark Type Definitions
 
-#pragma mark • Object Structure
+#pragma mark Object Structure
 
 typedef struct {
 	t_pxobject	coreObject;
 	} tConverter;
 
 
-#pragma mark • Global Variables
+#pragma mark Global Variables
 
-#pragma mark • Function Prototypes
+#pragma mark Function Prototypes
 
 static void*	P2CNew(void);
 //static void	P2CDSP(tConverter*, t_signal**, short*);
@@ -131,7 +131,7 @@ void ext_main(void* r)
 	}
 
 #pragma mark -
-#pragma mark • Methods
+#pragma mark Methods
 
 /******************************************************************************************
  *
@@ -157,7 +157,7 @@ P2CNew(void)
 	}
 
 #pragma mark -
-#pragma mark • Object Message Handlers
+#pragma mark Object Message Handlers
 
 /******************************************************************************************
  *
@@ -195,7 +195,7 @@ void P2CInfo(tConverter* me)
 	
 
 #pragma mark -
-#pragma mark • DSP Methods
+#pragma mark DSP Methods
 
 /******************************************************************************************
  *

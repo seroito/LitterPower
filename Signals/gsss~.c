@@ -25,7 +25,7 @@
 /******************************************************************************************
  ******************************************************************************************/
 
-#pragma mark • Include Files
+#pragma mark Include Files
 
 #include "LitterLib.h"	// Also #includes MaxUtils.h, ext.h
 //#include "TrialPeriodUtils.h"
@@ -45,7 +45,7 @@
 #define LPAssistOut1		"Signal (Gaussian noise)"
 
 
-#pragma mark • Constants
+#pragma mark Constants
 
 const char*	kClassName		= "lp.gsss~";			// Class name
 
@@ -69,11 +69,11 @@ enum {
 	outletNoise
 	};
 
-#pragma mark • Type Definitions
+#pragma mark Type Definitions
 
 
 
-#pragma mark • Object Structure
+#pragma mark Object Structure
 
 typedef struct {
 	t_pxobject		coreObject;
@@ -83,11 +83,11 @@ typedef struct {
 	} objGaussNoise;
 
 
-#pragma mark • Global Variables
+#pragma mark Global Variables
 
 
 
-#pragma mark • Function Prototypes
+#pragma mark Function Prototypes
 
 	// Class message functions
 void*	GsssNew(double, double);
@@ -113,7 +113,7 @@ void GsssPerformDyn64(objGaussNoise*, t_object *dsp64, double **ins, long numins
 #pragma mark -
 /*****************************  I M P L E M E N T A T I O N  ******************************/
 
-#pragma mark • Inline Functions
+#pragma mark Inline Functions
 
 
 
@@ -169,7 +169,7 @@ void ext_main(void* r)
 
 
 #pragma mark -
-#pragma mark • Class Message Handlers
+#pragma mark Class Message Handlers
 
 /******************************************************************************************
  *
@@ -206,7 +206,7 @@ punt:
 	}
 
 #pragma mark -
-#pragma mark • Object Message Handlers
+#pragma mark Object Message Handlers
 
 /******************************************************************************************
  *
@@ -306,7 +306,7 @@ void GsssInfo(objGaussNoise* me)
 
 
 #pragma mark -
-#pragma mark • DSP Methods
+#pragma mark DSP Methods
 
 /******************************************************************************************
  *

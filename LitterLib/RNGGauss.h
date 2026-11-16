@@ -19,13 +19,13 @@
 
 #pragma once
 
-#pragma mark • Include Files
+#pragma mark Include Files
 
 #include "MiscUtils.h"
 #include "Taus88.h"
 
 
-#pragma mark • Function Prototypes
+#pragma mark Function Prototypes
 
 	// General purpose transformations we expose in case anyone else needs them
 	
@@ -48,6 +48,6 @@ double	NormalKRTaus88	(tTaus88Data*	iData);
 
 
 #pragma mark -
-#pragma mark • Inline Functions & Macros
+#pragma mark Inline Functions & Macros
 
 	

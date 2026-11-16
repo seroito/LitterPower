@@ -22,12 +22,12 @@
 /******************************************************************************************
  ******************************************************************************************/
 
-#pragma mark • Include Files
+#pragma mark Include Files
 
 #include "LitterLib.h"
 
 
-#pragma mark • Constants
+#pragma mark Constants
 
 const char*	kClassName		= "lp.julie";			// Class name
 const char*	kPackageName	= "lp.julie Package";	// Package name for 'vers'(2) resource
@@ -49,11 +49,11 @@ enum {
 	};
 
 
-#pragma mark • Type Definitions
+#pragma mark Type Definitions
 
 
 
-#pragma mark • Object Structure
+#pragma mark Object Structure
 
 typedef struct {
 	Object			coreObject;
@@ -69,10 +69,10 @@ typedef struct {
 	} tJulie;
 
 
-#pragma mark • Global Variables
+#pragma mark Global Variables
 
 
-#pragma mark • Function Prototypes
+#pragma mark Function Prototypes
 
 	// Class message functions
 void*	NewJulie(Symbol*, short, Atom*);
@@ -92,7 +92,7 @@ static void	DoInfo(tJulie*);
 #pragma mark -
 /*****************************  I M P L E M E N T A T I O N  ******************************/
 
-#pragma mark • Inline Functions
+#pragma mark Inline Functions
 
 
 
@@ -144,7 +144,7 @@ void ext_main(void* r)
 
 
 #pragma mark -
-#pragma mark • Class Message Handlers
+#pragma mark Class Message Handlers
 
 /******************************************************************************************
  *
@@ -231,7 +231,7 @@ punt:
 
 
 #pragma mark -
-#pragma mark • Object Message Handlers
+#pragma mark Object Message Handlers
 
 /******************************************************************************************
  *

@@ -30,13 +30,13 @@
 /******************************************************************************************
  ******************************************************************************************/
 
-#pragma mark • Include Files
+#pragma mark Include Files
 
 #include "RNGCauchy.h"
 
 
 
-#pragma mark • Constants
+#pragma mark Constants
 
 	// Constants 
 const double	kAD1	= 0.6380631366077803,
@@ -49,20 +49,20 @@ const double	kAD1	= 0.6380631366077803,
 				kAD8	= 4.9125013953033204;
 
 
-#pragma mark • Type Definitions
+#pragma mark Type Definitions
 
 
-#pragma mark • Static Variables
+#pragma mark Static Variables
 
 
-#pragma mark • Global Variables
+#pragma mark Global Variables
 
 
 
 #pragma mark -
 /*****************************  I M P L E M E N T A T I O N  ******************************/
 
-#pragma mark • Functions
+#pragma mark Functions
 
 
 /******************************************************************************************

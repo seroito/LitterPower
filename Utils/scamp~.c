@@ -30,12 +30,12 @@
 		7-July-2001:	First implementation.
  ******************************************************************************************/
 
-#pragma mark • Include Files
+#pragma mark Include Files
 
 #include "scampLib.h"
 //#include "TrialPeriodUtils.h"
 
-#pragma mark • Constants
+#pragma mark Constants
 
 const char	kClassName[]	= "lp.scamp~";	    		// Class name
 
@@ -95,7 +95,7 @@ enum {
 	};
 
 
-#pragma mark • Function Prototypes
+#pragma mark Function Prototypes
 
 	// MSP message functions
 #ifdef __MAX_MSP_OBJECT__
@@ -112,7 +112,7 @@ void ScampPerformDynamic64(objScamp*, t_object *dsp64, double **ins, long numins
 #pragma mark -
 /*****************************  I M P L E M E N T A T I O N  ******************************/
 
-#pragma mark • Inline Functions
+#pragma mark Inline Functions
 
 #pragma mark -
 
@@ -165,7 +165,7 @@ void ext_main(void* r)
 
 
 #pragma mark -
-#pragma mark • Instantiation
+#pragma mark Instantiation
 
 /******************************************************************************************
  *
@@ -237,7 +237,7 @@ punt:
 	
 
 #pragma mark -
-#pragma mark • Utilities
+#pragma mark Utilities
 
 /******************************************************************************************
  *
@@ -384,7 +384,7 @@ static double Exponent(double iVal, double iBase)
 	{ return iVal * pow(iBase, iVal - 1.0); }
 
 #pragma mark -
-#pragma mark • Object Methods
+#pragma mark Object Methods
 
 /******************************************************************************************
  *
@@ -551,7 +551,7 @@ ScampAssist(
 	
 
 #pragma mark -
-#pragma mark • DSP Methods
+#pragma mark DSP Methods
 
 /******************************************************************************************
  *

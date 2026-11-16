@@ -35,14 +35,14 @@
 /******************************************************************************************
  ******************************************************************************************/
 
-#pragma mark • Include Files
+#pragma mark Include Files
 
 #include "IChingCore.h"
 //#include "TrialPeriodUtils.h"
 #include "Taus88.h"
 
 
-#pragma mark • Constants
+#pragma mark Constants
 
 const char*	kClassName		= "lp.ginger";			// Class name
 
@@ -69,11 +69,11 @@ enum {
 	};*/
 
 
-#pragma mark • Type Definitions
+#pragma mark Type Definitions
 
 
 
-#pragma mark • Object Structure
+#pragma mark Object Structure
 
 typedef struct {
 	LITTER_CORE_OBJECT(t_object, coreObject);
@@ -89,7 +89,7 @@ typedef struct {
 	} objIChing;
 
 
-#pragma mark • Function Prototypes
+#pragma mark Function Prototypes
 
 	// Class message functions
 //void*	GingerNew(Symbol*);
@@ -108,7 +108,7 @@ static void GingerSet	(objIChing*, t_symbol*);
 #pragma mark -
 /*****************************  I M P L E M E N T A T I O N  ******************************/
 
-#pragma mark • Class Message Handlers
+#pragma mark Class Message Handlers
 
 /******************************************************************************************
  *
@@ -142,7 +142,7 @@ GingerNew(
 	}
 
 #pragma mark -
-#pragma mark • Object Message Handlers
+#pragma mark Object Message Handlers
 
 /******************************************************************************************
  *
@@ -305,7 +305,7 @@ GingerAssist(
 	}
 
 #pragma mark -
-#pragma mark • Attribute/Information Functions
+#pragma mark Attribute/Information Functions
 
 /******************************************************************************************
  *

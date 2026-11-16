@@ -22,41 +22,41 @@
 /******************************************************************************************
  ******************************************************************************************/
 
-#pragma mark • Include Files
+#pragma mark Include Files
 
 #include "Taus88.h"
 #include "LitterLib.h"
 #include "MiscUtils.h"
 
 
-#pragma mark • Constants
+#pragma mark Constants
 
 	
 
 
-#pragma mark • Type Definitions
+#pragma mark Type Definitions
 
 
-#pragma mark • Global Variables
+#pragma mark Global Variables
 
 		// The static initialization below should be overwritten by the calling functions,
 		// but I'm wary of leaving this stuff initialized to 0s.
 tTaus88Data gTausData = {0x4a1fcf79, 0xb86271cc, 0x6c986d11};
 
-#pragma mark • Initialize Global Variables
+#pragma mark Initialize Global Variables
 
 
-#pragma mark • Function Prototypes
+#pragma mark Function Prototypes
 
 #pragma mark -
 /*****************************  I M P L E M E N T A T I O N  ******************************/
 
-#pragma mark • Private & Inline Functions
+#pragma mark Private & Inline Functions
 
 
 
 #pragma mark -
-#pragma mark • Public Functions
+#pragma mark Public Functions
 
 /******************************************************************************************
  *

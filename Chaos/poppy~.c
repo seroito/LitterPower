@@ -29,17 +29,17 @@
  ******************************************************************************************/
 
 
-#pragma mark • Identify Target
+#pragma mark Identify Target
 
 #define __MAX_MSP_OBJECT__ 1
 
 
-#pragma mark • Include Files
+#pragma mark Include Files
 
 #include "LitterLib.h"
 
 
-#pragma mark • Constants
+#pragma mark Constants
 
 const char	kClassName[]	= "lp.poppy~";			// Class name
 
@@ -78,12 +78,12 @@ enum Interpolation {
 	};
 
 
-#pragma mark • Type Definitions
+#pragma mark Type Definitions
 
 typedef enum Interpolation tInterp;
 
 
-#pragma mark • Object Structure
+#pragma mark Object Structure
 
 typedef struct {
 	t_pxobject	coreObject;
@@ -106,11 +106,11 @@ typedef struct {
 	} tPoppy;
 
 
-#pragma mark • Global Variables
+#pragma mark Global Variables
 
 
 
-#pragma mark • Function Prototypes
+#pragma mark Function Prototypes
 
 	// Class message functions
 void*		NewPoppy(t_symbol*, short, t_atom*);
@@ -139,7 +139,7 @@ void Perform64Static(tPoppy*, t_object *dsp64, double **ins, long numins, double
 /*****************************  I M P L E M E N T A T I O N  ******************************/
 
 #pragma mark -
-#pragma mark • Inline Functions
+#pragma mark Inline Functions
 
 static inline double NextPop(double iPop, double iGrowth)
 			{ return iGrowth * iPop * (1.0 - iPop); }
@@ -218,7 +218,7 @@ void ext_main(void* r)
 	}
 
 #pragma mark -
-#pragma mark • Utility Methods
+#pragma mark Utility Methods
 
 	// Utility to calculate interpolation parameters
 static inline void RecalcInterpParams(tPoppy* me)
@@ -265,7 +265,7 @@ static inline void UpdateBaseFreq(tPoppy* me)
 
 
 #pragma mark -
-#pragma mark • Class Message Handlers
+#pragma mark Class Message Handlers
 
 /******************************************************************************************
  *
@@ -365,7 +365,7 @@ punt:
 
 
 #pragma mark -
-#pragma mark • Object Message Handlers
+#pragma mark Object Message Handlers
 
 /******************************************************************************************
  *
@@ -571,7 +571,7 @@ void DoInfo(tPoppy* me)
 	{ LitterInfo(kClassName, &me->coreObject.z_ob, (method) DoTattle); }
 
 #pragma mark -
-#pragma mark • DSP Methods
+#pragma mark DSP Methods
 
 /******************************************************************************************
  *

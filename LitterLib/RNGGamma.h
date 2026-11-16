@@ -39,7 +39,7 @@
 #define __RNGGAMMA_H__
 
 
-#pragma mark • Include Files
+#pragma mark Include Files
 
 #ifndef __TAUS88_H__
 	#include "Taus88.h"
@@ -49,7 +49,7 @@
 #endif
 
 
-#pragma mark • Constants
+#pragma mark Constants
 
 	// Algorithm used for generating deviates
 enum gammaAlg {
@@ -65,7 +65,7 @@ enum gammaAlg {
 	};
 
 
-#pragma mark • Type Definitions
+#pragma mark Type Definitions
 
 typedef enum gammaAlg eGammaAlg;
 
@@ -83,11 +83,11 @@ typedef struct {
 			} tGammaGDParams;
 
 
-#pragma mark • Global Variables
+#pragma mark Global Variables
 
 
 
-#pragma mark • Function Prototypes
+#pragma mark Function Prototypes
 
 eGammaAlg RecommendGammaAlg(double);
 
@@ -108,7 +108,7 @@ double	GenGammaGDTaus88	(tGammaGDParams*, tTaus88Data*);
 
 
 #pragma mark -
-#pragma mark • Inline Functions & Macros
+#pragma mark Inline Functions & Macros
 
 static inline double CalcErlangRejGamma(UInt32 iAlpha)
 		{ return sqrt(iAlpha + iAlpha - 1); }

@@ -31,7 +31,7 @@
 /******************************************************************************************
  ******************************************************************************************/
 
-#pragma mark • Include Files
+#pragma mark Include Files
 
 #include <string.h>								// all for strchr()
 
@@ -40,7 +40,7 @@
 #include "Taus88.h"
 
 
-#pragma mark • Constants
+#pragma mark Constants
 
 const char	kClassName[]	= "lp.i";			// Class name
 
@@ -129,14 +129,14 @@ enum LineOptions {
 const Byte	kStrExtensionChar	= '+',
 			kMaxNewlineChar		= ',';
 
-#pragma mark • Type Definitions
+#pragma mark Type Definitions
 
 typedef enum LineOptions	eLineOpts;
 typedef enum TrigramOptions	eTriOpts;
 typedef enum CommonSymbols	eCommonSyms;
 
 
-#pragma mark • Object Structure
+#pragma mark Object Structure
 
 typedef struct {
 	LITTER_CORE_OBJECT(t_object, coreObject);
@@ -159,7 +159,7 @@ typedef struct {
 	} objIChing;
 
 
-#pragma mark • Global Variables
+#pragma mark Global Variables
 
 	tStrListPtr	gChingStrings[9]	= {NIL, NIL, NIL, NIL, NIL, NIL, NIL, NIL, NIL};
 
@@ -170,14 +170,14 @@ t_symbol*		gCommonSym[csCount + 1]	= {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
 
 /*****************************  I M P L E M E N T A T I O N  ******************************/
 
-#pragma mark • Utility Functions
+#pragma mark Utility Functions
 
 static inline void
 IChingGetResourceString(char oBuf[], short iResID, int iIndex)
 	{ LitterGetCStringFromStrList(oBuf, gChingStrings[iResID], iIndex); }
 
 #pragma mark -
-#pragma mark • Class Message Handlers
+#pragma mark Class Message Handlers
 
 /******************************************************************************************
  *
@@ -226,7 +226,7 @@ punt:
 	}
 
 #pragma mark -
-#pragma mark • Auxiliary Methods
+#pragma mark Auxiliary Methods
 
 /******************************************************************************************
  *
@@ -395,7 +395,7 @@ LineHeadOut(
 	}
 
 #pragma mark -
-#pragma mark • Defer Time Handlers
+#pragma mark Defer Time Handlers
 
 /******************************************************************************************
  *
@@ -801,7 +801,7 @@ IChingDoBang(
 	}
 
 #pragma mark -
-#pragma mark • Object Message Handlers
+#pragma mark Object Message Handlers
 
 /******************************************************************************************
  *

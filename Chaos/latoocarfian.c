@@ -26,16 +26,16 @@
 /******************************************************************************************
  ******************************************************************************************/
 
-#pragma mark • Identify Target
+#pragma mark Identify Target
 
 
-#pragma mark • Include Files
+#pragma mark Include Files
 
 #include "LitterLib.h"
 #include "MiscUtils.h"
 #include "Taus88.h"
 
-#pragma mark • Constants
+#pragma mark Constants
 
 const char*	kClassName		= "lp.lana";			// Class name
 const char*	kPackageName	= "lp.lana Package";	// Package name for 'vers'(2) resource
@@ -110,12 +110,12 @@ const char*		kFuncNames[fnLast + 1]
 
 
 
-#pragma mark • Type Definitions
+#pragma mark Type Definitions
 
 typedef enum Function tFunction;
 
 
-#pragma mark • Object Structure
+#pragma mark Object Structure
 
 typedef struct {
 	Object			coreObject;
@@ -133,13 +133,13 @@ typedef struct {
 	} tLana;
 
 
-#pragma mark • Global Variables
+#pragma mark Global Variables
 
 short		gStrResID		= 0;
 long		gModDate		= 0;
 
 
-#pragma mark • Function Prototypes
+#pragma mark Function Prototypes
 
 	// Class message functions
 void*		NewLana(Symbol*, short, Atom*);
@@ -184,7 +184,7 @@ static void	DoInfo(tLana*);
 #pragma mark -
 /*****************************  I M P L E M E N T A T I O N  ******************************/
 
-#pragma mark • Inline Functions
+#pragma mark Inline Functions
 
 
 #pragma mark -
@@ -253,7 +253,7 @@ void ext_main(void* r)
 	}
 
 #pragma mark -
-#pragma mark • Utility Functions
+#pragma mark Utility Functions
 
 /******************************************************************************************
  *
@@ -276,7 +276,7 @@ MapStrToFunction(
 
 
 #pragma mark -
-#pragma mark • Class Message Handlers
+#pragma mark Class Message Handlers
 
 /******************************************************************************************
  *
@@ -467,7 +467,7 @@ FreeLana(
 	
 
 #pragma mark -
-#pragma mark • Object Message Handlers
+#pragma mark Object Message Handlers
 
 /******************************************************************************************
  *

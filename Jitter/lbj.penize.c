@@ -17,13 +17,13 @@
 /******************************************************************************************
  ******************************************************************************************/
 
-#pragma mark • Include Files
+#pragma mark Include Files
 
 #include "LitterLib.h"
 #include "TrialPeriodUtils.h"
 
 
-#pragma mark • Constants
+#pragma mark Constants
 
 const char	kMaxClassName[]		= "lbj.penize",			// Class name for Max, also used
 														// for resources
@@ -48,12 +48,12 @@ enum changeMode {
 	};
 
 
-#pragma mark • Type Definitions
+#pragma mark Type Definitions
 
 typedef enum changeMode		eChangeMode;
 
 
-#pragma mark • Object Structure
+#pragma mark Object Structure
 
 typedef struct {
 	Object		coreObject;
@@ -88,7 +88,7 @@ typedef struct {
 	} jcobPenize;					// Jitter Core Object
 
 
-#pragma mark • Global Variables
+#pragma mark Global Variables
 
 void*			gPenizeJitClass	= NIL;
 t_class*		gPenizeMaxClass	= NIL;
@@ -97,7 +97,7 @@ t_class*		gPenizeMaxClass	= NIL;
 	// (This is how our Jitter object communicates with the outside world)
 SymbolPtr		gSymGetDiffs	= NIL;
 
-#pragma mark • Function Prototypes
+#pragma mark Function Prototypes
 
 	// Max methods/functions
 static void*PenizeNewMaxShell	(Symbol*, long, Atom*);
@@ -121,7 +121,7 @@ static t_jit_err PenizeJitMCalc	(jcobPenize*, void*, void*);
 #pragma mark -
 /*****************************  I M P L E M E N T A T I O N  ******************************/
 
-#pragma mark • Inline Functions
+#pragma mark Inline Functions
 
 
 
@@ -184,7 +184,7 @@ void ext_main(void* r)
 
 
 #pragma mark -
-#pragma mark • Internal functions
+#pragma mark Internal functions
 
 void
 PenizeMaxMProc(
@@ -206,7 +206,7 @@ PenizeMaxMProc(
 	}
 
 #pragma mark -
-#pragma mark • Max Shell Methods
+#pragma mark Max Shell Methods
 
 /******************************************************************************************
  *
@@ -362,7 +362,7 @@ void PenizeAssist(msobPenize* me, void* unused, long iDir, long iArgNum, char* o
 
 
 #pragma mark -
-#pragma mark • Jitter Methods
+#pragma mark Jitter Methods
 
 /******************************************************************************************
  *

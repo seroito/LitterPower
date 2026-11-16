@@ -27,7 +27,7 @@
 		21-Feb-2005:		First attempt at an implementation.
  ******************************************************************************************/
 
-#pragma mark • Include Files
+#pragma mark Include Files
 
 #include "LitterLib.h"
 #include "TrialPeriodUtils.h"
@@ -44,7 +44,7 @@
 #define LPAssistOut7		"Dump"
 
 
-#pragma mark • Constants
+#pragma mark Constants
 
 const char	kMaxClassName[]		= "lbj.stacey",			// Class name for Max, also used
 														// for resources
@@ -80,12 +80,12 @@ enum {
 	};
 
 
-#pragma mark • Type Definitions
+#pragma mark Type Definitions
 
 typedef double tPlaneStats[statArraySize];
 
 
-#pragma mark • Object Structure
+#pragma mark Object Structure
 
 typedef struct {
 	t_object		coreObject;
@@ -117,7 +117,7 @@ typedef struct {
 	} jcobStacey;					// Jitter Core Object
 
 
-#pragma mark • Global Variables
+#pragma mark Global Variables
 
 void*			gStaceyJitClass	= NIL;
 t_class*		gStaceyMaxClass	= NIL;
@@ -131,7 +131,7 @@ SymbolPtr		gSymGetMin		= NIL,
 				gSymGetSkew		= NIL,
 				gSymGetKurtosis	= NIL;
 
-#pragma mark • Function Prototypes
+#pragma mark Function Prototypes
 
 	// Max methods/functions
 static void*StaceyNewMaxShell	(t_symbol*, long, t_atom*);
@@ -155,7 +155,7 @@ static t_jit_err StaceyJitMCalc	(jcobStacey*, void*, void*);
 #pragma mark -
 /*****************************  I M P L E M E N T A T I O N  ******************************/
 
-#pragma mark • Inline Functions
+#pragma mark Inline Functions
 
 
 
@@ -226,7 +226,7 @@ void ext_main(void* r)
 
 
 #pragma mark -
-#pragma mark • Internal functions
+#pragma mark Internal functions
 
 void
 StaceyMaxMProc(
@@ -248,7 +248,7 @@ StaceyMaxMProc(
 	}
 
 #pragma mark -
-#pragma mark • Max Shell Methods
+#pragma mark Max Shell Methods
 
 /******************************************************************************************
  *
@@ -433,7 +433,7 @@ void StaceyAssist(msobStacey* me, void* box, long iDir, long iArgNum, char* oCSt
 
 
 #pragma mark -
-#pragma mark • Jitter Methods
+#pragma mark Jitter Methods
 
 /******************************************************************************************
  *

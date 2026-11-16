@@ -19,7 +19,7 @@
 
 /********** GEHT NICHT -- irgendwie ist memory corrupted!!!! -- post function printed keine doubles??? **************/
 
-#pragma mark • Include Files
+#pragma mark Include Files
 
 #include "LitterLib.h"									// Also #includes MaxUtils.h, ext.h
 //#include "TrialPeriodUtils.h"
@@ -33,7 +33,7 @@
 #define LPAssistOut1		"Signal (Pulse segment noise)"
 
 
-#pragma mark • Constants
+#pragma mark Constants
 
 const char*		kClassName	= "lp.crottin~";			// Class name
 
@@ -70,7 +70,7 @@ enum {
 	};
 	
 	
-#pragma mark • Type Definitions
+#pragma mark Type Definitions
 
 typedef struct segment {
 	double	curAmp,
@@ -84,7 +84,7 @@ typedef struct segment {
 typedef tSegment*	tSegmentPtr;
 typedef tSegment	tSegmentVec[];
 
-#pragma mark • Object Structure
+#pragma mark Object Structure
 
 typedef struct {
 	t_pxobject		coreObject;
@@ -116,11 +116,11 @@ typedef struct {
 	} objCrottin;
 
 
-#pragma mark • Global Variables
+#pragma mark Global Variables
 
 
 
-#pragma mark • Function Prototypes
+#pragma mark Function Prototypes
 
 	// Class message functions
 void*	CrottinNew(SymbolPtr, short, t_atom[]);
@@ -146,7 +146,7 @@ void    CrottinPerform64(objCrottin*, t_object *dsp64, double **ins, long numins
 #pragma mark -
 /*****************************  I M P L E M E N T A T I O N  ******************************/
 
-#pragma mark • Inline Functions
+#pragma mark Inline Functions
 
 
 
@@ -210,7 +210,7 @@ void test(objCrottin*	me, double f) {
 
 
 #pragma mark -
-#pragma mark • Utilities
+#pragma mark Utilities
 
 /******************************************************************************************
  *
@@ -462,7 +462,7 @@ RollOverGoals(
 	}
 
 #pragma mark -
-#pragma mark • Class Message Handlers
+#pragma mark Class Message Handlers
 
 /******************************************************************************************
  *
@@ -641,7 +641,7 @@ CrottinFree(
 	}
 
 #pragma mark -
-#pragma mark • Object Message Handlers
+#pragma mark Object Message Handlers
 
 /******************************************************************************************
  *
@@ -776,7 +776,7 @@ void CrottinInfo(objCrottin* me)
 	{ LitterInfo(kClassName, (tObjectPtr) me, (method) CrottinTattle); }
 
 #pragma mark -
-#pragma mark • DSP Methods
+#pragma mark DSP Methods
 
 /******************************************************************************************
  *

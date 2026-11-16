@@ -27,7 +27,7 @@
  ******************************************************************************************/
 
 
-#pragma mark • Identify Target
+#pragma mark Identify Target
 
 // The variant is chosen by the build system (see CMakeLists.txt), which defines exactly
 // one of the following macros as 1.
@@ -55,14 +55,14 @@
 
 
 
-#pragma mark • Include Files
+#pragma mark Include Files
 
 #include "LitterLib.h"
 #include "z_dsp.h"
 
 #include <float.h>										// For FLT_EPSILON
 
-#pragma mark • Constants
+#pragma mark Constants
 
 	// These are common to all varieties
 
@@ -190,7 +190,7 @@ const double	kDefGrowth	= 0.0,
 
 
 
-#pragma mark • Type Definitions
+#pragma mark Type Definitions
 
 typedef enum Interpolation tInterp;
 
@@ -199,7 +199,7 @@ typedef enum Interpolation tInterp;
 #endif
 
 
-#pragma mark • Object Structure
+#pragma mark Object Structure
 
 typedef struct {
 	t_pxobject			coreObject;
@@ -232,10 +232,10 @@ typedef struct {
 	} tVera;
 
 
-#pragma mark • Global Variables
+#pragma mark Global Variables
 
 
-#pragma mark • Function Prototypes
+#pragma mark Function Prototypes
 
 	// Class message functions
 void*		NewVera(Symbol*, short, Atom*);
@@ -280,7 +280,7 @@ static int*	PerformPoppyStatic(int*);
 #pragma mark -
 /*****************************  I M P L E M E N T A T I O N  ******************************/
 
-#pragma mark • Inline Functions
+#pragma mark Inline Functions
 
 #if __VERA_VAN__
 	static inline double NextPop(double iPop, double iFnPop, double iGrowth)
@@ -397,7 +397,7 @@ void ext_main(void* r)
 	}
 
 #pragma mark -
-#pragma mark • Utility Functions & Methods
+#pragma mark Utility Functions & Methods
 
 /******************************************************************************************
  *
@@ -467,7 +467,7 @@ static inline void UpdateBaseFreq(tVera* me)
 
 
 #pragma mark -
-#pragma mark • Class Message Handlers
+#pragma mark Class Message Handlers
 
 /******************************************************************************************
  *
@@ -619,7 +619,7 @@ punt:
 	}
 
 #pragma mark -
-#pragma mark • Object Message Handlers
+#pragma mark Object Message Handlers
 
 /******************************************************************************************
  *
@@ -803,7 +803,7 @@ void DoInfo(tVera* me)
 
 
 #pragma mark -
-#pragma mark • DSP Methods
+#pragma mark DSP Methods
 
 /******************************************************************************************
  *

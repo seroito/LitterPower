@@ -28,7 +28,7 @@
 /******************************************************************************************
  ******************************************************************************************/
 
-#pragma mark • Include Files
+#pragma mark Include Files
 
 #include "LitterLib.h"
 //#include "TrialPeriodUtils.h"
@@ -41,7 +41,7 @@
 #define LPAssistOut1		"Int (Random value from urn)"
 #define LPAssistOut2		"Bang when balls are refilled"
 
-#pragma mark • Constants
+#pragma mark Constants
 
 const char*		kClassName		= "lp.ernie";			// Class name
 const long		kDefDataSize	= 128;					// Same as table
@@ -63,11 +63,11 @@ enum {
 	#define BlockMoveData(SRC, DEST, BYTES)		memcpy(DEST, SRC, BYTES)
 #endif
 
-#pragma mark • Type Definitions
+#pragma mark Type Definitions
 
 
 
-#pragma mark • Object Structure
+#pragma mark Object Structure
 
 typedef struct {
 	LITTER_CORE_OBJECT(t_object, coreObject);
@@ -105,7 +105,7 @@ static void ErnieConst(objErnie*, long);
 
 /*****************************  I M P L E M E N T A T I O N  ******************************/
 
-#pragma mark • Class Message Handlers
+#pragma mark Class Message Handlers
 
 /******************************************************************************************
  *
@@ -215,7 +215,7 @@ ErnieFree(
 
 
 #pragma mark -
-#pragma mark • Object Message Handlers
+#pragma mark Object Message Handlers
 
 /******************************************************************************************
  *
@@ -552,7 +552,7 @@ static void ErnieSeed(objErnie* me, long iSeed)
 
 
 #pragma mark -
-#pragma mark • Attribute/Information Functions
+#pragma mark Attribute/Information Functions
 
 /******************************************************************************************
  *

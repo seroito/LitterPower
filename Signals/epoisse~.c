@@ -22,7 +22,7 @@
 /*****************************************************************************************
  *****************************************************************************************/
 
-#pragma mark • Include Files
+#pragma mark Include Files
 
 #include "LitterLib.h"	// Also #includes MaxUtils.h, ext.h
 //#include "TrialPeriodUtils.h"
@@ -30,7 +30,7 @@
 #include "Taus88.h"
 
 
-#pragma mark • Constants
+#pragma mark Constants
 
 const char*	kClassName		= "lp.epoisse~";		// Class name
 
@@ -65,11 +65,11 @@ enum eFlags {
 	};
 
 
-#pragma mark • Type Definitions
+#pragma mark Type Definitions
 
 
 
-#pragma mark • Object Structure
+#pragma mark Object Structure
 
 typedef struct {
 	t_pxobject	coreObject;
@@ -98,11 +98,11 @@ typedef struct {
 	} objEpoisse;
 
 
-#pragma mark • Global Variables
+#pragma mark Global Variables
 
 
 
-#pragma mark • Function Prototypes
+#pragma mark Function Prototypes
 
 #if 0
 	// Class message functions
@@ -128,7 +128,7 @@ void    EpoissePerform64(objEpoisse*, t_object *dsp64, double **ins, long numins
 #pragma mark -
 /*****************************  I M P L E M E N T A T I O N  ******************************/
 
-#pragma mark • Utility functions
+#pragma mark Utility functions
 
 /*****************************************************************************************
  *
@@ -193,7 +193,7 @@ GenBuf(
 
 
 #pragma mark -
-#pragma mark • Object Message Handlers
+#pragma mark Object Message Handlers
 
 /*****************************************************************************************
  *
@@ -374,7 +374,7 @@ void EpoisseInfo(objEpoisse* me)
 
 
 #pragma mark -
-#pragma mark • DSP Methods
+#pragma mark DSP Methods
 
 /*****************************************************************************************
  *
@@ -587,7 +587,7 @@ EpoisseDSP(
 	*/
 
 #pragma mark -
-#pragma mark • Class Message Handlers
+#pragma mark Class Message Handlers
 
 /*****************************************************************************************
  *

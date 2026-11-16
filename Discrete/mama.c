@@ -23,7 +23,7 @@
 /******************************************************************************************
  ******************************************************************************************/
 
-#pragma mark • Include Files
+#pragma mark Include Files
 
 #include "LitterLib.h"
 //#include "TrialPeriodUtils.h"
@@ -31,7 +31,7 @@
 #include "UniformExpectations.h"
 
 
-#pragma mark • Constants
+#pragma mark Constants
 
 const char*	kClassName		= "lp.mama";			// Class name
 
@@ -62,7 +62,7 @@ enum {
 
 
 
-#pragma mark • Object Structure
+#pragma mark Object Structure
 
 typedef struct {
 	LITTER_CORE_OBJECT(t_object, coreObject);
@@ -73,7 +73,7 @@ typedef struct {
 	} objMama;
 
 
-#pragma mark • Global Variables
+#pragma mark Global Variables
 
 static UInt16	gPool1[kArraySize],		// Inited at run time
 				gPool2[kArraySize];
@@ -82,7 +82,7 @@ static UInt16	gPool1[kArraySize],		// Inited at run time
 #pragma mark -
 /*****************************  I M P L E M E N T A T I O N  ******************************/
 
-#pragma mark • Helper Functions
+#pragma mark Helper Functions
 
 /******************************************************************************************
  *
@@ -204,7 +204,7 @@ MamaRand(
 
 
 #pragma mark -
-#pragma mark • Class Message Handlers
+#pragma mark Class Message Handlers
 
 /******************************************************************************************
  *
@@ -262,7 +262,7 @@ noMoreDefaults:
 	}
 
 #pragma mark -
-#pragma mark • Object Message Handlers
+#pragma mark Object Message Handlers
 
 /******************************************************************************************
  *
@@ -313,7 +313,7 @@ static void MamaSeed(objMama* me, long iSeed)
 
 
 #pragma mark -
-#pragma mark • Attribute/Information Functions
+#pragma mark Attribute/Information Functions
 
 /******************************************************************************************
  *

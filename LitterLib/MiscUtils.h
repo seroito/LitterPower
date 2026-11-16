@@ -22,13 +22,13 @@
 #ifndef __MISCUTILS_H__
 #define __MISCUTILS_H__
 
-#pragma mark • Include Files
+#pragma mark Include Files
 
 #include <math.h>							// for declaration of log()
 
 #include "MaxUtils.h"						// for UInt32 & Co.
 
-#pragma mark • Constants
+#pragma mark Constants
 
 #ifndef kULongMax
 	#define kULongMax 0xffffffff
@@ -38,16 +38,16 @@
 	#define kLongMax 0x7fffffff
 #endif
 
-#pragma mark • Type Definitions
+#pragma mark Type Definitions
 
 
 typedef UInt32	(*tRandomFunc)(void*);
 
 
-#pragma mark • Global Variables
+#pragma mark Global Variables
 
 
-#pragma mark • Function Prototypes
+#pragma mark Function Prototypes
 
 	
 UInt32					MachineKharma	(void);
@@ -73,7 +73,7 @@ static inline double    Long2Signal (SInt32);
 
 
 #pragma mark -
-#pragma mark • Inline Functions & Macros
+#pragma mark Inline Functions & Macros
 
 	
 	// This should probably be moved to MaxUtils

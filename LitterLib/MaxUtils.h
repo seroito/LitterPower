@@ -73,7 +73,7 @@
 #ifndef MAXUTILS_H
 #define MAXUTILS_H
 
-#pragma mark • Include Files
+#pragma mark Include Files
 
 #ifdef __NEED_JITTER_HEADERS__
 	#include "jit.common.h"		// This #includes "ext.h"
@@ -97,7 +97,7 @@
 #include <math.h>
 #include <float.h>
 
-#pragma mark • Legacy Mac OS Types
+#pragma mark Legacy Mac OS Types
 
 	// Litter Power was born on Classic Mac OS and uses the Toolbox type names
 	// throughout. On macOS <MacTypes.h> (pulled in by the Max headers) still provides
@@ -175,7 +175,7 @@ static inline long ObjectGetInlet(t_object* iObj, long iRecepticle)
 	#define CLIP(a, lo, hi) ( (a)>(lo)?( (a)<(hi)?(a):(hi) ):(lo) )
 #endif
 
-#pragma mark • Constants
+#pragma mark Constants
 
 	// Used with KeyIsPressed()
 enum keyCode {
@@ -197,7 +197,7 @@ enum keyCode {
 #define kMaxAssistStrLen		 60
 
 
-#pragma mark • Type Definitions
+#pragma mark Type Definitions
 
 	// Sometimes useful to have these:
 typedef t_atom*		AtomPtr;
@@ -237,7 +237,7 @@ typedef void*		voidPtr;
 typedef float*		floatPtr;
 
 
-#pragma mark • Function Prototypes
+#pragma mark Function Prototypes
 
 	// String stuff
 void		MoveC2PStr	(const char*, Str255);
@@ -271,7 +271,7 @@ void		ForwardAnything	(t_symbol*, t_symbol*, short, t_atom[]);
 void		DateCString(char oString[], UInt32 iDate, short iStyle);
 
 
-#pragma mark • Inlined Functions
+#pragma mark Inlined Functions
 
 	// These are substitutes for the SETxxx macros.
 	// Sometimes one wants to merge arithmetic with these calls, and macros can cause havoc.

@@ -25,7 +25,7 @@
 
  ******************************************************************************************/
 
-#pragma mark • Include Files
+#pragma mark Include Files
 
 #include "imLib.h"
 
@@ -33,7 +33,7 @@
 	#include <string.h>		// For strcmp(), we seem to need this in CodeWarrior
 #endif
 
-#pragma mark • Constants
+#pragma mark Constants
 
 const double	kMaxPi			= 65535.0 / 65536.0;
 const long		kMaxHistory 	= 2048;
@@ -95,7 +95,7 @@ CalcMutationIndex(
 
 	
 #pragma mark -
-#pragma mark • Mutation Calculations
+#pragma mark Mutation Calculations
 
 /******************************************************************************************
  *
@@ -265,7 +265,7 @@ double EmphasizeZero(double iPrevMutant, double iRawInterval, double iEmphFactor
 
 	
 #pragma mark -
-#pragma mark • Generic Mutator Functions
+#pragma mark Generic Mutator Functions
 
 /******************************************************************************************
  *
@@ -372,7 +372,7 @@ SetMutatorType(tMutator* me, short iType)
 
 
 #pragma mark -
-#pragma mark • Generic Mutation Object Methods
+#pragma mark Generic Mutation Object Methods
 
 /******************************************************************************************
  *

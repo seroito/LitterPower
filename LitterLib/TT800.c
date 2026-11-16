@@ -16,19 +16,19 @@
 /******************************************************************************************
  ******************************************************************************************/
 
-#pragma mark • Include Files
+#pragma mark Include Files
 
 #include "TT800.h"
 #include "MiscUtils.h"				// For MachineKharma()
 
 
-#pragma mark • Constants	
+#pragma mark Constants	
 
 
-#pragma mark • Type Definitions
+#pragma mark Type Definitions
 
 
-#pragma mark • Static (Private) Variables
+#pragma mark Static (Private) Variables
 
 static tTT800Data
 				sTT800Data		= {
@@ -43,15 +43,15 @@ static tTT800Data
 					0 };
 
 
-#pragma mark • Initialize Global Variables
+#pragma mark Initialize Global Variables
 
 
-#pragma mark • Function Prototypes
+#pragma mark Function Prototypes
 
 #pragma mark -
 /*****************************  I M P L E M E N T A T I O N  ******************************/
 
-#pragma mark • TT800 Functions
+#pragma mark TT800 Functions
 
 /******************************************************************************************
  *

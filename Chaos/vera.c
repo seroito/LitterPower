@@ -28,7 +28,7 @@
 /******************************************************************************************
  ******************************************************************************************/
 
-#pragma mark • Identify Target
+#pragma mark Identify Target
 
 // The variant is chosen by the build system (see CMakeLists.txt), which defines exactly
 // one of the following macros as 1.
@@ -56,14 +56,14 @@
 
 
 
-#pragma mark • Include Files
+#pragma mark Include Files
 
 #include "LitterLib.h"
 
 #include <float.h>			// For FLT_EPSILON
 #include <math.h>			// For fabs(), log()
 
-#pragma mark • Constants
+#pragma mark Constants
 
 	// These are common to all varieties
 
@@ -172,13 +172,13 @@ const double	kDefGrowth	= 0.0,
 
 
 
-#pragma mark • Type Definitions
+#pragma mark Type Definitions
 
 #if !__VERA_MAY__
 	typedef enum Function tFunction;
 #endif
 
-#pragma mark • Object Structure
+#pragma mark Object Structure
 
 typedef struct {
 	Object			coreObject;
@@ -204,11 +204,11 @@ typedef struct {
 	} tVera;
 
 
-#pragma mark • Global Variables
+#pragma mark Global Variables
 
 
 
-#pragma mark • Function Prototypes
+#pragma mark Function Prototypes
 
 	// Class message functions
 void*		NewVera(Symbol*, short, Atom*);
@@ -253,7 +253,7 @@ static Boolean SetRates(tVera*, short, Atom*);
 #pragma mark -
 /*****************************  I M P L E M E N T A T I O N  ******************************/
 
-#pragma mark • Inline Functions
+#pragma mark Inline Functions
 
 #if __VERA_VAN__
 	static inline double NextPop(double iPop, double iFnPop, double iGrowth)
@@ -345,7 +345,7 @@ void ext_main(void* r)
 	}
 
 #pragma mark -
-#pragma mark • Utility Functions
+#pragma mark Utility Functions
 
 /******************************************************************************************
  *
@@ -376,7 +376,7 @@ void ext_main(void* r)
 #endif
 
 #pragma mark -
-#pragma mark • Class Message Handlers
+#pragma mark Class Message Handlers
 
 /******************************************************************************************
  *
@@ -534,7 +534,7 @@ FreeVera(
 	
 
 #pragma mark -
-#pragma mark • Object Message Handlers
+#pragma mark Object Message Handlers
 
 /******************************************************************************************
  *

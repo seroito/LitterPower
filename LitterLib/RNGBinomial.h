@@ -22,7 +22,7 @@
 #define RNGBINOMIAL_H
 
 
-#pragma mark • Include Files
+#pragma mark Include Files
 
 #include "MaxUtils.h"						// For UInt32 & Co.
 
@@ -35,10 +35,10 @@
 #endif
 
 
-#pragma mark • Constants
+#pragma mark Constants
 
 
-#pragma mark • Type Definitions
+#pragma mark Type Definitions
 
 typedef struct binvParams {
 	Boolean	mirror;			// true if p is really > 0.5
@@ -66,10 +66,10 @@ typedef struct {
 
 
 
-#pragma mark • Global Variables
+#pragma mark Global Variables
 
 
-#pragma mark • Function Prototypes
+#pragma mark Function Prototypes
 
 UInt32					GenDevBinomialFC		(UInt32, tRandomFunc, void*);
 UInt32					GenDevBinomialFCTaus88	(UInt32, tTaus88Data*);
@@ -86,7 +86,7 @@ UInt32					GenBinomialBTPE			(const tBTPEParams*, tRandomFunc, void*);
 
 
 #pragma mark -
-#pragma mark • Inline functions
+#pragma mark Inline functions
 
 static inline UInt32 CalcBFThreshhold(double iProb)
 	{

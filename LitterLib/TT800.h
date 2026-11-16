@@ -20,7 +20,7 @@
 #ifndef __TT800_H__
 #define __TT800_H__
 
-#pragma mark • Include Files
+#pragma mark Include Files
 
 #ifndef _EXT_H_
 	#include "ext.h"
@@ -32,11 +32,11 @@
 
 
 
-#pragma mark • Constants
+#pragma mark Constants
 
 
 
-#pragma mark • Type Definitions
+#pragma mark Type Definitions
 
 	// Size of seeds component of tt800Data
 #define	kTT800SeedArraySize		25
@@ -49,11 +49,11 @@ typedef tTT800Data* tTT800DataPtr;
 
 
 
-#pragma mark • Global Variables
+#pragma mark Global Variables
 
 
 
-#pragma mark • Function Prototypes
+#pragma mark Function Prototypes
 
 UInt32				TT800			(tTT800DataPtr);
 void				TT800Init		(void);
@@ -66,7 +66,7 @@ static inline void	TT800Free		(tTT800DataPtr);
 
 
 #pragma mark -
-#pragma mark • Inline Functions & Macros
+#pragma mark Inline Functions & Macros
 
 static inline void TT800Free	(tTT800DataPtr iData)
 					{ if (iData != NULL) freebytes((char*) iData, sizeof(tTT800Data)); }

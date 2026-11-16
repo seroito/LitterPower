@@ -28,7 +28,7 @@
 /******************************************************************************************
  ******************************************************************************************/
 
-#pragma mark • Include Files
+#pragma mark Include Files
 
 
 #include "LitterLib.h"	// Also #includes MaxUtils.h, ext.h
@@ -38,7 +38,7 @@
 
 
 
-#pragma mark • Constants
+#pragma mark Constants
 
 const char*	kClassName		= "lp.frrr~";			// Class name
 
@@ -75,11 +75,11 @@ enum Interpolation {
 
 	
 
-#pragma mark • Type Definitions
+#pragma mark Type Definitions
 
 typedef enum Interpolation	tInterp;
 
-#pragma mark • Object Structure
+#pragma mark Object Structure
 
 typedef struct {
 	t_pxobject		coreObject;
@@ -98,11 +98,11 @@ typedef struct {
 	} objLoFreq;
 
 
-#pragma mark • Global Variables
+#pragma mark Global Variables
 
 
 
-#pragma mark • Function Prototypes
+#pragma mark Function Prototypes
 
 	// Class message functions
 void*	FrrrNew(double, long);
@@ -125,7 +125,7 @@ void    FrrrPerform64(objLoFreq*, t_object *dsp64, double **ins, long numins, do
 #pragma mark -
 /*****************************  I M P L E M E N T A T I O N  ******************************/
 
-#pragma mark • Inline Functions
+#pragma mark Inline Functions
 
 static inline double ValidateFreq(double iFreq)
 	{ return iFreq < kFloatEpsilon ? kFloatEpsilon :  iFreq; }
@@ -201,7 +201,7 @@ void ext_main(void* r)
 
 
 #pragma mark -
-#pragma mark • Class Message Handlers
+#pragma mark Class Message Handlers
 
 /******************************************************************************************
  *
@@ -257,7 +257,7 @@ noMoreDefaults:
 	}
 
 #pragma mark -
-#pragma mark • Object Message Handlers
+#pragma mark Object Message Handlers
 
 /******************************************************************************************
  *
@@ -448,7 +448,7 @@ void FrrrInfo(objLoFreq* me)
 
 
 #pragma mark -
-#pragma mark • DSP Methods
+#pragma mark DSP Methods
 
 /******************************************************************************************
  *

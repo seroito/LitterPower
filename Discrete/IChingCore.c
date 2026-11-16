@@ -22,12 +22,12 @@
 /******************************************************************************************
  ******************************************************************************************/
 
-#pragma mark • Include Files
+#pragma mark Include Files
 
 #include "IChingCore.h"
 #include "Taus88.h"
 
-#pragma mark • Constants
+#pragma mark Constants
 
 	// Use to look up hexagram number based on binary encoding of a hexagram with
 	// yang = 0 and yin = 1.
@@ -124,21 +124,21 @@ const tHexInfo	kHexagramInfo[]
 			{0x15,	lineFifth,				linesNone,				triSun,		4}		// Wei Chi
 			};
 
-#pragma mark • Type Definitions
+#pragma mark Type Definitions
 
-#pragma mark • Object Structure
+#pragma mark Object Structure
 
 
-#pragma mark • Global Variables
+#pragma mark Global Variables
 
 
 #pragma mark -
 /*****************************  I M P L E M E N T A T I O N  ******************************/
 
-#pragma mark • Inline Functions
+#pragma mark Inline Functions
 
 #pragma mark -
-#pragma mark • Static Functions
+#pragma mark Static Functions
 
 /******************************************************************************************
  *
@@ -247,7 +247,7 @@ FinalizeOracle
 	}
 
 #pragma mark -
-#pragma mark • Exported Functions
+#pragma mark Exported Functions
 
 /******************************************************************************************
  *

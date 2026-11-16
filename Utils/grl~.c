@@ -31,13 +31,13 @@
 /******************************************************************************************
  ******************************************************************************************/
 
-#pragma mark • Include Files
+#pragma mark Include Files
 
 #include "LitterLib.h"
 //#include "TrialPeriodUtils.h"
 
 
-#pragma mark • Global Constants
+#pragma mark Global Constants
 
 const char*	kClassName		= "lp.grl~";			// Class name
 
@@ -64,7 +64,7 @@ enum {
 	};
 */
 
-#pragma mark • Object Structure
+#pragma mark Object Structure
 
 typedef struct {
 	t_pxobject	coreObject;
@@ -78,9 +78,9 @@ typedef struct {
 	} tRanger;
 
 
-#pragma mark • Global Variables
+#pragma mark Global Variables
 
-#pragma mark • Function Prototypes
+#pragma mark Function Prototypes
 
 static void*	GrlNew(long, double);
 static void		GrlFree(tRanger*);
@@ -156,7 +156,7 @@ void ext_main(void* r)
 	}
 
 #pragma mark -
-#pragma mark • Class Methods
+#pragma mark Class Methods
 
 /******************************************************************************************
  *
@@ -241,7 +241,7 @@ GrlFree(
 	}
 
 #pragma mark -
-#pragma mark • Object Message Handlers
+#pragma mark Object Message Handlers
 
 /******************************************************************************************
  *
@@ -312,7 +312,7 @@ void GrlInfo(tRanger* me)
 
 
 #pragma mark -
-#pragma mark • DSP Methods
+#pragma mark DSP Methods
 
 /******************************************************************************************
  *

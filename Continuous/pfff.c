@@ -33,7 +33,7 @@
  ******************************************************************************************/
 
 
-#pragma mark • Identify Target
+#pragma mark Identify Target
 
 #ifdef __MWERKS__
 	// With Metrowerks CodeWarrior make use of the __ide_target() preprocessor function
@@ -57,7 +57,7 @@
 	#endif
 #endif
 
-#pragma mark • Include Files
+#pragma mark Include Files
 
 #include "LitterLib.h"
 //#include "TrialPeriodUtils.h"
@@ -66,7 +66,7 @@
 #include "RNGGauss.h"
 
 
-#pragma mark • Constants
+#pragma mark Constants
 
 #if		defined(BROWN)
 	const char*	kClassName		= "lp.pfff";			// Class name
@@ -107,11 +107,11 @@ enum {
 	};
 */
 
-#pragma mark • Type Definitions
+#pragma mark Type Definitions
 
 
 
-#pragma mark • Object Structure
+#pragma mark Object Structure
 
 typedef struct {
 	t_object		coreObject;
@@ -133,11 +133,11 @@ typedef struct {
 	} tBrown;
 
 
-#pragma mark • Global Variables
+#pragma mark Global Variables
 
 
 
-#pragma mark • Function Prototypes
+#pragma mark Function Prototypes
 
 	// Class message functions
 static void*	PvvvNew(t_symbol*, short, t_atom[]);
@@ -158,7 +158,7 @@ static void	PvvvInfo(tBrown*);
 #pragma mark -
 /*****************************  I M P L E M E N T A T I O N  ******************************/
 
-#pragma mark • Inline Functions
+#pragma mark Inline Functions
 
 
 
@@ -220,7 +220,7 @@ void ext_main(void* r)
 
 
 #pragma mark -
-#pragma mark • Class Message Handlers
+#pragma mark Class Message Handlers
 
 /******************************************************************************************
  *
@@ -405,7 +405,7 @@ PvvvFree(
 
 
 #pragma mark -
-#pragma mark • Object Message Handlers
+#pragma mark Object Message Handlers
 
 /******************************************************************************************
  *

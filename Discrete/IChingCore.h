@@ -20,11 +20,11 @@
 
 #pragma once
 
-#pragma mark • Include Files
+#pragma mark Include Files
 
 #include "LitterLib.h"			// For access to the Taus88 generator
 
-#pragma mark • Constants
+#pragma mark Constants
 
 	// Symbolic constants we use a lot
 enum IChingMethods {
@@ -84,7 +84,7 @@ enum Trigram {
 	triTui
 	};
 
-#pragma mark • Type Definitions
+#pragma mark Type Definitions
 
 typedef enum IChingMethods	eChingMethods;
 typedef enum YinYang		eYinYang;
@@ -126,7 +126,7 @@ typedef struct HexagramInfo {
 typedef tHexInfo* tHexInfoPtr;
 
 
-#pragma mark • Global Variables & Lookup Arrays
+#pragma mark Global Variables & Lookup Arrays
 
 extern const tPackHexagram	kIChingMap[64];
 extern const eTrigram		kTrigramMap[8];
@@ -134,7 +134,7 @@ extern const eTrigram		kRevTrigramBits[8];
 extern const tHexInfo		kHexagramInfo[64];
 
 
-#pragma mark • Function Prototypes
+#pragma mark Function Prototypes
 
 void	ThrowSticks(tOraclePtr);
 void	TossCoins(tOraclePtr);
@@ -149,7 +149,7 @@ static inline tHexagram	Reverse			(eLineBits);
 static inline tHexagram	Exchange		(eLineBits);
 
 
-#pragma mark • Inlined Functions
+#pragma mark Inlined Functions
 
 static inline eTrigram	BottomTrigram	(eLineBits iHex)
 			{ return kTrigramMap[iHex & lineMaskLowTri]; }

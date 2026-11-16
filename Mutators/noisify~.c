@@ -33,14 +33,14 @@
 /******************************************************************************************
  ******************************************************************************************/
 
-#pragma mark • Profiler Switch
+#pragma mark Profiler Switch
 
 	// Turn profiler on or off
 #define __PROFILER_ONFLAG__ 0
 
 
 #pragma mark -
-#pragma mark • Include Files
+#pragma mark Include Files
 
 #include "LitterLib.h"			// Also #includes MaxUtils.h, ext.h
 
@@ -90,7 +90,7 @@
 #define LPAssistOut1		"Signal (Mutant)"
 
 
-#pragma mark • Constants
+#pragma mark Constants
 
 const char	kClassName[]	= "lp.emeric~";					// Class name
 
@@ -123,7 +123,7 @@ enum {
 	strIndexOutLeft		= strIndexOutSig
 	};
 
-#pragma mark • Type Definitions
+#pragma mark Type Definitions
 
 typedef struct resonParams {
 			double	a0, b1, b2;			// Following Dodge & Jerse
@@ -134,7 +134,7 @@ typedef struct resonBuf	{
 			} tResonBuf;
 
 
-#pragma mark • Object Structure
+#pragma mark Object Structure
 
 typedef struct {
 	t_pxobject		coreObject;
@@ -167,7 +167,7 @@ typedef struct {
 	} objEmeric;
 
 
-#pragma mark • Global Variables
+#pragma mark Global Variables
 
 /*	// Private copy of an initialized Taus88 data structure
 	// This is hardwired into emeric for speed.
@@ -177,7 +177,7 @@ static tTaus88Data
 				sTausData		= {0x4a1fcf79, 0xb86271cc, 0x6c986d11};
 */
 
-#pragma mark • Function Prototypes
+#pragma mark Function Prototypes
 
 	// Class message functions
 void*	EmericNew(double);
@@ -269,7 +269,7 @@ void ext_main(void* r)
 	}
 
 #pragma mark -
-#pragma mark • Utility Functions
+#pragma mark Utility Functions
 
 /******************************************************************************************
  *
@@ -638,7 +638,7 @@ SetSR(
 
 
 #pragma mark -
-#pragma mark • Class Message Handlers
+#pragma mark Class Message Handlers
 
 /******************************************************************************************
  *
@@ -713,7 +713,7 @@ EmericFree(
 	}
 
 #pragma mark -
-#pragma mark • Object Message Handlers
+#pragma mark Object Message Handlers
 
 /******************************************************************************************
  *
@@ -873,7 +873,7 @@ void EmericInfo(objEmeric* me)
 
 	
 #pragma mark -
-#pragma mark • DSP Methods
+#pragma mark DSP Methods
 
 /******************************************************************************************
  *

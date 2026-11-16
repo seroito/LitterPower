@@ -21,41 +21,41 @@
 /******************************************************************************************
  ******************************************************************************************/
 
-#pragma mark • Include Files
+#pragma mark Include Files
 
 #include "MoreMath.h"						// also #includes <math.h>
 #include "LitterLib.h"
 
 
-#pragma mark • Constants
+#pragma mark Constants
 
 	
 
-#pragma mark • Type Definitions
+#pragma mark Type Definitions
 
 
 
-#pragma mark • Static Variables
+#pragma mark Static Variables
 
 
 
-#pragma mark • Initialize Global Variables
+#pragma mark Initialize Global Variables
 
 
 
-#pragma mark • Function Prototypes
+#pragma mark Function Prototypes
 
 
 
 #pragma mark -
 /*****************************  I M P L E M E N T A T I O N  ******************************/
 
-#pragma mark • Private & Inline Functions
+#pragma mark Private & Inline Functions
 
 
 
 #pragma mark -
-#pragma mark • Factorial, Gamma, and Related Functions
+#pragma mark Factorial, Gamma, and Related Functions
 
 /******************************************************************************************
  *

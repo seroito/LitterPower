@@ -27,7 +27,7 @@
 		
  ******************************************************************************************/
 
-#pragma mark • Include Files
+#pragma mark Include Files
 
 #include "LitterLib.h"
 //#include "TrialPeriodUtils.h"
@@ -42,7 +42,7 @@
 #define LPAssistOut2		"Dump"
 
 
-#pragma mark • Constants
+#pragma mark Constants
 
 const char	kMaxClassName[]		= "lbj.shhh",			// Class name for Max
 			kJitClassName[]		= "lbj-shhh";			// Class name for Jitter
@@ -62,11 +62,11 @@ enum {
 	};
 
 
-#pragma mark • Type Definitions
+#pragma mark Type Definitions
 
 
 
-#pragma mark • Object Structure
+#pragma mark Object Structure
 
 typedef struct {
 	t_object		coreObject;
@@ -82,7 +82,7 @@ typedef struct {
 	} jcobShhh;							// Jitter Core Object
 
 
-#pragma mark • Global Variables
+#pragma mark Global Variables
 
 void*			gShhhJitClass	= NIL;
 t_class*		gMaxShhhClass	= NIL;
@@ -90,7 +90,7 @@ t_class*		gMaxShhhClass	= NIL;
 unsigned long	gModDate		= 0;
 */
 
-#pragma mark • Function Prototypes
+#pragma mark Function Prototypes
 
 	// Max methods/functions
 static void*ShhhNewMaxShell	(t_symbol*, long, t_atom*);
@@ -111,7 +111,7 @@ static t_jit_err ShhhJitInit		(void);
 #pragma mark -
 /*****************************  I M P L E M E N T A T I O N  ******************************/
 
-#pragma mark • Inline Functions
+#pragma mark Inline Functions
 
 /******************************************************************************************
  *
@@ -290,11 +290,11 @@ void ext_main(void* r)
 
 
 #pragma mark -
-#pragma mark • Internal functions
+#pragma mark Internal functions
 
 
 #pragma mark -
-#pragma mark • Max Shell Methods
+#pragma mark Max Shell Methods
 
 /******************************************************************************************
  *
@@ -440,7 +440,7 @@ void ShhhAssist(msobShhh* me, void* box, long iDir, long iArgNum, char* oCStr)
 
 
 #pragma mark -
-#pragma mark • Jitter Methods
+#pragma mark Jitter Methods
 
 /******************************************************************************************
  *

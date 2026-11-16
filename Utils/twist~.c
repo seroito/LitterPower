@@ -17,7 +17,7 @@
 		18-Feb-2007:	First implementation.
  ******************************************************************************************/
 
-#pragma mark • Include Files
+#pragma mark Include Files
 // why were these missing? vb
 #include "LitterLib.h"
 #include "MoreMath.h"
@@ -25,7 +25,7 @@
 
 //#include "TrialPeriodUtils.h"
 
-#pragma mark • Constants
+#pragma mark Constants
 
 const char	kClassName[]	= "lp.twist~";	    		// Class name
 
@@ -48,9 +48,9 @@ enum {
 	outletSigOut
 	};*/
 
-#pragma mark • Type Definitions
+#pragma mark Type Definitions
 
-#pragma mark • Object Structure
+#pragma mark Object Structure
 
 typedef struct {
 	t_pxobject	coreObject;
@@ -76,17 +76,17 @@ typedef struct {
 	} objCheby;
 
 
-#pragma mark • Global Variables
+#pragma mark Global Variables
 
 
-#pragma mark • Function Prototypes
+#pragma mark Function Prototypes
 
 
 
 #pragma mark -
 /*****************************  I M P L E M E N T A T I O N  ******************************/
 
-#pragma mark • Inline Functions
+#pragma mark Inline Functions
 
 #pragma mark -
 
@@ -147,7 +147,7 @@ void ext_main(void* r)
 
 
 #pragma mark -
-#pragma mark • Instantiation
+#pragma mark Instantiation
 
 /******************************************************************************************
  *
@@ -219,7 +219,7 @@ punt:
 	
 
 #pragma mark -
-#pragma mark • Utilities
+#pragma mark Utilities
 
 /******************************************************************************************
  *
@@ -366,7 +366,7 @@ static double Exponent(double iVal, double iBase)
 	{ return iVal * pow(iBase, iVal - 1.0); }
 
 #pragma mark -
-#pragma mark • Object Methods
+#pragma mark Object Methods
 
 /******************************************************************************************
  *
@@ -475,7 +475,7 @@ TwistAssist(
 	
 
 #pragma mark -
-#pragma mark • DSP Methods
+#pragma mark DSP Methods
 
 /******************************************************************************************
  *

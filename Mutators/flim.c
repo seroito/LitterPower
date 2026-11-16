@@ -34,18 +34,18 @@
 
 
 
-#pragma mark • Include Files
+#pragma mark Include Files
 
 //#include "TrialPeriodUtils.h"
 #include "imLib.h"
 
 
-#pragma mark • Constants
+#pragma mark Constants
 
 const char*	kClassName		= "lp.vim";				// Class name
 
 
-#pragma mark • Function Prototypes
+#pragma mark Function Prototypes
 
 void*	NewMutator(t_symbol*, short, t_atom*);
 
@@ -144,7 +144,7 @@ void ext_main(void* r)
 	}
 
 #pragma mark -
-#pragma mark • Class Message Handlers
+#pragma mark Class Message Handlers
 
 /******************************************************************************************
  *
@@ -236,7 +236,7 @@ NewMutator(
 	}
 
 #pragma mark -
-#pragma mark • Object Message Handlers
+#pragma mark Object Message Handlers
 
 /******************************************************************************************
  *

@@ -20,7 +20,7 @@
 		
  ******************************************************************************************/
 
-#pragma mark • Include Files
+#pragma mark Include Files
 
 #include "LitterLib.h"
 //#include "TrialPeriodUtils.h"
@@ -35,7 +35,7 @@
 #define LPAssistOut2		"Dump"
 
 
-#pragma mark • Constants
+#pragma mark Constants
 
 const char	kMaxClassName[]		= "lbj.tata",			// Class name for Max
 			kJitClassName[]		= "lbj-tata";			// Class name for Jitter
@@ -54,7 +54,7 @@ enum {
 	};
 */
 
-#pragma mark • Type Definitions
+#pragma mark Type Definitions
 
 typedef struct {
 	t_atom	min,
@@ -63,7 +63,7 @@ typedef struct {
 typedef tVecData* tVecDataPtr;
 
 
-#pragma mark • Object Structure
+#pragma mark Object Structure
 
 typedef struct {
 	t_object	coreObject;
@@ -80,12 +80,12 @@ typedef struct {
 	} jcobTata;							// Jitter Core Object
 
 
-#pragma mark • Global Variables
+#pragma mark Global Variables
 
 void*			gTataJitClass	= NIL;
 t_class*		gTataMaxClass	= NIL;
 
-#pragma mark • Function Prototypes
+#pragma mark Function Prototypes
 
 	// Max methods/functions
 static void*TataNewMaxShell	(t_symbol*, long, t_atom*);
@@ -103,7 +103,7 @@ static t_jit_err TataJitInit		(void);
 #pragma mark -
 /*****************************  I M P L E M E N T A T I O N  ******************************/
 
-#pragma mark • Inline Functions
+#pragma mark Inline Functions
 
 /******************************************************************************************
  *
@@ -431,11 +431,11 @@ void ext_main(void* r)
 
 
 #pragma mark -
-#pragma mark • Internal functions
+#pragma mark Internal functions
 
 
 #pragma mark -
-#pragma mark • Max Shell Methods
+#pragma mark Max Shell Methods
 
 /******************************************************************************************
  *
@@ -581,7 +581,7 @@ void TataAssist(msobTata* me, void* box, long iDir, long iArgNum, char* oCStr)
 
 
 #pragma mark -
-#pragma mark • Jitter Methods
+#pragma mark Jitter Methods
 
 /******************************************************************************************
  *
@@ -605,7 +605,7 @@ static void TataJitFree(jcobTata* me)
 
 
 #pragma mark -
-#pragma mark • Matrix Calculations
+#pragma mark Matrix Calculations
 
 /******************************************************************************************
  *
@@ -814,7 +814,7 @@ TataJitMatrixCalc(
 	}
 	
 #pragma mark -
-#pragma mark • Attribute functions
+#pragma mark Attribute functions
 
 /******************************************************************************************
  *
@@ -824,7 +824,7 @@ TataJitMatrixCalc(
 
 
 #pragma mark -
-#pragma mark • Jitter Initialization
+#pragma mark Jitter Initialization
 
 /******************************************************************************************
  *

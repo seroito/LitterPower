@@ -19,7 +19,7 @@
 /******************************************************************************************
  ******************************************************************************************/
 
-#pragma mark • Include Files
+#pragma mark Include Files
 
 #include <stdlib.h>		// For rand(), RAND_MAX
 
@@ -28,7 +28,7 @@
 #include "z_dsp.h"
 
 
-#pragma mark • Constants
+#pragma mark Constants
 
 const char*	kClassName		= "lp.nnn~";			// Class name
 const char*	kPackageName	= "lp.nnn~ Package";	// Package name for 'vers'(2) resource
@@ -51,11 +51,11 @@ enum {
 	outletBrowner
 	};
 
-#pragma mark • Type Definitions
+#pragma mark Type Definitions
 
 
 
-#pragma mark • Object Structure
+#pragma mark Object Structure
 
 typedef struct {
 	t_pxobject		coreObject;
@@ -67,7 +67,7 @@ typedef struct {
 	} tBrowner;
 
 
-#pragma mark • Global Variables
+#pragma mark Global Variables
 
 t_class*	gBrownerClass		= NIL;
 short		gStrResID		= 0,
@@ -75,7 +75,7 @@ short		gStrResID		= 0,
 			gPackVersID		= 0;
 
 
-#pragma mark • Function Prototypes
+#pragma mark Function Prototypes
 
 	// Class message functions
 void*	NewBrowner(long);
@@ -94,7 +94,7 @@ static int*	PerformBrowner(int*);
 #pragma mark -
 /*****************************  I M P L E M E N T A T I O N  ******************************/
 
-#pragma mark • Inline Functions
+#pragma mark Inline Functions
 
 
 
@@ -140,7 +140,7 @@ void ext_main(void* r)
 
 
 #pragma mark -
-#pragma mark • Class Message Handlers
+#pragma mark Class Message Handlers
 
 /******************************************************************************************
  *
@@ -171,7 +171,7 @@ NewBrowner(
 	}
 
 #pragma mark -
-#pragma mark • Object Message Handlers
+#pragma mark Object Message Handlers
 
 /******************************************************************************************
  *
@@ -272,7 +272,7 @@ DoInfo(
 	}
 
 #pragma mark -
-#pragma mark • DSP Methods
+#pragma mark DSP Methods
 
 /******************************************************************************************
  *

@@ -35,7 +35,7 @@
 /******************************************************************************************
  ******************************************************************************************/
 
-#pragma mark • Include Files
+#pragma mark Include Files
 
 #include "LitterLib.h"
 //#include "TrialPeriodUtils.h"
@@ -46,7 +46,7 @@
 #include "MoreMath.h"
 
 
-#pragma mark • Constants
+#pragma mark Constants
 
 const char	kClassName[]		= "lp.gammer";			// Class name
 
@@ -74,7 +74,7 @@ enum {
 	strIndexLeftOutlet	= strIndexTheOutlet
 	};
 
-#pragma mark • Type Definitions
+#pragma mark Type Definitions
 
 	// These could have been defined in RNGGamma.h
 	// But currently they aren't
@@ -105,7 +105,7 @@ typedef union {
 		} uGammerParams;
 
 		
-#pragma mark • Object Structure
+#pragma mark Object Structure
 
 typedef struct {
 	LITTER_CORE_OBJECT(t_object, coreObject);
@@ -122,7 +122,7 @@ typedef struct {
 #pragma mark -
 /*****************************  I M P L E M E N T A T I O N  ******************************/
 
-#pragma mark • Utility Functions
+#pragma mark Utility Functions
 
 static double
 GammerGetAlpha(
@@ -165,7 +165,7 @@ GammerGetBeta(
 
 
 #pragma mark -
-#pragma mark • Object Message Handlers
+#pragma mark Object Message Handlers
 
 /******************************************************************************************
  *
@@ -300,7 +300,7 @@ static void GammerSeed(objGammer* me,long iSeed)
 
 
 #pragma mark -
-#pragma mark • Attribute/Information Functions
+#pragma mark Attribute/Information Functions
 
 /******************************************************************************************
  *
@@ -577,7 +577,7 @@ void GammerTell(objGammer* me, Symbol* iTarget, Symbol* iAttrName)
 
 
 #pragma mark -
-#pragma mark • Class Message Handlers
+#pragma mark Class Message Handlers
 
 /******************************************************************************************
  *

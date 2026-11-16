@@ -16,7 +16,7 @@
 /******************************************************************************************
  ******************************************************************************************/
 
-#pragma mark • Include Files
+#pragma mark Include Files
 
 #include "LitterLib.h"				// Include first
 #include "RNGGauss.h"				// Also include MiscUtils.h
@@ -26,7 +26,7 @@
 
 #pragma mark -
 /*****************************  I M P L E M E N T A T I O N  ******************************/
-#pragma mark • Utilities
+#pragma mark Utilities
 
 /******************************************************************************************
  *
@@ -113,7 +113,7 @@ UnitCirc2Norm(
 	
 
 #pragma mark -
-#pragma mark • Legacy Box-Muller approach
+#pragma mark Legacy Box-Muller approach
 
 double
 NormalBM(
@@ -184,7 +184,7 @@ NormalBMTaus88(
 
 
 #pragma mark -
-#pragma mark • Kinderman-Ramage Algorithm
+#pragma mark Kinderman-Ramage Algorithm
 
 	static inline double NormKRHelper(double x, double A)
 		{ return 0.3989422804 * exp(-0.5 * x * x) - 0.1800251911 * (A - x); }

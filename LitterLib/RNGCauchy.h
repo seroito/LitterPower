@@ -35,7 +35,7 @@
 #define __RNGCAUCHY_H__
 
 
-#pragma mark • Include Files
+#pragma mark Include Files
 
 #ifndef __TAUS88_H__
 	#include "Taus88.h"
@@ -47,19 +47,19 @@
 
 
 
-#pragma mark • Constants
+#pragma mark Constants
 
 
 
-#pragma mark • Type Definitions
+#pragma mark Type Definitions
 
 
 
-#pragma mark • Global Variables
+#pragma mark Global Variables
 
 
 
-#pragma mark • Function Prototypes
+#pragma mark Function Prototypes
 
 	// Standard Cauchy distribution
 double	GenCauchyStd		(tRandomFunc, void*);
@@ -78,7 +78,7 @@ double GenCauchyPos			(tRandomFunc, void*);
 double GenCauchyPosTaus88	(tTaus88Data*);
 
 #pragma mark -
-#pragma mark • Inline Functions & Macros
+#pragma mark Inline Functions & Macros
 
 static inline double GenCauchyCent(double iScale, tRandomFunc iFunc, void* iData)
 				{ return iScale * GenCauchyStd(iFunc, iData); }

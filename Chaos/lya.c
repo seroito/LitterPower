@@ -25,12 +25,12 @@
 /******************************************************************************************
  ******************************************************************************************/
 
-#pragma mark • Include Files
+#pragma mark Include Files
 
 #include "LitterLib.h"
 #include <math.h>			// For fabs(), log()
 
-#pragma mark • Constants
+#pragma mark Constants
 
 const char	kClassName[]		= "lp.lya";			// Class name
 
@@ -72,11 +72,11 @@ enum {
 	};
 
 
-#pragma mark • Type Definitions
+#pragma mark Type Definitions
 
 
 
-#pragma mark • Object Structure
+#pragma mark Object Structure
 
 typedef struct {
 	t_object		coreObject;
@@ -94,11 +94,11 @@ typedef struct {
 	} tLya;
 
 
-#pragma mark • Global Variables
+#pragma mark Global Variables
 
 
 
-#pragma mark • Function Prototypes
+#pragma mark Function Prototypes
 
 	// Class message functions
 void*		NewLya(long);
@@ -122,7 +122,7 @@ static Boolean	SetRates(tLya*, short, t_atom*);
 #pragma mark -
 /*****************************  I M P L E M E N T A T I O N  ******************************/
 
-#pragma mark • Inline Functions
+#pragma mark Inline Functions
 
 
 #pragma mark -
@@ -172,7 +172,7 @@ void ext_main(void* r)
 	}
 
 #pragma mark -
-#pragma mark • Class Message Handlers
+#pragma mark Class Message Handlers
 
 /******************************************************************************************
  *
@@ -248,13 +248,13 @@ FreeLya(
 		return;		
 	
 	if (me->rates)
-		freebytes(me->rates, me->allocation);
+		sysmem_freeptr(me->rates);
 		
 	}
 	
 
 #pragma mark -
-#pragma mark • Helper Functions
+#pragma mark Helper Functions
 
 /******************************************************************************************
  *
@@ -442,7 +442,7 @@ punt:
 	}
 
 #pragma mark -
-#pragma mark • Object Message Handlers
+#pragma mark Object Message Handlers
 
 /******************************************************************************************
  *

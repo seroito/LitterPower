@@ -23,13 +23,13 @@
 /******************************************************************************************
  ******************************************************************************************/
 
-#pragma mark • Include Files
+#pragma mark Include Files
 
 #include "LitterLib.h"	// Also #includes MaxUtils.h, ext.h
 //#include "TrialPeriodUtils.h"
 #include "MiscUtils.h"
 
-#pragma mark • Constants
+#pragma mark Constants
 
 const char*	kClassName		= "lp.lll~";			// Class name
 
@@ -54,7 +54,7 @@ enum {
 	strIndexOutLeft		= strIndexOutLCN
 	};
 	*/
-#pragma mark • Repertoire Type & Constants
+#pragma mark Repertoire Type & Constants
 
 #if 0
 	// Repertoire of historical LC RNGs
@@ -102,7 +102,7 @@ const tRepertoire	kRepertoire[] = {
 				};
 #endif
 
-#pragma mark • Object Structure
+#pragma mark Object Structure
 
 typedef struct {
 	t_pxobject		coreObject;
@@ -115,11 +115,11 @@ typedef struct {
 	} tLCN;
 
 
-#pragma mark • Global Variables
+#pragma mark Global Variables
 
 
 
-#pragma mark • Function Prototypes
+#pragma mark Function Prototypes
 
 	// Class message functions
 void*	LllNew(long, long, long, long);
@@ -143,7 +143,7 @@ void LllPerform64(tLCN*, t_object *dsp64, double **ins, long numins, double **ou
 #pragma mark -
 /*****************************  I M P L E M E N T A T I O N  ******************************/
 
-#pragma mark • Inline Functions
+#pragma mark Inline Functions
 
 
 
@@ -203,7 +203,7 @@ void ext_main(void* r)
 
 
 #pragma mark -
-#pragma mark • Class Message Handlers
+#pragma mark Class Message Handlers
 
 /******************************************************************************************
  *
@@ -263,7 +263,7 @@ noMoreDefaults:
 	}
 
 #pragma mark -
-#pragma mark • Object Message Handlers
+#pragma mark Object Message Handlers
 
 /******************************************************************************************
  *
@@ -365,7 +365,7 @@ void LllInfo(tLCN* me)
 
 
 #pragma mark -
-#pragma mark • DSP Methods
+#pragma mark DSP Methods
 
 /******************************************************************************************
  *

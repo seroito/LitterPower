@@ -34,13 +34,13 @@
 /******************************************************************************************
  ******************************************************************************************/
 
-#pragma mark • Include Files
+#pragma mark Include Files
 
 #include "TrialPeriodUtils.h"
 #include "RNGPoisson.h"
 
 
-#pragma mark • Constants
+#pragma mark Constants
 
 const char*		kClassName		= "lp.pfishie";			// Class name
 
@@ -59,7 +59,7 @@ enum {
 	};*/
 
 
-#pragma mark • Type Definitions
+#pragma mark Type Definitions
 
 typedef union {
 	double			lambda;				// Just lambda
@@ -67,7 +67,7 @@ typedef union {
 	tPoisRejParams	rejParams;
 	} uPoisParams;
 
-#pragma mark • Object Structure
+#pragma mark Object Structure
 
 typedef struct {
 	LITTER_CORE_OBJECT(t_object, coreObject);
@@ -79,7 +79,7 @@ typedef struct {
 	} objPoisson;
 
 
-#pragma mark • Function Prototypes
+#pragma mark Function Prototypes
 
 	// Object message functions
 static void PfishieLambda(objPoisson*, double);
@@ -89,7 +89,7 @@ static void PfishieLambda(objPoisson*, double);
 
 /*****************************  I M P L E M E N T A T I O N  ******************************/
 
-#pragma mark • Class Message Handlers
+#pragma mark Class Message Handlers
 
 /******************************************************************************************
  *
@@ -139,7 +139,7 @@ static void PfishieFree(objPoisson* me)
 
 
 #pragma mark -
-#pragma mark • Object Message Handlers
+#pragma mark Object Message Handlers
 
 /******************************************************************************************
  *
@@ -215,7 +215,7 @@ static void PfishieSeed(objPoisson* me, long iSeed)
 
 
 #pragma mark -
-#pragma mark • Attribute/Information Functions
+#pragma mark Attribute/Information Functions
 
 /******************************************************************************************
  *

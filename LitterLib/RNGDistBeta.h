@@ -18,7 +18,7 @@
 
 #pragma once
 
-#pragma mark • Include Files
+#pragma mark Include Files
 
 #ifndef __LITTERLIB_H__
 	#include "LitterLib.h"
@@ -35,7 +35,7 @@
 #include <math.h>
 
 
-#pragma mark • Constants
+#pragma mark Constants
 
 enum betaAlg {
 	algUndef		= -1,		// Caller may need to flag not having asked
@@ -52,7 +52,7 @@ enum betaAlg {
 	};
 
 
-#pragma mark • Type Definitions
+#pragma mark Type Definitions
 
 typedef enum betaAlg eBetaAlg;
 
@@ -81,11 +81,11 @@ typedef struct bcParams {
 					maxExp;
 		} tBCParams;
 
-#pragma mark • Global Variables
+#pragma mark Global Variables
 
 
 
-#pragma mark • Function Prototypes
+#pragma mark Function Prototypes
 
 eBetaAlg	RecommendBetaAlg(double, double);
 
@@ -124,7 +124,7 @@ static inline double	GenArcsineTaus88(tTaus88Data*);
 
 
 #pragma mark -
-#pragma mark • Inline Functions & Macros
+#pragma mark Inline Functions & Macros
 
 	
 static inline double GenArcsine(tRandomFunc iFunc, void* iData)

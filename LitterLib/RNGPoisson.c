@@ -16,7 +16,7 @@
 /******************************************************************************************
  ******************************************************************************************/
 
-#pragma mark • Include Files
+#pragma mark Include Files
 
 #include "RNGPoisson.h"			// Also include MiscUtils.h
 
@@ -26,20 +26,20 @@
 //#include <math.h>				// For log(), cos(), etc.
 
 
-#pragma mark • Constants
+#pragma mark Constants
 	
 
 
-#pragma mark • Type Definitions
+#pragma mark Type Definitions
 
 
-#pragma mark • Static (Private) Variables
+#pragma mark Static (Private) Variables
 
 
-#pragma mark • Initialize Global Variables
+#pragma mark Initialize Global Variables
 
 
-#pragma mark • Function Prototypes
+#pragma mark Function Prototypes
 
 
 

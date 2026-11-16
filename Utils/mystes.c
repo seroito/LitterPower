@@ -27,14 +27,14 @@
 #endif
 
 
-#pragma mark • Include Files
+#pragma mark Include Files
 
 #include "LitterLib.h"
 #include "TrialPeriodUtils.h"
 
 
 
-#pragma mark • Constants
+#pragma mark Constants
 
 const char*	kClassName		= "ru.mystes";			// Class name
 
@@ -56,7 +56,7 @@ const int 	kIDChars	= 8,				// # of elems in UUID.Data4 array
 
 
 
-#pragma mark • Object Structure
+#pragma mark Object Structure
 
 typedef struct {
 	Object		coreObject;
@@ -74,7 +74,7 @@ typedef struct {
 /*****************************  I M P L E M E N T A T I O N  ******************************/
 
 #pragma mark -
-#pragma mark • Class Message Handlers
+#pragma mark Class Message Handlers
 
 /******************************************************************************************
  *
@@ -110,7 +110,7 @@ MystesNew(void)
 	}
 
 #pragma mark -
-#pragma mark • Object Message Handlers
+#pragma mark Object Message Handlers
 
 /******************************************************************************************
  *
@@ -224,7 +224,7 @@ MystesTattle(
 #endif
 
 
-#pragma mark • Entry point
+#pragma mark Entry point
 
 #pragma mark -
 

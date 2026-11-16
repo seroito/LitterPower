@@ -30,14 +30,14 @@
 /******************************************************************************************
  ******************************************************************************************/
 
-#pragma mark • Include Files
+#pragma mark Include Files
 
 #include <string.h>									// All for strncmp()
 
 #include "scampLib.h"
 
 
-#pragma mark • Global Variables
+#pragma mark Global Variables
 
 
 SymbolPtr	gSplitSym		= NIL,
@@ -65,10 +65,10 @@ SymbolPtr	gTruncSym		= NIL,
 #pragma mark -
 /*****************************  I M P L E M E N T A T I O N  ******************************/
 
-#pragma mark • Inline Functions
+#pragma mark Inline Functions
 
 #pragma mark -
-#pragma mark • Utilities
+#pragma mark Utilities
 
 /******************************************************************************************
  *
@@ -437,7 +437,7 @@ void ScampCurve(objScamp* me, double iCurve)
 
 
 #pragma mark -
-#pragma mark • Mode Messages
+#pragma mark Mode Messages
 
 /******************************************************************************************
  *

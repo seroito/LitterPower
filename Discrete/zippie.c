@@ -20,7 +20,7 @@
 /******************************************************************************************
  ******************************************************************************************/
 
-#pragma mark • Include Files
+#pragma mark Include Files
 
 #include "LitterLib.h"
 //#include "TrialPeriodUtils.h"
@@ -37,7 +37,7 @@
 #define LPAssistIn3			"Float (cardinality)"
 #define LPAssistOut1		"Int (Random value)"
 
-#pragma mark • Constants
+#pragma mark Constants
 
 const char*		kClassName		= "lp.zippie";			// Class name
 
@@ -55,7 +55,7 @@ enum {
 	};
 
 
-#pragma mark • Object Structure
+#pragma mark Object Structure
 
 typedef struct {
 	LITTER_CORE_OBJECT(t_object, coreObject);
@@ -73,7 +73,7 @@ typedef struct {
 
 /*****************************  I M P L E M E N T A T I O N  ******************************/
 
-#pragma mark • Object Message Handlers
+#pragma mark Object Message Handlers
 
 /******************************************************************************************
  *
@@ -162,7 +162,7 @@ static void ZippieSeed(objZipf* me, long iSeed)
 
 
 #pragma mark -
-#pragma mark • Class Message Handlers
+#pragma mark Class Message Handlers
 
 /******************************************************************************************
  *
@@ -212,7 +212,7 @@ static void ZippieFree(objZipf* me)
 	{ Taus88Free(me->tausData); }							// Taus88Free is NIL-safe
 
 #pragma mark -
-#pragma mark • Attribute/Information Functions
+#pragma mark Attribute/Information Functions
 
 /******************************************************************************************
  *

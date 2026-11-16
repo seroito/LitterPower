@@ -27,7 +27,7 @@
 /******************************************************************************************
  ******************************************************************************************/
 
-#pragma mark • Identify Target
+#pragma mark Identify Target
 
 #ifdef __MWERKS__
 	// With Metrowerks CodeWarrior make use of the __ide_target() preprocessor function
@@ -71,7 +71,7 @@
 	#endif
 #endif
 
-#pragma mark • Include Files
+#pragma mark Include Files
 
 #if __IM_JITTER__
 	#define __NEED_JITTER_HEADERS__ 1
@@ -84,7 +84,7 @@
 
 
 
-#pragma mark • Global Constants
+#pragma mark Global Constants
 
 #if __IM_HISTORY__
 	extern const long	kMaxHistory;
@@ -183,7 +183,7 @@ extern const double		kMaxPi;
 extern const char*		kClassName;
 
 
-#pragma mark • Type Definitions
+#pragma mark Type Definitions
 
 
 	// tInterval and tAtomicInterval are legacy.
@@ -274,7 +274,7 @@ typedef struct {
 		} tHistory;
 #endif
 
-#pragma mark • Object Structure
+#pragma mark Object Structure
 
 typedef struct {
 	#if __IM_MSP__
@@ -298,7 +298,7 @@ typedef struct {
 	} tMutator;
 
 
-#pragma mark • Global Variables
+#pragma mark Global Variables
 
 	// These are all set once, in main()
 //extern t_messlist*	gMutatorClass;
@@ -307,7 +307,7 @@ typedef struct {
 
 
 
-#pragma mark • Function Prototypes
+#pragma mark Function Prototypes
 
 short		MapStrToMutationType(const char* iStr);
 int			CalcMutationIndex(const tMutator*);
@@ -364,7 +364,7 @@ void		DoRelInt(tMutator*, float);
 	
 
 #pragma mark -
-#pragma mark • Inline Functions
+#pragma mark Inline Functions
 
 	// The math library has an absolute value function, but I want to be sure
 	// that it's inlined. One way of the other, we have to build our own Sign()
