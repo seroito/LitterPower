@@ -139,7 +139,7 @@ Taus88CharVector(
 	
 	if (stride == 1) {
 		// Funky optimization #1
-		long* longData = (long*) data;
+		t_int32* longData = (t_int32*) data;
 		
 		while (longCount-- >  0)
 			*longData++ = Taus88Process(&s1, &s2, &s3);
@@ -181,7 +181,7 @@ static inline void
 	t_jit_op_info*	out)
 
 	{
-	long*	data	= (long*) out->p;
+	t_int32*	data	= (t_int32*) out->p;
 	long	stride  = out->stride;
 	UInt32			s1, s2, s3;
 	

@@ -27,8 +27,8 @@ Windows (64-bit).
 |---|---|
 | Source port | Done. `tools/check.py` (gcc syntax check on Linux): 0 of 116 units failing |
 | Windows build | Succeeds on GitHub Actions: all 102 externals (`.mxe64`) |
-| macOS build | Not yet run once. GitHub's `macos-latest` / `macos-15` (arm64) runners never picked up the job ("capacity constraints"); the workflow now uses `macos-15-intel` |
-| Max package | `tools/make_package.py` and a CI job exist; never run in CI because it needs the macOS job |
+| macOS build | Succeeds on GitHub Actions: all 102 externals (`.mxo`, universal x86_64 + arm64, ad-hoc signed). Uses the `macos-15-intel` runner because the arm64 runners did not pick up jobs ("capacity constraints") |
+| Max package | The `LitterPower-package` artifact of a run holds externals for both platforms, help, extras and `package-info.json` |
 | Test in Max 9 | Not done. Only the user can do this |
 
 Nothing has been loaded in Max yet. "Builds" does not mean "works".
@@ -36,25 +36,13 @@ Nothing has been loaded in Max yet. "Builds" does not mean "works".
 ## How to continue
 
 1. Check the latest run: `gh run list --repo seroito/LitterPower --limit 3`.
-2. If the macOS job ran, read its errors (`gh run view <id> --log-failed`, or the
-   `build-log-macos` artifact) and fix them. Expect clang to be stricter than gcc and
-   MSVC in places. Run `python3 tools/check.py` before every push.
-3. When both jobs pass, the `LitterPower-package` artifact holds the complete package.
-   Give the user the download link and the install steps from `README.md`.
-4. The user tests in Max 9; fix what they report.
+2. Wait for the user's test results from Max 9 and fix what they report. Run
+   `python3 tools/check.py` before every push; every push builds both platforms.
 
 Windows compiler warnings are written to `build/build-windows-warnings.log` and
 uploaded in the `build-log-windows` artifact. `gh run download` refuses that artifact
 ("path traversal"); fetch it with
 `gh api repos/seroito/LitterPower/actions/artifacts/<id>/zip`.
-
-### Known open problem: Jitter matrices of type long on macOS
-
-Jitter `long` matrices hold 32-bit cells. Several `Jitter/lbj.*.c` files walk that
-data with `long*` and `sizeof(long)`, which is 8 bytes on macOS. This is correct on
-Windows and wrong on macOS. Affected: `lbj.abbie.c`, `lbj.expo.c`, `lbj.norm.c`,
-`lbj.shhh.c`, `lbj.stats.c`, `lbj.tata.c`, `lbj.titi.c`. Fix: use `t_int32*` and
-`sizeof(t_int32)` wherever matrix data is addressed. Not yet done.
 
 ## What was changed
 
@@ -75,6 +63,8 @@ Windows and wrong on macOS. Affected: `lbj.abbie.c`, `lbj.expo.c`, `lbj.norm.c`,
   through the normal Max search path.
 - BIX network packet structures (`Jitter/bix.h`) use fixed-size fields and
   `#pragma pack`.
+- Jitter `long` matrices hold 32-bit cells; the `lbj.*` objects now address them with
+  `t_int32*` instead of `long*` (which is 8 bytes on macOS).
 
 Bugs found and fixed on the way:
 

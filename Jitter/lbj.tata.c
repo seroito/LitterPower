@@ -164,7 +164,7 @@ Taus88CharVector(
 		
 		else {
 			// Funky optimization
-			long*	longData = (long*) data;
+			t_int32*	longData = (t_int32*) data;
 			long	longCount = iCount >> 2;
 			
 			while (longCount-- >  0)
@@ -201,7 +201,7 @@ static inline void
 	t_jit_op_info*	out)
 
 	{
-	long*	data	= (long*) out->p;
+	t_int32*	data	= (t_int32*) out->p;
 	long	stride  = out->stride;
 	long	min, max;	
 	
@@ -715,7 +715,7 @@ RecurseDimensions(
 					if (maxIndex >= maxCount)
 						maxIndex = 0;
 					vecData.max = me->max[maxIndex++];
-					outOpInfo.p = iBOP + i * iMInfo->dimstride[1] + j * sizeof(long);
+					outOpInfo.p = iBOP + i * iMInfo->dimstride[1] + j * sizeof(t_int32);
 					Taus88LongVector(n, &vecData, &outOpInfo);
 					}
 				}

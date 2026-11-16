@@ -404,7 +404,7 @@ ExpoCharVector(
 		// Fill with zeroes
 		if (stride == 1) {
 			// Funky optimization
-			long*	longData = (long*) data;
+			t_int32*	longData = (t_int32*) data;
 			long	longCount = iCount >> 2;
 			
 			while (longCount-- >  0)
@@ -429,7 +429,7 @@ ExpoCharVector(
 		
 		if (stride == 1) {
 			// Funky optimization #1
-			long*	longData = (long*) data;
+			t_int32*	longData = (t_int32*) data;
 			
 			while (longCount-- >  0)
 				*longData++ = Taus88Process(&s1, &s2, &s3);
@@ -475,7 +475,7 @@ ExpoLongVector(
 	t_jit_op_info*	oMatrix)
 	
 	{
-	long*	data	= (long*) oMatrix->p;
+	t_int32*	data	= (t_int32*) oMatrix->p;
 	long	stride  = oMatrix->stride;
 	UInt32	s1, s2, s3;
 	
@@ -708,7 +708,7 @@ RecurseDimensions(
 		
 		else if (iMInfo->type == _jit_sym_long) {
 			for (i = 0; i < iDimVec[1]; i += 1) for (j=0; j < iPlaneCount; j += 1) {
-				outOpInfo.p = iBOP + i * iMInfo->dimstride[1] + j * sizeof(long);
+				outOpInfo.p = iBOP + i * iMInfo->dimstride[1] + j * sizeof(t_int32);
 				ExpoLongVector(me->tau[j], me->loc[j], me->sym[j], n, &outOpInfo);
 				}
 			}

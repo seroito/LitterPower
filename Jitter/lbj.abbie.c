@@ -593,7 +593,7 @@ AbbieLongVector(
 	t_jit_op_info*		oMatrix)
 	
 	{
-	long*		data	= (long*) oMatrix->p;
+	t_int32*		data	= (t_int32*) oMatrix->p;
 	long		stride  = oMatrix->stride;
 	
 	if (iAlg == algConstZero) while (iCount-- > 0) {
@@ -915,7 +915,7 @@ RecurseDimensions(
 		
 		else if (iMInfo->type == _jit_sym_long) {
 			for (i = 0; i < iDimVec[1]; i += 1) for (j=0; j < iPlaneCount; j += 1) {
-				outOpInfo.p = iBOP + i * iMInfo->dimstride[1] + j * sizeof(long);
+				outOpInfo.p = iBOP + i * iMInfo->dimstride[1] + j * sizeof(t_int32);
 				AbbieLongVector(me->alg[j], me->params + j, n, &outOpInfo);
 				}
 			}

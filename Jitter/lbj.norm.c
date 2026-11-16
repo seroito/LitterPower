@@ -558,7 +558,7 @@ GausCharVectorClip(
 	long		stride  = oMatrix->stride;
 	
 	if (iSigma == 0.0) {
-		char mu = (iMu < 0.0) ? 0 : (iMu > 255.0) ? 255 : iMu;	// typecast/clip once
+		Byte mu = (iMu < 0.0) ? 0 : (iMu > 255.0) ? 255 : iMu;	// typecast/clip once
 		while (iCount-- > 0) {
 			*data = mu;
 			data += stride;
@@ -609,7 +609,7 @@ GausLongVector(
 	long			iCount,
 	t_jit_op_info*	oMatrix)
 	{
-	long*		data	= (long*) oMatrix->p;
+	t_int32*		data	= (t_int32*) oMatrix->p;
 	long		stride  = oMatrix->stride;
 	
 	if (iSigma == 0.0) {
@@ -661,7 +661,7 @@ GausLongVectorClip(
 	long			iCount,
 	t_jit_op_info*	oMatrix)
 	{
-	long*		data	= (long*) oMatrix->p;
+	t_int32*		data	= (t_int32*) oMatrix->p;
 	long		stride  = oMatrix->stride;
 	
 	if (iSigma == 0.0) {
@@ -867,11 +867,11 @@ RecurseDimensions(
 		else if (iMInfo->type == _jit_sym_long) {
 			if (me->clip)
 				 for (i = 0; i < iDimVec[1]; i += 1) for (j = 0; j < iPlaneCount; j += 1) {
-					outOpInfo.p = iBOP + i * iMInfo->dimstride[1] + j * sizeof(long);
+					outOpInfo.p = iBOP + i * iMInfo->dimstride[1] + j * sizeof(t_int32);
 					GausLongVectorClip(me->mean[j], me->sigma[j], n, &outOpInfo);
 					}
 			else for (i = 0; i < iDimVec[1]; i += 1) for (j = 0; j < iPlaneCount; j += 1) {
-					outOpInfo.p = iBOP + i * iMInfo->dimstride[1] + j * sizeof(long);
+					outOpInfo.p = iBOP + i * iMInfo->dimstride[1] + j * sizeof(t_int32);
 					GausLongVector(me->mean[j], me->sigma[j], n, &outOpInfo);
 					}
 			}

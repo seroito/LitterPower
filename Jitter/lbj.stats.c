@@ -543,7 +543,7 @@ static void StaceyJitFree(jcobStacey* me)
 			
 		else if (mType == _jit_sym_long) for (i = 0; i < planeCount; i += 1)
 			oStatData[i][statMin]	= oStatData[i][statMax]
-									= (double) ((long*) iBytes)[i];
+									= (double) ((t_int32*) iBytes)[i];
 			
 		else if (mType == _jit_sym_float32) for (i = 0; i < planeCount; i += 1)
 			oStatData[i][statMin]	= oStatData[i][statMax]
@@ -593,7 +593,7 @@ static void StaceyJitFree(jcobStacey* me)
 		long					iLen)
 		
 		{
-		long*	myLongs	= (long*) iOpInfo->p;
+		t_int32*	myLongs	= (t_int32*) iOpInfo->p;
 		long	stride	= iOpInfo->stride;
 		
 		do  {
@@ -701,7 +701,7 @@ CalcNDim(
 		else if (iMInfo->type == _jit_sym_long)
 			for (i = 0; i < iDimVec[1]; i += 1)
 				for (plane = 0; plane < iMInfo->planecount; plane += 1) {
-					opInfo.p = iBytes + i * iMInfo->dimstride[1] + plane * sizeof(long);
+					opInfo.p = iBytes + i * iMInfo->dimstride[1] + plane * sizeof(t_int32);
 					StatsLong1D(ioStatData[plane], &opInfo, len0);
 					}
 		
