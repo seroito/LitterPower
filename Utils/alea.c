@@ -92,7 +92,7 @@ static void	AleInfo(objAle*);
  *	
  ******************************************************************************************/
 
-int C74_EXPORT main(void)
+void ext_main(void* r)
 	
 	{
 	//LITTER_CHECKTIMEOUT(kClassName);
@@ -102,7 +102,7 @@ int C74_EXPORT main(void)
 	c = class_new(	kClassName,					// Pointer to our class definition
 			(method) AleNew,				// Instantiation method  
 			(method) AleFree,				// Custom deallocation function
-			(short) sizeof(objAle),			// Class object size
+			sizeof(objAle),			// Class object size
 			NIL,							// No menu function
 			A_DEFLONG,						// If non-zero initialize & maintain a
 			0);								// private seed pool
@@ -126,7 +126,7 @@ int C74_EXPORT main(void)
         gObjectClass = c;
         
         post("%s: %s", kClassName, LPVERSION);
-        return 0;
+        return;
 	
 	}
 

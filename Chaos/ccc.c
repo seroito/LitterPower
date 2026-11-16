@@ -92,7 +92,7 @@ static void	CCCInfo(objSchuster*);
  *	
  ******************************************************************************************/
 
-int C74_EXPORT main(void)
+void ext_main(void* r)
 	
 	{
 	//LITTER_CHECKTIMEOUT(kClassName);
@@ -123,7 +123,7 @@ int C74_EXPORT main(void)
         gObjectClass = c;
         
         post("%s: %s", kClassName, LPVERSION);
-        return 0;
+        return;
 	
 	}
 

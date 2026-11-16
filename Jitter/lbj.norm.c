@@ -78,7 +78,7 @@ typedef struct {
 #pragma mark • Global Variables
 
 void*			gNormJitClass	= NIL;
-Messlist*		gNormMaxClass	= NIL;
+t_class*		gNormMaxClass	= NIL;
 
 
 #pragma mark • Function Prototypes
@@ -263,7 +263,7 @@ NormTaus88Tail(
  *	
  ******************************************************************************************/
 
-int C74_EXPORT main(void)
+void ext_main(void* r)
 	
 	{
 	const long kAttr = MAX_JIT_MOP_FLAGS_OWN_OUTPUTMATRIX | MAX_JIT_MOP_FLAGS_OWN_JIT_MATRIX;
@@ -276,29 +276,30 @@ int C74_EXPORT main(void)
 	NormJitInit();
 	
 	// Standard Max setup() call
-	setup(	&gNormMaxClass,					// Pointer to our class definition
+	gNormMaxClass = class_new(kMaxClassName,					// Pointer to our class definition
 			(method) NormNewMaxShell,		// Instance creation function
 			(method) NormFreeMaxShell,		// Custom deallocation function
-			(short) sizeof(msobNorm),	// Class object size
+			sizeof(msobNorm),	// Class object size
 			NIL,							// No menu function
 			A_GIMME,						// Jitter objects always parse their own arguments
 			0);		
 	
 	// Jitter Magic... 
-	p = max_jit_classex_setup(calcoffset(msobNorm, obex));
+	max_jit_class_obex_setup(gNormMaxClass, calcoffset(msobNorm, obex));
 	q = jit_class_findbyname(gensym((char*) kJitClassName));    
-    max_jit_classex_mop_wrap(p, q, kAttr); 		
-    max_jit_classex_standard_wrap(p, q, 0); 	
-	max_addmethod_usurp_low((method) NormOutputMatrix, "outputmatrix");
+    max_jit_class_mop_wrap(gNormMaxClass, q, kAttr); 		
+    max_jit_class_wrap_standard(gNormMaxClass, q, 0); 	
+	max_jit_class_addmethod_usurp_low(gNormMaxClass, (method) NormOutputMatrix, "outputmatrix");
 	
 	// Back to adding messages...
-	addmess	((method) NormTattle,	"dblclick",	A_CANT, 0);
-	addmess	((method) NormTattle,	"tattle",	A_NOTHING);
-	addmess	((method) NormAssist,	"assist",	A_CANT, 0);
-	addmess	((method) NormInfo,		"info",		A_CANT, 0);
+	class_addmethod(gNormMaxClass, (method) NormTattle,	"dblclick",	A_CANT, 0);
+	class_addmethod(gNormMaxClass, (method) NormTattle,	"tattle",	A_NOTHING);
+	class_addmethod(gNormMaxClass, (method) NormAssist,	"assist",	A_CANT, 0);
+	class_addmethod(gNormMaxClass, (method) NormInfo,		"info",		A_CANT, 0);
 	
 	// Initialize Litter Library
-	//LitterInit(kMaxClassName, 0);
+	gObjectClass = gNormMaxClass;
+	LitterInit(kMaxClassName, 0);
 	}
 
 
@@ -328,7 +329,7 @@ NormNewMaxShell(
 	void*			jitObj		= NIL;
 	t_symbol*			classSym	= gensym((char*) kJitClassName);
 	
-	me = (msobNorm*) max_jit_obex_new(gNormMaxClass, classSym);
+	me = (msobNorm*) max_jit_object_alloc(gNormMaxClass, classSym);
 		if (me == NIL) goto punt;
 		
 	jitObj = jit_object_new(classSym);
@@ -363,7 +364,7 @@ NormFreeMaxShell(
 	{
 	max_jit_mop_free(me);
 	jit_object_free(max_jit_obex_jitob_get(me));
-	max_jit_obex_free(me);
+	max_jit_object_free(me);
 	}
 
 

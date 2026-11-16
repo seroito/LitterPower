@@ -109,7 +109,7 @@ static void	LogosInfo(objLogos*);
  *	
  ******************************************************************************************/
 
-int C74_EXPORT main(void)
+void ext_main(void* r)
 	
 	{
 	//LITTER_CHECKTIMEOUT(kClassName);
@@ -119,7 +119,7 @@ int C74_EXPORT main(void)
 	c = class_new(kClassName,					// Pointer to our class definition
 			(method) LogosNew,				// Instantiation method  
 			NIL,							// No custom deallocation function
-			(short) sizeof(objLogos),		// Class object size
+			sizeof(objLogos),		// Class object size
 			NIL,							// No menu function
 			A_GIMME,						// Parse initialization arguments ourselves
 			0);								// to determine if we're doing ints or floats
@@ -141,7 +141,7 @@ int C74_EXPORT main(void)
         gObjectClass = c;
         
         post("%s: %s", kClassName, LPVERSION);
-        return 0;
+        return;
 
 	}
 

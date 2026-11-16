@@ -80,7 +80,7 @@ typedef struct {
 #pragma mark • Global Variables
 
 void*			gLinnieJitClass	= NIL;
-Messlist*		gMaxLinnieClass	= NIL;
+t_class*		gMaxLinnieClass	= NIL;
 /*short			gStrResID		= 0;
 unsigned long	gModDate		= 0;
 */
@@ -227,8 +227,7 @@ Taus88DoubleVector(
  *	
  ******************************************************************************************/
 
-void
-main(void)
+void ext_main(void* r)
 	
 	{
 	const long kAttr = MAX_JIT_MOP_FLAGS_OWN_OUTPUTMATRIX
@@ -237,33 +236,33 @@ main(void)
 	voidPtr	p,									// Have to guess about what these two do
 			q;									// Not much is documented in the Jitter SDK
 	
-	LITTER_CHECKTIMEOUT(kMaxClassName);
 	
 	LinnieJitInit();
 	
 	// Standard Max setup() call
-	setup(	&gMaxLinnieClass,					// Pointer to our class definition
+	gMaxLinnieClass = class_new(kMaxClassName,					// Pointer to our class definition
 			(method) LinnieNewMaxShell,		// Instance creation function
 			(method) LinnieFreeMaxShell,		// Custom deallocation function
-			(short) sizeof(msobLinnie),	// Class object size
+			sizeof(msobLinnie),	// Class object size
 			NIL,							// No menu function
 			A_GIMME,						// Jitter objects always parse their own arguments
 			0);		
 	
 	// Jitter Magic... 
-	p = max_jit_classex_setup(calcoffset(msobLinnie, jitObject));
+	max_jit_class_obex_setup(gMaxLinnieClass, calcoffset(msobLinnie, jitObject));
 	q = jit_class_findbyname(gensym((char*) kMaxClassName));    
-    max_jit_classex_mop_wrap(p, q, kAttr); 		
-    max_jit_classex_standard_wrap(p, q, 0); 	
-	LITTER_TIMEBOMB max_addmethod_usurp_low((method) LinnieOutputMatrix, "outputmatrix");	
+    max_jit_class_mop_wrap(gMaxLinnieClass, q, kAttr); 		
+    max_jit_class_wrap_standard(gMaxLinnieClass, q, 0); 	
+	max_jit_class_addmethod_usurp_low(gMaxLinnieClass, (method) LinnieOutputMatrix, "outputmatrix");	
 	
 	// Back to adding messages...
-	addmess	((method) LinnieTattle,	"dblclick",	A_CANT, 0);
-	addmess	((method) LinnieTattle,	"tattle",	A_NOTHING);
-	addmess	((method) LinnieAssist,	"assist",	A_CANT, 0);
-	addmess	((method) LinnieInfo,		"info",		A_CANT, 0);
+	class_addmethod(gMaxLinnieClass, (method) LinnieTattle,	"dblclick",	A_CANT, 0);
+	class_addmethod(gMaxLinnieClass, (method) LinnieTattle,	"tattle",	A_NOTHING);
+	class_addmethod(gMaxLinnieClass, (method) LinnieAssist,	"assist",	A_CANT, 0);
+	class_addmethod(gMaxLinnieClass, (method) LinnieInfo,		"info",		A_CANT, 0);
 	
 	// Initialize Litter Library
+	gObjectClass = gMaxLinnieClass;
 	LitterInit(kMaxClassName, 0);
 	}
 
@@ -293,12 +292,12 @@ LinnieNewMaxShell(
 	tTaus88DataPtr		myTausStuff	= NIL;
 	Symbol*				classSym	= gensym((char*) kMaxClassName);
 	
-	// In the 1.0 SDK max_jit_obex_new() is prototyped to expect a Maxclass* instead of
-	// a Messlist*. JKC said the next release of header files would be corrected to
-	// use Messlist* and in the interim users can edit the file accordingly.
+	// In the 1.0 SDK max_jit_object_alloc() is prototyped to expect a Maxclass* instead of
+	// a t_class*. JKC said the next release of header files would be corrected to
+	// use t_class* and in the interim users can edit the file accordingly.
 	// If we get a compiler "illegal implicit typecast" error, it means Josh forgot to
 	// make the change; go to jit.max.h and do it again.
-	me = (msobLinnie*) max_jit_obex_new(gMaxLinnieClass, classSym);
+	me = (msobLinnie*) max_jit_object_alloc(gMaxLinnieClass, classSym);
 		if (me == NIL) goto punt;
 		
 	jitObj = jit_object_new(classSym);
@@ -333,7 +332,7 @@ LinnieFreeMaxShell(
 	{
 	max_jit_mop_free(me);
 	jit_object_free(max_jit_obex_jitob_get(me));
-	max_jit_obex_free(me);
+	max_jit_object_free(me);
 	}
 
 

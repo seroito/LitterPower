@@ -5,18 +5,18 @@
 
 	Written by:	Peter Castine
 
-	Copyright:	© 2000-2002 Peter Castine. All rights reserved.
+	Copyright:	Â© 2000-2002 Peter Castine. All rights reserved.
 
 	Change History (most recent first):
 
-         <6>    8Ð5Ð2006    pc      Update to support Jitter matrices. More work may still need to
+         <6>    8â€“5â€“2006    pc      Update to support Jitter matrices. More work may still need to
                                     be done.
-         <5>   26Ð4Ð2006    pc      Update for new LitterLib organization.
-         <4>     10Ð1Ð04    pc      Update for Windows using new LitterLib functions.
-         <3>    7Ð7Ð2003    pc      Initial check-in.
-         <2>  30Ð12Ð2002    pc      Use 'STR#' resource instead of faux 'Vers' resource for storing
+         <5>   26â€“4â€“2006    pc      Update for new LitterLib organization.
+         <4>     10â€“1â€“04    pc      Update for Windows using new LitterLib functions.
+         <3>    7â€“7â€“2003    pc      Initial check-in.
+         <2>  30â€“12â€“2002    pc      Use 'STR#' resource instead of faux 'Vers' resource for storing
                                     version information used at run-time.
-         <1>  30Ð12Ð2002    pc      Initial Check-In
+         <1>  30â€“12â€“2002    pc      Initial Check-In
 		
 		26-Dec-2002:	Update parameters to __ide_target() to match new Carbon/Classic
 						target names.
@@ -27,7 +27,7 @@
 /******************************************************************************************
  ******************************************************************************************/
 
-#pragma mark ¥ Identify Target
+#pragma mark â€¢ Identify Target
 
 #ifdef __MWERKS__
 	// With Metrowerks CodeWarrior make use of the __ide_target() preprocessor function
@@ -71,7 +71,7 @@
 	#endif
 #endif
 
-#pragma mark ¥ Include Files
+#pragma mark â€¢ Include Files
 
 #if __IM_JITTER__
 	#define __NEED_JITTER_HEADERS__ 1
@@ -84,7 +84,7 @@
 
 
 
-#pragma mark ¥ Global Constants
+#pragma mark â€¢ Global Constants
 
 #if __IM_HISTORY__
 	extern const long	kMaxHistory;
@@ -183,7 +183,7 @@ extern const double		kMaxPi;
 extern const char*		kClassName;
 
 
-#pragma mark ¥ Type Definitions
+#pragma mark â€¢ Type Definitions
 
 
 	// tInterval and tAtomicInterval are legacy.
@@ -195,8 +195,8 @@ typedef double	tInterval;
 typedef float	tAtomicInterval;
 
 typedef double		(*tMutateFunc)(tInterval, tInterval, double);	// Weighted Mutation
-typedef tInterval	(*tMutate1Func)(tInterval, tInterval);			// Special-case for ½=1
-		// We don't special-case mutation with ½ == 0, it's just the identity function
+typedef tInterval	(*tMutate1Func)(tInterval, tInterval);			// Special-case for Î©=1
+		// We don't special-case mutation with Î© == 0, it's just the identity function
 
 typedef union {
 	tMutateFunc		uniformFunc;		// Used with uniform mutations
@@ -274,7 +274,7 @@ typedef struct {
 		} tHistory;
 #endif
 
-#pragma mark ¥ Object Structure
+#pragma mark â€¢ Object Structure
 
 typedef struct {
 	#if __IM_MSP__
@@ -298,7 +298,7 @@ typedef struct {
 	} tMutator;
 
 
-#pragma mark ¥ Global Variables
+#pragma mark â€¢ Global Variables
 
 	// These are all set once, in main()
 //extern t_messlist*	gMutatorClass;
@@ -307,7 +307,7 @@ typedef struct {
 
 
 
-#pragma mark ¥ Function Prototypes
+#pragma mark â€¢ Function Prototypes
 
 short		MapStrToMutationType(const char* iStr);
 int			CalcMutationIndex(const tMutator*);
@@ -364,7 +364,7 @@ void		DoRelInt(tMutator*, float);
 	
 
 #pragma mark -
-#pragma mark ¥ Inline Functions
+#pragma mark â€¢ Inline Functions
 
 	// The math library has an absolute value function, but I want to be sure
 	// that it's inlined. One way of the other, we have to build our own Sign()

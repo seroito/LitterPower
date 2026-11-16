@@ -77,3 +77,47 @@ The goal is to make all externals build and run in Max 9.
 - Licensing: the README only points to GitHub's terms of service and the code
   is copyright Peter Castine. Redistribution of binaries should be clarified
   with him.
+
+## Progress log
+
+### 2026-11-16: code port done locally, not yet built on macOS/Windows
+
+Decisions by the user: build with GitHub Actions (macOS and Windows runners) on the fork
+`seroito/LitterPower`, branch `64-bit-version`; build everything except
+`vicon-tracker` and `vicon-controller`.
+
+Done so far:
+
+- `c74support/` (SDK 7.0.1) replaced by the submodule `max-sdk-base` (current Max SDK).
+- `CMakeLists.txt` lists every external (one `litter_external(...)` line each) and
+  replaces the Xcode projects. Shared code is the static library `litterlib`.
+- `LitterLib/LitterLib.[ch]` and `LitterLib/MaxUtils.[ch]` rewritten without Carbon,
+  Resource Manager or Win32 resources. Mac type names (`UInt32`, `Byte`, ...) are
+  defined in `MaxUtils.h` for non-Mac platforms.
+- Assistance and version strings: `tools/gen_strings.py` converts `Resources/*/*.r`
+  into `LitterLib/Strings/*.c` (committed, generated).
+- All entry points are `ext_main`; all classes use `class_new`; Jitter wrappers use the
+  current `max_jit_class_*` API.
+- `tools/check.py` syntax-checks all externals on Linux with gcc against the SDK
+  headers. State: 0 of 116 units failing.
+- Bugs fixed on the way: `TT800()` wrote/read past its seed array; `lp.gruyere~`
+  computed its table length from a pointer; `lp.i` class setup had wrong arguments;
+  `RiemannZetaFrac()` called `gamma()` where the true gamma function (`tgamma`) is meant.
+
+Not built, because the original sources are unfinished drafts that never compiled:
+`Chaos/vera~.c` (6 variants), `Continuous/nnn.c`, `Discrete/cuthbert.c`,
+`Signals/chff~.c`, `Signals/kasar~.c`, `Signals/nnn~.c`, `Utils/sinker~.c`,
+`Utils/twist~.c`, `Jitter/lbj.im.c`, `Jitter/lbj.linnie.c`. Also not built:
+`Discrete/wacom.c` (third-party code needing the Wacom WinTab SDK), `Utils/druthers.c`
+and `Utils/mystes.c` (licensing helpers of the commercial release), and the superseded
+duplicates `bernie pre-pattr.c`, `ccc~(no use).c`, `pfff~ old.c`.
+
+`lp.argus` loads but does nothing, as in Litter Power 1.8 under Max 5 and later (it
+depended on the Max 4 window API).
+
+Next steps:
+
+1. Add `.github/workflows/build.yml` (macOS universal + Windows x64), push, fix what
+   clang and MSVC report.
+2. Assemble the Max package (externals, help files from `Litter Power Help/`, extras).
+3. User tests in Max 9.

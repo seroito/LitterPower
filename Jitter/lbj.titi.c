@@ -80,7 +80,7 @@ typedef struct {
 #pragma mark • Global Variables
 
 void*			gTitiJitClass	= NIL;
-Messlist*		gTitiMaxClass	= NIL;
+t_class*		gTitiMaxClass	= NIL;
 
 #pragma mark • Function Prototypes
 
@@ -388,8 +388,7 @@ Taus88DoubleVector(
  *	
  ******************************************************************************************/
 
-void
-main(void)
+void ext_main(void* r)
 	
 	{
 	const long kAttr = MAX_JIT_MOP_FLAGS_OWN_OUTPUTMATRIX | MAX_JIT_MOP_FLAGS_OWN_JIT_MATRIX;
@@ -399,35 +398,35 @@ main(void)
 	voidPtr	p,
 			q;
 	
-	LITTER_CHECKTIMEOUT(kClassName);
 	
 	TitiJitInit();
 	
 	// Standard Max setup() call
-	setup(	&gTitiMaxClass,					// Pointer to our class definition
+	gTitiMaxClass = class_new(kMaxClassName,					// Pointer to our class definition
 			(method) TitiNewMaxShell,		// Instance creation function
 			(method) TitiFreeMaxShell,		// Custom deallocation function
-			(short) sizeof(msobTiti),	// Class object size
+			sizeof(msobTiti),	// Class object size
 			NIL,							// No menu function
 			A_GIMME,						// Jitter objects always parse their own arguments
 			0);		
 	
 	// Jitter Magic... 
-	p = max_jit_classex_setup(calcoffset(msobTiti, jitObject));
+	max_jit_class_obex_setup(gTitiMaxClass, calcoffset(msobTiti, jitObject));
 	q = jit_class_findbyname(gensym((char*) kMaxClassName));    
-    max_jit_classex_mop_wrap(p, q, kAttr); 		
-    max_jit_classex_standard_wrap(p, q, 0); 	
-	LITTER_TIMEBOMB max_addmethod_usurp_low((method) TitiOutputMatrix, "outputmatrix");	
+    max_jit_class_mop_wrap(gTitiMaxClass, q, kAttr); 		
+    max_jit_class_wrap_standard(gTitiMaxClass, q, 0); 	
+	max_jit_class_addmethod_usurp_low(gTitiMaxClass, (method) TitiOutputMatrix, "outputmatrix");	
 	
 	// Back to adding messages...
-//	addbang	((method) TitiBang);
-//	addmess ((method) TitiSeed,		"seed",		A_DEFLONG, 0);
-	addmess	((method) TitiTattle,	"dblclick",	A_CANT, 0);
-	addmess	((method) TitiTattle,	"tattle",	A_NOTHING);
-	addmess	((method) TitiAssist,	"assist",	A_CANT, 0);
-	addmess	((method) TitiInfo,		"info",		A_CANT, 0);
+//	class_addmethod(gTitiMaxClass, (method) TitiBang, "bang", A_NOTHING);
+//	class_addmethod(gTitiMaxClass, (method) TitiSeed,		"seed",		A_DEFLONG, 0);
+	class_addmethod(gTitiMaxClass, (method) TitiTattle,	"dblclick",	A_CANT, 0);
+	class_addmethod(gTitiMaxClass, (method) TitiTattle,	"tattle",	A_NOTHING);
+	class_addmethod(gTitiMaxClass, (method) TitiAssist,	"assist",	A_CANT, 0);
+	class_addmethod(gTitiMaxClass, (method) TitiInfo,		"info",		A_CANT, 0);
 	
 	// Initialize Litter Library
+	gObjectClass = gTitiMaxClass;
 	LitterInit(kMaxClassName, 0);
 	}
 
@@ -447,7 +446,7 @@ main(void)
 
 static void*
 TitiNewMaxShell(
-	SymbolPtr,
+	SymbolPtr unused,
 	long		iArgC,
 	Atom		iArgV[])
 	
@@ -457,12 +456,12 @@ TitiNewMaxShell(
 	tTaus88DataPtr		myTausStuff	= NIL;
 	Symbol*				classSym	= gensym((char*) kMaxClassName);
 	
-	// In the 1.0 SDK max_jit_obex_new() is prototyped to expect a Maxclass* instead of
-	// a Messlist*. JKC said the next release of header files would be corrected to
-	// use Messlist* and in the interim users can edit the file accordingly.
+	// In the 1.0 SDK max_jit_object_alloc() is prototyped to expect a Maxclass* instead of
+	// a t_class*. JKC said the next release of header files would be corrected to
+	// use t_class* and in the interim users can edit the file accordingly.
 	// If we get a compiler "illegal implicit typecast" error, it means Josh forgot to
 	// make the change; go to jit.max.h and do it again.
-	me = (msobTiti*) max_jit_obex_new(gTitiMaxClass, classSym);
+	me = (msobTiti*) max_jit_object_alloc(gTitiMaxClass, classSym);
 		if (me == NIL) goto punt;
 		
 	jitObj = jit_object_new(classSym);
@@ -497,7 +496,7 @@ TitiFreeMaxShell(
 	{
 	max_jit_mop_free(me);
 	jit_object_free(max_jit_obex_jitob_get(me));
-	max_jit_obex_free(me);
+	max_jit_object_free(me);
 	}
 
 
@@ -546,7 +545,7 @@ TitiOutputMatrix(
 
 void
 TitiTattle(
-	msobTiti* /*me*/)
+	msobTiti* unused /*me*/)
 	
 	{
 	
@@ -559,7 +558,7 @@ TitiTattle(
 void TitiInfo(msobTiti* me)
 	{ LitterInfo(kMaxClassName, &me->coreObject, (method) TitiTattle); }
 
-void TitiAssist(msobTiti*, void*, long iDir, long iArgNum, char* oCStr)
+void TitiAssist(msobTiti* me, void* unused, long iDir, long iArgNum, char* oCStr)
 	{ LitterAssist(iDir, iArgNum, strIndexInLeft, strIndexOutLeft, oCStr); }
 
 
@@ -580,7 +579,7 @@ static jcobTiti* TitiJitNew()
 	return me;
 	}
 
-static void TitiJitFree(jcobTiti*)
+static void TitiJitFree(jcobTiti* me)
 	{ /* nothing to do */ }
 
 
@@ -746,7 +745,7 @@ RecurseDimensions(
 static t_jit_err
 TitiJitMatrixCalc(
 	jcobTiti*	me,
-	void*,
+	void* unused,
 	void*			outputs)
 	
 	{

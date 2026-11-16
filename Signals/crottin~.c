@@ -160,7 +160,7 @@ void    CrottinPerform64(objCrottin*, t_object *dsp64, double **ins, long numins
  *	
  ******************************************************************************************/
 
-int C74_EXPORT main(void)
+void ext_main(void* r)
 	
 	{
 	//LITTER_CHECKTIMEOUT(kClassName);
@@ -199,7 +199,7 @@ int C74_EXPORT main(void)
         
         post("%s: %s", kClassName, LPVERSION);
 
-        return 0;
+        return;
 	
 	}
 

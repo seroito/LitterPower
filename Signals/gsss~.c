@@ -36,7 +36,7 @@
 #ifdef RC_INVOKED
 #define LPmuString	"mu"
 #else
-#define LPmuString	"µ"
+#define LPmuString	"Âµ"
 #endif
 
 // Assistance strings
@@ -127,7 +127,7 @@ void GsssPerformDyn64(objGaussNoise*, t_object *dsp64, double **ins, long numins
  *	
  ******************************************************************************************/
 
-int C74_EXPORT main(void)
+void ext_main(void* r)
 	
 	{
 	//LITTER_CHECKTIMEOUT(kClassName);
@@ -162,7 +162,7 @@ int C74_EXPORT main(void)
         gObjectClass = c;
         
         post("%s: %s", kClassName, LPVERSION);
-        return 0;
+        return;
 	
 	}
 

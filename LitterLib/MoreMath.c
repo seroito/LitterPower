@@ -71,37 +71,8 @@
  *	
  ******************************************************************************************/
  
-#ifdef _WINDOWS_
-
-double
-lgamma(
-	double x)
- 	
-	{
-	const double kCoefficients[6] = {	 76.18009172947146,
-										-86.50532032941677,
-										 24.01409824083091,
-										 -1.231739572450155,
-										  0.1208650973866179e-2,
-										  -0.5395239384953e-5
-										  };
-	
-	double	y	= x,
-			tmp,
-			ser;
-	int		j;
-	
-	tmp = x + 5.5;
-	tmp -= (x + 0.5) * log(tmp);
-	
-	ser	= 1.000000000190015;
-	for (j=0; j < 6; j++)
-		ser += kCoefficients[j] / ++y;
-	
-	return -tmp + log(2.5066282746310005 * ser / x);
-	}
-
-#endif
+	// (The private lgamma() implementation that used to be here for Windows is gone:
+	// every supported compiler provides C99's lgamma() and tgamma().)
 
 /******************************************************************************************
  *
@@ -441,7 +412,7 @@ RiemannZetaFrac(
 			w = RiemannZetaFrac(s);
 			zeta  = sin((kPi / 2.0) * x);
 			zeta *= pow(2.0 * kPi, x);
-			zeta *= gamma(s);
+			zeta *= tgamma(s);
 			zeta *= (1.0 + w);
 			zeta *= 1.0 / kPi;
 			zeta -= 1.0;

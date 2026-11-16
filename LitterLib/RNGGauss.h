@@ -5,11 +5,11 @@
 
 	Written by:	Peter Castine
 
-	Copyright:	© 2001-2006 Peter Castine
+	Copyright:	Â© 2001-2006 Peter Castine
 
 	Change History (most recent first):
 
-         <1>   30Ð3Ð2006    pc      Initial check in.
+         <1>   30â€“3â€“2006    pc      Initial check in.
 */
 
 
@@ -19,13 +19,13 @@
 
 #pragma once
 
-#pragma mark ¥ Include Files
+#pragma mark â€¢ Include Files
 
 #include "MiscUtils.h"
 #include "Taus88.h"
 
 
-#pragma mark ¥ Function Prototypes
+#pragma mark â€¢ Function Prototypes
 
 	// General purpose transformations we expose in case anyone else needs them
 	
@@ -48,6 +48,6 @@ double	NormalKRTaus88	(tTaus88Data*	iData);
 
 
 #pragma mark -
-#pragma mark ¥ Inline Functions & Macros
+#pragma mark â€¢ Inline Functions & Macros
 
 	

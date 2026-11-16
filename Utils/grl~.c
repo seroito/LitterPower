@@ -44,7 +44,7 @@ const char*	kClassName		= "lp.grl~";			// Class name
 #ifdef RC_INVOKED
 #define piSymbol	"pi"
 #else
-#define piSymbol	"¹"
+#define piSymbol	"Ï€"
 #endif
 #define LPAssistIn1			"Signal. Float or " piSymbol " sets maximum step between samples."
 #define LPAssistOut1		"Unwrapped Signal"
@@ -112,7 +112,7 @@ static void		GrlClear(tRanger*);
  *	
  ******************************************************************************************/
 
-int C74_EXPORT main(void)
+void ext_main(void* r)
 	
 	{
 	//LITTER_CHECKTIMEOUT(kClassName);
@@ -122,7 +122,7 @@ int C74_EXPORT main(void)
 	c = class_new(kClassName,				// Pointer to our class definition
 			(method) GrlNew,			// Instance creation function
 			(method) GrlFree,		// Custom deallocation function
-			(short) sizeof(tRanger),	// Class object size
+			sizeof(tRanger),	// Class object size
 			NIL,						// No menu function
 			A_DEFLONG,					// History size. Default 0 interpreted as 1
 			A_DEFFLOAT,					// Maximum step between consecutive samples.
@@ -151,7 +151,7 @@ int C74_EXPORT main(void)
         gObjectClass = c;
         
         post("%s: %s", kClassName, LPVERSION);
-        return 0;
+        return;
 
 	}
 

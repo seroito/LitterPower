@@ -129,7 +129,7 @@ void SssPerform64(tPink*, t_object *dsp64, double **ins, long numins, double **o
  *	
  ******************************************************************************************/
 
-int C74_EXPORT main(void)
+void ext_main(void* r)
 	
 	{
 	//LITTER_CHECKTIMEOUT(kClassName);
@@ -164,7 +164,7 @@ int C74_EXPORT main(void)
 	Taus88Init();
         
         post("%s: %s", kClassName, LPVERSION);
-        return 0;
+        return;
 	
 	}
 

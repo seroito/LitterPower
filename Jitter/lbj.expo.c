@@ -76,7 +76,7 @@ typedef struct {
 #pragma mark • Global Variables
 
 void*			gExpoJitClass	= NIL;
-Messlist*		gExpoMaxClass	= NIL;
+t_class*		gExpoMaxClass	= NIL;
 
 
 #pragma mark • Function Prototypes
@@ -112,7 +112,7 @@ static t_jit_err ExpoJitInit		(void);
  *	
  ******************************************************************************************/
 
-int C74_EXPORT main(void)
+void ext_main(void* r)
 	
 	{
 	const long kAttr = MAX_JIT_MOP_FLAGS_OWN_OUTPUTMATRIX | MAX_JIT_MOP_FLAGS_OWN_JIT_MATRIX;
@@ -124,29 +124,30 @@ int C74_EXPORT main(void)
 	ExpoJitInit();
 	
 	// Standard Max setup() call
-	setup(	&gExpoMaxClass,					// Pointer to our class definition
+	gExpoMaxClass = class_new(kMaxClassName,					// Pointer to our class definition
 			(method) ExpoNewMaxShell,		// Instance creation function
 			(method) ExpoFreeMaxShell,		// Custom deallocation function
-			(short) sizeof(msobExpo),		// Class object size
+			sizeof(msobExpo),		// Class object size
 			NIL,							// No menu function
 			A_GIMME,						// Jitter objects always parse their own arguments
 			0);		
 	
 	// Jitter Magic... 
-	p = max_jit_classex_setup(calcoffset(msobExpo, obex));
+	max_jit_class_obex_setup(gExpoMaxClass, calcoffset(msobExpo, obex));
 	q = jit_class_findbyname(gensym((char*) kJitClassName));    
-    max_jit_classex_mop_wrap(p, q, kAttr); 		
-    max_jit_classex_standard_wrap(p, q, 0); 	
-	max_addmethod_usurp_low((method) ExpoOutputMatrix, "outputmatrix");
+    max_jit_class_mop_wrap(gExpoMaxClass, q, kAttr); 		
+    max_jit_class_wrap_standard(gExpoMaxClass, q, 0); 	
+	max_jit_class_addmethod_usurp_low(gExpoMaxClass, (method) ExpoOutputMatrix, "outputmatrix");
 	
 	// Back to adding messages...
-	addmess	((method) ExpoTattle,	"dblclick",	A_CANT, 0);
-	addmess	((method) ExpoTattle,	"tattle",	A_NOTHING);
-	addmess	((method) ExpoAssist,	"assist",	A_CANT, 0);
-	addmess	((method) ExpoInfo,		"info",		A_CANT, 0);
+	class_addmethod(gExpoMaxClass, (method) ExpoTattle,	"dblclick",	A_CANT, 0);
+	class_addmethod(gExpoMaxClass, (method) ExpoTattle,	"tattle",	A_NOTHING);
+	class_addmethod(gExpoMaxClass, (method) ExpoAssist,	"assist",	A_CANT, 0);
+	class_addmethod(gExpoMaxClass, (method) ExpoInfo,		"info",		A_CANT, 0);
 	
 	// Initialize Litter Library
-	//LitterInit(kMaxClassName, 0);
+	gObjectClass = gExpoMaxClass;
+	LitterInit(kMaxClassName, 0);
 	}
 
 
@@ -177,7 +178,7 @@ ExpoNewMaxShell(
 	void*		jitObj		= NIL;
 	t_symbol*		classSym	= gensym((char*) kJitClassName);
 	
-	me = (msobExpo*) max_jit_obex_new(gExpoMaxClass, classSym);
+	me = (msobExpo*) max_jit_object_alloc(gExpoMaxClass, classSym);
 	if (me == NIL) goto punt;
 		
 	jitObj = jit_object_new(classSym);
@@ -212,7 +213,7 @@ ExpoFreeMaxShell(
 	{
 	max_jit_mop_free(me);
 	jit_object_free(max_jit_obex_jitob_get(me));
-	max_jit_obex_free(me);
+	max_jit_object_free(me);
 	}
 
 

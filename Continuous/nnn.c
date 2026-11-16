@@ -27,13 +27,6 @@
 
 #include "LitterLib.h"
 
-#ifndef __SETUPA4__
-	#include <SetUpA4.h> 
-#endif
-
-#ifndef __A4STUFF__
-	#include <A4Stuff.h>		// #includes Devices.h
-#endif
 
 
 #pragma mark • Constants
@@ -83,7 +76,7 @@ typedef struct {
 #pragma mark • Global Variables
 
 fptr*		FNS				= NIL;
-t_messlist*	gBrownerClass		= NIL;
+t_class*	gBrownerClass		= NIL;
 short		gStrResID		= 0,
 			gVersID			= 0,
 			gPackVersID		= 0;
@@ -122,14 +115,12 @@ static void	DoInfo(tBrowner*);
  *	
  ******************************************************************************************/
 
-void
-main(void)
+void ext_main(void* r)
 	
 	{
-	LITTER_CHECKTIMEOUT(kClassName);
 	
 	// Standard Max setup() call
-	setup(	&gBrownerClass,				// Pointer to our class definition
+	gBrownerClass = class_new(kClassName,				// Pointer to our class definition
 			(method) NewBrowner,			// Instance creation function
 			(method) FreeBrowner,			// Custom deallocation function
 			sizeof(tBrowner),				// Class object size
@@ -142,13 +133,13 @@ main(void)
 										// for me, so I have to use A_GIMME
 		
 	// Messages
-	LITTER_TIMEBOMB addbang	((method) DoBang);
-	addmess	((method) DoHurst,		"ft1",		A_FLOAT);
-	addmess	((method) DoNN,			"in2",		A_LONG);
-	addmess ((method) DoSeed,		"seed",		A_DEFLONG, 0);
-	addmess	((method) DoTattle,		"dblclick",	A_CANT, 0);
-	addmess	((method) DoAssist,		"assist",	A_CANT, 0);
-	addmess	((method) DoInfo,		"info",		A_CANT, 0);
+	class_addmethod(gBrownerClass, (method) DoBang, "bang", A_NOTHING);
+	class_addmethod(gBrownerClass, (method) DoHurst,		"ft1",		A_FLOAT);
+	class_addmethod(gBrownerClass, (method) DoNN,			"in2",		A_LONG);
+	class_addmethod(gBrownerClass, (method) DoSeed,		"seed",		A_DEFLONG, 0);
+	class_addmethod(gBrownerClass, (method) DoTattle,		"dblclick",	A_CANT, 0);
+	class_addmethod(gBrownerClass, (method) DoAssist,		"assist",	A_CANT, 0);
+	class_addmethod(gBrownerClass, (method) DoInfo,		"info",		A_CANT, 0);
 	
 	// Initialize Litter Library
 	LitterInit();
@@ -256,7 +247,7 @@ NewBrowner(
 	// Let Max try to allocate us
 	//
 	
-	me = (tBrowner*) newobject(gBrownerClass);
+	me = (tBrowner*) object_alloc(gBrownerClass);
 		if (me == NIL) goto punt;
 	
 	// Inlets, from right to left

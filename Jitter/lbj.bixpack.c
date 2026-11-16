@@ -102,7 +102,7 @@ typedef struct {
 #pragma mark • Global Variables
 
 void*			gBixCPJitClass	= NIL;
-Messlist*		gBixCPMaxClass	= NIL;
+t_class*		gBixCPMaxClass	= NIL;
 
 t_symbol*			gSymFullPacket	= NIL;
 
@@ -150,7 +150,7 @@ static inline void* MainOutlet(msobBixCP* me)
  *	
  ******************************************************************************************/
 
-int C74_EXPORT main(void)
+void ext_main(void* r)
 	
 	{
 	voidPtr	mjClassEx,
@@ -161,37 +161,38 @@ int C74_EXPORT main(void)
 	BixCPJitInit();
 	
 	// Standard Max setup() call
-	setup(	&gBixCPMaxClass,					// Pointer to our class definition
+	gBixCPMaxClass = class_new(kMaxClassName,					// Pointer to our class definition
 			(method) BixCPNewMaxShell,			// Instance creation function
 			(method) BixCPFreeMaxShell,			// Custom deallocation function
-			(short) sizeof(msobBixCP),			// Class object size
+			sizeof(msobBixCP),			// Class object size
 			NIL,								// No menu function
 			A_GIMME,							// Jitter parses its own arguments
 			0);		
 	
 	// Jitter Magic... 
-	mjClassEx	= max_jit_classex_setup( calcoffset(msobBixCP, jitObject) );
+	max_jit_class_obex_setup(gBixCPMaxClass,  calcoffset(msobBixCP, jitObject) );
 	jClass		= jit_class_findbyname( gensym((char*) kJitClassName) );    
-    max_jit_classex_standard_wrap(mjClassEx, jClass, 0); 	
+    max_jit_class_wrap_standard(gBixCPMaxClass, jClass, 0); 	
 	
 	// Add messages
 	//
 		// Processing messages
-	addmess ((method) BixCPjit_matrix, "jit_matrix", A_GIMME, 0);
-	addmess ((method) BixCPFilter,	"filter",	A_LONG, A_LONG, A_LONG, 0);
-	addmess	((method) BixCPSleep,	"sleep",	A_LONG, 0);
-	addmess ((method) BixCPDevice,	"device",	A_LONG,	0);
+	class_addmethod(gBixCPMaxClass, (method) BixCPjit_matrix, "jit_matrix", A_GIMME, 0);
+	class_addmethod(gBixCPMaxClass, (method) BixCPFilter,	"filter",	A_LONG, A_LONG, A_LONG, 0);
+	class_addmethod(gBixCPMaxClass, (method) BixCPSleep,	"sleep",	A_LONG, 0);
+	class_addmethod(gBixCPMaxClass, (method) BixCPDevice,	"device",	A_LONG,	0);
 		// Informational messages
-	addmess	((method) BixCPTattle,	"dblclick",	A_CANT, 0);
-	addmess	((method) BixCPTattle,	"tattle",	A_NOTHING);
-	addmess	((method) BixCPAssist,	"assist",	A_CANT, 0);
-	addmess	((method) BixCPInfo,	"info",		A_CANT, 0);
+	class_addmethod(gBixCPMaxClass, (method) BixCPTattle,	"dblclick",	A_CANT, 0);
+	class_addmethod(gBixCPMaxClass, (method) BixCPTattle,	"tattle",	A_NOTHING);
+	class_addmethod(gBixCPMaxClass, (method) BixCPAssist,	"assist",	A_CANT, 0);
+	class_addmethod(gBixCPMaxClass, (method) BixCPInfo,	"info",		A_CANT, 0);
 	
 	// Cache commonly used symbol
 	gSymFullPacket	= gensym("FullPacket");
 		
 	// Initialize Litter Library
-	//LitterInit(kMaxClassName, 0);
+	gObjectClass = gBixCPMaxClass;
+	LitterInit(kMaxClassName, 0);
 	
 	}
 
@@ -214,7 +215,7 @@ FullPacketOut(
 	void*		iBuf)		// Address where the buffered data are stored
 	
 	{
-	const short kArgCount	= 2;
+	enum { kArgCount = 2 };
 	
 	t_atom	args[kArgCount];
 
@@ -247,12 +248,12 @@ BixCPNewMaxShell(
 	void*		jitObj		= NIL;
 	t_symbol*		classSym	= gensym((char*) kJitClassName);
 	
-	// In the 1.0 SDK max_jit_obex_new() is prototyped to expect a Maxclass* instead of
-	// a Messlist*. JKC said the next release of header files would be corrected to
-	// use Messlist* and in the interim users can edit the file accordingly.
+	// In the 1.0 SDK max_jit_object_alloc() is prototyped to expect a Maxclass* instead of
+	// a t_class*. JKC said the next release of header files would be corrected to
+	// use t_class* and in the interim users can edit the file accordingly.
 	// If we get a compiler "illegal implicit typecast" error, it means Josh forgot to
 	// make the change; go to jit.max.h and do it again.
-	me = (msobBixCP*) max_jit_obex_new(gBixCPMaxClass, classSym);
+	me = (msobBixCP*) max_jit_object_alloc(gBixCPMaxClass, classSym);
 		if (me == NIL) goto punt;
 	
 	max_jit_obex_dumpout_set( me, outlet_new(me, NIL) );
@@ -289,7 +290,7 @@ BixCPFreeMaxShell(
 	
 	{
 	jit_object_free( max_jit_obex_jitob_get(me) );
-	max_jit_obex_free(me);
+	max_jit_object_free(me);
 	}
 
 

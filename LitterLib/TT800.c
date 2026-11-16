@@ -61,7 +61,7 @@ static tTT800Data
  *
  ******************************************************************************************/
 
-unsigned long
+UInt32
 TT800(
 	tTT800DataPtr	iData)
 	
@@ -81,8 +81,8 @@ TT800(
 	
 	if (iData->curSeed >= kTT800SeedArraySize) {
 		// Generate N new random values at one time
-    	unsigned long*	curSeed	= iData->seeds;
-    	unsigned long*	offSet	= curSeed + kTT800SeedArrayOffset;
+    	UInt32*	curSeed	= iData->seeds;
+    	UInt32*	offSet	= curSeed + kTT800SeedArrayOffset;
     	int				i;
 		
 		i = kTT800SeedArraySize - kTT800SeedArrayOffset;
@@ -90,7 +90,9 @@ TT800(
 			*curSeed = *offSet++ ^ (*curSeed >> 1) ^ kMagicA[*curSeed & 1];
 			curSeed += 1;
 			}
-		*offSet -= kTT800SeedArraySize;		// ASSERT: offSet == me->seedArray
+		// 2026: the original code read '*offSet -= ...', which modified the word past the
+		// end of the seed array instead of wrapping the pointer back to its start.
+		offSet -= kTT800SeedArraySize;		// ASSERT: offSet == iData->seeds
 		
 		i = kTT800SeedArrayOffset;
 		while (i-- > 0) {
@@ -167,7 +169,7 @@ TT800Seed(
 	
 	if (iSalt == 0) {
 		iSalt =  MachineKharma();
-		iSalt ^= (unsigned long) iData;
+		iSalt ^= (UInt32) (uintptr_t) iData;
 		}
 	
 	for (i = 0; i < kTT800SeedArraySize; i += 1) {
@@ -191,7 +193,7 @@ TT800Seed(
 
 tTT800DataPtr
 TT800New(
-	unsigned long iSeed)
+	UInt32 iSeed)
 	
 	{
 	tTT800DataPtr newTT800 = (tTT800DataPtr) getbytes(sizeof(tTT800Data));

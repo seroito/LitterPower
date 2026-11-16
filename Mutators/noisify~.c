@@ -43,6 +43,12 @@
 #pragma mark â€¢ Include Files
 
 #include "LitterLib.h"			// Also #includes MaxUtils.h, ext.h
+
+	// The Classic Mac OS Memory Manager could resize a pointer block in place. The current
+	// memory API cannot guarantee that, so "resizing" always reports failure (memFullErr)
+	// and the code below falls back to allocating a new block, as it always could.
+#define SetPtrSize(PTR, SIZE)	((void) 0)
+#define MemError()				((OSErr) -108)
 //#include "TrialPeriodUtils.h"
 #include "Taus88.h"
 
@@ -73,9 +79,9 @@
 #define		muSymbol			0xb5
 #define		lessEqSymbol		"<="
 #else						// Special characters for Mac OS
-#define		ellipsisSymbol		"É"
-#define		muSymbol			"µ"
-#define		lessEqSymbol		"²"
+#define		ellipsisSymbol		"â€¦"
+#define		muSymbol			"Âµ"
+#define		lessEqSymbol		"â‰¤"
 #endif
 
 #define LPAssistIn1			"Signal (Source)"
@@ -209,7 +215,7 @@ void EmericPerform5_64(objEmeric*, t_object *dsp64, double **ins, long numins, d
 					sProfilerOn = false;
 #endif
 
-int C74_EXPORT main(void)
+void ext_main(void* r)
 	
 	{
 	//LITTER_CHECKTIMEOUT(kClassName);
@@ -258,7 +264,7 @@ int C74_EXPORT main(void)
         gObjectClass = c;
         
         post("%s: %s", kClassName, LPVERSION);
-        return 0;
+        return;
 	
 	}
 
@@ -582,44 +588,34 @@ SetSR(
 		if (ringBufCurSize != me->ringBufCurSize)
 			SetVocBufSize(me, ringBufCurSize);
 		
-		SetPtrSize((Ptr) me->ringBuf, ringBufMaxSize * sizeof(double));
+		// (We used to shrink the memory block in place here. That is not possible with
+		// the current memory API and not worth a reallocation, so just note the new size.)
 		me->ringBufMaxSize = ringBufMaxSize;
 		}
 	
 	else if (me->ringBufMaxSize > 0) {
 		// This means a ring buffer exists, but we need a larger one
-		// First try to resize the existing buffer
-		SetPtrSize((Ptr) me->ringBuf, ringBufMaxSize * sizeof(double));
-		if (MemError() == noErr) {
-			// Excellent! The rest is easy
-			me->ringBufMaxSize = ringBufMaxSize;
+		// Allocate a new block and copy data
+		tSampleVector newBuf = (tSampleVector) NewPtrClear(ringBufMaxSize * sizeof(double));
+		if (newBuf != NIL) {
+			unsigned long curPosOffset = me->ringBufCurPos - me->ringBuf;
+			
+			//BlockMoveData(me->ringBuf, newBuf, me->ringBufCurSize * sizeof(float));
+                memmove(newBuf, me->ringBuf, me->ringBufCurSize * sizeof(double));
+			DisposePtr((Ptr) me->ringBuf);
+			
+			me->ringBuf			= newBuf;
+			me->ringBufCurPos	= newBuf + curPosOffset;
+			me->ringBufMaxSize	= ringBufMaxSize;
 			if (ringBufCurSize != me->ringBufCurSize)
 				SetVocBufSize(me, ringBufCurSize);
 			}
 		
 		else {
-			// OK, try to allocate a new block and copy data
-			tSampleVector newBuf = (tSampleVector) NewPtrClear(ringBufMaxSize * sizeof(double));
-			if (newBuf != NIL) {
-				unsigned long curPosOffset = me->ringBufCurPos - me->ringBuf;
-				
-				//BlockMoveData(me->ringBuf, newBuf, me->ringBufCurSize * sizeof(float));
-                memmove(newBuf, me->ringBuf, me->ringBufCurSize * sizeof(double));
-				DisposePtr((Ptr) me->ringBuf);
-				
-				me->ringBuf			= newBuf;
-				me->ringBufCurPos	= newBuf + curPosOffset;
-				me->ringBufMaxSize	= ringBufMaxSize;
-				if (ringBufCurSize != me->ringBufCurSize)
-					SetVocBufSize(me, ringBufCurSize);
-				}
-			
-			else {
-				// Memory's tight. Try trashing the old buffer, then allocate anew
-				// (below, at outermost level of this function)
-				DisposePtr((Ptr) me->ringBuf);
-				InitVocBuffers(me);					// Important: sets me->ringBuf to NIL
-				}
+			// Memory's tight. Try trashing the old buffer, then allocate anew
+			// (below, at outermost level of this function)
+			DisposePtr((Ptr) me->ringBuf);
+			InitVocBuffers(me);					// Important: sets me->ringBuf to NIL
 			}
 		}
 	

@@ -1,1 +1,4 @@
-// Use the following line to set an expiry date for development/alpha/beta builds// and for "Final Candidates"// Comment it out for release versions//#define LITTER_TRIALPERIOD 35
+// Use the following line to set an expiry date for development/alpha/beta builds
+// and for "Final Candidates"
+// Comment it out for release versions
+//#define LITTER_TRIALPERIOD 35

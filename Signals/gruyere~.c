@@ -161,7 +161,7 @@ void GruyerePerform64(objGruyere*, t_object *dsp64, double **ins, long numins, d
 			}
 		}
 
-int C74_EXPORT main(void)
+void ext_main(void* r)
 	
 	{
 	//LITTER_CHECKTIMEOUT(kClassName);
@@ -201,7 +201,7 @@ int C74_EXPORT main(void)
         gObjectClass = c;
         
         post("%s: %s", kClassName, LPVERSION);
-        return 0;
+        return;
 	
 	}
 
@@ -708,7 +708,7 @@ void GruyerePerform64(objGruyere *me, t_object *dsp64, double **ins, long numins
         
         if ( offset < frames) {
             wTable	= tab + offset;
-            tLen	= tab - offset;
+            tLen	= frames - offset;
             
             if (tLen > kTableLen)
                 tLen = kTableLen;

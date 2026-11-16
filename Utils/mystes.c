@@ -89,7 +89,7 @@ static void*
 MystesNew(void)
 	
 	{
-	objMystes*	me = (objMystes*) newobject(gObjectClass);	// Create object w/left inlet
+	objMystes*	me = (objMystes*) object_alloc(gObjectClass);	// Create object w/left inlet
 	
 	// Create list outlet
 	// Left outlet can be accessed as me->coreObject.o_outlet
@@ -236,14 +236,12 @@ MystesTattle(
  *	
  ******************************************************************************************/
 
-void
-main()
+void ext_main(void* r)
 	
 	{
-	LITTER_CHECKTIMEOUT(kClassName);
 	
 	// Standard Max setup() call
-	setup(	&gObjectClass,					// Pointer to our class definition
+	gObjectClass = class_new(kClassName,					// Pointer to our class definition
 			(method) MystesNew,			    // Allocation method
 			NIL,							// No custom deallocation function
 			sizeof(objMystes),				// Class object size
@@ -251,14 +249,14 @@ main()
 			A_NOTHING);						// No initialization arguments
 	
 	// Messages
-	LITTER_TIMEBOMB addbang	((method) MystesBang);
-	addmess	((method) MystesAssist,		"assist",		A_CANT, 0);
+	class_addmethod(gObjectClass, (method) MystesBang, "bang", A_NOTHING);
+	class_addmethod(gObjectClass, (method) MystesAssist,		"assist",		A_CANT, 0);
 	
 	/*		-- Standard messages we are currently deliberately NOT implementing
 				as a security measure --
-	addmess	((method) MystesInfo,		"info",			A_CANT, 0);
-	addmess	((method) MystesTattle,		"dblclick",		A_CANT, 0);
-	addmess	((method) MystesTattle,		"tattle",		A_NOTHING);
+	class_addmethod(gObjectClass, (method) MystesInfo,		"info",			A_CANT, 0);
+	class_addmethod(gObjectClass, (method) MystesTattle,		"dblclick",		A_CANT, 0);
+	class_addmethod(gObjectClass, (method) MystesTattle,		"tattle",		A_NOTHING);
 	*/
 	
 	// Initialize Litter Library... or do it manually
@@ -294,7 +292,7 @@ main()
 	#endif
 	
 	// Add vers message, otherwise done by LitterInit
-	addmess	((method) MystesVers,	"vers",	A_DEFLONG, A_DEFLONG, 0);
+	class_addmethod(gObjectClass, (method) MystesVers,	"vers",	A_DEFLONG, A_DEFLONG, 0);
 	
 #endif
 

@@ -127,7 +127,7 @@ void NetochkaPerform64(tDegrade*, t_object *dsp64, double **ins, long numins, do
  *	Standard Max/MSP External Object Entry Point Function
  *	
  ******************************************************************************************/
-int C74_EXPORT main(void)
+void ext_main(void* r)
 	
 	{
 	//LITTER_CHECKTIMEOUT(kClassName);
@@ -164,7 +164,7 @@ int C74_EXPORT main(void)
         gObjectClass = c;
         
         post("%s: %s", kClassName, LPVERSION);
-        return 0;
+        return;
 
 	}
 

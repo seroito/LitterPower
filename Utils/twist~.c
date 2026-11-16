@@ -98,7 +98,7 @@ typedef struct {
  *	
  ******************************************************************************************/
 
-int C74_EXPORT main(void)
+void ext_main(void* r)
 	{
 	//LITTER_CHECKTIMEOUT(kClassName);
         
@@ -109,7 +109,7 @@ int C74_EXPORT main(void)
 	c = class_new(kClassName,						// Pointer to our class definition
 			(method) NewTwist,					// Instance creation function
 			(method) dsp_free,              	// Custom deallocation function
-			(short) sizeof(objCheby),			// Class object size
+			sizeof(objCheby),			// Class object size
 			NIL,								// No menu function
 			A_GIMME,							// Variable-length argument list
 			0);
@@ -140,7 +140,7 @@ int C74_EXPORT main(void)
         gObjectClass = c;
         
         post("%s: %s", kClassName, LPVERSION);
-        return 0;
+        return;
 
 	
 	}

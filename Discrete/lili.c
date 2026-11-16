@@ -417,7 +417,7 @@ static void LiliTell(objLili* me, Symbol* iTarget, Symbol* iMsg)
  *	
  ******************************************************************************************/
 
-int C74_EXPORT main(void)
+void ext_main(void* r)
 	
 	{
 	const tTypeList myArgTypes = {
@@ -458,7 +458,7 @@ int C74_EXPORT main(void)
         class_register(CLASS_BOX, gObjectClass);
         
         post("%s: %s", kClassName, LPVERSION);
-        return 0;
+        return;
 	
 	}
 

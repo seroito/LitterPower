@@ -399,7 +399,7 @@ static void TataTell(objTaus88* me, Symbol* iTarget, Symbol* iAttrName)
  *	
  ******************************************************************************************/
 
-int C74_EXPORT main(void)
+void ext_main(void* r)
 	
 	{
 	const tTypeList myArgTypes = {
@@ -422,7 +422,7 @@ int C74_EXPORT main(void)
         gObjectClass = class_new(kClassName,
                       (method) TataNew,
                       (method) TataFree,
-                      (short)sizeof(objTaus88),
+                      sizeof(objTaus88),
                       NIL,
                       A_DEFLONG, A_DEFLONG, A_DEFLONG,
                       0);
@@ -444,7 +444,7 @@ int C74_EXPORT main(void)
         class_register(CLASS_BOX, gObjectClass);
         
         post("%s: %s", kClassName, LPVERSION);
-        return 0;
+        return;
 	
 	}
 

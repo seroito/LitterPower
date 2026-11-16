@@ -95,7 +95,7 @@ static void	CrabElmsInfo(objCrabElms*);
  *	
  ******************************************************************************************/
 
-int C74_EXPORT main(void)
+void ext_main(void* r)
 	
 	{
 	//LITTER_CHECKTIMEOUT(kClassName);
@@ -105,7 +105,7 @@ int C74_EXPORT main(void)
 	c = class_new(	kClassName,						// Pointer to our class definition
 			(method) CrabElmsNew,				// Instantiation method  
 			(method) CrabElmsFree,				// Custom deallocation function
-			(short) sizeof(objCrabElms),		// Class object size
+			sizeof(objCrabElms),		// Class object size
 			NIL,								// No menu function
 			A_DEFLONG,							// If non-zero initialize & maintain a
 			0);									// private seed pool
@@ -129,7 +129,7 @@ int C74_EXPORT main(void)
         gObjectClass = c;
         
         post("%s: %s", kClassName, LPVERSION);
-        return 0;
+        return;
 	
 	}
 

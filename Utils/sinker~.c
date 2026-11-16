@@ -113,33 +113,31 @@ static void	SinkerInfo(objSinker*);
  *	
  ******************************************************************************************/
 
-void
-main(void)
+void ext_main(void* r)
 	
 	{
-	LITTER_CHECKTIMEOUT(kClassName);
 	
 	// Standard Max setup() call
-	setup(	&gObjectClass,					// Pointer to our class definition
+	gObjectClass = class_new(kClassName,					// Pointer to our class definition
 			(method) SinkerNew,				// Instantiation method  
 			(method) dsp_free,				// Default deallocation function
-			(short) sizeof(objSinker),		// Class object size
+			sizeof(objSinker),		// Class object size
 			NIL,							// No menu function
 			A_GIMME,						// List of arguments (one value per outlet)
 			0);
 	
 	// Standard Max Messages
-	addint	((method) SinkerInt);
-	addfloat((method) SinkerFloat);
+	class_addmethod(gObjectClass, (method) SinkerInt, "int", A_LONG, 0);
+	class_addmethod(gObjectClass, (method) SinkerFloat, "float", A_FLOAT, 0);
 	
 	// MSP Message
-	LITTER_TIMEBOMB addmess	((method) SinkerDSP,	"dsp",			A_CANT, 0);
+	class_addmethod(gObjectClass, (method) SinkerDSP,	"dsp",			A_CANT, 0);
 	
 	// Info messages
-	addmess	((method) SinkerAssist,	"assist",		A_CANT, 0);
-	addmess	((method) SinkerInfo,	"info",			A_CANT, 0);
-	addmess ((method) SinkerTattle,	"tattle",	 	A_NOTHING);
-	addmess ((method) SinkerTattle,	"dblclick", 	A_CANT, 0);
+	class_addmethod(gObjectClass, (method) SinkerAssist,	"assist",		A_CANT, 0);
+	class_addmethod(gObjectClass, (method) SinkerInfo,	"info",			A_CANT, 0);
+	class_addmethod(gObjectClass, (method) SinkerTattle,	"tattle",	 	A_NOTHING);
+	class_addmethod(gObjectClass, (method) SinkerTattle,	"dblclick", 	A_CANT, 0);
 	
 	// Initialize Litter Library
 	LitterInit(kClassName, 0);
@@ -157,7 +155,7 @@ main(void)
 
 void*
 SinkerNew(
-	SymbolPtr,
+	SymbolPtr unused,
 	short		iArgC,
 	Atom		iArgV[])
 	
@@ -179,7 +177,7 @@ SinkerNew(
 		}					
 	
 	// Let Max/MSP allocate us and inlets
-	me = (objSinker*) newobject(gObjectClass);
+	me = (objSinker*) object_alloc(gObjectClass);
 	
 	// Add outlets, right to left, and initialize values
 	if (iArgC == 0) {
@@ -278,7 +276,7 @@ SinkerTattle(
  *
  ******************************************************************************************/
 
-void SinkerAssist(objSinker*, void*, long iDir, long iArgNum, char* oCStr)
+void SinkerAssist(objSinker* me, void* unused, long iDir, long iArgNum, char* oCStr)
 	{
 	iArgNum = (iDir == ASSIST_INLET)
 				? 1 + (iArgNum > 1) 

@@ -86,7 +86,7 @@ typedef struct {
 #pragma mark • Global Variables
 
 void*			gPfishieJitClass	= NIL;
-Messlist*		gPfishieMaxClass	= NIL;
+t_class*		gPfishieMaxClass	= NIL;
 
 
 #pragma mark • Function Prototypes
@@ -207,7 +207,7 @@ GenPoissonRejTaus88Core(
  *	
  ******************************************************************************************/
 
-int C74_EXPORT main(void)
+void ext_main(void* r)
 	
 	{
 	const long kAttr = MAX_JIT_MOP_FLAGS_OWN_OUTPUTMATRIX | MAX_JIT_MOP_FLAGS_OWN_JIT_MATRIX;
@@ -220,29 +220,30 @@ int C74_EXPORT main(void)
 	PfishieJitInit();
 	
 	// Standard Max setup() call
-	setup(	&gPfishieMaxClass,					// Pointer to our class definition
+	gPfishieMaxClass = class_new(kMaxClassName,					// Pointer to our class definition
 			(method) PfishieNewMaxShell,		// Instance creation function
 			(method) PfishieFreeMaxShell,		// Custom deallocation function
-			(short) sizeof(msobPfishie),	// Class object size
+			sizeof(msobPfishie),	// Class object size
 			NIL,							// No menu function
 			A_GIMME,						// Jitter objects always parse their own arguments
 			0);		
 	
 	// Jitter Magic... 
-	p = max_jit_classex_setup(calcoffset(msobPfishie, obex));
+	max_jit_class_obex_setup(gPfishieMaxClass, calcoffset(msobPfishie, obex));
 	q = jit_class_findbyname(gensym((char*) kJitClassName));    
-    max_jit_classex_mop_wrap(p, q, kAttr); 		
-    max_jit_classex_standard_wrap(p, q, 0); 	
-	max_addmethod_usurp_low((method) PfishieOutputMatrix, "outputmatrix");
+    max_jit_class_mop_wrap(gPfishieMaxClass, q, kAttr); 		
+    max_jit_class_wrap_standard(gPfishieMaxClass, q, 0); 	
+	max_jit_class_addmethod_usurp_low(gPfishieMaxClass, (method) PfishieOutputMatrix, "outputmatrix");
 	
 	// Back to adding messages...
-	addmess	((method) PfishieTattle,	"dblclick",	A_CANT, 0);
-	addmess	((method) PfishieTattle,	"tattle",	A_NOTHING);
-	addmess	((method) PfishieAssist,	"assist",	A_CANT, 0);
-	addmess	((method) PfishieInfo,		"info",		A_CANT, 0);
+	class_addmethod(gPfishieMaxClass, (method) PfishieTattle,	"dblclick",	A_CANT, 0);
+	class_addmethod(gPfishieMaxClass, (method) PfishieTattle,	"tattle",	A_NOTHING);
+	class_addmethod(gPfishieMaxClass, (method) PfishieAssist,	"assist",	A_CANT, 0);
+	class_addmethod(gPfishieMaxClass, (method) PfishieInfo,		"info",		A_CANT, 0);
 	
 	// Initialize Litter Library
-	//LitterInit(kMaxClassName, 0);
+	gObjectClass = gPfishieMaxClass;
+	LitterInit(kMaxClassName, 0);
 	}
 
 
@@ -272,7 +273,7 @@ PfishieNewMaxShell(
 	void*			jitObj		= NIL;
 	t_symbol*			classSym	= gensym((char*) kJitClassName);
 	
-	me = (msobPfishie*) max_jit_obex_new(gPfishieMaxClass, classSym);
+	me = (msobPfishie*) max_jit_object_alloc(gPfishieMaxClass, classSym);
 		if (me == NIL) goto punt;
 		
 	jitObj = jit_object_new(classSym);
@@ -307,7 +308,7 @@ PfishieFreeMaxShell(
 	{
 	max_jit_mop_free(me);
 	jit_object_free(max_jit_obex_jitob_get(me));
-	max_jit_obex_free(me);
+	max_jit_object_free(me);
 	}
 
 

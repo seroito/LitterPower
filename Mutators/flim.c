@@ -79,7 +79,7 @@ static void FlimDeltaInt(tMutator*, long);
  *	
  ******************************************************************************************/
 
-int C74_EXPORT main(void)
+void ext_main(void* r)
 	
 	{
 	//LITTER_CHECKTIMEOUT(kClassName);
@@ -89,7 +89,7 @@ int C74_EXPORT main(void)
 	c = class_new(kClassName,				// Pointer to our class definition
 			(method) NewMutator,		// Instance creation function
 			NIL,						// No custom deallocation function
-			(short) sizeof(tMutator),	// Class object size
+			sizeof(tMutator),	// Class object size
 			NIL,						// No menu function
 			A_GIMME,					// We parse our arguments
 			0);		
@@ -139,7 +139,7 @@ int C74_EXPORT main(void)
         gObjectClass = c;
         
         post("%s: %s", kClassName, LPVERSION);
-        return 0;
+        return;
 
 	}
 

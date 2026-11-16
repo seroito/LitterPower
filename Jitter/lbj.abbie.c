@@ -83,7 +83,7 @@ typedef struct {
 #pragma mark • Global Variables
 
 void*			gAbbieJitClass	= NIL;
-Messlist*		gAbbieMaxClass	= NIL;
+t_class*		gAbbieMaxClass	= NIL;
 
 
 #pragma mark • Function Prototypes
@@ -251,8 +251,7 @@ GenBetaBCTaus88Core(
  *	
  ******************************************************************************************/
 
-int
-main(void)
+void ext_main(void* r)
 	
 	{
 	const long kFlags = MAX_JIT_MOP_FLAGS_OWN_OUTPUTMATRIX
@@ -266,30 +265,31 @@ main(void)
 	AbbieJitInit();
 	
 	// Standard Max setup() call
-	setup(	&gAbbieMaxClass,				// Pointer to our class definition
+	gAbbieMaxClass = class_new(kMaxClassName,				// Pointer to our class definition
 			(method) AbbieNewMaxShell,		// Instance creation function
 			(method) AbbieFreeMaxShell,		// Custom deallocation function
-			(short) sizeof(msobAbbie),		// Class object size
+			sizeof(msobAbbie),		// Class object size
 			NIL,							// No menu function
 			A_GIMME,						// Jitter objects always parse their own arguments
 			0);		
 	
 	// Jitter Magic... 
-	p = max_jit_classex_setup(calcoffset(msobAbbie, obex));
+	max_jit_class_obex_setup(gAbbieMaxClass, calcoffset(msobAbbie, obex));
 	q = jit_class_findbyname(gensym((char*) kJitClassName));    
-    max_jit_classex_mop_wrap(p, q, kFlags); 		
-    max_jit_classex_standard_wrap(p, q, 0); 	
-	max_addmethod_usurp_low((method) AbbieOutputMatrix, "outputmatrix");
-    //LITTER_TIMEBOMB max_addmethod_usurp_low((method) AbbieOutputMatrix, "outputmatrix");
+    max_jit_class_mop_wrap(gAbbieMaxClass, q, kFlags); 		
+    max_jit_class_wrap_standard(gAbbieMaxClass, q, 0); 	
+	max_jit_class_addmethod_usurp_low(gAbbieMaxClass, (method) AbbieOutputMatrix, "outputmatrix");
+    //max_jit_class_addmethod_usurp_low(gAbbieMaxClass, (method) AbbieOutputMatrix, "outputmatrix");
 	
 	// Back to adding messages...
-	addmess	((method) AbbieTattle,	"dblclick",	A_CANT, 0);
-	addmess	((method) AbbieTattle,	"tattle",	A_NOTHING);
-	addmess	((method) AbbieAssist,	"assist",	A_CANT, 0);
-	addmess	((method) AbbieInfo,	"info",		A_CANT, 0);
+	class_addmethod(gAbbieMaxClass, (method) AbbieTattle,	"dblclick",	A_CANT, 0);
+	class_addmethod(gAbbieMaxClass, (method) AbbieTattle,	"tattle",	A_NOTHING);
+	class_addmethod(gAbbieMaxClass, (method) AbbieAssist,	"assist",	A_CANT, 0);
+	class_addmethod(gAbbieMaxClass, (method) AbbieInfo,	"info",		A_CANT, 0);
 	
 	// Initialize Litter Library
-	//LitterInit(kMaxClassName, 0);
+	gObjectClass = gAbbieMaxClass;
+	LitterInit(kMaxClassName, 0);
 	
 	}
 
@@ -321,7 +321,7 @@ AbbieNewMaxShell(
 	void*			jitObj		= NIL;
 	t_symbol*			classSym	= gensym((char*) kJitClassName);
 	
-	me = (msobAbbie*) max_jit_obex_new(gAbbieMaxClass, classSym);
+	me = (msobAbbie*) max_jit_object_alloc(gAbbieMaxClass, classSym);
 	if (me == NIL) goto punt;
 		
 	jitObj = jit_object_new(classSym);
@@ -356,7 +356,7 @@ AbbieFreeMaxShell(
 	{
 	max_jit_mop_free(me);
 	jit_object_free(max_jit_obex_jitob_get(me));
-	max_jit_obex_free(me);
+	max_jit_object_free(me);
 	}
 
 

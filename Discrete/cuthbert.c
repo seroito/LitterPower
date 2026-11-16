@@ -125,7 +125,7 @@ static void	CuthbertInfo	(tCuthbert*);
  ******************************************************************************************/
 
 
-int C74_EXPORT main(void)
+void ext_main(void* r)
 
 	{
 	//LITTER_CHECKTIMEOUT(kClassName);
@@ -135,7 +135,7 @@ int C74_EXPORT main(void)
 	c = class_new(kClassName,				// Pointer to our class definition
 			(method) CuthbertNew,			// Instance creation function
 			(method) CuthbertFree,			// Deallocation function
-			(short) sizeof(tCuthbert),		// Class object size
+			sizeof(tCuthbert),		// Class object size
 			NIL,						// No menu function
 			A_DEFLONG,					// Optional arguments:	1: Data size
 			A_DEFLONG,					// 						2: seed
@@ -165,7 +165,7 @@ int C74_EXPORT main(void)
         gObjectClass = c;
         
         post("%s: %s", kClassName, LPVERSION);
-        return 0;
+        return;
 	
 	}
 

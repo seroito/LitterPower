@@ -1,1 +1,8 @@
-#define WIN_VERSION	1#define USE_QTML	1#include <Win32Headers.mch>#include "TrialPeriod.h"// This forces all .mxe's to require Max/MSP 4.5 or greater#define LITTER_USE_OBEX 1
+#define WIN_VERSION	1
+#define USE_QTML	1
+
+#include <Win32Headers.mch>
+#include "TrialPeriod.h"
+
+// This forces all .mxe's to require Max/MSP 4.5 or greater
+#define LITTER_USE_OBEX 1

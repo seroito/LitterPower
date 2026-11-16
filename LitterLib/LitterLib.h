@@ -5,49 +5,53 @@
 
 	Written by:	Peter Castine
 
-	Copyright:	© 2001-2006 Peter Castine
+	Copyright:	Â© 2001-2006 Peter Castine
 
 	Change History (most recent first):
 
-         <4>     27Ð2Ð06    pc      Move symmetry constants here, too.
-         <3>     27Ð2Ð06    pc      Move constants (kPi, etc.) to main LitterLib files. The
+                 2026               Modernized for the current Max SDK (Max 8/9). Resource
+                                    Manager access replaced by compiled-in string tables
+                                    (LitterStrings.h); pre-obex code paths removed.
+
+         <4>     27â€“2â€“06    pc      Move symmetry constants here, too.
+         <3>     27â€“2â€“06    pc      Move constants (kPi, etc.) to main LitterLib files. The
                                     constants are used in lots of projects that don't need MoreMath.
-         <2>     26Ð2Ð06    pc      Add expMin, expMax to enumerator Expect.
-         <1>     26Ð2Ð06    pc      First checked in after moving file and splitting off RNGs,
+         <2>     26â€“2â€“06    pc      Add expMin, expMax to enumerator Expect.
+         <1>     26â€“2â€“06    pc      First checked in after moving file and splitting off RNGs,
                                     Utilities, etc. into separate files
 */
 
 /******************************************************************************************
 	Prior History:
  
-        <14>     21Ð2Ð06    pc      Add simple inline beta() function
-        <13>     18Ð2Ð06    pc      Add general digamma() function (supporting all reals).
-        <12>     15Ð2Ð06    pc      Need to implement lgamma() and gamma() functions because the
+        <14>     21â€“2â€“06    pc      Add simple inline beta() function
+        <13>     18â€“2â€“06    pc      Add general digamma() function (supporting all reals).
+        <12>     15â€“2â€“06    pc      Need to implement lgamma() and gamma() functions because the
                                     braindead MSL/Windows doesn't provide them.  Also added
                                     Factorial(), LogFactorial() and two special cases of the digamma
                                     function.
-        <11>     15Ð2Ð06    pc      Add LitterExpect(), support for an 'expect' message for all
+        <11>     15â€“2â€“06    pc      Add LitterExpect(), support for an 'expect' message for all
                                     Litter RNGs.
-        <10>     12Ð2Ð06    pc      Move CountBits() to MaxUtils. Cleaned up some code.
-         <9>     11Ð1Ð06    pc      Add LitterAssistResF() utility function.
-         <8>     13Ð1Ð04    pc      Use Max API getbytes() & freebytes() for the Taus88 and TT800
+        <10>     12â€“2â€“06    pc      Move CountBits() to MaxUtils. Cleaned up some code.
+         <9>     11â€“1â€“06    pc      Add LitterAssistResF() utility function.
+         <8>     13â€“1â€“04    pc      Use Max API getbytes() & freebytes() for the Taus88 and TT800
                                     new/free routines. It seems to be the most reliable way to make
                                     the relevant code cross-platform compatible, and the amounts of
                                     memory required are within getbytes() capabilities.
-         <7>     10Ð1Ð04    pc      Major updates to support cross-platform development. Added
+         <7>     10â€“1â€“04    pc      Major updates to support cross-platform development. Added
                                     LitterGetVersVal() & Co. Freezing features for Litter 1.5 (bar
                                     beta bug fixes).
-         <6>      4Ð1Ð04    pc      Add LitterVers() and LetterAssist(): default methods for
+         <6>      4â€“1â€“04    pc      Add LitterVers() and LetterAssist(): default methods for
                                     handling vers and assist messages.
-         <5>      1Ð1Ð04    pc      Add LitterVers() and LetterAssist(): default methods for
+         <5>      1â€“1â€“04    pc      Add LitterVers() and LetterAssist(): default methods for
                                     handling vers and assist messages.
-         <4>   30Ð3Ð2003    pc      Add constant ID for a STR# identifying Max "finder" categories.
+         <4>   30â€“3â€“2003    pc      Add constant ID for a STR# identifying Max "finder" categories.
                                     And a function LitterAddClass() to use it.
-         <3>  30Ð12Ð2002    pc      Add constants to access version information stored in 'STR#"
+         <3>  30â€“12â€“2002    pc      Add constants to access version information stored in 'STR#"
                                     resources.
-         <2>  29Ð11Ð2002    pc      Initial check in.
-         <2>  28Ð11Ð2002    pc      Tidy up after check in.
-         <1>  28Ð11Ð2002    pc      Initial check in.
+         <2>  29â€“11â€“2002    pc      Initial check in.
+         <2>  28â€“11â€“2002    pc      Tidy up after check in.
+         <1>  28â€“11â€“2002    pc      Initial check in.
 
 		2-Apr-2001:		First implementation. Based on M. Matsumoto's code, but tweaked
 						for speed.
@@ -58,91 +62,64 @@
 #ifndef LITTERLIB_H
 #define LITTERLIB_H
 
-#pragma mark ¥ Include Files
-
+#pragma mark â€¢ Include Files
 
 #include "MaxUtils.h"
+#include "LitterStrings.h"
 
-#ifndef LITTER_USE_OBEX
-	#define LITTER_USE_OBEX 0
-#else
-	#include "ext_obex.h"
-#endif
-
-
-
-#pragma mark ¥ Macros
-
-#ifdef __GNUC__
-	// GNU C requires the entrypoint function to match one of two possible implicit prototypes
-	// To support this, the Max API changed to use the form int main(), although the return
-	// value is a dummy.
-	#define MAIN_RETURN_TYPE		int
-	#define MAIN_RETURN_STATEMENT	return 0
-#else
-	// Traditionally, they entrypoint function for Max externals was declared void main()
-	#define MAIN_RETURN_TYPE		void
-	#define MAIN_RETURN_STATEMENT
-#endif
-
-#if LITTER_USE_OBEX
-	#define LITTER_CORE_OBJECT(TYPE, NAME)		TYPE NAME; void* obex
-			// TYPE can be Object, Box, t_pxobject, etc.
-	#define LitterCalcOffset(STRUCT)			calcoffset(STRUCT, obex)
-#else
-	#define LITTER_CORE_OBJECT(TYPE, NAME)		TYPE NAME
-			// TYPE can be Object, Box, t_pxobject, etc.
-	#define LitterCalcOffset(STRUCT)			0
-#endif
+	// All Litter objects are obex/attribute-aware classes now. The macro is kept
+	// because some sources still test it.
+#undef LITTER_USE_OBEX
+#define LITTER_USE_OBEX 1
 
 
-#pragma mark ¥ Constants
+#pragma mark â€¢ Macros
 
-// vb: generic info string, printed at instantiation of the object
-#define LPVERSION "64-bit version. Copyright 2001-08 Peter Castine, Part of Litter Power 1.8"
+	// Historic macros for the entry point. The entry point of every Litter object is now
+	// the standard ext_main(); these remain for any code that still refers to them.
+#define MAIN_RETURN_TYPE		void
+#define MAIN_RETURN_STATEMENT	return
+
+	// TYPE can be t_object, t_pxobject, etc.
+	// The obex member was required by the Max 4.5 SDK. Max has managed the obex
+	// internally since Max 5, but we keep the member so object layouts stay as they were.
+#define LITTER_CORE_OBJECT(TYPE, NAME)		TYPE NAME; void* obex
+#define LitterCalcOffset(STRUCT)			calcoffset(STRUCT, obex)
 
 
+	// The trial period ("time bomb") protection of the commercial Litter Power releases
+	// has been retired. These macros remain so that sources using them still compile.
+#define LITTER_TIMEBOMB
+#define LITTER_CHECKTIMEOUT(NAME)
 
-	// Standard STR# indices
-#ifdef WIN_VERSION
+#pragma mark â€¢ Constants
 
-	enum {
-		lpStrIndexObjectVersShort	= 1,
-		lpStrIndexObjectVersLong,
-		lpStrIndexPackageVersShort,
-		lpStrIndexPackageVersLong,
-		lpStrIndexLitterCategory,
-		lpStrIndexMax4Category,
-		
-		lpStrIndexLastStandard		= lpStrIndexMax4Category
-		};
-		
-#else
+	// Generic info string, printed when the class is loaded
+#define LPVERSION "Copyright 2001-08 Peter Castine. Part of Litter Power 1.8 (64-bit, Max 8/9)"
 
-	enum {
-		lpStrIndexObjectVersShort		= 1,
-		lpStrIndexObjectVersLong,
-		lpStrIndexObjectVersVal,
-		lpStrIndexPackageVersShort,
-		lpStrIndexPackageVersLong,
-		lpStrIndexPackageVersVal,
-		
-		lpStrIndexLastStandard		= lpStrIndexPackageVersVal
-		};
-		
-#endif
+	// Standard string table indices (see LitterStrings.h)
+enum {
+	lpStrIndexObjectVersShort		= 1,
+	lpStrIndexObjectVersLong,
+	lpStrIndexObjectVersVal,
+	lpStrIndexPackageVersShort,
+	lpStrIndexPackageVersLong,
+	lpStrIndexPackageVersVal,
+
+	lpStrIndexLastStandard		= lpStrIndexPackageVersVal
+	};
 
 	// ...and for accessing version information
 enum {
 		// ID's according to Mac OS 'vers' conventions
-	lpVersIDObject		= 1,	// Use information from 'vers'(1) resource
-	lpVersIDPackage,			// Use information from 'vers'(2) resource
-	
-		// Values for the  
+	lpVersIDObject		= 1,	// Information about the object
+	lpVersIDPackage,			// Information about the package
+
+		// Values for the version type
 	lpVersTypeShort		= 1,	// Version short string
 	lpVersTypeLong,				// Version long string
 	lpVersTypeVal,				// Version as a 32-bit integer value (encoded as string)
-	
+
 	lpVersIDDefault		= lpVersIDObject,
 	lpVersTypeDefault	= lpVersTypeShort
 	};
@@ -225,13 +202,10 @@ enum Symmetry {
 // Various constants
 #define kLPcatID			128
 
-#if LITTER_USE_OBEX
-	#define kAttrFlagsReadOnly	(ATTR_SET_OPAQUE | ATTR_SET_OPAQUE_USER)
-#endif
+#define kAttrFlagsReadOnly	(ATTR_SET_OPAQUE | ATTR_SET_OPAQUE_USER)
 
 
-
-#pragma mark ¥ Type Definitions
+#pragma mark â€¢ Type Definitions
 
 #ifndef MAXARG      // Not sure why this is not defined here, must track down
 #define MAXARG 7
@@ -239,13 +213,9 @@ enum Symmetry {
 typedef int tTypeList[MAXARG];		// Up to seven arguments types (A_LONG, etc.)
 									// unused entries filled with A_NOTHING
 
-#if LITTER_USE_OBEX
-	typedef long tArgCount;
-#else
-	typedef short tArgCount;
-#endif
+typedef long tArgCount;
 
-typedef enum Symmetry	eSymmetry;		// Need to rename to eSymmetry ??
+typedef enum Symmetry	eSymmetry;
 typedef enum ActionType	eActionType;
 
 typedef enum Expect		eExpectSelector;
@@ -254,42 +224,17 @@ typedef double (*tExpectFunc)(t_object*, eExpectSelector);
 typedef enum LitterLicense	eLitterLicense;
 typedef enum CategoryClass	eCategoryClass;
 
-#if 0
-	// Not using this right now
-typedef struct {
-	long			vers;		// Version number of tPrefs struct
-	eLitterLicense	license;	// License code
-	eCategoryClass	cc;
-	Byte			padByte;	// Padding for struct alignment.
-	short			padShort;	// May be used in future versions.
-	} tPrefs;
-#endif
-
-typedef struct strList* tStrListPtr;
+typedef const tLitterStrList* tStrListPtr;
 
 
+#pragma mark â€¢ Global Variables
 
-#pragma mark ¥ Global Variables
+extern t_class*			gObjectClass;
 
-#if LITTER_USE_OBEX
-	extern t_class*			gObjectClass;
-#else
-	extern t_messlist*		gObjectClass;
-#endif
 
-#ifdef WIN_VERSION
-	extern HINSTANCE	gDLLInstanceHdl;
-	extern FILETIME		gModDate;
-#else
-	extern short			gStrResID;
-	extern unsigned long	gModDate;
-#endif
+#pragma mark â€¢ Function Prototypes
 
-#pragma mark ¥ Function Prototypes
-
-	// Wrappers for class_new()/setup() and class_addmethod()/addXXX() functions
-	// These are aware of obex-availability and Do The Right Thing, so Litter Objects
-	// don't need to worry (quite so much) about this.
+	// Wrappers for class_new() and class_addmethod()
 void	LitterSetupClass	(const char		iName[],
 							 long			iSize,
 							 long			iObexOffset,	// Use LitterCalcOffset() macro
@@ -304,11 +249,10 @@ void	LitterSetupClassGimme(const char	iName[],
 							  method		iFreeMeth,
 							  method		iPaletteMeth);	// For UI objects, otherwise NIL
 
-	//	Initialize the Litter Toolbox (call once)
+	//	Initialize the Litter Toolbox (call once, at the end of ext_main())
 void	LitterInit			(const char[], UInt32);
-//void    LitterInit_vb       (const char[], t_class*);       // new init function
 
-	// Pattr-agnostice wrapper for object_alloc()/newobject()
+	// Wrapper for object_alloc()
 t_object* LitterAllocateObject(void);
 
 
@@ -326,39 +270,23 @@ void	LitterHello			(const char[]);
 tStrListPtr LitterCopyStrListResourceByName(const char[]);
 void	LitterGetCStringFromStrList(char[kMaxResourceStrSize], const tStrListPtr, int);
 
-#if LITTER_USE_OBEX
 	// Attribute helper functions
 t_max_err LitterGetAttrAtom(t_atom*, long*, t_atom**);
 t_max_err LitterGetAttrInt(long, long*, t_atom**);
 t_max_err LitterGetAttrFloat(double, long*, t_atom**);
 t_max_err LitterGetAttrSym(t_symbol*, long*, t_atom**);
-#endif
 
 void	LitterInfo			(const char[], tObjectPtr, method);
 void	LitterExpect		(tExpectFunc, t_object*, t_symbol*, t_symbol*, Boolean);
 
 
-
-	// Cheesy trial protection
-// static inline Boolean LitterTimeBomb(const char[]);
-
-short	OpenPrefsFile		(SignedByte, Boolean, long*);
-
-
-#ifdef WIN_VERSION
-	// Mac OS functionality we emulate on Windows
-void	GetTime				(DateTimeRec*);
-#endif
-
 #pragma mark -
-#pragma mark ¥ Inline Functions
+#pragma mark â€¢ Inline Functions
 
 static inline short		LitterGetMaxVersion(void)
 				{ return maxversion() & 0x3fff; }				// Mask out standalone flag
 static inline Boolean	LitterInsideStandalone(void)
 				{ return (maxversion() & 0x4000) != 0; }
-
-#if LITTER_USE_OBEX
 
 static inline void LitterAddBang(method iMeth)
 		{ class_addmethod(gObjectClass, iMeth, "bang", A_NOTHING); }
@@ -393,41 +321,5 @@ static inline void LitterAddCant(method iMeth, const char iName[])
 static inline void LitterAddGimme(method iMeth, const char iName[])
 		{ class_addmethod(gObjectClass, iMeth, (char*) iName, A_GIMME, 0); }
 
-#else		// LITTER_USE_OBEX
-
-static inline void LitterAddBang(method iMeth)
-		{ addbang(iMeth); }
-
-static inline void LitterAddInt(method iMeth)
-		{ addint(iMeth); }
-
-static inline void LitterAddFloat(method iMeth)
-		{ addfloat(iMeth); }
-
-static inline void LitterAddMess0(method iMeth, const char iName[])
-		{ addmess(iMeth, (char*) iName, A_NOTHING); }
-
-static inline void LitterAddMess1(method iMeth, const char iName[], short iArg1)
-		{ addmess(iMeth, (char*) iName, iArg1, 0); }
-
-static inline void LitterAddMess2(	method iMeth, const char iName[],
-									int iArg1, int iArg2)
-		{ addmess(iMeth, (char*) iName,  iArg1, iArg2, 0); }
-
-static inline void LitterAddMess3(	method iMeth, const char iName[],
-									int iArg1, int iArg2, int iArg3)
-		{ addmess(iMeth, (char*) iName, iArg1, iArg2, iArg3, 0); }
-
-static inline void LitterAddMess4(	method iMeth, const char iName[],
-									int iArg1, int iArg2, int iArg3, int iArg4)
-		{ addmess(iMeth, (char*) iName, iArg1, iArg2, iArg3, iArg4, 0); }
-
-static inline void LitterAddCant(method iMeth, const char iName[])
-		{ addmess(iMeth, (char*) iName, A_CANT, 0); }
-
-static inline void LitterAddGimme(method iMeth, const char iName[])
-		{ addmess(iMeth, (char*) iName, A_GIMME, 0); }
-
-#endif			// LITTER_USE_OBEX
 
 #endif			// LITTERLIB_H

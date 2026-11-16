@@ -106,13 +106,12 @@ static void	DoInfo(tJulie*);
  *	
  ******************************************************************************************/
 
-void
-main(void)				// Parameter is obsolete (68k legacy)
+void ext_main(void* r)
 	
 	{
 	
 	// Standard Max setup() call
-	setup(	&gObjectClass,				// Pointer to our class definition
+	gObjectClass = class_new(kClassName,				// Pointer to our class definition
 			(method) NewJulie,			// Instance creation function
 			NIL,						// No custom deallocation function
 			sizeof(tJulie),				// Class object size
@@ -125,17 +124,17 @@ main(void)				// Parameter is obsolete (68k legacy)
 										// in an argument list.
 		
 	// Messages
-	addbang	((method) DoBang);
-	addfloat((method) DoZ0Real);
-	addftx	((method) DoZ0Imag,	1);
-	addftx	((method) DoCReal,	2);
-	addftx	((method) DoCImag,	3);
-	addmess	((method) DoReset,	"reset",	A_NOTHING);
+	class_addmethod(gObjectClass, (method) DoBang, "bang", A_NOTHING);
+	class_addmethod(gObjectClass, (method) DoZ0Real, "float", A_FLOAT, 0);
+	class_addmethod(gObjectClass, (method) DoZ0Imag, "ft1", A_FLOAT, 0);
+	class_addmethod(gObjectClass, (method) DoCReal, "ft2", A_FLOAT, 0);
+	class_addmethod(gObjectClass, (method) DoCImag, "ft3", A_FLOAT, 0);
+	class_addmethod(gObjectClass, (method) DoReset,	"reset",	A_NOTHING);
 	
-	addmess	((method) DoTattle,	"dblclick",	A_CANT, 0);
-	addmess	((method) DoTattle,	"tattle",	A_NOTHING);
-	addmess	((method) DoAssist,	"assist",	A_CANT, 0);
-	addmess	((method) DoInfo,	"info",		A_CANT, 0);
+	class_addmethod(gObjectClass, (method) DoTattle,	"dblclick",	A_CANT, 0);
+	class_addmethod(gObjectClass, (method) DoTattle,	"tattle",	A_NOTHING);
+	class_addmethod(gObjectClass, (method) DoAssist,	"assist",	A_CANT, 0);
+	class_addmethod(gObjectClass, (method) DoInfo,	"info",		A_CANT, 0);
 	
 	// Initialize LitterLib
 	LitterInit(kClassName, 0);
@@ -157,7 +156,7 @@ main(void)				// Parameter is obsolete (68k legacy)
 
 void*
 NewJulie(
-	Symbol*	,
+	Symbol* unused	,
 	short	iArgC,
 	Atom*	iArgV)
 	
@@ -195,7 +194,7 @@ NewJulie(
 		}
 	
 	// Let Max allocate us, our inlets, and outlets
-	me = (tJulie*) newobject(gObjectClass);
+	me = (tJulie*) object_alloc(gObjectClass);
 		if (me == NIL) goto punt;
 	
 		// Inlets, from right to left
@@ -338,7 +337,7 @@ DoTattle(
  *
  ******************************************************************************************/
 
-void DoAssist(tJulie*, void*, long iDir, long iArgNum, char* oCStr)
+void DoAssist(tJulie* me, void* unused, long iDir, long iArgNum, char* oCStr)
 	{ LitterAssist(iDir, iArgNum, strIndexInLeft, strIndexOutLeft, oCStr); }
 
 void DoInfo(tJulie* me)

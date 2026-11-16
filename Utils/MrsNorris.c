@@ -26,11 +26,7 @@
 //#include "TrialPeriodUtils.h"
 #include <string.h>		// We use strncmp()
 
-#if !defined(TARGET_API_MAC_CARBON) || !TARGET_API_MAC_CARBON
-	// Need to get Patcher typedef, need to explicitly #include
-	#include "ext_user.h"
-	#include "ext_wind.h"
-#endif
+
 
 
 #pragma mark • Constants
@@ -55,16 +51,6 @@ enum {
 	};
 
 
-#pragma mark • Windows Dynamic Linking
-
-#ifdef WIN_VERSION
-typedef void		(*tWindAPIVisFunc)(t_wind*);
-
-tWindAPIVisFunc		WindVisFunc	= NIL;
-#endif
-
-
-
 #pragma mark • Object Structure
 
 typedef struct {
@@ -72,13 +58,13 @@ typedef struct {
 	t_symbol*		filename;
 	short		searchDir;
 	Boolean		helpSuffix,
-				recurse;
+				recurse,
+				isOverview;
 	} objMrsNorris;
 
 
 #pragma mark • Global Variables
 
-static Boolean		gHasWindAPI = false;
 
 static SymbolPtr	gSymLPO			= NIL,
 					gSymOverview	= NIL;
@@ -108,24 +94,6 @@ static void MrsNorrisInfo	(objMrsNorris*);
 #pragma mark -
 /*****************************  I M P L E M E N T A T I O N  ******************************/
 
-#pragma mark • Inline Functions
-
-/******************************************************************************************
- *
- *	Wrappers around the conditionally available t_wind API calls.
- *	
- ******************************************************************************************/
-
-static inline void WindAPICallWindVis(t_wind* iWindow)
-	{
-#ifdef WIN_VERSION
-	if (WindVisFunc != NIL) WindVisFunc(iWindow);
-#else
-	if (gHasWindAPI) wind_vis(iWindow);
-#endif
-	}
-
-
 #pragma mark -
 
 /******************************************************************************************
@@ -138,83 +106,43 @@ static inline void WindAPICallWindVis(t_wind* iWindow)
 
 	static Boolean SearchForFile(char ioName[])
 		{
-		short	mVer = LitterGetMaxVersion(),
-				searchError,
-				pathID,
-				binary;
+		short		pathID		= 0;
+		t_fourcc	fTypeOut	= 0;
 		
-		if (mVer < 0x0400)
-			searchError = locatefile(ioName, &pathID, &binary);
-		else {
-			long	fTypeOut	= 0,
-					fTypeIn		= (mVer < 0x0500) ? 'maxb' : 'JSON';
-					
-			searchError = locatefile_extended(ioName, &pathID, &fTypeOut, &fTypeIn, 1);
-			}
+		if (locatefile_extended(ioName, &pathID, &fTypeOut, NIL, 0) != 0)
+			return false;
 		
-		if (searchError == 0) {
-			gSymOverview	= gensym(ioName);
-			gOverviewDir	= pathID;
-			}
+		gSymOverview	= gensym(ioName);
+		gOverviewDir	= pathID;
 		
-		return searchError == 0;
+		return true;
 		}
 
 	static void InitializeGlobals(void)
 		{
-		Boolean	preMax5 = LitterGetMaxVersion() < 0x0500;
-		char 	filename[kMaxResourceStrSize],
-				tempStr[kMaxResourceStrSize];
-		short	pathID;
+		// Help files are found through the Max search path these days (the package's
+		// help folder is part of it), so there is no special help directory any more.
+		// Look for the overview patcher: current file names first, then the Max 4 names.
+		static const short kOverviewNames[] = {	strIndexProOverview5,
+												strIndexStarterOverview5,
+												strIndexProOverview4,
+												strIndexStarterOverview4 };
+		char 	filename[kMaxResourceStrSize];
+		int		i;
 		
-		// First, set up t_wind API Calls, which are only avaliable prior to Max 5
-		if (LitterGetMaxVersion() < 0x0500) {
-		#ifdef WIN_VERSION
-			HINSTANCE lib = LoadLibrary("MaxAPI.lib");
-			
-			// ASSERT(lib != NIL), because Max versions 4.3-4.6 won't be running on Windows
-			// without it. Still, our programming style always checks for the worst.
-			// Also note that although we could theoretically keep track of instantiation
-			// count and free up everything when there are no objects using the library, but
-			// given that our HINSTANCE is simply a pointer to the globally open instance that
-			// isn't going to be freed ever, there doesn't seem to be much point 
-			if (lib != NIL) {
-				WindVisFunc			= (tWindAPIVisFunc)		 	GetProcAddress(lib, "wind_vis");
-						
-				// Again, it seems impossible that the procedure pointer should be NIL
-				if (WindVisFunc == NIL)
-					error("%s: couldn't get address of t_wind functions");
-				else gHasWindAPI = true;
-				}
-		#else
-			gHasWindAPI = true;
-		#endif
+		gHelpDir = 0;
+		
+		for (i = 0; i < 4; i += 1) {
+			LitterGetIndString(kOverviewNames[i], filename);
+			if (SearchForFile(filename)) return;
 			}
 		
-		// Now get the help path
-		LitterGetIndString(	preMax5 ? strIndexHelpPath4 : strIndexHelpPath5, 
-							filename);
-		if (path_frompathname(filename, &pathID, tempStr) == noErr)
-			 gHelpDir = pathID;
-		else error("%s: could not find Max Help path (%s)", kClassName, filename);
-			
-		// Now try to find Pro Overview
-		LitterGetIndString(	preMax5 ? strIndexProOverview4 : strIndexProOverview5,
-							filename);
-		if (SearchForFile(filename)) return;
-		
-		// That didn't work. Try the Starter Pack
-		LitterGetIndString(	preMax5 ? strIndexStarterOverview4 : strIndexStarterOverview5,
-							filename);
-		if (SearchForFile(filename)) return;
-		
-		// If we get to this point, leave gSymOverview and gOverviewDir alone (NIL and
-		// zero) but warn user
-		error("%s: could not find Litter Power overview patcher", kClassName);
-		
+		// Not finding the overview is only a problem if somebody asks for it;
+		// MrsNorrisBang() will complain then.
 		}
 
-int C74_EXPORT main(void)
+
+void ext_main(void* r)
 	
 	{
 	//LITTER_CHECKTIMEOUT(kClassName);
@@ -246,13 +174,11 @@ int C74_EXPORT main(void)
 	
 	// Initialize global symbols
 	gSymLPO = gensym("lpo");
-	InitializeGlobals();				// Initializes gSymOverview, gOverviewPath, and
-										// gHelpPath
-        class_register(CLASS_BOX, c);
-        gObjectClass = c;
-        
-        post("%s: %s", kClassName, LPVERSION);
-        return 0;
+	gObjectClass = c;
+	InitializeGlobals();				// Initializes gSymOverview and gOverviewDir
+	
+	// Initialize Litter Library
+	LitterInit(kClassName, 0);
 	
 	}
 
@@ -294,141 +220,71 @@ MrsNorrisNew(
  ******************************************************************************************/
 
 	// Parameter block for SniffAndMeow()
-	struct samParams {
-		char	name[kMaxResourceStrSize];
-		t_wind*	openWind;
-		};
-	
-		// !!
-		//	SniffAndMeow() no longer functions correctly under Max 5 because the
-		//	t_wind structure has changed. It is also currently undocumented.
-		//	Bummer
-		// !!
-	static short SniffAndMeow(Patcher* iPatcher, struct samParams* iSamParams)
-		{
-		t_wind*	pWind		= (t_wind*) iPatcher->p_wind;
-								// The typecast is superfluous ever since the introduction
-								// of the SDK for Max 4.2 or so, but it doesn't hurt.
-								// For earlier v4.0 SDKs it is necessary because Max 
-								// distinguished between a "public" and an "private"
-								// interface, and the p_wind member normally exposed only
-								// the public interface, while we need the private one 
-								// I have not yet investigated the situation for pre-4.0
-								// Max versions, where it may be necessary to get the window
-								// title from the Window Manager WindowRecord.
-		char*	wName		= pWind->w_name;
-		int		matchVal	= strcmp(wName, iSamParams->name);
-		
-		if (matchVal == 0)
-			iSamParams->openWind = pWind;
-		
-		return !matchVal;
-		}
-	
-/*
-	static void* LoadHelpFile(const char* iFileName)
-		{
-		void*	result = NIL;
-		short	helpPath, 
-				oldPath;
-		char	mt[kMaxResourceStrSize];			// String will be empty on return from
-													// path_setdefault()
-		
-		if (path_frompathname("./max-help", &helpPath, mt) == noErr) {
-			oldPath = path_getdefault();
-			path_setdefault(helpPath, true);		// Yes! Search help folder recursively
-			result = stringload((char*) iFileName);
-			path_setdefault(oldPath, false);
-			}
-		
-		return result;
-		}
-*/
-	
 void
 MrsNorrisBang(
 	objMrsNorris*	me)
 	
 	{
-	struct samParams	samp;
+	char	name[kMaxResourceStrSize];
+	short	oldPath		= 0;
+	void*	loadResult	= NIL;
 	
-	// Quick sanity check
 	if (me->filename == NIL || me->filename->s_name[0] == '\0') {
-		error("%s: no file specified", kClassName);
+		if (me->isOverview)
+			 error("%s: could not find Litter Power overview patcher", kClassName);
+		else error("%s: no file specified", kClassName);
 		return;
 		}
 	
-	samp.openWind	= NIL;
-	strcpy(samp.name, me->filename->s_name);
+	strncpy(name, me->filename->s_name, kMaxResourceStrLen);
+	name[kMaxResourceStrLen] = '\0';
 	
-	if (LitterGetMaxVersion() < 0x0500) {
-		patcher_eachdo((eachdomethod)SniffAndMeow, (void*) &samp);
-		}
-		// !!	It is a temporary stopgap that we skip SniffAndMeow() on Max 5
-		//		Until we have a published API we can't do anything with the pointer
-		//		returned in samp.openWind anyway
+	// (Under Max 4 we first looked for an already open window with this name and brought
+	// it to the front. Max does that by itself now when a file is opened twice.)
 	
-	if (samp.openWind != NIL) {
-		// Looks like we found what we're looking for
-		WindAPICallWindVis(samp.openWind);
+	if (me->searchDir != 0) {
+		oldPath = path_getdefault();
+		path_setdefault(me->searchDir, me->recurse);
 		}
+		
+	if (me->helpSuffix) {
+		char	helpSuffix[kMaxResourceStrSize],
+				helpFileName[2 * kMaxResourceStrSize];
+		
+		// Try the current help file suffix first, then the Max 4 suffix
+		LitterGetIndString(strIndexHelpSuffix5, helpSuffix);
+		strcpy(helpFileName, name);
+		strcat(helpFileName, helpSuffix);
+		loadResult = stringload(helpFileName);
+		
+		if (loadResult == NIL) {
+			LitterGetIndString(strIndexHelpSuffix4, helpSuffix);
+			strcpy(helpFileName, name);
+			strcat(helpFileName, helpSuffix);
+			loadResult = stringload(helpFileName);
+			}
+		
+		if (loadResult == NIL) {
+			error("%s: no help available for %s", kClassName, name);
+			}
+		}
+	
 	else {
-		// Looks like we'll have to open a new window
-		short	oldPath		= 0;
-		void*	loadResult	= NIL;
-		
-		if (me->searchDir != 0) {
-			oldPath = path_getdefault();
-			path_setdefault(me->searchDir, me->recurse);
+		loadResult = stringload(name);
+		if (loadResult == NIL) {
+			error("%s: not found: %s", kClassName, name);
 			}
-		
-		if (me->helpSuffix) {
-			char	helpSuffix[kMaxResourceStrSize],
-					helpFileName[kMaxResourceStrSize];
-			
-			if (LitterGetMaxVersion() >= 0x0500) {
-				// Try the new help suffix first
-				LitterGetIndString(strIndexHelpSuffix5, helpSuffix);
-				strncpy(helpFileName, samp.name, kMaxResourceStrLen);
-				strncat(helpFileName, helpSuffix, kMaxResourceStrLen);
-				
-				loadResult = stringload(helpFileName);
-				}
-			
-			if (loadResult == NIL) {
-				// Either we're running on Max 4 (or earlier!) or the help file is still
-				// using the old .help suffix
-				LitterGetIndString(strIndexHelpSuffix4, helpSuffix);
-				strncpy(helpFileName, samp.name, kMaxResourceStrLen);
-				strncat(helpFileName, helpSuffix, kMaxResourceStrLen);
-				
-				loadResult = stringload(helpFileName);
-				}
-			
-			if (loadResult == NIL) {
-				// If we still haven't found anything, we're out of luck
-				error("%s: no help available for %s", kClassName, samp.name);
-				}
-			}
-			
-		else {
-			loadResult = stringload(samp.name);
-			if (loadResult == NIL) {
-				error("%s: not found: %s", kClassName, samp.name);
-				}
-			}
-		
-		if (me->searchDir != 0) path_setdefault(oldPath, false);
-		// SDK documentation for this function explicitly states that Max itself will never
-		// create a hierarchical default search path. So previous "recurse" setting must be
-		// false.
 		}
+	
+	if (me->searchDir != 0) path_setdefault(oldPath, false);
 	
 	}
 
 void MrsNorrisSet(objMrsNorris* me, t_symbol* iName, long iHelp)
 	{
 		
+	me->isOverview = (iName == gSymLPO);
+	
 	if (iName == gSymLPO) {
 		// Special case. Use the Overview file Mrs. Norris found at launch time
 		me->filename	= gSymOverview;

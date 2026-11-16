@@ -40,10 +40,10 @@
 #define		piSymbol			"p"
 #define		deltaSymbol			"d"
 #else						// Special characters for Mac OS
-#define		ellipsisSymbol		"É"
-#define		muSymbol			"µ"
-#define		piSymbol			"¹"
-#define		deltaSymbol			"¶"
+#define		ellipsisSymbol		"â€¦"
+#define		muSymbol			"Âµ"
+#define		piSymbol			"Ï€"
+#define		deltaSymbol			"âˆ‚"
 #endif
 
 #define LPAssistIn1			"Signal (Source 1). Lots of other messages."
@@ -130,7 +130,7 @@ void	CalcRelUniform(tMutator*, long,
  *	
  ******************************************************************************************/
 
-int C74_EXPORT main(void)
+void ext_main(void* r)
 	
 	{
 	//LITTER_CHECKTIMEOUT(kClassName);
@@ -140,7 +140,7 @@ int C74_EXPORT main(void)
 	c = class_new(kClassName,				// Pointer to our class definition
 			(method) NewMutator,		// Instance creation function
 			(method) FreeMutator,		// Custom deallocation function
-			(short) sizeof(tMutator),	// Class object size
+			sizeof(tMutator),	// Class object size
 			NIL,						// No menu function
 			A_GIMME,					// We parse our arguments
 			0);		
@@ -184,7 +184,7 @@ int C74_EXPORT main(void)
         gObjectClass = c;
         
         post("%s: %s", kClassName, LPVERSION);
-        return 0;
+        return;
 	}
 
 #pragma mark -

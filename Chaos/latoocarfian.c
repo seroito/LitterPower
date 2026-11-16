@@ -32,6 +32,8 @@
 #pragma mark • Include Files
 
 #include "LitterLib.h"
+#include "MiscUtils.h"
+#include "Taus88.h"
 
 #pragma mark • Constants
 
@@ -39,7 +41,7 @@ const char*	kClassName		= "lp.lana";			// Class name
 const char*	kPackageName	= "lp.lana Package";	// Package name for 'vers'(2) resource
 
 
-const int	kProxyCount		= 4;
+enum { kProxyCount = 4 };
 
 
 	// Indices for STR# resource
@@ -133,7 +135,6 @@ typedef struct {
 
 #pragma mark • Global Variables
 
-t_messlist*	gLanaClass		= NIL;
 short		gStrResID		= 0;
 long		gModDate		= 0;
 
@@ -142,7 +143,7 @@ long		gModDate		= 0;
 
 	// Class message functions
 void*		NewLana(Symbol*, short, Atom*);
-void		FreeLana(tLana*);
+static void	FreeLana(tLana*);
 
 	// Object message functions
 static void DoBang(tLana*);
@@ -196,15 +197,14 @@ static void	DoInfo(tLana*);
  *	
  ******************************************************************************************/
 
-void
-main(void*)				// Parameter is obsolete (68k legacy)
+void ext_main(void* r)
 	
 	{
 	short	externResFile,
 			prevResFile;
 	
 	// Standard Max setup() call
-	setup(	&gLanaClass,				// Pointer to our class definition
+	gObjectClass = class_new(kClassName,				// Pointer to our class definition
 			(method) NewLana,			// Instance creation function
 			(method) FreeLana,			// Custom deallocation function
 			sizeof(tLana),				// Class object size
@@ -213,37 +213,37 @@ main(void*)				// Parameter is obsolete (68k legacy)
 			0);							//	followed 0 to 6 floats (Why do I do this?)
 		
 	// Messages
-	addbang	((method) DoBang);
-	addfloat((method) DoFloat);
-	addint	((method) DoInt);
-	addmess	((method) DoSeed,	"list",		A_GIMME, 0);
-	addmess	((method) DoSet,	"set",		A_FLOAT, A_FLOAT, 0);
-	addmess	((method) DoReset,	"reset",	A_NOTHING);
+	class_addmethod(gObjectClass, (method) DoBang, "bang", A_NOTHING);
+	class_addmethod(gObjectClass, (method) DoFloat, "float", A_FLOAT, 0);
+	class_addmethod(gObjectClass, (method) DoInt, "int", A_LONG, 0);
+	class_addmethod(gObjectClass, (method) DoSeed,	"list",		A_GIMME, 0);
+	class_addmethod(gObjectClass, (method) DoSet,	"set",		A_FLOAT, A_FLOAT, 0);
+	class_addmethod(gObjectClass, (method) DoReset,	"reset",	A_NOTHING);
 	
-	addmess	((method) DoIdent,	"ident",	A_NOTHING);
-	addmess	((method) DoZero,	"zero",		A_NOTHING);
-	addmess	((method) DoOne,	"one",		A_NOTHING);
-	addmess	((method) DoRecip,	"recip",	A_NOTHING);
-	addmess	((method) DoSin,	"sin",		A_NOTHING);
-	addmess	((method) DoCos,	"cos",		A_NOTHING);
-	addmess	((method) DoTan,	"tan",		A_NOTHING);
-	addmess	((method) DoCot,	"cot",		A_NOTHING);
-	addmess	((method) DoSinPi,	"sinpi",	A_NOTHING);
-	addmess	((method) DoCosPi,	"cospi",	A_NOTHING);
-	addmess	((method) DoTanPi,	"tanpi",	A_NOTHING);
-	addmess	((method) DoCotPi,	"cotpi",	A_NOTHING);
-	addmess	((method) DoSinh,	"sinh",		A_NOTHING);
-	addmess	((method) DoCosh,	"cosh",		A_NOTHING);
-	addmess	((method) DoTanh,	"tanh",		A_NOTHING);
-	addmess	((method) DoLog,	"log",		A_NOTHING);
-	addmess	((method) DoExp,	"exp",		A_NOTHING);
-	addmess	((method) DoSqr,	"sqr",		A_NOTHING);
-	addmess	((method) DoRoot,	"sqrt",		A_NOTHING);
+	class_addmethod(gObjectClass, (method) DoIdent,	"ident",	A_NOTHING);
+	class_addmethod(gObjectClass, (method) DoZero,	"zero",		A_NOTHING);
+	class_addmethod(gObjectClass, (method) DoOne,	"one",		A_NOTHING);
+	class_addmethod(gObjectClass, (method) DoRecip,	"recip",	A_NOTHING);
+	class_addmethod(gObjectClass, (method) DoSin,	"sin",		A_NOTHING);
+	class_addmethod(gObjectClass, (method) DoCos,	"cos",		A_NOTHING);
+	class_addmethod(gObjectClass, (method) DoTan,	"tan",		A_NOTHING);
+	class_addmethod(gObjectClass, (method) DoCot,	"cot",		A_NOTHING);
+	class_addmethod(gObjectClass, (method) DoSinPi,	"sinpi",	A_NOTHING);
+	class_addmethod(gObjectClass, (method) DoCosPi,	"cospi",	A_NOTHING);
+	class_addmethod(gObjectClass, (method) DoTanPi,	"tanpi",	A_NOTHING);
+	class_addmethod(gObjectClass, (method) DoCotPi,	"cotpi",	A_NOTHING);
+	class_addmethod(gObjectClass, (method) DoSinh,	"sinh",		A_NOTHING);
+	class_addmethod(gObjectClass, (method) DoCosh,	"cosh",		A_NOTHING);
+	class_addmethod(gObjectClass, (method) DoTanh,	"tanh",		A_NOTHING);
+	class_addmethod(gObjectClass, (method) DoLog,	"log",		A_NOTHING);
+	class_addmethod(gObjectClass, (method) DoExp,	"exp",		A_NOTHING);
+	class_addmethod(gObjectClass, (method) DoSqr,	"sqr",		A_NOTHING);
+	class_addmethod(gObjectClass, (method) DoRoot,	"sqrt",		A_NOTHING);
 	
-	addmess	((method) DoTattle,	"dblclick",	A_CANT, 0);
-	addmess	((method) DoTattle,	"tattle",	A_NOTHING);
-	addmess	((method) DoAssist,	"assist",	A_CANT, 0);
-	addmess	((method) DoInfo,	"info",		A_CANT, 0);
+	class_addmethod(gObjectClass, (method) DoTattle,	"dblclick",	A_CANT, 0);
+	class_addmethod(gObjectClass, (method) DoTattle,	"tattle",	A_NOTHING);
+	class_addmethod(gObjectClass, (method) DoAssist,	"assist",	A_CANT, 0);
+	class_addmethod(gObjectClass, (method) DoInfo,	"info",		A_CANT, 0);
 	
 	// Initialize Litter Library
 	// Lana will generate random starting values if the user doesn't say different
@@ -302,7 +302,7 @@ MapStrToFunction(
 
 void*
 NewLana(
-	Symbol*	,
+	Symbol* unused	,
 	short	iArgC,
 	Atom*	iArgV)
 	
@@ -317,7 +317,7 @@ NewLana(
 	//
 	// Let Max allocate us, our inlets, and outlets
 	//
-	me = (tLana*) newobject(gLanaClass);
+	me = (tLana*) object_alloc(gObjectClass);
 		if (me == NIL) goto punt;
 	
 		// Extra inlets: all proxies
@@ -531,7 +531,7 @@ DoBang(
 	tLana* me)
 	
 	{
-	const long kInlet = ObjectGetInlet((Object*) me, me->coreObject.z_in);
+	const long kInlet = ObjectGetInlet((Object*) me, 0);
 	
 	// This may seem anal-retentive, but I think allowing bangs in any inlet is
 	// confusing
@@ -559,7 +559,7 @@ DoFloat(
 	
 	{
 	
-	switch ( ObjectGetInlet((Object*) me, me->coreObject.z_in) ) {
+	switch ( ObjectGetInlet((Object*) me, 0) ) {
 		case 4:		me->d = iVal;		break;
 		case 3:		me->c = iVal;		break;
 		case 2:		me->b = iVal;		break;
@@ -589,7 +589,7 @@ static void DoInt(tLana* me, long iVal)
 static void
 DoSeed(
 	tLana*	me,
-	Symbol*	,							// This is always "list"
+	Symbol* unused	,							// This is always "list"
 	short	iArgC,
 	Atom*	iArgV)
 	
@@ -665,7 +665,7 @@ DoReset(
 
 	static void SetFunc(tLana* me, tFunction iFunc)
 		{
-		switch ( ObjectGetInlet((Object*) me, me->coreObject.z_in) ) {
+		switch ( ObjectGetInlet((Object*) me, 0) ) {
 			case 4:	me->fnD = iFunc; break;
 			case 3:	me->fnC = iFunc; break;
 			case 2:	me->fnB = iFunc; break;
@@ -736,8 +736,8 @@ DoTattle(
  *
  ******************************************************************************************/
 
-void DoAssist(tLana*, void*, long iDir, long iArgNum, char* oCStr)
-	{ LitterInfo(iDir, iArgNum, strIndexInLeft, strIndexOutLeft, oCStr); }
+void DoAssist(tLana* me, void* unused, long iDir, long iArgNum, char* oCStr)
+	{ LitterAssist(iDir, iArgNum, strIndexInLeft, strIndexOutLeft, oCStr); }
 
 void DoInfo(tLana* me)
 	{ LitterInfo(kClassName, &me->coreObject, (method) DoTattle); }

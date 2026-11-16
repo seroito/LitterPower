@@ -170,7 +170,7 @@ static inline double QuadSlope(double iNow, double iGoal, unsigned long iSteps, 
  *	
  ******************************************************************************************/
 
-int C74_EXPORT main(void)
+void ext_main(void* r)
 	
 	{
 	t_class *c;
@@ -213,7 +213,7 @@ int C74_EXPORT main(void)
         gObjectClass = c;
         
         post("%s: %s", kClassName, lpversion);
-        return 0;
+        return;
 
 	}
 

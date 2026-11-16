@@ -97,9 +97,9 @@ static void	DoAssist(tJulie*, void* , long , long , char*);
 static void	DoInfo(tJulie*);
 
 	// MSP Messages
-static void	BuildDSPChain(tJulie*, t_signal**, short*);
-static int*	PerformJulieDynamic(int*);
-static int*	PerformJulieStatic(int*);
+static void	BuildDSPChain(tJulie*, t_object*, short*, double, long, long);
+static void	PerformJulieDynamic(tJulie*, t_object*, double**, long, double**, long, long, long, void*);
+static void	PerformJulieStatic(tJulie*, t_object*, double**, long, double**, long, long, long, void*);
 
 
 #pragma mark -
@@ -119,13 +119,12 @@ static int*	PerformJulieStatic(int*);
  *	
  ******************************************************************************************/
 
-void
-main(void)
+void ext_main(void* r)
 	
 	{
 	
 	// Standard Max/MSP initialization mantra
-	setup(	&gObjectClass,				// Pointer to our class definition
+	gObjectClass = class_new(kClassName,				// Pointer to our class definition
 			(method) NewJulie,			// Instance creation function
 			(method) dsp_free,			// Default deallocation function
 			sizeof(tJulie),				// Class object size
@@ -137,19 +136,19 @@ main(void)
 			0);							// Amazingly, Max cannot handle fourfold A_DEFFLOAT
 										// in an argument list.
 	
-	dsp_initclass();
+	class_dspinit(gObjectClass);
 
 	// Messages
-	addfloat((method) DoFloat);
-	addmess	((method) DoReset,	"reset",	A_NOTHING);
+	class_addmethod(gObjectClass, (method) DoFloat, "float", A_FLOAT, 0);
+	class_addmethod(gObjectClass, (method) DoReset,	"reset",	A_NOTHING);
 	
-	addmess	((method) DoTattle,	"dblclick",	A_CANT, 0);
-	addmess	((method) DoTattle,	"tattle",	A_NOTHING);
-	addmess	((method) DoAssist,	"assist",	A_CANT, 0);
-	addmess	((method) DoInfo,	"info",		A_CANT, 0);
+	class_addmethod(gObjectClass, (method) DoTattle,	"dblclick",	A_CANT, 0);
+	class_addmethod(gObjectClass, (method) DoTattle,	"tattle",	A_NOTHING);
+	class_addmethod(gObjectClass, (method) DoAssist,	"assist",	A_CANT, 0);
+	class_addmethod(gObjectClass, (method) DoInfo,	"info",		A_CANT, 0);
 	
 	// MSP-Level messages
-	addmess	((method) BuildDSPChain, "dsp",	A_CANT, 0);
+	class_addmethod(gObjectClass, (method) BuildDSPChain, "dsp64",	A_CANT, 0);
 
 	// Initialize LitterLit
 	LitterInit(kClassName, 0);
@@ -169,7 +168,7 @@ main(void)
 
 void*
 NewJulie(
-	Symbol*	,
+	Symbol* unused	,
 	short	iArgC,
 	Atom*	iArgV)
 	
@@ -207,7 +206,7 @@ NewJulie(
 		}
 
 	// Let Max/MSP allocate us, our inlets, and outlets.
-	me = (tJulie*) newobject(gObjectClass);
+	me = (tJulie*) object_alloc(gObjectClass);
 		if (me == NIL) goto punt;
 	
 	dsp_setup(&(me->coreObject), 4);				// All four inlets accept signal vectors
@@ -332,7 +331,7 @@ DoTattle(
  *
  ******************************************************************************************/
 
-void DoAssist(tJulie*, void*, long iDir, long iArgNum, char* oCStr)
+void DoAssist(tJulie* me, void* unused, long iDir, long iArgNum, char* oCStr)
 	{ LitterAssist(iDir, iArgNum, strIndexInLeft, strIndexOutLeft, oCStr); }
 
 void DoInfo(tJulie* me)
@@ -346,100 +345,77 @@ void DoInfo(tJulie* me)
 
 /******************************************************************************************
  *
- *	BuildDSPChain(me, ioDSPVectors, iConnectCounts)
+ *	BuildDSPChain(me, iDSP64, iConnectCounts, iSampleRate, iMaxVectorSize, iFlags)
  *
  ******************************************************************************************/
 
 void
 BuildDSPChain(
 	tJulie*		me,
-	t_signal**	iDSPVectors,
-	short*		iConnectCounts)
+	t_object*	iDSP64,
+	short*		iConnectCounts,
+	double		iSampleRate,
+	long		iMaxVectorSize,
+	long		iFlags)
 	
 	{
-	
-	if (iConnectCounts[outletReal] == 0 && iConnectCounts[outletImag] == 0)
-		return;
+	#pragma unused(iSampleRate, iMaxVectorSize, iFlags)
 	
 	if ( iConnectCounts[inletZ0Real] || iConnectCounts[inletZ0Imag]
 			|| iConnectCounts[inletCReal] || iConnectCounts[inletCImag] ) {
-	
-		dsp_add(
-			PerformJulieDynamic, 8,
-			me, (long) iDSPVectors[outletReal]->s_n,
-			iConnectCounts[inletZ0Real]	? iDSPVectors[inletZ0Real]->s_vec	: NIL,
-			iConnectCounts[inletZ0Imag]	? iDSPVectors[inletZ0Imag]->s_vec	: NIL,
-			iConnectCounts[inletCReal]	? iDSPVectors[inletCReal]->s_vec	: NIL,
-			iConnectCounts[inletCImag]	? iDSPVectors[inletCImag]->s_vec	: NIL,
-			iConnectCounts[outletReal]	? iDSPVectors[outletReal]->s_vec	: NIL,
-			iConnectCounts[outletImag]	? iDSPVectors[outletImag]->s_vec	: NIL
-			);
+		// Tell the perform method which inlets have signals connected
+		intptr_t connected = 0;
 		
+		if (iConnectCounts[inletZ0Real])	connected |= 1 << inletZ0Real;
+		if (iConnectCounts[inletZ0Imag])	connected |= 1 << inletZ0Imag;
+		if (iConnectCounts[inletCReal])		connected |= 1 << inletCReal;
+		if (iConnectCounts[inletCImag])		connected |= 1 << inletCImag;
+		
+		dsp_add64(iDSP64, (t_object*) me, (t_perfroutine64) PerformJulieDynamic, 0, (void*) connected);
 		}
 	
-	else {
-		
-		dsp_add(
-			PerformJulieStatic, 4,
-			me, (long) iDSPVectors[outletReal]->s_n,
-			iConnectCounts[outletReal] ? iDSPVectors[outletReal]->s_vec : NIL,
-			iConnectCounts[outletImag] ? iDSPVectors[outletImag]->s_vec : NIL
-			);
-		
-		}
+	else dsp_add64(iDSP64, (t_object*) me, (t_perfroutine64) PerformJulieStatic, 0, NIL);
 	
 	}
 	
 
 /******************************************************************************************
  *
- *	PerformJulieDynamic(iParams)
- *	PerformJulieStatic(iParams)
+ *	PerformJulieDynamic(me, iDSP64, iIns, iInCount, iOuts, iOutCount, iVecSize, iFlags, iUser)
+ *	PerformJulieStatic(me, iDSP64, iIns, iInCount, iOuts, iOutCount, iVecSize, iFlags, iUser)
  *
- *	Parameter block contains the following values values:
- *		- Address of the function
- *		- The performing julie~ object
- *		- Vector size
- *		- output signal (real component)
- *		- output signal (imaginary component)
- *	  and, for the Dynamic version,
- *		- Input Z0 signal (real and imaginary components)
- *		- Input C signal (real and imaginary components)
- *	  tagged at the end of poth parameter lists by
- *		- Address of the next link in the parameter chain
+ *	The static version is used when no signals are connected to any of the inlets. For
+ *	the dynamic version the user parameter is a bit mask indicating which inlets have
+ *	signals connected.
  *
  ******************************************************************************************/
 
-int*
+void
 PerformJulieStatic(
-	int* iParams)
+	tJulie*		me,
+	t_object*	iDSP64,
+	double**	iIns,
+	long		iInCount,
+	double**	iOuts,
+	long		iOutCount,
+	long		iVecSize,
+	long		iFlags,
+	void*		iUserParam)
 	
 	{
-	enum {
-		paramFuncAddress	= 0,
-		paramMe,
-		paramVectorSize,
-		paramOutReal,
-		paramOutImag,
-		
-		paramNextLink
-		};
+	#pragma unused(iDSP64, iIns, iInCount, iOutCount, iFlags, iUserParam)
 	
-	long			vecSize;
-	tSampleVector	outReal,
-					outImag;
+	long			vecSize	= iVecSize;
+	tSampleVector	outReal	= iOuts[0],
+					outImag	= iOuts[1];
 	double			curReal,
 					curImag,
 					cReal,
 					cImag;
-	tJulie*			me = (tJulie*) iParams[paramMe];
 	
-	if (me->coreObject.z_disabled) goto exit;
+	if (me->coreObject.z_disabled || vecSize <= 0) return;
 	
 	// Copy parameters into registers
-	vecSize	= (long) iParams[paramVectorSize];
-	outReal	= (tSampleVector) iParams[paramOutReal];
-	outImag = (tSampleVector) iParams[paramOutImag];
 	curReal	= me->zReal;
 	curImag = me->zImag;
 	cReal	= me->cReal;
@@ -459,53 +435,40 @@ PerformJulieStatic(
 	me->zReal = curReal;
 	me->zImag = curImag;
 	
-exit:
-	return iParams + paramNextLink;
 	}
 
 
-int*
+void
 PerformJulieDynamic(
-	int* iParams)
+	tJulie*		me,
+	t_object*	iDSP64,
+	double**	iIns,
+	long		iInCount,
+	double**	iOuts,
+	long		iOutCount,
+	long		iVecSize,
+	long		iFlags,
+	void*		iUserParam)
 	
 	{
-	enum {
-		paramFuncAddress	= 0,
-		paramMe,
-		paramVectorSize,
-		paramInZReal,
-		paramInZImag,
-		paramInCReal,
-		paramInCImag,
-		paramOutReal,
-		paramOutImag,
-		
-		paramNextLink
-		};
+	#pragma unused(iDSP64, iInCount, iOutCount, iFlags)
 	
-	long			vecSize;
-	tSampleVector	inZReal,
-					inZImag,
-					inCReal,
-					inCImag,
-					outReal,
-					outImag;
+	intptr_t		connected = (intptr_t) iUserParam;
+	long			vecSize	= iVecSize;
+	tSampleVector	inZReal	= (connected & (1 << inletZ0Real)) ? iIns[inletZ0Real] : NIL,
+					inZImag	= (connected & (1 << inletZ0Imag)) ? iIns[inletZ0Imag] : NIL,
+					inCReal	= (connected & (1 << inletCReal)) ? iIns[inletCReal] : NIL,
+					inCImag	= (connected & (1 << inletCImag)) ? iIns[inletCImag] : NIL,
+					outReal	= iOuts[0],
+					outImag	= iOuts[1];
 	double			zReal,
 					zImag,
 					cReal,
 					cImag;
-	tJulie*			me = (tJulie*) iParams[paramMe];
 	
-	if (me->coreObject.z_disabled) goto exit;
+	if (me->coreObject.z_disabled || vecSize <= 0) return;
 	
 	// Copy parameters into registers
-	vecSize	= (long) iParams[paramVectorSize];
-	inZReal	= (tSampleVector) iParams[paramInZReal];
-	inZImag	= (tSampleVector) iParams[paramInZImag];
-	inCReal	= (tSampleVector) iParams[paramInCReal];
-	inCImag	= (tSampleVector) iParams[paramInCImag];
-	outReal	= (tSampleVector) iParams[paramOutReal];
-	outImag	= (tSampleVector) iParams[paramOutImag];
 	zReal	= me->zReal;
 	zImag	= me->zImag;
 	cReal	= me->cReal;
@@ -527,6 +490,4 @@ PerformJulieDynamic(
 	me->zReal = zReal;
 	me->zImag = zImag;
 	
-exit:
-	return iParams + paramNextLink;
 	}

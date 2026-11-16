@@ -133,14 +133,12 @@ RndLong(void)											// Quick'n'dirty but good enough.
  *	
  ******************************************************************************************/
 
-void
-main()
+void ext_main(void* r)
 	
 	{
-	LITTER_CHECKTIMEOUT(kClassName);
 	
 	// Standard Max setup() call
-	setup(	&gObjectClass,			// Pointer to our class definition
+	gObjectClass = class_new(kClassName,			// Pointer to our class definition
 			(method) NewDruthers,			    
 			NIL,						// No custom deallocation function
 			sizeof(tDruthers),			// Class object size
@@ -148,13 +146,13 @@ main()
 			A_NOTHING);					// No arguments
 	
 	// Messages
-	LITTER_TIMEBOMB addbang	((method) DoReg);
-	LITTER_TIMEBOMB addmess	((method) DoReg,	"reg", A_NOTHING);
-//	addint	((method) DoCategories);
-//	addmess ((method) DoCategories,	"categories", A_LONG);
+	class_addmethod(gObjectClass, (method) DoReg, "bang", A_NOTHING);
+	class_addmethod(gObjectClass, (method) DoReg,	"reg", A_NOTHING);
+//	class_addmethod(gObjectClass, (method) DoCategories, "int", A_LONG, 0);
+//	class_addmethod(gObjectClass, (method) DoCategories,	"categories", A_LONG);
 
 		// Currently not using LitterInit(), so explicitly set vers method
-	addmess	((method) LitterVers, "vers",A_DEFLONG, A_DEFLONG, 0);
+	class_addmethod(gObjectClass, (method) LitterVers, "vers",A_DEFLONG, A_DEFLONG, 0);
 	
 	// Get our resources...
 	resnamecopy('STR#', (char*) kClassName);		// 'STR#' resource must be named "LitterPrefs"
@@ -459,7 +457,7 @@ NewDruthers()
 	{
 	tDruthers*	me	= NIL;
 	
-	me = (tDruthers*) newobject(gObjectClass);
+	me = (tDruthers*) object_alloc(gObjectClass);
 	
 	return me;
 	}

@@ -103,7 +103,7 @@ static void		C2PInfo(tConverter*);
  *	
  ******************************************************************************************/
 
-int C74_EXPORT main(void)
+void ext_main(void* r)
 	
 	{
 	//LITTER_CHECKTIMEOUT(kClassName);
@@ -113,7 +113,7 @@ int C74_EXPORT main(void)
 	c = class_new(kClassName,					// Pointer to our class definition
 			(method) C2PNew,				// Instance creation function
 			(method) dsp_free,					// Default deallocation function
-			(short) sizeof(tConverter),			// Class object size
+			sizeof(tConverter),			// Class object size
 			NIL,								// No menu function
 			0);							// No arguments
 	
@@ -135,7 +135,7 @@ int C74_EXPORT main(void)
           gObjectClass = c;
           
           post("%s: %s", kClassName, LPVERSION);
-          return 0;
+          return;
 
 	}
 

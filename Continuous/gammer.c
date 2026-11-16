@@ -646,7 +646,7 @@ GammerNew(
  *	
  ******************************************************************************************/
 
-int C74_EXPORT main(void)
+void ext_main(void* r)
 	
 	{
 	const tTypeList myArgTypes = {

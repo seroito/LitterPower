@@ -1,1 +1,51 @@
-/*	File:		UniformExpectations.h	Contains:	Header file for UniformExpectations.c.	Written by:	Peter Castine	Copyright:	© 2006 Peter Castine	Change History (most recent first):         <1>     26Ð2Ð06    pc      first checked in.*/#pragma once#pragma mark ¥ Include Files#ifndef __LITTERLIB_H__	#include "LitterLib.h"			// for eExpectSelector enumration#endif#pragma mark ¥ Constants#pragma mark ¥ Type Definitions#pragma mark ¥ Global Variables#pragma mark ¥ Function Prototypesdouble	UniformExpectationsDiscrete(long, long, eExpectSelector);double	UniformExpectationsContinuous(double, double, eExpectSelector);#pragma mark -#pragma mark ¥ Inline Functions & Macros	
+/*
+	File:		UniformExpectations.h
+
+	Contains:	Header file for UniformExpectations.c.
+
+	Written by:	Peter Castine
+
+	Copyright:	Â© 2006 Peter Castine
+
+	Change History (most recent first):
+
+         <1>     26â€“2â€“06    pc      first checked in.
+*/
+
+
+
+#pragma once
+
+#pragma mark â€¢ Include Files
+
+#ifndef __LITTERLIB_H__
+	#include "LitterLib.h"			// for eExpectSelector enumration
+#endif
+
+#pragma mark â€¢ Constants
+
+
+
+#pragma mark â€¢ Type Definitions
+
+
+
+
+
+#pragma mark â€¢ Global Variables
+
+
+
+
+#pragma mark â€¢ Function Prototypes
+
+double	UniformExpectationsDiscrete(long, long, eExpectSelector);
+double	UniformExpectationsContinuous(double, double, eExpectSelector);
+
+
+#pragma mark -
+#pragma mark â€¢ Inline Functions & Macros
+
+	
+
+

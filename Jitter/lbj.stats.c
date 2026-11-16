@@ -120,7 +120,7 @@ typedef struct {
 #pragma mark • Global Variables
 
 void*			gStaceyJitClass	= NIL;
-Messlist*		gStaceyMaxClass	= NIL;
+t_class*		gStaceyMaxClass	= NIL;
 
 	// Symbols for accessing Jitter attributes
 	// (This is how our Jitter object communicates with the outside world)
@@ -169,7 +169,7 @@ static t_jit_err StaceyJitMCalc	(jcobStacey*, void*, void*);
  *	
  ******************************************************************************************/
 
-int C74_EXPORT main(void)
+void ext_main(void* r)
 	
 	{
 	const long kAttrFlags = MAX_JIT_MOP_FLAGS_OWN_OUTPUTMATRIX
@@ -185,31 +185,31 @@ int C74_EXPORT main(void)
 	StaceyJitInit();
 	
 	// Standard Max setup() call
-	setup(	&gStaceyMaxClass,					// Pointer to our class definition
+	gStaceyMaxClass = class_new(kMaxClassName,					// Pointer to our class definition
 			(method) StaceyNewMaxShell,			// Instance creation function
 			(method) StaceyFreeMaxShell,		// Custom deallocation function
-			(short) sizeof(msobStacey),			// Class object size
+			sizeof(msobStacey),			// Class object size
 			NIL,								// No menu function
 			A_GIMME,							// Jitter objects always parse their own
 			0);									// arguments
 	
 	// Jitter Magic... 
-	jitClassExt	= max_jit_classex_setup(
+	max_jit_class_obex_setup(gStaceyMaxClass, 
 					calcoffset(msobStacey, jitObEx)
 					);
 	jitClass	= jit_class_findbyname(
 					gensym((char*) kMaxClassName)
 					);    
-    max_jit_classex_mop_wrap(jitClassExt, jitClass, kAttrFlags); 		
+    max_jit_class_mop_wrap(gStaceyMaxClass, jitClass, kAttrFlags); 		
     max_jit_classex_mop_mproc(jitClassExt, jitClass, StaceyMaxMProc);	// Custom MProc
-    max_jit_classex_standard_wrap(jitClassExt, jitClass, 0); 	
+    max_jit_class_wrap_standard(gStaceyMaxClass, jitClass, 0); 	
 	
 	// Add messages...
-	addmess	((method) StaceyBang, "bang", 0);
-	addmess	((method) StaceyTattle,	"dblclick",	A_CANT, 0);
-	addmess	((method) StaceyTattle,	"tattle",	A_NOTHING);
-	addmess	((method) StaceyAssist,	"assist",	A_CANT, 0);
-	addmess	((method) StaceyInfo,	"info",		A_CANT, 0);
+	class_addmethod(gStaceyMaxClass, (method) StaceyBang, "bang", 0);
+	class_addmethod(gStaceyMaxClass, (method) StaceyTattle,	"dblclick",	A_CANT, 0);
+	class_addmethod(gStaceyMaxClass, (method) StaceyTattle,	"tattle",	A_NOTHING);
+	class_addmethod(gStaceyMaxClass, (method) StaceyAssist,	"assist",	A_CANT, 0);
+	class_addmethod(gStaceyMaxClass, (method) StaceyInfo,	"info",		A_CANT, 0);
 	
 	// Define global symbols
 	gSymGetMin		= gensym("getmin"),
@@ -220,7 +220,8 @@ int C74_EXPORT main(void)
 	gSymGetKurtosis	= gensym("getkurtosis");
 	
 	// Initialize Litter Library
-	//LitterInit(kMaxClassName, 0);
+	gObjectClass = gStaceyMaxClass;
+	LitterInit(kMaxClassName, 0);
 	}
 
 
@@ -268,12 +269,12 @@ StaceyNewMaxShell(
 	voidPtr			jitObj		= NIL;
 	t_symbol*			classSym	= gensym((char*) kMaxClassName);
 	
-	// In the 1.0 SDK max_jit_obex_new() is prototyped to expect a Maxclass* instead of
-	// a Messlist*. JKC said the next release of header files would be corrected to
-	// use Messlist* and in the interim users can edit the file accordingly.
+	// In the 1.0 SDK max_jit_object_alloc() is prototyped to expect a Maxclass* instead of
+	// a t_class*. JKC said the next release of header files would be corrected to
+	// use t_class* and in the interim users can edit the file accordingly.
 	// If we get a compiler "illegal implicit typecast" error, it means Josh forgot to
 	// make the change; go to jit.max.h and do it again.
-	me = (msobStacey*) max_jit_obex_new(gStaceyMaxClass, classSym);
+	me = (msobStacey*) max_jit_object_alloc(gStaceyMaxClass, classSym);
 		if (me == NIL) goto punt;
 		
 	jitObj = jit_object_new(classSym);
@@ -320,7 +321,7 @@ StaceyFreeMaxShell(
 	
 	max_jit_mop_free(me);
 	jit_object_free(max_jit_obex_jitob_get(me));
-	max_jit_obex_free(me);
+	max_jit_object_free(me);
 	
 	}
 
@@ -739,7 +740,7 @@ CalcNDim(
 	static void
 	CalcEval(
 		jcobStacey*			me,
-		const tPlaneStats	iStatData[],
+		tPlaneStats			iStatData[],
 		t_jit_matrix_info*	iMInfo)
 		
 		{

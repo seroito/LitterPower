@@ -188,8 +188,7 @@ static int*	PvvvPerform(int*);
  *	
  ******************************************************************************************/
 
-void
-main(void)
+void ext_main(void* r)
 	
 	{
 	LITTER_CHECKTIMEOUT(kClassName);

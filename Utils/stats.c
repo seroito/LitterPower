@@ -138,7 +138,7 @@ static void	StaceyInfo(tLStats*);
  *	
  ******************************************************************************************/
 
-int C74_EXPORT main(void)
+void ext_main(void* r)
 	
 	{
 	//LITTER_CHECKTIMEOUT(kClassName);
@@ -148,7 +148,7 @@ int C74_EXPORT main(void)
 	c = class_new(	kClassName,					// Pointer to our class definition
 			(method) StaceyNew,			    // Instantiation method
 			(method) StaceyFree,			// Deallocation method
-			(short) sizeof(tLStats)	,		// Class object size
+			sizeof(tLStats)	,		// Class object size
 			NIL,							// No menu function
 			A_DEFLONG,						// 1 Argument: size of statistics window
 											//		for running stats
@@ -173,7 +173,7 @@ int C74_EXPORT main(void)
         gObjectClass = c;
         
         post("%s: %s", kClassName, LPVERSION);
-        return 0;
+        return;
 
 	}
 

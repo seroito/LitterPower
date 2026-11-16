@@ -176,7 +176,7 @@ ScampParseArgs(
 	
 	{
 	const short kUndefined	= -1;
-	const int	kMaxNumArgs = 5;
+	enum { kMaxNumArgs = 5 };
 	
 	double	inVals[kMaxNumArgs];
 	short	numArgsRead	= 0,

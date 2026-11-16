@@ -130,8 +130,7 @@ static void	BernieInfo	(objBernie*);
  *	
  ******************************************************************************************/
 
-void
-main(void)
+void ext_main(void* r)
 	
 	{
 	LITTER_CHECKTIMEOUT(kClassName);
@@ -140,7 +139,7 @@ main(void)
 	setup(	&gObjectClass,				// Pointer to our class definition
 			(method) BernieNew,			// Instance creation function
 			(method) BernieFree,		// Custom deallocation function
-			(short) sizeof(objBernie),	// Class object size
+			sizeof(objBernie),	// Class object size
 			NIL,						// No menu function
 			A_DEFLONG,					// Optional arguments:	1: Number of trials
 			A_DEFFLOAT,					//						2: Probablility--p(0)

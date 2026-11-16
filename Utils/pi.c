@@ -110,7 +110,7 @@ static void	PiInfo(objPi*);
  *	
  ******************************************************************************************/
 
-int C74_EXPORT main(void)
+void ext_main(void* r)
 	
 	{
 	//LITTER_CHECKTIMEOUT(kClassName);
@@ -120,7 +120,7 @@ int C74_EXPORT main(void)
 	c = class_new(kClassName,					// Pointer to our class definition
 			(method) PiNew,					// Instantiation method  
 			(method) PiFree,				// Custom deallocation function
-			(short) sizeof(objPi),			// Class object size
+			sizeof(objPi),			// Class object size
 			NIL,							// No menu function
 			A_GIMME,						// Parse initialization arguments ourselves
 			0);
@@ -142,7 +142,7 @@ int C74_EXPORT main(void)
         gObjectClass = c;
         
         post("%s: %s", kClassName, LPVERSION);
-        return 0;
+        return;
 
 	}
 

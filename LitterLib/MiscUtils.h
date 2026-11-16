@@ -5,13 +5,13 @@
 
 	Written by:	Peter Castine
 
-	Copyright:	© 2001-08 Peter Castine
+	Copyright:	Â© 2001-08 Peter Castine
 
 	Change History (most recent first):
 
-         <3>   30Ð3Ð2006    pc      Put Unit2Exponential() and Unit2Laplace() in here.
-         <2>   23Ð3Ð2006    pc      Need to #include ext_types for Windows.
-         <1>     26Ð2Ð06    pc      First checked in. Split off  miscellaneous functions for
+         <3>   30â€“3â€“2006    pc      Put Unit2Exponential() and Unit2Laplace() in here.
+         <2>   23â€“3â€“2006    pc      Need to #include ext_types for Windows.
+         <1>     26â€“2â€“06    pc      First checked in. Split off  miscellaneous functions for
                                     bit-munging, etc., that had collected in LitterLib.
 */
 
@@ -22,15 +22,13 @@
 #ifndef __MISCUTILS_H__
 #define __MISCUTILS_H__
 
-#pragma mark ¥ Include Files
+#pragma mark â€¢ Include Files
 
 #include <math.h>							// for declaration of log()
 
-#ifndef __MACTYPES__
-//	#include <MacTypes.h>					// for UInt32
-#endif
+#include "MaxUtils.h"						// for UInt32 & Co.
 
-#pragma mark ¥ Constants
+#pragma mark â€¢ Constants
 
 #ifndef kULongMax
 	#define kULongMax 0xffffffff
@@ -40,16 +38,16 @@
 	#define kLongMax 0x7fffffff
 #endif
 
-#pragma mark ¥ Type Definitions
+#pragma mark â€¢ Type Definitions
 
 
 typedef UInt32	(*tRandomFunc)(void*);
 
 
-#pragma mark ¥ Global Variables
+#pragma mark â€¢ Global Variables
 
 
-#pragma mark ¥ Function Prototypes
+#pragma mark â€¢ Function Prototypes
 
 	
 UInt32					MachineKharma	(void);
@@ -75,7 +73,7 @@ static inline double    Long2Signal (SInt32);
 
 
 #pragma mark -
-#pragma mark ¥ Inline Functions & Macros
+#pragma mark â€¢ Inline Functions & Macros
 
 	
 	// This should probably be moved to MaxUtils

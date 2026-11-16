@@ -29,46 +29,28 @@
 
 #pragma mark • Identify Target
 
-#if __ide_target("X-Verhulst/Sig (Classic)")				\
-		|| __ide_target("X-Verhulst/Sig (Carbon)")			\
-		|| __ide_target("X-Verhuslt/Sig (Windows)")
-		
-	#define __VERA_VAN__ 1
-
-#elif __ide_target("X-Verh. May/Sig (Classic)")				\
-		|| __ide_target("X-Verh. May/Sig (Carbon)")			\
-		|| __ide_target("X-Verh. May/Sig (Windows)")		\
-
-	#define __VERA_MAY__ 1
-
-#elif __ide_target("X-Verh. +/Sig (Classic)")				\
-		|| __ide_target("X-Verh. +/Sig (Carbon)")			\
-		|| __ide_target("X-Verh. +/Sig (Windows)")
-		
-	#define __VERA_PLUS__ 1
-
-#elif __ide_target("X-Verh. =/Sig (Classic)")				\
-		|| __ide_target("X-Verh. =/Sig (Carbon)")			\
-		|| __ide_target("X-Verh. =/Sig (Windows)")
-		
-	#define __VERA_IS__ 1
-
-#elif __ide_target("X-Verh. L/Sig (Classic)")				\
-		|| __ide_target("X-Verh. L/Sig (Carbon)")			\
-		|| __ide_target("X-Verh. L/Sig (Windows)")
-		
-	#define __VERA_LAM__ 1
-
-#elif __ide_target("X-Verh. S/Sig (Classic)")				\
-		|| __ide_target("X-Verh. S/Sig (Carbon)")			\
-		|| __ide_target("X-Verh. S/Sig (Windows)")
-		
-	#define __VERA_STEW__ 1
-
-#else
-
-	#error /* Undefined target */
-
+// The variant is chosen by the build system (see CMakeLists.txt), which defines exactly
+// one of the following macros as 1.
+#ifndef __VERA_VAN__
+	#define __VERA_VAN__ 0
+#endif
+#ifndef __VERA_MAY__
+	#define __VERA_MAY__ 0
+#endif
+#ifndef __VERA_PLUS__
+	#define __VERA_PLUS__ 0
+#endif
+#ifndef __VERA_IS__
+	#define __VERA_IS__ 0
+#endif
+#ifndef __VERA_LAM__
+	#define __VERA_LAM__ 0
+#endif
+#ifndef __VERA_STEW__
+	#define __VERA_STEW__ 0
+#endif
+#if (__VERA_VAN__ + __VERA_MAY__ + __VERA_PLUS__ + __VERA_IS__ + __VERA_LAM__ + __VERA_STEW__) != 1
+	#error Undefined target: define exactly one __VERA_xxx__ macro
 #endif
 
 
@@ -78,7 +60,7 @@
 #include "LitterLib.h"
 #include "z_dsp.h"
 
-#include <cfloat>										// For FLT_EPSILON
+#include <float.h>										// For FLT_EPSILON
 
 #pragma mark • Constants
 
@@ -353,13 +335,12 @@ static inline double QuadSlope(double iNow, double iGoal, unsigned long iSteps, 
  *	
  ******************************************************************************************/
 
-void
-main(void*)				// Parameter is obsolete (68k legacy)
+void ext_main(void* r)
 	
 	{
 	
 	// Standard Max setup() call
-	setup(	&gObjectClass,				// Pointer to our class definition
+	gObjectClass = class_new(kClassName,				// Pointer to our class definition
 			(method) NewVera,			// Instance creation function
 			(method) dsp_free,			// Std. MSP deallocation function
 			sizeof(tVera),				// Class object size
@@ -371,44 +352,44 @@ main(void*)				// Parameter is obsolete (68k legacy)
 										// list, but the original design required A_GIMME
 										// handling, so we'll stick to this approach.
 		
-	dsp_initclass();
+	class_dspinit(gObjectClass);
 
 	// Messages
-	addfloat((method) DoGrowth);
+	class_addmethod(gObjectClass, (method) DoGrowth, "float", A_FLOAT, 0);
 	
 #if __VERA_MAY__
-	addftx	((method) DoBeta,		1);
-	addftx	((method) DoSeed,		2);
-	addftx	((method) DoBaseFreq,	3);
-	addinx	((method) DoInterp,		4);
+	class_addmethod(gObjectClass, (method) DoBeta, "ft1", A_FLOAT, 0);
+	class_addmethod(gObjectClass, (method) DoSeed, "ft2", A_FLOAT, 0);
+	class_addmethod(gObjectClass, (method) DoBaseFreq, "ft3", A_FLOAT, 0);
+	class_addmethod(gObjectClass, (method) DoInterp, "in4", A_LONG, 0);
 #else
-	addftx	((method) DoSeed,		1);
-	addftx	((method) DoBaseFreq,	2);
-	addinx	((method) DoInterp,		3);
-	addmess	((method) DoIdent,	"ident",	A_NOTHING);
-	addmess	((method) DoZero,	"zero",		A_NOTHING);
-	addmess	((method) DoOne,	"one",		A_NOTHING);
-	addmess	((method) DoRecip,	"recip",	A_NOTHING);
-	addmess	((method) DoSinPi,	"sinpi",	A_NOTHING);
-	addmess	((method) DoCosPi,	"cospi",	A_NOTHING);
-	addmess	((method) DoTanPi,	"tanpi",	A_NOTHING);
-	addmess	((method) DoCotPi,	"cotpi",	A_NOTHING);
-	addmess	((method) DoSinh,	"sinh",		A_NOTHING);
-	addmess	((method) DoCosh,	"cosh",		A_NOTHING);
-	addmess	((method) DoTanh,	"tanh",		A_NOTHING);
-	addmess	((method) DoLog,	"log",		A_NOTHING);
-	addmess	((method) DoExp,	"exp",		A_NOTHING);
-	addmess	((method) DoSqr,	"sqr",		A_NOTHING);
-	addmess	((method) DoRoot,	"sqrt",		A_NOTHING);
+	class_addmethod(gObjectClass, (method) DoSeed, "ft1", A_FLOAT, 0);
+	class_addmethod(gObjectClass, (method) DoBaseFreq, "ft2", A_FLOAT, 0);
+	class_addmethod(gObjectClass, (method) DoInterp, "in3", A_LONG, 0);
+	class_addmethod(gObjectClass, (method) DoIdent,	"ident",	A_NOTHING);
+	class_addmethod(gObjectClass, (method) DoZero,	"zero",		A_NOTHING);
+	class_addmethod(gObjectClass, (method) DoOne,	"one",		A_NOTHING);
+	class_addmethod(gObjectClass, (method) DoRecip,	"recip",	A_NOTHING);
+	class_addmethod(gObjectClass, (method) DoSinPi,	"sinpi",	A_NOTHING);
+	class_addmethod(gObjectClass, (method) DoCosPi,	"cospi",	A_NOTHING);
+	class_addmethod(gObjectClass, (method) DoTanPi,	"tanpi",	A_NOTHING);
+	class_addmethod(gObjectClass, (method) DoCotPi,	"cotpi",	A_NOTHING);
+	class_addmethod(gObjectClass, (method) DoSinh,	"sinh",		A_NOTHING);
+	class_addmethod(gObjectClass, (method) DoCosh,	"cosh",		A_NOTHING);
+	class_addmethod(gObjectClass, (method) DoTanh,	"tanh",		A_NOTHING);
+	class_addmethod(gObjectClass, (method) DoLog,	"log",		A_NOTHING);
+	class_addmethod(gObjectClass, (method) DoExp,	"exp",		A_NOTHING);
+	class_addmethod(gObjectClass, (method) DoSqr,	"sqr",		A_NOTHING);
+	class_addmethod(gObjectClass, (method) DoRoot,	"sqrt",		A_NOTHING);
 #endif
 	
-	addmess	((method) DoTattle,	"dblclick",	A_CANT, 0);
-	addmess	((method) DoTattle,	"tattle",	A_NOTHING);
-	addmess	((method) DoAssist,	"assist",	A_CANT, 0);
-	addmess	((method) DoInfo,	"info",		A_CANT, 0);
+	class_addmethod(gObjectClass, (method) DoTattle,	"dblclick",	A_CANT, 0);
+	class_addmethod(gObjectClass, (method) DoTattle,	"tattle",	A_NOTHING);
+	class_addmethod(gObjectClass, (method) DoAssist,	"assist",	A_CANT, 0);
+	class_addmethod(gObjectClass, (method) DoInfo,	"info",		A_CANT, 0);
 	
 	// MSP messages
-	addmess	((method) DoDSP,	"dsp",	A_CANT, 0);
+	class_addmethod(gObjectClass, (method) DoDSP,	"dsp",	A_CANT, 0);
 
 	// Initialize Litter Library
 	LitterInit(kClassName, 0);
@@ -527,7 +508,7 @@ NewVera(
 	//
 	// Let Max allocate us, our inlets, and outlets
 	//
-	me = (tVera*) newobject(gObjectClass);
+	me = (tVera*) object_alloc(gObjectClass);
 		if (me == NIL) goto punt;
 	dsp_setup(&(me->coreObject), 1);			// Rate inlet is the only one accepting
 												// signal vectors

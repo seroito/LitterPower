@@ -32,7 +32,8 @@
 #pragma mark • Include Files
 
 #include "LitterLib.h"
-#include "z_dsp.h"
+#include "MiscUtils.h"
+#include "Taus88.h"
 
 
 #pragma mark • Constants
@@ -175,8 +176,8 @@ static void DoTattle(tfiana*);
 static void	DoAssist(tfiana*, void* , long , long , char*);
 static void	DoInfo(tfiana*);
 
-static void DoDSP(tfiana*, t_signal**, short*);
-static int* Performfiana(int*);
+static void DoDSP(tfiana*, t_object*, short*, double, long, long);
+static void Performfiana(tfiana*, t_object*, double**, long, double**, long, long, long, void*);
 
 
 #pragma mark -
@@ -195,15 +196,14 @@ static int* Performfiana(int*);
  *	
  ******************************************************************************************/
 
-void
-main(void*)				// Parameter is obsolete (68k legacy)
+void ext_main(void* r)
 	
 	{
 	short	externResFile,
 			prevResFile;
 	
 	// Standard Max setup() call
-	setup(	&gObjectClass,				// Pointer to our class definition
+	gObjectClass = class_new(kClassName,				// Pointer to our class definition
 			(method) Newfiana,			// Instance creation function
 			(method) dsp_free,			// Std. MSP deallocation function
 			sizeof(tfiana),				// Class object size
@@ -211,43 +211,43 @@ main(void*)				// Parameter is obsolete (68k legacy)
 			A_GIMME,					// Arguments (all optional): 0 to 4 symbols,
 			0);							//	followed 0 to 6 floats (Why do I do this?)
 		
-	dsp_initclass();
+	class_dspinit(gObjectClass);
 
 	// Messages
-	addbang	((method) DoBang);
-	addfloat((method) DoFloat);
-	addint	((method) DoInt);
-	addmess	((method) DoSeed,	"list",		A_GIMME, 0);
-	addmess	((method) DoSet,	"set",		A_FLOAT, A_FLOAT, 0);
-	addmess	((method) DoReset,	"reset",	A_NOTHING);
+	class_addmethod(gObjectClass, (method) DoBang, "bang", A_NOTHING);
+	class_addmethod(gObjectClass, (method) DoFloat, "float", A_FLOAT, 0);
+	class_addmethod(gObjectClass, (method) DoInt, "int", A_LONG, 0);
+	class_addmethod(gObjectClass, (method) DoSeed,	"list",		A_GIMME, 0);
+	class_addmethod(gObjectClass, (method) DoSet,	"set",		A_FLOAT, A_FLOAT, 0);
+	class_addmethod(gObjectClass, (method) DoReset,	"reset",	A_NOTHING);
 	
-	addmess	((method) DoIdent,	"ident",	A_NOTHING);
-	addmess	((method) DoZero,	"zero",		A_NOTHING);
-	addmess	((method) DoOne,	"one",		A_NOTHING);
-	addmess	((method) DoRecip,	"recip",	A_NOTHING);
-	addmess	((method) DoSin,	"sin",		A_NOTHING);
-	addmess	((method) DoCos,	"cos",		A_NOTHING);
-	addmess	((method) DoTan,	"tan",		A_NOTHING);
-	addmess	((method) DoCot,	"cot",		A_NOTHING);
-	addmess	((method) DoSinPi,	"sinpi",	A_NOTHING);
-	addmess	((method) DoCosPi,	"cospi",	A_NOTHING);
-	addmess	((method) DoTanPi,	"tanpi",	A_NOTHING);
-	addmess	((method) DoCotPi,	"cotpi",	A_NOTHING);
-	addmess	((method) DoSinh,	"sinh",		A_NOTHING);
-	addmess	((method) DoCosh,	"cosh",		A_NOTHING);
-	addmess	((method) DoTanh,	"tanh",		A_NOTHING);
-	addmess	((method) DoLog,	"log",		A_NOTHING);
-	addmess	((method) DoExp,	"exp",		A_NOTHING);
-	addmess	((method) DoSqr,	"sqr",		A_NOTHING);
-	addmess	((method) DoRoot,	"sqrt",		A_NOTHING);
+	class_addmethod(gObjectClass, (method) DoIdent,	"ident",	A_NOTHING);
+	class_addmethod(gObjectClass, (method) DoZero,	"zero",		A_NOTHING);
+	class_addmethod(gObjectClass, (method) DoOne,	"one",		A_NOTHING);
+	class_addmethod(gObjectClass, (method) DoRecip,	"recip",	A_NOTHING);
+	class_addmethod(gObjectClass, (method) DoSin,	"sin",		A_NOTHING);
+	class_addmethod(gObjectClass, (method) DoCos,	"cos",		A_NOTHING);
+	class_addmethod(gObjectClass, (method) DoTan,	"tan",		A_NOTHING);
+	class_addmethod(gObjectClass, (method) DoCot,	"cot",		A_NOTHING);
+	class_addmethod(gObjectClass, (method) DoSinPi,	"sinpi",	A_NOTHING);
+	class_addmethod(gObjectClass, (method) DoCosPi,	"cospi",	A_NOTHING);
+	class_addmethod(gObjectClass, (method) DoTanPi,	"tanpi",	A_NOTHING);
+	class_addmethod(gObjectClass, (method) DoCotPi,	"cotpi",	A_NOTHING);
+	class_addmethod(gObjectClass, (method) DoSinh,	"sinh",		A_NOTHING);
+	class_addmethod(gObjectClass, (method) DoCosh,	"cosh",		A_NOTHING);
+	class_addmethod(gObjectClass, (method) DoTanh,	"tanh",		A_NOTHING);
+	class_addmethod(gObjectClass, (method) DoLog,	"log",		A_NOTHING);
+	class_addmethod(gObjectClass, (method) DoExp,	"exp",		A_NOTHING);
+	class_addmethod(gObjectClass, (method) DoSqr,	"sqr",		A_NOTHING);
+	class_addmethod(gObjectClass, (method) DoRoot,	"sqrt",		A_NOTHING);
 	
-	addmess	((method) DoTattle,	"dblclick",	A_CANT, 0);
-	addmess	((method) DoTattle,	"tattle",	A_NOTHING);
-	addmess	((method) DoAssist,	"assist",	A_CANT, 0);
-	addmess	((method) DoInfo,	"info",		A_CANT, 0);
+	class_addmethod(gObjectClass, (method) DoTattle,	"dblclick",	A_CANT, 0);
+	class_addmethod(gObjectClass, (method) DoTattle,	"tattle",	A_NOTHING);
+	class_addmethod(gObjectClass, (method) DoAssist,	"assist",	A_CANT, 0);
+	class_addmethod(gObjectClass, (method) DoInfo,	"info",		A_CANT, 0);
 	
 	// MSP messages
-	addmess	((method) DoDSP,	"dsp",		A_CANT, 0);
+	class_addmethod(gObjectClass, (method) DoDSP,	"dsp64",	A_CANT, 0);
 
 	// Initialize Litter Library
 	// Bang message generates random (X0, Y0)
@@ -307,7 +307,7 @@ MapStrToFunction(
 
 void*
 Newfiana(
-	Symbol*	,
+	Symbol* unused	,
 	short	iArgC,
 	Atom*	iArgV)
 	
@@ -322,7 +322,7 @@ Newfiana(
 	//
 	// Let Max allocate us, our inlets, and outlets
 	//
-	me = (tfiana*) newobject(gObjectClass);
+	me = (tfiana*) object_alloc(gObjectClass);
 		if (me == NIL) goto punt;
 	
 		// fiana does proxies; even if we don't want signals in all of them.
@@ -485,7 +485,7 @@ DoFloat(
 	
 	{
 	
-	switch ( ObjectGetInlet((Object*) me, me->coreObject.z_in) ) {
+	switch ( ObjectGetInlet((Object*) me, 0) ) {
 		case 4:		me->d = iVal;		break;
 		case 3:		me->c = iVal;		break;
 		case 2:		me->b = iVal;		break;
@@ -514,7 +514,7 @@ static void DoInt(tfiana* me, long iVal)
 static void
 DoSeed(
 	tfiana*	me,
-	Symbol*	,					// This is always "list"
+	Symbol* unused	,					// This is always "list"
 	short	iArgC,
 	Atom*	iArgV)
 	
@@ -575,7 +575,7 @@ DoReset(
 
 	static void SetFunc(tfiana* me, tFunction iFunc)
 		{
-		switch ( ObjectGetInlet((Object*) me, me->coreObject.z_in) ) {
+		switch ( ObjectGetInlet((Object*) me, 0) ) {
 			case 4:	me->fnD = iFunc; break;
 			case 3:	me->fnC = iFunc; break;
 			case 2:	me->fnB = iFunc; break;
@@ -646,8 +646,8 @@ DoTattle(
  *
  ******************************************************************************************/
 
-void DoAssist(tfiana*, void*, long iDir, long iArgNum, char* oCStr)
-	{ assist_string(iDir, iArgNum, strIndexInLeft, strIndexOutLeft, oCStr); }
+void DoAssist(tfiana* me, void* unused, long iDir, long iArgNum, char* oCStr)
+	{ LitterAssist(iDir, iArgNum, strIndexInLeft, strIndexOutLeft, oCStr); }
 
 void DoInfo(tfiana* me)
 	{ LitterInfo(kClassName, &me->coreObject.z_ob, (method) DoTattle); }
@@ -660,39 +660,24 @@ void DoInfo(tfiana* me)
 
 /******************************************************************************************
  *
- *	DoDSP(me, ioDSPVectors, iConnectCounts)
+ *	DoDSP(me, iDSP64, iConnectCounts, iSampleRate, iMaxVectorSize, iFlags)
  *
  ******************************************************************************************/
 
 static void
 DoDSP(
 	tfiana*		me,
-	t_signal**	iDSPVectors,
-	short*		iConnectCounts)
+	t_object*	iDSP64,
+	short*		iConnectCounts,
+	double		iSampleRate,
+	long		iMaxVectorSize,
+	long		iFlags)
 	
 	{
-	// Indices for MSP Inlets and Outlets.
-	enum {
-		inletBegin			= 0,
-		inletA,
-		inletB,
-		inletC,
-		inletD,
-		
-		outletX,
-		outletY
-		};
-
-	if (iConnectCounts[outletX] == 0 && iConnectCounts[outletY] == 0)
-		return;
+	#pragma unused(iConnectCounts, iSampleRate, iMaxVectorSize, iFlags)
 	
-	dsp_add(
-		Performfiana, 4, me, 
-		(long) iDSPVectors[outletX]->s_n,
-		iDSPVectors[outletX]->s_vec,
-		iDSPVectors[outletY]->s_vec
-		);
-		
+	dsp_add64(iDSP64, (t_object*) me, (t_perfroutine64) Performfiana, 0, NIL);
+	
 	}
 	
 
@@ -711,8 +696,8 @@ DoDSP(
  ******************************************************************************************/
 
 	static double ident(double iVal)	{ return iVal; }
-	static double zero(double)			{ return 0.0; }
-	static double one(double)			{ return 1.0; }
+	static double zero(double x)		{ (void) x; return 0.0; }
+	static double one(double x)			{ (void) x; return 1.0; }
 	static double recip(double iVal)	{ return 1.0 / iVal; }
 	static double cot(double iVal)		{ return 1.0 / tan(iVal); }
 	static double sinpi(double iVal)	{ return sin(kPi * iVal); }
@@ -728,34 +713,32 @@ DoDSP(
 									sinh,	cosh,	tanh,
 									log,	exp,	sqr,	sqrt };
 	
-static int*
+static void
 Performfiana(
-	int* iParams)
+	tfiana*		me,
+	t_object*	iDSP64,
+	double**	iIns,
+	long		iInCount,
+	double**	iOuts,
+	long		iOutCount,
+	long		iVecSize,
+	long		iFlags,
+	void*		iUserParam)
 	
 	{
-	enum {
-		paramFuncAddress	= 0,
-		paramMe,
-		paramVectorSize,
-		paramOutX,
-		paramOutY,
-		
-		paramNextLink
-		};
+	#pragma unused(iDSP64, iIns, iInCount, iOutCount, iFlags, iUserParam)
 	
-	tfiana*			me = (tfiana*) iParams[paramMe];
-	long			vecSize;
-	tSampleVector	outX, outY;
+	long			vecSize	= iVecSize;
+	tSampleVector	outX	= iOuts[0],
+					outY	= iOuts[1];
 	double			a, b, c, d, x, y;
 	tLatooFunc		fnA, fnB, fnC, fnD;
 	
-	if (me->coreObject.z_disabled) goto exit;
+	if (me->coreObject.z_disabled || vecSize <= 0) return;
+	
+
 	
 	// Copy parameters into registers
-	vecSize	= (long) iParams[paramVectorSize];
-	outX	= (tSampleVector) iParams[paramOutX];
-	outY	= (tSampleVector) iParams[paramOutY];
-	
 	a		= me->a;
 	b		= me->b;
 	c		= me->c;
@@ -777,9 +760,6 @@ Performfiana(
 	
 	me->x	= x;
 	me->y	= y;
-		
-exit:
-	return iParams + paramNextLink;
 	}
 
 

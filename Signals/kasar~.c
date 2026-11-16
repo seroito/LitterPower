@@ -121,17 +121,15 @@ static int*	CymbalPerformMod(int*);
 			}
 		}
 
-void
-main(void)
+void ext_main(void* r)
 	
 	{
-	LITTER_CHECKTIMEOUT(kClassName);
 	
 	// Get this out of the way
 	InitCosineTable();
 	
 	// Standard Max/MSP initialization mantra
-	setup(	&gObjectClass,							// Pointer to our class definition
+	gObjectClass = class_new(kClassName,							// Pointer to our class definition
 			(method) CymbalNew,						// Instance creation function
 			(method) dsp_free,						// Default deallocation function
 			sizeof(tCymbal),						// Class object size
@@ -139,19 +137,19 @@ main(void)
 			A_DEFFLOAT,								// Optional argument: Amplitude
 			0);
 			
-	dsp_initclass();
+	class_dspinit(gObjectClass);
 
 	// Messages
-	addint	((method) CymbalInt);
-	addfloat((method) CymbalAmp);
-	addmess	((method) CymbalDefAmp,	"defamp",	A_NOTHING);
-	addmess	((method) CymbalTattle,	"dblclick",	A_CANT, 0);
-	addmess	((method) CymbalTattle,	"tattle",	A_NOTHING);
-	addmess	((method) CymbalAssist,	"assist",	A_CANT, 0);
-	addmess	((method) CymbalInfo,	"info",		A_CANT, 0);
+	class_addmethod(gObjectClass, (method) CymbalInt, "int", A_LONG, 0);
+	class_addmethod(gObjectClass, (method) CymbalAmp, "float", A_FLOAT, 0);
+	class_addmethod(gObjectClass, (method) CymbalDefAmp,	"defamp",	A_NOTHING);
+	class_addmethod(gObjectClass, (method) CymbalTattle,	"dblclick",	A_CANT, 0);
+	class_addmethod(gObjectClass, (method) CymbalTattle,	"tattle",	A_NOTHING);
+	class_addmethod(gObjectClass, (method) CymbalAssist,	"assist",	A_CANT, 0);
+	class_addmethod(gObjectClass, (method) CymbalInfo,	"info",		A_CANT, 0);
 	
 	// MSP-Level messages
-	LITTER_TIMEBOMB addmess	((method) CymbalDSP,	"dsp",		A_CANT, 0);
+	class_addmethod(gObjectClass, (method) CymbalDSP,	"dsp",		A_CANT, 0);
 
 	//Initialize Litter Library
 	LitterInit(kClassName, 0);
@@ -184,7 +182,7 @@ CymbalNew(
 		iAmp = kDefAmp;
 	
 	// Let Max/MSP allocate us, our inlets, and outlets.
-	me = (tCymbal*) newobject(gObjectClass);
+	me = (tCymbal*) object_alloc(gObjectClass);
 	dsp_setup(&(me->coreObject), 1);				// Signal inlet for benefit of begin~
 	
 	outlet_new(me, "signal");
@@ -243,10 +241,10 @@ CymbalTattle(
  *
  ******************************************************************************************/
 
-void CymbalAssist(tCymbal*, void*, long iDir, long iArgNum, char* oCStr)
+void CymbalAssist(tCymbal* me, void* unused, long iDir, long iArgNum, char* oCStr)
 	{ LitterAssist(iDir, iArgNum, strIndexInLeft, strIndexOutLeft, oCStr); }
 
-void CymbalInfo(tCymbal*)
+void CymbalInfo(tCymbal* me)
 	{ LitterInfo(kClassName, NIL, NIL); }
 
 #pragma mark -

@@ -132,13 +132,13 @@ void Pvvv2Perform64(objBrown*, t_object *dsp64, double **ins, long numins,
  *	
  ******************************************************************************************/
 
-int C74_EXPORT main(void)
+void ext_main(void* r)
 	
 	{
         t_class *c;
         
 	// Standard Max/MSP initialization mantra
-    c = class_new(kClassName, (method)Pvvv2New, (method) dsp_free, (short)sizeof(objBrown), 0L, A_DEFFLOAT, A_DEFLONG, 0L);
+    c = class_new(kClassName, (method)Pvvv2New, (method) dsp_free, sizeof(objBrown), 0L, A_DEFFLOAT, A_DEFLONG, 0L);
         
 	//dsp_initclass();
     
@@ -173,7 +173,7 @@ int C74_EXPORT main(void)
         //post("hoollo");
         post("%s: %s", kClassName, LPVERSION);
 
-        return 0;
+        return;
 	}
 
 

@@ -127,14 +127,12 @@ static int*	ChffPerformDyn(int*);
  *	
  ******************************************************************************************/
 
-void
-main(void)
+void ext_main(void* r)
 	
 	{
-	LITTER_CHECKTIMEOUT(kClassName);
 	
 	// Standard Max/MSP initialization mantra
-	setup(	&gObjectClass,				// Pointer to our class definition
+	gObjectClass = class_new(kClassName,				// Pointer to our class definition
 			(method) ChffNew,			// Instance creation function
 			(method) dsp_free,			// Default deallocation function
 			sizeof(objRandTrain),		// Class object size
@@ -145,22 +143,22 @@ main(void)
 			A_DEFFLOAT,					//						4. Bang threshhold
 			0);		
 	
-	dsp_initclass();
+	class_dspinit(gObjectClass);
 
 	// Messages
 	
-	addfloat((method) ChffFloat);
-	addmess	((method) ChffFreqMS,	"ms",		A_FLOAT, 0);	// Redundant since ms is default
+	class_addmethod(gObjectClass, (method) ChffFloat, "float", A_FLOAT, 0);
+	class_addmethod(gObjectClass, (method) ChffFreqMS,	"ms",		A_FLOAT, 0);	// Redundant since ms is default
 																// unit for frequency
-	addmess	((method) ChffFreqHz,	"hz",		A_FLOAT, 0);
-	addmess	((method) ChffFreqSamps,"samps",	A_FLOAT, 0);
-	addmess	((method) ChffTattle,	"dblclick",	A_CANT, 0);
-	addmess	((method) ChffTattle,	"tattle",	A_NOTHING);
-	addmess	((method) ChffAssist,	"assist",	A_CANT, 0);
-	addmess	((method) ChffInfo,		"info",		A_CANT, 0);
+	class_addmethod(gObjectClass, (method) ChffFreqHz,	"hz",		A_FLOAT, 0);
+	class_addmethod(gObjectClass, (method) ChffFreqSamps,"samps",	A_FLOAT, 0);
+	class_addmethod(gObjectClass, (method) ChffTattle,	"dblclick",	A_CANT, 0);
+	class_addmethod(gObjectClass, (method) ChffTattle,	"tattle",	A_NOTHING);
+	class_addmethod(gObjectClass, (method) ChffAssist,	"assist",	A_CANT, 0);
+	class_addmethod(gObjectClass, (method) ChffInfo,		"info",		A_CANT, 0);
 	
 	// MSP-Level messages
-	LITTER_TIMEBOMB addmess	((method) ChffDSP,		 "dsp",		A_CANT, 0);
+	class_addmethod(gObjectClass, (method) ChffDSP,		 "dsp",		A_CANT, 0);
 		
 	// Initialize Litter Lib
 	LitterInit(kClassName, 0);
@@ -236,7 +234,7 @@ noMoreDefaults:
 	// Finished checking intialization parameters
 
 	// Let Max/MSP allocate us, our inlets (from right to left), and outlets.
-	me = (objRandTrain*) newobject(gObjectClass);
+	me = (objRandTrain*) object_alloc(gObjectClass);
 	dsp_setup(&(me->coreObject), 4);				// Three inlets:
 													// 		Pulse interval
 													//		Pulse width
@@ -348,7 +346,7 @@ ChffTattle(
  *
  ******************************************************************************************/
 
-void ChffAssist(objRandTrain*, void*, long iDir, long iArgNum, char* oCStr)
+void ChffAssist(objRandTrain* me, void* unused, long iDir, long iArgNum, char* oCStr)
 	{ LitterAssist(iDir, iArgNum, strIndexInLeft, strIndexOutLeft, oCStr); }
 
 void ChffInfo(objRandTrain* me)

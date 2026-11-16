@@ -543,7 +543,7 @@ ExpoAssist(objExpran* me, void* box, long iDir, long iArgNum, char* oCStr)
  *	
  ******************************************************************************************/
 
-int C74_EXPORT main(void)
+void ext_main(void* r)
 	
 	{
 	const tTypeList myArgTypes = {

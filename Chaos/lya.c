@@ -135,7 +135,7 @@ static Boolean	SetRates(tLya*, short, t_atom*);
  *	
  ******************************************************************************************/
 
-int C74_EXPORT main(void)
+void ext_main(void* r)
 	
 	{
         t_class *c;
@@ -167,7 +167,7 @@ int C74_EXPORT main(void)
         gObjectClass = c;
         
         post("%s: %s", kClassName, lpversion);
-        return 0;
+        return;
 
 	}
 

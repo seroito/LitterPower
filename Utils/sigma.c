@@ -115,7 +115,7 @@ static void	SigmaInfo(objSigma*);
  *	
  ******************************************************************************************/
 
-int C74_EXPORT main(void)
+void ext_main(void* r)
 	
 	{
 	//LITTER_CHECKTIMEOUT(kClassName);
@@ -125,7 +125,7 @@ int C74_EXPORT main(void)
 	c = class_new(kClassName,					// Pointer to our class definition
 			(method) SigmaNew,				// Instantiation method  
 			(method) SigmaFree,				// Custom deallocation function
-			(short) sizeof(objSigma),		// Class object size
+			sizeof(objSigma),		// Class object size
 			NIL,							// No menu function
 			A_GIMME,						// Parse initialization arguments ourselves
 			0);
@@ -147,7 +147,7 @@ int C74_EXPORT main(void)
         gObjectClass = c;
         
         post("%s: %s", kClassName, LPVERSION);
-        return 0;
+        return;
 
 	}
 

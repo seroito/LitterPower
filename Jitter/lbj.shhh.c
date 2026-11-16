@@ -85,7 +85,7 @@ typedef struct {
 #pragma mark • Global Variables
 
 void*			gShhhJitClass	= NIL;
-Messlist*		gMaxShhhClass	= NIL;
+t_class*		gMaxShhhClass	= NIL;
 /*short			gStrResID		= 0;
 unsigned long	gModDate		= 0;
 */
@@ -249,7 +249,7 @@ Taus88DoubleVector(
  *	
  ******************************************************************************************/
 
-int C74_EXPORT main(void)
+void ext_main(void* r)
 	
 	{
 	const long kAttr = MAX_JIT_MOP_FLAGS_OWN_OUTPUTMATRIX | MAX_JIT_MOP_FLAGS_OWN_JIT_MATRIX;
@@ -262,29 +262,30 @@ int C74_EXPORT main(void)
 	ShhhJitInit();
 	
 	// Standard Max setup() call
-	setup(	&gMaxShhhClass,					// Pointer to our class definition
+	gMaxShhhClass = class_new(kMaxClassName,					// Pointer to our class definition
 			(method) ShhhNewMaxShell,		// Instance creation function
 			(method) ShhhFreeMaxShell,		// Custom deallocation function
-			(short) sizeof(msobShhh),		// Class object size
+			sizeof(msobShhh),		// Class object size
 			NIL,							// No menu function
 			A_GIMME,						// Jitter objects always parse their own arguments
 			0);		
 	
 	// Jitter Magic... 
-	p = max_jit_classex_setup(calcoffset(msobShhh, jitObject));
+	max_jit_class_obex_setup(gMaxShhhClass, calcoffset(msobShhh, jitObject));
 	q = jit_class_findbyname(gensym((char*) kMaxClassName));    
-    max_jit_classex_mop_wrap(p, q, kAttr); 		
-    max_jit_classex_standard_wrap(p, q, 0); 	
-	max_addmethod_usurp_low((method) ShhhOutputMatrix, "outputmatrix");
+    max_jit_class_mop_wrap(gMaxShhhClass, q, kAttr); 		
+    max_jit_class_wrap_standard(gMaxShhhClass, q, 0); 	
+	max_jit_class_addmethod_usurp_low(gMaxShhhClass, (method) ShhhOutputMatrix, "outputmatrix");
 	
 	// Back to adding messages...
-	addmess	((method) ShhhTattle,	"dblclick",	A_CANT, 0);
-	addmess	((method) ShhhTattle,	"tattle",	A_NOTHING);
-	addmess	((method) ShhhAssist,	"assist",	A_CANT, 0);
-	addmess	((method) ShhhInfo,		"info",		A_CANT, 0);
+	class_addmethod(gMaxShhhClass, (method) ShhhTattle,	"dblclick",	A_CANT, 0);
+	class_addmethod(gMaxShhhClass, (method) ShhhTattle,	"tattle",	A_NOTHING);
+	class_addmethod(gMaxShhhClass, (method) ShhhAssist,	"assist",	A_CANT, 0);
+	class_addmethod(gMaxShhhClass, (method) ShhhInfo,		"info",		A_CANT, 0);
 	
 	// Initialize Litter Library
-	//LitterInit(kMaxClassName, 0);
+	gObjectClass = gMaxShhhClass;
+	LitterInit(kMaxClassName, 0);
 	}
 
 
@@ -314,12 +315,12 @@ ShhhNewMaxShell(
 	void*		jitObj		= NIL;
 	t_symbol*		classSym	= gensym((char*) kMaxClassName);
 	
-	// In the 1.0 SDK max_jit_obex_new() is prototyped to expect a Maxclass* instead of
-	// a Messlist*. JKC said the next release of header files would be corrected to
-	// use Messlist* and in the interim users can edit the file accordingly.
+	// In the 1.0 SDK max_jit_object_alloc() is prototyped to expect a Maxclass* instead of
+	// a t_class*. JKC said the next release of header files would be corrected to
+	// use t_class* and in the interim users can edit the file accordingly.
 	// If we get a compiler "illegal implicit typecast" error, it means Josh forgot to
 	// make the change; go to jit.max.h and do it again.
-	me = (msobShhh*) max_jit_obex_new(gMaxShhhClass, classSym);
+	me = (msobShhh*) max_jit_object_alloc(gMaxShhhClass, classSym);
 		if (me == NIL) goto punt;
 		
 	jitObj = jit_object_new(classSym);
@@ -354,7 +355,7 @@ ShhhFreeMaxShell(
 	{
 	max_jit_mop_free(me);
 	jit_object_free(max_jit_obex_jitob_get(me));
-	max_jit_obex_free(me);
+	max_jit_object_free(me);
 	}
 
 

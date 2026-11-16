@@ -50,26 +50,6 @@
 
 /******************************************************************************************
  *
- *	LongRandom()
- *	
- *	Calls the OS Random() function several times to generate a pseudo-random long value.
- *	We use this to bootstrap a set of seed values for TT800. 
- *	
- ******************************************************************************************/
-
-static unsigned long
-LongRandom()
-	
-	{
-	// Overlap values from multiple calls to Random() to alleviate the problem of the
-	// low bits not being very random.
-	return (((unsigned long) Random()) << 16)
-			^ (((unsigned long) Random()) << 5)
-			^ (((unsigned long) Random()) >> 5);
-	}
-
-/******************************************************************************************
- *
  *	HashString()
  *	
  *	Generate an unsigned long integer from a string.
@@ -109,75 +89,62 @@ HashString(
  *	
  ******************************************************************************************/
  
-	static UInt32 ProcessIDMagic(void)
+#ifdef WIN_VERSION
+	static UInt32 ProcessMagic(void)
 		{
-		OSStatus			myErr	= noErr;
-		ProcessSerialNumber procID	= {kNoProcess, kNoProcess};
-		UInt32				result  = (UInt32) &procID;
-		int					bitShift = 0;
+		LARGE_INTEGER	pc;
+		UInt32			result = (UInt32) GetCurrentProcessId();
 
-		while (true) {
-			myErr = GetNextProcess(&procID);
-			
-			if (myErr == noErr) {
-				UInt32 procIDLo = procID.lowLongOfPSN;
-			
-				if (bitShift > (32 - CountBits(procIDLo)))
-					bitShift = 0;
-				result ^= (procIDLo << bitShift++);
-				}
-			else break;
-			}
-		
+		result = RotateBits(result, 16) ^ (UInt32) GetCurrentThreadId();
+		if (QueryPerformanceCounter(&pc))
+			result ^= (UInt32) pc.LowPart ^ RotateBits((UInt32) pc.HighPart, 13);
+		result ^= (UInt32) GetTickCount();
+
 		return result;
 		}
- 
-	#include <uuid/uuid.h>
-	static UInt32 UUIDMagic(void)
+#else
+	#include <unistd.h>
+	#include <sys/time.h>
+
+	static UInt32 ProcessMagic(void)
 		{
-		uuid_t	uuid;
-		UInt32*	uuidl = (UInt32*) uuid;
-		
-		uuid_generate(uuid);
-		
-		return uuidl[0] ^ uuidl[1] ^ uuidl[2] ^ uuidl[3];
+		struct timeval	tv;
+		UInt32			result = (UInt32) getpid();
+
+		result = RotateBits(result, 16);
+		if (gettimeofday(&tv, NULL) == 0)
+			result ^= (UInt32) tv.tv_usec ^ RotateBits((UInt32) tv.tv_sec, 13);
+
+		return result;
 		}
+#endif
 
 UInt32
-MachineKharma()
+MachineKharma(void)
 	{
-	static int sAutoSeedCount = 0;
-	
-	UInt32	kharma = evnum_get();
-	
+	static int	sAutoSeedCount = 0;
+	int			stackMagic;
+
+	UInt32	kharma = (UInt32) systime_ticks();
+
 	if (kharma < 65536)
 		kharma *= kharma;
-		
+
 	kharma ^= XObjGetDateTime();
-	
-	// Use OS-native 'uptime' functions.
-	// Normally we would use the Cross-Platform wrapper function XObjGetTickCount(),
-	// but the native Windows function, with its nominally higher resolution (milliseconds
-	// instead of 1/60sec ticks) will probably give a bit more entropy.
-#ifdef WIN_VERSION
-	kharma ^= GetTickCount();
-#else
-	kharma ^= TickCount();
-#endif
-	
-	kharma ^= (long) (MachineKharma);
-	kharma ^= ProcessIDMagic();
-	kharma ^= UUIDMagic();
-	
+	kharma ^= RotateBits(XObjTickCount(), 7);
+
+	// The addresses of our code and stack vary from launch to launch (ASLR)
+	kharma ^= (UInt32) (uintptr_t) (void*) &sAutoSeedCount;
+	kharma ^= RotateBits((UInt32) (uintptr_t) (void*) &stackMagic, 11);
+
+	kharma ^= ProcessMagic();
+
 	kharma *= ++sAutoSeedCount;		// Salt MachineKharma with sAutoSeedCount in case there
-									// are multiple calls during one machine tick. 
+									// are multiple calls during one machine tick.
 									// Modified 10-Feb-06 to multiply instead of use
 									// exclusive-or. As Marsaglia says, multiplication
 									// modifies more bits than any other simple arithmetic
 									// operation.
-	
-	
 
 	return kharma;
 	}
-

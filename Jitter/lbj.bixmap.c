@@ -78,7 +78,7 @@ typedef struct {
 #pragma mark • Global Variables
 
 void*		gJitClassBixMap	= NIL;
-Messlist*	gMaxClassBixMap	= NIL;
+t_class*	gMaxClassBixMap	= NIL;
 Symbol*		gSymJitBixMap	= NIL;
 
 
@@ -560,7 +560,7 @@ BixMapNew(
 	{
 	#pragma unused(sym)
 	
-	msobBixMap*	me = (msobBixMap*) max_jit_obex_new(gMaxClassBixMap, gSymJitBixMap);
+	msobBixMap*	me = (msobBixMap*) max_jit_object_alloc(gMaxClassBixMap, gSymJitBixMap);
 	if (me != NIL) {
 		// proxy_new(&me->coreObject, 2, &me->inletNum);
 		
@@ -588,7 +588,7 @@ BixMapFree(
 	// All of this is Jitter/mop magic
 	max_jit_mop_free(me);
 	jit_object_free( max_jit_obex_jitob_get(me) );
-	max_jit_obex_free(me);
+	max_jit_object_free(me);
 	}
 	
 /******************************************************************************************
@@ -637,8 +637,7 @@ static void BixMapInfo(msobBixMap* me)
  *	
  ******************************************************************************************/
 
-void
-main(void)
+void ext_main(void* r)
 	
 	{
 	voidPtr	mjClassEx,
@@ -648,7 +647,7 @@ main(void)
 		// Side effect: kJitClassName = gensym(gSymJitBixMap);
 	
 	// Standard Max setup() call
-	setup(	&gMaxClassBixMap,				// Pointer to our class definition
+	gMaxClassBixMap = class_new(kMaxClassName,				// Pointer to our class definition
 			(method) BixMapNew,				// Instance creation function
 			(method) BixMapFree,			// Custom deallocation function
 			sizeof(msobBixMap),				// Class object size
@@ -657,10 +656,10 @@ main(void)
 			0);		
 	
 	// Jitter Magic... 
-	mjClassEx	= max_jit_classex_setup( calcoffset(msobBixMap, xObject) );
+	max_jit_class_obex_setup(gMaxClassBixMap,  calcoffset(msobBixMap, xObject) );
 	jClass		= jit_class_findbyname(gSymJitBixMap);
-	max_jit_classex_mop_wrap(mjClassEx, jClass, 0); 		
-	max_jit_classex_standard_wrap(mjClassEx, jClass, 0); 	
+	max_jit_class_mop_wrap(gMaxClassBixMap, jClass, 0); 		
+	max_jit_class_wrap_standard(gMaxClassBixMap, jClass, 0); 	
 	
 	/*
 	 *	Add messages and attributes
@@ -668,12 +667,13 @@ main(void)
 			
 	
 		// Tack on informational messages
-	addmess	((method) BixMapTattle,	"dblclick",	A_CANT, 0);
-	addmess	((method) BixMapTattle,	"tattle",	A_NOTHING);
-	addmess	((method) BixMapAssist,	"assist",	A_CANT, 0);
-	addmess	((method) BixMapInfo,	"info",		A_CANT, 0);	
+	class_addmethod(gMaxClassBixMap, (method) BixMapTattle,	"dblclick",	A_CANT, 0);
+	class_addmethod(gMaxClassBixMap, (method) BixMapTattle,	"tattle",	A_NOTHING);
+	class_addmethod(gMaxClassBixMap, (method) BixMapAssist,	"assist",	A_CANT, 0);
+	class_addmethod(gMaxClassBixMap, (method) BixMapInfo,	"info",		A_CANT, 0);	
 	
 	// Initialize Litter Library
+	gObjectClass = gMaxClassBixMap;
 	LitterInit(kMaxClassName, 0);
 	
 	}

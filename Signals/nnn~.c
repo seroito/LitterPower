@@ -69,7 +69,7 @@ typedef struct {
 
 #pragma mark • Global Variables
 
-t_messlist*	gBrownerClass		= NIL;
+t_class*	gBrownerClass		= NIL;
 short		gStrResID		= 0,
 			gVersID			= 0,
 			gPackVersID		= 0;
@@ -108,14 +108,12 @@ static int*	PerformBrowner(int*);
  *	
  ******************************************************************************************/
 
-void
-main(void)
+void ext_main(void* r)
 	
 	{
-	LITTER_CHECKTIMEOUT(kClassName);
 	
 	// Standard Max/MSP initialization mantra
-	setup(	&gBrownerClass,				// Pointer to our class definition
+	gBrownerClass = class_new(kClassName,				// Pointer to our class definition
 			(method) NewBrowner,			// Instance creation function
 			(method) dsp_free,			// Default deallocation function
 			sizeof(tBrowner),				// Class object size
@@ -123,16 +121,16 @@ main(void)
 			A_DEFLONG,					// Optional arguments:	1. NN Factor
 			0);		
 	
-	dsp_initclass();
+	class_dspinit(gBrownerClass);
 
 	// Messages
-	addint	((method) DoNN);
-	addmess	((method) DoTattle,		"dblclick",	A_CANT, 0);
-	addmess	((method) DoAssist,		"assist",	A_CANT, 0);
-	addmess	((method) DoInfo,		"info",		A_CANT, 0);
+	class_addmethod(gBrownerClass, (method) DoNN, "int", A_LONG, 0);
+	class_addmethod(gBrownerClass, (method) DoTattle,		"dblclick",	A_CANT, 0);
+	class_addmethod(gBrownerClass, (method) DoAssist,		"assist",	A_CANT, 0);
+	class_addmethod(gBrownerClass, (method) DoInfo,		"info",		A_CANT, 0);
 	
 	// MSP-Level messages
-	LITTER_TIMEBOMB addmess	((method) BuildDSPChain, "dsp",		A_CANT, 0);
+	class_addmethod(gBrownerClass, (method) BuildDSPChain, "dsp",		A_CANT, 0);
 
 	// Initialize Litter Library
 	LitterInit(kClassName, 0);
@@ -160,7 +158,7 @@ NewBrowner(
 	// Default NN value doesn't need massaging
 
 	// Let Max/MSP allocate us, our inlets, and outlets.
-	me = (tBrowner*) newobject(gBrownerClass);
+	me = (tBrowner*) object_alloc(gBrownerClass);
 	dsp_setup(&(me->coreObject), 1);				// Signal inlet for benefit of begin~
 													// Otherwise left inlet does "NN" only
 	outlet_new(me, "signal");
@@ -238,8 +236,8 @@ DoTattle(
 
 void
 DoAssist(
-	tBrowner*,
-	void*,					// We don't use this parameter
+	tBrowner* unused,
+	void*		unused2,			// We don't use this parameter
 	long	iDir,
 	long	iArgNum,
 	char*	oCStr)
@@ -286,7 +284,7 @@ void
 BuildDSPChain(
 	tBrowner*		me,
 	t_signal**	ioDSPVectors,
-	short*		/* iConnectCounts */)
+	short*	 unused	/* iConnectCounts */)
 	
 	{
 	

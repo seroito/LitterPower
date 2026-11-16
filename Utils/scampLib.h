@@ -6,25 +6,25 @@
 
 	Written by:	Peter Castine
 
-	Copyright:	© 2003 Peter Castine
+	Copyright:	Â© 2003 Peter Castine
 
 	Change History (most recent first):
 
-         <5>    8Ð5Ð2006    pc      Fixed name conflict between the global enum Symmetry and the
+         <5>    8â€“5â€“2006    pc      Fixed name conflict between the global enum Symmetry and the
                                     mapping enum Symmetry (now eMapSym)
-         <4>     11Ð1Ð04    pc      Update for Windows.
-         <3>    6Ð7Ð2003    pc      Decided to take sync function out of scamp~.
+         <4>     11â€“1â€“04    pc      Update for Windows.
+         <3>    6â€“7â€“2003    pc      Decided to take sync function out of scamp~.
 The object has more
                                     than enough features as it is.
-         <2>   30Ð3Ð2003    pc      Sort out problems with scamp~
-         <1>   15Ð3Ð2003    pc      Initial implementation and check in.
+         <2>   30â€“3â€“2003    pc      Sort out problems with scamp~
+         <1>   15â€“3â€“2003    pc      Initial implementation and check in.
 */
 
 
 /******************************************************************************************
  ******************************************************************************************/
 
-#pragma mark ¥ Identify Target
+#pragma mark â€¢ Identify Target
 
 #define	SCAMPI		1
 #define SCAMPF		2
@@ -56,12 +56,12 @@ The object has more
 #endif
 
 
-#pragma mark ¥ Include Files
+#pragma mark â€¢ Include Files
 
 #include "LitterLib.h"
 
 
-#pragma mark ¥ Constants
+#pragma mark â€¢ Constants
 
 extern const char		kClassName[];
 
@@ -105,7 +105,7 @@ enum MapSymmetry {
 #endif
 
 
-#pragma mark ¥ Type Definitions
+#pragma mark â€¢ Type Definitions
 
 typedef enum MapType		eMapType;
 typedef enum MapSymmetry	eMapSym;
@@ -123,7 +123,7 @@ typedef struct ScampFlags {
 							: 0;
 	} tScampFlags;
 
-#pragma mark ¥ Object Structure
+#pragma mark â€¢ Object Structure
 
 typedef struct {
 #if (SCAMP_TARGET == SCAMPSIG)
@@ -178,7 +178,7 @@ typedef struct {
 	} objScamp;
 
 
-#pragma mark ¥ Global Variables
+#pragma mark â€¢ Global Variables
 
 extern SymbolPtr	gSplitSym,
 					gStetSym,
@@ -201,7 +201,7 @@ extern SymbolPtr	gTruncSym,
 					gToInfSym;
 #endif
 
-#pragma mark ¥ Function Prototypes
+#pragma mark â€¢ Function Prototypes
 
 	// Defined in scampCommon.c
 void	ScampGenSymbols(void);
@@ -261,7 +261,7 @@ void	ScampAssist(objScamp*, void* , long , long , char*);
 void	ScampInfo(objScamp*);
 
 #pragma mark -
-#pragma mark ¥ Inline Functions
+#pragma mark â€¢ Inline Functions
 
 static inline tOutletPtr LeftOutlet(objScamp* me)
 	{

@@ -108,7 +108,7 @@ typedef struct {
 #pragma mark • Global Variables
 
 void*			gBixCPJitClass	= NIL;
-Messlist*		gBixCPMaxClass	= NIL;
+t_class*		gBixCPMaxClass	= NIL;
 
 SymbolPtr		gsymJitMatrix		= NIL,
 				gsymSleep			= NIL,
@@ -154,8 +154,7 @@ static inline void* MainOutlet(msobBixCP* me)
  *	
  ******************************************************************************************/
 
-void
-main(void)
+void ext_main(void* r)
 	
 	{
 	const long kAttrFlags = JIT_ATTR_GET_DEFER_LOW + JIT_ATTR_SET_DEFER_LOW;
@@ -165,25 +164,24 @@ main(void)
 	voidPtr	mjClassEx,
 			attrPtr;
 	
-	LITTER_CHECKTIMEOUT(kMaxClassName);
 	
 	// Standard Max setup() call
-	setup(	&gBixCPMaxClass,					// Pointer to our class definition
+	gBixCPMaxClass = class_new(kMaxClassName,					// Pointer to our class definition
 			(method) BixCPNew,					// Instance creation function
 			(method) BixCPFree,					// Custom deallocation function
-			(short) sizeof(msobBixCP),			// Class object size
+			sizeof(msobBixCP),			// Class object size
 			NIL,								// No menu function
 			A_GIMME,							// Jitter parses its own arguments
 			0);		
 	
 	// Jitter Magic... 
-	mjClassEx	= max_jit_classex_setup( calcoffset(msobBixCP, jitObject) );
+	max_jit_class_obex_setup(gBixCPMaxClass,  calcoffset(msobBixCP, jitObject) );
 	
 	/*
 	 *	Add messages and attributes
 	 */
 		// Processing messages
-	LITTER_TIMEBOMB addmess ((method) BixCPFullPacket, "FullPacket", A_LONG, A_LONG, 0);
+	class_addmethod(gBixCPMaxClass, (method) BixCPFullPacket, "FullPacket", A_LONG, A_LONG, 0);
 	
 		// Attributes
 	attrPtr = jit_object_new(	_jit_sym_jit_attr_offset,
@@ -195,13 +193,13 @@ main(void)
 	max_jit_classex_addattr(mjClassEx, attrPtr);
 	
 		// Wrap up class
-	max_jit_classex_standard_wrap(mjClassEx, NIL, 0); 	
+	max_jit_class_wrap_standard(gBixCPMaxClass, NIL, 0); 	
 	
 		// Tack on informational messages
-	addmess	((method) BixCPTattle,	"dblclick",	A_CANT, 0);
-	addmess	((method) BixCPTattle,	"tattle",	A_NOTHING);
-	addmess	((method) BixCPAssist,	"assist",	A_CANT, 0);
-	addmess	((method) BixCPInfo,	"info",		A_CANT, 0);
+	class_addmethod(gBixCPMaxClass, (method) BixCPTattle,	"dblclick",	A_CANT, 0);
+	class_addmethod(gBixCPMaxClass, (method) BixCPTattle,	"tattle",	A_NOTHING);
+	class_addmethod(gBixCPMaxClass, (method) BixCPAssist,	"assist",	A_CANT, 0);
+	class_addmethod(gBixCPMaxClass, (method) BixCPInfo,	"info",		A_CANT, 0);
 	
 	
 	// Cache commonly used symbols
@@ -213,6 +211,7 @@ main(void)
 	gsymDeviceCtrlOK	= gensym("deviceOK");
 	
 	// Initialize Litter Library
+	gObjectClass = gBixCPMaxClass;
 	LitterInit(kMaxClassName, 0);
 	
 	}
@@ -241,12 +240,12 @@ BixCPNew(
 	voidPtr				matrix		= NIL;
 	t_jit_matrix_info	info;
 	
-	// In the 1.0 SDK max_jit_obex_new() is prototyped to expect a Maxclass* instead of
-	// a Messlist*. JKC said the next release of header files would be corrected to
-	// use Messlist* and in the interim users can edit the file accordingly.
+	// In the 1.0 SDK max_jit_object_alloc() is prototyped to expect a Maxclass* instead of
+	// a t_class*. JKC said the next release of header files would be corrected to
+	// use t_class* and in the interim users can edit the file accordingly.
 	// If we get a compiler "illegal implicit typecast" error, it means Josh forgot to
 	// make the change; go to jit.max.h and do it again.
-	me = (msobBixCP*) max_jit_obex_new(gBixCPMaxClass, NIL);		// No Jitter object
+	me = (msobBixCP*) max_jit_object_alloc(gBixCPMaxClass, NIL);		// No Jitter object
 		if (me == NIL) goto punt;
 	
 	// Create outlets
@@ -301,7 +300,7 @@ BixCPFree(
 	{
 	jit_object_detach(me->matrixSym, me);
 	jit_object_free(me->matrix);
-	max_jit_obex_free(me);
+	max_jit_object_free(me);
 	}
 
 
@@ -326,7 +325,7 @@ BixCPFree(
 	
 	static t_jit_err DoGrayPict(msobBixCP* me, long iSize, tBixCPPicture* iPictBuf)
 		{
-		const int	kMaxArgs = 2;
+		enum { kMaxArgs = 2 };
 		
 		t_jit_err			err		= JIT_ERR_NONE;
 		short				width	= NETORDER_INT16( iPictBuf->width ),
@@ -403,7 +402,7 @@ BixCPFree(
 
 	static t_jit_err DoMonoPict(msobBixCP* me, long iSize, tBixCPPicture* iPictBuf)
 		{
-		const int	kMaxArgs = 2;
+		enum { kMaxArgs = 2 };
 		
 		t_jit_err			err		= JIT_ERR_NONE;
 		short				width	= NETORDER_INT16( iPictBuf->width ),

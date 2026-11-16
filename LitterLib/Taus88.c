@@ -240,7 +240,7 @@ Taus88Seed(
 		iSalt = MachineKharma();
 		// Spice with the address where our data is stored.
 		// This gives us a value unique to the calling Max class
-		iSalt ^= (unsigned long) iData;
+		iSalt ^= (UInt32) (uintptr_t) iData;
 		}
 	
 	// (Re-)initialize data pool, making sure seed requirements are met.

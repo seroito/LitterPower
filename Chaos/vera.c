@@ -30,46 +30,28 @@
 
 #pragma mark • Identify Target
 
-#if __ide_target("X-Verhulst/Ctrl (Classic)")				\
-		|| __ide_target("X-Verhulst/Ctrl (Carbon)")			\
-		|| __ide_target("X-Verhuslt/Ctrl (Windows)")
-		
-	#define __VERA_VAN__ 1
-
-#elif __ide_target("X-Verh. May/Ctrl (Classic)")			\
-		|| __ide_target("X-Verh. May/Ctrl (Carbon)")		\
-		|| __ide_target("X-Verh. May/Ctrl (Windows)")		\
-
-	#define __VERA_MAY__ 1
-
-#elif __ide_target("X-Verh. +/Ctrl (Classic)")				\
-		|| __ide_target("X-Verh. +/Ctrl (Carbon)")			\
-		|| __ide_target("X-Verh. +/Ctrl (Windows)")
-		
-	#define __VERA_PLUS__ 1
-
-#elif __ide_target("X-Verh. =/Ctrl (Classic)")				\
-		|| __ide_target("X-Verh. =/Ctrl (Carbon)")			\
-		|| __ide_target("X-Verh. =/Ctrl (Windows)")
-		
-	#define __VERA_IS__ 1
-
-#elif __ide_target("X-Verh. L/Ctrl (Classic)")				\
-		|| __ide_target("X-Verh. L/Ctrl (Carbon)")			\
-		|| __ide_target("X-Verh. L/Ctrl (Windows)")
-		
-	#define __VERA_LAM__ 1
-
-#elif __ide_target("X-Verh. S/Ctrl (Classic)")				\
-		|| __ide_target("X-Verh. S/Ctrl (Carbon)")			\
-		|| __ide_target("X-Verh. S/Ctrl (Windows)")
-		
-	#define __VERA_STEW__ 1
-
-#else
-
-	#error /* Undefined target */
-
+// The variant is chosen by the build system (see CMakeLists.txt), which defines exactly
+// one of the following macros as 1.
+#ifndef __VERA_VAN__
+	#define __VERA_VAN__ 0
+#endif
+#ifndef __VERA_MAY__
+	#define __VERA_MAY__ 0
+#endif
+#ifndef __VERA_PLUS__
+	#define __VERA_PLUS__ 0
+#endif
+#ifndef __VERA_IS__
+	#define __VERA_IS__ 0
+#endif
+#ifndef __VERA_LAM__
+	#define __VERA_LAM__ 0
+#endif
+#ifndef __VERA_STEW__
+	#define __VERA_STEW__ 0
+#endif
+#if (__VERA_VAN__ + __VERA_MAY__ + __VERA_PLUS__ + __VERA_IS__ + __VERA_LAM__ + __VERA_STEW__) != 1
+	#error Undefined target: define exactly one __VERA_xxx__ macro
 #endif
 
 
@@ -78,7 +60,7 @@
 
 #include "LitterLib.h"
 
-#include <cfloat>			// For FLT_EPSILON
+#include <float.h>			// For FLT_EPSILON
 #include <math.h>			// For fabs(), log()
 
 #pragma mark • Constants
@@ -282,15 +264,15 @@ static Boolean SetRates(tVera*, short, Atom*);
 				{ return iPop + iGrowth * iFnPop; }
 
 #elif __VERA_IS__
-	static inline double NextPop(double , double iFnPop, double iGrowth)
+	static inline double NextPop(double unused8 , double iFnPop, double iGrowth)
 				{ return iGrowth * iFnPop; }
 
 #elif __VERA_LAM__
-	static inline double NextPop(double, double iFnPop, double iGrowth)
+	static inline double NextPop(double unused7, double iFnPop, double iGrowth)
 				{ return iGrowth * iFnPop * (1.0 - iFnPop); }
 
 #elif __VERA_STEW__
-	static inline double NextPop(double, double iFnPop, double iGrowth)
+	static inline double NextPop(double unused6, double iFnPop, double iGrowth)
 				{ return iGrowth * iFnPop * iFnPop - 1.; }
 
 #elif __VERA_MAY__
@@ -310,13 +292,12 @@ static Boolean SetRates(tVera*, short, Atom*);
  *	
  ******************************************************************************************/
 
-void
-main(void*)				// Parameter is obsolete (68k legacy)
+void ext_main(void* r)
 	
 	{
 	
 	// Standard Max setup() call
-	setup(	&gObjectClass,				// Pointer to our class definition
+	gObjectClass = class_new(kClassName,				// Pointer to our class definition
 			(method) NewVera,			// Instance creation function
 			(method) FreeVera,			// Custom deallocation function
 			sizeof(tVera),				// Class object size
@@ -325,38 +306,38 @@ main(void*)				// Parameter is obsolete (68k legacy)
 			0);							//		followed by list of Growth Rates
 		
 	// Messages
-	addbang	((method) DoBang);
-	addfloat((method) Do1Rate);
-	addmess	((method) DoRates,	"list",		A_GIMME, 0);
-	addmess	((method) DoSet,	"set",		A_GIMME, 0);
-	addmess	((method) DoReset,	"reset",	A_NOTHING);
+	class_addmethod(gObjectClass, (method) DoBang, "bang", A_NOTHING);
+	class_addmethod(gObjectClass, (method) Do1Rate, "float", A_FLOAT, 0);
+	class_addmethod(gObjectClass, (method) DoRates,	"list",		A_GIMME, 0);
+	class_addmethod(gObjectClass, (method) DoSet,	"set",		A_GIMME, 0);
+	class_addmethod(gObjectClass, (method) DoReset,	"reset",	A_NOTHING);
 	
 #if __VERA_MAY__
-	addftx	((method) DoBeta,	1);
-	addftx	((method) DoSeed,	2);
+	class_addmethod(gObjectClass, (method) DoBeta, "ft1", A_FLOAT, 0);
+	class_addmethod(gObjectClass, (method) DoSeed, "ft2", A_FLOAT, 0);
 #else
-	addftx	((method) DoSeed,	1);
-	addmess	((method) DoIdent,	"ident",	A_NOTHING);
-	addmess	((method) DoZero,	"zero",		A_NOTHING);
-	addmess	((method) DoOne,	"one",		A_NOTHING);
-	addmess	((method) DoRecip,	"recip",	A_NOTHING);
-	addmess	((method) DoSinPi,	"sinpi",	A_NOTHING);
-	addmess	((method) DoCosPi,	"cospi",	A_NOTHING);
-	addmess	((method) DoTanPi,	"tanpi",	A_NOTHING);
-	addmess	((method) DoCotPi,	"cotpi",	A_NOTHING);
-	addmess	((method) DoSinh,	"sinh",		A_NOTHING);
-	addmess	((method) DoCosh,	"cosh",		A_NOTHING);
-	addmess	((method) DoTanh,	"tanh",		A_NOTHING);
-	addmess	((method) DoLog,	"log",		A_NOTHING);
-	addmess	((method) DoExp,	"exp",		A_NOTHING);
-	addmess	((method) DoSqr,	"sqr",		A_NOTHING);
-	addmess	((method) DoRoot,	"sqrt",		A_NOTHING);
+	class_addmethod(gObjectClass, (method) DoSeed, "ft1", A_FLOAT, 0);
+	class_addmethod(gObjectClass, (method) DoIdent,	"ident",	A_NOTHING);
+	class_addmethod(gObjectClass, (method) DoZero,	"zero",		A_NOTHING);
+	class_addmethod(gObjectClass, (method) DoOne,	"one",		A_NOTHING);
+	class_addmethod(gObjectClass, (method) DoRecip,	"recip",	A_NOTHING);
+	class_addmethod(gObjectClass, (method) DoSinPi,	"sinpi",	A_NOTHING);
+	class_addmethod(gObjectClass, (method) DoCosPi,	"cospi",	A_NOTHING);
+	class_addmethod(gObjectClass, (method) DoTanPi,	"tanpi",	A_NOTHING);
+	class_addmethod(gObjectClass, (method) DoCotPi,	"cotpi",	A_NOTHING);
+	class_addmethod(gObjectClass, (method) DoSinh,	"sinh",		A_NOTHING);
+	class_addmethod(gObjectClass, (method) DoCosh,	"cosh",		A_NOTHING);
+	class_addmethod(gObjectClass, (method) DoTanh,	"tanh",		A_NOTHING);
+	class_addmethod(gObjectClass, (method) DoLog,	"log",		A_NOTHING);
+	class_addmethod(gObjectClass, (method) DoExp,	"exp",		A_NOTHING);
+	class_addmethod(gObjectClass, (method) DoSqr,	"sqr",		A_NOTHING);
+	class_addmethod(gObjectClass, (method) DoRoot,	"sqrt",		A_NOTHING);
 #endif
 	
-	addmess	((method) DoTattle,	"dblclick",	A_CANT, 0);
-	addmess	((method) DoTattle,	"tattle",	A_NOTHING);
-	addmess	((method) DoAssist,	"assist",	A_CANT, 0);
-	addmess	((method) DoInfo,	"info",		A_CANT, 0);
+	class_addmethod(gObjectClass, (method) DoTattle,	"dblclick",	A_CANT, 0);
+	class_addmethod(gObjectClass, (method) DoTattle,	"tattle",	A_NOTHING);
+	class_addmethod(gObjectClass, (method) DoAssist,	"assist",	A_CANT, 0);
+	class_addmethod(gObjectClass, (method) DoInfo,	"info",		A_CANT, 0);
 	
 	// Initialize Litter Library
 	LitterInit(kClassName, 0);
@@ -412,7 +393,7 @@ main(void*)				// Parameter is obsolete (68k legacy)
 
 void*
 NewVera(
-	Symbol*	,
+	Symbol* unused5	,
 	short	iArgC,
 	Atom*	iArgV)
 	
@@ -433,7 +414,7 @@ NewVera(
 	//
 	// Let Max allocate us, our inlets, and outlets
 	//
-	me = (tVera*) newobject(gObjectClass);
+	me = (tVera*) object_alloc(gObjectClass);
 		if (me == NIL) goto punt;
 	
 		// Extra inlet
@@ -699,7 +680,7 @@ Do1Rate(
 static void
 DoRates(
 	tVera*	me,
-	Symbol*	,			// Will be either list or nil symbol, but we don't care.
+	Symbol* unused4	,			// Will be either list or nil symbol, but we don't care.
 	short	iArgC,
 	Atom*	iArgV)
 	
@@ -710,7 +691,7 @@ DoRates(
 static void
 DoSet(
 	tVera*	me,
-	Symbol*	,			// Will be set symbol, but we don't care.
+	Symbol* unused3	,			// Will be set symbol, but we don't care.
 	short	iArgC,
 	Atom*	iArgV)
 	
@@ -846,7 +827,7 @@ DoTattle(
  *
  ******************************************************************************************/
 
-void DoAssist(tVera*, void*, long iDir, long iArgNum, char* oCStr)
+void DoAssist(tVera* me, void* unused1, long iDir, long iArgNum, char* oCStr)
 	{ LitterAssist(iDir, iArgNum, strIndexInLeft, strIndexOutLeft, oCStr); }
 
 void DoInfo(tVera* me)

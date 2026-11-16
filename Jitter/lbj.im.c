@@ -70,7 +70,7 @@ typedef struct {
 #pragma mark • Global Variables
 
 void*			gJimJitClass	= NIL;
-Messlist*		gJimMaxClass	= NIL;
+t_class*		gJimMaxClass	= NIL;
 
 #pragma mark • Function Prototypes
 
@@ -109,8 +109,7 @@ static t_jit_err	JimJitMatrixCalc(jcobJim*, void*, void*);
  *	
  ******************************************************************************************/
 
-void
-main(void)
+void ext_main(void* r)
 	
 	{
 //	const long kAttr = MAX_JIT_MOP_FLAGS_OWN_OUTPUTMATRIX | MAX_JIT_MOP_FLAGS_OWN_JIT_MATRIX;
@@ -119,33 +118,33 @@ main(void)
 	voidPtr	p,									// Have to guess about what these two do
 			q;									// Not much is documented in the Jitter SDK
 	
-	LITTER_CHECKTIMEOUT(kClassName);
 	
 	JimJitInit();
 		
 	// Standard Max setup() call
-	setup(	&gJimMaxClass,					// Pointer to our class definition
+	gJimMaxClass = class_new(kMaxClassName,					// Pointer to our class definition
 			(method) JimNewMaxShell,		// Instance creation function
 			(method) JimFreeMaxShell,		// Custom deallocation function
-			(short) sizeof(msobJim),		// Class object size
+			sizeof(msobJim),		// Class object size
 			NIL,							// No menu function
 			A_GIMME,						// Jitter objects always parse their own arguments
 			0);		
 	
 	// Jitter Magic... 
-	p = max_jit_classex_setup(calcoffset(msobJim, obex));
+	max_jit_class_obex_setup(gJimMaxClass, calcoffset(msobJim, obex));
 	q = jit_class_findbyname(gensym((char*) kJitClassName));    
-    max_jit_classex_mop_wrap(p, q, kAttr); 		
-    max_jit_classex_standard_wrap(p, q, 0); 	
-	LITTER_TIMEBOMB max_addmethod_usurp_low((method) JimOutputMatrix, "outputmatrix");	
+    max_jit_class_mop_wrap(gJimMaxClass, q, kAttr); 		
+    max_jit_class_wrap_standard(gJimMaxClass, q, 0); 	
+	max_jit_class_addmethod_usurp_low(gJimMaxClass, (method) JimOutputMatrix, "outputmatrix");	
 	
 	// Back to adding messages...
-	addmess	((method) JimTattle,	"dblclick",	A_CANT, 0);
-	addmess	((method) JimTattle,	"tattle",	A_NOTHING);
-	addmess	((method) JimAssist,	"assist",	A_CANT, 0);
-	addmess	((method) JimInfo,		"info",		A_CANT, 0);
+	class_addmethod(gJimMaxClass, (method) JimTattle,	"dblclick",	A_CANT, 0);
+	class_addmethod(gJimMaxClass, (method) JimTattle,	"tattle",	A_NOTHING);
+	class_addmethod(gJimMaxClass, (method) JimAssist,	"assist",	A_CANT, 0);
+	class_addmethod(gJimMaxClass, (method) JimInfo,		"info",		A_CANT, 0);
 	
 	// Initialize Litter Library
+	gObjectClass = gJimMaxClass;
 	LitterInit(kMaxClassName, 0);
 	}
 
@@ -174,7 +173,7 @@ JimNewMaxShell(
 	void*			jitObj		= NIL;
 	Symbol*			jitClassSym	= gensym((char*) kJitClassName);
 	
-	me = (msobJim*) max_jit_obex_new(gJimMaxClass, jitClassSym);
+	me = (msobJim*) max_jit_object_alloc(gJimMaxClass, jitClassSym);
 		if (me == NIL) goto punt;
 		
 	jitObj = jit_object_new(jitClassSym);
@@ -210,7 +209,7 @@ JimFreeMaxShell(
 	{
 	max_jit_mop_free(me);
 	jit_object_free(max_jit_obex_jitob_get(me));
-	max_jit_obex_free(me);
+	max_jit_object_free(me);
 	}
 
 

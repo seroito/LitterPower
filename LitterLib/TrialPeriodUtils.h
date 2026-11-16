@@ -5,7 +5,7 @@
 
 	Written by:	Peter Castine
 
-	Copyright:	© 2001-2006 Peter Castine
+	Copyright:	Â© 2001-2006 Peter Castine
 
 	Change History (most recent first):
 	
@@ -19,7 +19,7 @@
 #ifndef TRIALPERIODUTILS_H
 #define TRIALPERIODUTILS_H
 
-#pragma mark ¥ Include Files
+#pragma mark â€¢ Include Files
 
 // We only need this for checking syntax,
 // it will normally be #included before this file
@@ -28,7 +28,7 @@
 #endif
 
 
-#pragma mark ¥ Constants
+#pragma mark â€¢ Constants
 
 	// Trial period ends on 4:15PM, LITTER_TRIALPERIOD days after
 	// the times specified by the arguments
@@ -42,7 +42,7 @@
 	#endif
 #endif
 
-#pragma mark ¥ Macros
+#pragma mark â€¢ Macros
 
 	// #define TRIALPERIOD to zero for final versions
 	// For beta, alpha, and development phases that go out of house, make
@@ -62,7 +62,7 @@
 
 
 #pragma mark -
-#pragma mark ¥ Inline Functions
+#pragma mark â€¢ Inline Functions
 
 #if LITTER_TRIALPERIOD
 

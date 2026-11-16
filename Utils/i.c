@@ -52,20 +52,6 @@ enum {
 	strIndexOutWisdom
 	};
 
-#ifdef WIN_VERSION
-	enum {
-		strIndexCommon		= strIndexOutWisdom + 1,
-		strIndexTrigrams	= strIndexCommon + 20,
-		strIndexChien		= strIndexTrigrams + 16,
-		strIndexKan			= strIndexChien + 80,
-		strIndexKen			= strIndexKan + 80,
-		strIndexChen		= strIndexKen + 80,
-		strIndexSun			= strIndexChen + 80,
-		strIndexLi			= strIndexSun + 80,
-		strIndexKun			= strIndexLi + 80,
-		strIndexTui			= strIndexKun + 80
-		};
-#else
 	const char	kGenStr[]		= "lp.i Common",	// Additional 'STR#' resources
 				kTrigrams[]		= "lp.i Trigrams",
 				kChienStrs[]	= "lp.i Ch’ien",
@@ -76,7 +62,6 @@ enum {
 				kLiStrs[]		= "lp.i Li",
 				kKunStrs[]		= "lp.i K’un",
 				kTuiStrs[]		= "lp.i Tui";
-#endif
 	// Indicies for Common texts STR# Resource
 	// These are also used as indices into the gCommonSym array.
 	// The gCommonSym[0] will be gensym("list"), which must be hardwaried.
@@ -116,10 +101,8 @@ enum HexagramInfoOffsets {
 	offTransName,
 	offJudgement,
 	offImage,
-#ifndef WIN_VERSION
 	offOverflow,					// Used when one of the components is longer than
 									// the 255 char limit for 'STR#' resources 
-#endif
 	offLineBottom,					// Will probably not need higher than bottom line
 	offLine2,
 	offLine3,
@@ -178,13 +161,7 @@ typedef struct {
 
 #pragma mark • Global Variables
 
-#if __LITTER_UB__
 	tStrListPtr	gChingStrings[9]	= {NIL, NIL, NIL, NIL, NIL, NIL, NIL, NIL, NIL};
-#else
-	short	gGenStrResID		= 0,
-			gChingStrResID[9]	= {0, 0, 0, 0, 0, 0, 0, 0, 0};
-								// 0-index for trigram names, other indices for Houses
-#endif
 
 t_symbol*		gCommonSym[csCount + 1]	= {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
 
@@ -197,25 +174,7 @@ t_symbol*		gCommonSym[csCount + 1]	= {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
 
 static inline void
 IChingGetResourceString(char oBuf[], short iResID, int iIndex)
-	{
-#ifdef WIN_VERSION
-	LitterGetIndString(gChingStrResID[iResID] + iIndex - 1, oBuf);
-//	post("IChingGetResourceString() iResID %ld, iIndex %d", (long) iResID, iIndex);
-//	post("  returns '%s'", oBuf);
-#elif __LITTER_UB__
-	LitterGetCStringFromStrList(oBuf, gChingStrings[iResID], iIndex);
-	
-	if (LitterGetMaxVersion() >= 0x0500) {
-		CFStringRef	ms = CFStringCreateWithCString(NULL, oBuf, kCFStringEncodingMacRoman);
-		if (ms != NULL) {
-			CFStringGetCString(ms, oBuf, kMaxResourceStrSize,  kCFStringEncodingUTF8);			
-			CFRelease(ms);
-			}
-		}
-#else
-	GetIndCString(oBuf, iResID, iIndex);
-#endif
-	}
+	{ LitterGetCStringFromStrList(oBuf, gChingStrings[iResID], iIndex); }
 
 #pragma mark -
 #pragma mark • Class Message Handlers
@@ -312,32 +271,26 @@ WisdomOut(
 											// non-NIL means "everything OK"
 	char		theStr[kMaxResourceStrSize];
 
-#ifndef WIN_VERSION							// Don't have to worry about 'STR#' resources
-	Boolean		useOverflow	= false;		// exceeding 255-char limit on Windows
+	Boolean		useOverflow	= false;
 	long		len;
-#endif
 			
 	IChingGetResourceString(theStr, iHouseID, iBaseIndex + iOffset);
 //	GetIndCString(theStr, iResID, iBaseIndex + iOffset);
-#ifndef WIN_VERSION
-	len = strlen(theStr);
+	len = (long) strlen(theStr);
 	if (len > 0 && theStr[len-1] == kStrExtensionChar) {
 		useOverflow = true;
 		theStr[len-1] = '\0';
 		}
-#endif
 	
 	noProblem = WisdomOutCore(iOutlet, theStr);
 	if (!noProblem) goto punt;
 	
-#ifndef WIN_VERSION
 	if (useOverflow) {
 		IChingGetResourceString(theStr, iHouseID, iBaseIndex + offOverflow);
 //		GetIndCString(theStr, iResID, iBaseIndex + offOverflow);
 		noProblem = WisdomOutCore(iOutlet, theStr);
 		if (!noProblem) goto punt;
 		}
-#endif
 	
 	noProblem = outlet_anything(iOutlet, gCommonSym[csNoRulers], 0, NIL);
 	
@@ -398,14 +351,6 @@ LineHeadOut(
 	// inside gensym(). 
 	const char	kConRulerUTF[]	= "\342\200\242 ",
 				kGovRulerUTF[]	= "\302\260 ";
-#if WIN_VERSION
-	const char	kConRulerNative[] =	"\245 ",
-				kGovRulerNative[] = "\241 ";
-#else
-	const char	kConRulerNative[] =	"• ",
-				kGovRulerNative[] = "° ";
-
-#endif
 	
 	enum {
 		AtomRulers			= 0,	// Symbolic constants for accessing the local
@@ -422,16 +367,15 @@ LineHeadOut(
 	
 	// See if we're checking for ruler lines, and adjust rulerSym as necessary
 	if (iFlagRulers) {
-		Boolean	hasRulers = false,
-				useUTF8	= LitterGetMaxVersion() >= 0x0500;
+		Boolean	hasRulers = false;
 		
 		if (lineBit & iInfo->con) {
-			rulerSym = gensym((char*) (useUTF8 ? kConRulerUTF : kConRulerNative));
+			rulerSym = gensym((char*) kConRulerUTF);
 			hasRulers = true;
 			}
 		
 		if (lineBit  & iInfo->gov) {
-			rulerSym = gensym((char*) (useUTF8 ? kGovRulerUTF : kGovRulerNative));
+			rulerSym = gensym((char*) kGovRulerUTF);
 			hasRulers = true;
 			}
 		
@@ -487,10 +431,7 @@ DoNameNow(
 	offsetBase	= (mainInfo->housePos - 1) * offsetsPerHexagram + 1;
 	
 	if (me->hexNumInName) {
-		Str32 numStr;
-		NumToString(hexID, numStr);			// Convert number to text
-		numStr[++numStr[0]] = '.';			// Append period
-		MoveP2CStr(numStr, theStr);
+		snprintf(theStr, sizeof(theStr), "%ld.", (long) hexID);	// Number followed by period
 		SetSym(AtomVec, gensym((char*) theStr));
 		AtomCount += 1;
 		}
@@ -1086,7 +1027,7 @@ static void IChingInfo(objIChing* me)
  ******************************************************************************************/
 
 
-int C74_EXPORT main(void)
+void ext_main(void* r)
 	
 	{
 	const tTypeList myArgTypes = {
@@ -1098,19 +1039,18 @@ int C74_EXPORT main(void)
 	short	symIndex;
 	
 	//LITTER_CHECKTIMEOUT(kClassName);
-        t_class *c;
+	t_class *c;
+	tStrListPtr	commonStrings;
 	
-	// Standard Max setup() call
-	
-	c = class_new(kClassName,
+	// Standard Max class setup
+	LitterSetupClass(	kClassName,
 						sizeof(objIChing),				// Class object size
-						//LitterCalcOffset(objIChing),	// Magic "Obex" Calculation
+						LitterCalcOffset(objIChing),	// Magic "Obex" Calculation
 						(method) IChingNew,				// Instance creation function
 						NIL,							// No custom deallocation function
-                        sizeof(objIChing),
 						NIL,							// No menu function
-						myArgTypes,                     // See above
-                        0);
+						myArgTypes);					// See above
+	c = gObjectClass;
 
 	// Messages
 	class_addmethod(c, (method) IChingBang, "bang", 0);
@@ -1129,29 +1069,16 @@ int C74_EXPORT main(void)
 	class_addmethod(c, (method) IChingInfo,		"info", A_CANT, 0);
 	
 	// Generate common symbols we use a lot
+	commonStrings = LitterCopyStrListResourceByName(kGenStr);
 	for (symIndex = csCount; symIndex > 0; symIndex -= 1) {
 		char cStr[kMaxResourceStrSize];
-	#if WIN_VERSION	
-		LitterGetIndString(symIndex + strIndexCommon - 1, cStr);
-	#else
-		GetIndCString(cStr, csResID, symIndex);
-	#endif
+		
+		LitterGetCStringFromStrList(cStr, commonStrings, symIndex);
 		gCommonSym[symIndex] = gensym((char*) cStr);
 		}
 	gCommonSym[0] = gensym("list");
-	 
 	
-#ifdef WIN_VERSION
-	gChingStrResID[0]	= strIndexTrigrams;
-	gChingStrResID[1]	= strIndexChien;
-	gChingStrResID[2]	= strIndexKan;
-	gChingStrResID[3]	= strIndexKen;
-	gChingStrResID[4]	= strIndexChen;
-	gChingStrResID[5]	= strIndexSun;
-	gChingStrResID[6]	= strIndexLi;
-	gChingStrResID[7]	= strIndexKun;
-	gChingStrResID[8]	= strIndexTui;
-#elif __LITTER_UB__
+	// Locate the string lists with the texts for the trigrams and the eight houses
 	gChingStrings[0] = LitterCopyStrListResourceByName(kTrigrams);
 	gChingStrings[1] = LitterCopyStrListResourceByName(kChienStrs);
 	gChingStrings[2] = LitterCopyStrListResourceByName(kKanStrs);
@@ -1161,48 +1088,10 @@ int C74_EXPORT main(void)
 	gChingStrings[6] = LitterCopyStrListResourceByName(kLiStrs);
 	gChingStrings[7] = LitterCopyStrListResourceByName(kKunStrs);
 	gChingStrings[8] = LitterCopyStrListResourceByName(kTuiStrs);
-#else
-	{
-	short	externResFile	= CurResFile(),
-			prevResFile		= PrevResFile();
-	
-	// Get our resources...
-	resnamecopy('STR#', (char*) kClassName);		// 'STR#' resource must be named "lp.i"
-	resnamecopy('STR#', (char*) kGenStr);			// ... and so on, for other resources
-	resnamecopy('STR#', (char*) kTrigrams);
-	resnamecopy('STR#', (char*) kChienStrs);
-	resnamecopy('STR#', (char*) kKanStrs);
-	resnamecopy('STR#', (char*) kKenStrs);
-	resnamecopy('STR#', (char*) kChenStrs);
-	resnamecopy('STR#', (char*) kSunStrs);
-	resnamecopy('STR#', (char*) kLiStrs);
-	resnamecopy('STR#', (char*) kKunStrs);
-	resnamecopy('STR#', (char*) kTuiStrs);
-	
-	// ... and store the IDs assigned to them in Max Temp
-	if (prevResFile > 0) {
-		UseResFile(prevResFile);
-		
-		gChingStrResID[0]	= FindResID('STR#', kTrigrams);
-		gChingStrResID[1]	= FindResID('STR#', kChienStrs);
-		gChingStrResID[2]	= FindResID('STR#', kKanStrs);
-		gChingStrResID[3]	= FindResID('STR#', kKenStrs);
-		gChingStrResID[4]	= FindResID('STR#', kChenStrs);
-		gChingStrResID[5]	= FindResID('STR#', kSunStrs);
-		gChingStrResID[6]	= FindResID('STR#', kLiStrs);
-		gChingStrResID[7]	= FindResID('STR#', kKunStrs);
-		gChingStrResID[8]	= FindResID('STR#', kTuiStrs);
-		
-		UseResFile(externResFile);
-		}
-	}
-#endif				// WIN_VERSION/__LITTER_UB__
 	
 	// Initialize Litter Library
-	//LitterInit(kClassName, 0);
+	LitterInit(kClassName, 0);
 	Taus88Init();
-        class_register(CLASS_BOX, c);
-        gObjectClass = c;
 
 	}
 

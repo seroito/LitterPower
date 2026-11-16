@@ -1,1 +1,6 @@
-#define WIN_VERSION			1#define USE_QTML			1#define __MAX_MSP_OBJECT__	1#include <Win32Headers.mch>#include "TrialPeriod.h"
+#define WIN_VERSION			1
+#define USE_QTML			1
+#define __MAX_MSP_OBJECT__	1
+
+#include <Win32Headers.mch>
+#include "TrialPeriod.h"

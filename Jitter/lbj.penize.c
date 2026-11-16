@@ -91,7 +91,7 @@ typedef struct {
 #pragma mark • Global Variables
 
 void*			gPenizeJitClass	= NIL;
-Messlist*		gPenizeMaxClass	= NIL;
+t_class*		gPenizeMaxClass	= NIL;
 
 	// Symbols for accessing Jitter attributes
 	// (This is how our Jitter object communicates with the outside world)
@@ -110,8 +110,8 @@ static void	PenizeInfo			(msobPenize*);
 static void PenizeMaxMProc		(msobPenize*, void*);
 
 	// Jitter methods/functions
-jcobPenize*		PenizeJitNew	(void);
-void 			PenizeJitFree	(jcobPenize*);
+static jcobPenize*	PenizeJitNew	(void);
+static void 		PenizeJitFree	(jcobPenize*);
 
 static t_jit_err PenizeJitInit	(void);
 static t_jit_err PenizeJitMCalc	(jcobPenize*, void*, void*);
@@ -135,8 +135,7 @@ static t_jit_err PenizeJitMCalc	(jcobPenize*, void*, void*);
  *	
  ******************************************************************************************/
 
-void
-main(void)
+void ext_main(void* r)
 	
 	{
 	const long kAttrFlags = MAX_JIT_MOP_FLAGS_OWN_OUTPUTMATRIX
@@ -145,41 +144,41 @@ main(void)
 	voidPtr	p,									// Have to guess about what these two do
 			q;									// Not much is documented in the Jitter SDK
 	
-	LITTER_CHECKTIMEOUT(kClassName);
 	
 	PenizeJitInit();
 	
 	// Standard Max setup() call
-	setup(	&gPenizeMaxClass,					// Pointer to our class definition
+	gPenizeMaxClass = class_new(kMaxClassName,					// Pointer to our class definition
 			(method) PenizeNewMaxShell,			// Instance creation function
 			(method) PenizeFreeMaxShell,		// Custom deallocation function
-			(short) sizeof(msobPenize),			// Class object size
+			sizeof(msobPenize),			// Class object size
 			NIL,								// No menu function
 			A_GIMME,							// Jitter objects always parse their own
 			0);									// arguments
 	
 	// Jitter Magic... 
-	p	= max_jit_classex_setup(
+	max_jit_class_obex_setup(gPenizeMaxClass, 
 					calcoffset(msobPenize, jitObEx)
 					);
 	q	= jit_class_findbyname(
 					gensym((char*) kMaxClassName)
 					);    
-    max_jit_classex_mop_wrap(p, q, kAttrFlags); 		
+    max_jit_class_mop_wrap(gPenizeMaxClass, q, kAttrFlags); 		
     max_jit_classex_mop_mproc(p, q, PenizeMaxMProc);	// Custom MProc
-    max_jit_classex_standard_wrap(p, q, 0); 	
+    max_jit_class_wrap_standard(gPenizeMaxClass, q, 0); 	
 	
 	// Add messages...
-	LITTER_TIMEBOMB addbang	((method) PenizeBang);
-	addmess	((method) PenizeTattle,	"dblclick",	A_CANT, 0);
-	addmess	((method) PenizeTattle,	"tattle",	A_NOTHING);
-	addmess	((method) PenizeAssist,	"assist",	A_CANT, 0);
-	addmess	((method) PenizeInfo,	"info",		A_CANT, 0);
+	class_addmethod(gPenizeMaxClass, (method) PenizeBang, "bang", A_NOTHING);
+	class_addmethod(gPenizeMaxClass, (method) PenizeTattle,	"dblclick",	A_CANT, 0);
+	class_addmethod(gPenizeMaxClass, (method) PenizeTattle,	"tattle",	A_NOTHING);
+	class_addmethod(gPenizeMaxClass, (method) PenizeAssist,	"assist",	A_CANT, 0);
+	class_addmethod(gPenizeMaxClass, (method) PenizeInfo,	"info",		A_CANT, 0);
 	
 	// Define global symbols
 	gSymGetDiffs	= gensym("getdiffs");
 	
 	// Initialize Litter Library
+	gObjectClass = gPenizeMaxClass;
 	LitterInit(kMaxClassName, 0);
 	}
 
@@ -217,7 +216,7 @@ PenizeMaxMProc(
 
 static void*
 PenizeNewMaxShell(
-	SymbolPtr,
+	SymbolPtr unused,
 	long		iArgC,
 	Atom		iArgV[])
 	
@@ -226,12 +225,12 @@ PenizeNewMaxShell(
 	voidPtr			jitObj		= NIL;
 	Symbol*			classSym	= gensym((char*) kMaxClassName);
 	
-	// In the 1.0 SDK max_jit_obex_new() is prototyped to expect a Maxclass* instead of
-	// a Messlist*. JKC said the next release of header files would be corrected to
-	// use Messlist* and in the interim users can edit the file accordingly.
+	// In the 1.0 SDK max_jit_object_alloc() is prototyped to expect a Maxclass* instead of
+	// a t_class*. JKC said the next release of header files would be corrected to
+	// use t_class* and in the interim users can edit the file accordingly.
 	// If we get a compiler "illegal implicit typecast" error, it means Josh forgot to
 	// make the change; go to jit.max.h and do it again.
-	me = (msobPenize*) max_jit_obex_new(gPenizeMaxClass, classSym);
+	me = (msobPenize*) max_jit_object_alloc(gPenizeMaxClass, classSym);
 		if (me == NIL) goto punt;
 		
 	jitObj = jit_object_new(classSym);
@@ -275,7 +274,7 @@ PenizeFreeMaxShell(
 	
 	max_jit_mop_free(me);
 	jit_object_free(max_jit_obex_jitob_get(me));
-	max_jit_obex_free(me);
+	max_jit_object_free(me);
 	
 	}
 
@@ -358,7 +357,7 @@ PenizeTattle(
 void PenizeInfo(msobPenize* me)
 	{ LitterInfo(kMaxClassName, &me->coreObject, (method) PenizeTattle); }
 
-void PenizeAssist(msobPenize*, void*, long iDir, long iArgNum, char* oCStr)
+void PenizeAssist(msobPenize* me, void* unused, long iDir, long iArgNum, char* oCStr)
 	{ LitterAssist(iDir, iArgNum, strIndexInLeft, strIndexOutLeft, oCStr); }
 
 
@@ -432,7 +431,7 @@ PenizeJitInit(void)
 static jcobPenize* PenizeJitNew()
 	{ return (jcobPenize*) jit_object_alloc(gPenizeJitClass); }
 
-static void PenizeJitFree(jcobPenize*)
+static void PenizeJitFree(jcobPenize* me)
 	{ /* nothing to do */ }
 
 
@@ -483,7 +482,7 @@ static t_jit_err
 PenizeJitMCalc(
 	jcobPenize*	me,
 	void*		inputs,
-	void*		/* outputs */)
+	void*		 unused/* outputs */)
 	
 	{
 	t_jit_err			err = JIT_ERR_NONE;
