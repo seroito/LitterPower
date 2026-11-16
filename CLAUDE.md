@@ -1,7 +1,7 @@
 # LitterPower modernization notes
 
 Handover notes for continuing the Max 9 modernization in a new session or on another
-machine. Last updated 2026-11-16, about 11:45 UTC.
+machine. Last updated 2026-11-16, about 12:00 UTC.
 
 ## Goal
 
@@ -32,6 +32,21 @@ Windows (64-bit).
 | Test in Max 9 | Not done. Only the user can do this |
 
 Nothing has been loaded in Max yet. "Builds" does not mean "works".
+
+The user was given the package from run 43860503150 (commit `6b5478a`):
+https://github.com/seroito/LitterPower/actions/runs/43860503150, artifact
+`LitterPower-package`, with the install steps from `README.md`. They were asked to
+report which objects fail to load, crash or misbehave, with the Max console text.
+Artifacts expire after 90 days; any new push produces a fresh package.
+
+Things to watch in the first test:
+
+- Whether Max 9 loads the ad-hoc signed `.mxo` files (quarantine flag, see `README.md`).
+- Whether Max 9 opens the extras and clippings, which are in the Max 4 binary format.
+- `lp.titi` / `lbj.titi` give a different sequence per seed than the old binaries,
+  because of the TT800 fix.
+- The Jitter objects and the `lbj.bix*` network objects are the least certain part:
+  their class setup was converted from the legacy `max_jit_classex_*` API by pattern.
 
 ## How to continue
 
