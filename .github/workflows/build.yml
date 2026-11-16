@@ -16,6 +16,7 @@ jobs:
       - name: Configure
         run: cmake -B build -DCMAKE_BUILD_TYPE=Release
       - name: Build
+        shell: bash
         run: cmake --build build -j 4 -- -k 2>&1 | tee build-macos.log
       - name: Check architectures
         if: always()
