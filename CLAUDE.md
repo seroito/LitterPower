@@ -1,123 +1,117 @@
 # LitterPower modernization notes
 
-Handover notes for continuing the Max 9 modernization on another machine.
-Written 2026-11-16 after a read-only survey on Linux. No source code has been
-changed yet and nothing has been compiled.
+Handover notes for continuing the Max 9 modernization in a new session or on another
+machine. Last updated 2026-11-16, about 11:45 UTC.
 
 ## Goal
 
 LitterPower is a library of Max externals by Peter Castine (Max, MSP and Jitter
-objects, named `lp.*` and `lbj.*`). The existing binaries do not load in Max 9.
-The goal is to make all externals build and run in Max 9.
+objects, named `lp.*` and `lbj.*`). The old binaries do not load in Max 9. The goal is
+to make all externals build and run in Max 9 on macOS (Intel and Apple Silicon) and
+Windows (64-bit).
 
-## State of the repository
+## Decisions made by the user
 
-- Working branch: `64-bit-version` (the only local branch). It holds a partial
-  port to the Max 7 SDK done in 2018-2019.
-- About 113 external source files in C, in `Chaos/`, `Continuous/`, `Discrete/`,
-  `Signals/`, `Mutators/`, `Utils/` and `Jitter/`. Shared code is in `LitterLib/`.
-- `c74support/` is the bundled Max SDK, version 7.0.1 (`C74_MAX_SDK_VERSION 0x0701`).
-- Build files: nine Xcode projects in `XCode-Projects/`, configured by
-  `maxmspsdk.xcconfig` with `ARCHS = i386 x86_64`. There are no Windows project
-  files and no CMake files.
-- Help patches (`.maxhelp` / `.help`) are not in the repository.
+- Build with GitHub Actions on the fork `seroito/LitterPower`, branch
+  `64-bit-version`. Pushing to that branch is authorized. `gh` is installed and logged
+  in on the Linux machine.
+- Build everything except `vicon-tracker` and `vicon-controller`.
+- The user copied the original help files, extras and clippings into the repository
+  for use in the package.
+- Open: licensing. The code is copyright Peter Castine and the README only points to
+  GitHub's terms of service. Clarify with him before distributing binaries publicly.
 
-### Already ported
+## Where things stand
 
-- About 79 files have the modern entry point (`int C74_EXPORT main(void)`).
-- 24 audio externals have the 64-bit perform routine (`dsp64` / `dsp_add64`).
-- 61 files use `class_new()`.
+| Area | State |
+|---|---|
+| Source port | Done. `tools/check.py` (gcc syntax check on Linux): 0 of 116 units failing |
+| Windows build | Succeeds on GitHub Actions: all 102 externals (`.mxe64`) |
+| macOS build | Not yet run once. GitHub's `macos-latest` / `macos-15` (arm64) runners never picked up the job ("capacity constraints"); the workflow now uses `macos-15-intel` |
+| Max package | `tools/make_package.py` and a CI job exist; never run in CI because it needs the macOS job |
+| Test in Max 9 | Not done. Only the user can do this |
 
-### Still old style
+Nothing has been loaded in Max yet. "Builds" does not mean "works".
 
-- About 40 files register their class with the old `setup()` call only. Most of
-  `Continuous/`, part of `Chaos/` and `Discrete/`, and a few in `Utils/`,
-  `Signals/` and `Jitter/` (`lbj.bixunpack.c`).
-- Audio files with only the 32-bit `dsp_add()` routine: `Chaos/latoocarfian~.c`,
-  `Chaos/julia~.c`, `Chaos/vera~.c`, `Signals/chff~.c`, `Signals/kasar~.c`,
-  `Signals/nnn~.c`, `Utils/sinker~.c`. Two more look like dead files:
-  `Signals/ccc~(no use).c` and `Signals/pfff~ old.c`.
-- About 22 files use Carbon resources or Mac memory calls (`.r` files in
-  `Resources/` hold assistance strings and version info). About 15 files
-  reference old Mac system headers or calls.
-- `long` appears over 2,000 times. It is 64 bits on macOS and 32 bits on 64-bit
-  Windows, so the random number generators (`LitterLib/Taus88.c`,
-  `LitterLib/TT800.c`) need a careful check.
-- The 14 Jitter externals (`Jitter/lbj.*.c`) use the standard matrix-operator
-  pattern (`max_jit_*`, `matrix_calc`).
+## How to continue
 
-## Plan
+1. Check the latest run: `gh run list --repo seroito/LitterPower --limit 3`.
+2. If the macOS job ran, read its errors (`gh run view <id> --log-failed`, or the
+   `build-log-macos` artifact) and fix them. Expect clang to be stricter than gcc and
+   MSVC in places. Run `python3 tools/check.py` before every push.
+3. When both jobs pass, the `LitterPower-package` artifact holds the complete package.
+   Give the user the download link and the install steps from `README.md`.
+4. The user tests in Max 9; fix what they report.
 
-1. Replace the Xcode projects with the CMake setup of the current Max SDK
-   (`max-sdk-base` from Cycling '74 on GitHub), replacing `c74support/`.
-   Targets: macOS universal (`x86_64` + `arm64`) and Windows 64-bit.
-2. Port `LitterLib` plus one external from each group first, build them, and
-   test them in Max 9.
-3. Roll the same pattern out to the remaining externals: `class_new()`,
-   `ext_main`, `dsp64`, no Carbon resources, fixed-width integer types.
-4. Package the result as a Max Package (externals, help files, metadata).
+Windows compiler warnings are written to `build/build-windows-warnings.log` and
+uploaded in the `build-log-windows` artifact. `gh run download` refuses that artifact
+("path traversal"); fetch it with
+`gh api repos/seroito/LitterPower/actions/artifacts/<id>/zip`.
 
-## Constraints
+### Known open problem: Jitter matrices of type long on macOS
 
-- Max externals can only be built on macOS (Xcode) and Windows (Visual Studio
-  Build Tools plus CMake). They cannot be built on Linux.
-- A Windows PC builds only the Windows externals; the macOS ones need a Mac.
-- GitHub Actions with macOS and Windows runners can build both from any machine.
-- Claude cannot run Max. Testing in Max 9 has to be done by the user.
+Jitter `long` matrices hold 32-bit cells. Several `Jitter/lbj.*.c` files walk that
+data with `long*` and `sizeof(long)`, which is 8 bytes on macOS. This is correct on
+Windows and wrong on macOS. Affected: `lbj.abbie.c`, `lbj.expo.c`, `lbj.norm.c`,
+`lbj.shhh.c`, `lbj.stats.c`, `lbj.tata.c`, `lbj.titi.c`. Fix: use `t_int32*` and
+`sizeof(t_int32)` wherever matrix data is addressed. Not yet done.
 
-## Open decisions (not yet answered by the user)
+## What was changed
 
-- Build route: GitHub Actions, or local builds on a Windows PC and/or a Mac.
-- Target platforms: macOS universal plus Windows 64-bit, or only one.
-- Scope: all externals, or skip the oddities (`Utils/Ex libris/vicon-*.c`,
-  `Discrete/wacom.c`, the "old" and "no use" files, and `scamp*`, whose sources
-  sit partly in `Utils/Scamp Sources.zip`).
-- Whether the user can supply the original help patches from an old
-  LitterPower distribution.
-- Licensing: the README only points to GitHub's terms of service and the code
-  is copyright Peter Castine. Redistribution of binaries should be clarified
-  with him.
-
-## Progress log
-
-### 2026-11-16: code port done locally, not yet built on macOS/Windows
-
-Decisions by the user: build with GitHub Actions (macOS and Windows runners) on the fork
-`seroito/LitterPower`, branch `64-bit-version`; build everything except
-`vicon-tracker` and `vicon-controller`.
-
-Done so far:
-
-- `c74support/` (SDK 7.0.1) replaced by the submodule `max-sdk-base` (current Max SDK).
-- `CMakeLists.txt` lists every external (one `litter_external(...)` line each) and
-  replaces the Xcode projects. Shared code is the static library `litterlib`.
+- `c74support/` (SDK 7.0.1) replaced by the submodule `max-sdk-base` (current SDK).
+- The Xcode projects are removed. `CMakeLists.txt` lists every external, one
+  `litter_external(...)` line each. Shared code is the static library `litterlib`.
 - `LitterLib/LitterLib.[ch]` and `LitterLib/MaxUtils.[ch]` rewritten without Carbon,
   Resource Manager or Win32 resources. Mac type names (`UInt32`, `Byte`, ...) are
   defined in `MaxUtils.h` for non-Mac platforms.
 - Assistance and version strings: `tools/gen_strings.py` converts `Resources/*/*.r`
-  into `LitterLib/Strings/*.c` (committed, generated).
-- All entry points are `ext_main`; all classes use `class_new`; Jitter wrappers use the
-  current `max_jit_class_*` API.
-- `tools/check.py` syntax-checks all externals on Linux with gcc against the SDK
-  headers. State: 0 of 116 units failing.
-- Bugs fixed on the way: `TT800()` wrote/read past its seed array; `lp.gruyere~`
-  computed its table length from a pointer; `lp.i` class setup had wrong arguments;
-  `RiemannZetaFrac()` called `gamma()` where the true gamma function (`tgamma`) is meant.
+  into `LitterLib/Strings/*.c` (generated, committed).
+- All entry points are `ext_main`; all classes use `class_new`; Jitter wrappers use
+  the current `max_jit_class_*` API; `lp.julie~` and `lp.fiana~` were converted to
+  64-bit audio.
+- The trial period code of the commercial release is retired (empty macros).
+- `lp.argus` loads but does nothing, as in Litter Power 1.8 under Max 5 and later (it
+  depended on the Max 4 window API). `lp.mrsnorris` opens patchers and help files
+  through the normal Max search path.
+- BIX network packet structures (`Jitter/bix.h`) use fixed-size fields and
+  `#pragma pack`.
 
-Not built, because the original sources are unfinished drafts that never compiled:
-`Chaos/vera~.c` (6 variants), `Continuous/nnn.c`, `Discrete/cuthbert.c`,
+Bugs found and fixed on the way:
+
+- `TT800()` read and wrote past the end of its seed array.
+- `lp.gruyere~` computed its table length from a pointer instead of the frame count.
+- `lp.i` created its class with the arguments in the wrong order.
+- `RiemannZetaFrac()` called `gamma()` where the true gamma function is meant
+  (now `tgamma`).
+- `lp.lya` and `lp.poppy` freed memory with a different allocator than they used.
+- `lbj.tata` used an uninitialized maximum for double matrices.
+- `lbj.penize`, `lbj.stacey` and `lbj.bixunpack` passed uninitialized pointers to the
+  Jitter class setup.
+
+These fixes are untested in Max.
+
+## Not built
+
+Unfinished drafts by the original author that never compiled or have empty processing
+code: `Chaos/vera~.c` (6 variants), `Continuous/nnn.c`, `Discrete/cuthbert.c`,
 `Signals/chff~.c`, `Signals/kasar~.c`, `Signals/nnn~.c`, `Utils/sinker~.c`,
-`Utils/twist~.c`, `Jitter/lbj.im.c`, `Jitter/lbj.linnie.c`. Also not built:
-`Discrete/wacom.c` (third-party code needing the Wacom WinTab SDK), `Utils/druthers.c`
-and `Utils/mystes.c` (licensing helpers of the commercial release), and the superseded
-duplicates `bernie pre-pattr.c`, `ccc~(no use).c`, `pfff~ old.c`.
+`Utils/twist~.c`, `Jitter/lbj.im.c`, `Jitter/lbj.linnie.c`.
 
-`lp.argus` loads but does nothing, as in Litter Power 1.8 under Max 5 and later (it
-depended on the Max 4 window API).
+Also not built: `Discrete/wacom.c` (third-party code that needs the Wacom WinTab SDK),
+`Utils/druthers.c` and `Utils/mystes.c` (licensing helpers of the commercial release),
+the superseded duplicates `bernie pre-pattr.c`, `ccc~(no use).c` and `pfff~ old.c`,
+and the two vicon files.
 
-Next steps:
+Built although never released, so there are no help files for them: `lp.julie`,
+`lp.julie~`, `lp.lana`, `lp.fiana~`, the six `lp.vera*` control objects,
+`lp.gruyere~`, `lp.galliard~`, `lbj.penize`, `lbj.titi`, the `lbj.bix*` objects.
 
-1. Add `.github/workflows/build.yml` (macOS universal + Windows x64), push, fix what
-   clang and MSVC report.
-2. Assemble the Max package (externals, help files from `Litter Power Help/`, extras).
-3. User tests in Max 9.
+## Constraints
+
+- Max externals can only be built on macOS and Windows, not on Linux. On Linux only
+  `tools/check.py` is available.
+- Claude cannot run Max.
+- Working tree leftovers that are deliberately not committed: the deleted
+  `Utils/Scamp Sources.zip` and the unzipped `Utils/Scamp Sources/` (the user's own
+  change; the built scamp sources are the ones directly in `Utils/`), and the macOS
+  `Icon` files in the help and extras folders (their names are invalid on Windows).

@@ -56,12 +56,7 @@ enum {
 
 #pragma mark Macros
 
-	// Ugly macro to change BlockMoveData() to memcpy() on Windows.
-	// I don't understand why BlockMoveData() isn't working on Windows,
-	// but this change makes things work
-#ifdef WIN_VERSION
-	#define BlockMoveData(SRC, DEST, BYTES)		memcpy(DEST, SRC, BYTES)
-#endif
+
 
 #pragma mark Type Definitions
 

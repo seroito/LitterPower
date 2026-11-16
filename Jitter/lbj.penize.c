@@ -164,7 +164,7 @@ void ext_main(void* r)
 					gensym((char*) kMaxClassName)
 					);    
     max_jit_class_mop_wrap(gPenizeMaxClass, q, kAttrFlags); 		
-    max_jit_classex_mop_mproc(p, q, PenizeMaxMProc);	// Custom MProc
+    max_jit_classex_mop_mproc(gPenizeMaxClass, q, PenizeMaxMProc);	// Custom MProc
     max_jit_class_wrap_standard(gPenizeMaxClass, q, 0); 	
 	
 	// Add messages...

@@ -49,3 +49,5 @@ vb-stuff
 .DS_Store
 Icon?
 Icon\r
+
+__pycache__/

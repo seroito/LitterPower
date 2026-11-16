@@ -201,7 +201,7 @@ void ext_main(void* r)
 					gensym((char*) kMaxClassName)
 					);    
     max_jit_class_mop_wrap(gStaceyMaxClass, jitClass, kAttrFlags); 		
-    max_jit_classex_mop_mproc(jitClassExt, jitClass, StaceyMaxMProc);	// Custom MProc
+    max_jit_classex_mop_mproc(gStaceyMaxClass, jitClass, StaceyMaxMProc);	// Custom MProc
     max_jit_class_wrap_standard(gStaceyMaxClass, jitClass, 0); 	
 	
 	// Add messages...

@@ -339,6 +339,15 @@ Taus88DoubleVector(
 		CLIP_ASSIGN(min, 0.0, 1.0);
 		}
 	
+	// (The following block was missing here, leaving max uninitialized; it is the same
+	// as in Taus88FloatVector().)
+	if (iVecData->max.a_type == A_SYM)
+		max = kLongMax;
+	else {
+		max = AtomGetFloat(&iVecData->max);
+		CLIP_ASSIGN(max, 0.0, 1.0);
+		}
+	
 	if (min != max) {
 		double scale;
 		UInt32	s1, s2, s3;

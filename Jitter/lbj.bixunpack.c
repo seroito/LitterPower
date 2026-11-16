@@ -190,7 +190,7 @@ void ext_main(void* r)
 								kAttrFlags,
 								NIL, NIL,
 								calcoffset(msobBixCP, matrixSym) );
-	max_jit_classex_addattr(mjClassEx, attrPtr);
+	max_jit_class_addattr(gBixCPMaxClass, attrPtr);
 	
 		// Wrap up class
 	max_jit_class_wrap_standard(gBixCPMaxClass, NIL, 0); 	
