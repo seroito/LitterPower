@@ -40,7 +40,6 @@ Previous history:
 	// These are common to all varieties
 const char	kClassName[]		= "lp.poppy";			// Class name
 
-const char* lpversion = "64-bit version. Copyright 2001-08 Peter Castine, Part of Litter Power 1.8";
 
 #define LPAssistIn1			"Bang (Generate next point), Float/List (Growth rates)"
 #define LPAssistIn2			"Float (Seed population)"
@@ -170,7 +169,7 @@ void ext_main(void* r)
         class_register(CLASS_BOX, c);
         gObjectClass = c;
         
-        post("%s: %s", kClassName, lpversion);
+        post("%s: %s", kClassName, LPVERSION);
         return;
 	
 	}
