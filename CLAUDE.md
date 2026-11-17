@@ -114,6 +114,20 @@ workflow builds pushes to both branches. One commit per change:
    default; tested locally: output never above 1.0, at most -1.2 dB average level.
    The limiter now lives in `LitterLib/LitterLimiter.h`.
 
+9. Help files for the 15 objects without one, from `tools/make_extra_help.py` (written
+   from the sources; layout checked for overlaps, never opened in Max). Fixes found on the
+   way: hover texts of `lp.julie`, `lp.julie~`, `lp.lana`, `lp.fiana~` and the `lp.vera*`
+   objects were shifted (old string tables without the six version entries;
+   `tools/gen_strings.py` now pads them); `lp.lana`/`lp.fiana~` read function-name
+   arguments from the wrong atom; `lp.fiana~` error message lacked its argument;
+   `lp.gruyere~` skipped every second creation argument (read past the list), used the
+   wrong offset in multi-channel buffers, no NULL check; `lp.crottin~` divided by zero for
+   rates of 0, accepted frequency 0, posted debug text for every number;
+   `lp.galliard~` overflowed with more than 255 coefficients or an empty list;
+   `lp.julie~` now restarts at z0 when the orbit escapes (was inf/NaN in the signal);
+   `lbj.bixmap` read past a group matrix smaller than the input (now resized to the input,
+   global filter until one arrives) and gave every thread the top rows of the group matrix.
+
 Not done (reviewed, lower priority): A_GIMME new functions declaring argc as `short`,
 A_LONG handlers declaring `long` instead of `t_atom_long`; no reference pages
 (docs/refpages) for the objects.
@@ -226,9 +240,10 @@ the Wacom WinTab SDK), `Utils/druthers.c` and `Utils/mystes.c` (licensing helper
 commercial release), the duplicates `bernie pre-pattr.c`, `ccc~(no use).c`,
 `pfff~ old.c`, and the two vicon files.
 
-Built but without a help file: `lbj.bixmap`, `lbj.penize`, and the never released
-`lp.crottin~`, `lp.fiana~`, `lp.galliard~`, `lp.gruyere~`, `lp.julie`, `lp.julie~`,
-`lp.lana` and the six `lp.vera*` control objects.
+Every built object has a help file. The 15 that never had one (`lbj.bixmap`,
+`lbj.penize`, `lp.crottin~`, `lp.fiana~`, `lp.galliard~`, `lp.gruyere~`, `lp.julie`,
+`lp.julie~`, `lp.lana`, the six `lp.vera*`) got new ones in 2026 (see rng-fixes item 9).
+`lbj.penize` is an unfinished draft (outputs nothing); its help file says so.
 
 ## Constraints
 
