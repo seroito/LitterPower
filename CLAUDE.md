@@ -77,8 +77,22 @@ The 5 help files with a logo `fpic` and the 5 empty `fpic` boxes in the converte
 (`lp.Logo.*`, `lp.rain.midi`, `lp.pfft.frimWrap.maxpat`, `lp.grabprops.maxpat`) into
 the package's `media` and `patchers` folders, which are in Max's search path.
 
-`Reference/LPPro.W-1.8i1/` (from the user) appears to be the original Windows
-distribution of Litter Power Pro 1.8; not yet examined.
+`Reference/LPPro.W-1.8i1/` (from the user) is the original Windows distribution of
+Litter Power Pro 1.8 (2006-2008, Max 4/5): 32-bit `.mxe` externals (unusable), Max 4
+binary help files (older than the 2008 `.maxhelp` files, same content), extras and
+clippings (same as ours), init files, PDFs. Taken from it: `lp.abbie.maxhelp` and
+`Litter Power Extras/Running CPU Usage.maxpat` (converted; the only files we lacked),
+and four PDFs in `Litter Power Documentation/` (packaged under `misc/Documentation`).
+Not taken: the commercial licence PDFs, the Max 5 installation guide, the Max 4
+`max shortcut` / `max oblist` init files.
+
+Its licence ("Artistic License Agreement", 2008): copyright Peter Castine, all rights
+reserved, licensed per user for a fee, no selling. This supports clarifying
+redistribution with the author before publishing binaries.
+
+Externals still without a help file: all 12 `lbj.*` and the unreleased `lp.crottin~`,
+`lp.fiana~`, `lp.galliard~`, `lp.gruyere~`, `lp.julie`, `lp.julie~`, `lp.lana`, and
+the six `lp.vera*` control objects.
 
 Things to watch in the first test:
 

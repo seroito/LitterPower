@@ -29,6 +29,7 @@ copy_tree(os.path.join(ROOT, 'Litter Power Help'), os.path.join(OUT, 'help'))
 copy_tree(os.path.join(ROOT, 'Litter Power Extras'), os.path.join(OUT, 'extras', 'Litter Power Extras'))
 copy_tree(os.path.join(ROOT, 'Litter Power Clippings'), os.path.join(OUT, 'misc', 'Litter Power Clippings'))
 copy_tree(os.path.join(ROOT, 'Litter'), os.path.join(OUT, 'misc', 'Object Lists'))
+copy_tree(os.path.join(ROOT, 'Litter Power Documentation'), os.path.join(OUT, 'misc', 'Documentation'))
 
 # Files that help files and examples load by name must be in Max's search path:
 # abstractions go into 'patchers', pictures and other media into 'media'.
