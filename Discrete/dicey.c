@@ -227,7 +227,7 @@ DiceyTattle(
 			me->nFaces);
 	if ( CanOverflow(me) ) {
 		post("  --> These parameters may cause arithmetic overflow.");
-		if (Taus88(me->tausData) < 0)
+		if (((SInt32) Taus88(me->tausData)) < 0)
 				post("      I don't mind, but I thought you might like to know.");
 		else	post("      Have you thought about using a Normal (Gauss) Distribution?");
 		}

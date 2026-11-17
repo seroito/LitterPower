@@ -194,7 +194,7 @@ BibiBang(
 	switch (me->betaAlg) {
 		default:							// Must be algIndeterm
 			p = 0.0;
-			if (((long) Taus88(me->tausData)) < 0) break;
+			if (((SInt32) Taus88(me->tausData)) < 0) break;	// 50:50 (32-bit sign test)
 			// otherwise, fall into next case
 		case algConstOne:
 			p = 1.0;
