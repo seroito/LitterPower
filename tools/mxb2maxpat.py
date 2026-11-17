@@ -10,8 +10,10 @@ limits), toggle, button, inlet/outlet (with assistance comments), subpatchers,
 panel, umenu, ubutton, the "com" text object, gain~, ezdac~, hidden and background
 objects, segmented patch cords and object names.
 
-Not handled, reported as warnings: embedded pictures (#N picture / vpicture), box and
-patch cord colours from the Max 4 palette (#B color, #P lcolor).
+Not handled, reported as warnings: embedded pictures (#N picture / vpicture, replaced
+by an empty fpic), box and patch cord colours from the Max 4 palette (#B color,
+#P lcolor). Any other unknown object is replaced by a comment, so that the object
+numbering used by the connections stays right.
 """
 import json, os, sys
 
@@ -134,9 +136,9 @@ class Converter:
             elif word == 'in':
                 pass                           # the following #P newobj carries the text
             elif word in ('picture',):
-                self.warn('embedded picture left out')
-            elif word == 'thispatcher':
-                pass
+                self.warn('embedded picture left out (an empty fpic keeps its place)')
+            elif word in ('thispatcher', 'vtable', 'counter'):
+                pass                           # settings of the following object
             else:
                 self.warn('#N %s ignored' % word)
             return
@@ -157,7 +159,7 @@ class Converter:
                 target['border'] = int(num(rest[1]))
             elif word == 'rounded':
                 target['rounded'] = int(num(rest[1]))
-            elif word in ('shadow', 'done'):
+            elif word in ('shadow', 'done', 'flags', 'setrgb'):
                 pass
             else:
                 self.warn('#X %s ignored' % word)
@@ -272,7 +274,17 @@ class Converter:
             self.user_object(args, hidden, background)
             return
 
-        self.warn('object type "%s" left out' % word)
+        if word == 'vpicture':
+            self.add_box('fpic', num(args[0]), num(args[1]), num(args[2]), num(args[3]),
+                         hidden, background)
+            return
+
+        # Keep the place of anything else, so that the object numbering used by the
+        # connections stays right.
+        self.warn('object type "%s" replaced by a comment' % word)
+        self.add_box('comment', num(args[0]) if args else 0, num(args[1]) if len(args) > 1 else 0,
+                     150, LINE_HEIGHT + 3.0, hidden, background,
+                     text='(Max 4 object "%s" could not be converted)' % word)
 
     def user_object(self, args, hidden, background):
         cls = atom_text(args[0]); a = args[1:]
@@ -298,7 +310,9 @@ class Converter:
             self.add_box('ezdac~', num(a[0]), num(a[1]), num(a[2]) - num(a[0]),
                          num(a[3]) - num(a[1]), hidden, background)
         else:
-            self.warn('user object "%s" left out' % cls)
+            self.warn('user object "%s" replaced by a comment' % cls)
+            self.add_box('comment', num(a[0]), num(a[1]), 150, LINE_HEIGHT + 3.0, hidden,
+                         background, text='(Max 4 object "%s" could not be converted)' % cls)
 
     # -----------------------------------------------------------------------------
     def build(self, pat):

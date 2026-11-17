@@ -47,8 +47,8 @@ mixed in); Max showed them as text. The user supplied intact copies in `Referenc
 
 - `Litter Power Help/`: 75 intact `.maxhelp` files, `lp.dotell.maxpat` and an intact
   `lp.doom.mxb` (a Max 4 binary layout helper used, unconnected, by 66 help files).
-  Removed, because only damaged copies exist: `lp.bibi.help` and `lp.ernie.help`, so
-  `lp.bibi` and `lp.ernie` have no help file.
+  `lp.bibi.maxhelp` and `lp.ernie.maxhelp` were converted from the Max 4 binary help
+  files the user supplied later (their embedded logo picture is an empty `fpic`).
 - `Litter Power Extras/`: overview, 11 examples, `~lib`. The logo picture `lp.Logo.pict`
   is damaged and left out (5 references to it show no picture).
 - `Litter Power Clippings/`: 17 current `.maxpat` files and 23 Max 4 binary patchers,
