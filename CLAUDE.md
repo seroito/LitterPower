@@ -64,8 +64,8 @@ with `tools/mxb2maxpat.py` (decoder: `tools/mxb2txt.py`): the 23 clippings,
 as `lp.doom.mxb` were updated) and `~lib/lp.pfft.frimWrap.maxpat`. Left out by the
 converter: Max 4 box and patch cord colours. `~lib/lp.messages.help` was removed:
 it is the Max 4 version of `lp.messages.maxhelp`, which exists in the new format.
-`lp.doom` uses the `gestalt` object (Max 4, Mac OS only), which probably no longer
-exists, so it may print an error when a help file opens.
+`lp.doom` uses the `gestalt` object; it still exists in Max 9
+(https://docs.cycling74.com/reference/gestalt/), as the user pointed out.
 
 ### 2026-11-17: logo added
 
