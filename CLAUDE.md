@@ -19,7 +19,7 @@ Decisions made by the user:
 - Test on Windows first. Since 2026-11-17 a push builds Windows only; macOS only when
   the workflow is started by hand (see "Builds").
 - `lp.pvvv~` & Co. stay unchanged; the overflow fix lives in new objects
-  (`lp.pvvv64~`, `lp.pfff64~`, `lp.phhh64~`).
+  (`lp.pvvv64~`, `lp.pfff64~`, `lp.phhh64~`); for `lp.qvvv~` there is `lp.qvvvl~`.
 - `lbj.bixpack` and `lbj.bixunpack` are dropped.
 - Open: licensing. The code is copyright Peter Castine, "all rights reserved"; the 1.8
   licence allowed per-user use for a fee and no redistribution for sale. Clarify with
@@ -100,12 +100,15 @@ workflow builds pushes to both branches. One commit per change:
    understand vers"). New `LitterAddVers()` in LitterLib, called before
    `class_register()`; `LitterInit()` uses it too.
 
-`lp.qvvv~` was reviewed on request (not changed): floating-point successor of
-`lp.pvvv~`, no overflow, level kept steady by `hurstGain`; but in its default `stet`
-mode 0.25-0.9 % of samples exceed 1.0 (peaks up to 1.7 near Hurst 0), which the audio
-interface clips. Also: Hurst factor and gain are written non-atomically from the
-message thread (rare one-buffer level glitch possible), and vectors larger than 4096
-samples would overrun its buffer.
+8. `lp.qvvv~` (floating point, no overflow, level kept steady) exceeded full scale
+   in its default `stet` mode (0.25-0.9 % of samples, peaks up to 1.7). Fixes in
+   `lp.qvvv~`, sound unchanged: gain computed in the audio thread from the Hurst factor
+   (before, factor and gain could mismatch for one buffer); buffer used in pieces (no
+   overrun with vectors > 4096); NN creation argument registered as float (was int,
+   read from the wrong register). New `lp.qvvvl~` (same source, `QVVV_LIMITER`): plus the
+   look-ahead limiter after the range handling, third inlet and `limit 0/1`, on by
+   default; tested locally: output never above 1.0, at most -1.2 dB average level.
+   The limiter now lives in `LitterLib/LitterLimiter.h`.
 
 Not done (reviewed, lower priority): A_GIMME new functions declaring argc as `short`,
 A_LONG handlers declaring `long` instead of `t_atom_long`; no reference pages
