@@ -51,7 +51,13 @@
 					"numinlets": 1,
 					"numoutlets": 0,
 					"linecount": 1,
-					"fontface": 1
+					"fontface": 1,
+					"textcolor": [
+						0.0,
+						0.392157,
+						0.066667,
+						1.0
+					]
 				}
 			},
 			{
@@ -69,7 +75,13 @@
 					"fontsize": 14.0,
 					"numinlets": 1,
 					"numoutlets": 0,
-					"linecount": 1
+					"linecount": 1,
+					"textcolor": [
+						0.0,
+						0.0,
+						0.0,
+						1.0
+					]
 				}
 			},
 			{
@@ -96,7 +108,6 @@
 			},
 			{
 				"box": {
-					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"id": "obj-4",
 					"maxclass": "comment",
 					"patching_rect": [
@@ -110,7 +121,13 @@
 					"fontsize": 12.0,
 					"numinlets": 1,
 					"numoutlets": 0,
-					"linecount": 3
+					"linecount": 3,
+					"textcolor": [
+						0.0,
+						0.0,
+						0.0,
+						1.0
+					]
 				}
 			},
 			{
@@ -146,7 +163,13 @@
 					"fontsize": 12.0,
 					"numinlets": 1,
 					"numoutlets": 0,
-					"linecount": 1
+					"linecount": 1,
+					"textcolor": [
+						0.0,
+						0.0,
+						0.0,
+						1.0
+					]
 				}
 			},
 			{
@@ -184,7 +207,13 @@
 					"fontsize": 12.0,
 					"numinlets": 1,
 					"numoutlets": 0,
-					"linecount": 1
+					"linecount": 1,
+					"textcolor": [
+						0.0,
+						0.0,
+						0.0,
+						1.0
+					]
 				}
 			},
 			{
@@ -244,7 +273,13 @@
 					"fontsize": 12.0,
 					"numinlets": 1,
 					"numoutlets": 0,
-					"linecount": 1
+					"linecount": 1,
+					"textcolor": [
+						0.0,
+						0.0,
+						0.0,
+						1.0
+					]
 				}
 			},
 			{
@@ -303,7 +338,13 @@
 					"fontsize": 12.0,
 					"numinlets": 1,
 					"numoutlets": 0,
-					"linecount": 1
+					"linecount": 1,
+					"textcolor": [
+						0.0,
+						0.0,
+						0.0,
+						1.0
+					]
 				}
 			},
 			{
@@ -371,7 +412,13 @@
 					"numinlets": 1,
 					"numoutlets": 0,
 					"linecount": 1,
-					"fontface": 1
+					"fontface": 1,
+					"textcolor": [
+						0.0,
+						0.0,
+						0.0,
+						1.0
+					]
 				}
 			},
 			{
@@ -409,7 +456,13 @@
 					"fontsize": 12.0,
 					"numinlets": 1,
 					"numoutlets": 0,
-					"linecount": 1
+					"linecount": 1,
+					"textcolor": [
+						0.0,
+						0.0,
+						0.0,
+						1.0
+					]
 				}
 			},
 			{
@@ -447,7 +500,13 @@
 					"fontsize": 12.0,
 					"numinlets": 1,
 					"numoutlets": 0,
-					"linecount": 1
+					"linecount": 1,
+					"textcolor": [
+						0.0,
+						0.0,
+						0.0,
+						1.0
+					]
 				}
 			},
 			{
@@ -485,7 +544,13 @@
 					"fontsize": 12.0,
 					"numinlets": 1,
 					"numoutlets": 0,
-					"linecount": 1
+					"linecount": 1,
+					"textcolor": [
+						0.0,
+						0.0,
+						0.0,
+						1.0
+					]
 				}
 			},
 			{
@@ -523,7 +588,13 @@
 					"fontsize": 12.0,
 					"numinlets": 1,
 					"numoutlets": 0,
-					"linecount": 1
+					"linecount": 1,
+					"textcolor": [
+						0.0,
+						0.0,
+						0.0,
+						1.0
+					]
 				}
 			},
 			{
@@ -561,7 +632,13 @@
 					"fontsize": 12.0,
 					"numinlets": 1,
 					"numoutlets": 0,
-					"linecount": 1
+					"linecount": 1,
+					"textcolor": [
+						0.0,
+						0.0,
+						0.0,
+						1.0
+					]
 				}
 			},
 			{
@@ -599,7 +676,13 @@
 					"fontsize": 12.0,
 					"numinlets": 1,
 					"numoutlets": 0,
-					"linecount": 1
+					"linecount": 1,
+					"textcolor": [
+						0.0,
+						0.0,
+						0.0,
+						1.0
+					]
 				}
 			},
 			{
@@ -637,7 +720,13 @@
 					"fontsize": 12.0,
 					"numinlets": 1,
 					"numoutlets": 0,
-					"linecount": 1
+					"linecount": 1,
+					"textcolor": [
+						0.0,
+						0.0,
+						0.0,
+						1.0
+					]
 				}
 			},
 			{
@@ -656,7 +745,13 @@
 					"numinlets": 1,
 					"numoutlets": 0,
 					"linecount": 1,
-					"fontface": 1
+					"fontface": 1,
+					"textcolor": [
+						0.0,
+						0.0,
+						0.0,
+						1.0
+					]
 				}
 			},
 			{
@@ -694,7 +789,13 @@
 					"fontsize": 12.0,
 					"numinlets": 1,
 					"numoutlets": 0,
-					"linecount": 1
+					"linecount": 1,
+					"textcolor": [
+						0.0,
+						0.0,
+						0.0,
+						1.0
+					]
 				}
 			},
 			{
@@ -732,7 +833,13 @@
 					"fontsize": 12.0,
 					"numinlets": 1,
 					"numoutlets": 0,
-					"linecount": 1
+					"linecount": 1,
+					"textcolor": [
+						0.0,
+						0.0,
+						0.0,
+						1.0
+					]
 				}
 			},
 			{
@@ -770,7 +877,13 @@
 					"fontsize": 12.0,
 					"numinlets": 1,
 					"numoutlets": 0,
-					"linecount": 1
+					"linecount": 1,
+					"textcolor": [
+						0.0,
+						0.0,
+						0.0,
+						1.0
+					]
 				}
 			},
 			{
@@ -808,7 +921,13 @@
 					"fontsize": 12.0,
 					"numinlets": 1,
 					"numoutlets": 0,
-					"linecount": 1
+					"linecount": 1,
+					"textcolor": [
+						0.0,
+						0.0,
+						0.0,
+						1.0
+					]
 				}
 			},
 			{
@@ -846,7 +965,13 @@
 					"fontsize": 12.0,
 					"numinlets": 1,
 					"numoutlets": 0,
-					"linecount": 1
+					"linecount": 1,
+					"textcolor": [
+						0.0,
+						0.0,
+						0.0,
+						1.0
+					]
 				}
 			},
 			{
@@ -884,7 +1009,13 @@
 					"fontsize": 12.0,
 					"numinlets": 1,
 					"numoutlets": 0,
-					"linecount": 1
+					"linecount": 1,
+					"textcolor": [
+						0.0,
+						0.0,
+						0.0,
+						1.0
+					]
 				}
 			},
 			{
@@ -911,7 +1042,6 @@
 			},
 			{
 				"box": {
-					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"id": "obj-46",
 					"maxclass": "comment",
 					"patching_rect": [
@@ -926,12 +1056,17 @@
 					"numinlets": 1,
 					"numoutlets": 0,
 					"linecount": 1,
-					"fontface": 1
+					"fontface": 1,
+					"textcolor": [
+						0.0,
+						0.0,
+						0.0,
+						1.0
+					]
 				}
 			},
 			{
 				"box": {
-					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"id": "obj-47",
 					"maxclass": "comment",
 					"patching_rect": [
@@ -945,12 +1080,17 @@
 					"fontsize": 12.0,
 					"numinlets": 1,
 					"numoutlets": 0,
-					"linecount": 2
+					"linecount": 2,
+					"textcolor": [
+						0.0,
+						0.0,
+						0.0,
+						1.0
+					]
 				}
 			},
 			{
 				"box": {
-					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"id": "obj-48",
 					"maxclass": "comment",
 					"patching_rect": [
@@ -965,12 +1105,17 @@
 					"numinlets": 1,
 					"numoutlets": 0,
 					"linecount": 1,
-					"fontface": 1
+					"fontface": 1,
+					"textcolor": [
+						0.0,
+						0.0,
+						0.0,
+						1.0
+					]
 				}
 			},
 			{
 				"box": {
-					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"id": "obj-49",
 					"maxclass": "comment",
 					"patching_rect": [
@@ -984,12 +1129,17 @@
 					"fontsize": 12.0,
 					"numinlets": 1,
 					"numoutlets": 0,
-					"linecount": 2
+					"linecount": 2,
+					"textcolor": [
+						0.0,
+						0.0,
+						0.0,
+						1.0
+					]
 				}
 			},
 			{
 				"box": {
-					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"id": "obj-50",
 					"maxclass": "comment",
 					"patching_rect": [
@@ -1004,12 +1154,17 @@
 					"numinlets": 1,
 					"numoutlets": 0,
 					"linecount": 1,
-					"fontface": 1
+					"fontface": 1,
+					"textcolor": [
+						0.0,
+						0.0,
+						0.0,
+						1.0
+					]
 				}
 			},
 			{
 				"box": {
-					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"id": "obj-51",
 					"maxclass": "comment",
 					"patching_rect": [
@@ -1023,12 +1178,17 @@
 					"fontsize": 12.0,
 					"numinlets": 1,
 					"numoutlets": 0,
-					"linecount": 2
+					"linecount": 2,
+					"textcolor": [
+						0.0,
+						0.0,
+						0.0,
+						1.0
+					]
 				}
 			},
 			{
 				"box": {
-					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"id": "obj-52",
 					"maxclass": "comment",
 					"patching_rect": [
@@ -1043,12 +1203,17 @@
 					"numinlets": 1,
 					"numoutlets": 0,
 					"linecount": 1,
-					"fontface": 1
+					"fontface": 1,
+					"textcolor": [
+						0.0,
+						0.0,
+						0.0,
+						1.0
+					]
 				}
 			},
 			{
 				"box": {
-					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"id": "obj-53",
 					"maxclass": "comment",
 					"patching_rect": [
@@ -1062,7 +1227,13 @@
 					"fontsize": 12.0,
 					"numinlets": 1,
 					"numoutlets": 0,
-					"linecount": 2
+					"linecount": 2,
+					"textcolor": [
+						0.0,
+						0.0,
+						0.0,
+						1.0
+					]
 				}
 			},
 			{
@@ -1319,6 +1490,18 @@
 					]
 				}
 			}
+		],
+		"bgcolor": [
+			1.0,
+			1.0,
+			1.0,
+			1.0
+		],
+		"editing_bgcolor": [
+			0.9,
+			0.9,
+			0.9,
+			1.0
 		]
 	}
 }

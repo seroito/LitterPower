@@ -77,10 +77,18 @@ def next_id(patcher):
     return n + 1
 
 
+UNSCALED = 'be8f44b'          # last commit with the unscaled original help files
+
+
 def make(old):
     new = RENAME[old]
     spec = SPECS[old]
-    d = json.load(open(os.path.join(HELP, old + '.maxhelp'), encoding='utf-8'))
+    # The coordinates below refer to the original (unscaled) layout. The help files in the
+    # repository were scaled for readability on 2026-11-18 (tools/restyle_help.py), so
+    # the original is read as it was before that; the result is restyled afterwards.
+    import subprocess
+    d = json.loads(subprocess.run(['git', 'show', '%s:Litter Power Help/%s.maxhelp' % (UNSCALED, old)],
+                                  cwd=ROOT, capture_output=True, check=True).stdout.decode('utf-8'))
     pa = d['patcher']
     walk(pa, True)
     boxes = [e['box'] for e in pa['boxes']]
@@ -158,6 +166,6 @@ if __name__ == '__main__':
     # e.g. tools/make_help64.py lp.qvvv~
     outs = [make(old) for old in (sys.argv[1:] or SPECS)]
     print('\n'.join(outs))
-    # Black text on light backgrounds (see tools/fix_comment_colors.py)
+    # Readability: size, backgrounds, text colours (see tools/restyle_help.py)
     import subprocess, sys
-    subprocess.run([sys.executable, os.path.join(ROOT, 'tools', 'fix_comment_colors.py')] + outs, check=True)
+    subprocess.run([sys.executable, os.path.join(ROOT, 'tools', 'restyle_help.py')] + outs, check=True)

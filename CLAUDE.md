@@ -82,7 +82,9 @@ removed (see `README.md`).
 4. Generated files: rerun the generator instead of editing the output.
    - `tools/gen_strings.py`: string tables (`LitterLib/Strings/`) from `Resources/*/*.r`.
    - `tools/make_help64.py`, `tools/make_jitter_help.py`, `tools/make_extra_help.py`:
-     the help files written or derived in 2026 (they run `tools/fix_comment_colors.py`).
+     the help files written or derived in 2026 (they run `tools/restyle_help.py`).
+   - `tools/restyle_help.py`: text size and colours of all help files and the overview;
+     safe to rerun (does not scale twice).
    - `tools/make_refpages.py`: reference pages; rerun after changing an object's
      messages, inlets or attributes; texts are in `tools/refpage_data.py`.
 5. Windows compiler warnings: artifact `build-log-windows`. `gh run download` refuses it
@@ -173,6 +175,17 @@ workflow builds pushes to both branches. One commit per change:
     (written from the sources, help files and the 1.8 manuals). Packaged as `docs/`.
     Not yet checked in Max: Help > Open Reference, autocomplete digests, sidebar list.
     Rerun the generator after changing an object's messages.
+
+12. Readability (2026-11-18, user's request): `tools/restyle_help.py` scales every help
+    patcher whose body text is below 12 pt as a whole (positions, sizes, fonts, cords,
+    window: factor 12 / body size, mostly x1.52 or x1.33; subpatchers too; pictures
+    fitted to their box), and the overview patch by x1.33. Colours: white background
+    when locked, 90 % grey in edit mode, in every patcher; comments without own colour
+    black; coloured text below 4.5:1 contrast darkened; titles orange for audio objects
+    (name ends in ~), green for all others (the old colours meant Pro/Starter bundle).
+    Texts unchanged. The help generators run it after writing (it replaces
+    `fix_comment_colors.py` there); `tools/make_help64.py` now reads the unscaled
+    originals from commit `be8f44b`. Not yet checked in Max.
 
 Not done (reviewed, lower priority): A_GIMME new functions declaring argc as `short`,
 A_LONG handlers declaring `long` instead of `t_atom_long`.

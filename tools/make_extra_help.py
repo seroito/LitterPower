@@ -660,6 +660,6 @@ if __name__ == '__main__':
         patch.save(name)
         paths.append(os.path.join(HELP, name + '.maxhelp'))
         print(name)
-    # Black text on light backgrounds (see tools/fix_comment_colors.py)
-    subprocess.run([sys.executable, os.path.join(ROOT, 'tools', 'fix_comment_colors.py')] + paths,
+    # Readability: size, backgrounds, text colours (see tools/restyle_help.py)
+    subprocess.run([sys.executable, os.path.join(ROOT, 'tools', 'restyle_help.py')] + paths,
                    check=True)

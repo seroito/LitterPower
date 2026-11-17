@@ -238,7 +238,7 @@ if __name__ == '__main__':
         print(name)
     stacey_help()
     print('lbj.stacey')
-    # Black text on light backgrounds (see tools/fix_comment_colors.py)
+    # Readability: size, backgrounds, text colours (see tools/restyle_help.py)
     import subprocess, sys
-    subprocess.run([sys.executable, os.path.join(ROOT, 'tools', 'fix_comment_colors.py')]
+    subprocess.run([sys.executable, os.path.join(ROOT, 'tools', 'restyle_help.py')]
                    + [os.path.join(HELP, n + '.maxhelp') for n in list(OBJECTS) + ['lbj.stacey']], check=True)
