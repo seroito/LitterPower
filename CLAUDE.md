@@ -155,7 +155,8 @@ workflow builds pushes to both branches. One commit per change:
     vera*, gruyere~, crottin~ marked experimental, galliard~, `lp.messages`) plus a new
     seventh menu "Jitter Objects" for the lbj.* objects; window 70 px taller, copyright
     line and License button moved down. `lbj.penize` deliberately left out (unfinished).
-    "Version 1.8" and "Copyright (c) 2002-08" in the patch are unchanged.
+    Later: "Version 1.8" removed (comment and the loadbang that filled it with the
+    package version); the credit line now reads "Copyright © 2002-26 Peter Castine."
 
 11. Reference pages: `docs/<object>.maxref.xml` for all 104 objects, from
     `tools/make_refpages.py` (layout and format as in Cycling '74's min-devkit: flat docs

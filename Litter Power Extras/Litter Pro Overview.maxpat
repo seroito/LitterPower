@@ -1766,15 +1766,6 @@
  ],
 						"lines" : [ 							{
 								"patchline" : 								{
-									"source" : [ "obj-14", 0 ],
-									"destination" : [ "obj-13", 0 ],
-									"hidden" : 0,
-									"midpoints" : [ 195.5, 64.0, 92.5, 64.0 ]
-								}
-
-							}
-, 							{
-								"patchline" : 								{
 									"source" : [ "obj-13", 0 ],
 									"destination" : [ "obj-1", 0 ],
 									"hidden" : 0
@@ -3685,7 +3676,7 @@
 , 			{
 				"box" : 				{
 					"maxclass" : "comment",
-					"text" : "Thanks to Trond for making me do this! Copyright © 2002-08 Peter Castine.",
+					"text" : "Thanks to Trond for making me do this! Copyright © 2002-26 Peter Castine.",
 					"linecount" : 2,
 					"patching_rect" : [ 0.0, 507.0, 198.0, 28.0 ],
 					"numoutlets" : 0,
@@ -3724,22 +3715,6 @@
 					"fontname" : "Arial",
 					"fontsize" : 10.0,
 					"id" : "obj-30",
-					"numinlets" : 1
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"maxclass" : "comment",
-					"varname" : "version",
-					"text" : "Version 1.8",
-					"patching_rect" : [ 575.0, 1.0, 79.0, 17.0 ],
-					"numoutlets" : 0,
-					"fontname" : "Arial",
-					"fontsize" : 7.9,
-					"id" : "obj-31",
-					"textcolor" : [ 0.388235, 0.192157, 1.0, 1.0 ],
-					"frgb" : [ 0.388235, 0.192157, 1.0, 1.0 ],
 					"numinlets" : 1
 				}
 
