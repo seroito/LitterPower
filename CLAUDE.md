@@ -75,6 +75,10 @@ removed (see `README.md`).
    macOS" ticked (or `gh workflow run build.yml --repo seroito/LitterPower -f macos=true`).
    If GitHub reports "The job was not acquired by Runner", it is a capacity problem;
    retry later. `macos-14` is no longer offered.
+   The box is unticked by default (since 2026-11-17), so a hand-started run without it
+   (`gh workflow run build.yml --repo seroito/LitterPower --ref rng-fixes`) builds
+   Windows only. Cancelling a queued macOS job also skips the package job; cancel the
+   whole run and start it again with `-f macos=false` instead.
 4. Generated files: rerun the generator instead of editing the output.
    - `tools/gen_strings.py`: string tables (`LitterLib/Strings/`) from `Resources/*/*.r`.
    - `tools/make_help64.py`, `tools/make_jitter_help.py`, `tools/make_extra_help.py`:

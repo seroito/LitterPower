@@ -8,7 +8,7 @@ on:
       macos:
         description: 'Also build for macOS'
         type: boolean
-        default: true
+        default: false
 
 concurrency:
   group: build-${{ github.ref }}
