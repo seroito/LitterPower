@@ -157,6 +157,10 @@ workflow builds pushes to both branches. One commit per change:
     line and License button moved down. `lbj.penize` deliberately left out (unfinished).
     Later: "Version 1.8" removed (comment and the loadbang that filled it with the
     package version); the credit line now reads "Copyright © 2002-26 Peter Castine."
+    Copyright years elsewhere also end in 2026 (user's request): Poisson Rhythms,
+    Running CPU Usage, lp.doom, the overview's licence text, and the string tables
+    (`tools/gen_strings.py` rewrites "Copyright © YYYY[-YY] Peter Castine" to
+    "YYYY-26"; the four hand-written tables were edited directly).
 
 11. Reference pages: `docs/<object>.maxref.xml` for all 104 objects, from
     `tools/make_refpages.py` (layout and format as in Cycling '74's min-devkit: flat docs

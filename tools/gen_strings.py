@@ -87,13 +87,20 @@ def process(tmp, path):
         rid = head[0].strip()
         name = eval_item(head[1]) if len(head) > 1 and '"' in head[1] else ''
         try:
-            items = [eval_item(i) for i in split_top(m.group(2))]
+            items = [update_copyright(eval_item(i)) for i in split_top(m.group(2))]
         except Exception as e:
             print('!!', path, rid, e, file=sys.stderr); continue
         lists.append((rid, name, items))
     return lists
 
 VERSION_RE = re.compile(r'^\d+\.\d')
+
+CR_RE = re.compile(r'(Copyright \u00a9 ?)(\d{4})(?:-(\d{2}|\d{4}))?( Peter Castine)')
+
+def update_copyright(item):
+    """Copyright years up to 2026 (user's request, 2026-11-17): '2001-08' -> '2001-26'."""
+    return CR_RE.sub(lambda m: '%s%s-26%s' % (m.group(1), m.group(2), m.group(4))
+                     if m.group(2) != '2026' else m.group(0), item)
 
 def standard_layout(items):
     """Return items with the six standard version strings LitterAssist() expects in front.
