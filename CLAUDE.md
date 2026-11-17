@@ -45,11 +45,10 @@ The help files first committed were damaged (beginnings missing, foreign binary 
 mixed in); Max showed them as text. The user supplied intact copies in `Reference/`
 (git-ignored, user material). From there:
 
-- `Litter Power Help/`: 75 intact `.maxhelp` files plus `lp.dotell.maxpat`. Removed,
-  because only damaged copies exist: `lp.bibi.help`, `lp.ernie.help` (so `lp.bibi` and
-  `lp.ernie` have no help file) and `lp.doom.mxb`. 66 help files contain an unconnected
-  `lp.doom` box (a Max 4 layout helper); it shows as an uncreatable box with one console
-  error and is otherwise harmless.
+- `Litter Power Help/`: 75 intact `.maxhelp` files, `lp.dotell.maxpat` and an intact
+  `lp.doom.mxb` (a Max 4 binary layout helper used, unconnected, by 66 help files).
+  Removed, because only damaged copies exist: `lp.bibi.help` and `lp.ernie.help`, so
+  `lp.bibi` and `lp.ernie` have no help file.
 - `Litter Power Extras/`: overview, 11 examples, `~lib`. The logo picture `lp.Logo.pict`
   is damaged and left out (5 references to it show no picture).
 - `Litter Power Clippings/`: 17 current `.maxpat` files and 23 Max 4 binary patchers,
