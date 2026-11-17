@@ -6,12 +6,13 @@ In the copy the objects are renamed, the main object box is widened, a toggle wi
 label is connected to the limiter inlet, and a note explaining the differences is added
 at the bottom of the window.
 """
-import copy, json, os, re
+import copy, json, os, re, sys
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 HELP = os.path.join(ROOT, 'Litter Power Help')
 
-RENAME = {'lp.pfff~': 'lp.pfff64~', 'lp.phhh~': 'lp.phhh64~', 'lp.pvvv~': 'lp.pvvv64~'}
+RENAME = {'lp.pfff~': 'lp.pfff64~', 'lp.phhh~': 'lp.phhh64~', 'lp.pvvv~': 'lp.pvvv64~',
+          'lp.qvvv~': 'lp.qvvvl~'}
 
 NOTE_COMMON = (
     "In its default mode {new} computes the noise in 64-bit integers, so the sums can no "
@@ -22,19 +23,30 @@ NOTE_COMMON = (
     "message limit 0 / limit 1. The limiter delays the output by about 2 ms, also when it "
     "is off.")
 
+NOTE_QVVVL = (
+    "lp.qvvvl~ is lp.qvvv~ with a look-ahead limiter. lp.qvvv~ keeps its level steady at all "
+    "Hurst exponents, but in its default mode (stet) a small share of its samples exceeds "
+    "full scale (+/- 1.0), with peaks up to about 1.7, which the audio interface clips. The "
+    "limiter keeps the signal within +/- 1.0 without clipping; it acts after the range "
+    "handling (clip, wrap and reflect already stay within +/- 1.0). It is on by default; "
+    "switch it with the right inlet or the message limit 0 / limit 1. The limiter delays "
+    "the output by about 2 ms, also when it is off. Otherwise lp.qvvvl~ is identical to "
+    "lp.qvvv~.")
+
 SPECS = {
     'lp.pvvv~': dict(inlet=2, inlet_name='right', default='on',
                      extra="With Hurst exponents below 0.5 the signal exceeds full scale, "
                            "strongly so for negative exponents."),
     'lp.pfff~': dict(inlet=1, inlet_name='right', default='off',
                      extra="Brownian noise exceeds full scale only rarely and slightly."),
+    'lp.qvvv~': dict(inlet=2, inlet_name='right', default='on', extra='', note=NOTE_QVVVL),
     'lp.phhh~': dict(inlet=1, inlet_name='right', default='off',
                      extra="Black noise does not reach full scale, so the limiter has "
                            "nothing to do; it is there for consistency."),
 }
 
 # Hidden helper objects that are in the way of the new toggle label: (old name, dx)
-MOVE_HIDDEN = {'lp.pfff~': 60.0, 'lp.phhh~': 60.0, 'lp.pvvv~': 0.0}
+MOVE_HIDDEN = {'lp.pfff~': 60.0, 'lp.phhh~': 60.0, 'lp.pvvv~': 0.0, 'lp.qvvv~': 0.0}
 
 
 def rename_text(text):
@@ -90,9 +102,9 @@ def make(old):
     for b in boxes:
         if b.get('hidden') and MOVE_HIDDEN[old] and b['patching_rect'][0] > x + w:
             b['patching_rect'][0] += MOVE_HIDDEN[old]
-    if old == 'lp.pvvv~':
+    if old in ('lp.pvvv~', 'lp.qvvv~'):
         for b in boxes:
-            if b.get('maxclass') == 'comment' and b['patching_rect'][:2] == [164.0, 127.0]:
+            if b.get('maxclass') == 'comment' and b['patching_rect'][:2] in ([164.0, 127.0], [172.0, 127.0]):
                 b['patching_rect'] = [242.0, 125.0, 360.0, 35.0]
 
     font = dict(fontname='Arial', fontsize=10.533333)
@@ -113,8 +125,8 @@ def make(old):
     rect = pa['rect']
     bottom = max(e['box']['patching_rect'][1] + e['box']['patching_rect'][3]
                  for e in pa['boxes'] if not e['box'].get('hidden'))
-    note = ("{new} is a 64-bit variant of {old}. {common} The limiter is {default} by "
-            "default. {extra}").format(
+    note = spec.get('note') or ("{new} is a 64-bit variant of {old}. {common} The limiter is "
+            "{default} by default. {extra}").format(
         new=new, old=old, default=spec['default'], extra=spec['extra'],
         common=NOTE_COMMON.format(new=new, old=old, inlet=spec['inlet_name']))
     width = rect[2] - 10.0
@@ -142,7 +154,9 @@ def make(old):
 
 
 if __name__ == '__main__':
-    outs = [make(old) for old in SPECS]
+    # Optional arguments: the original objects whose help files to (re)make,
+    # e.g. tools/make_help64.py lp.qvvv~
+    outs = [make(old) for old in (sys.argv[1:] or SPECS)]
     print('\n'.join(outs))
     # Black text on light backgrounds (see tools/fix_comment_colors.py)
     import subprocess, sys

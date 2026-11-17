@@ -257,6 +257,7 @@ litter_external(lp.phhh64~   STRINGS phhh64~       SOURCES Signals/pfff64~.c DEF
 litter_external(lp.pvvv64~   STRINGS pvvv64~       SOURCES Signals/pfff64~.c DEFS VARICOLOR=1)
 litter_external(lp.ppp~      STRINGS ppp~          SOURCES Signals/ppp~.c)
 litter_external(lp.qvvv~     STRINGS qvvv~         SOURCES Signals/qvvv~.c)
+litter_external(lp.qvvvl~    STRINGS qvvvl~        SOURCES Signals/qvvv~.c DEFS QVVV_LIMITER=1)
 litter_external(lp.shhh~     STRINGS schhh~        SOURCES Signals/schhh~.c)
 litter_external(lp.sss~      STRINGS sss~          SOURCES Signals/sss~.c)
 litter_external(lp.trrr~     STRINGS trrr~         SOURCES Signals/trrr~.c)

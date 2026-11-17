@@ -31,11 +31,18 @@
 
 #pragma mark Constants
 
-const char*	kClassName		= "lp.qvvv~";			// Class name
+#ifdef QVVV_LIMITER
+	// lp.qvvvl~: lp.qvvv~ with a look-ahead limiter (CMakeLists.txt defines QVVV_LIMITER)
+	#include "LitterLimiter.h"
+	const char*	kClassName		= "lp.qvvvl~";			// Class name
+#else
+	const char*	kClassName		= "lp.qvvv~";			// Class name
+#endif
 
 // Assistance strings
 #define LPAssistIn1			"Float (Hurst factor)"
 #define LPAssistIn2			"Int (NN factor)"
+#define LPAssistIn3			"Int (Limiter on/off, default on)"
 #define LPAssistOut1		"Signal (Colored noise)"
 
 
@@ -73,8 +80,8 @@ typedef struct {
 	tTaus88Data		tausData;			// Private random number generator
 	
 	double		hurstExp,
-				hurstFac,
-				hurstGain;
+				hurstFac;					// The gain belonging to it is computed in the
+											// audio thread, so the two always match
 	eActionType	action;
 	
 	int			bufPos;
@@ -83,6 +90,11 @@ typedef struct {
 				factor1,
 				offset;
 	float		buffer[kBufferSize];
+	
+#ifdef QVVV_LIMITER
+	long		limitOn;
+	tLimiter	limiter;
+#endif
 	} objBrown;
 
 
@@ -97,6 +109,9 @@ void*	Pvvv2New(double, double);
 
 	// Object message functions
 static void Pvvv2Hurst(objBrown*, double);
+#ifdef QVVV_LIMITER
+	static void Pvvv2Limit(objBrown*, long);
+#endif
 static void Pvvv2IntNN(objBrown*, long);
 static void Pvvv2FloatNN(objBrown*, double);
 static void Pvvv2Stet(objBrown*);
@@ -139,7 +154,9 @@ void ext_main(void* r)
         t_class *c;
         
 	// Standard Max/MSP initialization mantra
-    c = class_new(kClassName, (method)Pvvv2New, (method) dsp_free, sizeof(objBrown), 0L, A_DEFFLOAT, A_DEFLONG, 0L);
+    // Arguments: Hurst exponent, NN factor (a float; was registered as A_DEFLONG, which made
+    // the object read a random value for it on 64-bit systems)
+    c = class_new(kClassName, (method)Pvvv2New, (method) dsp_free, sizeof(objBrown), 0L, A_DEFFLOAT, A_DEFFLOAT, 0L);
         
 	//dsp_initclass();
     
@@ -153,6 +170,10 @@ void ext_main(void* r)
         class_addmethod(c, (method) Pvvv2Wrap,		"wrap",		A_NOTHING);
         class_addmethod(c, (method) Pvvv2Reflect,	"reflect",	A_NOTHING);
         class_addmethod(c, (method) Pvvv2Stet,		"stet",		A_NOTHING);
+#ifdef QVVV_LIMITER
+        class_addmethod(c, (method) Pvvv2Limit,		"in2",		A_LONG, 0);
+        class_addmethod(c, (method) Pvvv2Limit,		"limit",	A_LONG, 0);
+#endif
         
         // Information messages
         class_addmethod(c, (method) Pvvv2Tattle,	"dblclick",	A_CANT, 0);
@@ -215,13 +236,18 @@ Pvvv2New(
 	// Let Max/MSP allocate us, our inlets, and outlets.
 	//me = (objBrown*) newobject(gObjectClass);
     me = object_alloc(gObjectClass);
-    if (me != NIL)
-    	Taus88Seed(&me->tausData, 0);		// Seed from clock, address etc.
+    if (me == NIL)
+    	return NIL;
+	Taus88Seed(&me->tausData, 0);		// Seed from clock, address etc.
 
 	dsp_setup(&(me->coreObject), 1);				// Signal inlet for benefit of begin~
 													// Otherwise left inlet does "NN" only
 													// or, with the multi-color object, the
 													// Hurst factor
+	// Additional inlets, created from right to left
+#ifdef QVVV_LIMITER
+	intin(me, 2);									// Limiter on/off
+#endif
 	floatin(me, 1);
 	outlet_new(me, "signal");
 	
@@ -229,6 +255,10 @@ Pvvv2New(
 	InitBuf(me);
 	Pvvv2FloatNN(me, iNN);
 	Pvvv2Hurst(me, iHurst);
+#ifdef QVVV_LIMITER
+	me->limitOn = 1;								// On by default
+	LimiterReset(&me->limiter, sys_getsr());
+#endif
 
 	return me;
 	}
@@ -290,30 +320,37 @@ void Pvvv2FloatNN(
 	
 	}
 
+	// Gain that normalizes the expected signal power for a given Hurst factor
+	static double HurstGain(double iHurstFac)
+		{
+		int		i;
+		double	xn		= 1.0,			// Hurst factor taken to the nth power
+				power	= 1.0;			// Expected signal power if initial gain == 1.0
+		
+		for (i = kIterations - 1; i > 0; i -= 1) {
+			xn		*= iHurstFac;
+			power	+= xn * xn;
+			}
+		
+		return 1.0 / sqrt(power);
+		}
+
 void Pvvv2Hurst(
 	objBrown* me,
 	double	iHurst)
 	
 	{
-	int		i;					// counter
-	double	hf,					// Hurst factor
-			xn,					// Hurst factor taken to the nth power
-			power;				// Expected signal power if initial gain == 1.0
-	
-	
-	// RMS calculation of expected power sum
-	hf		= pow(0.5, iHurst);
-	power	= xn = 1.0;
-	for (i = kIterations - 1; i > 0; i -= 1) {
-		xn		*= hf;
-		power	+= xn * xn;
-		}
-
+	// Only the factor is stored. The audio thread computes the matching gain each time it
+	// generates a buffer; storing both here could leave it with a new factor and an old
+	// gain for one buffer, which was heard as an occasional pop.
 	me->hurstExp	= iHurst;
-	me->hurstFac	= hf;
-	me->hurstGain	= 1.0 / sqrt(power);
-	
+	me->hurstFac	= pow(0.5, iHurst);
 	}
+
+#ifdef QVVV_LIMITER
+void Pvvv2Limit(objBrown* me, long iOnOff)
+	{ me->limitOn = (iOnOff != 0); }
+#endif
 
 
 /******************************************************************************************
@@ -349,7 +386,7 @@ Pvvv2Tattle(
 	
 	post("%s state", kClassName);
 	post("	Hurst exponent is: %lf (Hurst factor: %lf, Hurst gain: %lf)",
-			me->hurstExp, me->hurstFac, me->hurstGain);
+			me->hurstExp, me->hurstFac, HurstGain(me->hurstFac));
 	post("  NN factor is: %lf (factor = %lf, inverse factor = %lf offset = %lf)",
 			(double) me->nn, (double) me->factor, (double) me->factor1, (double) me->offset);
 	
@@ -365,6 +402,10 @@ Pvvv2Tattle(
 			me->buffer);
 	post("  Current buffer position: %ld, containing %lf",
 			(long) bufPos, (double) me->buffer[bufPos]);
+#ifdef QVVV_LIMITER
+	post("  Limiter: %s (look-ahead %d samples, current gain %f)",
+			me->limitOn ? "on" : "off", me->limiter.len, me->limiter.env);
+#endif
 
 	}
 
@@ -388,6 +429,9 @@ void Pvvv2Assist(objBrown* me, void* box, long iDir, long iArgNum, char* oCStr)
             switch(iArgNum) {
                 case 0: sprintf (oCStr, LPAssistIn1); break;
                 case 1: sprintf (oCStr, LPAssistIn2); break;
+#ifdef QVVV_LIMITER
+                case 2: sprintf (oCStr, LPAssistIn3); break;
+#endif
             }
         }
         else {
@@ -439,6 +483,9 @@ Pvvv2DSP(
 void Pvvv2DSP64(objBrown* me, t_object *dsp64, short *count, double samplerate,
                 long maxvectorsize, long flags)
 {
+#ifdef QVVV_LIMITER
+    LimiterReset(&me->limiter, samplerate);
+#endif
     object_method(dsp64, gensym("dsp_add64"), me, Pvvv2Perform64, 0, NULL);
 }
 
@@ -457,9 +504,9 @@ void Pvvv2DSP64(objBrown* me, t_object *dsp64, short *count, double samplerate,
 
 	static void GenerateNewBuffer(objBrown* me)
 		{
-		const double hurstFac	= me->hurstFac;
+		const double hurstFac	= me->hurstFac;		// Read once
 		
-		double	scale		= me->hurstGain;
+		double	scale		= HurstGain(hurstFac);
 		float*	buf			= me->buffer;
 		int		stride		= kMaxBuf / 2,
 				offset		= kMaxBuf / 4;
@@ -502,84 +549,114 @@ void Pvvv2DSP64(objBrown* me, t_object *dsp64, short *count, double samplerate,
 
 
 
+	// Range correction and NN factor for one stretch of the buffer
+	static void
+	CopyOut(
+		objBrown*		me,
+		float*			curSamp,
+		tSampleVector	outNoise,
+		long			vecSize)
+		
+		{
+    // Do we have to deal with NN factor and/or Range actions?
+	    switch(me->action) {
+	        default:
+	            // actStet
+	            if (me->nn == 0)
+	                do { *outNoise++ = (double)(*curSamp++); } while (--vecSize > 0);
+	            else {
+	                float	factor	= me->factor,
+	                factor1	= me->factor1,
+	                offset	= me->offset;
+	                
+	                do { *outNoise++ = factor1 * floor(factor * (*curSamp++)) + offset; }
+	                while (--vecSize > 0);
+	            }
+	            break;
+	            
+	        case actClip:
+	            if (me->nn == 0)
+	                do { *outNoise++ = ClipSignal(*curSamp++); } while (--vecSize > 0);
+	            else {
+	                float	factor	= me->factor,
+	                factor1	= me->factor1,
+	                offset	= me->offset;
+	                
+	                do { *outNoise++ = factor1 * floor(factor * ClipSignal(*curSamp++)) + offset; }
+	                while (--vecSize > 0);
+	            }
+	            break;
+	            
+	        case actWrap:
+	            if (me->nn == 0)
+	                do { *outNoise++ = WrapSignal(*curSamp++); } while (--vecSize > 0);
+	            else {
+	                float	factor	= me->factor,
+	                factor1	= me->factor1,
+	                offset	= me->offset;
+	                
+	                do { *outNoise++ = factor1 * floor(factor * WrapSignal(*curSamp++)) + offset; }
+	                while (--vecSize > 0);
+	            }
+	            break;
+	            
+	        case actReflect:
+	            if (me->nn == 0)
+	                do { *outNoise++ = ReflectSignal(*curSamp++); } while (--vecSize > 0);
+	            else {
+	                float	factor	= me->factor,
+	                factor1	= me->factor1,
+	                offset	= me->offset;
+	                
+	                do { *outNoise++ = factor1 * floor(factor * ReflectSignal(*curSamp++)) + offset; }
+	                while (--vecSize > 0);
+	            }
+	            break;
+	    }
+	    
+	    
+		}
+
 void Pvvv2Perform64(objBrown* me, t_object *dsp64, double **ins, long numins,
                     double **outs, long numouts, long sampleframes, long flags, void *userparam)
 {
-    float*		curSamp;
-    long			vecSize;
-    tSampleVector   outNoise;
+    tSampleVector	out		= outs[0];
+    long			remain	= sampleframes;
     
     if (me->coreObject.z_disabled) return;
     
-    // Copy parameters into registers
-    vecSize		= sampleframes;
-    outNoise	= outs[0];      // Do integer arithmetic in buffer, then convert
-    // to floating point before exit.
+    // Use up the buffer in pieces, generating a new one whenever it is used up. (The
+    // former code generated a new buffer whenever the next vector did not fit, and read
+    // past the end of the buffer with vectors larger than it. With the usual vector
+    // sizes, which divide the buffer size, the output is the same.)
+    while (remain > 0) {
+        long n;
+        
+        if (me->bufPos >= kMaxBuf)
+            GenerateNewBuffer(me);
+        
+        n = kMaxBuf - me->bufPos;
+        if (n > remain) n = remain;
+        
+        CopyOut(me, me->buffer + me->bufPos, out, n);
+        me->bufPos	+= (int) n;
+        out			+= n;
+        remain		-= n;
+        }
     
-    // Time to generate new buffer?
-    // Condition must also take possibility of vector size changing mid-buffer
-    if (me->bufPos + vecSize > kMaxBuf) {
-        GenerateNewBuffer(me);
+#ifdef QVVV_LIMITER
+    {
+    // Look-ahead limiter (always running, so that switching it does not shift the signal
+    // in time; when off, its gain is simply ignored)
+    tSampleVector	sig		= outs[0];
+    long			k		= sampleframes;
+    int				active	= (int) me->limitOn;
+    
+    while (k-- > 0) {
+        *sig = LimiterProcess(&me->limiter, *sig, active);
+        sig++;
+        }
     }
-    curSamp	= me->buffer + me->bufPos;
-    me->bufPos += vecSize;
-    
-    // Do we have to deal with NN factor and/or Range actions?
-    switch(me->action) {
-        default:
-            // actStet
-            if (me->nn == 0)
-                do { *outNoise++ = (double)(*curSamp++); } while (--vecSize > 0);
-            else {
-                float	factor	= me->factor,
-                factor1	= me->factor1,
-                offset	= me->offset;
-                
-                do { *outNoise++ = factor1 * floor(factor * (*curSamp++)) + offset; }
-                while (--vecSize > 0);
-            }
-            break;
-            
-        case actClip:
-            if (me->nn == 0)
-                do { *outNoise++ = ClipSignal(*curSamp++); } while (--vecSize > 0);
-            else {
-                float	factor	= me->factor,
-                factor1	= me->factor1,
-                offset	= me->offset;
-                
-                do { *outNoise++ = factor1 * floor(factor * ClipSignal(*curSamp++)) + offset; }
-                while (--vecSize > 0);
-            }
-            break;
-            
-        case actWrap:
-            if (me->nn == 0)
-                do { *outNoise++ = WrapSignal(*curSamp++); } while (--vecSize > 0);
-            else {
-                float	factor	= me->factor,
-                factor1	= me->factor1,
-                offset	= me->offset;
-                
-                do { *outNoise++ = factor1 * floor(factor * WrapSignal(*curSamp++)) + offset; }
-                while (--vecSize > 0);
-            }
-            break;
-            
-        case actReflect:
-            if (me->nn == 0)
-                do { *outNoise++ = ReflectSignal(*curSamp++); } while (--vecSize > 0);
-            else {
-                float	factor	= me->factor,
-                factor1	= me->factor1,
-                offset	= me->offset;
-                
-                do { *outNoise++ = factor1 * floor(factor * ReflectSignal(*curSamp++)) + offset; }
-                while (--vecSize > 0);
-            }
-            break;
-    }
-    
-    
+#endif
 }
 
