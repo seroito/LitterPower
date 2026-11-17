@@ -1501,7 +1501,7 @@
 					"numoutlets" : 0,
 					"patching_rect" : [ 0.0, 3.0, 110.0, 35.0 ],
 					"id" : "obj-18",
-					"pic" : "lp.Logo.pict"
+					"pic" : "lp.Logo.png"
 				}
 
 			}

@@ -1644,7 +1644,7 @@
 					"id" : "obj-18",
 					"patching_rect" : [ -1.0, 3.0, 110.0, 35.0 ],
 					"numinlets" : 1,
-					"pic" : "lp.Logo.pict",
+					"pic" : "lp.Logo.png",
 					"numoutlets" : 0
 				}
 

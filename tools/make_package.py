@@ -30,6 +30,19 @@ copy_tree(os.path.join(ROOT, 'Litter Power Extras'), os.path.join(OUT, 'extras',
 copy_tree(os.path.join(ROOT, 'Litter Power Clippings'), os.path.join(OUT, 'misc', 'Litter Power Clippings'))
 copy_tree(os.path.join(ROOT, 'Litter'), os.path.join(OUT, 'misc', 'Object Lists'))
 
+# Files that help files and examples load by name must be in Max's search path:
+# abstractions go into 'patchers', pictures and other media into 'media'.
+LIB = os.path.join(ROOT, 'Litter Power Extras', '~lib')
+for name, folder in (('lp.pfft.frimWrap.maxpat', 'patchers'),
+                     ('lp.grabprops.maxpat', 'patchers'),
+                     ('lp.Logo.png', 'media'),
+                     ('lp.Logo.pict', 'media'),
+                     ('lp.rain.midi', 'media')):
+    src = os.path.join(LIB, name)
+    if os.path.exists(src):
+        os.makedirs(os.path.join(OUT, folder), exist_ok=True)
+        shutil.copy2(src, os.path.join(OUT, folder, name))
+
 info = {
     "name": "LitterPower",
     "displayname": "Litter Power",

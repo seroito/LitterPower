@@ -67,6 +67,19 @@ it is the Max 4 version of `lp.messages.maxhelp`, which exists in the new format
 `lp.doom` uses the `gestalt` object (Max 4, Mac OS only), which probably no longer
 exists, so it may print an error when a help file opens.
 
+### 2026-11-17: logo added
+
+`lp.Logo.pict` was never damaged (PICT files start with 512 zero bytes); it is back in
+`~lib`, plus `lp.Logo.png` converted from it, because Max 9 may no longer read PICT.
+The 5 help files with a logo `fpic` and the 5 empty `fpic` boxes in the converted
+`lp.bibi`/`lp.ernie` help files (their embedded picture was the same logo) use
+`lp.Logo.png`. `tools/make_package.py` also copies the files loaded by name
+(`lp.Logo.*`, `lp.rain.midi`, `lp.pfft.frimWrap.maxpat`, `lp.grabprops.maxpat`) into
+the package's `media` and `patchers` folders, which are in Max's search path.
+
+`Reference/LPPro.W-1.8i1/` (from the user) appears to be the original Windows
+distribution of Litter Power Pro 1.8; not yet examined.
+
 Things to watch in the first test:
 
 - Whether Max 9 loads the ad-hoc signed `.mxo` files (quarantine flag, see `README.md`).

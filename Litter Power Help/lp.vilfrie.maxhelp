@@ -1804,7 +1804,7 @@
 					"maxclass" : "fpic",
 					"numoutlets" : 0,
 					"patching_rect" : [ 0.0, 3.0, 110.0, 35.0 ],
-					"pic" : "lp.Logo.pict",
+					"pic" : "lp.Logo.png",
 					"id" : "obj-29",
 					"numinlets" : 1
 				}
