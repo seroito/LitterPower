@@ -110,7 +110,12 @@ class Converter:
 
     def text_box(self, maxclass, args, hidden, background):
         x, y, w = num(args[0]), num(args[1]), num(args[2])
-        text = join_text(args[4:])
+        atoms = args[4:]
+        if maxclass == 'newobj':
+            # Max 4 stores patcher arguments in object boxes as dollar tokens; in current
+            # Max they are written #1, #2 ... ($1 in an object box is out of range).
+            atoms = [('sym', '#%d' % a[1]) if a[0] == 'dollar' else a for a in atoms]
+        text = join_text(atoms)
         lines = max(1, self.stack[-1].linecount)
         return self.add_box(maxclass, x, y, w, LINE_HEIGHT * lines + 3.0, hidden, background,
                             text=text)

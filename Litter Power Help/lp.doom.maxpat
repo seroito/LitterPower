@@ -250,7 +250,7 @@
 					],
 					"fontname": "Arial",
 					"fontsize": 9.0,
-					"text": "- $2",
+					"text": "- #2",
 					"numinlets": 1,
 					"numoutlets": 1
 				}
@@ -267,7 +267,7 @@
 					],
 					"fontname": "Arial",
 					"fontsize": 9.0,
-					"text": "- $1",
+					"text": "- #1",
 					"numinlets": 1,
 					"numoutlets": 1
 				}
