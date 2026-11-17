@@ -40,6 +40,7 @@ def atom_text(atom):
     if kind == 'float':  return fmt_float(val)
     if kind == 'comma':  return ','
     if kind == 'dollar': return '$%d' % val
+    if kind == 'dollsym': return '$' + val
     return val
 
 
@@ -110,11 +111,12 @@ class Converter:
 
     def text_box(self, maxclass, args, hidden, background):
         x, y, w = num(args[0]), num(args[1]), num(args[2])
-        atoms = args[4:]
-        if maxclass == 'newobj':
-            # Max 4 stores patcher arguments in object boxes as dollar tokens; in current
-            # Max they are written #1, #2 ... ($1 in an object box is out of range).
-            atoms = [('sym', '#%d' % a[1]) if a[0] == 'dollar' else a for a in atoms]
+        # Max 4 stores references to the patcher's arguments as dollar tokens, in any kind
+        # of box; current Max writes them #1, #2 ..., #0-name. (A message box's own $1,
+        # $2 ... are plain symbols in Max 4 files and stay as they are.) Checked against
+        # lp.grabprops, of which the author's own Max 5 version exists.
+        atoms = [('sym', '#%d' % a[1]) if a[0] == 'dollar'
+                 else ('sym', '#' + a[1]) if a[0] == 'dollsym' else a for a in args[4:]]
         text = join_text(atoms)
         lines = max(1, self.stack[-1].linecount)
         return self.add_box(maxclass, x, y, w, LINE_HEIGHT * lines + 3.0, hidden, background,

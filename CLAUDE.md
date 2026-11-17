@@ -94,8 +94,12 @@ workflow builds pushes to both branches. One commit per change:
    generators run the tool after writing.
 
 6. `lp.doom` (66 help files) referred to its arguments as `$1`/`$2` in object boxes,
-   which printed '"$" variable out of range'; now `#1`/`#2`. `tools/mxb2maxpat.py`
-   writes `#n` for dollar tokens in object boxes.
+   which printed '"$" variable out of range'; now `#1`/`#2`. In Max 4 files a dollar
+   *token* always refers to the patcher's arguments (any box type), while a message box's
+   own `$1` is a plain symbol; `tools/mxb2maxpat.py` now writes tokens as `#n` / `#0-name`
+   in all boxes and decodes the dollar-symbol token (0xd1/0xd2). Verified: the converted
+   `lp.grabprops.mxb` equals the author's own Max 5 `lp.grabprops.maxpat` box for box.
+   Only lp.doom and lp.grabprops contain such tokens; all 148 packaged patchers checked.
 7. 58 objects lacked the `vers` message (help files send `vers 1 1` on load: "doesn't
    understand vers"). New `LitterAddVers()` in LitterLib, called before
    `class_register()`; `LitterInit()` uses it too.
