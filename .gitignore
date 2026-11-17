@@ -51,3 +51,6 @@ Icon?
 Icon\r
 
 __pycache__/
+
+# User-supplied reference material (not part of the build)
+/Reference/

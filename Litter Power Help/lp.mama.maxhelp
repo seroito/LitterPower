@@ -1,4 +1,53 @@
-
+{
+	"patcher" : 	{
+		"rect" : [ 5.0, 65.0, 552.0, 324.0 ],
+		"bgcolor" : [ 1.0, 1.0, 1.0, 1.0 ],
+		"bglocked" : 0,
+		"defrect" : [ 5.0, 65.0, 552.0, 324.0 ],
+		"openrect" : [ 0.0, 0.0, 0.0, 0.0 ],
+		"openinpresentation" : 0,
+		"default_fontsize" : 10.0,
+		"default_fontface" : 0,
+		"default_fontname" : "Arial",
+		"gridonopen" : 0,
+		"gridsize" : [ 15.0, 15.0 ],
+		"gridsnaponopen" : 0,
+		"toolbarvisible" : 0,
+		"boxanimatetime" : 200,
+		"imprint" : 0,
+		"metadata" : [  ],
+		"boxes" : [ 			{
+				"box" : 				{
+					"maxclass" : "newobj",
+					"text" : "p confer",
+					"patching_rect" : [ 107.0, 296.0, 47.0, 17.0 ],
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"fontname" : "Arial",
+					"fontsize" : 7.9,
+					"id" : "obj-1",
+					"hidden" : 1,
+					"numinlets" : 1,
+					"patcher" : 					{
+						"rect" : [ 5.0, 405.0, 677.0, 183.0 ],
+						"bgcolor" : [ 1.0, 1.0, 1.0, 1.0 ],
+						"bglocked" : 0,
+						"defrect" : [ 5.0, 405.0, 677.0, 183.0 ],
+						"openrect" : [ 0.0, 0.0, 0.0, 0.0 ],
+						"openinpresentation" : 0,
+						"default_fontsize" : 10.0,
+						"default_fontface" : 0,
+						"default_fontname" : "Arial",
+						"gridonopen" : 0,
+						"gridsize" : [ 15.0, 15.0 ],
+						"gridsnaponopen" : 0,
+						"toolbarvisible" : 1,
+						"boxanimatetime" : 200,
+						"imprint" : 0,
+						"metadata" : [  ],
+						"boxes" : [ 							{
+								"box" : 								{
+									"maxclass" : "message",
 									"text" : "set 0",
 									"patching_rect" : [ 493.0, 97.0, 33.0, 15.0 ],
 									"numoutlets" : 1,
@@ -1140,56 +1189,62 @@
 									"maxclass" : "message",
 									"text" : "script send version set Version",
 									"linecount" : 2,
-		ets" : 0,
-									"comment" : "window size message from thispatcher in the mother patch."
-								}
-
-							}
-, 							{
-								"box" : 								{
-									"maxclass" : "newobj",
-									"text" : "lp.doom.mxb 5 21",
-									"linecount" : 2,
-									"patching_rect" : [ 171.0, 70.0, 73.0, 28.0 ],
+									"patching_rect" : [ 256.0, 58.0, 96.0, 26.0 ],
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
 									"fontname" : "Arial",
 									"fontsize" : 7.9,
-									"id" : "obj-6",
+									"id" : "obj-9",
 									"numinlets" : 2
 								}
 
 							}
 , 							{
 								"box" : 								{
-									"maxclass" : "comment",
-									"text" : "Grab sends version symbol to us. Format this into a scripting message for an object named 'version' and send that to a thispatcher object in the mother patch.",
-									"linecount" : 2,
-									"patching_rect" : [ 430.0, 4.0, 334.0, 28.0 ],
-									"numoutlets" : 0,
-									"fontname" : "Arial",
-									"fontsize" : 7.9,
-									"id" : "obj-7",
+									"maxclass" : "button",
+									"patching_rect" : [ 256.0, 38.0, 15.0, 15.0 ],
+									"numoutlets" : 1,
+									"outlettype" : [ "bang" ],
+									"id" : "obj-10",
 									"numinlets" : 1
 								}
 
 							}
 , 							{
 								"box" : 								{
-									"maxclass" : "outlet",
-									"patching_rect" : [ 408.0, 115.0, 15.0, 15.0 ],
-									"numoutlets" : 0,
-									"id" : "obj-8",
-									"numinlets" : 1,
-									"comment" : "Messages to thispatcher in mother patch"
+									"maxclass" : "newobj",
+									"text" : "append",
+									"patching_rect" : [ 408.0, 92.0, 39.0, 17.0 ],
+									"numoutlets" : 1,
+									"outlettype" : [ "" ],
+									"fontname" : "Arial",
+									"fontsize" : 7.9,
+									"id" : "obj-11",
+									"numinlets" : 1
 								}
 
 							}
 , 							{
 								"box" : 								{
-									"maxclass" : "message",
-									"text" : "script send version set Version",
- "obj-13",
+									"maxclass" : "newobj",
+									"text" : "prepend set",
+									"patching_rect" : [ 408.0, 46.0, 60.0, 17.0 ],
+									"numoutlets" : 1,
+									"outlettype" : [ "" ],
+									"fontname" : "Arial",
+									"fontsize" : 7.9,
+									"id" : "obj-12",
+									"numinlets" : 1
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"maxclass" : "inlet",
+									"patching_rect" : [ 408.0, 5.0, 15.0, 15.0 ],
+									"numoutlets" : 1,
+									"outlettype" : [ "" ],
+									"id" : "obj-13",
 									"numinlets" : 0,
 									"comment" : "\"Grabbed\" version"
 								}
@@ -1726,64 +1781,6 @@
 						"defrect" : [ 6.0, 343.0, 698.0, 246.0 ],
 						"openrect" : [ 0.0, 0.0, 0.0, 0.0 ],
 						"openinpresentation" : 0,
-						"default_fontsize" : 10.
-						"name" : "top",
-						"size" : 256,
-						"range" : 128,
-						"showeditor" : 0,
-						"embed" : 0,
-						"notename" : 0
-					}
-
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"maxclass" : "comment",
-					"text" : "Let's examine the top and bottom 8 bits",
-					"linecount" : 2,
-					"patching_rect" : [ 134.0, 146.0, 120.0, 28.0 ],
-					"numoutlets" : 0,
-					"fontname" : "Arial",
-					"fontsize" : 7.9,
-					"id" : "obj-27",
-					"numinlets" : 1
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"maxclass" : "comment",
-					"text" : "Bang Uzi and watch the two table windows. (If the windows are hidden, double-click on the table objects.)",
-					"linecount" : 2,
-					"patching_rect" : [ 74.0, 106.0, 434.0, 28.0 ],
-					"numoutlets" : 0,
-					"fontname" : "Arial",
-					"fontsize" : 7.9,
-					"id" : "obj-28",
-					"numinlets" : 1
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"maxclass" : "newobj",
-					"text" : "patcher MoreInfo",
-					"patching_rect" : [ 9.0, 225.0, 91.0, 17.0 ],
-					"numoutlets" : 1,
-					"outlettype" : [ "" ],
-					"fontname" : "Arial",
-					"fontsize" : 7.9,
-					"id" : "obj-29",
-					"numinlets" : 1,
-					"patcher" : 					{
-						"rect" : [ 6.0, 343.0, 698.0, 246.0 ],
-						"bgcolor" : [ 1.0, 1.0, 1.0, 1.0 ],
-						"bglocked" : 0,
-						"defrect" : [ 6.0, 343.0, 698.0, 246.0 ],
-						"openrect" : [ 0.0, 0.0, 0.0, 0.0 ],
-						"openinpresentation" : 0,
 						"default_fontsize" : 10.0,
 						"default_fontface" : 0,
 						"default_fontname" : "Arial",
@@ -1831,14 +1828,9 @@
 									"cantchange" : 1,
 									"patching_rect" : [ 530.0, 49.0, 77.0, 17.0 ],
 									"numoutlets" : 2,
-									"htex			"id" : "obj-6",
-									"numinlets" : 1
-								}
-
-							}
-, 							{
-								"box" : 								{
-									"m: "Arial",
+									"htextcolor" : [ 0.870588, 0.870588, 0.870588, 1.0 ],
+									"outlettype" : [ "int", "bang" ],
+									"fontname" : "Arial",
 									"fontsize" : 7.9,
 									"triangle" : 0,
 									"id" : "obj-3",
@@ -1942,7 +1934,57 @@
 								"box" : 								{
 									"maxclass" : "newobj",
 									"text" : "lp.dotell mean median min max skew kurtosis entropy",
-									"patching_rect" : [ 508.0, 26.0, 228.rtosis",
+									"patching_rect" : [ 508.0, 26.0, 228.0, 17.0 ],
+									"numoutlets" : 11,
+									"outlettype" : [ "", "", "", "", "", "", "", "", "", "", "" ],
+									"fontname" : "Arial",
+									"fontsize" : 7.9,
+									"id" : "obj-10",
+									"hidden" : 1,
+									"numinlets" : 1
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"maxclass" : "flonum",
+									"cantchange" : 1,
+									"patching_rect" : [ 530.0, 150.0, 44.0, 17.0 ],
+									"numoutlets" : 2,
+									"htextcolor" : [ 0.870588, 0.870588, 0.870588, 1.0 ],
+									"outlettype" : [ "float", "bang" ],
+									"fontname" : "Arial",
+									"fontsize" : 7.9,
+									"triangle" : 0,
+									"id" : "obj-11",
+									"triscale" : 0.9,
+									"bgcolor" : [ 0.866667, 0.866667, 0.866667, 1.0 ],
+									"numinlets" : 1
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"maxclass" : "flonum",
+									"cantchange" : 1,
+									"patching_rect" : [ 530.0, 131.0, 44.0, 17.0 ],
+									"numoutlets" : 2,
+									"htextcolor" : [ 0.870588, 0.870588, 0.870588, 1.0 ],
+									"outlettype" : [ "float", "bang" ],
+									"fontname" : "Arial",
+									"fontsize" : 7.9,
+									"triangle" : 0,
+									"id" : "obj-12",
+									"triscale" : 0.9,
+									"bgcolor" : [ 0.866667, 0.866667, 0.866667, 1.0 ],
+									"numinlets" : 1
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"maxclass" : "comment",
+									"text" : "Kurtosis",
 									"patching_rect" : [ 612.0, 152.0, 48.0, 17.0 ],
 									"numoutlets" : 0,
 									"fontname" : "Arial",
@@ -2928,4 +2970,3 @@
 	}
 
 }
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    

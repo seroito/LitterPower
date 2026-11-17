@@ -1,7 +1,7 @@
 # LitterPower modernization notes
 
 Handover notes for continuing the Max 9 modernization in a new session or on another
-machine. Last updated 2026-11-16, about 12:00 UTC.
+machine. Last updated 2026-11-17.
 
 ## Goal
 
@@ -39,10 +39,28 @@ https://github.com/seroito/LitterPower/actions/runs/43860503150, artifact
 report which objects fail to load, crash or misbehave, with the Max console text.
 Artifacts expire after 90 days; any new push produces a fresh package.
 
+### 2026-11-17: help files, extras and clippings replaced
+
+The help files first committed were damaged (beginnings missing, foreign binary data
+mixed in); Max showed them as text. The user supplied intact copies in `Reference/`
+(git-ignored, user material). From there:
+
+- `Litter Power Help/`: 75 intact `.maxhelp` files plus `lp.dotell.maxpat`. Removed,
+  because only damaged copies exist: `lp.bibi.help`, `lp.ernie.help` (so `lp.bibi` and
+  `lp.ernie` have no help file) and `lp.doom.mxb`. 66 help files contain an unconnected
+  `lp.doom` box (a Max 4 layout helper); it shows as an uncreatable box with one console
+  error and is otherwise harmless.
+- `Litter Power Extras/`: overview, 11 examples, `~lib`. The logo picture `lp.Logo.pict`
+  is damaged and left out (5 references to it show no picture).
+- `Litter Power Clippings/`: 17 current `.maxpat` files and 23 Max 4 binary patchers,
+  which got the `.mxb` extension so that Max recognises them on Windows.
+- `Litter/`: the two `Litter Objlist` text files added.
+- File names containing `?` or a leading space were renamed (invalid on Windows).
+
 Things to watch in the first test:
 
 - Whether Max 9 loads the ad-hoc signed `.mxo` files (quarantine flag, see `README.md`).
-- Whether Max 9 opens the extras and clippings, which are in the Max 4 binary format.
+- Whether Max 9 opens the Max 4 binary clippings (`.mxb`).
 - `lp.titi` / `lbj.titi` give a different sequence per seed than the old binaries,
   because of the TT800 fix.
 - The Jitter objects and the `lbj.bix*` network objects are the least certain part:

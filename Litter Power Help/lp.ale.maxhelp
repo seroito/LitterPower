@@ -1,4 +1,42 @@
-ze" : 7.9,
+{
+	"patcher" : 	{
+		"rect" : [ 5.0, 65.0, 611.0, 332.0 ],
+		"bgcolor" : [ 1.0, 1.0, 1.0, 1.0 ],
+		"bglocked" : 0,
+		"defrect" : [ 5.0, 65.0, 611.0, 332.0 ],
+		"openrect" : [ 0.0, 0.0, 0.0, 0.0 ],
+		"openinpresentation" : 0,
+		"default_fontsize" : 10.0,
+		"default_fontface" : 0,
+		"default_fontname" : "Arial",
+		"gridonopen" : 0,
+		"gridsize" : [ 15.0, 15.0 ],
+		"gridsnaponopen" : 0,
+		"toolbarvisible" : 0,
+		"boxanimatetime" : 200,
+		"imprint" : 0,
+		"metadata" : [  ],
+		"boxes" : [ 			{
+				"box" : 				{
+					"maxclass" : "comment",
+					"text" : "Bang selects the next item from those not yet used and sends it through the left outlet. When all items have been used, a bang is sent out the right outlet and the list is automatically replenished.",
+					"linecount" : 3,
+					"numoutlets" : 0,
+					"fontsize" : 7.9,
+					"patching_rect" : [ 256.0, 166.0, 352.0, 38.0 ],
+					"fontname" : "Arial",
+					"id" : "obj-1",
+					"numinlets" : 1
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"maxclass" : "comment",
+					"text" : "Lp.ale is a complete re-write of the now orphaned alea object. A more efficient scrambling algorithm has been implemented, as well as using a stronger random number generator for scrambling items. \rLp.ale is dedicated to that nectar made from barley, hops, and water, particularly the wonderful brews of the Czech Republic.",
+					"linecount" : 5,
+					"numoutlets" : 0,
+					"fontsize" : 7.9,
 					"patching_rect" : [ 256.0, 233.0, 352.0, 59.0 ],
 					"fontname" : "Arial",
 					"id" : "obj-2",
@@ -2077,6 +2115,3 @@ ze" : 7.9,
 	}
 
 }
-                                                                                                                                                                                                                                                                                                                                                                                               	ü  ü   2                                                                                                                                                                                                                                                  øicns  øics#   H „À€…€'À3â‡éñøù_€œ†ÿŒ€îˆ0€ˆˆ"¢‰ˆ#â‹è'âø/úø?ÿŸÿÿÿÿÿÿÿÿÿÿics4   ˆ    ğ  ÿ   ğ   ğ ğ    ı\õ   ß ÏüP ğİ ÌÿPğ  ÌüU   ÌÌüõğ  ÌÜüÎPüığ    ÌÌüÿÀÌÌÌü ğÿÿÿÿğ ÿ °  ½ü  À»û»°üÌüÀ ¿  ğ   ics8          ÿ    ÿ  ÿÿ      ÿ       ÿ    ÿ „ÿ         ÿV ÿ„„ÿ„       VVÿ  „ÿÿ0„   ÿ VV   „„0ÿÿ„ ÿ  ÿ  „00ÿ0„„   ÿ„„00ÿ0ÿ„ÿ    V„VV0ÿ00ÿ„V ÿ „ÿ0ÿVÿ          „VV00ÿ**ÿÿÿ*  „„00000ÿ*   ÿÿ ÿÿÿÿÿÿÿÿÿ*  ÿÿ* 4     94ÿ*    * :õÿ3:^4 ÿ***ÿ**   Wÿ    ÿ       ICN#    €   €  € ` € € €  À #   	
-È 	¨ @
-˜€ ¤ Ì %’  (Š€ QU@J©  ÔÑ‚ ª €LÈ@" @TÀ * ğRÑ˜å*¡˜ÿÿà0  €a  `@(€ €` €b „ ªªªªUUÕUªªªªUUÕUªªªªUWÕUª«êªUWõUª¯úªU_ıUª¯úªU_ıUª¿şªUÿUª¿şªUÿUªÿÿªUÿÿÕªÿÿªUÿÿÕ«ÿÿêWÿÿÿ¯ÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿicl4          ğ    Ğ        

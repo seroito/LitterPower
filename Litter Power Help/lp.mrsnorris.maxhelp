@@ -1,4 +1,55 @@
-MVotVzt0QvRac8eaJCm00wzlzYaRM2at2ydnsgFaRtwNA+9Rx4b9c9c9b+c+c+cO2iPJkxnQixcu6cQWWmWlxkKWDJTHDRoTFNb3W5.sfb4xEJ.uP.xzzDSSy+29QWWGmKW.F+AOf+3d2i+Z7wYpnQQOQB.vka2rRe9n7.AXcUVIAV8pwgCGOW9WHkRYO8zSdYbhDInuvgIbu8xDO7g3PQAI.R4b+BH.PHP.XZYQYqZUr0lZhsr0sha2tewB0nCOLe20uNO9e9GPJwRJscN.nHDfPPouxqvdZoE1PM07hApen814G6nCTDh7FlLAmkTxa9NuC6bu6M21ZmytRqsR2c1I.KafV7b6tyN4Js15xGp1aqM5KbXrrrV1vrD3rrnuvgo81ZKq1j0m95+12la0c2HsI5XZZhggQFGysa2HDhLB1s5taJOP.ZnwFyOnld5oo8qcsbByB.Udf.7pM0zRhlRoja1UWL0TSghRlugz90tFUVc0TTQEYOT2pqtH9LyXaTxvvfczby7QG8nYb7wFcThDIRFgRJkDelY3Vc0E6okVRarkX8LSO8b4Q4QRsPHnppqNU6jISRxjIwzzDcccrroBukTRegCyLSOcZ8ujH0XiLBwiEy1njTJwiGODLTH.3W9oehSchSPAETPJalXhIxY0boTR7XwXrQFgF211xMT4irrrnzRKkxJqL.3m6oG90AGDUUUJvkKTTTvgCGYLQOSqYVgJogA+8DSXaTBlKIuh0tVJzqW.3s10tnlMtQFc3goiu+64wO5QHbZ+qVkRI+8DSPRCCbNeTNsbpXwhwLO4I15H.rLMop0u9Tsqq95Ym6YO7wG6X7Uey2vF2zlxZohmUy7jmPrXwR0NMnz00wvvHuhTNb5jZpsVtyfCxYN4I4KN8o42FaL.nrxKmO4y9L74ymsEdkRIFFFos8ozhuVVV4c0a2tcykt3EYjgFZtqRoj1t5U4Dm4Lr4FajUWQE716d2z5EuHppp4zWO65lVjxoSm3HOxCVvQ82WeXZZhllFZd7v+N0TboKbgT1r4srkrV3bwxgSm3bQqaZyPSSCUU075IFSSSTTTRyVGNcxjO9wotpKdEqHsEKSRHDnpphllVlgxSgERI98aKTISljJCEhpptZlMdbjRIRojDIRPs0UWpnSjHQrMYWHDThe+3ovByLT.rtfAwt3TxjIok8ueN84NGu0N2Itb4BDBdssuc9fCe3T1Et2dswSysS00ELXZ8sjXas0WOcM+9mxjVnR9larQ7URI74m5T7m2+97zYmkfgBk510HCMD2niNv0hpvmIYZYQs0WeZ8sjHUfJpf0FLXVSPEBAFFF7km8r7vwGG.pXMqgp2vFRAzcFX.9ziebhGONhbjnqnnvZCFj.UTQ5qQl1N7nCMDm+q+5bVuRWWG+98yquicP8Mz.d85kHSNI2NbX54l2jmN6ropPmMIDBN3gOLan1ZsGJ.Z87mm6Lv.4rtkkkEF55fPfhhBlllHDBb4xksOrnnnPcaZS7dG7fKcrrMo8cfCvJ84Km0YTTTvspJtc6lBJn.Tm++4CPqzmO12ANPlGOaSzqWu79G5PnpokWE.yWonnfplFu+gNDdm+k44MT.Tdf.7gG4HTTwE+BALEEEJp3h4COxQn7.Axpc4028EMRD91KeYt2u+6oJT97HgPfPHnxpph8+tuK9Jojba+yymsGt2do6abChN4j.jS.W.D.Jwuedilals1TS42EwyCTvbmmvXCOLC1e+7f6eeld98es..K.YQEWLqdMqg5anAVeM0j2mivxBpEqYiGmohFknQiRhm9T.vspJ974iU5yGZd7rr7qSXtCpZ4bFUZd7flGOT1pV0xZwyjRcnYgBEZtWp9RVKb7h+Gsi4htOSmfCL.....IUjSD4pPfIH" ]
+{
+	"patcher" : 	{
+		"rect" : [ 5.0, 65.0, 515.0, 474.0 ],
+		"bgcolor" : [ 1.0, 1.0, 1.0, 1.0 ],
+		"bglocked" : 0,
+		"defrect" : [ 5.0, 65.0, 515.0, 474.0 ],
+		"openrect" : [ 0.0, 0.0, 0.0, 0.0 ],
+		"openinpresentation" : 0,
+		"default_fontsize" : 10.0,
+		"default_fontface" : 0,
+		"default_fontname" : "Arial",
+		"gridonopen" : 0,
+		"gridsize" : [ 15.0, 15.0 ],
+		"gridsnaponopen" : 0,
+		"toolbarvisible" : 0,
+		"boxanimatetime" : 200,
+		"imprint" : 0,
+		"metadata" : [  ],
+		"boxes" : [ 			{
+				"box" : 				{
+					"maxclass" : "ubutton",
+					"numoutlets" : 4,
+					"patching_rect" : [ 144.0, 335.0, 180.0, 37.0 ],
+					"outlettype" : [ "bang", "bang", "", "int" ],
+					"handoff" : "",
+					"id" : "obj-36",
+					"numinlets" : 1
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"maxclass" : "comment",
+					"text" : "Click here for Max 5  Information",
+					"numoutlets" : 0,
+					"fontsize" : 7.9,
+					"patching_rect" : [ 180.0, 335.0, 143.0, 17.0 ],
+					"fontname" : "Arial",
+					"id" : "obj-34",
+					"numinlets" : 1
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"maxclass" : "fpic",
+					"numoutlets" : 0,
+					"patching_rect" : [ 142.5, 335.0, 37.0, 36.0 ],
+					"id" : "obj-32",
+					"embed" : 1,
+					"numinlets" : 1,
+					"data" : [ 1550, "", "IBkSG0fBZn....PCIgDQRA...TB....IHX....fCBOuo....DLmPIQEBHf.B7g.YHB..ETbRDEDUXUXwX9EZScEGG+y4lzj6MMsZZJCZMV0zzpzZqUK5JC2v0s4+v9f9vXv.mCAeYv7AeTXLXuLDw+.y8vf8vTAKB5nJzMVotVzt0QvRac8eaJCm00wzlzYaRM2at2ydnsgFaRtwNA+9Rx4b9c9c9b+c+c+cO2iPJkxnQixcu6cQWWmWlxkKWDJTHDRoTFNb3W5.sfb4xEJ.uP.xzzDSSy+29QWWGmKW.F+AOf+3d2i+Z7wYpnQQOQB.vka2rRe9n7.AXcUVIAV8pwgCGOW9WHkRYO8zSdYbhDInuvgIbu8xDO7g3PQAI.R4b+BH.PHP.XZYQYqZUr0lZhsr0sha2tewB0nCOLe20uNO9e9GPJwRJscN.nHDfPPouxqvdZoE1PM07hApen814G6nCTDh7FlLAmkTxa9NuC6bu6M21ZmytRqsR2c1I.KafV7b6tyN4Js15xGp1aqM5KbXrrrV1vrD3rrnuvgo81ZKq1j0m95+12la0c2HsI5XZZhggQFGysa2HDhLB1s5taJOP.ZnwFyOnld5oo8qcsbByB.Udf.7pM0zRhlRoja1UWL0TSghRlugz90tFUVc0TTQEYOT2pqtH9LyXaTxvvfczby7QG8nYb7wFcThDIRFgRJkDelY3Vc0E6okVRarkX8LSO8b4Q4QRsPHnppqNU6jISRxjIwzzDcccrroBukTRegCyLSOcZ8ujH0XiLBwiEy1njTJwiGODLTH.3W9oehSchSPAETPJalXhIxY0boTR7XwXrQFgF211xMT4irrrnzRKkxJqL.3m6oG90AGDUUUJvkKTTTvgCGYLQOSqYVgJogA+8DSXaTBlKIuh0tVJzqW.3s10tnlMtQFc3goiu+64wO5QHbZ+qVkRI+8DSPRCCbNeTNsbpXwhwLO4I15H.rLMop0u9Tsqq95Ym6YO7wG6X7Uey2vF2zlxZohmUy7jmPrXwR0NMnz00wvvHuhTNb5jZpsVtyfCxYN4I4KN8o42FaL.nrxKmO4y9L74ymsEdkRIFFFos8ozhuVVV4c0a2tcykt3EYjgFZtqRoj1t5U4Dm4Lr4FajUWQE716d2z5EuHppp4zWO65lVjxoSm3HOxCVvQ82WeXZZhllFZd7v+N0TboKbgT1r4srkrV3bwxgSm3bQqaZyPSSCUU075IFSSSTTTRyVGNcxjO9wotpKdEqHsEKSRHDnpphllVlgxSgERI98aKTISljJCEhpptZlMdbjRIRojDIRPs0UWpnSjHQrMYWHDThe+3ovByLT.rtfAwt3TxjIok8ueN84NGu0N2Itb4BDBdssuc9fCe3T1Et2dswSysS00ELXZ8sjXas0WOcM+9mxjVnR9larQ7URI74m5T7m2+97zYmkfgBk510HCMD2niNv0hpvmIYZYQs0WeZ8sjHUfJpf0FLXVSPEBAFFF7km8r7vwGG.pXMqgp2vFRAzcFX.9ziebhGONhbjnqnnvZCFj.UTQ5qQl1N7nCMDm+q+5bVuRWWG+98yquicP8Mz.d85kHSNI2NbX54l2jmN6ropPmMIDBN3gOLan1ZsGJ.Z87mm6Lv.4rtkkkEF55fPfhhBlllHDBb4xksOrnnnPcaZS7dG7fKcrrMo8cfCvJ84Km0YTTTvspJtc6lBJn.Tm++4CPqzmO12ANPlGOaSzqWu79G5PnpokWE.yWonnfplFu+gNDdm+k44MT.Tdf.7gG4HTTwE+BALEEEJp3h4COxQn7.Axpc4028EMRD91KeYt2u+6oJT97HgPfPHnxpph8+tuK9Jojba+yymsGt2do6abChN4j.jS.W.D.Jwuedilals1TS42EwyCTvbmmvXCOLC1e+7f6eeld98es..K.YQEWLqdMqg5anAVeM0j2mivxBpEqYiGmohFknQiRhm9T.vspJ974iU5yGZd7rr7qSXtCpZ4bFUZd7flGOT1pV0xZwyjRcnYgBEZtWp9RVKb7h+Gsi4htOSmfCL.....IUjSD4pPfIH" ]
 				}
 
 			}
@@ -1497,69 +1548,63 @@ MVotVzt0QvRac8eaJCm00wzlzYaRM2at2ydnsgFaRtwNA+9Rx4b9c9c9b+c+c+cO2iPJkxnQixcu6cQW
 							}
 , 							{
 								"box" : 								{
-									"maxclass" : "inlet",e" : "Arial"
-									}
-
+									"maxclass" : "inlet",
+									"numoutlets" : 1,
+									"patching_rect" : [ 6.0, 4.0, 15.0, 15.0 ],
+									"outlettype" : [ "" ],
+									"id" : "obj-9",
+									"numinlets" : 0,
+									"comment" : "Symbol from one of the help menus"
 								}
 
 							}
 , 							{
 								"box" : 								{
 									"maxclass" : "message",
-									"text" : "front",
+									"text" : "set $1",
 									"numoutlets" : 1,
 									"fontsize" : 7.9,
-									"patching_rect" : [ 276.0, 50.0, 33.0, 15.0 ],
+									"patching_rect" : [ 622.0, 72.0, 35.0, 15.0 ],
 									"outlettype" : [ "" ],
 									"fontname" : "Arial",
-									"id" : "obj-5",
-									"numinlets" : 2
-								}
-
-							}
-, 							{
-								"box" : 								{
-									"maxclass" : "message",
-									"text" : "front",
-									"numoutlets" : 1,
-									"fontsize" : 7.9,
-									"patching_rect" : [ 141.0, 50.0, 33.0, 15.0 ],
-									"outlettype" : [ "" ],
-									"fontname" : "Arial",
-									"id" : "obj-6",
-									"numinlets" : 2
+									"id" : "obj-10",
+									"numinlets" : 2,
+									"bgcolor" : [ 0.156863, 0.8, 0.54902, 1.0 ]
 								}
 
 							}
 , 							{
 								"box" : 								{
 									"maxclass" : "newobj",
-									"text" : "prepend load",
-									"numoutlets" : 1,
+									"text" : "unpack s 0",
+									"numoutlets" : 2,
 									"fontsize" : 7.9,
-									"patching_rect" : [ 411.0, 72.0, 66.0, 17.0 ],
-									"outlettype" : [ "" ],
+									"patching_rect" : [ 546.0, 49.0, 86.0, 17.0 ],
+									"outlettype" : [ "", "int" ],
 									"fontname" : "Arial",
-									"id" : "obj-7",
+									"id" : "obj-11",
 									"numinlets" : 1
 								}
 
 							}
 , 							{
 								"box" : 								{
-									"maxclass" : "outlet",
-									"numoutlets" : 0,
-									"patching_rect" : [ 622.0, 121.0, 15.0, 15.0 ],
-									"id" : "obj-8",
-									"numinlets" : 1,
-									"comment" : "Message to reset help menu"
+									"maxclass" : "newobj",
+									"text" : "prepend help",
+									"numoutlets" : 1,
+									"fontsize" : 7.9,
+									"patching_rect" : [ 546.0, 72.0, 64.0, 17.0 ],
+									"outlettype" : [ "" ],
+									"fontname" : "Arial",
+									"id" : "obj-12",
+									"numinlets" : 1
 								}
 
 							}
 , 							{
 								"box" : 								{
-									"maxclass" : "inlet",
-									"nlp.mrsnorris",
+									"maxclass" : "newobj",
+									"text" : "lp.mrsnorris",
 									"numoutlets" : 1,
 									"fontsize" : 7.9,
 									"patching_rect" : [ 546.0, 94.0, 67.0, 17.0 ],
@@ -2206,4 +2251,3 @@ MVotVzt0QvRac8eaJCm00wzlzYaRM2at2ydnsgFaRtwNA+9Rx4b9c9c9b+c+c+cO2iPJkxnQixcu6cQW
 	}
 
 }
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    
