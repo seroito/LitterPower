@@ -5,14 +5,16 @@
 static const char* const sStrings0[] = {
 	/*  1 */ "1.0d2 (Classic OS)",
 	/*  2 */ "1.0d2 (Classic OS), Copyright \xc2\xa9" " 2001-2003 Peter Castine.",
-	/*  3 */ "1.8i1",
-	/*  4 */ "Litter Power Package 1.8i1 (Pro Bundles)",
-	/*  5 */ "Bang (Generate next point), Float/List (Growth rates), Symbol (Function)",
-	/*  6 */ "Float (Seed population)",
-	/*  7 */ "Float (Next population)",
+	/*  3 */ "0",
+	/*  4 */ "1.8i1",
+	/*  5 */ "Litter Power Package 1.8i1 (Pro Bundles)",
+	/*  6 */ "18008002",
+	/*  7 */ "Bang (Generate next point), Float/List (Growth rates), Symbol (Function)",
+	/*  8 */ "Float (Seed population)",
+	/*  9 */ "Float (Next population)",
 	};
 
 const tLitterStrList gLitterStrLists[] = {
-	{ "lp.vera", 7, sStrings0 },
+	{ "lp.vera", 9, sStrings0 },
 	};
 const int gLitterStrListCount = 1;

@@ -93,6 +93,26 @@ def process(tmp, path):
         lists.append((rid, name, items))
     return lists
 
+VERSION_RE = re.compile(r'^\d+\.\d')
+
+def standard_layout(items):
+    """Return items with the six standard version strings LitterAssist() expects in front.
+
+    Most lists start with: object version (short, long, number), package version (short,
+    long, number). Some older lists have only the four strings (no numbers), and a few
+    have no version strings at all. Without padding, every hover text of these objects
+    would be shifted.
+    """
+    def is_num(s): return s.isdigit()
+    if len(items) >= 6 and is_num(items[2]) and is_num(items[5]):
+        return items
+    if len(items) >= 4 and VERSION_RE.match(items[0]) and items[3].startswith('Litter'):
+        return [items[0], items[1], '0', items[2], items[3], '18008002'] + items[4:]
+    if items and not VERSION_RE.match(items[0]) and not items[0].startswith('LP'):
+        return ['1.8i1', '1.8i1, Copyright \u00a9 2001-26 Peter Castine.', '0',
+                '1.8i1', 'Litter Power Package 1.8i1', '18008002'] + items
+    return items
+
 def main():
     os.makedirs(OUT, exist_ok=True)
     with tempfile.TemporaryDirectory() as tmp:
@@ -102,6 +122,9 @@ def main():
             lists = process(tmp, path)
             if lists is None: continue
             named = [l for l in lists if l[1]]
+            if named:                           # the first list holds the assist strings
+                rid, name, items = named[0]
+                named[0] = (rid, name, standard_layout(items))
             if not named:
                 print('-- no named STR# in', os.path.relpath(path, ROOT), file=sys.stderr); continue
             rel = os.path.relpath(path, ROOT)

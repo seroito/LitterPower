@@ -5,18 +5,20 @@
 static const char* const sStrings0[] = {
 	/*  1 */ "1.0d2 (Classic OS)",
 	/*  2 */ "1.0d2 (Classic OS), Copyright \xc2\xa9" " 2001-2003 Peter Castine.",
-	/*  3 */ "1.8i1",
-	/*  4 */ "Litter Power Package 1.8i1 (Pro Bundles)",
-	/*  5 */ "Bang, List (Initial point), Symbol (Function)",
-	/*  6 */ "Float (Parameter a), Symbol (Function1)",
-	/*  7 */ "Float (Parameter b), Symbol (Function2)",
-	/*  8 */ "Float (Parameter c), Symbol (Function3)",
-	/*  9 */ "Float (Parameter d), Symbol (Function4)",
-	/* 10 */ "Float (X Coordinate)",
-	/* 11 */ "Float (Y Coordinate)",
+	/*  3 */ "0",
+	/*  4 */ "1.8i1",
+	/*  5 */ "Litter Power Package 1.8i1 (Pro Bundles)",
+	/*  6 */ "18008002",
+	/*  7 */ "Bang, List (Initial point), Symbol (Function)",
+	/*  8 */ "Float (Parameter a), Symbol (Function1)",
+	/*  9 */ "Float (Parameter b), Symbol (Function2)",
+	/* 10 */ "Float (Parameter c), Symbol (Function3)",
+	/* 11 */ "Float (Parameter d), Symbol (Function4)",
+	/* 12 */ "Float (X Coordinate)",
+	/* 13 */ "Float (Y Coordinate)",
 	};
 
 const tLitterStrList gLitterStrLists[] = {
-	{ "lp.lana", 11, sStrings0 },
+	{ "lp.lana", 13, sStrings0 },
 	};
 const int gLitterStrListCount = 1;

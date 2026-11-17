@@ -184,7 +184,12 @@ BixMapVectorChar1Plane(
 			op  = (Byte*) oInfo->p;
 		
 	// ASSERT stride == 1 for all threee t_jit_op_info structs
-	while (n-- > 0) {
+	if (ip2 == NULL) {
+		// No usable group matrix: every cell uses the global filter
+		while (n-- > 0)
+			*op++ = iMaps[0][*ip1++];
+		}
+	else while (n-- > 0) {
 		*op++ = iMaps[*ip2++ & kFilterMask][*ip1++];
 		}	
 	}
@@ -229,7 +234,7 @@ BixMapCalcNDim(
 #if 1
 		for (i = 0; i < iDimensions[1]; i += 1) {
 			opInfoIn1.p = iData1 + i * iMatrixInfo1->dimstride[1];
-			opInfoIn2.p = iData2 + i * iMatrixInfo2->dimstride[1];
+			opInfoIn2.p = (iData2 != NULL) ? iData2 + i * iMatrixInfo2->dimstride[1] : NULL;
 			opInfoOut.p = oData  + i * oMatrixInfo->dimstride[1];
 			BixMapVectorChar1Plane(n, iMapData, &opInfoIn1, &opInfoIn2, &opInfoOut);
 			}
@@ -247,13 +252,32 @@ BixMapCalcNDim(
 	default:
 		for	(i = 0; i < iDimensions[iDimCount-1]; i += 1) {
 			BytePtr	subMatrixIn		= iData1 + i * iMatrixInfo1->dimstride[iDimCount-1],
+					subMatrixGrp	= (iData2 != NULL)
+										? iData2 + i * iMatrixInfo2->dimstride[iDimCount-1]
+										: NULL,
 					subMatrixOut	= oData  + i * oMatrixInfo->dimstride[iDimCount-1];
 			BixMapCalcNDim(	iMapData, iDimCount-1, iDimensions, iPlaneCount,
 							iMatrixInfo1, subMatrixIn,
-							iMatrixInfo2, iData2,
+							iMatrixInfo2, subMatrixGrp,
 							oMatrixInfo, subMatrixOut);
 			}
 		}
+	}
+
+	// Without a usable group matrix: global filter for all cells
+static void
+BixMapCalcNDimGlobal(
+	void*				iMapData,
+	long				iDimCount,
+	long*				iDimensions,
+	long				iPlaneCount,
+	t_jit_matrix_info*	iMatrixInfo1,
+	Byte*				iData1, 
+	t_jit_matrix_info*	oMatrixInfo,
+	Byte*				oData)
+	{
+	BixMapCalcNDim(iMapData, iDimCount, iDimensions, iPlaneCount,
+				   iMatrixInfo1, iData1, iMatrixInfo1, NULL, oMatrixInfo, oData);
 	}
 
 static t_jit_err
@@ -264,7 +288,8 @@ BixMapMatrix(
 	
 	{
 	const long	kFlags1	= 0,
-				kFlags2	= JIT_PARALLEL_NDIM_FLAGS_FULL_MATRIX,
+				kFlags2	= 0,		// Same rows as the input (was FULL_MATRIX, which gave
+									// every thread the top rows of the group matrix)
 				kFlags3 = 0;
 	
 	t_jit_err	err			= JIT_ERR_NONE;
@@ -334,12 +359,23 @@ BixMapMatrix(
 			}
 		}
 			
-	jit_parallel_ndim_simplecalc3(	(method) BixMapCalcNDim, me->cooked,
-									dimcount, dim, planecount,
-									&matrixInfoIn1, DataIn1,
-									&matrixInfoIn2, DataIn2, 
-									&matrixInfoOut, DataOut,
-									kFlags1, kFlags2, kFlags3);
+	// The group matrix must cover the input; until one has arrived (or if it is smaller)
+	// all cells use the global filter
+	for (i = 0; i < dimcount; i += 1)
+		if (matrixInfoIn2.dim[i] < dim[i]) { DataIn2 = NULL; break; }
+	
+	if (DataIn2 != NULL)
+		jit_parallel_ndim_simplecalc3(	(method) BixMapCalcNDim, me->cooked,
+										dimcount, dim, planecount,
+										&matrixInfoIn1, DataIn1,
+										&matrixInfoIn2, DataIn2, 
+										&matrixInfoOut, DataOut,
+										kFlags1, kFlags2, kFlags3);
+	else jit_parallel_ndim_simplecalc2(	(method) BixMapCalcNDimGlobal, me->cooked,
+										dimcount, dim, planecount,
+										&matrixInfoIn1, DataIn1,
+										&matrixInfoOut, DataOut,
+										kFlags1, kFlags3);
 
 alohamora:
 	jit_object_method(matrixOut, _jit_sym_lock, saveLockOut);
@@ -426,6 +462,7 @@ BixMapJitSetFilter(
 	
 	t_jit_err	myErr = JIT_ERR_NONE;
 	long		filterNo,
+				argsLeft,
 				i;
 	float*		rb;
 	double		left,
@@ -452,6 +489,7 @@ BixMapJitSetFilter(
 	// Map the input to the raw value, stretching the input values as necessary
 	left	= EvalFilterAtom(iArgVec++);
 	right	= EvalFilterAtom(iArgVec++);
+	argsLeft = iArgCount - 2;				// Mapping values not read yet
 	stride	= ((double) kFilterSize) / ((double) (iArgCount - 1));
 	stride1	= 1.0 / stride;
 	slope	= (right - left) * stride1;
@@ -464,7 +502,10 @@ BixMapJitSetFilter(
 		if (relPos > stride) {
 			relPos	-= stride;
 			left	 = right;
-			right	 = EvalFilterAtom(iArgVec++);
+			if (argsLeft > 0) {				// Rounding must not read past the list
+				right = EvalFilterAtom(iArgVec++);
+				argsLeft -= 1;
+				}
 			slope	 = (right - left) * stride1;
 			left	+= slope * relPos;
 			}
@@ -525,6 +566,9 @@ BixMapJitInit(void)
 	jit_mop_single_planecount(mop, 1);
 	
 	m2 = jit_object_method(mop, _jit_sym_getinput, 2);
+	// The group matrix is resized to the dimensions of the left input, so that the
+	// calculation never reads past its end
+	jit_object_method(m2, _jit_sym_ioproc, jit_mop_ioproc_copy_adapt);
 //	jit_attr_setlong(m2, _jit_sym_dimlink, 0);
 //	jit_attr_setlong(m2, _jit_sym_typelink, 0);
 	

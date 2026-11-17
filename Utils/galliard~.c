@@ -229,9 +229,17 @@ GalliardCoeffs(
 	{
 	#pragma unused (sym)
 	
-	int		order = iArgC - 1;
+	int		order;
 	double*	coeff = me->coeffs;
 	
+	if (iArgC <= 0)
+		return;								// Empty list: keep the current coefficients
+	if (iArgC > kMaxListLen) {
+		error("%s: only the first %d coefficients are used", kClassName, (int) kMaxListLen);
+		iArgC = kMaxListLen;
+		}
+	
+	order = iArgC - 1;
 	me->order = order;
 	
 	do	{

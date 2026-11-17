@@ -17,7 +17,10 @@
 /******************************************************************************************
  ******************************************************************************************/
 
-/********** GEHT NICHT -- irgendwie ist memory corrupted!!!! -- post function printed keine doubles??? **************/
+/*	The original author's note here read "does not work -- memory corrupted somehow -- post()
+	prints no doubles". The 2026 port fixed what could be found: division by zero for
+	modification rates of 0, frequency 0, a missing NULL check, and debug output on every
+	number received. The object was never released; treat it as experimental.	*/
 
 #pragma mark Include Files
 
@@ -149,6 +152,20 @@ void    CrottinPerform64(objCrottin*, t_object *dsp64, double **ins, long numins
 
 #pragma mark Inline Functions
 
+	// Number of waveform cycles between two modification goals. A rate of 0 (or less)
+	// means "no modification"; return 1 so that nothing divides by zero.
+static inline long RateCycles(double iFreq, double iRate)
+	{
+	double c = (iRate > 0.0) ? iFreq / iRate + 0.5 : 1.0;
+	
+	if (c < 1.0)			c = 1.0;
+	else if (c > 1.0e9)		c = 1.0e9;
+	return (long) c;
+	}
+
+	// Lowest frequency accepted; 0 Hz would make the waveform infinitely long
+#define kMinFreq	0.001
+
 
 
 #pragma mark -
@@ -206,9 +223,6 @@ void ext_main(void* r)
 	}
 
 
-void test(objCrottin*	me, double f) {
-    post("f: %f", f);
-}
 
 
 #pragma mark -
@@ -271,7 +285,7 @@ SetAmpRate(
 		iRate = -iRate;
 	
 	me->ampRate = iRate;
-	me->ampRateCycles = me->freq / iRate + 0.5;
+	me->ampRateCycles = RateCycles(me->freq, iRate);
 	
 	cFac = 1.0 / (double) me->ampRateCycles;
 	for (i = me->segCount, sp = me->segments; i > 0; i -= 1, sp += 1) {
@@ -294,7 +308,7 @@ SetWidthRate(
 		iRate = -iRate;
 	
 	me->widthRate = iRate;
-	me->widthRateCycles = me->freq / iRate + 0.5;
+	me->widthRateCycles = RateCycles(me->freq, iRate);
 	
 	cFac = 1.0 / (double) me->widthRateCycles;
 	for (i = me->segCount, sp = me->segments; i > 0; i -= 1, sp += 1) {
@@ -326,16 +340,13 @@ SetFreq(
 	double		iFreq)
 	
 	{
-        printf("freq: %f\n", iFreq);
-        
 	if (iFreq < 0.0)		// Actually, a negative frequency might make a subtle difference
 		iFreq = - iFreq;	// to the sound, but the perform method is more efficient if
 							// we don't have to check for negative increments.
 							// And most people won't notice the difference.
-
-        post("freq: %f", iFreq);
-        object_post((t_object*)me, "freqq: %f", iFreq);
-        
+	if (iFreq < kMinFreq)
+		iFreq = kMinFreq;
+	
 	me->freq = iFreq;
 	SetWaveLen(me, me->sr / iFreq);
 	
@@ -573,8 +584,13 @@ CrottinNew(
 	
 	// Let Max/MSP allocate us, our inlets, and outlets.
 	me = object_alloc(gObjectClass);
-	if (me != NIL)
-		Taus88Seed(&me->tausData, 0);		// Seed from clock, address etc.
+	if (me == NIL)
+		goto punt;
+	Taus88Seed(&me->tausData, 0);			// Seed from clock, address etc.
+	if (freq < 0.0)		freq = -freq;
+	if (freq < kMinFreq)	freq = kMinFreq;
+	if (ampRate < 0.0)	ampRate = -ampRate;
+	if (widthRate < 0.0)	widthRate = -widthRate;
 	dsp_setup(&(me->coreObject), 3);		// Signal inlets for frequency, etc.
 	
 	outlet_new(me, "signal");				// Outlet
@@ -585,14 +601,13 @@ CrottinNew(
 	me->segCount		= segCount;
 	me->curSeg			= -1;				// Temp values
 	me->sampsLeft		= 0;
-	me->ampRateCycles	= freq / ampRate + 0.5;
-		if (me->ampRateCycles == 0) me->ampRateCycles = 1;
+	me->ampRateCycles	= RateCycles(freq, ampRate);
 	me->ampCtr			= 0;
-	me->widthRateCycles	= freq / widthRate + 0.5;
-		if (me->widthRateCycles == 0) me->widthRateCycles = 1;
+	me->widthRateCycles	= RateCycles(freq, widthRate);
 	me->widthCtr		= 0;
 	me->freq			= freq;
 	me->sr				= sys_getsr();		// Get real sample rate in "dsp" method
+	if (me->sr <= 0.0) me->sr = 44100.0;
 	me->waveLen			= me->sr / freq;
 	me->ampRate			= ampRate;
 	me->widthRate		= widthRate;
@@ -605,9 +620,6 @@ CrottinNew(
 	GenNewGoals(me);
 	RollOverGoals(me);
         
-        object_post(NULL, "new: segCount: %d", me->segCount);
-        printf("new freq: %f\n", me->freq );
-        object_post(NULL, "new: freq: %f", me->freq);
 	
 	me->curSeg			= 0;				// Real values
 	me->sampsLeft		= me->segments[0].curWidth;
@@ -672,8 +684,6 @@ void CrottinFloat(
 	double		iVal)
 	
 	{
-        
-        post("input float: %f", iVal);
 	
 	switch ( ObjectGetInlet((t_object*) me, me->coreObject.z_in) ) {
 		case proxyAmpRate + 1:		SetAmpRate(me, iVal);	break;
@@ -731,14 +741,14 @@ CrottinTattle(
 	post("    Segment Amplitudes: %s", me->interpAmp ? kOnStr : kOffStr);
 	post("    Segment Widths:     %s", me->interpWidth ? kOnStr : kOffStr);
 	post("  %sbang pending", me->bang ? "" : "no ");
-	post("  %ld segments, currently at segment %ld", me->segCount, me->curSeg);
+	post("  %ld segments, currently at segment %ld", (long) me->segCount, (long) me->curSeg);
 	post("  frequency is: %lf (wavelen %lf at sample rate %lf)",
 			me->freq, me->waveLen, me->sr);
 	if (me->ampRate > 0.0) {
 		post("  Modulating segment amplitudes at %lf Hz", me->ampRate);
 		post("    (every %ld cycles)", me->ampRateCycles);
 		}
-	if (me->ampRate > 0.0) {
+	if (me->widthRate > 0.0) {
 		post("  Modulating segment widths at %lf Hz", me->widthRate);
 		post("    (every %ld cycles)", me->widthRateCycles);
 		}

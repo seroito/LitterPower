@@ -3,12 +3,18 @@
 #include "LitterStrings.h"
 
 static const char* const sStrings0[] = {
-	/*  1 */ "Bang (Generate next point), Float/List (Growth rates), Symbol (Function)",
-	/*  2 */ "Float (Seed population)",
-	/*  3 */ "Float (Next population)",
+	/*  1 */ "1.8i1",
+	/*  2 */ "1.8i1, Copyright \xc2\xa9" " 2001-26 Peter Castine.",
+	/*  3 */ "0",
+	/*  4 */ "1.8i1",
+	/*  5 */ "Litter Power Package 1.8i1",
+	/*  6 */ "18008002",
+	/*  7 */ "Bang (Generate next point), Float/List (Growth rates), Symbol (Function)",
+	/*  8 */ "Float (Seed population)",
+	/*  9 */ "Float (Next population)",
 	};
 
 const tLitterStrList gLitterStrLists[] = {
-	{ "lp.vera+", 3, sStrings0 },
+	{ "lp.vera+", 9, sStrings0 },
 	};
 const int gLitterStrListCount = 1;

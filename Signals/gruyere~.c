@@ -276,13 +276,10 @@ SetEpsilon(
  *
  *	GruyereNew() expects the arguments (in left-to-right order, all optional):
  *	
- *		- segment count							[Default: 2]
- *		- frequency								[Default: 440 Hz]
- *		- rate of pulse amplitude change		[Default: 0]
- *		- rate of pulse segment width change	[Default: 0]
- *
- *	If the rate of pulse/amplitude change is left at zero, interpolation will be off by
- *	default
+ *		- buffer~ name (symbol, anywhere in the list)	[Default: none, cosine table]
+ *		- frequency										[Default: 0 Hz]
+ *		- epsilon (probability of a random phase jump)	[Default: 0]
+ *		- offset into the buffer~ in samples			[Default: 0]
  *	
  ******************************************************************************************/
 
@@ -344,21 +341,21 @@ GruyereNew(
 			// This can't happen
 			break;
 			}
-		
-		iArgV++;
 		}
 	
 	
 	// Let Max/MSP allocate us, our inlets, and outlets.
 	me = object_alloc(gObjectClass);
-	if (me != NIL)
-		Taus88Seed(&me->tausData, 0);		// Seed from clock, address etc.
+	if (me == NIL)
+		return NIL;
+	Taus88Seed(&me->tausData, 0);			// Seed from clock, address etc.
 	dsp_setup(&(me->coreObject), 2);		// Signal inlets for frequency, etc.
 	
 	outlet_new(me, "signal");				// Outlet
 	
 	me->phi				= 0.0;
 	me->sr				= sys_getsr();		// Get real sample rate in dsp method
+	if (me->sr <= 0.0) me->sr = 44100.0;
     me->bufname         = bufSym;
 	
 	SetFreq(me, freq);						// Sets freq, stepFactor
@@ -738,7 +735,7 @@ void GruyerePerform64(objGruyere *me, t_object *dsp64, double **ins, long numins
         offset = me->bufOffset;
         
         if ( offset < frames) {
-            wTable	= tab + offset;
+            wTable	= tab + offset * nChans;	// Samples are interleaved; use the first channel
             tLen	= frames - offset;
             
             if (tLen > kTableLen)

@@ -81,6 +81,11 @@ typedef struct {
 	} tJulie;
 
 
+	// Squared escape radius. Once |z| > 2 (with |c| <= 2) the orbit runs away to infinity,
+	// which would put inf and NaN values into the signal chain. The 2026 port restarts
+	// the orbit at z0 instead.
+#define kEscape		4.0
+
 #pragma mark Global Variables
 
 
@@ -426,8 +431,15 @@ PerformJulieStatic(
 				i	= curImag;
 		
 		// Complex z' = z^2 + c
-		*outReal++ = curReal = r * r - i * i + cReal;
-		*outImag++ = curImag = 2 * r * i + cImag;
+		curReal = r * r - i * i + cReal;
+		curImag = 2 * r * i + cImag;
+		if (curReal * curReal + curImag * curImag > kEscape) {
+			// The orbit has escaped and would run away to infinity: start again at z0
+			curReal = me->z0Real;
+			curImag = me->z0Imag;
+			}
+		*outReal++ = curReal;
+		*outImag++ = curImag;
 		
 		} while (--vecSize > 0);
 	
@@ -481,8 +493,15 @@ PerformJulieDynamic(
 				ci	= inCImag ? *inCImag++ : cImag;
 		
 		// Complex z' = z^2 + c
-		*outReal++ = zReal = r * r - i * i + cr;
-		*outImag++ = zImag = 2 * r * i + ci;
+		zReal = r * r - i * i + cr;
+		zImag = 2 * r * i + ci;
+		if (zReal * zReal + zImag * zImag > kEscape) {
+			// The orbit has escaped and would run away to infinity: start again at z0
+			zReal = me->z0Real;
+			zImag = me->z0Imag;
+			}
+		*outReal++ = zReal;
+		*outImag++ = zImag;
 		
 		} while (--vecSize > 0);
 	

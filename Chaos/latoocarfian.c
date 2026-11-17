@@ -363,7 +363,7 @@ NewLana(
 		Atom*	curAtom = iArgV++;
 		
 		if (curAtom->a_type == A_SYM) {
-			char*	funcName = (iArgV++)->a_w.w_sym->s_name;
+			char*	funcName = curAtom->a_w.w_sym->s_name;
 			int		funcNum = MapStrToFunction(funcName);
 			
 			if (funcNum < 0)

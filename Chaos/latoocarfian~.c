@@ -360,7 +360,7 @@ Newfiana(
 		Atom*	curAtom = iArgV++;
 		
 		if (curAtom->a_type == A_SYM) {
-			char*		funcName = (iArgV++)->a_w.w_sym->s_name;
+			char*		funcName = curAtom->a_w.w_sym->s_name;
 			tFunction	func = MapStrToFunction(funcName);
 			
 			if (func < 0)
@@ -531,7 +531,7 @@ DoSeed(
 		
 		}
 	
-	else error("%s: seed message requires two numeric values");
+	else error("%s: seed message requires two numeric values", kClassName);
 	
 	}
 	

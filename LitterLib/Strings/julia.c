@@ -5,17 +5,19 @@
 static const char* const sStrings0[] = {
 	/*  1 */ "1.0d2 (Classic OS)",
 	/*  2 */ "1.0d2 (Classic OS), Copyright \xc2\xa9" " 2001-2003 Peter Castine.",
-	/*  3 */ "1.8i1",
-	/*  4 */ "Litter Power Package 1.8i1 (All Bundles)",
-	/*  5 */ "Bang (Generate next point), Float (z0.real)",
-	/*  6 */ "Float (z0.imaginary)",
-	/*  7 */ "Float (c.real)",
-	/*  8 */ "Float (c.imaginary)",
-	/*  9 */ "Float (Real component)",
-	/* 10 */ "Float (Imaginary component)",
+	/*  3 */ "0",
+	/*  4 */ "1.8i1",
+	/*  5 */ "Litter Power Package 1.8i1 (All Bundles)",
+	/*  6 */ "18008002",
+	/*  7 */ "Bang (Generate next point), Float (z0.real)",
+	/*  8 */ "Float (z0.imaginary)",
+	/*  9 */ "Float (c.real)",
+	/* 10 */ "Float (c.imaginary)",
+	/* 11 */ "Float (Real component)",
+	/* 12 */ "Float (Imaginary component)",
 	};
 
 const tLitterStrList gLitterStrLists[] = {
-	{ "lp.julie", 10, sStrings0 },
+	{ "lp.julie", 12, sStrings0 },
 	};
 const int gLitterStrListCount = 1;
