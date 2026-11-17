@@ -1250,7 +1250,7 @@
 , 							{
 								"box" : 								{
 									"maxclass" : "newobj",
-									"text" : "lp.doom.mxb 5 21",
+									"text" : "lp.doom 5 21",
 									"linecount" : 2,
 									"numinlets" : 2,
 									"patching_rect" : [ 171.0, 70.0, 64.0, 28.0 ],

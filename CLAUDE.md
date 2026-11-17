@@ -56,10 +56,21 @@ mixed in); Max showed them as text. The user supplied intact copies in `Referenc
 - `Litter/`: the two `Litter Objlist` text files added.
 - File names containing `?` or a leading space were renamed (invalid on Windows).
 
+### 2026-11-17: Max 4 binary patchers converted
+
+All Max 4 binary patchers (`pmax` format) were converted to the current JSON format
+with `tools/mxb2maxpat.py` (decoder: `tools/mxb2txt.py`): the 23 clippings,
+`lp.doom` (now `Litter Power Help/lp.doom.maxpat`; the 64 help files that called it
+as `lp.doom.mxb` were updated) and `~lib/lp.pfft.frimWrap.maxpat`. Left out by the
+converter: Max 4 box and patch cord colours. `~lib/lp.messages.help` was removed:
+it is the Max 4 version of `lp.messages.maxhelp`, which exists in the new format.
+`lp.doom` uses the `gestalt` object (Max 4, Mac OS only), which probably no longer
+exists, so it may print an error when a help file opens.
+
 Things to watch in the first test:
 
 - Whether Max 9 loads the ad-hoc signed `.mxo` files (quarantine flag, see `README.md`).
-- Whether Max 9 opens the Max 4 binary clippings (`.mxb`).
+- Whether the converted clippings, `lp.doom` and `lp.pfft.frimWrap` look and work right.
 - `lp.titi` / `lbj.titi` give a different sequence per seed than the old binaries,
   because of the TT800 fix.
 - The Jitter objects and the `lbj.bix*` network objects are the least certain part:

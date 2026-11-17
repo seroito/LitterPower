@@ -1077,7 +1077,7 @@
 , 							{
 								"box" : 								{
 									"maxclass" : "newobj",
-									"text" : "lp.doom.mxb 5 21",
+									"text" : "lp.doom 5 21",
 									"linecount" : 2,
 									"numinlets" : 2,
 									"fontsize" : 7.9,
