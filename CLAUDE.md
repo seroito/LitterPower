@@ -27,7 +27,7 @@ Windows (64-bit).
 |---|---|
 | Source port | Done. `tools/check.py` (gcc syntax check on Linux): 0 of 116 units failing |
 | Windows build | Succeeds on GitHub Actions: all 102 externals (`.mxe64`) |
-| macOS build | Succeeds on GitHub Actions: all 102 externals (`.mxo`, universal x86_64 + arm64, ad-hoc signed). Runner image: `macos-14` (switched between images when GitHub had no capacity for one: "The job was not acquired by Runner") |
+| macOS build | Succeeds on GitHub Actions: all 102 externals (`.mxo`, universal x86_64 + arm64, ad-hoc signed). Runner image: `macos-latest` (`macos-14` is no longer offered) (switched between images when GitHub had no capacity for one: "The job was not acquired by Runner") |
 | Max package | The `LitterPower-package` artifact of a run holds externals for both platforms, help, extras and `package-info.json` |
 | Test in Max 9 | Not done. Only the user can do this |
 
