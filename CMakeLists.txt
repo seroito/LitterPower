@@ -292,11 +292,11 @@ litter_external(lp.sigma     STRINGS sigma         SOURCES Utils/sigma.c)
 litter_external(lp.stacey    STRINGS stats         SOURCES Utils/stats.c)
 
 # Litter Bundle for Jitter
-# (Jitter/lbj.im.c and Jitter/lbj.linnie.c are unfinished drafts and are not built.)
+# (Jitter/lbj.im.c and Jitter/lbj.linnie.c are unfinished drafts and are not built.
+#  Jitter/lbj.bixpack.c and lbj.bixunpack.c need the Max 4 object otudp, which passes
+#  memory addresses as integers; they cannot work in Max 9 and are not built.)
 litter_external(lbj.abbie     STRINGS lbj.abbie     SOURCES Jitter/lbj.abbie.c     JITTER)
 litter_external(lbj.bixmap    STRINGS lbj.bixmap    SOURCES Jitter/lbj.bixmap.c    JITTER)
-litter_external(lbj.bixpack   STRINGS lbj.bixpack   SOURCES Jitter/lbj.bixpack.c   JITTER)
-litter_external(lbj.bixunpack STRINGS lbj.bixunpack SOURCES Jitter/lbj.bixunpack.c JITTER)
 litter_external(lbj.expo      STRINGS lbj.expo      SOURCES Jitter/lbj.expo.c      JITTER)
 litter_external(lbj.norm      STRINGS lbj.norm      SOURCES Jitter/lbj.norm.c      JITTER)
 litter_external(lbj.penize    STRINGS lbj.penize    SOURCES Jitter/lbj.penize.c    JITTER)
