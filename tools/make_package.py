@@ -26,6 +26,7 @@ def copy_tree(src, dst):
 
 os.makedirs(os.path.join(OUT, 'externals'), exist_ok=True)
 copy_tree(os.path.join(ROOT, 'Litter Power Help'), os.path.join(OUT, 'help'))
+copy_tree(os.path.join(ROOT, 'docs'), os.path.join(OUT, 'docs'))   # reference pages (tools/make_refpages.py)
 copy_tree(os.path.join(ROOT, 'Litter Power Extras'), os.path.join(OUT, 'extras', 'Litter Power Extras'))
 copy_tree(os.path.join(ROOT, 'Litter Power Clippings'), os.path.join(OUT, 'misc', 'Litter Power Clippings'))
 copy_tree(os.path.join(ROOT, 'Litter'), os.path.join(OUT, 'misc', 'Object Lists'))

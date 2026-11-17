@@ -135,9 +135,16 @@ workflow builds pushes to both branches. One commit per change:
     line and License button moved down. `lbj.penize` deliberately left out (unfinished).
     "Version 1.8" and "Copyright (c) 2002-08" in the patch are unchanged.
 
+11. Reference pages: `docs/<object>.maxref.xml` for all 104 objects, from
+    `tools/make_refpages.py` (layout and format as in Cycling '74's min-devkit: flat docs
+    folder, no index file). Messages, inlets, outlets and attributes come from the
+    preprocessed sources (`tools/refpage_extract.py`), texts from `tools/refpage_data.py`
+    (written from the sources, help files and the 1.8 manuals). Packaged as `docs/`.
+    Not yet checked in Max: Help > Open Reference, autocomplete digests, sidebar list.
+    Rerun the generator after changing an object's messages.
+
 Not done (reviewed, lower priority): A_GIMME new functions declaring argc as `short`,
-A_LONG handlers declaring `long` instead of `t_atom_long`; no reference pages
-(docs/refpages) for the objects.
+A_LONG handlers declaring `long` instead of `t_atom_long`.
 
 ## What was done
 
