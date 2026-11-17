@@ -186,6 +186,7 @@
 											}
 , 											{
 												"box" : 												{
+													"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 													"maxclass" : "comment",
 													"text" : "See lp. shhh~.",
 													"numoutlets" : 0,
@@ -508,6 +509,7 @@
 											}
 , 											{
 												"box" : 												{
+													"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 													"maxclass" : "comment",
 													"text" : "Gardner, Martin, “Mathematical Games: White and Brown Music, Fractal Curves, and One-over-f Fluctuations,” Scientific American 1978, 16-31.",
 													"linecount" : 2,
@@ -1168,6 +1170,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "Grab sends version symbol to us. Format this into a scripting message for an object named 'version' and send that to a thispatcher object in the mother patch.",
 									"linecount" : 2,
@@ -1298,6 +1301,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "Loadbang triggers a \"vers\" message to a grab object in the mother patcher at loadbang time, as well as banging Judge Doom",
 									"linecount" : 4,
@@ -1312,6 +1316,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "window size message from thispatcher in the mother patch.",
 									"linecount" : 2,
@@ -1469,6 +1474,7 @@
 			}
 , 			{
 				"box" : 				{
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"maxclass" : "comment",
 					"text" : "Lp.sss implements the classic Voss\/Martin iterative algorithm for generating pink noise. You may want to try the lp.zzz object from Litter Power Pro for an improved approach to pink noise.",
 					"linecount" : 2,
@@ -1483,6 +1489,7 @@
 			}
 , 			{
 				"box" : 				{
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"maxclass" : "comment",
 					"text" : "You can control the granularity of lp.sss' output by specifying an “NN factor” in the range 0 ≤ nn ≤ 31.",
 					"linecount" : 2,
@@ -1555,6 +1562,7 @@
 			}
 , 			{
 				"box" : 				{
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"maxclass" : "comment",
 					"text" : "Start metro to generate random numbers.",
 					"linecount" : 2,
@@ -1667,6 +1675,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "Kurtosis",
 									"numoutlets" : 0,
@@ -1698,6 +1707,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "Skew",
 									"numoutlets" : 0,
@@ -1747,6 +1757,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "Standard deviation",
 									"linecount" : 2,
@@ -1761,6 +1772,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "Count",
 									"numoutlets" : 0,
@@ -1810,6 +1822,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "Mean",
 									"numoutlets" : 0,
@@ -1823,6 +1836,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "Max",
 									"numoutlets" : 0,
@@ -1836,6 +1850,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "Min",
 									"numoutlets" : 0,
@@ -1893,6 +1908,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "Random values from lp.sss",
 									"numoutlets" : 0,
@@ -1906,6 +1922,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "Lp.sss generates sequences of random values with 1\/f distribution. The distribution of the values generated approximates a normal distribution in the range 0 ≤ x < 1 with an expected mean of 0.5. The important difference between this random generator and the others in the Litter Package is the sequence in which the numbers are generated: consecutive values will, in general, be close together. That is why the table window displays the sequence of random values instead of a histogram of the distribution.",
 									"linecount" : 6,
@@ -2001,6 +2018,7 @@
 			}
 , 			{
 				"box" : 				{
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"maxclass" : "comment",
 					"text" : "Lp.sss' output is scaled to the range 0 <= x < 128 for display in the table window. (If the window is hidden, double-click on the table object.)",
 					"linecount" : 3,
@@ -2015,6 +2033,7 @@
 			}
 , 			{
 				"box" : 				{
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"maxclass" : "comment",
 					"text" : "Double-click on patcher MoreInfo for further details.",
 					"numoutlets" : 0,
@@ -2043,6 +2062,7 @@
 			}
 , 			{
 				"box" : 				{
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"maxclass" : "comment",
 					"text" : "Generate sequences of random numbers with 1\/f distribution (“Pink noise”).",
 					"numoutlets" : 0,

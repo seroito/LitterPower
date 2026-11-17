@@ -168,6 +168,7 @@
 											}
 , 											{
 												"box" : 												{
+													"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 													"maxclass" : "comment",
 													"text" : "The technique described here was described by John Cage and used in works such as HPSCHD. It’s pretty cagey.",
 													"id" : "obj-6",
@@ -420,6 +421,7 @@
 										"metadata" : [  ],
 										"boxes" : [ 											{
 												"box" : 												{
+													"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 													"maxclass" : "comment",
 													"text" : "Cage, John. Silence. (London: Marion Boyars, 1987).",
 													"id" : "obj-1",
@@ -433,6 +435,7 @@
 											}
 , 											{
 												"box" : 												{
+													"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 													"maxclass" : "comment",
 													"text" : "Austin, Larry. “An interview with John Cage and Lejaren Hiller.” Source 4, no. 2 (1968): 11-19. Reprinted in Computer Music Journal 16(4), pp. 15-29, 1993.\r",
 													"linecount" : 2,
@@ -1651,6 +1654,7 @@
 			}
 , 			{
 				"box" : 				{
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"maxclass" : "comment",
 					"text" : "I Ching users often seek guidance on questions that have fewer than 64 possible outcomes. The lp.kg object can map incoming values in the range 1 to 64 onto a smaller range. Sepcify the number of values lp.kg can choose from as an initialization argument or send it a size message.",
 					"linecount" : 4,

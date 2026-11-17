@@ -204,6 +204,7 @@
 			}
 , 			{
 				"box" : 				{
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"maxclass" : "comment",
 					"text" : "tattle",
 					"numinlets" : 1,
@@ -233,6 +234,7 @@
 			}
 , 			{
 				"box" : 				{
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"maxclass" : "comment",
 					"text" : "tattle, double-click, vers, info, seed, tell",
 					"numinlets" : 1,
@@ -720,6 +722,7 @@
 			}
 , 			{
 				"box" : 				{
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"maxclass" : "comment",
 					"text" : "All Litter Power objects respond to the Get Info... command from the Object menu, displaying version information in an Alert window. Get Info... will also cause the \"tattle\" information to be printed in the Max window. Hold down the option/alt key to suppress the tattle information.",
 					"linecount" : 3,
@@ -735,6 +738,7 @@
 			}
 , 			{
 				"box" : 				{
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"maxclass" : "comment",
 					"text" : "Get current value of an attribute. Any Litter Power object receiving this message will send a message in the form <attribute> <value> to all named receive object.\n\nsyntax: tell <receiver> <attribute>\n\nUse instead of the get<attribute> messages. This message obviates the use of the dumpout outlet.",
 					"linecount" : 6,
@@ -750,6 +754,7 @@
 			}
 , 			{
 				"box" : 				{
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"maxclass" : "comment",
 					"text" : "Litter Power RNGs support the seed message for setting a \"seed\" value, allowing you to generate a repeatable sequence of pseudo-random numbers. The message has a single integer parameter, the value of the seed. Sending a seed value of zero causes the object to generate an unpredictable seed, giving truly random numbers.\rNote that, by default, objects of the same class share random numbers, taking turns drawing random values from a single pool. So a seed message to one object will effect all objects of the same class. However, if you initialize an object with an explicit seed, it will generate random values from a private pool and subsequent seed message will only effect the one object.",
 					"linecount" : 8,
@@ -765,6 +770,7 @@
 			}
 , 			{
 				"box" : 				{
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"maxclass" : "comment",
 					"text" : "You can also get \"tattle\" information by double-clicking directly on a Litter Power object. This is often a convenient shortcut.",
 					"linecount" : 2,
@@ -780,6 +786,7 @@
 			}
 , 			{
 				"box" : 				{
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"maxclass" : "comment",
 					"text" : "The tattle message causes state information about the object to be printed to the Max window. This includes the current settings of all parameters and may also include information about other values that the object calculates.",
 					"linecount" : 3,
@@ -795,6 +802,7 @@
 			}
 , 			{
 				"box" : 				{
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"maxclass" : "comment",
 					"text" : "tell",
 					"background" : 1,
@@ -809,6 +817,7 @@
 			}
 , 			{
 				"box" : 				{
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"maxclass" : "comment",
 					"text" : "seed",
 					"background" : 1,
@@ -823,6 +832,7 @@
 			}
 , 			{
 				"box" : 				{
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"maxclass" : "comment",
 					"text" : "Get Info...",
 					"background" : 1,
@@ -837,6 +847,7 @@
 			}
 , 			{
 				"box" : 				{
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"maxclass" : "comment",
 					"text" : "vers",
 					"background" : 1,
@@ -851,6 +862,7 @@
 			}
 , 			{
 				"box" : 				{
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"maxclass" : "comment",
 					"text" : "double-click",
 					"background" : 1,
@@ -865,6 +877,7 @@
 			}
 , 			{
 				"box" : 				{
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"maxclass" : "comment",
 					"text" : "The vers message provides the same information version information that you will see in the Mac OS Finder (with Get Info) and on Windows (Properties window, Version tab).\rThe messages take two optional integer parameters. The first specifies whether to get the object-specific version (parameter value of one, default) or the version of the Litter Power Package in its entirety (parameter value of two). The second parameter specifies the format of the version information: one indicates \"short string\", two indicates \"long string\", three encodes version information as a 32-bit integer. Usually used in conjunction with a grab object.",
 					"linecount" : 7,

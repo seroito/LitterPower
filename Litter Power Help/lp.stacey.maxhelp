@@ -186,6 +186,7 @@
 											}
 , 											{
 												"box" : 												{
+													"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 													"maxclass" : "comment",
 													"text" : "The convention used in the original Litter Package of abbreviating the function to a nickname would have given us statsie. I thought stacey sounded better.",
 													"linecount" : 2,
@@ -441,6 +442,7 @@
 										"metadata" : [  ],
 										"boxes" : [ 											{
 												"box" : 												{
+													"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 													"maxclass" : "comment",
 													"text" : "Salkind, Neil J., Statistics for People Who (Think They) Hate Statistics. (Thousand Oaks, California: Sage, 2000)",
 													"numoutlets" : 0,
@@ -522,6 +524,7 @@
 											}
 , 											{
 												"box" : 												{
+													"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 													"maxclass" : "comment",
 													"text" : "Behnen, Konrad and Georg Neuhaus, Grundkurs Stochastik, Teubner Studienbücher Mathematik (Stuttgart: Teubner, 1984).",
 													"numoutlets" : 0,
@@ -1177,6 +1180,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "Grab sends version symbol to us. Format this into a scripting message for an object named 'version' and send that to a thispatcher object in the mother patch.",
 									"linecount" : 3,
@@ -1307,6 +1311,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "Loadbang triggers a \"vers\" message to a grab object in the mother patcher at loadbang time, as well as banging Judge Doom",
 									"linecount" : 4,
@@ -1321,6 +1326,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "window size message from thispatcher in the mother patch.",
 									"linecount" : 2,
@@ -1505,6 +1511,7 @@
 						"metadata" : [  ],
 						"boxes" : [ 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "Skew",
 									"numoutlets" : 0,
@@ -1518,6 +1525,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "Kurtosis",
 									"numoutlets" : 0,
@@ -1531,6 +1539,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "Count",
 									"numoutlets" : 0,
@@ -1544,6 +1553,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "Min.",
 									"numoutlets" : 0,
@@ -1557,6 +1567,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "Max.",
 									"numoutlets" : 0,
@@ -1570,6 +1581,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "Mean",
 									"numoutlets" : 0,
@@ -1583,6 +1595,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "Std. Dev.",
 									"numoutlets" : 0,
@@ -1614,6 +1627,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "Skew",
 									"numoutlets" : 0,
@@ -1627,6 +1641,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "Kurtosis",
 									"numoutlets" : 0,
@@ -1640,6 +1655,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "Count",
 									"numoutlets" : 0,
@@ -1653,6 +1669,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "Min.",
 									"numoutlets" : 0,
@@ -1666,6 +1683,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "Max.",
 									"numoutlets" : 0,
@@ -1679,6 +1697,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "Mean",
 									"numoutlets" : 0,
@@ -1692,6 +1711,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "Std. Dev.",
 									"numoutlets" : 0,
@@ -1705,6 +1725,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "In non-windowed mode you can remove data from lp.staceys statistics database. Send a remove message with the value (orlist of values) that you want to remove. Whether this makes sense is up to you.",
 									"linecount" : 2,
@@ -2106,6 +2127,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "You can now give lp.stacey an optional integer argument to specify a statistics “window” of a given size. When you do this, stacey will maintain running statistics on the last x values received (where x is the window size). The window for running statistics must be positive, and values smaller than five are generally meaningless. A value of zero means “no window”, which is the default behavior.",
 									"linecount" : 4,
@@ -2360,6 +2382,7 @@
 			}
 , 			{
 				"box" : 				{
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"maxclass" : "comment",
 					"text" : "Skew",
 					"numoutlets" : 0,
@@ -2373,6 +2396,7 @@
 			}
 , 			{
 				"box" : 				{
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"maxclass" : "comment",
 					"text" : "Kurtosis",
 					"numoutlets" : 0,
@@ -2414,6 +2438,7 @@
 			}
 , 			{
 				"box" : 				{
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"maxclass" : "comment",
 					"text" : "Click on these messages and watch the number boxes",
 					"numoutlets" : 0,
@@ -2441,6 +2466,7 @@
 			}
 , 			{
 				"box" : 				{
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"maxclass" : "comment",
 					"text" : "The clearbang message resets all counters to 0. There is also a clear message, which resets the statistical values without sending any messages with the current state out its outlets.",
 					"linecount" : 3,
@@ -2560,6 +2586,7 @@
 			}
 , 			{
 				"box" : 				{
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"maxclass" : "comment",
 					"text" : "Count",
 					"numoutlets" : 0,
@@ -2573,6 +2600,7 @@
 			}
 , 			{
 				"box" : 				{
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"maxclass" : "comment",
 					"text" : "Minimum",
 					"numoutlets" : 0,
@@ -2586,6 +2614,7 @@
 			}
 , 			{
 				"box" : 				{
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"maxclass" : "comment",
 					"text" : "Maximum",
 					"numoutlets" : 0,
@@ -2599,6 +2628,7 @@
 			}
 , 			{
 				"box" : 				{
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"maxclass" : "comment",
 					"text" : "Mean",
 					"numoutlets" : 0,
@@ -2612,6 +2642,7 @@
 			}
 , 			{
 				"box" : 				{
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"maxclass" : "comment",
 					"text" : "Standard Deviation",
 					"numoutlets" : 0,
@@ -2639,6 +2670,7 @@
 			}
 , 			{
 				"box" : 				{
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"maxclass" : "comment",
 					"text" : "Lp.stacey keeps track of data coming in its inlet and calculates basic statistical values: count, minimum, maximum, standard deviation, skew, and kurtosis.",
 					"linecount" : 2,
@@ -2668,6 +2700,7 @@
 			}
 , 			{
 				"box" : 				{
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"maxclass" : "comment",
 					"text" : "Collect statistics",
 					"numoutlets" : 0,

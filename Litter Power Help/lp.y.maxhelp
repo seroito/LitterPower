@@ -186,6 +186,7 @@
 											}
 , 											{
 												"box" : 												{
+													"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 													"maxclass" : "comment",
 													"text" : "Why not?",
 													"numinlets" : 1,
@@ -446,6 +447,7 @@
 										"metadata" : [  ],
 										"boxes" : [ 											{
 												"box" : 												{
+													"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 													"maxclass" : "comment",
 													"text" : "Weibull W. “A statistical distribution function of wide applicability.” Journal of Appliec Mechanics. 18:293-7, 1951. [Royal Institute of Technology, Stockholm, Sweden]\r",
 													"linecount" : 2,
@@ -528,6 +530,7 @@
 											}
 , 											{
 												"box" : 												{
+													"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 													"maxclass" : "comment",
 													"text" : "Rayleigh, Lord JWS. “On the stability, or instability, of certain fluid motions.” Proceedings of the London Mathematical Society, 1880.",
 													"linecount" : 2,
@@ -1107,6 +1110,7 @@
 			}
 , 			{
 				"box" : 				{
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"maxclass" : "comment",
 					"text" : "The Weibull distribution has two parameters, s and t, which must both be positve and default to 1. If the value of the parameter s is two, the distribution is known as a Rayleigh distribution",
 					"linecount" : 2,
@@ -1798,6 +1802,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "Median",
 									"numinlets" : 1,
@@ -1826,6 +1831,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "Entropy",
 									"numinlets" : 1,
@@ -1926,6 +1932,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "Kurtosis",
 									"numinlets" : 1,
@@ -1939,6 +1946,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "Skew",
 									"numinlets" : 1,
@@ -1952,6 +1960,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "Expected values",
 									"numinlets" : 1,
@@ -1977,6 +1986,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "Standard Deviation",
 									"numinlets" : 1,
@@ -2008,6 +2018,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "Mean",
 									"numinlets" : 1,

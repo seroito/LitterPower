@@ -186,6 +186,7 @@
 											}
 , 											{
 												"box" : 												{
+													"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 													"maxclass" : "comment",
 													"text" : "I can never remember those incredibly long Indian names, so I shortened it a bit.",
 													"numoutlets" : 0,
@@ -440,6 +441,7 @@
 										"metadata" : [  ],
 										"boxes" : [ 											{
 												"box" : 												{
+													"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 													"maxclass" : "comment",
 													"text" : "Kumaraswamy, P.  “A generalized probability density function for double-bounded random processes.” Journal of Hydrology 46, 79–88: 1980.",
 													"linecount" : 2,
@@ -454,6 +456,7 @@
 											}
 , 											{
 												"box" : 												{
+													"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 													"maxclass" : "comment",
 													"text" : "Fletcher, S.G., K. Ponnambalam. “Estimation of reservoir yield and storage distribution using moments analysis.” Journal of Hydrology 182, 259–275: 1996\r",
 													"linecount" : 2,
@@ -1052,6 +1055,7 @@
 			}
 , 			{
 				"box" : 				{
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"maxclass" : "comment",
 					"text" : "The formulae used to generate random values from the Kumaraswamy distribution are generally faster than those used by lp.abbie.",
 					"linecount" : 2,
@@ -1239,6 +1243,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "Grab sends version symbol to us. Format this into a scripting message for an object named 'version' and send that to a thispatcher object in the mother patch.",
 									"linecount" : 2,
@@ -1369,6 +1374,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "Loadbang triggers a \"vers\" message to a grab object in the mother patcher at loadbang time, as well as banging Judge Doom",
 									"linecount" : 4,
@@ -1383,6 +1389,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "window size message from thispatcher in the mother patch.",
 									"linecount" : 2,
@@ -1592,6 +1599,7 @@
 			}
 , 			{
 				"box" : 				{
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"maxclass" : "comment",
 					"text" : "Generate random numbers from a Kumaraswamy distribution",
 					"numoutlets" : 0,
@@ -1620,6 +1628,7 @@
 			}
 , 			{
 				"box" : 				{
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"maxclass" : "comment",
 					"text" : "Changing parameters clears the table and statistics (connections hidden).",
 					"numoutlets" : 0,
@@ -1689,6 +1698,7 @@
 			}
 , 			{
 				"box" : 				{
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"maxclass" : "comment",
 					"text" : "alpha",
 					"numoutlets" : 0,
@@ -1702,6 +1712,7 @@
 			}
 , 			{
 				"box" : 				{
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"maxclass" : "comment",
 					"text" : "beta",
 					"numoutlets" : 0,
@@ -1749,6 +1760,7 @@
 			}
 , 			{
 				"box" : 				{
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"maxclass" : "comment",
 					"text" : "Bang Uzi and watch the table window (if the window is hidden, double-click on the table object). Change the values for the parameters a and b.",
 					"linecount" : 2,
@@ -1763,6 +1775,7 @@
 			}
 , 			{
 				"box" : 				{
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"maxclass" : "comment",
 					"text" : "Scale to range 0 <= x < 127 and typecast to integer",
 					"numoutlets" : 0,
@@ -1804,6 +1817,7 @@
 						"metadata" : [  ],
 						"boxes" : [ 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "Unlike the beta\/arcsine distribution, when both parameters are equal the distribution is generally slightly asymmetrical.",
 									"numoutlets" : 0,
@@ -1835,6 +1849,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "Median",
 									"numoutlets" : 0,
@@ -1848,6 +1863,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "Expected values",
 									"numoutlets" : 0,
@@ -1861,6 +1877,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "Mode",
 									"numoutlets" : 0,
@@ -1910,6 +1927,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "Mean",
 									"numoutlets" : 0,
@@ -1923,6 +1941,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "Kurtosis",
 									"numoutlets" : 0,
@@ -1972,6 +1991,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "Skew",
 									"numoutlets" : 0,
@@ -1997,6 +2017,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "Random values from lp.abbie",
 									"numoutlets" : 0,
@@ -2028,6 +2049,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "Count",
 									"numoutlets" : 0,
@@ -2041,6 +2063,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "Standard Deviation",
 									"linecount" : 2,
@@ -2091,6 +2114,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "Mean",
 									"numoutlets" : 0,
@@ -2136,6 +2160,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "Min",
 									"numoutlets" : 0,
@@ -2149,6 +2174,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "Max",
 									"numoutlets" : 0,
@@ -2180,6 +2206,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "With parameters strictly inside the unit range lp.swamy produces a U-shaped distribution of values also in the unit range.",
 									"linecount" : 2,
@@ -2194,6 +2221,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "If both parameters are exactly one, lp.swamy is equivalent to a uniform distribution.",
 									"numoutlets" : 0,
@@ -2395,6 +2423,7 @@
 			}
 , 			{
 				"box" : 				{
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"maxclass" : "comment",
 					"text" : "Double-click on patcher MoreInfo for details",
 					"numoutlets" : 0,
@@ -2438,6 +2467,7 @@
 			}
 , 			{
 				"box" : 				{
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"maxclass" : "comment",
 					"text" : "The Kumaraswamy distribution is similar to the beta distribution, generating random values in the range 0 <= x <= 1. It has two parameters, alpha and beta, which must both be positive (although the swamy object supports zero parameters as a limiting case). The default value for both is 0.5. As opposed to the beta distribution, this does not produce an arcsine distribution. But it's close.",
 					"linecount" : 4,

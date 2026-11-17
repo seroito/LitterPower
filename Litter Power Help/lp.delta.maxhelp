@@ -231,6 +231,7 @@
 											}
 , 											{
 												"box" : 												{
+													"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 													"maxclass" : "comment",
 													"text" : "Name of the Greek letter used to represent differences.",
 													"numoutlets" : 0,
@@ -485,6 +486,7 @@
 										"metadata" : [  ],
 										"boxes" : [ 											{
 												"box" : 												{
+													"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 													"maxclass" : "comment",
 													"text" : "xxx",
 													"numoutlets" : 0,
@@ -566,6 +568,7 @@
 											}
 , 											{
 												"box" : 												{
+													"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 													"maxclass" : "comment",
 													"text" : "xxx",
 													"numoutlets" : 0,
@@ -1237,6 +1240,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "Grab sends version symbol to us. Format this into a scripting message for an object named 'version' and send that to a thispatcher object in the mother patch.",
 									"linecount" : 3,
@@ -1367,6 +1371,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "Loadbang triggers a \"vers\" message to a grab object in the mother patcher at loadbang time, as well as banging Judge Doom",
 									"linecount" : 4,
@@ -1381,6 +1386,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "window size message from thispatcher in the mother patch.",
 									"linecount" : 2,
@@ -1538,6 +1544,7 @@
 			}
 , 			{
 				"box" : 				{
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"maxclass" : "comment",
 					"text" : "absolute difference",
 					"numoutlets" : 0,
@@ -1551,6 +1558,7 @@
 			}
 , 			{
 				"box" : 				{
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"maxclass" : "comment",
 					"text" : "right - left",
 					"numoutlets" : 0,
@@ -1564,6 +1572,7 @@
 			}
 , 			{
 				"box" : 				{
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"maxclass" : "comment",
 					"text" : "left - right",
 					"numoutlets" : 0,
@@ -1701,6 +1710,7 @@
 			}
 , 			{
 				"box" : 				{
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"maxclass" : "comment",
 					"text" : "<-- I got tired of having to do this",
 					"numoutlets" : 0,
@@ -1820,6 +1830,7 @@
 			}
 , 			{
 				"box" : 				{
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"maxclass" : "comment",
 					"text" : "You can send a list of two numbers. The difference is sent out once after both list elements have been processed. Lp.delta also understands set and bang messages, behaving just like the standard - object.",
 					"linecount" : 2,
@@ -1834,6 +1845,7 @@
 			}
 , 			{
 				"box" : 				{
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"maxclass" : "comment",
 					"text" : "The main difference to the standard - object is that both inlets are \"hot\". A number sent to either triggers the updated differences through all outlets.",
 					"linecount" : 2,
@@ -1910,6 +1922,7 @@
 			}
 , 			{
 				"box" : 				{
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"maxclass" : "comment",
 					"text" : "Lp.delta calculates the difference (left-right, right-left, and absolute difference) between two numbers.",
 					"numoutlets" : 0,
@@ -1938,6 +1951,7 @@
 			}
 , 			{
 				"box" : 				{
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"maxclass" : "comment",
 					"text" : "Calculate differences between numbers",
 					"numoutlets" : 0,
@@ -1951,6 +1965,7 @@
 			}
 , 			{
 				"box" : 				{
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"maxclass" : "comment",
 					"text" : "If either of the initialization arguments is a float, calculations are performed in floating point and the result is a float. Otherwise arithmetic is performed with integers and any float input will be truncated to integer.",
 					"linecount" : 2,

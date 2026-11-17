@@ -204,6 +204,7 @@
 											}
 , 											{
 												"box" : 												{
+													"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 													"maxclass" : "comment",
 													"text" : "Kaspar T. Toeplitz wondered if the name was a clipped form of Cosmic Coincidence Control Center. In fact, the name is simply in the tradition of the other 1\/f generators, lp.sss and lp.zzz. But it is a cosmic coincidence.",
 													"linecount" : 2,
@@ -459,6 +460,7 @@
 										"metadata" : [  ],
 										"boxes" : [ 											{
 												"box" : 												{
+													"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 													"maxclass" : "comment",
 													"text" : "Procaccia, I. and Schuster, H.G. \"Functional renormalisation group theory of universal 1\/f noise in\rdynamical systems,\" Physics Review 28 A, 1983.",
 													"linecount" : 2,
@@ -541,6 +543,7 @@
 											}
 , 											{
 												"box" : 												{
+													"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 													"maxclass" : "comment",
 													"text" : "Schuster, H.G., Deterministic Chaos: An Introduction. Physik Verlag, Weinheim, 1984.\r",
 													"numoutlets" : 0,
@@ -1195,6 +1198,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "Grab sends version symbol to us. Format this into a scripting message for an object named 'version' and send that to a thispatcher object in the mother patch.",
 									"linecount" : 2,
@@ -1325,6 +1329,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "Loadbang triggers a \"vers\" message to a grab object in the mother patcher at loadbang time, as well as banging Judge Doom",
 									"linecount" : 4,
@@ -1339,6 +1344,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "window size message from thispatcher in the mother patch.",
 									"linecount" : 2,
@@ -1553,6 +1559,7 @@
 			}
 , 			{
 				"box" : 				{
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"maxclass" : "comment",
 					"text" : "Start metro to generate values",
 					"numoutlets" : 0,
@@ -1646,6 +1653,7 @@
 						"metadata" : [  ],
 						"boxes" : [ 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "The function can continue to produce values close to zero for extremely long periods, but the implementation used here is guaranteed never to degenerate to zero.",
 									"linecount" : 2,
@@ -1660,6 +1668,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "c' = c + c*c",
 									"numoutlets" : 0,
@@ -1691,6 +1700,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "Kurtosis",
 									"numoutlets" : 0,
@@ -1722,6 +1732,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "Skew",
 									"numoutlets" : 0,
@@ -1771,6 +1782,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "Standard deviation",
 									"linecount" : 2,
@@ -1785,6 +1797,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "Count",
 									"numoutlets" : 0,
@@ -1834,6 +1847,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "Mean",
 									"numoutlets" : 0,
@@ -1847,6 +1861,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "Max",
 									"numoutlets" : 0,
@@ -1860,6 +1875,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "Min",
 									"numoutlets" : 0,
@@ -1917,6 +1933,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "Values from lp.ccc",
 									"numoutlets" : 0,
@@ -1930,6 +1947,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "Lp.ccc generates a chaotic sequences of values in the range 0 < c < 1 with a 1\/f distribution.",
 									"numoutlets" : 0,
@@ -1943,6 +1961,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "The iterative formula is:",
 									"numoutlets" : 0,
@@ -2037,6 +2056,7 @@
 			}
 , 			{
 				"box" : 				{
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"maxclass" : "comment",
 					"text" : "Lp.ccc's output is scaled to the range 0 <= x < 128 for display in the table window. (If the window is hidden, double-click on the table object.)",
 					"linecount" : 3,
@@ -2051,6 +2071,7 @@
 			}
 , 			{
 				"box" : 				{
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"maxclass" : "comment",
 					"text" : "Double-click on patcher MoreInfo for further details.",
 					"numoutlets" : 0,
@@ -2064,6 +2085,7 @@
 			}
 , 			{
 				"box" : 				{
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"maxclass" : "comment",
 					"text" : "Lp.ccc uses the Schuster\/Procaccia algorithm, which on the surface looks rather different from other 1\/f distributions.",
 					"linecount" : 2,
@@ -2093,6 +2115,7 @@
 			}
 , 			{
 				"box" : 				{
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"maxclass" : "comment",
 					"text" : "Generate chaotic sequences with 1\/f distribution.",
 					"numoutlets" : 0,

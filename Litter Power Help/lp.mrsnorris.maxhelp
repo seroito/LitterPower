@@ -30,6 +30,7 @@
 			}
 , 			{
 				"box" : 				{
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"maxclass" : "comment",
 					"text" : "Click here for Max 5  Information",
 					"numoutlets" : 0,
@@ -70,6 +71,7 @@
 			}
 , 			{
 				"box" : 				{
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"maxclass" : "comment",
 					"text" : "Special case: the argument lpo will intialize Mrs. Norris to look for the appropriate Overview patcher for your Litter Power installation",
 					"linecount" : 2,
@@ -84,6 +86,7 @@
 			}
 , 			{
 				"box" : 				{
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"maxclass" : "comment",
 					"text" : "lpo \"(Litter Power Overview)\" is a special message that will cause Mrs. Norris to load the overview for either Litter Pro the Litter Starter Pack, depending upon which package is installed.",
 					"linecount" : 3,
@@ -238,6 +241,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "Grab sends version symbol to us. Format this into a scripting message for an object named 'version' and send that to a thispatcher object in the mother patch.",
 									"linecount" : 3,
@@ -368,6 +372,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "Loadbang triggers a \"vers\" message to a grab object in the mother patcher at loadbang time, as well as banging Judge Doom",
 									"linecount" : 4,
@@ -382,6 +387,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "window size message from thispatcher in the mother patch.",
 									"linecount" : 2,
@@ -569,6 +575,7 @@
 			}
 , 			{
 				"box" : 				{
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"maxclass" : "comment",
 					"text" : "set message: specify a patcher without doing anything else with it (yet). An optional non-zero integer as a second argument to the set message tells Mrs. Norris to sniff in the max-help folder instead of the current Max search path (default). You can use use the pseudo-filename \"lpo\" to tell Mrs. Norris to look for the appropriate Overview patcher for your Litter Power installation.",
 					"linecount" : 5,
@@ -583,6 +590,7 @@
 			}
 , 			{
 				"box" : 				{
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"maxclass" : "comment",
 					"text" : "Optional arguments (in order): a symbol specifies the name of a patcher to open. If followed by a non-zero integer, Mrs. Norris will sniff in the max-help folder.",
 					"linecount" : 2,
@@ -597,6 +605,7 @@
 			}
 , 			{
 				"box" : 				{
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"maxclass" : "comment",
 					"text" : "bang: open or bring to front whichever patcher was last specified by one of the messages above (or by the initialization arguments)",
 					"linecount" : 2,
@@ -611,6 +620,7 @@
 			}
 , 			{
 				"box" : 				{
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"maxclass" : "comment",
 					"text" : "help message: If there is a .help file open for the named object, bring it to the front. Otherwise look for a .help file for the object and open it.",
 					"linecount" : 2,
@@ -785,6 +795,7 @@
 											}
 , 											{
 												"box" : 												{
+													"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 													"maxclass" : "comment",
 													"text" : "Max 5 has changed the way in which objects can find out information about open patcher windows, such as the patcher name. At this point in time, Cycling ’74 has not released any documentation regarding the new interface to this information, thereby preventing Mrs. Norris from checking if the window you want is already open.\n\nWe apologize for the inconvenience and will get an update out as soon as the relevant information is published in a new Software Development Kit.\n\nMrs. Norris’ ability to find files in the search and help paths remains intact.",
 													"linecount" : 9,
@@ -945,6 +956,7 @@
 											}
 , 											{
 												"box" : 												{
+													"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 													"maxclass" : "comment",
 													"text" : "Austen, Jane. Mansfield Park. 1814.",
 													"numoutlets" : 0,
@@ -1282,6 +1294,7 @@
 											}
 , 											{
 												"box" : 												{
+													"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 													"maxclass" : "comment",
 													"text" : "Mrs. Norris helps Mr. Filch to make sure that people obey the rules.",
 													"numoutlets" : 0,
@@ -1854,6 +1867,7 @@
 			}
 , 			{
 				"box" : 				{
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"maxclass" : "comment",
 					"text" : "Mrs. Norris tries to make patcher windows follow the \"rules\": Before loading a patcher window, she first checks if a copy is already open and, if found, brings it to the front.",
 					"linecount" : 2,
@@ -1883,6 +1897,7 @@
 			}
 , 			{
 				"box" : 				{
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"maxclass" : "comment",
 					"text" : "Opens a patcher file, brings window to front if already open.",
 					"numoutlets" : 0,
@@ -1924,6 +1939,7 @@
 			}
 , 			{
 				"box" : 				{
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"maxclass" : "comment",
 					"text" : "load message: If there is a patcher file open with this name, bring it to the front. Otherwise look for a patcher file with the given name and open it. Make sure any file name including blanks is represented as a single symbol.",
 					"linecount" : 3,

@@ -186,6 +186,7 @@
 											}
 , 											{
 												"box" : 												{
+													"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 													"maxclass" : "comment",
 													"text" : "Hypperbolic cosine is hypp. Get it?",
 													"numoutlets" : 0,
@@ -440,6 +441,7 @@
 										"metadata" : [  ],
 										"boxes" : [ 											{
 												"box" : 												{
+													"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 													"maxclass" : "comment",
 													"text" : "Lorrain, Denis, “A Panoply of Stochastic ‘Cannons’,” in The Music Machine, ed. Curtis Roads (Cambridge, Massachusetts: MIT, 1989), 351-379.",
 													"linecount" : 2,
@@ -522,6 +524,7 @@
 											}
 , 											{
 												"box" : 												{
+													"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 													"maxclass" : "comment",
 													"text" : "Devroye, Luc. , Non-Uniform Random Variate Generation. Springer, Berlin:  1986",
 													"numoutlets" : 0,
@@ -1120,6 +1123,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "Message sent to lp.hyppie",
 									"numoutlets" : 0,
@@ -1202,6 +1206,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "This child of the sixties has grown up (in some ways) and can now produce two different random distributions. Choose between hyperpoblic cosine and hyperbolic secant by sending the cos and sec messages.",
 									"linecount" : 3,
@@ -1216,6 +1221,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "Additionally: the tell message calculates properties of the random distribution: mean, median, etc. Click on the button below for more information.",
 									"linecount" : 2,
@@ -1230,6 +1236,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "Tell me about the tell message",
 									"numoutlets" : 0,
@@ -1590,6 +1597,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "Grab sends version symbol to us. Format this into a scripting message for an object named 'version' and send that to a thispatcher object in the mother patch.",
 									"linecount" : 2,
@@ -1720,6 +1728,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "Loadbang triggers a \"vers\" message to a grab object in the mother patcher at loadbang time, as well as banging Judge Doom",
 									"linecount" : 4,
@@ -1734,6 +1743,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "window size message from thispatcher in the mother patch.",
 									"linecount" : 2,
@@ -2022,6 +2032,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "You can feed a floating-point value from the range 0 < x < 1 into lp.hyppie and a value using the mapping f(x) = log(tan(x)) will be sent out the output. Try a few arpeggios from your MIDI keyboard with the following patch (local control off for extra fun!-)...",
 									"linecount" : 3,
@@ -2119,6 +2130,7 @@
 			}
 , 			{
 				"box" : 				{
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"maxclass" : "comment",
 					"text" : "For thrill-seekers: open patcher hyppieFun for strange hyppie tricks.",
 					"linecount" : 2,
@@ -2144,6 +2156,7 @@
 			}
 , 			{
 				"box" : 				{
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"maxclass" : "comment",
 					"text" : "The hyperbolic cosine distribution has no parameters.",
 					"numoutlets" : 0,
@@ -2238,6 +2251,7 @@
 			}
 , 			{
 				"box" : 				{
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"maxclass" : "comment",
 					"text" : "Bang Uzi and watch the table window. (If the window is hidden, double-click on the table object.)",
 					"linecount" : 2,
@@ -2252,6 +2266,7 @@
 			}
 , 			{
 				"box" : 				{
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"maxclass" : "comment",
 					"text" : "Open patcher MoreInfo for further details.",
 					"linecount" : 2,
@@ -2312,6 +2327,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "Skew",
 									"numoutlets" : 0,
@@ -2325,6 +2341,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "This distribution is more well-behaved. All statistical properties are constant.",
 									"numoutlets" : 0,
@@ -2338,6 +2355,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "Hyperbolic secant:",
 									"numoutlets" : 0,
@@ -2351,6 +2369,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "Hyperbolic cosine:",
 									"numoutlets" : 0,
@@ -2382,6 +2401,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "Median",
 									"numoutlets" : 0,
@@ -2410,6 +2430,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "Entropy",
 									"numoutlets" : 0,
@@ -2510,6 +2531,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "Kurtosis",
 									"numoutlets" : 0,
@@ -2523,6 +2545,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "Skew",
 									"numoutlets" : 0,
@@ -2536,6 +2559,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "Mode",
 									"numoutlets" : 0,
@@ -2549,6 +2573,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "Expected values",
 									"numoutlets" : 0,
@@ -2574,6 +2599,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "Standard Deviation",
 									"numoutlets" : 0,
@@ -2623,6 +2649,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "Mean",
 									"numoutlets" : 0,
@@ -2680,6 +2707,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "Count",
 									"numoutlets" : 0,
@@ -2711,6 +2739,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "Std. Dev.",
 									"numoutlets" : 0,
@@ -2742,6 +2771,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "Mean",
 									"numoutlets" : 0,
@@ -2773,6 +2803,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "Max.",
 									"numoutlets" : 0,
@@ -2786,6 +2817,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "Min.",
 									"numoutlets" : 0,
@@ -2849,6 +2881,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "Values are so erratic that, although the distribution is basically symmetrical, the mean is mathematically undefined. This may seem strange, but you will notice that the observed minimum, maximum, and mean values jump around a lot. A bit like a stoned hyppie. So, although mode and median are defined, the other statistical properties are not defined. Entropy is a constant.",
 									"linecount" : 4,
@@ -2863,6 +2896,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "Random values from lp.hyppie (before the offset and scaling used for Histo\/table)",
 									"numoutlets" : 0,
@@ -3092,6 +3126,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "Number of values that were outside of Histo's range",
 									"linecount" : 2,
@@ -3284,6 +3319,7 @@
 			}
 , 			{
 				"box" : 				{
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"maxclass" : "comment",
 					"text" : "Map the range to something more MIDI-like. This also converts lp.hyppie's output to an integer for the benefit of Mr. Histo.",
 					"linecount" : 3,
@@ -3313,6 +3349,7 @@
 			}
 , 			{
 				"box" : 				{
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"maxclass" : "comment",
 					"text" : "Generate random numbers with hyperbolic cosine distribution",
 					"numoutlets" : 0,
@@ -3427,6 +3464,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "This little fella just makes sure the sec\/cos messages are first sent to lp.hyppie before doing the clear\/clearbang stuff. Clearbang must come after setting the distribution type so that the expect messages in the MoreInfo subpatch get the right information.",
 									"linecount" : 3,

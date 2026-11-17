@@ -186,6 +186,7 @@
 											}
 , 											{
 												"box" : 												{
+													"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 													"maxclass" : "comment",
 													"text" : "This puts the “i” back into the I Ching.",
 													"numoutlets" : 0,
@@ -440,6 +441,7 @@
 										"metadata" : [  ],
 										"boxes" : [ 											{
 												"box" : 												{
+													"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 													"maxclass" : "comment",
 													"text" : "Cage, John. Silence. (London: Marion Boyars, 1987).",
 													"numoutlets" : 0,
@@ -453,6 +455,7 @@
 											}
 , 											{
 												"box" : 												{
+													"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 													"maxclass" : "comment",
 													"text" : "Jou, Tsung Hwa, Tao of I Ching: Way to Divination (Boston: Tuttle, 1985)\r",
 													"numoutlets" : 0,
@@ -466,6 +469,7 @@
 											}
 , 											{
 												"box" : 												{
+													"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 													"maxclass" : "comment",
 													"text" : "Huang, Kerson and Rosemary Huang, I Ching (New York: Workman, 1987).",
 													"numoutlets" : 0,
@@ -503,6 +507,7 @@
 											}
 , 											{
 												"box" : 												{
+													"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 													"maxclass" : "comment",
 													"text" : "Austin, Larry. “An interview with John Cage and Lejaren Hiller.” Source 4, no. 2 (1968): 11-19. Reprinted in Computer Music Journal 16(4), pp. 15-29, 1993.\r",
 													"linecount" : 2,
@@ -541,6 +546,7 @@
 											}
 , 											{
 												"box" : 												{
+													"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 													"maxclass" : "comment",
 													"text" : "I Ching or Book of Changes, trans. by Cary F. Baynes (from the German translation with commentaries by Richard Wilhelm). (Princeton, New Jersey: Princeton University Press, 1967).",
 													"linecount" : 2,
@@ -623,6 +629,7 @@
 											}
 , 											{
 												"box" : 												{
+													"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 													"maxclass" : "comment",
 													"text" : "I Ging, trans. Richard Wilhelm (Munich: Eugen Diederichs, 1973).",
 													"numoutlets" : 0,
@@ -1308,6 +1315,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "Grab sends version symbol to us. Format this into a scripting message for an object named 'version' and send that to a thispatcher object in the mother patch.",
 									"linecount" : 3,
@@ -1438,6 +1446,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "Loadbang triggers a \"vers\" message to a grab object in the mother patcher at loadbang time, as well as banging Judge Doom",
 									"linecount" : 4,
@@ -1452,6 +1461,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "window size message from thispatcher in the mother patch.",
 									"linecount" : 2,
@@ -1609,6 +1619,7 @@
 			}
 , 			{
 				"box" : 				{
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"maxclass" : "comment",
 					"text" : "You can specify exactly which information of the I Ching fortune you wish to have generated. Please consult the accompanying documentation for further details.",
 					"linecount" : 3,
@@ -1623,6 +1634,7 @@
 			}
 , 			{
 				"box" : 				{
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"maxclass" : "comment",
 					"text" : "If you prefer, you can generate hexagram numbers by other means and send these to lp.i. The present hexagram goes in the left inlet, the future hexagram in the right inlet.",
 					"linecount" : 3,
@@ -1744,6 +1756,7 @@
 			}
 , 			{
 				"box" : 				{
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"maxclass" : "comment",
 					"text" : "Text of I Ching oracles.",
 					"numoutlets" : 0,
@@ -1757,6 +1770,7 @@
 			}
 , 			{
 				"box" : 				{
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"maxclass" : "comment",
 					"text" : "Generates the text of an I Ching oracle and sends the text through the outlet.",
 					"numoutlets" : 0,
@@ -1770,6 +1784,7 @@
 			}
 , 			{
 				"box" : 				{
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"maxclass" : "comment",
 					"text" : "Bang generates a new oracle. Lp.i throws yarrow sticks, calculates the fortune, tracks which lines are changing, and finds the fortune of the future. It sends the Judgement, the Image, the texts of the changing lines, and the text of the Future Judgement out its outlet.",
 					"linecount" : 5,

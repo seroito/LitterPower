@@ -18,6 +18,7 @@
 		"metadata" : [  ],
 		"boxes" : [ 			{
 				"box" : 				{
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"maxclass" : "comment",
 					"text" : "Bang selects the next item from those not yet used and sends it through the left outlet. When all items have been used, a bang is sent out the right outlet and the list is automatically replenished.",
 					"linecount" : 3,
@@ -32,6 +33,7 @@
 			}
 , 			{
 				"box" : 				{
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"maxclass" : "comment",
 					"text" : "Lp.ale is a complete re-write of the now orphaned alea object. A more efficient scrambling algorithm has been implemented, as well as using a stronger random number generator for scrambling items. \rLp.ale is dedicated to that nectar made from barley, hops, and water, particularly the wonderful brews of the Czech Republic.",
 					"linecount" : 5,
@@ -46,6 +48,7 @@
 			}
 , 			{
 				"box" : 				{
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"maxclass" : "comment",
 					"text" : "The set message is special: it sets the pool of items to select from without triggering output",
 					"numoutlets" : 0,
@@ -59,6 +62,7 @@
 			}
 , 			{
 				"box" : 				{
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"maxclass" : "comment",
 					"text" : "Messages starting with a symbol are treated the same way as lists. (Max reminds us that these are not lists, but we treat them as lists anyway.)",
 					"linecount" : 2,
@@ -73,6 +77,7 @@
 			}
 , 			{
 				"box" : 				{
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"maxclass" : "comment",
 					"text" : "Send a list to lp.crabelms. A randomly chosen item is sent out, subsequent bang messages cause the remaining items to be chosen at random and sent through the outlet one at a time.",
 					"linecount" : 2,
@@ -391,6 +396,7 @@
 											}
 , 											{
 												"box" : 												{
+													"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 													"maxclass" : "comment",
 													"text" : "A letter from the collection a-l-e-a was selected at random and removed. We liked the taste of what was left.",
 													"numoutlets" : 0,
@@ -645,6 +651,7 @@
 										"metadata" : [  ],
 										"boxes" : [ 											{
 												"box" : 												{
+													"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 													"maxclass" : "comment",
 													"text" : "PT Muchlinski. “A Case of Czech Beer: Competition and Competitiveness in the Transitional Economies.” The Modern Law Review, Vol. 59, No. 5, 658-674. Sep., 1996.",
 													"linecount" : 2,
@@ -727,6 +734,7 @@
 											}
 , 											{
 												"box" : 												{
+													"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 													"maxclass" : "comment",
 													"text" : "I Hollerova and P Kubizniakova. “Monitoring gram positive bacterial contamination in Czech breweries.”  Journal of the Institute of Brewing 107:66, 355-8, 11\/2001.",
 													"linecount" : 2,
@@ -1407,6 +1415,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "Grab sends version symbol to us. Format this into a scripting message for an object named 'version' and send that to a thispatcher object in the mother patch.",
 									"linecount" : 2,
@@ -1537,6 +1546,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "Loadbang triggers a \"vers\" message to a grab object in the mother patcher at loadbang time, as well as banging Judge Doom",
 									"linecount" : 4,
@@ -1551,6 +1561,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "window size message from thispatcher in the mother patch.",
 									"linecount" : 2,
@@ -1737,6 +1748,7 @@
 			}
 , 			{
 				"box" : 				{
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"maxclass" : "comment",
 					"text" : "Scramble items in a list, send out one item at a time.",
 					"numoutlets" : 0,
@@ -1750,6 +1762,7 @@
 			}
 , 			{
 				"box" : 				{
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"maxclass" : "comment",
 					"text" : "Chose random items from a list one at a time.",
 					"numoutlets" : 0,

@@ -186,6 +186,7 @@
 											}
 , 											{
 												"box" : 												{
+													"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 													"maxclass" : "comment",
 													"text" : "A token of esteem for a dear friend.",
 													"numoutlets" : 0,
@@ -1040,6 +1041,7 @@
 			}
 , 			{
 				"box" : 				{
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"maxclass" : "comment",
 					"text" : "u ((hav 2 ask y) ? dont : do) n33d th!s 0bjkt",
 					"numoutlets" : 0,
@@ -1195,6 +1197,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "Grab sends version symbol to us. Format this into a scripting message for an object named 'version' and send that to a thispatcher object in the mother patch.",
 									"linecount" : 3,
@@ -1325,6 +1328,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "Loadbang triggers a \"vers\" message to a grab object in the mother patcher at loadbang time, as well as banging Judge Doom",
 									"linecount" : 4,
@@ -1339,6 +1343,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "window size message from thispatcher in the mother patch.",
 									"linecount" : 2,
@@ -1496,6 +1501,7 @@
 			}
 , 			{
 				"box" : 				{
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"maxclass" : "comment",
 					"text" : "“Stockhausen” is a ring-modulated frequency sweep. “Academic W.\" is a low-frequency test signal that is easy to follow on the scope~ below. Use the read and loop commands with a sound file of your choice, or select “Life” for your current audio input of choice.",
 					"linecount" : 4,
@@ -1535,6 +1541,7 @@
 			}
 , 			{
 				"box" : 				{
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"maxclass" : "comment",
 					"text" : "Zero indicates no sampling degradation.",
 					"numoutlets" : 0,
@@ -1548,6 +1555,7 @@
 			}
 , 			{
 				"box" : 				{
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"maxclass" : "comment",
 					"text" : "Downsample (Effective sampling rate here is in kHz).",
 					"numoutlets" : 0,
@@ -1561,6 +1569,7 @@
 			}
 , 			{
 				"box" : 				{
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"maxclass" : "comment",
 					"text" : "Negative values: Dither low-order bits (-31 is most extreme)",
 					"numoutlets" : 0,
@@ -1574,6 +1583,7 @@
 			}
 , 			{
 				"box" : 				{
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"maxclass" : "comment",
 					"text" : "Positive values: Limit resolution (31 is most extreme)",
 					"numoutlets" : 0,
@@ -1587,6 +1597,7 @@
 			}
 , 			{
 				"box" : 				{
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"maxclass" : "comment",
 					"text" : "0: No degradation",
 					"numoutlets" : 0,
@@ -1600,6 +1611,7 @@
 			}
 , 			{
 				"box" : 				{
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"maxclass" : "comment",
 					"text" : "NN factor",
 					"numoutlets" : 0,
@@ -2273,6 +2285,7 @@
 			}
 , 			{
 				"box" : 				{
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"maxclass" : "comment",
 					"text" : "Choose test signal:",
 					"numoutlets" : 0,
@@ -2286,6 +2299,7 @@
 			}
 , 			{
 				"box" : 				{
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"maxclass" : "comment",
 					"text" : "Sound file operations:",
 					"numoutlets" : 0,
@@ -2378,6 +2392,7 @@
 			}
 , 			{
 				"box" : 				{
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"maxclass" : "comment",
 					"text" : "This object is an extended implementation of the nn factor, familiar from many of the Litter Power noise generators. In addition to reducing sample resolution, lp.nn~ also allows you to add a dither component to the least-significant bits. While we're at it, we've added sample-rate reduction and fractional bit resolutions.",
 					"linecount" : 3,
@@ -2407,6 +2422,7 @@
 			}
 , 			{
 				"box" : 				{
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"maxclass" : "comment",
 					"text" : "G3nral-purpoz s!gnl degrd8!on: rduz kap!talizt resolut!on|+ d!ther|mod!fy faz!st smpl-r8",
 					"numoutlets" : 0,
@@ -2420,6 +2436,7 @@
 			}
 , 			{
 				"box" : 				{
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"maxclass" : "comment",
 					"text" : "The drawstyle message is not supported by all versions of scope~, but for those versions supporting it, “drawstyle 1” can provide a more useful display for some signals, particularly the “Academic W.” test signal.",
 					"linecount" : 5,

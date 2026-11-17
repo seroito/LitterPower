@@ -172,6 +172,7 @@
 											}
 , 											{
 												"box" : 												{
+													"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 													"maxclass" : "comment",
 													"text" : "I’m told some people pronounce it that way.",
 													"fontname" : "Arial",
@@ -426,6 +427,7 @@
 										"metadata" : [  ],
 										"boxes" : [ 											{
 												"box" : 												{
+													"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 													"maxclass" : "comment",
 													"text" : "Lorrain, Denis, “A Panoply of Stochastic ‘Cannons’,” in The Music Machine, ed. Curtis\rRoads (Cambridge, Massachusetts: MIT, 1989), 351-379.",
 													"linecount" : 2,
@@ -508,6 +510,7 @@
 											}
 , 											{
 												"box" : 												{
+													"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 													"maxclass" : "comment",
 													"text" : "Dagpunar, John. Principles of Random Variate Generation. Oxford: Clarendon 1988.",
 													"fontname" : "Arial",
@@ -1073,6 +1076,7 @@
 						"metadata" : [  ],
 						"boxes" : [ 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "The tell message.",
 									"fontname" : "Arial",
@@ -1086,6 +1090,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "Speed.",
 									"fontname" : "Arial",
@@ -1099,6 +1104,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "Due to advanced algorithms, coshy is also a bit snappier. You'll notice this if you use coshy with heavy-duty Uzis.",
 									"linecount" : 2,
@@ -1113,6 +1119,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "Location Parameter.",
 									"fontname" : "Arial",
@@ -1126,6 +1133,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "As shown in the main patch, lp.chichi now has a location parameter, allowing you to offset the \"midpoint\" of the distribution.",
 									"linecount" : 2,
@@ -1140,6 +1148,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "Additionally: the tell message calculates properties of the random distribution: median, mode, and entropy. Click on the button below for more information.",
 									"linecount" : 2,
@@ -1154,6 +1163,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "Tell me about the tell message",
 									"fontname" : "Arial",
@@ -1351,6 +1361,7 @@
 			}
 , 			{
 				"box" : 				{
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"maxclass" : "comment",
 					"text" : "location",
 					"fontname" : "Arial",
@@ -1628,6 +1639,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "Loadbang triggers a \"vers\" message to a grab object in the mother patcher at loadbang time.",
 									"linecount" : 2,
@@ -1768,6 +1780,7 @@
 			}
 , 			{
 				"box" : 				{
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"maxclass" : "comment",
 					"text" : "symmetry",
 					"fontname" : "Arial",
@@ -1797,6 +1810,7 @@
 			}
 , 			{
 				"box" : 				{
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"maxclass" : "comment",
 					"text" : "The Cauchy distribution produces a bell-shaped curve centered around 0. It has two parameters: tau (a scaling factor) and location. Although the distribution is normally symmetrical, you can specify that only the positive or negative halves of the distribution be generated.",
 					"linecount" : 3,
@@ -1811,6 +1825,7 @@
 			}
 , 			{
 				"box" : 				{
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"maxclass" : "comment",
 					"text" : "Cauchy produces many more extreme values than the standard (Gauss) distribution.",
 					"fontname" : "Arial",
@@ -1930,6 +1945,7 @@
 						"metadata" : [  ],
 						"boxes" : [ 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "Mode and entropy, however, are defined, even for the asymmetrical distributions. Median is also defined in the symmetrical case. Because this is a continuous distribution, entropy can take negative values, another mathematical oddity.",
 									"linecount" : 2,
@@ -1959,6 +1975,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "Entropy",
 									"fontname" : "Arial",
@@ -2005,6 +2022,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "Mode",
 									"fontname" : "Arial",
@@ -2018,6 +2036,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "Expected values",
 									"fontname" : "Arial",
@@ -2079,6 +2098,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "Median",
 									"fontname" : "Arial",
@@ -2136,6 +2156,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "Kurtosis",
 									"fontname" : "Arial",
@@ -2167,6 +2188,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "Skew",
 									"fontname" : "Arial",
@@ -2216,6 +2238,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "Standard deviation",
 									"linecount" : 2,
@@ -2230,6 +2253,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "Count",
 									"fontname" : "Arial",
@@ -2279,6 +2303,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "Mean",
 									"fontname" : "Arial",
@@ -2292,6 +2317,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "Max",
 									"fontname" : "Arial",
@@ -2305,6 +2331,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "Min",
 									"fontname" : "Arial",
@@ -2350,6 +2377,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "Random values from coshy",
 									"fontname" : "Arial",
@@ -2596,6 +2624,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "Number of values that were outside of Histo's range",
 									"linecount" : 3,
@@ -2610,6 +2639,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "Despite the fact that lp.coshy produces most of its values near zero (or whatever the location parameter has been set to), the mean of the values does not converge mathematically. This may seem counter-intuitive, but you will notice that the mean jumps around, sometimes quite dramatically, and that the distribution produces many extreme values, even when tau is small. This is what prevents the mean from converging.",
 									"linecount" : 4,
@@ -2792,6 +2822,7 @@
 			}
 , 			{
 				"box" : 				{
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"maxclass" : "comment",
 					"text" : "scale",
 					"fontname" : "Arial",
@@ -2834,6 +2865,7 @@
 			}
 , 			{
 				"box" : 				{
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"maxclass" : "comment",
 					"text" : "Bang Uzi and watch the table window. Changing parameters values clears the table and other buffers (connections hidden).",
 					"linecount" : 3,
@@ -2848,6 +2880,7 @@
 			}
 , 			{
 				"box" : 				{
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"maxclass" : "comment",
 					"text" : "Round values to nearest integer for Histo",
 					"fontname" : "Arial",
@@ -2861,6 +2894,7 @@
 			}
 , 			{
 				"box" : 				{
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"maxclass" : "comment",
 					"text" : "Double-click on patcher MoreInfo for further details.",
 					"fontname" : "Arial",
@@ -2919,6 +2953,7 @@
 			}
 , 			{
 				"box" : 				{
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"maxclass" : "comment",
 					"text" : "Generate random numbers from a Cauchy distribution",
 					"fontname" : "Arial",

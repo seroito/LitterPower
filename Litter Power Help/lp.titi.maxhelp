@@ -318,6 +318,7 @@
 											}
 , 											{
 												"box" : 												{
+													"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 													"maxclass" : "comment",
 													"text" : "All basic random number generators are named based on a repeated short syllable drawn from the name commonly found in the statistical literature. The habit started with the TT800 algorithm (the first one implemented). It seemed like a nice idea at the time.",
 													"linecount" : 3,
@@ -641,6 +642,7 @@
 											}
 , 											{
 												"box" : 												{
+													"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 													"maxclass" : "comment",
 													"text" : "Matsumoto, Makoto and Yoshiharu Kurita, “Twisted GFSR Generators II,” ACM Transactions on Modelling and Computer Simulation 4, no. 3 (1994): 254-266.",
 													"linecount" : 2,
@@ -1400,6 +1402,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "Loadbang triggers a \"vers\" message to a grab object in the mother patcher at loadbang time.",
 									"linecount" : 2,
@@ -1539,6 +1542,7 @@
 			}
 , 			{
 				"box" : 				{
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"maxclass" : "comment",
 					"text" : "Maximum",
 					"patching_rect" : [ 413.0, 218.0, 60.0, 17.0 ],
@@ -1627,6 +1631,7 @@
 			}
 , 			{
 				"box" : 				{
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"maxclass" : "comment",
 					"text" : "You can set minimum and maximum values for lp.titi, output will be scaled to fit this range. These values may also be specified as initialization arguments. Talking about arguments: a third argument “seeds” the random number generator.",
 					"linecount" : 6,
@@ -1761,6 +1766,7 @@
 			}
 , 			{
 				"box" : 				{
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"maxclass" : "comment",
 					"text" : "Lp.titi generates uniformly distributed integers in the range [-2147483648 .. 2147483647] using the TT800 algorithm. Use lp.titi when you want serious random numbers and need a longer cycle than lp.tata offers. The TT800 algorithm has a cycle of approximately 2^800.",
 					"linecount" : 3,
@@ -1814,6 +1820,7 @@
 			}
 , 			{
 				"box" : 				{
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"maxclass" : "comment",
 					"text" : "Let's examine the top and bottom 8 bits",
 					"linecount" : 2,
@@ -1828,6 +1835,7 @@
 			}
 , 			{
 				"box" : 				{
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"maxclass" : "comment",
 					"text" : "Bang Uzi and watch the two table windows. (If the windows are hidden, double-click on the table objects.)",
 					"linecount" : 2,
@@ -1870,6 +1878,7 @@
 						"metadata" : [  ],
 						"boxes" : [ 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "Lp.titi's mean should converge to -0.5 (not zero! there are more negative numbers than positive numbers on your computer). But it will take a very, very long time.",
 									"linecount" : 2,
@@ -1884,6 +1893,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "The expected standard deviation is hideously huge (just under 1, 239, 850, 262) as well as taking a while to converge. Skew should converge to 0, although it, too, will take a while. Although kurtosis is mathematically well defined, the calculations overflow, even using double precision floating point arithmetic.",
 									"linecount" : 3,
@@ -1916,6 +1926,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "Median",
 									"patching_rect" : [ 581.0, 67.0, 46.0, 17.0 ],
@@ -1944,6 +1955,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "Entropy",
 									"patching_rect" : [ 536.0, 133.0, 82.0, 17.0 ],
@@ -2026,6 +2038,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "Kurtosis",
 									"patching_rect" : [ 581.0, 107.0, 93.0, 17.0 ],
@@ -2039,6 +2052,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "Skew",
 									"patching_rect" : [ 581.0, 87.0, 46.0, 17.0 ],
@@ -2052,6 +2066,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "Expected values",
 									"patching_rect" : [ 536.0, 19.0, 82.0, 17.0 ],
@@ -2095,6 +2110,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "Mean",
 									"patching_rect" : [ 581.0, 47.0, 46.0, 17.0 ],
@@ -2224,6 +2240,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "Std. Dev.",
 									"patching_rect" : [ 330.0, 66.0, 53.0, 17.0 ],
@@ -2237,6 +2254,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "Skew",
 									"patching_rect" : [ 411.0, 66.0, 75.0, 17.0 ],
@@ -2268,6 +2286,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "Count",
 									"patching_rect" : [ 6.0, 66.0, 33.0, 17.0 ],
@@ -2281,6 +2300,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "Mean",
 									"patching_rect" : [ 249.0, 66.0, 31.0, 17.0 ],
@@ -2294,6 +2314,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "Maximum",
 									"patching_rect" : [ 168.0, 66.0, 58.0, 17.0 ],
@@ -2307,6 +2328,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "Mininmum",
 									"patching_rect" : [ 86.0, 66.0, 55.0, 17.0 ],
@@ -2334,6 +2356,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "Random values from lp.titi",
 									"patching_rect" : [ 25.0, 4.0, 146.0, 17.0 ],
@@ -2502,6 +2525,7 @@
 			}
 , 			{
 				"box" : 				{
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"maxclass" : "comment",
 					"text" : "Open patcher MoreInfo for further details.",
 					"linecount" : 2,
@@ -2531,6 +2555,7 @@
 			}
 , 			{
 				"box" : 				{
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"maxclass" : "comment",
 					"text" : "Generate uniformly distributed random numbers using the TT800 algorithm",
 					"patching_rect" : [ 115.0, 26.0, 365.0, 17.0 ],
@@ -2544,6 +2569,7 @@
 			}
 , 			{
 				"box" : 				{
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"maxclass" : "comment",
 					"text" : "Minimum",
 					"patching_rect" : [ 359.0, 218.0, 50.0, 17.0 ],

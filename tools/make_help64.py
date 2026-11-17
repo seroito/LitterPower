@@ -142,5 +142,8 @@ def make(old):
 
 
 if __name__ == '__main__':
-    for old in SPECS:
-        print(make(old))
+    outs = [make(old) for old in SPECS]
+    print('\n'.join(outs))
+    # Black text on light backgrounds (see tools/fix_comment_colors.py)
+    import subprocess, sys
+    subprocess.run([sys.executable, os.path.join(ROOT, 'tools', 'fix_comment_colors.py')] + outs, check=True)

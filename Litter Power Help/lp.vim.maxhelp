@@ -186,6 +186,7 @@
 											}
 , 											{
 												"box" : 												{
+													"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 													"maxclass" : "comment",
 													"text" : "Abbreviation for Interval Mutation of numeric Values.\rThe letters got shuffled around, but that happens with interval mutation a lot.",
 													"linecount" : 2,
@@ -441,6 +442,7 @@
 										"metadata" : [  ],
 										"boxes" : [ 											{
 												"box" : 												{
+													"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 													"maxclass" : "comment",
 													"text" : "Polansky, Larry, “Morphological metrics,” Journal of New Music Research (formally Interface) 25 (1996): 289-368.",
 													"numoutlets" : 0,
@@ -522,6 +524,7 @@
 											}
 , 											{
 												"box" : 												{
+													"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 													"maxclass" : "comment",
 													"text" : "Polansky, Larry, “Morphological Metrics: An Introduction to a Theory of Formal Distances” (paper presented at the International Computer Music Conference, Champaign-Urbana, 1987), 197-204.\r",
 													"numoutlets" : 0,
@@ -1051,6 +1054,7 @@
 			}
 , 			{
 				"box" : 				{
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"maxclass" : "comment",
 					"text" : "In some configurations follow will not find the MIDI sequence when loaded. Use the read message to load a MIDI file.",
 					"linecount" : 3,
@@ -1221,6 +1225,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "Grab sends version symbol to us. Format this into a scripting message for an object named 'version' and send that to a thispatcher object in the mother patch.",
 									"linecount" : 2,
@@ -1351,6 +1356,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "Loadbang triggers a \"vers\" message to a grab object in the mother patcher at loadbang time, as well as banging Judge Doom",
 									"linecount" : 4,
@@ -1365,6 +1371,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "window size message from thispatcher in the mother patch.",
 									"linecount" : 2,
@@ -1522,6 +1529,7 @@
 			}
 , 			{
 				"box" : 				{
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"maxclass" : "comment",
 					"text" : "Mutant:",
 					"numoutlets" : 0,
@@ -1535,6 +1543,7 @@
 			}
 , 			{
 				"box" : 				{
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"maxclass" : "comment",
 					"text" : "Target:",
 					"numoutlets" : 0,
@@ -1706,6 +1715,7 @@
 			}
 , 			{
 				"box" : 				{
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"maxclass" : "comment",
 					"text" : "Clumping Factor (4th inlet)",
 					"numoutlets" : 0,
@@ -1737,6 +1747,7 @@
 			}
 , 			{
 				"box" : 				{
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"maxclass" : "comment",
 					"text" : "Delta Emphasis (5th inlet)",
 					"numoutlets" : 0,
@@ -1883,6 +1894,7 @@
 			}
 , 			{
 				"box" : 				{
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"maxclass" : "comment",
 					"text" : "Mutation Index (3rd inlet)",
 					"numoutlets" : 0,
@@ -1896,6 +1908,7 @@
 			}
 , 			{
 				"box" : 				{
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"maxclass" : "comment",
 					"text" : "Interval Type",
 					"numoutlets" : 0,
@@ -1909,6 +1922,7 @@
 			}
 , 			{
 				"box" : 				{
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"maxclass" : "comment",
 					"text" : "Mutation Type",
 					"numoutlets" : 0,
@@ -1922,6 +1936,7 @@
 			}
 , 			{
 				"box" : 				{
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"maxclass" : "comment",
 					"text" : "Bang indicates we've hit the last note of the \"It's raining\" sequence.",
 					"linecount" : 2,
@@ -1936,6 +1951,7 @@
 			}
 , 			{
 				"box" : 				{
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"maxclass" : "comment",
 					"text" : "Panic button->",
 					"numoutlets" : 0,
@@ -1949,6 +1965,7 @@
 			}
 , 			{
 				"box" : 				{
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"maxclass" : "comment",
 					"text" : "Source:",
 					"numoutlets" : 0,
@@ -1977,6 +1994,7 @@
 			}
 , 			{
 				"box" : 				{
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"maxclass" : "comment",
 					"text" : "Interval Mutation for numeric values",
 					"numoutlets" : 0,
@@ -1990,6 +2008,7 @@
 			}
 , 			{
 				"box" : 				{
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"maxclass" : "comment",
 					"text" : "Click the follow message to turn on the example, then play a melody on your MIDI Keyboard.",
 					"linecount" : 3,

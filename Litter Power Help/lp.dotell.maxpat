@@ -250,6 +250,7 @@
 			}
 , 			{
 				"box" : 				{
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"maxclass" : "comment",
 					"text" : "Filter out unused arguments",
 					"fontsize" : 9.0,

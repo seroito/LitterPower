@@ -186,6 +186,7 @@
 											}
 , 											{
 												"box" : 												{
+													"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 													"maxclass" : "comment",
 													"text" : "Since mathematicians have not adopted a Greek letter to represent division, I took the Greek word for quotient (or ratio).",
 													"numoutlets" : 0,
@@ -452,6 +453,7 @@
 										"metadata" : [  ],
 										"boxes" : [ 											{
 												"box" : 												{
+													"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 													"maxclass" : "comment",
 													"text" : "xxx",
 													"numoutlets" : 0,
@@ -533,6 +535,7 @@
 											}
 , 											{
 												"box" : 												{
+													"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 													"maxclass" : "comment",
 													"text" : "xxx",
 													"numoutlets" : 0,
@@ -1062,6 +1065,7 @@
 			}
 , 			{
 				"box" : 				{
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"maxclass" : "comment",
 					"text" : "Modulo is different from remainder when one of the two inputs is negative",
 					"linecount" : 3,
@@ -1136,6 +1140,7 @@
 			}
 , 			{
 				"box" : 				{
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"maxclass" : "comment",
 					"text" : "modulo",
 					"numoutlets" : 0,
@@ -1318,6 +1323,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "Grab sends version symbol to us. Format this into a scripting message for an object named 'version' and send that to a thispatcher object in the mother patch.",
 									"linecount" : 3,
@@ -1448,6 +1454,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "Loadbang triggers a \"vers\" message to a grab object in the mother patcher at loadbang time, as well as banging Judge Doom",
 									"linecount" : 4,
@@ -1462,6 +1469,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "window size message from thispatcher in the mother patch.",
 									"linecount" : 2,
@@ -1629,6 +1637,7 @@
 			}
 , 			{
 				"box" : 				{
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"maxclass" : "comment",
 					"text" : "Also, the default value for inlets is one, not zero",
 					"numoutlets" : 0,
@@ -1642,6 +1651,7 @@
 			}
 , 			{
 				"box" : 				{
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"maxclass" : "comment",
 					"text" : "remainder",
 					"numoutlets" : 0,
@@ -1655,6 +1665,7 @@
 			}
 , 			{
 				"box" : 				{
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"maxclass" : "comment",
 					"text" : "quotient",
 					"numoutlets" : 0,
@@ -1776,6 +1787,7 @@
 			}
 , 			{
 				"box" : 				{
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"maxclass" : "comment",
 					"text" : "<-- I got tired of having to do this",
 					"numoutlets" : 0,
@@ -1895,6 +1907,7 @@
 			}
 , 			{
 				"box" : 				{
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"maxclass" : "comment",
 					"text" : "You can send a list of two numbers. Quotient and remainder sent out once after both list elements have been processed. Lp.logos also understands set and bang messages, behaving just like the standard \/ object.",
 					"linecount" : 2,
@@ -1909,6 +1922,7 @@
 			}
 , 			{
 				"box" : 				{
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"maxclass" : "comment",
 					"text" : "The other difference to the standard \/ object is that both inlets are \"hot\". A change in either sends the updated quotient and remainder through its outlets.",
 					"linecount" : 2,
@@ -1985,6 +1999,7 @@
 			}
 , 			{
 				"box" : 				{
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"maxclass" : "comment",
 					"text" : "Lp.logos divides the left inlet by the right inlet, sending quotient, remainder, and modulo through its outlets.",
 					"numoutlets" : 0,
@@ -2013,6 +2028,7 @@
 			}
 , 			{
 				"box" : 				{
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"maxclass" : "comment",
 					"text" : "Quotient, remainder, and modulo",
 					"numoutlets" : 0,
@@ -2026,6 +2042,7 @@
 			}
 , 			{
 				"box" : 				{
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"maxclass" : "comment",
 					"text" : "If either of the initialization arguments is a float, calculations are performed in floating point and the result is a float. Yes, of course lp.logos calculates remainder (modulo) for floating point values. Otherwise arithmetic is performed with integers and any float input will be truncated to integer.",
 					"linecount" : 3,

@@ -184,6 +184,7 @@
 											}
 , 											{
 												"box" : 												{
+													"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 													"maxclass" : "comment",
 													"text" : "All basic random number generators are named based on a repeated short syllable drawn from the name commonly found in the statistical literature. The habit started with the TT800 algorithm (the first one implemented). It seemed like a nice idea at the time.",
 													"linecount" : 3,
@@ -507,6 +508,7 @@
 											}
 , 											{
 												"box" : 												{
+													"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 													"maxclass" : "comment",
 													"text" : "Makoto Matsumoto, Takuji Nishimura\"Mersenne twister: a 623-dimensionally equidistributed uniform pseudo-random number generator,\" ACM Transactions on Modeling and Computer Simulation (TOMACS), Volume 8 ,  Issue 1  (January 1998)pp. 3 - 30. 1998 ISSN:1049-3301 ",
 													"linecount" : 3,
@@ -1159,6 +1161,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "Grab sends version symbol to us. Format this into a scripting message for an object named 'version' and send that to a thispatcher object in the mother patch.",
 									"linecount" : 2,
@@ -1289,6 +1292,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "Loadbang triggers a \"vers\" message to a grab object in the mother patcher at loadbang time, as well as banging Judge Doom",
 									"linecount" : 4,
@@ -1303,6 +1307,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "window size message from thispatcher in the mother patch.",
 									"linecount" : 2,
@@ -1460,6 +1465,7 @@
 			}
 , 			{
 				"box" : 				{
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"maxclass" : "comment",
 					"text" : "Maximum",
 					"patching_rect" : [ 413.0, 227.0, 60.0, 17.0 ],
@@ -1548,6 +1554,7 @@
 			}
 , 			{
 				"box" : 				{
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"maxclass" : "comment",
 					"text" : "You can set minimum and maximum values for lp.mrmr, output will be scaled to fit this range. These values may also be specified as initialization arguments. A third argument “seeds” the random number generator. Since all lp.mrmr objects share a single seed set; initializing one effectively re-initializes all other instantiated lp.mrmr objects.",
 					"linecount" : 7,
@@ -1682,6 +1689,7 @@
 			}
 , 			{
 				"box" : 				{
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"maxclass" : "comment",
 					"text" : "Lp.mrmr generates uniformly distributed integers in the range [-2147483648 .. 2147483647] using the Mersenne Twister algorithm developed by Takuji Nishimura and Makoto Matsumoto. Use lp.mrmr when you want the most serious random numbers money can buy. The Mersenne Twister has a cycle of approximately 2^19937 (greater than 10^6000).",
 					"linecount" : 4,
@@ -1735,6 +1743,7 @@
 			}
 , 			{
 				"box" : 				{
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"maxclass" : "comment",
 					"text" : "Let's examine the top and bottom 8 bits",
 					"linecount" : 2,
@@ -1749,6 +1758,7 @@
 			}
 , 			{
 				"box" : 				{
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"maxclass" : "comment",
 					"text" : "Bang Uzi and watch the two table windows. (If the windows are hidden, double-click on the table objects.)",
 					"linecount" : 2,
@@ -1809,6 +1819,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "Standard Deviation",
 									"patching_rect" : [ 605.0, 68.0, 93.0, 17.0 ],
@@ -1837,6 +1848,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "Entropy",
 									"patching_rect" : [ 528.0, 135.0, 82.0, 17.0 ],
@@ -1919,6 +1931,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "Kurtosis",
 									"patching_rect" : [ 605.0, 107.0, 93.0, 17.0 ],
@@ -1932,6 +1945,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "Skew",
 									"patching_rect" : [ 605.0, 87.0, 46.0, 17.0 ],
@@ -1945,6 +1959,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "Expected values",
 									"patching_rect" : [ 528.0, 20.0, 82.0, 17.0 ],
@@ -1988,6 +2003,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "Mean",
 									"patching_rect" : [ 605.0, 48.0, 46.0, 17.0 ],
@@ -2117,6 +2133,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "Std. Dev.",
 									"patching_rect" : [ 330.0, 66.0, 53.0, 17.0 ],
@@ -2130,6 +2147,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "Skew",
 									"patching_rect" : [ 411.0, 66.0, 75.0, 17.0 ],
@@ -2161,6 +2179,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "Count",
 									"patching_rect" : [ 6.0, 66.0, 33.0, 17.0 ],
@@ -2174,6 +2193,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "Mean",
 									"patching_rect" : [ 249.0, 66.0, 31.0, 17.0 ],
@@ -2187,6 +2207,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "Maximum",
 									"patching_rect" : [ 168.0, 66.0, 58.0, 17.0 ],
@@ -2200,6 +2221,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "Minimum",
 									"patching_rect" : [ 86.0, 66.0, 55.0, 17.0 ],
@@ -2227,6 +2249,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "Random values from lp.mrmr",
 									"patching_rect" : [ 25.0, 4.0, 146.0, 17.0 ],
@@ -2252,6 +2275,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "Lp.mrmr's mean should converge to -0.5 (not zero! there are more negative numbers than positive numbers on your computer). But it will take a very, very long time.",
 									"linecount" : 2,
@@ -2266,6 +2290,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "The expected standard deviation is hideously huge as well as taking a while to converge. Skew should converge to zero, although it, too, will take a while. Although kurtosis is mathematically well defined, the calculations overflow, even using double precision floating point arithmetic.",
 									"linecount" : 3,
@@ -2423,6 +2448,7 @@
 			}
 , 			{
 				"box" : 				{
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"maxclass" : "comment",
 					"text" : "Double-click on patcher MoreInfo for more details.",
 					"linecount" : 2,
@@ -2452,6 +2478,7 @@
 			}
 , 			{
 				"box" : 				{
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"maxclass" : "comment",
 					"text" : "Generate uniformly distributed random numbers using the Mersenne Twister",
 					"patching_rect" : [ 115.0, 26.0, 407.0, 17.0 ],
@@ -2465,6 +2492,7 @@
 			}
 , 			{
 				"box" : 				{
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"maxclass" : "comment",
 					"text" : "Minimum",
 					"patching_rect" : [ 359.0, 227.0, 50.0, 17.0 ],

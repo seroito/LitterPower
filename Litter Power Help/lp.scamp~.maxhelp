@@ -200,6 +200,7 @@
 											}
 , 											{
 												"box" : 												{
+													"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 													"maxclass" : "comment",
 													"text" : "Portmanteau word from scale and map, with a few letters getting displaced in the process. The final ‘~’ is in honor of Miller Puckette (or maybe the Milwaukee airport), but you knew that anyway.",
 													"linecount" : 2,
@@ -455,6 +456,7 @@
 										"metadata" : [  ],
 										"boxes" : [ 											{
 												"box" : 												{
+													"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 													"maxclass" : "comment",
 													"text" : "xxx",
 													"numoutlets" : 0,
@@ -536,6 +538,7 @@
 											}
 , 											{
 												"box" : 												{
+													"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 													"maxclass" : "comment",
 													"text" : "xxx",
 													"numoutlets" : 0,
@@ -1073,6 +1076,7 @@
 			}
 , 			{
 				"box" : 				{
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"maxclass" : "comment",
 					"text" : "Open this sub-patcher to learn about initialization arguments to lp.scamp~",
 					"linecount" : 2,
@@ -1228,6 +1232,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "The curve menu at left sets this number box to the default curve. Try other values!",
 									"linecount" : 3,
@@ -1257,6 +1262,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "Fifth numeric argument initializes the kink\/curvature parameter.",
 									"linecount" : 2,
@@ -1271,6 +1277,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "Try a symmetry option!",
 									"numoutlets" : 0,
@@ -1284,6 +1291,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "Send an exp message for an exponential curve. Send a pow message for a power (input-to-the-nth-power) curve. Send a lin message for the traditional (and default) linear mapping. All three messages take an optional float parameter that determines the sharpness of the curve (or the amount of \"kink\" in a linear mapping). NOTE: Non-linear mappings eat more CPU.",
 									"linecount" : 3,
@@ -1346,6 +1354,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "For even more kinkiness, you can set symmetry options to generate S-curves and U-curves. The message sym 1 specifies point symmetry, sym 2 specifies axis symmetry, and sym 0 turns symmetry options off. Point symmetry is the default (note that this is different from lp.scampi and lp.scampf).",
 									"linecount" : 2,
@@ -1360,6 +1369,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "Lp.scamp~ now supports exponential and power (parabolic, etc.) curves when mapping. This is conceptually a *lot* easier with map mode, but you can do it in scale mode if you enjoy that sort of thing.",
 									"numoutlets" : 0,
@@ -1455,6 +1465,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "In map mode, the second and third inlets specify the low and high input values. These will be mapped to the low and high output values (the fourth and fifth inlets). If the range limiting mode is 'stet' (no limiting), the mapping function extrapolates for input values outside the specified input\/output ranges.",
 									"linecount" : 2,
@@ -1469,6 +1480,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "Map mode allows you to specify [input low .. input high] [output low .. output high]. Many people find this much easier than specifying scale and offset. You can specify map mode with the symbol \"map\" as an initialization argument. Or you can send a \"map\" message at any time (you can also send the message \"map\" with any non-zero argument for the same effect). To revert to the older \"scale\" mode (which remains the default mode of operation), send a \"map 0\" message.",
 									"linecount" : 3,
@@ -1498,6 +1510,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "Two ways to map the range [0 .. 1] to [-1 .. 1]",
 									"linecount" : 2,
@@ -1591,6 +1604,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "Note one subtle difference: the first example will still use the default range with clip, reflect, or wrap. The second example will use the explicitly specified output range.",
 									"linecount" : 5,
@@ -1965,6 +1979,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "Grab sends version symbol to us. Format this into a scripting message for an object named 'version' and send that to a thispatcher object in the mother patch.",
 									"linecount" : 3,
@@ -2095,6 +2110,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "Loadbang triggers a \"vers\" message to a grab object in the mother patcher at loadbang time, as well as banging Judge Doom",
 									"linecount" : 4,
@@ -2109,6 +2125,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "window size message from thispatcher in the mother patch.",
 									"linecount" : 2,
@@ -2334,6 +2351,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "Also check out the 'map' argument discussed in the 'newStuff' patcher:",
 									"numoutlets" : 0,
@@ -2389,6 +2407,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "The following examples all initialize lp.scamp~ to the default settings.",
 									"numoutlets" : 0,
@@ -2402,6 +2421,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "Four numeric arguments (can be either int or float) determine (in order): initial scale, offset, minimum, and maximum.",
 									"linecount" : 2,
@@ -2430,6 +2450,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "One symbol argument initializes the limiting method (clip, wrap, reflect, or stet). It can appear anywhere in the argument list.",
 									"linecount" : 2,
@@ -2469,6 +2490,7 @@
 			}
 , 			{
 				"box" : 				{
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"maxclass" : "comment",
 					"text" : "Lp.scamp~ responds to a bang message by sending a count of the number of samples that were limited (clipped, reflected, or wrapped) since the last bang. Turn on the metro and watch the number box as you increase the scale value.",
 					"linecount" : 3,
@@ -2544,6 +2566,7 @@
 			}
 , 			{
 				"box" : 				{
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"maxclass" : "comment",
 					"text" : "Limiting",
 					"numoutlets" : 0,
@@ -2557,6 +2580,7 @@
 			}
 , 			{
 				"box" : 				{
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"maxclass" : "comment",
 					"text" : "Maximum",
 					"numoutlets" : 0,
@@ -2602,6 +2626,7 @@
 			}
 , 			{
 				"box" : 				{
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"maxclass" : "comment",
 					"text" : "Minimum",
 					"numoutlets" : 0,
@@ -2615,6 +2640,7 @@
 			}
 , 			{
 				"box" : 				{
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"maxclass" : "comment",
 					"text" : "You can limit output values with clipping, wrapping, or reflecting, using eponymous messages. The default output range is [-1 .. 1], but you can modify minimum and maximum by sending other values into the fourth and fifth inlets, respectively. The stet message turns off limiting. (Again, connections from number boxes hidden here, signals can also be used).",
 					"linecount" : 4,
@@ -2725,6 +2751,7 @@
 			}
 , 			{
 				"box" : 				{
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"maxclass" : "comment",
 					"text" : "Offset",
 					"numoutlets" : 0,
@@ -2784,6 +2811,7 @@
 			}
 , 			{
 				"box" : 				{
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"maxclass" : "comment",
 					"text" : "With no arguments, lp.scamp~ applies a gain of -6 dB to the incoming signal.",
 					"numoutlets" : 0,
@@ -2797,6 +2825,7 @@
 			}
 , 			{
 				"box" : 				{
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"maxclass" : "comment",
 					"text" : "Lp.scamp~ provides, in a single handy object, all the functions you need for mapping signals from one range to another. You would otherwise need to use a combination of *~, +~, and other objects to produce the same functionality.",
 					"linecount" : 2,
@@ -2826,6 +2855,7 @@
 			}
 , 			{
 				"box" : 				{
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"maxclass" : "comment",
 					"text" : "Scale, offset, and limit signals",
 					"numoutlets" : 0,
@@ -2839,6 +2869,7 @@
 			}
 , 			{
 				"box" : 				{
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"maxclass" : "comment",
 					"text" : "You can specify other values for scale (i.e., a multiplier) as well as specifying an offset (a value to add to the result after scaling). Scale goes into the second inlet, offest goes to the third inlet (connections hidden in this patch). Signals are OK, too.",
 					"linecount" : 3,
@@ -2853,6 +2884,7 @@
 			}
 , 			{
 				"box" : 				{
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"maxclass" : "comment",
 					"text" : "Scale",
 					"numoutlets" : 0,
@@ -2879,6 +2911,7 @@
 			}
 , 			{
 				"box" : 				{
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"maxclass" : "comment",
 					"text" : "Turn on signal processing here:",
 					"numoutlets" : 0,

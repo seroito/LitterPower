@@ -157,6 +157,7 @@
 											}
 , 											{
 												"box" : 												{
+													"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 													"maxclass" : "comment",
 													"text" : "Think of “chichi” as “chi times chi.”",
 													"id" : "obj-6",
@@ -411,6 +412,7 @@
 										"metadata" : [  ],
 										"boxes" : [ 											{
 												"box" : 												{
+													"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 													"maxclass" : "comment",
 													"text" : "Monahan, John F., “An algorithm for generating chi random variables,” ACM Transactions on Mathematical Software 13 (1987): 168-171 (Corrections, ibid 14 (1988) 111.)",
 													"linecount" : 2,
@@ -437,6 +439,7 @@
 											}
 , 											{
 												"box" : 												{
+													"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 													"maxclass" : "comment",
 													"text" : "Gentle, James E, Random Number Generation and Monte Carlo Methods. Springer, Berlin (1998).",
 													"id" : "obj-3",
@@ -518,6 +521,7 @@
 											}
 , 											{
 												"box" : 												{
+													"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 													"maxclass" : "comment",
 													"text" : "Ahrens, Joachim H. and Ulrich Dieter, “Generating Gamma Variates by a Modified Rejection Technique,” Communications of the ACM 25, no. 1 (1982): 47-54.",
 													"linecount" : 2,
@@ -1289,6 +1293,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "Loadbang triggers a \"vers\" message to a grab object in the mother patcher at loadbang time.",
 									"linecount" : 2,
@@ -1470,6 +1475,7 @@
 			}
 , 			{
 				"box" : 				{
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"maxclass" : "comment",
 					"text" : "The Chi-Square distribution has one parameter, the “degrees of freedom” or f. Chichi gets slow for very large values of f.",
 					"linecount" : 2,
@@ -1582,6 +1588,7 @@
 			}
 , 			{
 				"box" : 				{
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"maxclass" : "comment",
 					"text" : "f",
 					"id" : "obj-17",
@@ -1653,6 +1660,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "Entropy",
 									"id" : "obj-2",
@@ -1699,6 +1707,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "Formulae for the other statistical properties are more complex and in some cases the expected values may be undefined. The formulae are documented in standard references.",
 									"id" : "obj-5",
@@ -1712,6 +1721,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "The mean of an Inverse Chi-Square distribution will converge to 1\/(f-2) if f (degrees of freedom) is larger than two. The mean of a Scale-Inverse converges to s*f\/(f-2), with s the scale factor. Again, degrees of freedom must be larger than two.",
 									"linecount" : 3,
@@ -1780,6 +1790,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "Kurtosis",
 									"id" : "obj-10",
@@ -1793,6 +1804,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "Skew",
 									"id" : "obj-11",
@@ -1806,6 +1818,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "Mode",
 									"id" : "obj-12",
@@ -1819,6 +1832,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "Expected values",
 									"id" : "obj-13",
@@ -1862,6 +1876,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "Skew",
 									"id" : "obj-16",
@@ -1893,6 +1908,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "Kurtosis",
 									"id" : "obj-18",
@@ -1918,6 +1934,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "Random values",
 									"id" : "obj-20",
@@ -1963,6 +1980,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "Mean",
 									"id" : "obj-23",
@@ -1976,6 +1994,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "The mean of a large number of random numbers with Chi-Square distribution should converge to f, the standard deviation to sqrt(2f). The minimum can never be less than 0, the maximum is unbounded.",
 									"linecount" : 2,
@@ -1990,6 +2009,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "Standard Deviation",
 									"id" : "obj-25",
@@ -2039,6 +2059,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "Mean",
 									"id" : "obj-28",
@@ -2052,6 +2073,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "Max",
 									"id" : "obj-29",
@@ -2083,6 +2105,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "Min",
 									"id" : "obj-31",
@@ -2132,6 +2155,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "Standard Deviation",
 									"linecount" : 2,
@@ -2146,6 +2170,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "Count",
 									"id" : "obj-35",
@@ -2177,6 +2202,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "For large values of f the Chi-Square distribution can be approximated by a Gauss distribution.",
 									"id" : "obj-37",
@@ -2376,6 +2402,7 @@
 			}
 , 			{
 				"box" : 				{
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"maxclass" : "comment",
 					"text" : "Bang Uzi and watch the table window (if the window is hidden, double-click on the table object). Changing f clears the table and other buffers (connections hidden).",
 					"linecount" : 2,
@@ -2390,6 +2417,7 @@
 			}
 , 			{
 				"box" : 				{
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"maxclass" : "comment",
 					"text" : "Convert lp.chichi's output to an integer for Histo and table.",
 					"id" : "obj-21",
@@ -2403,6 +2431,7 @@
 			}
 , 			{
 				"box" : 				{
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"maxclass" : "comment",
 					"text" : "Open patcher MoreInfo for further details.",
 					"id" : "obj-22",
@@ -2431,6 +2460,7 @@
 			}
 , 			{
 				"box" : 				{
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"maxclass" : "comment",
 					"text" : "Generate random numbers with a Chi-Square distribution.",
 					"id" : "obj-24",
@@ -2485,6 +2515,7 @@
 						"metadata" : [  ],
 						"boxes" : [ 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "The tell message",
 									"id" : "obj-1",
@@ -2498,6 +2529,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "Variant distributions",
 									"id" : "obj-2",
@@ -2511,6 +2543,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "Improved algorithms allow bernie to generate values anything from 6 to 16 times faster than in previous versions, depending on the parameters. It is now completely reasonable to set the value of n to a four-digit or five-digit value and generate a few thousand random values.",
 									"linecount" : 3,
@@ -2525,6 +2558,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "Speed",
 									"id" : "obj-4",
@@ -2592,6 +2626,7 @@
 										"metadata" : [  ],
 										"boxes" : [ 											{
 												"box" : 												{
+													"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 													"maxclass" : "comment",
 													"text" : "In the statistics literature, two definitions can be found for an Inverse Chi-Square distribution:",
 													"id" : "obj-1",
@@ -2605,6 +2640,7 @@
 											}
 , 											{
 												"box" : 												{
+													"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 													"maxclass" : "comment",
 													"text" : "Lp.chichi uses the first definition for 'inv'. The second definition is equivalent to the Scale-Inverse Chi-Square distribution ('scaleinv') with unit scale.",
 													"linecount" : 2,
@@ -2619,6 +2655,7 @@
 											}
 , 											{
 												"box" : 												{
+													"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 													"maxclass" : "comment",
 													"text" : "Where X is the Chi-Square distribution and f is the degrees of freedom.",
 													"id" : "obj-3",
@@ -2632,6 +2669,7 @@
 											}
 , 											{
 												"box" : 												{
+													"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 													"maxclass" : "comment",
 													"text" : "2) f\/X",
 													"id" : "obj-4",
@@ -2645,6 +2683,7 @@
 											}
 , 											{
 												"box" : 												{
+													"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 													"maxclass" : "comment",
 													"text" : "1) 1\/X",
 													"id" : "obj-5",
@@ -2705,6 +2744,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "In statistics the Chi-Square, Chi, and Inverse Chi-Square distributions are defined exclusively with unit scale. However, lp.chichi applies the supplied scaling factor in all of these variants. If you tell chichi to scale, it will scale for you.",
 									"linecount" : 3,
@@ -2719,6 +2759,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "As the name implies, the Scale-Inverse Chi-Square distribution has an additional scale parameter. Set this value by sending a scale message (default value: one).",
 									"linecount" : 2,
@@ -2733,6 +2774,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "scaleinv: Scale-Inverse Chi-Square",
 									"id" : "obj-12",
@@ -2746,6 +2788,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "inv: Inverse Chi-Square",
 									"id" : "obj-13",
@@ -2759,6 +2802,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "chi: Chi distribution",
 									"id" : "obj-14",
@@ -2772,6 +2816,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "chi2: the standard Chi-Square distribution (default)",
 									"id" : "obj-15",
@@ -2858,6 +2903,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "lp.chichi now supports three additional distributions that are related to the Chi-Square distribution: Chi, Inverse Chi-Square, and Scale-Inverse Chi-Square. These can be specified by sending a 'var' message message with one of the following symbols as a parameter:",
 									"linecount" : 3,
@@ -2872,6 +2918,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "Also new: the tell message calculates properties of the random distribution: mean, standard deviation, etc. Click on the button below for more information.",
 									"linecount" : 2,
@@ -2886,6 +2933,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "Tell me about the tell message",
 									"id" : "obj-23",

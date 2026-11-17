@@ -186,6 +186,7 @@
 											}
 , 											{
 												"box" : 												{
+													"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 													"maxclass" : "comment",
 													"text" : "Time-domain Interval Mutation.",
 													"numoutlets" : 0,
@@ -440,6 +441,7 @@
 										"metadata" : [  ],
 										"boxes" : [ 											{
 												"box" : 												{
+													"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 													"maxclass" : "comment",
 													"text" : "Polansky, Larry, “Morphological metrics,” Journal of New Music Research (formally Interface) 25 (1996): 289-368.",
 													"numoutlets" : 0,
@@ -465,6 +467,7 @@
 											}
 , 											{
 												"box" : 												{
+													"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 													"maxclass" : "comment",
 													"text" : "Polansky, Larry and Tom Erbe, “Spectral Mutation in SoundHack: A Brief Description” (paper presented at the International Computer Music Conference, Banff, Canada, 1995), 307-314.",
 													"linecount" : 2,
@@ -547,6 +550,7 @@
 											}
 , 											{
 												"box" : 												{
+													"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 													"maxclass" : "comment",
 													"text" : "Polansky, Larry, “Morphological Metrics: An Introduction to a Theory of Formal Distances” (paper presented at the International Computer Music Conference, Champaign-Urbana, 1987), 197-204.\r",
 													"linecount" : 2,
@@ -1235,6 +1239,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "Grab sends version symbol to us. Format this into a scripting message for an object named 'version' and send that to a thispatcher object in the mother patch.",
 									"linecount" : 3,
@@ -1365,6 +1370,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "Loadbang triggers a \"vers\" message to a grab object in the mother patcher at loadbang time, as well as banging Judge Doom",
 									"linecount" : 4,
@@ -1379,6 +1385,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "window size message from thispatcher in the mother patch.",
 									"linecount" : 2,
@@ -1639,6 +1646,7 @@
 			}
 , 			{
 				"box" : 				{
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"maxclass" : "comment",
 					"text" : "If the mutation algorithm becomes chaotic, you may need to reset lp.tim's internal buffers with the clear message.",
 					"linecount" : 3,
@@ -1653,6 +1661,7 @@
 			}
 , 			{
 				"box" : 				{
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"maxclass" : "comment",
 					"text" : "Messages to control interval type:",
 					"numoutlets" : 0,
@@ -1666,6 +1675,7 @@
 			}
 , 			{
 				"box" : 				{
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"maxclass" : "comment",
 					"text" : "Messages to control the mutation algorithm:",
 					"numoutlets" : 0,
@@ -1679,6 +1689,7 @@
 			}
 , 			{
 				"box" : 				{
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"maxclass" : "comment",
 					"text" : "Mutant signal sent out outlet.",
 					"linecount" : 2,
@@ -1708,6 +1719,7 @@
 			}
 , 			{
 				"box" : 				{
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"maxclass" : "comment",
 					"text" : "Target signal goes to second inlet.",
 					"linecount" : 2,
@@ -1722,6 +1734,7 @@
 			}
 , 			{
 				"box" : 				{
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"maxclass" : "comment",
 					"text" : "Source signal goes to first inlet.",
 					"linecount" : 2,
@@ -1736,6 +1749,7 @@
 			}
 , 			{
 				"box" : 				{
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"maxclass" : "comment",
 					"text" : "Lp.tim~ implements time-domain mutation of signals. The presentation here presumes familiarity with mutation algorithms.",
 					"numoutlets" : 0,
@@ -1820,6 +1834,7 @@
 			}
 , 			{
 				"box" : 				{
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"maxclass" : "comment",
 					"text" : "Omega (mutation index) goes to third inlet.",
 					"linecount" : 3,
@@ -1834,6 +1849,7 @@
 			}
 , 			{
 				"box" : 				{
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"maxclass" : "comment",
 					"text" : "Clumping index goes to fourth inlet. Ignored with uniform mutations.",
 					"linecount" : 3,
@@ -1971,6 +1987,7 @@
 			}
 , 			{
 				"box" : 				{
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"maxclass" : "comment",
 					"text" : "Delta Emphasis goes to fifth inlet. Ignored when using absolute intervals.",
 					"linecount" : 3,
@@ -1985,6 +2002,7 @@
 			}
 , 			{
 				"box" : 				{
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"maxclass" : "comment",
 					"text" : "You can also use signals for the three rightmost inlets (not shown).",
 					"numoutlets" : 0,
@@ -2013,6 +2031,7 @@
 			}
 , 			{
 				"box" : 				{
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"maxclass" : "comment",
 					"text" : "Time-domain interval mutation of signals",
 					"numoutlets" : 0,

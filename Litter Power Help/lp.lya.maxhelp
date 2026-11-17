@@ -204,6 +204,7 @@
 											}
 , 											{
 												"box" : 												{
+													"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 													"maxclass" : "comment",
 													"text" : "Clipped from the name of the venerable Alexander Mikhailovich Lyapunov.",
 													"numoutlets" : 0,
@@ -458,6 +459,7 @@
 										"metadata" : [  ],
 										"boxes" : [ 											{
 												"box" : 												{
+													"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 													"maxclass" : "comment",
 													"text" : "Markus, Mario. “Chaos in maps with continuous and discontinuous maxima,” Computers in\rPhysics, 1990 pp. 481-493.",
 													"linecount" : 2,
@@ -540,6 +542,7 @@
 											}
 , 											{
 												"box" : 												{
+													"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 													"maxclass" : "comment",
 													"text" : "Dewdney, A. Kee. “Mathematical recreations: Leaping into Lyapunov Space,” Scientific American.\r1991 (CCLXV:3) pp. 130-132.\r",
 													"linecount" : 2,
@@ -1211,6 +1214,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "Grab sends version symbol to us. Format this into a scripting message for an object named 'version' and send that to a thispatcher object in the mother patch.",
 									"linecount" : 2,
@@ -1341,6 +1345,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "Loadbang triggers a \"vers\" message to a grab object in the mother patcher at loadbang time, as well as banging Judge Doom",
 									"linecount" : 4,
@@ -1355,6 +1360,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "window size message from thispatcher in the mother patch.",
 									"linecount" : 2,
@@ -1551,6 +1557,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "Map negative values to MIDI notes, positive values remain silent.",
 									"linecount" : 2,
@@ -1565,6 +1572,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "Calculate the Lyapunov exponent. For anything real time, it's best to stick to the default precision value of one.",
 									"linecount" : 2,
@@ -1977,6 +1985,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "Bang to generate the coordinates of a point in 3-dimensional space. We generate a line that goes to this point over twenty seconds, sampling its position every 100 ms.",
 									"linecount" : 3,
@@ -1991,6 +2000,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "Set MIDI Channel here",
 									"numoutlets" : 0,
@@ -2004,6 +2014,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "Turn gate on for continuous generation of MIDI data.",
 									"linecount" : 3,
@@ -2372,6 +2383,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "lp.lya precision",
 									"numoutlets" : 0,
@@ -2385,6 +2397,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "Metro speed",
 									"numoutlets" : 0,
@@ -2453,6 +2466,7 @@
 										"metadata" : [  ],
 										"boxes" : [ 											{
 												"box" : 												{
+													"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 													"maxclass" : "comment",
 													"text" : "The expr parameters map lcd coordinates to XY coordinates in Lyapunov space.",
 													"linecount" : 2,
@@ -2761,6 +2775,7 @@
 											}
 , 											{
 												"box" : 												{
+													"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 													"maxclass" : "comment",
 													"text" : "Counter limits (and the comparison beneath accum) are set to match the dimensions of the lcd object used for drawing.",
 													"linecount" : 4,
@@ -3085,6 +3100,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "For the patient: Magnification of the lower right quadrant of the picture at the left. If you increase the precision factor for lp.lya, you may need to slow down the metro.",
 									"linecount" : 2,
@@ -3111,6 +3127,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "For the impatient: Lyapunov space, with both X and Y coordinates in the range (0.8 .. 4.0), rendered with 400 pixels along either axis. Pattern is aabab.",
 									"linecount" : 2,
@@ -3125,6 +3142,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "Bang to start drawing",
 									"numoutlets" : 0,
@@ -3221,6 +3239,7 @@
 			}
 , 			{
 				"box" : 				{
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"maxclass" : "comment",
 					"text" : "Open the lyaMuse subpatcher for an example of generating MIDI data with lp.lya.",
 					"linecount" : 2,
@@ -3235,6 +3254,7 @@
 			}
 , 			{
 				"box" : 				{
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"maxclass" : "comment",
 					"text" : "More detail leads to more interesting images. Open the lyaPict sub-patcher for an example.",
 					"linecount" : 2,
@@ -3264,6 +3284,7 @@
 			}
 , 			{
 				"box" : 				{
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"maxclass" : "comment",
 					"text" : "Lp.lya is CPU intensive because it estimates the Lyapunov exponent by generating thousands of sequences of values using lp.poppy's population growth model and taking the logarithm of these values. The right inlet to lp.lya allows you to increase the accuracy by increasing the number of values sampled. The default value of one (i.e., one thousand values sampled) is sufficient for most purposes.",
 					"linecount" : 5,
@@ -3296,6 +3317,7 @@
 			}
 , 			{
 				"box" : 				{
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"maxclass" : "comment",
 					"text" : "Use this number box to control the speed of drawing (i.e., how often coordinates and pixel color are calculated). The value is milliseconds per pixel. Be careful with small values on slower Macs! Lp.lya can be very CPU intensive.",
 					"linecount" : 3,
@@ -3371,6 +3393,7 @@
 						"metadata" : [  ],
 						"boxes" : [ 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "Clear message for lcd arrives here. A cheesy attempt to avoid patch cord spaghetti.",
 									"linecount" : 3,
@@ -3399,6 +3422,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "Lyapunov exponent arrives last (leftmost) but must go out first (rightmost)",
 									"linecount" : 2,
@@ -3455,6 +3479,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "Lyapunov exponent. This is mapped to a pixel color",
 									"linecount" : 2,
@@ -3572,6 +3597,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "LCD coordinates:",
 									"numoutlets" : 0,
@@ -3820,6 +3846,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "Gate 1 passes coordinates in the pattern “ab”. Gate 2 sets up the pattern ”aabab”. Gate 3 sends coordinates in the pattern ”aaaaabbbbb”.",
 									"linecount" : 3,
@@ -3834,6 +3861,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "The lcd object we are controlling wants coordinates in the range 0..99. The lp.lya object needs coordinates in the range 0..4.",
 									"linecount" : 3,
@@ -4081,6 +4109,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "Item number from the patterns menu comes here. Non-zero selects a gate to a pattern and turns on the metro.",
 									"linecount" : 2,
@@ -4107,6 +4136,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "Speed control.",
 									"numoutlets" : 0,
@@ -4502,6 +4532,7 @@
 			}
 , 			{
 				"box" : 				{
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"maxclass" : "comment",
 					"text" : "Select a \"pattern\" from the menu. This controls routing in the subpatch, which is where most of the work is done.",
 					"linecount" : 2,
@@ -4573,6 +4604,7 @@
 			}
 , 			{
 				"box" : 				{
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"maxclass" : "comment",
 					"text" : "The Lyapunov exponent is often used to generate images. The usual method is to take two independent values (representing x and y coordiantes) and to use them, in some fixed sequence, as a population growth model. The resutling Lyapunov exponent is mapped to a pixel color.",
 					"linecount" : 3,
@@ -4729,6 +4761,7 @@
 			}
 , 			{
 				"box" : 				{
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"maxclass" : "comment",
 					"text" : "Lp.lya is closely related to lp.poppy. Lp.lya calculates the Lyapunov exponent of an lp.poppy system with the same growth rate. Let's start with a simple single-parameter example.",
 					"linecount" : 2,
@@ -4758,6 +4791,7 @@
 			}
 , 			{
 				"box" : 				{
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"maxclass" : "comment",
 					"text" : "Calculate Lyapunov exponent for population growth models.",
 					"numoutlets" : 0,
@@ -4771,6 +4805,7 @@
 			}
 , 			{
 				"box" : 				{
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"maxclass" : "comment",
 					"text" : "The Lyapunov exponent is an indicator of whether a system is chaotic or stable. Negative values indicate stability, positive values indicate chaos.",
 					"linecount" : 2,
@@ -4785,6 +4820,7 @@
 			}
 , 			{
 				"box" : 				{
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"maxclass" : "comment",
 					"text" : "Turn metro on if it isn't already, then experiment with different parameters.",
 					"numoutlets" : 0,

@@ -119,6 +119,7 @@
 											}
 , 											{
 												"box" : 												{
+													"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 													"maxclass" : "comment",
 													"text" : "Scampf's default configuration is simply the inverse of scampi.",
 													"numoutlets" : 0,
@@ -132,6 +133,7 @@
 											}
 , 											{
 												"box" : 												{
+													"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 													"maxclass" : "comment",
 													"text" : "Largest integer generated",
 													"numoutlets" : 0,
@@ -267,6 +269,7 @@
 											}
 , 											{
 												"box" : 												{
+													"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 													"maxclass" : "comment",
 													"text" : "Double-click on the table object to open its window.",
 													"linecount" : 2,
@@ -281,6 +284,7 @@
 											}
 , 											{
 												"box" : 												{
+													"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 													"maxclass" : "comment",
 													"text" : "If the input values have a flat distribution, so do the output values. This would not be the case if scampi used the more naive approach of multiplying by 127. You can test this yourself by banging Uzi a few times in the patch below. How many 127s show up in the histogram?\r",
 													"linecount" : 3,
@@ -295,6 +299,7 @@
 											}
 , 											{
 												"box" : 												{
+													"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 													"maxclass" : "comment",
 													"text" : "The scampi\/scampf pair were designed for mapping output from Litter Power unit-range Random Number Generators to MIDI and back. A close look at the unit-range RNGs reveals that they generate values in the half-open range 0 <= x < 1. The default settings for scampi simply multiply the input by 128 and truncate, giving integers in the range 0 <= x < 128. For integers this is just another way of saying 0 <= x <= 127.\r",
 													"linecount" : 4,
@@ -377,6 +382,7 @@
 											}
 , 											{
 												"box" : 												{
+													"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 													"maxclass" : "comment",
 													"text" : "Why is the default output range for scampi 0 - 128? Wouldn't 0 - 127 be more convenient for MIDI?",
 													"numoutlets" : 0,
@@ -810,6 +816,7 @@
 											}
 , 											{
 												"box" : 												{
+													"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 													"maxclass" : "comment",
 													"text" : "Portmanteau word from scale and map, with a few letters getting displaced in theprocess. The final letter indicates whether output is integer (i) or floating-point (f).",
 													"linecount" : 2,
@@ -1065,6 +1072,7 @@
 										"metadata" : [  ],
 										"boxes" : [ 											{
 												"box" : 												{
+													"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 													"maxclass" : "comment",
 													"text" : "xxx",
 													"numoutlets" : 0,
@@ -1146,6 +1154,7 @@
 											}
 , 											{
 												"box" : 												{
+													"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 													"maxclass" : "comment",
 													"text" : "xxx",
 													"numoutlets" : 0,
@@ -1843,6 +1852,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "Grab sends version symbol to us. Format this into a scripting message for an object named 'version' and send that to a thispatcher object in the mother patch.",
 									"linecount" : 3,
@@ -1973,6 +1983,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "Loadbang triggers a \"vers\" message to a grab object in the mother patcher at loadbang time, as well as banging Judge Doom",
 									"linecount" : 4,
@@ -1987,6 +1998,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "window size message from thispatcher in the mother patch.",
 									"linecount" : 2,
@@ -2171,6 +2183,7 @@
 						"metadata" : [  ],
 						"boxes" : [ 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "The curve menu at left sets this number box to the default curve. Try other values!",
 									"linecount" : 3,
@@ -2200,6 +2213,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "Fifth numeric argument initializes the kink\/curvature parameter.",
 									"linecount" : 2,
@@ -2214,6 +2228,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "Try a symmetry option!",
 									"numoutlets" : 0,
@@ -2227,6 +2242,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "Send an exp message for an exponential curve. Send a pow message for a power (\"parabolic\") curve. Send a lin message for the traditional (and default) linear mapping. All three messages take an optional float parameter that determines the sharpness of the curve (or the amount of \"kink\" in a linear mapping).",
 									"linecount" : 3,
@@ -2289,6 +2305,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "For even more kinkiness, you can set symmetry options to generate S-curves and U-curves. The message sym 1 specifies axis symmetry, sym 2 specifies point symmetry, and sym 0 turns symmetry options off.",
 									"linecount" : 2,
@@ -2303,6 +2320,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "Lp.scampi & lp.scampf now support exponential and power (parabolic) curves when mapping. This is conceptually a *lot* easier with map mode, but you can do it in scale mode if you enjoy that sort of thing.",
 									"linecount" : 2,
@@ -2410,6 +2428,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "In map mode, the second and third inlets specify the low and high input values. These will be mapped to the low and high output values (the fourth and fifth inlets). If the range limiting mode is 'stet' (no limiting), the mapping function extrapolates for input values outside the specified input\/output ranges.",
 									"linecount" : 3,
@@ -2424,6 +2443,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "Map mode allows you to specify [input low .. input high] [output low .. output high]. Many people find this much easier than specifying scale and offset. You can specify map mode with the symbol \"map\" as an initialization argument. Or you can send a \"map\" message at any time (you can also send the message \"map\" with any non-zero argument for the same effect). To revert to the older \"scale\" mode (which remains the default mode of operation), send a \"map 0\" message.",
 									"linecount" : 4,
@@ -2453,6 +2473,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "Two ways to map the range [0 .. 10] to [100 200]",
 									"linecount" : 2,
@@ -2508,6 +2529,7 @@
 										"metadata" : [  ],
 										"boxes" : [ 											{
 												"box" : 												{
+													"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 													"maxclass" : "comment",
 													"text" : "Y coordinate values are inverted so the resulting LCD display looks more like a conventional Cartesian coordinate system.",
 													"linecount" : 3,
@@ -2559,6 +2581,7 @@
 											}
 , 											{
 												"box" : 												{
+													"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 													"maxclass" : "comment",
 													"text" : "Output values calculated by lp.scampf",
 													"numoutlets" : 0,
@@ -2612,6 +2635,7 @@
 											}
 , 											{
 												"box" : 												{
+													"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 													"maxclass" : "comment",
 													"text" : "Original values generated by patcher genInput",
 													"numoutlets" : 0,
@@ -2852,6 +2876,7 @@
 											}
 , 											{
 												"box" : 												{
+													"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 													"maxclass" : "comment",
 													"text" : "Any input triggers a stream of integers from 0 to 100",
 													"numoutlets" : 0,
@@ -3229,6 +3254,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "All parameters to lp.scampi and lp.scampf can be specified as initialization arguments. The symbol parameters may be specified in any order and may be interspersed among the numeric arguments arbitrarily. The numeric arguments must be specified in the order: scale, offset, minimum, maximum. The following examples are alternate ways of specifying the default configuration for lp.scampi and lp.scampf.",
 									"linecount" : 4,
@@ -3362,6 +3388,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "Left to its own devices, lp.scampi will truncate floating-point values before sending out the calculated integer result. However, you can specify that floating-point values should be rounded to the nearest integer, that the mathematical floor or ceiling values should be used, or that rounding should always be away from zero (“to infinity”).",
 									"linecount" : 4,
@@ -3376,6 +3403,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "After changing the rounding option, bang lp.scampi to recalculate the result based on the last input value.",
 									"linecount" : 3,
@@ -3550,6 +3578,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "Additionally, the split message will cause results that were out-of-range (prior to any range correction by reflect & Co.) to be sent out the right outlet. A non-zero argument after split will cause the (corrected) numeric value to be sent out, a symbolic argument will result in that symbol being sent out. The split message is typically used with the stet option, but it may be used with the other range-limiting options, too.",
 									"linecount" : 4,
@@ -3580,6 +3609,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "New range maximum:",
 									"numoutlets" : 0,
@@ -3609,6 +3639,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "New range minimum:",
 									"numoutlets" : 0,
@@ -3622,6 +3653,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "The default output range is 0 <= x < 128. This can be changed with messages to the fourth and fifth inlets.",
 									"linecount" : 3,
@@ -3636,6 +3668,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "Choose a range limiting option. The message “stet” means “no range limiting”.",
 									"linecount" : 2,
@@ -3801,6 +3834,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "Left to its own devices, lp.scampi and lp.scampf will simply scale and offset all input values. However, you can specify that out-of-range results be clipped, reflected, or wrapped back into range.",
 									"linecount" : 2,
@@ -3966,6 +4000,7 @@
 			}
 , 			{
 				"box" : 				{
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"maxclass" : "comment",
 					"text" : "Offset",
 					"numoutlets" : 0,
@@ -4011,6 +4046,7 @@
 			}
 , 			{
 				"box" : 				{
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"maxclass" : "comment",
 					"text" : "Scale",
 					"numoutlets" : 0,
@@ -4024,6 +4060,7 @@
 			}
 , 			{
 				"box" : 				{
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"maxclass" : "comment",
 					"text" : "Offset",
 					"numoutlets" : 0,
@@ -4069,6 +4106,7 @@
 			}
 , 			{
 				"box" : 				{
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"maxclass" : "comment",
 					"text" : "= Input \/ 128",
 					"numoutlets" : 0,
@@ -4146,6 +4184,7 @@
 			}
 , 			{
 				"box" : 				{
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"maxclass" : "comment",
 					"text" : "You can also input values outside the ranges indicated above, extending the output range.",
 					"numoutlets" : 0,
@@ -4255,6 +4294,7 @@
 			}
 , 			{
 				"box" : 				{
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"maxclass" : "comment",
 					"text" : "Lp.scampi and lp.scampf provide, in single handy objects, all the functions you need for mapping data from one range to another: linearly, exponentially, or using a power function. You would otherwise need to use a combination of *, +, expr, split, and other objects to produce the same functionality.\rWith no arguments, lp.scampi linearly maps floats in the range 0 ≤ x < 1 to the MIDI-friendly range 0 ≤ x < 128. Conversely, lp.scampf maps MIDI note-number type values to the unit.",
 					"linecount" : 5,
@@ -4269,6 +4309,7 @@
 			}
 , 			{
 				"box" : 				{
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"maxclass" : "comment",
 					"text" : "and",
 					"numoutlets" : 0,
@@ -4312,6 +4353,7 @@
 			}
 , 			{
 				"box" : 				{
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"maxclass" : "comment",
 					"text" : "Scale, map, and limit values.",
 					"numoutlets" : 0,
@@ -4325,6 +4367,7 @@
 			}
 , 			{
 				"box" : 				{
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"maxclass" : "comment",
 					"text" : "= Input * 128",
 					"numoutlets" : 0,
@@ -4338,6 +4381,7 @@
 			}
 , 			{
 				"box" : 				{
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"maxclass" : "comment",
 					"text" : "You can specify other values for scale (i.e., a multiplier) as well as specifying an offset (i.e., a value to add to the result after scaling). Scale goes into the second inlet, offest goes to the third inlet (connections hidden in this patch).",
 					"linecount" : 2,
@@ -4352,6 +4396,7 @@
 			}
 , 			{
 				"box" : 				{
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"maxclass" : "comment",
 					"text" : "Both objects are ambidexterous with regards to numbers: lp.scampi will also accept ints and lp.scampf will also accept floats as input.",
 					"linecount" : 2,
@@ -4366,6 +4411,7 @@
 			}
 , 			{
 				"box" : 				{
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"maxclass" : "comment",
 					"text" : "Scale",
 					"numoutlets" : 0,
@@ -4379,6 +4425,7 @@
 			}
 , 			{
 				"box" : 				{
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"maxclass" : "comment",
 					"text" : "Double-click on the following patchers for more information about how to limit output values to a specific range (scampLim), how lp.scampi handles floating-point to integer conversion (scampTrunc), and how to use initialization arguments (scampArg).",
 					"linecount" : 3,

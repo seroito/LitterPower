@@ -18,6 +18,7 @@
 		"metadata" : [  ],
 		"boxes" : [ 			{
 				"box" : 				{
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"maxclass" : "comment",
 					"text" : "Typically frim~ will be used inside a pfft~. See the \"Spectral Mutation\" X-ample in Litter Extras for one way of doing this.",
 					"numinlets" : 1,
@@ -199,6 +200,7 @@
 											}
 , 											{
 												"box" : 												{
+													"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 													"maxclass" : "comment",
 													"text" : "Abbreviation for FRequency domain Interval Mutation.",
 													"numinlets" : 1,
@@ -459,6 +461,7 @@
 										"metadata" : [  ],
 										"boxes" : [ 											{
 												"box" : 												{
+													"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 													"maxclass" : "comment",
 													"text" : "Polansky, Larry, “Morphological metrics,” Journal of New Music Research (formally Interface) 25 (1996): 289-368.",
 													"numinlets" : 1,
@@ -484,6 +487,7 @@
 											}
 , 											{
 												"box" : 												{
+													"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 													"maxclass" : "comment",
 													"text" : "Polansky, Larry and Tom Erbe, “Spectral Mutation in SoundHack: A Brief Description” (paper presented at the International Computer Music Conference, Banff, Canada, 1995), 307-314.",
 													"linecount" : 2,
@@ -566,6 +570,7 @@
 											}
 , 											{
 												"box" : 												{
+													"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 													"maxclass" : "comment",
 													"text" : "Polansky, Larry, “Morphological Metrics: An Introduction to a Theory of Formal Distances” (paper presented at the International Computer Music Conference, Champaign-Urbana, 1987), 197-204.",
 													"linecount" : 2,
@@ -2537,6 +2542,7 @@
 			}
 , 			{
 				"box" : 				{
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"maxclass" : "comment",
 					"text" : "Lp.frim~ implements spectral mutation of signals. The presentation here presumes familiarity with mutation algorithms.",
 					"numinlets" : 1,

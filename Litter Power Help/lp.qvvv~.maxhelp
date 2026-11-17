@@ -114,6 +114,7 @@
 										"metadata" : [  ],
 										"boxes" : [ 											{
 												"box" : 												{
+													"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 													"maxclass" : "comment",
 													"text" : "Set an initial NN Factor:",
 													"numoutlets" : 0,
@@ -141,6 +142,7 @@
 											}
 , 											{
 												"box" : 												{
+													"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 													"maxclass" : "comment",
 													"text" : "Set an initial Hurst value:",
 													"numoutlets" : 0,
@@ -168,6 +170,7 @@
 											}
 , 											{
 												"box" : 												{
+													"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 													"maxclass" : "comment",
 													"text" : "Three ways to say the same thing:",
 													"numoutlets" : 0,
@@ -435,6 +438,7 @@
 											}
 , 											{
 												"box" : 												{
+													"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 													"maxclass" : "comment",
 													"text" : "lp.qvvv~ accepts two optional arguments, both floats. The first specifies an initial Hurst Exponent, the second an initial NN Factor. Both default to zero.",
 													"linecount" : 2,
@@ -744,6 +748,7 @@
 											}
 , 											{
 												"box" : 												{
+													"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 													"maxclass" : "comment",
 													"text" : "The messages in the menu below are sent to the lp.qvvv~ object in the main window so you can experiment with the different settings.",
 													"linecount" : 2,
@@ -769,6 +774,7 @@
 											}
 , 											{
 												"box" : 												{
+													"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 													"maxclass" : "comment",
 													"text" : "If producing signals with unit amplitude is important for your application, lp.qvvv~ supports the same range limiting messages as lp.scamp~ & Co., so you can clip, wrap, or reflect into the unit amplitude range as suits your needs. The default state is 'stet' (ie, no limits on the output signal).",
 													"linecount" : 3,
@@ -799,6 +805,7 @@
 											}
 , 											{
 												"box" : 												{
+													"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 													"maxclass" : "comment",
 													"text" : "Lp.qvvv~, left to its own devices, may generate sample values just outside the normal unit range, particularly with Hurst values close to zero. This may or may not be an issue when the signal finally reaches your dac~, depending on how you've processed the signal.",
 													"linecount" : 3,
@@ -986,6 +993,7 @@
 											}
 , 											{
 												"box" : 												{
+													"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 													"maxclass" : "comment",
 													"text" : "Q is simply the letter after P.",
 													"numoutlets" : 0,
@@ -1308,6 +1316,7 @@
 											}
 , 											{
 												"box" : 												{
+													"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 													"maxclass" : "comment",
 													"text" : "Voss, Richard F. and John Clarke, “1\/f Noise in Music: Music from 1\/f Noise,” Journal of the Acoustic Society of America 63, no. 1 (1978): 258-263.",
 													"linecount" : 2,
@@ -2050,6 +2059,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "Grab sends version symbol to us. Format this into a scripting message for an object named 'version' and send that to a thispatcher object in the mother patch.",
 									"linecount" : 2,
@@ -2180,6 +2190,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "Loadbang triggers a \"vers\" message to a grab object in the mother patcher at loadbang time, as well as banging Judge Doom",
 									"linecount" : 4,
@@ -2194,6 +2205,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "window size message from thispatcher in the mother patch.",
 									"linecount" : 2,
@@ -2363,6 +2375,7 @@
 			}
 , 			{
 				"box" : 				{
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"maxclass" : "comment",
 					"text" : "The granularity of the values produced by lp.pvvv~ can be set with an “NN factor” in the range 0 ≤ x ≤ 31. NN can now be a floating point value!",
 					"linecount" : 2,
@@ -2426,6 +2439,7 @@
 			}
 , 			{
 				"box" : 				{
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"maxclass" : "comment",
 					"text" : "Colored noise with variable Hurst exponent — using floating point arithmetic",
 					"numoutlets" : 0,
@@ -2490,6 +2504,7 @@
 			}
 , 			{
 				"box" : 				{
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"maxclass" : "comment",
 					"text" : "The Hurst Exponent is technically defined only in the range 0 ≤ h ≤ 1, the math works for all real values (well, to the limits of 32-bit floating point numbers). Whether or not you want to do this is up to you.",
 					"linecount" : 3,
@@ -2504,6 +2519,7 @@
 			}
 , 			{
 				"box" : 				{
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"maxclass" : "comment",
 					"text" : "The Hurst Exponent controls the color (or “persistance”) of the noise generated. A value of 0 generates a 1\/f distribution (pink noise), 0.5 generates a 1\/f^2 distribution (brown noise), and 1 generates a1\/f^3 distribution (black noise). You can experiment with values in between. And beyond…",
 					"linecount" : 3,

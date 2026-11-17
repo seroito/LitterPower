@@ -470,6 +470,7 @@
 											}
 , 											{
 												"box" : 												{
+													"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 													"maxclass" : "comment",
 													"text" : "Cage, John. Silence. (London: Marion Boyars, 1987).",
 													"numinlets" : 1,
@@ -484,6 +485,7 @@
 											}
 , 											{
 												"box" : 												{
+													"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 													"maxclass" : "comment",
 													"text" : "Jou, Tsung Hwa, Tao of I Ching: Way to Divination (Boston: Tuttle, 1985)",
 													"numinlets" : 1,
@@ -498,6 +500,7 @@
 											}
 , 											{
 												"box" : 												{
+													"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 													"maxclass" : "comment",
 													"text" : "Huang, Kerson and Rosemary Huang, I Ching (New York: Workman, 1987).",
 													"numinlets" : 1,
@@ -538,6 +541,7 @@
 											}
 , 											{
 												"box" : 												{
+													"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 													"maxclass" : "comment",
 													"text" : "Austin, Larry. “An interview with John Cage and Lejaren Hiller.” Source 4, no. 2 (1968): 11-19. Reprinted in Computer Music Journal 16(4), pp. 15-29, 1993.\r",
 													"linecount" : 2,
@@ -579,6 +583,7 @@
 											}
 , 											{
 												"box" : 												{
+													"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 													"maxclass" : "comment",
 													"text" : "I Ching or Book of Changes, trans. by Cary F. Baynes (from the German translation with commentaries by Richard Wilhelm). (Princeton, New Jersey: Princeton University Press, 1967).",
 													"linecount" : 2,
@@ -594,6 +599,7 @@
 											}
 , 											{
 												"box" : 												{
+													"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 													"maxclass" : "comment",
 													"text" : "I Ging, trans. Richard Wilhelm (Munich: Eugen Diederichs, 1973).",
 													"numinlets" : 1,
@@ -731,6 +737,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "The set message is not absolutely necessary, but is a safety net.",
 									"linecount" : 4,
@@ -1091,6 +1098,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "Grab sends version symbol to us. Format this into a scripting message for an object named 'version' and send that to a thispatcher object in the mother patch.",
 									"linecount" : 2,
@@ -1221,6 +1229,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "Loadbang triggers a \"vers\" message to a grab object in the mother patcher at loadbang time, as well as banging Judge Doom",
 									"linecount" : 4,
@@ -1235,6 +1244,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "window size message from thispatcher in the mother patch.",
 									"linecount" : 2,
@@ -1424,6 +1434,7 @@
 			}
 , 			{
 				"box" : 				{
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"maxclass" : "comment",
 					"text" : "The number of the main oracle to consult in the I Ching (“the oracle of the present”) is sent out the left outlet. Depending upon how the individual coins or yarrow sticks fell, there may be a different “future” oracle which must also be consulted and this is sent out the middle outlet. A list of eighteen values is sent out the right outlet. These indicate the results of the individual coin tosses or how the yarrow sticks fell, in six groups of three, with “yin” represented by 2 and “yang” represented by 3.",
 					"linecount" : 8,
@@ -1438,6 +1449,7 @@
 			}
 , 			{
 				"box" : 				{
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"maxclass" : "comment",
 					"text" : "There are two traditional methods for consulting the I Ching: throwing yarrow sticks and tossing coins. You can specify which method you wish to use with the messages “coin” and “yarrow”, each of which produces as slightly different distribution. A bang simply uses whichever method was last specified. You can also specify either of these methods as an argument to lp.ginger. The yarrow stick method is used by default.",
 					"linecount" : 5,
@@ -1483,6 +1495,7 @@
 			}
 , 			{
 				"box" : 				{
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"maxclass" : "comment",
 					"text" : "Consult the I Ching oracle by throwing yarrow sticks or tossing coins.",
 					"numinlets" : 1,

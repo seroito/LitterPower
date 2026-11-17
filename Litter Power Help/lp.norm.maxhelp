@@ -186,6 +186,7 @@
 											}
 , 											{
 												"box" : 												{
+													"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 													"maxclass" : "comment",
 													"text" : "Obvious.",
 													"numoutlets" : 0,
@@ -440,6 +441,7 @@
 										"metadata" : [  ],
 										"boxes" : [ 											{
 												"box" : 												{
+													"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 													"maxclass" : "comment",
 													"text" : "Marsaglia, George. “Generating a variable from the tail of the normal distribution.” Technometerics 6, 101-2: 1964.",
 													"numoutlets" : 0,
@@ -453,6 +455,7 @@
 											}
 , 											{
 												"box" : 												{
+													"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 													"maxclass" : "comment",
 													"text" : "Payne, W.H. “Normal random numbers: using machine analysis to choose the best algorithn.” ACM Transactions on Mathematical Software 3, 346-58: 1977.",
 													"linecount" : 2,
@@ -467,6 +470,7 @@
 											}
 , 											{
 												"box" : 												{
+													"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 													"maxclass" : "comment",
 													"text" : "Knuth, Donald E., The Art of Computer Programming, Vol. 2 Semi-Numerical Algorithms. (Reading, Mass.: Addison-Wesley, 1972).",
 													"linecount" : 2,
@@ -481,6 +485,7 @@
 											}
 , 											{
 												"box" : 												{
+													"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 													"maxclass" : "comment",
 													"text" : "Butcher, J.C. “Random sampling from the normal distribution.” The Computer Journal, 3 251-3: 1961",
 													"numoutlets" : 0,
@@ -494,6 +499,7 @@
 											}
 , 											{
 												"box" : 												{
+													"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 													"maxclass" : "comment",
 													"text" : "Kinderman, A.J, J.G. Ramage “Computer generation of normal random variables.\" Journal of the American Statistical Association",
 													"linecount" : 2,
@@ -520,6 +526,7 @@
 											}
 , 											{
 												"box" : 												{
+													"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 													"maxclass" : "comment",
 													"text" : "Ahrens, J.H., U. Dieter “Computer mehtods for sampling from the exponential and normal distributions.” Communications of the ACM. 15, 873-82: 1962.",
 													"linecount" : 2,
@@ -582,6 +589,7 @@
 											}
 , 											{
 												"box" : 												{
+													"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 													"maxclass" : "comment",
 													"text" : "Box, G.E.P, M.E. Muller 1958; \"A note on the generation of random normal deviates,\" Annals Math. Stat, V. 29, pp. 610-611",
 													"numoutlets" : 0,
@@ -1223,6 +1231,7 @@
 						"metadata" : [  ],
 						"boxes" : [ 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "Warn me",
 									"linecount" : 2,
@@ -1265,6 +1274,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "See the difference in the Max window",
 									"linecount" : 2,
@@ -1364,6 +1374,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "Negative Standard Deviation Deprecated",
 									"numoutlets" : 0,
@@ -1377,6 +1388,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "Apropos the mathematical definition of the Gauss Distribution: Standard Deviation is not supposed to take on negative values. Norm does accept negative values for this parameter, generating (over the long term) a distribution identical to what you would get if the absolute value had been used. It is recommended that you avoid negative values and norm will now print a warning message to the Max window. The warning will be printed at most once per minute to prevent flooding the Max window.",
 									"linecount" : 6,
@@ -1391,6 +1403,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "Initialization Argument for Standard Deviation",
 									"numoutlets" : 0,
@@ -1404,6 +1417,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "Previous versions of norm did not distinguish between an explicit argument of zero for standard deviation (the second argument) and no argument. So typing something like [lp.norm 42 0] was equivalent to [lp.norm 42] and used the default Standard Deviation (one). Norm now distinguishes between these two forms and [lp.norm 42 0] initializes the object to a Standard Deviation of zero. \rAlthough the Gaussian distribution is, strictly speaking, not defined for a Standard Deviation of zero, some people do want to use this as an initial state.   ",
 									"linecount" : 6,
@@ -1418,6 +1432,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "Tell Message",
 									"numoutlets" : 0,
@@ -1431,6 +1446,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "Advanced algorithms allow norm to generate values faster than in previous versions.",
 									"numoutlets" : 0,
@@ -1444,6 +1460,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "Speed",
 									"numoutlets" : 0,
@@ -1457,6 +1474,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "The tell message calculates properties of the random distribution: mean, median, standard variation, etc. Click on the button below for more information. Unlock the MoreInfo subpatch (found in the top-level patcher) to see how it works.",
 									"linecount" : 3,
@@ -1471,6 +1489,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "Tell me about the tell message",
 									"numoutlets" : 0,
@@ -1613,6 +1632,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "Test the difference",
 									"numoutlets" : 0,
@@ -1710,6 +1730,7 @@
 			}
 , 			{
 				"box" : 				{
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"maxclass" : "comment",
 					"text" : "Double-click on patcher MoreInfo for further details.",
 					"linecount" : 2,
@@ -1724,6 +1745,7 @@
 			}
 , 			{
 				"box" : 				{
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"maxclass" : "comment",
 					"text" : "Round norm's output for Histo and table.",
 					"linecount" : 2,
@@ -1896,6 +1918,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "Grab sends version symbol to us. Format this into a scripting message for an object named 'version' and send that to a thispatcher object in the mother patch.",
 									"linecount" : 2,
@@ -2026,6 +2049,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "Loadbang triggers a \"vers\" message to a grab object in the mother patcher at loadbang time, as well as banging Judge Doom",
 									"linecount" : 4,
@@ -2040,6 +2064,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "window size message from thispatcher in the mother patch.",
 									"linecount" : 2,
@@ -2269,6 +2294,7 @@
 			}
 , 			{
 				"box" : 				{
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"maxclass" : "comment",
 					"text" : "Generate normally distributed random values.",
 					"numoutlets" : 0,
@@ -2282,6 +2308,7 @@
 			}
 , 			{
 				"box" : 				{
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"maxclass" : "comment",
 					"text" : "sigma",
 					"numoutlets" : 0,
@@ -2366,6 +2393,7 @@
 			}
 , 			{
 				"box" : 				{
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"maxclass" : "comment",
 					"text" : "(Changing mu or sigma clears the table)",
 					"numoutlets" : 0,
@@ -2439,6 +2467,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "Median",
 									"numoutlets" : 0,
@@ -2467,6 +2496,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "Entropy",
 									"numoutlets" : 0,
@@ -2567,6 +2597,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "Kurtosis",
 									"numoutlets" : 0,
@@ -2580,6 +2611,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "Skew",
 									"numoutlets" : 0,
@@ -2593,6 +2625,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "Mode",
 									"numoutlets" : 0,
@@ -2606,6 +2639,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "Expected values",
 									"numoutlets" : 0,
@@ -2631,6 +2665,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "Standard Deviation",
 									"numoutlets" : 0,
@@ -2680,6 +2715,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "Mean",
 									"numoutlets" : 0,
@@ -2737,6 +2773,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "Kurtosis",
 									"numoutlets" : 0,
@@ -2768,6 +2805,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "Skew",
 									"numoutlets" : 0,
@@ -2817,6 +2855,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "Standard deviation",
 									"linecount" : 2,
@@ -2831,6 +2870,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "Count",
 									"numoutlets" : 0,
@@ -2844,6 +2884,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "Lp.norm's mean should, by definition, converge to mu, its standard deviation should converge to sigma. Skew and kurtosis should converge to 0.",
 									"numoutlets" : 0,
@@ -2893,6 +2934,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "Mean",
 									"numoutlets" : 0,
@@ -2906,6 +2948,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "Max",
 									"numoutlets" : 0,
@@ -2919,6 +2962,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "Min",
 									"numoutlets" : 0,
@@ -2964,6 +3008,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "Random values from lp.norm",
 									"numoutlets" : 0,
@@ -2989,6 +3034,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "In order for lp.norm to produce MIDI-like values, keep mu between 30 and 96 and sigma under about 20. The larger sigma is, the more extreme values norm can produce, but note that even with small values of sigma, extreme values will occaisionally be generated. You may need to pass lp.norm's output through a split object in order to limit the output to the range of values you want.",
 									"linecount" : 3,
@@ -3003,6 +3049,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "Number of values that were outside of Histo's range",
 									"linecount" : 2,
@@ -3462,6 +3509,7 @@
 			}
 , 			{
 				"box" : 				{
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"maxclass" : "comment",
 					"text" : "Bang Uzi and watch the table window. (If the window is hidden, double-click on the table object.)",
 					"linecount" : 2,
@@ -3476,6 +3524,7 @@
 			}
 , 			{
 				"box" : 				{
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"maxclass" : "comment",
 					"text" : "The normal distribution has two parameters, mu (mean) and sigma (standard deviation). The default values are mu=0 and sigma=1.",
 					"linecount" : 2,
@@ -3490,6 +3539,7 @@
 			}
 , 			{
 				"box" : 				{
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"maxclass" : "comment",
 					"text" : "mu",
 					"numoutlets" : 0,

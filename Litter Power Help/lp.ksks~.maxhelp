@@ -186,6 +186,7 @@
 											}
 , 											{
 												"box" : 												{
+													"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 													"maxclass" : "comment",
 													"text" : "I was trying to think of a cheese, but for some reason this reminded me of couscous.",
 													"numoutlets" : 0,
@@ -440,6 +441,7 @@
 										"metadata" : [  ],
 										"boxes" : [ 											{
 												"box" : 												{
+													"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 													"maxclass" : "comment",
 													"text" : "Karplus, K, A Strong. “Digital synthesis of plucked-string and drum timbres.” Computer Music Journal 7.2 43-55. (1983 )",
 													"numoutlets" : 0,
@@ -521,6 +523,7 @@
 											}
 , 											{
 												"box" : 												{
+													"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 													"maxclass" : "comment",
 													"text" : "Jaffe, David A, Julius O. Smith. “Extensions of the Karplus-Strong plucked-string algorithm.” Computer Music Journal 7.2. 56-69. (1983)",
 													"linecount" : 2,
@@ -1079,6 +1082,7 @@
 						"metadata" : [  ],
 						"boxes" : [ 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "Offset so that lowest MIDI note the kslider object will produce sets the decay stretch exponent to zero.",
 									"linecount" : 3,
@@ -1093,6 +1097,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "Reset decay stretch to zero when auto-stretch is turned off.",
 									"linecount" : 2,
@@ -1107,6 +1112,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "MIDI Note Number",
 									"numoutlets" : 0,
@@ -1208,6 +1214,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "Switch auto-stretch on or off (0\/1)",
 									"linecount" : 2,
@@ -1372,6 +1379,7 @@
 			}
 , 			{
 				"box" : 				{
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"maxclass" : "comment",
 					"text" : "Stretch the decay rate depending on selected frequency. Turn this toggle on to try one way of doing this.",
 					"linecount" : 3,
@@ -1397,6 +1405,7 @@
 			}
 , 			{
 				"box" : 				{
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"maxclass" : "comment",
 					"text" : "Start audio and turn up the volume.",
 					"numoutlets" : 0,
@@ -1410,6 +1419,7 @@
 			}
 , 			{
 				"box" : 				{
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"maxclass" : "comment",
 					"text" : "The \"blend factor\" is a value between zero and one, modifying the quality of the sounds produced. With a blend factor of 0.5, the sounds are more drum-like.",
 					"linecount" : 2,
@@ -1440,6 +1450,7 @@
 			}
 , 			{
 				"box" : 				{
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"maxclass" : "comment",
 					"text" : "You can modify the decay rate. Positive values stretch the decay, for longer, more harp-like, sounds. Negative values make for a shorter decay time, producing drier, more pizzicato-like sounds.",
 					"linecount" : 3,
@@ -1454,6 +1465,7 @@
 			}
 , 			{
 				"box" : 				{
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"maxclass" : "comment",
 					"text" : "...or specific frequencies.",
 					"numoutlets" : 0,
@@ -1467,6 +1479,7 @@
 			}
 , 			{
 				"box" : 				{
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"maxclass" : "comment",
 					"text" : "... or individual notes ...",
 					"numoutlets" : 0,
@@ -1606,6 +1619,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "Grab sends version symbol to us. Format this into a scripting message for an object named 'version' and send that to a thispatcher object in the mother patch.",
 									"linecount" : 2,
@@ -1736,6 +1750,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "Loadbang triggers a \"vers\" message to a grab object in the mother patcher at loadbang time, as well as banging Judge Doom",
 									"linecount" : 4,
@@ -1750,6 +1765,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "window size message from thispatcher in the mother patch.",
 									"linecount" : 2,
@@ -1907,6 +1923,7 @@
 			}
 , 			{
 				"box" : 				{
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"maxclass" : "comment",
 					"text" : "Lp.ksks~ uses a novel variation on the traditional Karplus-Strong plucked string algorithm to produce plucked noises with accurate tuning. And it's fast, too!",
 					"linecount" : 2,
@@ -1936,6 +1953,7 @@
 			}
 , 			{
 				"box" : 				{
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"maxclass" : "comment",
 					"text" : "Plucked noise",
 					"numoutlets" : 0,
@@ -2021,6 +2039,7 @@
 			}
 , 			{
 				"box" : 				{
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"maxclass" : "comment",
 					"text" : "Play the harp sequence...",
 					"numoutlets" : 0,

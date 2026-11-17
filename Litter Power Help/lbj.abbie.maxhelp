@@ -96,6 +96,7 @@
 			},
 			{
 				"box": {
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"id": "obj-4",
 					"maxclass": "comment",
 					"patching_rect": [

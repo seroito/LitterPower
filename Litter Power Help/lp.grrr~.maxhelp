@@ -33,6 +33,7 @@
 			}
 , 			{
 				"box" : 				{
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"maxclass" : "comment",
 					"text" : "Start audio and scale output to taste.",
 					"linecount" : 4,
@@ -200,6 +201,7 @@
 											}
 , 											{
 												"box" : 												{
+													"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 													"maxclass" : "comment",
 													"text" : "GRRRay noise.\r\rThis particular “colored” noise seems to have been named not so much due to associations with light (as is the case of white or pink noise) but because of a certain similarity to the Gray Code.",
 													"linecount" : 4,
@@ -455,6 +457,7 @@
 										"metadata" : [  ],
 										"boxes" : [ 											{
 												"box" : 												{
+													"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 													"maxclass" : "comment",
 													"text" : "Knuth, Donald E. “Generating all n-tuples.” The Art of Computer Programming, Volume 4A: Enumeration and Backtracking, pre-fascicle 2a, October 15, 2004. http:\/\/www-cs-faculty.stanford.edu\/~knuth\/fasc2a.ps.gz",
 													"linecount" : 2,
@@ -537,6 +540,7 @@
 											}
 , 											{
 												"box" : 												{
+													"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 													"maxclass" : "comment",
 													"text" : "Gray, F. “Pulse code communication,” 1953. U.S. patent no. 2,632,058.",
 													"numoutlets" : 0,
@@ -1270,6 +1274,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "Grab sends version symbol to us. Format this into a scripting message for an object named 'version' and send that to a thispatcher object in the mother patch.",
 									"linecount" : 2,
@@ -1400,6 +1405,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "Loadbang triggers a \"vers\" message to a grab object in the mother patcher at loadbang time, as well as banging Judge Doom",
 									"linecount" : 4,
@@ -1414,6 +1420,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "window size message from thispatcher in the mother patch.",
 									"linecount" : 2,
@@ -1609,6 +1616,7 @@
 			}
 , 			{
 				"box" : 				{
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"maxclass" : "comment",
 					"text" : "Gray noise results from flipping random bits of a signal on a sample-to-sample basis. The spectrum is stronger towards lower frequencies.",
 					"linecount" : 2,
@@ -1638,6 +1646,7 @@
 			}
 , 			{
 				"box" : 				{
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"maxclass" : "comment",
 					"text" : "Gray noise.",
 					"numoutlets" : 0,

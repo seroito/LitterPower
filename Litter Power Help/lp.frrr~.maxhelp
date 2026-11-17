@@ -201,6 +201,7 @@
 											}
 , 											{
 												"box" : 												{
+													"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 													"maxclass" : "comment",
 													"text" : "Low-FRRRequency noise.",
 													"numoutlets" : 0,
@@ -702,6 +703,7 @@
 			}
 , 			{
 				"box" : 				{
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"maxclass" : "comment",
 					"text" : "Lp.frrr~ can either be used as a direct audio source or as a control signal (typically at sub-audio frequencies).",
 					"numoutlets" : 0,
@@ -920,6 +922,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "Grab sends version symbol to us. Format this into a scripting message for an object named 'version' and send that to a thispatcher object in the mother patch.",
 									"linecount" : 3,
@@ -1050,6 +1053,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "Loadbang triggers a \"vers\" message to a grab object in the mother patcher at loadbang time, as well as banging Judge Doom",
 									"linecount" : 4,
@@ -1064,6 +1068,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "window size message from thispatcher in the mother patch.",
 									"linecount" : 2,
@@ -1376,6 +1381,7 @@
 			}
 , 			{
 				"box" : 				{
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"maxclass" : "comment",
 					"text" : "Low frequency noise generator",
 					"numoutlets" : 0,
@@ -1389,6 +1395,7 @@
 			}
 , 			{
 				"box" : 				{
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"maxclass" : "comment",
 					"text" : "One example of control processing: scale ouput to the frequency range from 100 to 1900 Hz.",
 					"linecount" : 2,
@@ -1403,6 +1410,7 @@
 			}
 , 			{
 				"box" : 				{
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"maxclass" : "comment",
 					"text" : "Low-frequency noise values are generated at an integral fraction of the sampling rate. You specify the frequency (as an argument or a value in the left inlet) in Hertz, lp.frrr~ calculates the closest integral number of samples. In its default state, lp.frrr~ is a sample-and-hold generator. In addition, an integer sent to the right inlet allows you to switch between linear interpolation (1), quadratic interpolation (2), and no interpolation (0).",
 					"linecount" : 4,

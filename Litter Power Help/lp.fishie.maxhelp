@@ -186,6 +186,7 @@
 											}
 , 											{
 												"box" : 												{
+													"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 													"maxclass" : "comment",
 													"text" : "This one seems sort of obvious.\rPS: the textbook in which I first read about this distribution only mentioned Ronald Fisher, whereas some other references credit George Snedecor, either jointly with Fisher or alone. It's probably just as well I didn't know about the latter author.",
 													"linecount" : 3,
@@ -509,6 +510,7 @@
 											}
 , 											{
 												"box" : 												{
+													"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 													"maxclass" : "comment",
 													"text" : "Fisher, Ronald A., A. S. Corbett, C.B. Williams. “The relation between the number of species and the number of individuals in a random sample of an animal population.” Journal of Animal Ecology 12, 42-57 (1943).",
 													"linecount" : 2,
@@ -1065,6 +1067,7 @@
 						"metadata" : [  ],
 						"boxes" : [ 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "You Can No Longer Shoot Yourself in the Foot",
 									"numoutlets" : 0,
@@ -1078,6 +1081,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "The tell message",
 									"numoutlets" : 0,
@@ -1091,6 +1095,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "Lp.fishie also profits from the speed improvements made to the chi-squared algorithm in lp.chichi and the improved generator used by lp.norm. You can now set the degrees of freedom parameters as high as you want to and fishie will calculate random values for you faster than you can say Fisher-Snedecor.",
 									"linecount" : 4,
@@ -1105,6 +1110,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "Speed",
 									"numoutlets" : 0,
@@ -1118,6 +1124,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "The tell message calculates properties of the random distribution: mean, mode, standard variation, and skew. Click on the button below for more information.",
 									"linecount" : 2,
@@ -1132,6 +1139,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "Tell me about the tell message",
 									"numoutlets" : 0,
@@ -1274,6 +1282,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "Earlier versions allowed you to set the first Degrees of Freedom parameter to zero. The F-distribution is technically undefined in this situation, and the object produced only infinity. This seemed such a Bad Idea that we corrected the external to prevent you from setting this parameter to zero.",
 									"linecount" : 4,
@@ -1546,6 +1555,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "Loadbang triggers a \"vers\" message to a grab object in the mother patcher at loadbang time.",
 									"linecount" : 2,
@@ -1760,6 +1770,7 @@
 						"metadata" : [  ],
 						"boxes" : [ 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "The distribution's expected mean value is determined by the second degrees-of-freedom parameter alone. For f2 > 2, the mean converges to f2\/(f2-2). The other statistical properties have more complex formulae that can be found in the literature.",
 									"linecount" : 2,
@@ -1840,6 +1851,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "Skew",
 									"numoutlets" : 0,
@@ -1853,6 +1865,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "Mode",
 									"numoutlets" : 0,
@@ -1866,6 +1879,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "Expected values",
 									"numoutlets" : 0,
@@ -1891,6 +1905,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "Standard Deviation",
 									"numoutlets" : 0,
@@ -1940,6 +1955,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "Mean",
 									"numoutlets" : 0,
@@ -1966,6 +1982,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "Skew",
 									"numoutlets" : 0,
@@ -2009,6 +2026,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "Random values",
 									"numoutlets" : 0,
@@ -2158,6 +2176,7 @@
 											}
 , 											{
 												"box" : 												{
+													"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 													"maxclass" : "comment",
 													"text" : "clear message resets counter",
 													"linecount" : 2,
@@ -2172,6 +2191,7 @@
 											}
 , 											{
 												"box" : 												{
+													"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 													"maxclass" : "comment",
 													"text" : "value out of Histo's range increments counter and sends it a bang",
 													"linecount" : 4,
@@ -2287,6 +2307,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "Count values outside of Histo's range",
 									"linecount" : 2,
@@ -2319,6 +2340,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "Count",
 									"numoutlets" : 0,
@@ -2332,6 +2354,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "The distribution function changes radically for different values of f1 and f2. It gets a little sluggish for ridiculously large values (say, ≥ 250 or so).",
 									"linecount" : 2,
@@ -2346,6 +2369,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "Std. Dev.",
 									"linecount" : 2,
@@ -2396,6 +2420,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "Min",
 									"numoutlets" : 0,
@@ -2409,6 +2434,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "Max",
 									"numoutlets" : 0,
@@ -2440,6 +2466,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "Mean",
 									"numoutlets" : 0,
@@ -2622,6 +2649,7 @@
 			}
 , 			{
 				"box" : 				{
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"maxclass" : "comment",
 					"text" : "Bang Uzi and watch the table window (if the window is hidden, double-click on the table object). Changing either parameter clears the table (connections hidden).",
 					"linecount" : 4,
@@ -2636,6 +2664,7 @@
 			}
 , 			{
 				"box" : 				{
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"maxclass" : "comment",
 					"text" : "Round lp.fishie's output to int for Histo and table.",
 					"linecount" : 4,
@@ -2650,6 +2679,7 @@
 			}
 , 			{
 				"box" : 				{
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"maxclass" : "comment",
 					"text" : "Double-click on patcher MoreInfo for further details.",
 					"linecount" : 2,
@@ -2773,6 +2803,7 @@
 			}
 , 			{
 				"box" : 				{
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"maxclass" : "comment",
 					"text" : "f1",
 					"numoutlets" : 0,
@@ -2786,6 +2817,7 @@
 			}
 , 			{
 				"box" : 				{
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"maxclass" : "comment",
 					"text" : "f2",
 					"numoutlets" : 0,
@@ -2831,6 +2863,7 @@
 			}
 , 			{
 				"box" : 				{
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"maxclass" : "comment",
 					"text" : "Generate random numbers with Fisher's F distribution.",
 					"numoutlets" : 0,
@@ -2874,6 +2907,7 @@
 			}
 , 			{
 				"box" : 				{
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"maxclass" : "comment",
 					"text" : "The F distribution has two parameters, f1 and f2. Each is the degrees of freedom parameter for a Chi-Square distribution and defaults to 1.",
 					"linecount" : 2,

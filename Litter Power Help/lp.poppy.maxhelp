@@ -204,6 +204,7 @@
 											}
 , 											{
 												"box" : 												{
+													"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 													"maxclass" : "comment",
 													"text" : "In honor of Madam Pomfrey, who does her best to maintain the population level of her charges.",
 													"numoutlets" : 0,
@@ -458,6 +459,7 @@
 										"metadata" : [  ],
 										"boxes" : [ 											{
 												"box" : 												{
+													"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 													"maxclass" : "comment",
 													"text" : "Glieck, James. Chaos: The Making of a New Science. Penguin, New York, 1987.",
 													"numoutlets" : 0,
@@ -471,6 +473,7 @@
 											}
 , 											{
 												"box" : 												{
+													"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 													"maxclass" : "comment",
 													"text" : "Li, Tien-Yien and James Yoreriod three implies chaos” American Mathematical Monthly, 1975 (LXXXII) pp. 985-992.",
 													"numoutlets" : 0,
@@ -496,6 +499,7 @@
 											}
 , 											{
 												"box" : 												{
+													"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 													"maxclass" : "comment",
 													"text" : "Dewdney, A Kee. “Computer recreations: Probing the strange attractions of chaos,” Scientific American 1987 (CCLXXXVII:1) pp. 90-93",
 													"linecount" : 2,
@@ -1087,6 +1091,7 @@
 			}
 , 			{
 				"box" : 				{
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"maxclass" : "comment",
 					"text" : "Hit the checkbox if you want to hear a simple MIDI interpretation of poppy's output. Feel free to look at the subpatch.",
 					"linecount" : 3,
@@ -1272,6 +1277,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "Turn MIDI on or off",
 									"numoutlets" : 0,
@@ -1297,6 +1303,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "Numbers from lp.poppy",
 									"numoutlets" : 0,
@@ -1310,6 +1317,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "You can play with the parameters controlling the output range. Some people like a range from 30 to 127.",
 									"linecount" : 5,
@@ -1573,6 +1581,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "Grab sends version symbol to us. Format this into a scripting message for an object named 'version' and send that to a thispatcher object in the mother patch.",
 									"linecount" : 2,
@@ -1703,6 +1712,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "Loadbang triggers a \"vers\" message to a grab object in the mother patcher at loadbang time, as well as banging Judge Doom",
 									"linecount" : 4,
@@ -1717,6 +1727,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "window size message from thispatcher in the mother patch.",
 									"linecount" : 2,
@@ -1890,6 +1901,7 @@
 			}
 , 			{
 				"box" : 				{
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"maxclass" : "comment",
 					"text" : "Open the moreInfo patcher for information on seeds and initialization arguments.  -->",
 					"numoutlets" : 0,
@@ -1971,6 +1983,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "With a seed population of 75% and growth rates alternating between 2. and 2.5, the popuplation model quickly settles down to an alternation between 47% and 62%.",
 									"linecount" : 4,
@@ -1999,6 +2012,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "If there is only one argument, it is the growth rate and the seed defaults to 2\/3. With multiple arguments, the final argument is a seed and the other arguments are growth rates. With no arguments, there is a single default growth rate set to 3.57, the beginning of chaotic behavior.",
 									"linecount" : 5,
@@ -2013,6 +2027,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "You can initialize lp.poppy with a single growth rate, a growth rate and an initial seed population, or a list of growth rates and a seed.",
 									"linecount" : 2,
@@ -2085,6 +2100,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "You can set a “seed” population via the right inlet. The population model starts immediately from this seed. The reset message sets the current population back to the seed value.",
 									"linecount" : 3,
@@ -2355,6 +2371,7 @@
 			}
 , 			{
 				"box" : 				{
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"maxclass" : "comment",
 					"text" : "Send a list of floats to lp.poppy to set cyclic growth rates.",
 					"numoutlets" : 0,
@@ -2381,6 +2398,7 @@
 			}
 , 			{
 				"box" : 				{
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"maxclass" : "comment",
 					"text" : "Send a single float to lp.poppy to set the growth rate. Experiment, or try some “interesting” values.",
 					"linecount" : 2,
@@ -2409,6 +2427,7 @@
 			}
 , 			{
 				"box" : 				{
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"maxclass" : "comment",
 					"text" : "Send bangs to lp.poppy to generate the next population value.",
 					"numoutlets" : 0,
@@ -2538,6 +2557,7 @@
 			}
 , 			{
 				"box" : 				{
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"maxclass" : "comment",
 					"text" : "Valid growth rates are in the range 0 < r ≤ 4.",
 					"numoutlets" : 0,
@@ -2551,6 +2571,7 @@
 			}
 , 			{
 				"box" : 				{
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"maxclass" : "comment",
 					"text" : "The model is extended in that lp.poppy also allows you to specify a cycle of different growth rates. You do this by sending a list in the left inlet.",
 					"linecount" : 2,
@@ -2565,6 +2586,7 @@
 			}
 , 			{
 				"box" : 				{
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"maxclass" : "comment",
 					"text" : "The lp.poppy object implements the classic population growth model: p' = rp(1-p), with p representing the current population (as some fraction of a maximum possible size) and r representing the growth rate. The model assumes some natural limit on population growth, such as availability of food. This is why (1-p) comes into the equation. The left side of the equation is the expected population for the following year (or other unit of time). Depending upon the growth rate, the population will either (a) eventually stabilize at a constant size, (b) oscillate between a fixed number of values, or (c) behave chaotically from year to year.",
 					"linecount" : 5,
@@ -2594,6 +2616,7 @@
 			}
 , 			{
 				"box" : 				{
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"maxclass" : "comment",
 					"text" : "Population growth model",
 					"numoutlets" : 0,

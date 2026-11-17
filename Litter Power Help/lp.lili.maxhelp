@@ -235,6 +235,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "Loadbang triggers a \"vers\" message to a grab object in the mother patcher at loadbang time.",
 									"linecount" : 2,
@@ -513,6 +514,7 @@
 											}
 , 											{
 												"box" : 												{
+													"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 													"maxclass" : "comment",
 													"text" : "All basic random number generators are named based on a repeated short syllable drawn from the name commonly found in the statistical literature. Even this one.",
 													"linecount" : 2,
@@ -836,6 +838,7 @@
 											}
 , 											{
 												"box" : 												{
+													"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 													"maxclass" : "comment",
 													"text" : "Knuth, Donald E., The Art of Computer Programming, Vol. 2 Semi-Numerical Algorithms. (Reading, Mass.: Addison-Wesley, 1972).",
 													"linecount" : 2,
@@ -1393,6 +1396,7 @@
 			}
 , 			{
 				"box" : 				{
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"maxclass" : "comment",
 					"text" : "Take result modulo this when generating next number. Modulo of 0 interpreted as 4, 294, 967, 296.",
 					"linecount" : 2,
@@ -1407,6 +1411,7 @@
 			}
 , 			{
 				"box" : 				{
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"maxclass" : "comment",
 					"text" : "Add this when generating next number.",
 					"fontname" : "Arial",
@@ -1604,6 +1609,7 @@
 			}
 , 			{
 				"box" : 				{
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"maxclass" : "comment",
 					"text" : "Generate more-or-less uniformly distributed random integers using the classic linear congruence algorithm. The default range is [-2147483648 .. 2147483647]",
 					"linecount" : 2,
@@ -1657,6 +1663,7 @@
 			}
 , 			{
 				"box" : 				{
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"maxclass" : "comment",
 					"text" : "Lets examine the top and bottom 8 bits",
 					"fontname" : "Arial",
@@ -1670,6 +1677,7 @@
 			}
 , 			{
 				"box" : 				{
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"maxclass" : "comment",
 					"text" : "Bang Uzi and watch the two table windows. (If the windows are hidden, double-click on the table objects.)",
 					"linecount" : 2,
@@ -1712,6 +1720,7 @@
 						"metadata" : [  ],
 						"boxes" : [ 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "Expected values",
 									"fontname" : "Arial",
@@ -1743,6 +1752,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "Kurtosis",
 									"fontname" : "Arial",
@@ -1774,6 +1784,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "Maximum",
 									"fontname" : "Arial",
@@ -1787,6 +1798,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "Entropy",
 									"fontname" : "Arial",
@@ -1887,6 +1899,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "Skew",
 									"fontname" : "Arial",
@@ -1900,6 +1913,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "Standard Deviation",
 									"fontname" : "Arial",
@@ -1913,6 +1927,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "Mean",
 									"fontname" : "Arial",
@@ -1938,6 +1953,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "Median",
 									"fontname" : "Arial",
@@ -1987,6 +2003,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "Minimum",
 									"fontname" : "Arial",
@@ -2105,6 +2122,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "Std. Dev.",
 									"fontname" : "Arial",
@@ -2118,6 +2136,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "Skew",
 									"fontname" : "Arial",
@@ -2149,6 +2168,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "Count",
 									"fontname" : "Arial",
@@ -2162,6 +2182,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "The statistics for lp.lili's output depend very much on the parameter values. The expected values displayed to the right are based on the premise the lili will produce uniformly distributed random numbers, which is not always the case. Many combinations of parameters will produce sequences of with short cycles that will not appear \"random\" on even casual scrutiny. Even the best parameters can show obvious correlations, as can be seen by observing the patterns in the lowest eight bits of output when using the default parameters (we are told, incidentally, that these are the same parameters as used by the standard random object).",
 									"linecount" : 6,
@@ -2176,6 +2197,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "Mean",
 									"fontname" : "Arial",
@@ -2189,6 +2211,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "Maximum",
 									"fontname" : "Arial",
@@ -2202,6 +2225,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "Mininmum",
 									"fontname" : "Arial",
@@ -2229,6 +2253,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "Random values from lp.lili",
 									"fontname" : "Arial",
@@ -2451,6 +2476,7 @@
 			}
 , 			{
 				"box" : 				{
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"maxclass" : "comment",
 					"text" : "Double-click on patcher MoreInfo for more details.",
 					"linecount" : 2,
@@ -2465,6 +2491,7 @@
 			}
 , 			{
 				"box" : 				{
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"maxclass" : "comment",
 					"text" : "You can alter the seed to whatever you want. A seed of 0 is often not very \"random\". Send a value to the left inlet to generate a new output value based on the seed.",
 					"linecount" : 3,
@@ -2479,6 +2506,7 @@
 			}
 , 			{
 				"box" : 				{
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"maxclass" : "comment",
 					"text" : "Multiply previous seed by this value when generating next number.",
 					"linecount" : 2,
@@ -2508,6 +2536,7 @@
 			}
 , 			{
 				"box" : 				{
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"maxclass" : "comment",
 					"text" : "Parametric linear congruence generator",
 					"fontname" : "Arial",

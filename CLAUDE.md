@@ -86,6 +86,13 @@ workflow builds pushes to both branches. One commit per change:
 4. `Taus88TriSig` (lp.trrr~, lp.nn~): bit reinterpretation via memcpy instead of a
    pointer cast; checked bit-identical for 50 million inputs.
 
+5. Help patchers: comments without a text colour of their own showed the dark theme's
+   light grey on white backgrounds / light panels. `tools/fix_comment_colors.py` gives
+   1815 such comments black text (inserts one line each; Max's file layout unchanged).
+   Comments directly on a patcher without bgcolor (theme background) stay as they are,
+   and so does the subtitle of lp.messages.maxhelp (user's request). The help
+   generators run the tool after writing.
+
 Not done (reviewed, lower priority): A_GIMME new functions declaring argc as `short`,
 A_LONG handlers declaring `long` instead of `t_atom_long`; no reference pages
 (docs/refpages) for the objects.

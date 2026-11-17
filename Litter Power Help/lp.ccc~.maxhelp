@@ -226,6 +226,7 @@
 											}
 , 											{
 												"box" : 												{
+													"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 													"maxclass" : "comment",
 													"text" : "See lp.ccc.",
 													"numoutlets" : 0,
@@ -480,6 +481,7 @@
 										"metadata" : [  ],
 										"boxes" : [ 											{
 												"box" : 												{
+													"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 													"maxclass" : "comment",
 													"text" : "Procaccia, I. and Schuster, H.G. \"Functional renormalisation group theory of universal 1\/f noise in\rdynamical systems,\" Physics Review 28 A, 1983.",
 													"linecount" : 2,
@@ -562,6 +564,7 @@
 											}
 , 											{
 												"box" : 												{
+													"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 													"maxclass" : "comment",
 													"text" : "Schuster, H.G., Deterministic Chaos: An Introduction. Physik Verlag, Weinheim, 1984.\r",
 													"numoutlets" : 0,
@@ -1232,6 +1235,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "Grab sends version symbol to us. Format this into a scripting message for an object named 'version' and send that to a thispatcher object in the mother patch.",
 									"linecount" : 2,
@@ -1362,6 +1366,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "Loadbang triggers a \"vers\" message to a grab object in the mother patcher at loadbang time, as well as banging Judge Doom",
 									"linecount" : 4,
@@ -1376,6 +1381,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "window size message from thispatcher in the mother patch.",
 									"linecount" : 2,
@@ -1534,6 +1540,7 @@
 			}
 , 			{
 				"box" : 				{
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"maxclass" : "comment",
 					"text" : "Start audio and scale amplitude to taste.",
 					"linecount" : 3,
@@ -1625,6 +1632,7 @@
 			}
 , 			{
 				"box" : 				{
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"maxclass" : "comment",
 					"text" : "Chaotic noise with 1\/f spectrum (Schuster\/Procaccia algorithm)",
 					"numoutlets" : 0,
@@ -1638,6 +1646,7 @@
 			}
 , 			{
 				"box" : 				{
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"maxclass" : "comment",
 					"text" : "The lp.ccc~ object uses the Schuster\/Procaccia algorithm for producing a 1\/f fractal noise. It sounds quite different from other 1\/f spectra.",
 					"linecount" : 2,

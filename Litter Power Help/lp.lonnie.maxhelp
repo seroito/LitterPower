@@ -186,6 +186,7 @@
 											}
 , 											{
 												"box" : 												{
+													"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 													"maxclass" : "comment",
 													"text" : "LOg-Normal would be lon, but lonnie sounds friendlier.",
 													"patching_rect" : [ 1.0, 41.0, 575.0, 18.0 ],
@@ -446,6 +447,7 @@
 										"metadata" : [  ],
 										"boxes" : [ 											{
 												"box" : 												{
+													"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 													"maxclass" : "comment",
 													"text" : "Williams CB. 1940. A note on the statistical analysis of sentence length as a criterion of literary style. Biometrika 31: 356–361.",
 													"patching_rect" : [ 1.0, 727.0, 575.0, 18.0 ],
@@ -471,6 +473,7 @@
 											}
 , 											{
 												"box" : 												{
+													"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 													"maxclass" : "comment",
 													"text" : "McAlister D. 1879. The law of the geometric mean. Proceedings of the Royal Society 29: 367–376.",
 													"patching_rect" : [ 1.0, 685.0, 575.0, 18.0 ],
@@ -496,6 +499,7 @@
 											}
 , 											{
 												"box" : 												{
+													"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 													"maxclass" : "comment",
 													"text" : "Preston FW. 1948. The commonness and rarity of species. Ecology 29: 254–283.",
 													"patching_rect" : [ 1.0, 706.0, 575.0, 18.0 ],
@@ -521,6 +525,7 @@
 											}
 , 											{
 												"box" : 												{
+													"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 													"maxclass" : "comment",
 													"text" : "Malanca A, Gaidolfi L, Pessina V, Dallara G. 1996. Distribution of 226-Ra, 232-Th, and 40-K in soils of Rio Grande do Norte (Brazil). Journal of Environmental Radioactivity 30: 55–67.",
 													"linecount" : 2,
@@ -547,6 +552,7 @@
 											}
 , 											{
 												"box" : 												{
+													"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 													"maxclass" : "comment",
 													"text" : "May RM. 1981.Patterns in multi-species communities. In: May RM, ed. Theoretical Ecology: Principles and Applications. Oxford: Blackwell.",
 													"linecount" : 2,
@@ -573,6 +579,7 @@
 											}
 , 											{
 												"box" : 												{
+													"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 													"maxclass" : "comment",
 													"text" : "Limpert, E., W. Stahel and M. Abbt, \"Log-normal Distributions across the Sciences: Keys and Clues\". BioScience, 51 (5), p. 341–352 (2001).",
 													"linecount" : 2,
@@ -599,6 +606,7 @@
 											}
 , 											{
 												"box" : 												{
+													"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 													"maxclass" : "comment",
 													"text" : "Lawrence RJ. 1988. The log-normal as event–time distribution, in: Crow EL, Shimizu K, eds. Log-normal Distributions: Theory and Application.New York: Dekker.",
 													"linecount" : 2,
@@ -625,6 +633,7 @@
 											}
 , 											{
 												"box" : 												{
+													"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 													"maxclass" : "comment",
 													"text" : "Krige DG. 1966. A study of gold and uranium distribution patterns in the Klerksdorp Gold Field. Geoexploration 4: 43–53.",
 													"patching_rect" : [ 1.0, 481.0, 575.0, 18.0 ],
@@ -650,6 +659,7 @@
 											}
 , 											{
 												"box" : 												{
+													"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 													"maxclass" : "comment",
 													"text" : "Keesing F. 2000. Cryptic consumers and the ecology of an African Savanna. BioScience 50: 205–215.",
 													"patching_rect" : [ 1.0, 460.0, 575.0, 18.0 ],
@@ -675,6 +685,7 @@
 											}
 , 											{
 												"box" : 												{
+													"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 													"maxclass" : "comment",
 													"text" : "Horner RD. 1987. Age at onset of Alzheimer’s disease: Clue to the relative importance of etiologic factors? American Journal of Epidemiology 126: 409–414.",
 													"linecount" : 2,
@@ -701,6 +712,7 @@
 											}
 , 											{
 												"box" : 												{
+													"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 													"maxclass" : "comment",
 													"text" : "Herdan G. 1958. The relation between the dictionary distribution and the occurrence distribution of word length and its importance for the study of quantitative linguistics. Biometrika 45: 222–228.",
 													"linecount" : 2,
@@ -727,6 +739,7 @@
 											}
 , 											{
 												"box" : 												{
+													"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 													"maxclass" : "comment",
 													"text" : "Groth BHA. 1914. The golden mean in the inheritance of size. Science 39: 581–584.",
 													"patching_rect" : [ 1.0, 371.0, 575.0, 18.0 ],
@@ -752,6 +765,7 @@
 											}
 , 											{
 												"box" : 												{
+													"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 													"maxclass" : "comment",
 													"text" : "Gibrat R. 1931. Les Inégalités Economiques. Paris: Recueil Sirey.",
 													"patching_rect" : [ 1.0, 350.0, 575.0, 18.0 ],
@@ -777,6 +791,7 @@
 											}
 , 											{
 												"box" : 												{
+													"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 													"maxclass" : "comment",
 													"text" : "Galton F. 1889. Natural Inheritance. London: Macmillan.",
 													"patching_rect" : [ 1.0, 329.0, 575.0, 18.0 ],
@@ -802,6 +817,7 @@
 											}
 , 											{
 												"box" : 												{
+													"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 													"maxclass" : "comment",
 													"text" : "Galton F. 1879. The geometric mean, in vital and social statistics. Proceedings of the Royal Society 29: 365–367.",
 													"patching_rect" : [ 1.0, 308.0, 575.0, 18.0 ],
@@ -827,6 +843,7 @@
 											}
 , 											{
 												"box" : 												{
+													"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 													"maxclass" : "comment",
 													"text" : "Feinleib M, McMahon B. 1960.Variation in the duration of survival of patients with the chronic leukemias. Blood 15–16: 332–349.",
 													"linecount" : 2,
@@ -853,6 +870,7 @@
 											}
 , 											{
 												"box" : 												{
+													"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 													"maxclass" : "comment",
 													"text" : "Fechner GT. 1860. Elemente der Psychophysik. Leipzig (Germany): Breitkopf und Härtel.",
 													"patching_rect" : [ 1.0, 253.0, 575.0, 18.0 ],
@@ -878,6 +896,7 @@
 											}
 , 											{
 												"box" : 												{
+													"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 													"maxclass" : "comment",
 													"text" : "Di Giorgio C, Krempff A, Guiraud H, Binder P, Tiret C, Dumenil G. 1996. Atmospheric pollution by airborne microorganisms in the City of Marseilles. Atmospheric Environment 30: 155–160.",
 													"linecount" : 2,
@@ -904,6 +923,7 @@
 											}
 , 											{
 												"box" : 												{
+													"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 													"maxclass" : "comment",
 													"text" : "Boag JW. 1949. Maximum likelihood estimates of the proportion of patients cured by cancer therapy. Journal of the Royal Statistical Society B, 11: 15–53.",
 													"linecount" : 2,
@@ -930,6 +950,7 @@
 											}
 , 											{
 												"box" : 												{
+													"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 													"maxclass" : "comment",
 													"text" : "Biondini R. 1976. Cloud motion and rainfall statistics. Journal ofApplied Meteorology 15: 205–224.",
 													"patching_rect" : [ 1.0, 164.0, 575.0, 18.0 ],
@@ -943,6 +964,7 @@
 											}
 , 											{
 												"box" : 												{
+													"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 													"maxclass" : "comment",
 													"text" : "Baur P. 1997. Log-normal distribution of water permeability and organic solute mobility in plant cuticles. Plant, Cell and Environment 20: 167–177.",
 													"linecount" : 2,
@@ -969,6 +991,7 @@
 											}
 , 											{
 												"box" : 												{
+													"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 													"maxclass" : "comment",
 													"text" : "Allanson P. 1992. Farm size structure in England and Wales, 1939–89. Journal of Agricultural Economics 43: 137–148.\r",
 													"patching_rect" : [ 1.0, 96.0, 575.0, 18.0 ],
@@ -994,6 +1017,7 @@
 											}
 , 											{
 												"box" : 												{
+													"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 													"maxclass" : "comment",
 													"text" : "Aitchison J,Brown JAC. 1957.The Log-normal Distribution.Cambridge (UK): Cambridge University Press",
 													"patching_rect" : [ 1.0, 75.0, 575.0, 18.0 ],
@@ -1075,6 +1099,7 @@
 											}
 , 											{
 												"box" : 												{
+													"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 													"maxclass" : "comment",
 													"text" : "Ahrens LH. 1954.The log-normal distribution of the elements: A fundamental law of geochemistry and its subsidiary. Geochimica et Cosmochimica Acta 5: 49–73..",
 													"linecount" : 2,
@@ -1275,6 +1300,7 @@
 											}
 , 											{
 												"box" : 												{
+													"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 													"maxclass" : "comment",
 													"text" : "Loper JE, Suslow TV, Schroth MN. 1984. Log-normal distribution of bacterial populations in the rhizosphere. Phytopathology 74: 1454–1460.",
 													"linecount" : 2,
@@ -2425,6 +2451,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "Median",
 									"patching_rect" : [ 668.0, 70.0, 46.0, 17.0 ],
@@ -2453,6 +2480,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "Entropy",
 									"patching_rect" : [ 623.0, 182.0, 82.0, 17.0 ],
@@ -2553,6 +2581,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "Kurtosis",
 									"patching_rect" : [ 668.0, 152.0, 93.0, 17.0 ],
@@ -2566,6 +2595,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "Skew",
 									"patching_rect" : [ 668.0, 132.0, 46.0, 17.0 ],
@@ -2579,6 +2609,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "Mode",
 									"patching_rect" : [ 668.0, 92.0, 41.0, 17.0 ],
@@ -2592,6 +2623,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "Expected values",
 									"patching_rect" : [ 623.0, 22.0, 82.0, 17.0 ],
@@ -2617,6 +2649,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "Standard Deviation",
 									"patching_rect" : [ 668.0, 112.0, 93.0, 17.0 ],
@@ -2666,6 +2699,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "Mean",
 									"patching_rect" : [ 668.0, 50.0, 46.0, 17.0 ],
@@ -3455,6 +3489,7 @@
 			}
 , 			{
 				"box" : 				{
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"maxclass" : "comment",
 					"text" : "The normal distribution has two parameters, mu and sigma. The default values are mu=0 and sigma=1. These parameters are similar to the mu and sigma parameters of a Gaussian distribution.",
 					"linecount" : 2,

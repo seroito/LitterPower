@@ -48,6 +48,7 @@
 			}
 , 			{
 				"box" : 				{
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"maxclass" : "comment",
 					"text" : "Zeta Exponent",
 					"patching_rect" : [ 63.0, 111.0, 72.0, 17.0 ],
@@ -105,6 +106,7 @@
 						"metadata" : [  ],
 						"boxes" : [ 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "The set message is not absolutely necessary, but they are a safety net if we edit the patch and the select box no longer matches the first menu item.",
 									"linecount" : 3,
@@ -405,6 +407,7 @@
 			}
 , 			{
 				"box" : 				{
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"maxclass" : "comment",
 					"text" : "Bang Uzi and watch the table window (if the window is hidden, double-click on the table object).\rThe Zeta Exponent controls how steep the probability curve is, large exponents give sharper curves with fewer high values generated. The Zeta exponent must be positive.\rChanging the Zeta exponent will clear the table and statistics in the MoreInfo subpatch (connections hidden).",
 					"linecount" : 6,
@@ -419,6 +422,7 @@
 			}
 , 			{
 				"box" : 				{
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"maxclass" : "comment",
 					"text" : "Zippie's lowest value is one, but Histo and table start counting at zero",
 					"linecount" : 2,
@@ -461,6 +465,7 @@
 						"metadata" : [  ],
 						"boxes" : [ 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "The \"Zeta exponent\" parameter specifies how fast the probabilities of increasing numbers fall off. ",
 									"linecount" : 2,
@@ -475,6 +480,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "Standard deviation",
 									"patching_rect" : [ 379.0, 110.0, 94.0, 17.0 ],
@@ -554,6 +560,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "Mean",
 									"patching_rect" : [ 379.0, 70.0, 41.0, 17.0 ],
@@ -567,6 +574,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "Expected values",
 									"patching_rect" : [ 334.0, 22.0, 82.0, 17.0 ],
@@ -592,6 +600,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "Mode",
 									"patching_rect" : [ 379.0, 90.0, 33.0, 17.0 ],
@@ -641,6 +650,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "Min",
 									"patching_rect" : [ 379.0, 50.0, 46.0, 17.0 ],
@@ -666,6 +676,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "Random values from lp.zippie",
 									"patching_rect" : [ 28.0, 8.0, 145.0, 17.0 ],
@@ -697,6 +708,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "Count",
 									"patching_rect" : [ 9.0, 69.0, 31.0, 17.0 ],
@@ -710,6 +722,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "Standard Deviation",
 									"patching_rect" : [ 195.0, 69.0, 95.0, 17.0 ],
@@ -759,6 +772,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "Mean",
 									"patching_rect" : [ 153.0, 69.0, 31.0, 17.0 ],
@@ -804,6 +818,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "Min",
 									"patching_rect" : [ 57.0, 69.0, 31.0, 17.0 ],
@@ -817,6 +832,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "Max",
 									"patching_rect" : [ 105.0, 69.0, 31.0, 17.0 ],
@@ -989,6 +1005,7 @@
 			}
 , 			{
 				"box" : 				{
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"maxclass" : "comment",
 					"text" : "Open patcher MoreInfo for details",
 					"patching_rect" : [ 356.0, 266.0, 161.0, 17.0 ],
@@ -1235,6 +1252,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "Loadbang triggers a \"vers\" message to a grab object in the mother patcher at loadbang time.",
 									"linecount" : 2,
@@ -1390,6 +1408,7 @@
 			}
 , 			{
 				"box" : 				{
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"maxclass" : "comment",
 					"text" : "Generate random numbers from a Zipf (zeta) distribution.",
 					"patching_rect" : [ 115.0, 26.0, 404.0, 17.0 ],
@@ -1426,6 +1445,7 @@
 			}
 , 			{
 				"box" : 				{
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"maxclass" : "comment",
 					"text" : "Zipf's distribution was originally formulated in terms of natural languages: the second most common word occurs half as often as the most common word, the third most common word occurs only 1\/3 as often as the most common, the fourth most common occurs 1\/4 as often, and so on. It has been found to model many other real world situations, including income distributions, lengths of musical compositions, frequency of names. Similarly to the Pareto distribution (lp.vilfrie), it is well suited to generating rhythms and amplitude values.",
 					"linecount" : 5,

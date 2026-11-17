@@ -266,6 +266,7 @@
 											},
 											{
 												"box": {
+													"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 													"id": "obj-9",
 													"maxclass": "comment",
 													"patching_rect": [
@@ -613,6 +614,7 @@
 										"boxes": [
 											{
 												"box": {
+													"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 													"id": "obj-19",
 													"maxclass": "comment",
 													"patching_rect": [
@@ -708,6 +710,7 @@
 											},
 											{
 												"box": {
+													"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 													"id": "obj-25",
 													"maxclass": "comment",
 													"patching_rect": [
@@ -1558,6 +1561,7 @@
 							},
 							{
 								"box": {
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"id": "obj-51",
 									"maxclass": "comment",
 									"patching_rect": [
@@ -2458,6 +2462,7 @@
 			},
 			{
 				"box": {
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"id": "obj-87",
 					"maxclass": "comment",
 					"patching_rect": [
@@ -2745,6 +2750,7 @@
 							},
 							{
 								"box": {
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"id": "obj-102",
 									"maxclass": "comment",
 									"patching_rect": [
@@ -2760,6 +2766,7 @@
 							},
 							{
 								"box": {
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"id": "obj-103",
 									"maxclass": "comment",
 									"patching_rect": [
@@ -2775,6 +2782,7 @@
 							},
 							{
 								"box": {
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"id": "obj-104",
 									"maxclass": "comment",
 									"patching_rect": [
@@ -2805,6 +2813,7 @@
 							},
 							{
 								"box": {
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"id": "obj-106",
 									"maxclass": "comment",
 									"patching_rect": [
@@ -2850,6 +2859,7 @@
 							},
 							{
 								"box": {
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"id": "obj-109",
 									"maxclass": "comment",
 									"patching_rect": [
@@ -2960,6 +2970,7 @@
 							},
 							{
 								"box": {
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"id": "obj-116",
 									"maxclass": "comment",
 									"patching_rect": [
@@ -2975,6 +2986,7 @@
 							},
 							{
 								"box": {
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"id": "obj-117",
 									"maxclass": "comment",
 									"patching_rect": [
@@ -3005,6 +3017,7 @@
 							},
 							{
 								"box": {
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"id": "obj-119",
 									"maxclass": "comment",
 									"patching_rect": [
@@ -3020,6 +3033,7 @@
 							},
 							{
 								"box": {
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"id": "obj-120",
 									"maxclass": "comment",
 									"patching_rect": [

@@ -137,6 +137,7 @@
 						"boxes": [
 							{
 								"box": {
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass": "comment",
 									"text": "The PC 415 (mode 3) is a fictional processor that handles overflow when converting floating point to integer in yet another manner. Although it models no real processor, it has a sound distinct from Intel and PPC.",
 									"linecount": 4,
@@ -155,6 +156,7 @@
 							},
 							{
 								"box": {
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass": "comment",
 									"text": "This object is initialized to \"Intel Mode\"",
 									"numoutlets": 0,
@@ -172,6 +174,7 @@
 							},
 							{
 								"box": {
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass": "comment",
 									"text": "This object is initialized to \"PPC Mode\"",
 									"numoutlets": 0,
@@ -229,6 +232,7 @@
 							},
 							{
 								"box": {
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass": "comment",
 									"text": "Try it now! The mode message box is connected to the sound generator in the main patcher...",
 									"linecount": 2,
@@ -247,6 +251,7 @@
 							},
 							{
 								"box": {
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass": "comment",
 									"text": "You can also specify mode by setting the second argument.",
 									"numoutlets": 0,
@@ -279,6 +284,7 @@
 							},
 							{
 								"box": {
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass": "comment",
 									"text": "By default lp.pvvv~ & Co. will produce the sound native to your hardware. By sending the message 'mode 1' you will force the PPC behavior (even if running on an Intel processor). By sending the message 'mode 2' you will force the Intel behavior (even when running on a PPC machine). By sending the message 'mode 0' the lp.pvvv~ objects will revert to the behavior native to the processor you are running on (which is always most CPU efficient, by the way).",
 									"linecount": 4,
@@ -297,6 +303,7 @@
 							},
 							{
 								"box": {
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass": "comment",
 									"text": "The answer is: You decide which sound you want.",
 									"numoutlets": 0,
@@ -314,6 +321,7 @@
 							},
 							{
 								"box": {
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass": "comment",
 									"text": "Since you will generally want your patches to sound the same no matter what hardware is being used, this is not a good situation. But the question is, should lp.pvvv~ and friends prefer the \"Intel sound\" or the \"PPC sound\"?",
 									"linecount": 2,
@@ -433,6 +441,7 @@
 							},
 							{
 								"box": {
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass": "comment",
 									"text": "Some alert Litter Pros noticed that lp.pvvv~ (and its cousins lp.phhh~ and lp.pfff~) can sound different on Intel and PPC processors. This is due to differences in the way Intel and PPC processors handle the conversion of floating point values to integers when the floating point value is outside the integer range of -2,147,483,648 to 2,147,483,647. The difference is most audible for Hurst Exponents close to zero, where this situation occurs quite often in algorithm for generating samples. The way the Intel processor handles the situation results in a \"spikier\" sound, PPC generates a smoother sound.",
 									"linecount": 5,
@@ -570,6 +579,7 @@
 						"boxes": [
 							{
 								"box": {
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass": "comment",
 									"text": "This object is initialized to \"Intel Mode\"",
 									"numoutlets": 0,
@@ -587,6 +597,7 @@
 							},
 							{
 								"box": {
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass": "comment",
 									"text": "This object is initialized to \"PPC Mode\"",
 									"numoutlets": 0,
@@ -644,6 +655,7 @@
 							},
 							{
 								"box": {
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass": "comment",
 									"text": "Try it now! The mode message box is connected to the sound generator in the main patcher...",
 									"linecount": 2,
@@ -662,6 +674,7 @@
 							},
 							{
 								"box": {
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass": "comment",
 									"text": "You can also specify mode by setting the third argument.",
 									"numoutlets": 0,
@@ -694,6 +707,7 @@
 							},
 							{
 								"box": {
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass": "comment",
 									"text": "By default lp.pvvv~ & Co. will produce the sound native to your hardware. By sending the message 'mode 1' you will force the PPC behavior (even if running on an Intel processor). By sending the message 'mode 2' you will force the Intel behavior (even when running on a PPC machine). By sending the message 'mode 0' the lp.pvvv~ objects will revert to the behavior native to the processor you are running on (which is always most CPU efficient, by the way).",
 									"linecount": 4,
@@ -712,6 +726,7 @@
 							},
 							{
 								"box": {
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass": "comment",
 									"text": "The answer is: You decide which sound you want.",
 									"numoutlets": 0,
@@ -729,6 +744,7 @@
 							},
 							{
 								"box": {
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass": "comment",
 									"text": "Since you will generally want your patches to sound the same no matter what hardware is being used, this is not a good situation. But the question is, should lp.pvvv~ and friends prefer the \"Intel sound\" or the \"PPC sound\"?",
 									"linecount": 2,
@@ -845,6 +861,7 @@
 							},
 							{
 								"box": {
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass": "comment",
 									"text": "Some alert Litter Pros noticed that lp.pvvv~ (and its cousins lp.phhh~ and lp.pfff~) can sound different on Intel and PPC processors. This is due to differences in the way Intel and PPC processors handle the conversion of floating point values to integers when the floating point value is outside the integer range of -2,147,483,648 to 2,147,483,647. The difference is most audible for Hurst Exponents close to zero, where this situation occurs quite often in algorithm for generating samples. The way the Intel processor handles the situation results in a \"spikier\" sound, PPC generates a smoother sound.",
 									"linecount": 5,
@@ -1250,6 +1267,7 @@
 											},
 											{
 												"box": {
+													"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 													"maxclass": "comment",
 													"text": "Onomatopoeia.",
 													"numoutlets": 0,
@@ -1766,6 +1784,7 @@
 											},
 											{
 												"box": {
+													"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 													"maxclass": "comment",
 													"text": "Voss, Richard F. and John Clarke, “1/f Noise in Music: Music from 1/f Noise,” Journal of the Acoustic Society of America 63, no. 1 (1978): 258-263.",
 													"linecount": 2,
@@ -2678,6 +2697,7 @@
 			},
 			{
 				"box": {
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"maxclass": "comment",
 					"text": "Scale output amplitude to taste.",
 					"linecount": 2,
@@ -3007,6 +3027,7 @@
 							},
 							{
 								"box": {
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass": "comment",
 									"text": "Grab sends version symbol to us. Format this into a scripting message for an object named 'version' and send that to a thispatcher object in the mother patch.",
 									"linecount": 2,
@@ -3191,6 +3212,7 @@
 							},
 							{
 								"box": {
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass": "comment",
 									"text": "Loadbang triggers a \"vers\" message to a grab object in the mother patcher at loadbang time, as well as banging Judge Doom",
 									"linecount": 4,
@@ -3209,6 +3231,7 @@
 							},
 							{
 								"box": {
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass": "comment",
 									"text": "window size message from thispatcher in the mother patch.",
 									"linecount": 2,
@@ -3554,6 +3577,7 @@
 			},
 			{
 				"box": {
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"maxclass": "comment",
 					"text": "Brownian (red) noise",
 					"numoutlets": 0,
@@ -3682,6 +3706,7 @@
 			},
 			{
 				"box": {
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"maxclass": "comment",
 					"text": "Brownian noise (1/f^2) is fractal noise characterized by a falloff of 6 dB/octave.",
 					"numoutlets": 0,
@@ -3699,6 +3724,7 @@
 			},
 			{
 				"box": {
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"maxclass": "comment",
 					"text": "NN factor controls the \"granularity\" of the signal.",
 					"linecount": 3,
@@ -3990,6 +4016,7 @@
 			},
 			{
 				"box": {
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"fontname": "Arial",
 					"fontsize": 10.533333,
 					"maxclass": "comment",
@@ -4029,6 +4056,7 @@
 			},
 			{
 				"box": {
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"fontname": "Arial",
 					"fontsize": 10.533333,
 					"maxclass": "comment",

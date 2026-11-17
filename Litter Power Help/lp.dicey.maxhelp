@@ -235,6 +235,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "Loadbang triggers a \"vers\" message to a grab object in the mother patcher at loadbang time.",
 									"linecount" : 2,
@@ -513,6 +514,7 @@
 											}
 , 											{
 												"box" : 												{
+													"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 													"maxclass" : "comment",
 													"text" : "Sort of obvious, i'n't?",
 													"patching_rect" : [ 1.0, 41.0, 575.0, 18.0 ],
@@ -1006,6 +1008,7 @@
 			}
 , 			{
 				"box" : 				{
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"maxclass" : "comment",
 					"text" : "Lp.dicey will throw any number of dice with any number of faces.",
 					"patching_rect" : [ 8.0, 46.0, 345.0, 17.0 ],
@@ -1160,6 +1163,7 @@
 			}
 , 			{
 				"box" : 				{
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"maxclass" : "comment",
 					"text" : "Number of Faces",
 					"linecount" : 2,
@@ -1192,6 +1196,7 @@
 			}
 , 			{
 				"box" : 				{
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"maxclass" : "comment",
 					"text" : "Number of Dice",
 					"linecount" : 2,
@@ -1234,6 +1239,7 @@
 						"metadata" : [  ],
 						"boxes" : [ 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "The smallest value that can be generated is d (the number of dice) and the largest is d * f (with f as the number of faces). However, for large values of d, the extremes may never be generated and the distribution approaches a normal (“Gaussian”) distribution as its limit. See lp.norm for more on Gauss distributions.",
 									"linecount" : 4,
@@ -1248,6 +1254,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "Lp.dicey throws any number of “dice” with an arbitrary number of faces. Following the conventions for real dice, the lowest number face has the value one. Note that a single two-faced die is the same as a Bernoulli trial with p(1) = 0.5",
 									"linecount" : 3,
@@ -1280,6 +1287,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "Median",
 									"patching_rect" : [ 504.0, 67.0, 46.0, 17.0 ],
@@ -1308,6 +1316,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "Entropy",
 									"patching_rect" : [ 459.0, 179.0, 82.0, 17.0 ],
@@ -1408,6 +1417,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "Kurtosis",
 									"patching_rect" : [ 504.0, 149.0, 93.0, 17.0 ],
@@ -1421,6 +1431,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "Skew",
 									"patching_rect" : [ 504.0, 129.0, 46.0, 17.0 ],
@@ -1434,6 +1445,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "Mode",
 									"patching_rect" : [ 504.0, 89.0, 41.0, 17.0 ],
@@ -1447,6 +1459,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "Expected values",
 									"patching_rect" : [ 459.0, 19.0, 82.0, 17.0 ],
@@ -1472,6 +1485,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "Standard Deviation",
 									"patching_rect" : [ 504.0, 109.0, 93.0, 17.0 ],
@@ -1521,6 +1535,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "Mean",
 									"patching_rect" : [ 504.0, 47.0, 46.0, 17.0 ],
@@ -1560,6 +1575,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "Kurtosis",
 									"patching_rect" : [ 301.0, 94.0, 53.0, 18.0 ],
@@ -1573,6 +1589,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "Skew",
 									"patching_rect" : [ 254.0, 94.0, 53.0, 18.0 ],
@@ -1652,6 +1669,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "Random values from lp.dicey",
 									"patching_rect" : [ 28.0, 8.0, 164.0, 18.0 ],
@@ -1683,6 +1701,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "Mean",
 									"patching_rect" : [ 155.0, 94.0, 35.0, 18.0 ],
@@ -1728,6 +1747,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "Count",
 									"patching_rect" : [ 9.0, 94.0, 36.0, 18.0 ],
@@ -1741,6 +1761,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "Standard Deviation",
 									"linecount" : 2,
@@ -1773,6 +1794,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "Min",
 									"patching_rect" : [ 58.0, 94.0, 34.0, 18.0 ],
@@ -1786,6 +1808,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "Max",
 									"patching_rect" : [ 107.0, 94.0, 34.0, 18.0 ],
@@ -1985,6 +2008,7 @@
 			}
 , 			{
 				"box" : 				{
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"maxclass" : "comment",
 					"text" : "Double-click on patcher MoreInfo for further details.",
 					"patching_rect" : [ 113.0, 207.0, 245.0, 17.0 ],
@@ -2058,6 +2082,7 @@
 			}
 , 			{
 				"box" : 				{
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"maxclass" : "comment",
 					"text" : "Throw dice.",
 					"patching_rect" : [ 115.0, 26.0, 134.0, 17.0 ],
@@ -2071,6 +2096,7 @@
 			}
 , 			{
 				"box" : 				{
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"maxclass" : "comment",
 					"text" : "Bang Uzi and watch the table window. You can change the number of dice or the number of faces per die. Changing either of these clears the table and other buffers (connections hidden).",
 					"linecount" : 5,

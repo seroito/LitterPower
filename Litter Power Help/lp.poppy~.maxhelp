@@ -204,6 +204,7 @@
 											}
 , 											{
 												"box" : 												{
+													"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 													"maxclass" : "comment",
 													"text" : "See lp.poppy.",
 													"numoutlets" : 0,
@@ -458,6 +459,7 @@
 										"metadata" : [  ],
 										"boxes" : [ 											{
 												"box" : 												{
+													"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 													"maxclass" : "comment",
 													"text" : "Glieck, James. Chaos: The Making of a New Science. Penguin, New York, 1987.",
 													"numoutlets" : 0,
@@ -471,6 +473,7 @@
 											}
 , 											{
 												"box" : 												{
+													"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 													"maxclass" : "comment",
 													"text" : "Li, Tien-Yien and James Yoreriod three implies chaos” American Mathematical Monthly, 1975 (LXXXII) pp. 985-992.",
 													"numoutlets" : 0,
@@ -496,6 +499,7 @@
 											}
 , 											{
 												"box" : 												{
+													"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 													"maxclass" : "comment",
 													"text" : "Dewdney, A Kee. “Computer recreations: Probing the strange attractions of chaos,” Scientific American 1987 (CCLXXXVII:1) pp. 90-93",
 													"linecount" : 2,
@@ -1219,6 +1223,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "Grab sends version symbol to us. Format this into a scripting message for an object named 'version' and send that to a thispatcher object in the mother patch.",
 									"linecount" : 3,
@@ -1349,6 +1354,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "Loadbang triggers a \"vers\" message to a grab object in the mother patcher at loadbang time, as well as banging Judge Doom",
 									"linecount" : 4,
@@ -1363,6 +1369,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "window size message from thispatcher in the mother patch.",
 									"linecount" : 2,
@@ -1535,6 +1542,7 @@
 			}
 , 			{
 				"box" : 				{
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"maxclass" : "comment",
 					"text" : "Like lp.frrr~, lp.poppy~ can be useful as a control signal.",
 					"numoutlets" : 0,
@@ -1608,6 +1616,7 @@
 			}
 , 			{
 				"box" : 				{
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"maxclass" : "comment",
 					"text" : "The base frequency determines how often a new population is generated. The value you specify (in Hz) is converted to the equivalent number of samples. This number of samples is considered a “growth cycle”. Changes to the growth rate (or a new seed) only take effect at the beginning of a growth cycle. This is also the case with signal growth rates! The samples between the beginning of two growth cycles can be interpolated (as with lp.frrr~). Lp.poppy~ also supports geometric (exponential) interpolation, indicated by an interpolation value of -1.",
 					"linecount" : 10,
@@ -1622,6 +1631,7 @@
 			}
 , 			{
 				"box" : 				{
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"maxclass" : "comment",
 					"text" : "Arguments: growth rate, seed population, base frequency, interpolation. The default seed is even smaller than the value above, the other values are the relevant defaults. A base frequency of 0 Hz is interpreted as “current sample rate.”",
 					"linecount" : 4,
@@ -1661,6 +1671,7 @@
 			}
 , 			{
 				"box" : 				{
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"maxclass" : "comment",
 					"text" : "Base Freq.",
 					"numoutlets" : 0,
@@ -1674,6 +1685,7 @@
 			}
 , 			{
 				"box" : 				{
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"maxclass" : "comment",
 					"text" : "Seed:",
 					"numoutlets" : 0,
@@ -1687,6 +1699,7 @@
 			}
 , 			{
 				"box" : 				{
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"maxclass" : "comment",
 					"text" : "Growth rate:",
 					"numoutlets" : 0,
@@ -1744,6 +1757,7 @@
 			}
 , 			{
 				"box" : 				{
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"maxclass" : "comment",
 					"text" : "In the interest of efficiency, lp.poppy~ does not check if the signal is a valid growth rate (i.e., in the range 0 < r ≤ 4). It is your responsibility to supply a “good” signal. Also note that growth rates smaller than one tend to “kill off the population”. When that happens, output will remain at zero indefinitely. You can deal with this situation by sending a reset message or by sending a new seed.",
 					"linecount" : 9,
@@ -1758,6 +1772,7 @@
 			}
 , 			{
 				"box" : 				{
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"maxclass" : "comment",
 					"text" : "Inlets: growth rate, seed population, base frequency, and interpolation. Growth rate can be a float or a signal. (Lists are not supported, but signals provide similar flexibility.)",
 					"linecount" : 2,
@@ -1772,6 +1787,7 @@
 			}
 , 			{
 				"box" : 				{
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"maxclass" : "comment",
 					"text" : "Think of it as a hybrid of lp.poppy and lp.frrr~.",
 					"numoutlets" : 0,
@@ -2005,6 +2021,7 @@
 			}
 , 			{
 				"box" : 				{
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"maxclass" : "comment",
 					"text" : "Population growth model as audio signal",
 					"numoutlets" : 0,

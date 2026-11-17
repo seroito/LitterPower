@@ -186,6 +186,7 @@
 											}
 , 											{
 												"box" : 												{
+													"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 													"maxclass" : "comment",
 													"text" : "See the Bibliography.",
 													"numoutlets" : 0,
@@ -440,6 +441,7 @@
 										"metadata" : [  ],
 										"boxes" : [ 											{
 												"box" : 												{
+													"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 													"maxclass" : "comment",
 													"text" : "—. Lei∂arvísir í ummyndun fyrir byrjendur. 1988. Bjartur, Reykjavík.",
 													"numoutlets" : 0,
@@ -453,6 +455,7 @@
 											}
 , 											{
 												"box" : 												{
+													"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 													"maxclass" : "comment",
 													"text" : "Ffeiriwr, E. Gweddnewid: Y Lllyfr Cyntaf 1985. Ffigiaris a Phrint, Y Lón Groes.",
 													"numoutlets" : 0,
@@ -466,6 +469,7 @@
 											}
 , 											{
 												"box" : 												{
+													"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 													"maxclass" : "comment",
 													"text" : "—. Exposition Elementorum Transfigurationis. MCMXCI. Vibramen & Litturae, Angiportum Diagonion.",
 													"numoutlets" : 0,
@@ -479,6 +483,7 @@
 											}
 , 											{
 												"box" : 												{
+													"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 													"maxclass" : "comment",
 													"text" : "Wisselaar, E. Die Beginner se Gids tot Transfigurasie. 1988. Human & Rousseau, Kaapstad.",
 													"numoutlets" : 0,
@@ -492,6 +497,7 @@
 											}
 , 											{
 												"box" : 												{
+													"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 													"maxclass" : "comment",
 													"text" : "Cvak, E. ",
 													"numoutlets" : 0,
@@ -505,6 +511,7 @@
 											}
 , 											{
 												"box" : 												{
+													"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 													"maxclass" : "comment",
 													"text" : "Wendler, E. Verwanneln för Anfängers. 1990. M. Jung, Kiel.",
 													"numoutlets" : 0,
@@ -518,6 +525,7 @@
 											}
 , 											{
 												"box" : 												{
+													"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 													"maxclass" : "comment",
 													"text" : "Wendel, E. Verwandlungen für Anfänger. 1986. Carlsen, Hamburg.",
 													"numoutlets" : 0,
@@ -531,6 +539,7 @@
 											}
 , 											{
 												"box" : 												{
+													"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 													"maxclass" : "comment",
 													"text" : "Rispropsky, E. Az átváltoztatásról kezdönek. 1990. Animus, Budapest.",
 													"numoutlets" : 0,
@@ -544,6 +553,7 @@
 											}
 , 											{
 												"box" : 												{
+													"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 													"maxclass" : "comment",
 													"text" : "Skift, E. Din første håndbok i transfigurasjon. 1988. N.W. Damm, Trondheim.",
 													"numoutlets" : 0,
@@ -557,6 +567,7 @@
 											}
 , 											{
 												"box" : 												{
+													"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 													"maxclass" : "comment",
 													"text" : "Switch, E. A Beginner's Guide to Transfiguration. 1985. Obscurus, London.",
 													"numoutlets" : 0,
@@ -638,6 +649,7 @@
 											}
 , 											{
 												"box" : 												{
+													"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 													"maxclass" : "comment",
 													"text" : "Changé, E.G. Manuel de métamorphose à l'usage des débutants. 1986. Gallimard, Paris.",
 													"numoutlets" : 0,
@@ -1275,6 +1287,7 @@
 			}
 , 			{
 				"box" : 				{
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"maxclass" : "comment",
 					"text" : "The lp.emeric~ object performs cross-synthesis (or mutation) from a source signal towards a target signal, using only a single control parameter called the mutation index.",
 					"linecount" : 2,
@@ -1289,6 +1302,7 @@
 			}
 , 			{
 				"box" : 				{
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"maxclass" : "comment",
 					"text" : "Commissioned by Kasper T. Toeplitz",
 					"numoutlets" : 0,
@@ -1302,6 +1316,7 @@
 			}
 , 			{
 				"box" : 				{
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"maxclass" : "comment",
 					"text" : "Changing the drawstyle toggle of the scope~ object may provide a more helpful display. Note that the drawstyle message is not supported by all versions of scope~.",
 					"linecount" : 3,
@@ -1485,6 +1500,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "Grab sends version symbol to us. Format this into a scripting message for an object named 'version' and send that to a thispatcher object in the mother patch.",
 									"linecount" : 3,
@@ -1615,6 +1631,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "Loadbang triggers a \"vers\" message to a grab object in the mother patcher at loadbang time, as well as banging Judge Doom",
 									"linecount" : 4,
@@ -1629,6 +1646,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "window size message from thispatcher in the mother patch.",
 									"linecount" : 2,
@@ -1796,6 +1814,7 @@
 			}
 , 			{
 				"box" : 				{
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"maxclass" : "comment",
 					"text" : "Live",
 					"numoutlets" : 0,
@@ -1809,6 +1828,7 @@
 			}
 , 			{
 				"box" : 				{
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"maxclass" : "comment",
 					"text" : "Mutation index:\r0 is exactly the source\r1 is the target signal modulated by the amplitude envelope of the source\rValues in between are whre the fun happens.",
 					"linecount" : 4,
@@ -1823,6 +1843,7 @@
 			}
 , 			{
 				"box" : 				{
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"maxclass" : "comment",
 					"text" : "Source: select from a sound file or live input",
 					"numoutlets" : 0,
@@ -1862,6 +1883,7 @@
 			}
 , 			{
 				"box" : 				{
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"maxclass" : "comment",
 					"text" : "Single-parameter cross-synthesis",
 					"numoutlets" : 0,
@@ -1983,6 +2005,7 @@
 			}
 , 			{
 				"box" : 				{
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"maxclass" : "comment",
 					"text" : "Play",
 					"numoutlets" : 0,
@@ -1996,6 +2019,7 @@
 			}
 , 			{
 				"box" : 				{
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"maxclass" : "comment",
 					"text" : "Silence",
 					"numoutlets" : 0,
@@ -2221,6 +2245,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "sound playback on\/off",
 									"numoutlets" : 0,
@@ -2341,6 +2366,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "sound playback out",
 									"numoutlets" : 0,
@@ -2548,6 +2574,7 @@
 			}
 , 			{
 				"box" : 				{
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"maxclass" : "comment",
 					"text" : "Target: pink noise. Could be anything else",
 					"numoutlets" : 0,

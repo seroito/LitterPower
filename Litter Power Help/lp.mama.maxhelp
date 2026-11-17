@@ -157,6 +157,7 @@
 											}
 , 											{
 												"box" : 												{
+													"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 													"maxclass" : "comment",
 													"text" : "All basic random number generators are named based on a repeated short syllable drawn from the name commonly found in the statistical literature. The habit started with the TT800 algorithm (the first one implemented). It seemed like a nice idea at the time.",
 													"linecount" : 3,
@@ -480,6 +481,7 @@
 											}
 , 											{
 												"box" : 												{
+													"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 													"maxclass" : "comment",
 													"text" : "George Marsaglia. The mother of all random generators. ftp:\/\/ftp.taygeta.com\/pub\/ c\/mother.c, October 1994.",
 													"patching_rect" : [ 1.0, 41.0, 575.0, 18.0 ],
@@ -1161,6 +1163,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "Grab sends version symbol to us. Format this into a scripting message for an object named 'version' and send that to a thispatcher object in the mother patch.",
 									"linecount" : 2,
@@ -1291,6 +1294,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "Loadbang triggers a \"vers\" message to a grab object in the mother patcher at loadbang time, as well as banging Judge Doom",
 									"linecount" : 4,
@@ -1305,6 +1309,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "window size message from thispatcher in the mother patch.",
 									"linecount" : 2,
@@ -1462,6 +1467,7 @@
 			}
 , 			{
 				"box" : 				{
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"maxclass" : "comment",
 					"text" : "Maximum",
 					"patching_rect" : [ 413.0, 235.0, 60.0, 17.0 ],
@@ -1550,6 +1556,7 @@
 			}
 , 			{
 				"box" : 				{
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"maxclass" : "comment",
 					"text" : "You can set minimum and maximum values for lp.mama, output will be scaled to fit this range. These values may also be specified as initialization arguments. A third argument will seed the object to generate a repeatable pseudo-random sequence.",
 					"linecount" : 5,
@@ -1684,6 +1691,7 @@
 			}
 , 			{
 				"box" : 				{
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"maxclass" : "comment",
 					"text" : "Lp.mama generates uniformly distributed integers in the range [-2147483648 .. 2147483647] using George Marsaglia's modestly named \"Mother of All Random Number Generators\" algorithm. Mama doesn't have the \"bursty\" behavior of Mersenne Twister or TT800 (and is also a bit faster), while having a longer cycle (ca. 2^250 or about 1.8 * 10^75) than lp.tata's Tausworthe algorithm.",
 					"linecount" : 4,
@@ -1737,6 +1745,7 @@
 			}
 , 			{
 				"box" : 				{
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"maxclass" : "comment",
 					"text" : "Let's examine the top and bottom 8 bits",
 					"linecount" : 2,
@@ -1751,6 +1760,7 @@
 			}
 , 			{
 				"box" : 				{
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"maxclass" : "comment",
 					"text" : "Bang Uzi and watch the two table windows. (If the windows are hidden, double-click on the table objects.)",
 					"linecount" : 2,
@@ -1811,6 +1821,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "Max",
 									"patching_rect" : [ 612.0, 70.0, 46.0, 17.0 ],
@@ -1842,6 +1853,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "Min",
 									"patching_rect" : [ 612.0, 50.0, 46.0, 17.0 ],
@@ -1873,6 +1885,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "Median",
 									"patching_rect" : [ 612.0, 111.0, 46.0, 17.0 ],
@@ -1901,6 +1914,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "Entropy",
 									"patching_rect" : [ 529.0, 180.0, 82.0, 17.0 ],
@@ -1983,6 +1997,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "Kurtosis",
 									"patching_rect" : [ 612.0, 152.0, 48.0, 17.0 ],
@@ -1996,6 +2011,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "Skew",
 									"patching_rect" : [ 612.0, 132.0, 46.0, 17.0 ],
@@ -2009,6 +2025,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "Expected values",
 									"patching_rect" : [ 529.0, 20.0, 82.0, 17.0 ],
@@ -2052,6 +2069,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "Mean",
 									"patching_rect" : [ 612.0, 91.0, 46.0, 17.0 ],
@@ -2181,6 +2199,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "Std. Dev.",
 									"patching_rect" : [ 330.0, 66.0, 53.0, 17.0 ],
@@ -2194,6 +2213,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "Skew",
 									"patching_rect" : [ 411.0, 66.0, 75.0, 17.0 ],
@@ -2225,6 +2245,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "Count",
 									"patching_rect" : [ 6.0, 66.0, 33.0, 17.0 ],
@@ -2238,6 +2259,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "Mean",
 									"patching_rect" : [ 249.0, 66.0, 31.0, 17.0 ],
@@ -2251,6 +2273,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "Maximum",
 									"patching_rect" : [ 168.0, 66.0, 58.0, 17.0 ],
@@ -2264,6 +2287,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "Minimum",
 									"patching_rect" : [ 86.0, 66.0, 55.0, 17.0 ],
@@ -2291,6 +2315,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "Random values from lp.titi",
 									"patching_rect" : [ 25.0, 4.0, 146.0, 17.0 ],
@@ -2316,6 +2341,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "Lp.mama's mean should converge to -0.5 (not zero! there are more negative numbers than positive numbers on your computer). But it will take a very, very long time.",
 									"linecount" : 2,
@@ -2330,6 +2356,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "The expected standard deviation is hideously huge (just under 1, 239, 850, 262) as well as taking a while to converge. Skew should converge to 0, although it, too, will take a while. Although kurtosis is mathematically well defined, the calculations overflow, even using double precision floating point arithmetic.",
 									"linecount" : 3,
@@ -2505,6 +2532,7 @@
 			}
 , 			{
 				"box" : 				{
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"maxclass" : "comment",
 					"text" : "Double-click on patcher MoreInfo for more details.",
 					"linecount" : 2,
@@ -2534,6 +2562,7 @@
 			}
 , 			{
 				"box" : 				{
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"maxclass" : "comment",
 					"text" : "Generate uniformly distributed random numbers using George Marsaglia's \"Mother of All Random Number Generators\" algorithm.",
 					"linecount" : 2,
@@ -2548,6 +2577,7 @@
 			}
 , 			{
 				"box" : 				{
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"maxclass" : "comment",
 					"text" : "Minimum",
 					"patching_rect" : [ 359.0, 235.0, 50.0, 17.0 ],

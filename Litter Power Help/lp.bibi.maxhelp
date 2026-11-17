@@ -278,6 +278,7 @@
 											},
 											{
 												"box": {
+													"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 													"id": "obj-10",
 													"maxclass": "comment",
 													"patching_rect": [
@@ -625,6 +626,7 @@
 										"boxes": [
 											{
 												"box": {
+													"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 													"id": "obj-20",
 													"maxclass": "comment",
 													"patching_rect": [
@@ -720,6 +722,7 @@
 											},
 											{
 												"box": {
+													"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 													"id": "obj-26",
 													"maxclass": "comment",
 													"patching_rect": [
@@ -2178,6 +2181,7 @@
 			},
 			{
 				"box": {
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"id": "obj-78",
 					"maxclass": "comment",
 					"patching_rect": [

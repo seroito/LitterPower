@@ -201,6 +201,7 @@
 											}
 , 											{
 												"box" : 												{
+													"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 													"maxclass" : "comment",
 													"text" : "Name of the Greek letter used to represent multiplication.",
 													"numoutlets" : 0,
@@ -523,6 +524,7 @@
 											}
 , 											{
 												"box" : 												{
+													"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 													"maxclass" : "comment",
 													"text" : "Rombauer, Irma S., Marion R. Becker, Ethan Becker. Joy of Cooking: All About Pies and Tarts. New York, Scribner: 2002",
 													"numoutlets" : 0,
@@ -1182,6 +1184,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "Grab sends version symbol to us. Format this into a scripting message for an object named 'version' and send that to a thispatcher object in the mother patch.",
 									"linecount" : 3,
@@ -1312,6 +1315,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "Loadbang triggers a \"vers\" message to a grab object in the mother patcher at loadbang time, as well as banging Judge Doom",
 									"linecount" : 4,
@@ -1326,6 +1330,7 @@
 							}
 , 							{
 								"box" : 								{
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"maxclass" : "comment",
 									"text" : "window size message from thispatcher in the mother patch.",
 									"linecount" : 2,
@@ -1483,6 +1488,7 @@
 			}
 , 			{
 				"box" : 				{
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"maxclass" : "comment",
 					"text" : "Also, the default value for inlets is one, not zero",
 					"numoutlets" : 0,
@@ -1590,6 +1596,7 @@
 			}
 , 			{
 				"box" : 				{
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"maxclass" : "comment",
 					"text" : "<-- I got tired of having to do this",
 					"numoutlets" : 0,
@@ -1710,6 +1717,7 @@
 			}
 , 			{
 				"box" : 				{
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"maxclass" : "comment",
 					"text" : "You can send a list of numbers to any inlet. The numbers in the list will be distributed over the inlets, starting with the inlet receiving the list message. The result is sent out once, after all list elements have been processed. Lp.pi also understands set and bang messages, behaving just like the standard * object.",
 					"linecount" : 3,
@@ -1788,6 +1796,7 @@
 			}
 , 			{
 				"box" : 				{
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"maxclass" : "comment",
 					"text" : "2) All inlets are \"hot\". A change in any inlet sends the updated sum through the outlet.",
 					"numoutlets" : 0,
@@ -1881,6 +1890,7 @@
 			}
 , 			{
 				"box" : 				{
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"maxclass" : "comment",
 					"text" : "1) You can have as many inlets as you want, each initialized to a different value. You have one inlet for every initialization argument.",
 					"linecount" : 2,
@@ -1910,6 +1920,7 @@
 			}
 , 			{
 				"box" : 				{
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"maxclass" : "comment",
 					"text" : "Lp.pi calculates the product of numbers. It provides two enhancements over the standard * object.",
 					"numoutlets" : 0,
@@ -1938,6 +1949,7 @@
 			}
 , 			{
 				"box" : 				{
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"maxclass" : "comment",
 					"text" : "Multiply numbers",
 					"numoutlets" : 0,
@@ -1951,6 +1963,7 @@
 			}
 , 			{
 				"box" : 				{
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"maxclass" : "comment",
 					"text" : "If any of the initialization arguments is a float, all calculations are performed in floating point and the result is a float. Otherwise multiplication is performed with integers, any float input will be truncated to integer.",
 					"linecount" : 2,
