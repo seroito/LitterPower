@@ -252,6 +252,9 @@ void	LitterSetupClassGimme(const char	iName[],
 	//	Initialize the Litter Toolbox (call once, at the end of ext_main())
 void	LitterInit			(const char[], UInt32);
 
+	// Add the "vers" message/attribute to a class (before class_register())
+void	LitterAddVers		(t_class*);
+
 	// Wrapper for object_alloc()
 t_object* LitterAllocateObject(void);
 

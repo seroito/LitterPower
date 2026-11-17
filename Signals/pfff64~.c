@@ -164,6 +164,7 @@ void ext_main(void* r)
 	class_addmethod(c, (method) PvvvInfo,	"info",		A_CANT, 0);
 	class_addmethod(c, (method) PvvvDSP64,	"dsp64",	A_CANT, 0);
 
+	LitterAddVers(c);				// "vers" message, used by the help files
 	class_register(CLASS_BOX, c);
 	gObjectClass = c;
 	Taus88Init();

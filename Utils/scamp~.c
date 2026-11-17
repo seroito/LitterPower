@@ -154,6 +154,7 @@ void ext_main(void* r)
 	//
 	ScampGenSymbols();
         
+        LitterAddVers(c);				// "vers" message, used by the help files
         class_register(CLASS_BOX, c);
         gObjectClass = c;
         

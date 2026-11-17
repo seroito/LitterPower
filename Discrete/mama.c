@@ -552,6 +552,7 @@ void ext_main(void* r)
 	//Initialize Litter Library
 	//LitterInit(kClassName, 0);
 	MamaInit(0, gPool1, gPool2);
+        LitterAddVers(gObjectClass);				// "vers" message, used by the help files
         class_register(CLASS_BOX, gObjectClass);
         
         post("%s: %s", kClassName, LPVERSION);

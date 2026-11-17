@@ -165,6 +165,7 @@ void ext_main(void* r)
         class_addmethod(c, (method) Pvvv2DSP64,		"dsp64",	A_CANT, 0);
         
         class_dspinit(c);
+        LitterAddVers(c);				// "vers" message, used by the help files
         class_register(CLASS_BOX, c);
         gObjectClass = c;
         

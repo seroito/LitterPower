@@ -306,8 +306,6 @@ void LitterInit(
 	UInt32		iFlags)
 
 	{
-	t_object*	attr;
-
 	(void) iFlags;							// Reserved for future use
 
 	if (gObjectClass == NIL) {
@@ -316,17 +314,34 @@ void LitterInit(
 		}
 
 	// Add global message/attribute that all Litter objects implement uniformly
-	class_addmethod	(gObjectClass, (method) LitterVers,	"vers",	A_DEFLONG, A_DEFLONG, 0);
+	LitterAddVers(gObjectClass);
+
+	class_register(CLASS_BOX, gObjectClass);
+
+	LitterHello(iClassName);
+	}
+
+/******************************************************************************************
+ *
+ *	LitterAddVers(iClass)
+ *
+ *	Add the "vers" message and the read-only "vers" attribute that all Litter objects
+ *	implement. The help files send "vers 1 1" to show the object's version. Call before
+ *	class_register(); LitterInit() does this itself.
+ *
+ ******************************************************************************************/
+
+void LitterAddVers(t_class* iClass)
+	{
+	t_object* attr;
+
+	class_addmethod(iClass, (method) LitterVers, "vers", A_DEFLONG, A_DEFLONG, 0);
 	attr = attribute_new("vers",
 						 gensym("symbol"),
 						 kAttrFlagsReadOnly,
 						 (method) LitterGetVers,
 						 NULL);
-	class_addattr(gObjectClass, attr);
-
-	class_register(CLASS_BOX, gObjectClass);
-
-	LitterHello(iClassName);
+	class_addattr(iClass, attr);
 	}
 
 /******************************************************************************************

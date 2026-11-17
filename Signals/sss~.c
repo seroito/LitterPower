@@ -160,6 +160,7 @@ void ext_main(void* r)
 
 	//Initialize Litter Library
 	//LitterInit(kClassName, 0);
+        LitterAddVers(c);				// "vers" message, used by the help files
         class_register(CLASS_BOX, c);
         gObjectClass = c;
 	Taus88Init();
