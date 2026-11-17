@@ -4,6 +4,11 @@ on:
   push:
     branches: [64-bit-version]
   workflow_dispatch:
+    inputs:
+      macos:
+        description: 'Also build for macOS'
+        type: boolean
+        default: true
 
 concurrency:
   group: build-${{ github.ref }}
@@ -12,6 +17,9 @@ concurrency:
 jobs:
   macos:
     name: macOS (universal)
+    # Only when started by hand ("Run workflow" on the Actions page). GitHub's macOS
+    # runners were often unavailable; the package is assembled without them if needed.
+    if: github.event_name == 'workflow_dispatch' && inputs.macos
     runs-on: macos-latest
     steps:
       - uses: actions/checkout@v4
@@ -71,10 +79,13 @@ jobs:
   package:
     name: Max package
     needs: [macos, windows]
+    # Needs Windows; the macOS externals are included when that job ran and succeeded.
+    if: always() && needs.windows.result == 'success' && needs.macos.result != 'failure' && needs.macos.result != 'cancelled'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
       - uses: actions/download-artifact@v4
+        if: needs.macos.result == 'success'
         with:
           name: LitterPower-macos
           path: macos
@@ -84,7 +95,8 @@ jobs:
           path: package
       - name: Assemble package
         run: |
-          mkdir -p package && unzip -q macos/LitterPower-macos.zip -d package
+          mkdir -p package
+          if [ -f macos/LitterPower-macos.zip ]; then unzip -q macos/LitterPower-macos.zip -d package; fi
           python3 tools/make_package.py
           ls package/LitterPower/externals | wc -l
           # zip here so that file permissions inside the .mxo bundles survive
