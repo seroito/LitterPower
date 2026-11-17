@@ -25,6 +25,7 @@
 #pragma mark Include Files
 
 #include "Taus88.h"
+#include <string.h>		// memcpy
 #include "LitterLib.h"
 #include "MiscUtils.h"
 
@@ -162,8 +163,14 @@ Taus88(
 		// Munge t to look like a float in the range 2 ≤ t < 4
 		t  |= 0x40000000;
 		
-		// Typecast and move t into the range -1 ≤ t < 1
-		return *((float*) &t) - 3.0f; 
+		// Reinterpret the bits as a float and move it into the range -1 ≤ t < 1.
+		// (memcpy instead of the former *((float*) &t), which C's aliasing rules do
+		// not allow; compilers turn this into the same single instruction.)
+		{
+		float f;
+		memcpy(&f, &t, sizeof f);
+		return f - 3.0f;
+		}
 		}
 
 
