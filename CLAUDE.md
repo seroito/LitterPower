@@ -94,6 +94,26 @@ Externals still without a help file: all 12 `lbj.*` and the unreleased `lp.crott
 `lp.fiana~`, `lp.galliard~`, `lp.gruyere~`, `lp.julie`, `lp.julie~`, `lp.lana`, and
 the six `lp.vera*` control objects.
 
+### 2026-11-17: lp.pfff64~, lp.phhh64~, lp.pvvv64~
+
+User report: lp.pvvv~ crackles when the Hurst value (left inlet) is swept. Cause: below
+about 0.5 the 32-bit sums of the noise generator overflow (clicks on x86, clipping on
+arm64); a flaw of the original code. The user chose NOT to change the originals and NOT
+to rescale the noise; instead new objects (decisions by the user):
+
+- `Signals/pfff64~.c` + `Signals/pfff64core.h`: native mode in 64-bit integers (no
+  overflow; identical where the original did not overflow), mode emulations unchanged
+  (PC415 now wraps exactly modulo 2^32 where the original was undefined), look-ahead
+  limiter (ceiling 1.0, 2 ms look-ahead = constant output delay even when off, 50 ms
+  release). Limiter inlet is the rightmost one (3rd for lp.pvvv64~, 2nd for the others)
+  plus message `limit 0/1`. Default: on for lp.pvvv64~, off for lp.pfff64~/lp.phhh64~.
+  Hurst values below 0 stay allowed.
+- Help files generated from the originals by `tools/make_help64.py` (renamed objects,
+  toggle on the limiter inlet, note at the bottom). Originals untouched.
+- Tested on Linux against the original generator code: identical output where the
+  original did not overflow, limiter output never above 1.0 (Hurst -1 .. 1.5), limiter
+  off = input delayed by L-1 samples. Not yet tested in Max.
+
 Things to watch in the first test:
 
 - Whether Max 9 loads the ad-hoc signed `.mxo` files (quarantine flag, see `README.md`).
