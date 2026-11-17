@@ -29,10 +29,12 @@ Decisions made by the user:
 
 | Area | State |
 |---|---|
-| Source port | Done. `python3 tools/check.py` (gcc syntax check on Linux): 0 of 117 units failing |
-| Windows build | Succeeds: 103 externals (`.mxe64`) |
+| Source port | Done. `python3 tools/check.py` (gcc syntax check on Linux): 0 of 118 units failing |
+| Windows build | Succeeds: 104 externals (`.mxe64`) |
 | macOS build | Last succeeded at commit `6b5478a` (universal x86_64 + arm64, ad-hoc signed). Not built since: GitHub had no macOS runners for hours, so it was made manual |
-| Package | Latest: run 44094092933 (commit with the Jitter help files), artifact `LitterPower-package`, Windows externals only |
+| Package | Latest: run 44140952620 on `rng-fixes` (help files for all objects, extended overview patch, reference pages), artifact `LitterPower-package`, Windows externals only |
+| Help files | Every built object has one (15 new ones written in 2026) |
+| Reference pages | `docs/*.maxref.xml` for all 104 objects |
 | Test in Max 9 | Not done yet. The user tests on Windows first |
 
 "Builds" does not mean "works": nothing has been loaded in Max by Claude, and only the
@@ -44,6 +46,20 @@ What the user was asked to test with the Windows package:
 2. Open the 8 Jitter help files, start them, report which show a picture, which print
    errors (Max console text) and which crash Max. `lbj.stacey` is the riskiest.
 3. Create `lbj.bixmap` and `lbj.penize` once in an empty patch.
+
+Added for the `rng-fixes` package (2026-11-17):
+
+4. The 15 new help files (`lp.julie`, `lp.julie~`, `lp.lana`, `lp.fiana~`, the six
+   `lp.vera*`, `lp.crottin~`, `lp.gruyere~`, `lp.galliard~`, `lbj.bixmap`,
+   `lbj.penize`): layout, examples work, no console errors. Open questions there:
+   `bball.mov` found by `lbj.bixmap`'s help; the `lp.vera*` history `multislider`
+   (setstyle 2 = point scroll) looks right.
+5. Overview patch: the three extended menus and the new "Jitter Objects" menu open the
+   right help files; the area below the background picture (white) is acceptable.
+6. Reference pages: Help > "Open <object> Reference" shows the page; the digests appear
+   in the object-box autocomplete; the documentation sidebar lists "Litter Power". If
+   the pages are not found, the folder placement (`docs/` flat, as in min-devkit) is the
+   first thing to change.
 
 Other things to watch: converted Max 4 patchers (clippings, `lp.doom`,
 `lp.pfft.frimWrap`, `lp.bibi`/`lp.ernie`/`lp.abbie` help, "Running CPU Usage") look and
@@ -59,7 +75,13 @@ removed (see `README.md`).
    macOS" ticked (or `gh workflow run build.yml --repo seroito/LitterPower -f macos=true`).
    If GitHub reports "The job was not acquired by Runner", it is a capacity problem;
    retry later. `macos-14` is no longer offered.
-4. Windows compiler warnings: artifact `build-log-windows`. `gh run download` refuses it
+4. Generated files: rerun the generator instead of editing the output.
+   - `tools/gen_strings.py`: string tables (`LitterLib/Strings/`) from `Resources/*/*.r`.
+   - `tools/make_help64.py`, `tools/make_jitter_help.py`, `tools/make_extra_help.py`:
+     the help files written or derived in 2026 (they run `tools/fix_comment_colors.py`).
+   - `tools/make_refpages.py`: reference pages; rerun after changing an object's
+     messages, inlets or attributes; texts are in `tools/refpage_data.py`.
+5. Windows compiler warnings: artifact `build-log-windows`. `gh run download` refuses it
    ("path traversal"); fetch it with
    `gh api repos/seroito/LitterPower/actions/artifacts/<id>/zip`.
 
