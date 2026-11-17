@@ -45,6 +45,12 @@ for name, folder in (('lp.pfft.frimWrap.maxpat', 'patchers'),
         os.makedirs(os.path.join(OUT, folder), exist_ok=True)
         shutil.copy2(src, os.path.join(OUT, folder, name))
 
+# The logo is only needed once, in 'media' (search path); drop the copy that came along
+# with the extras folder.
+dup = os.path.join(OUT, 'extras', 'Litter Power Extras', '~lib', 'lp.Logo.png')
+if os.path.exists(os.path.join(OUT, 'media', 'lp.Logo.png')) and os.path.exists(dup):
+    os.remove(dup)
+
 info = {
     "name": "LitterPower",
     "displayname": "Litter Power",
