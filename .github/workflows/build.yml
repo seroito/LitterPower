@@ -2,7 +2,7 @@ name: Build
 
 on:
   push:
-    branches: [64-bit-version]
+    branches: [64-bit-version, rng-fixes]
   workflow_dispatch:
     inputs:
       macos:
