@@ -63,6 +63,33 @@ removed (see `README.md`).
    ("path traversal"); fetch it with
    `gh api repos/seroito/LitterPower/actions/artifacts/<id>/zip`.
 
+## Branch rng-fixes (2026-11-17, not merged yet)
+
+Made on the user's request after a code review; `64-bit-version` stays as the reference
+the user is testing. Merge into `64-bit-version` after the user has tested it. The
+workflow builds pushes to both branches. One commit per change:
+
+1. `lp.gruyere~` buffer~ handling: reference released in a new free method (before, the
+   buffer~ could notify a freed object, which can crash Max); reference kept when the
+   buffer~ does not exist yet; sample lock released on the early return and not
+   released when never obtained; NULL checks in perform, dblclick, notify.
+2. `lp.abbie`, `lp.bibi` (and `lp.dicey`'s status text): the 50:50 choice for
+   alpha = beta = 0 tested `((long) value) < 0`, always false with 64-bit long (macOS).
+   Now a 32-bit sign test.
+3. Private Taus88 state per instance for all objects that used the global pool (list in
+   the commit message): embedded `tTaus88Data tausData`, seeded in new with
+   `Taus88Seed(&me->tausData, 0)`. `Taus88()` is inline now; `Taus88SigVector`,
+   `Taus88SigVectorMasked`, `Taus88TriSig` and the I Ching casting functions take a
+   state pointer (NULL = global pool). Remaining global uses are fallbacks when a
+   private state could not be allocated, and one unused function in lp.crottin~.
+   Noise character unchanged; individual values differ.
+4. `Taus88TriSig` (lp.trrr~, lp.nn~): bit reinterpretation via memcpy instead of a
+   pointer cast; checked bit-identical for 50 million inputs.
+
+Not done (reviewed, lower priority): A_GIMME new functions declaring argc as `short`,
+A_LONG handlers declaring `long` instead of `t_atom_long`; no reference pages
+(docs/refpages) for the objects.
+
 ## What was done
 
 ### Build system
