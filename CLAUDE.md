@@ -93,6 +93,20 @@ workflow builds pushes to both branches. One commit per change:
    and so does the subtitle of lp.messages.maxhelp (user's request). The help
    generators run the tool after writing.
 
+6. `lp.doom` (66 help files) referred to its arguments as `$1`/`$2` in object boxes,
+   which printed '"$" variable out of range'; now `#1`/`#2`. `tools/mxb2maxpat.py`
+   writes `#n` for dollar tokens in object boxes.
+7. 58 objects lacked the `vers` message (help files send `vers 1 1` on load: "doesn't
+   understand vers"). New `LitterAddVers()` in LitterLib, called before
+   `class_register()`; `LitterInit()` uses it too.
+
+`lp.qvvv~` was reviewed on request (not changed): floating-point successor of
+`lp.pvvv~`, no overflow, level kept steady by `hurstGain`; but in its default `stet`
+mode 0.25-0.9 % of samples exceed 1.0 (peaks up to 1.7 near Hurst 0), which the audio
+interface clips. Also: Hurst factor and gain are written non-atomically from the
+message thread (rare one-buffer level glitch possible), and vectors larger than 4096
+samples would overrun its buffer.
+
 Not done (reviewed, lower priority): A_GIMME new functions declaring argc as `short`,
 A_LONG handlers declaring `long` instead of `t_atom_long`; no reference pages
 (docs/refpages) for the objects.
