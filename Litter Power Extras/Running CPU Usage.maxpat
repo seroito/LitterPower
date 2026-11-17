@@ -212,7 +212,7 @@
 					],
 					"fontname": "Arial",
 					"fontsize": 9.0,
-					"text": "Written by Peter Castine, Copyright 2002-05"
+					"text": "Written by Peter Castine, Copyright 2002-26"
 				}
 			},
 			{

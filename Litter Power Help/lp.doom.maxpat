@@ -205,7 +205,7 @@
 					],
 					"fontname": "Arial",
 					"fontsize": 9.0,
-					"text": "Copyright 2004 Peter Castine."
+					"text": "Copyright 2004-26 Peter Castine."
 				}
 			},
 			{

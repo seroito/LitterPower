@@ -2232,7 +2232,7 @@
 , 							{
 								"box" : 								{
 									"maxclass" : "comment",
-									"text" : "The Software is copyright © 1992-2008 by Peter Castine. All rights reserved.\rYou may make copies of the Software for your own use in accordance with the installation instructions in the accompanying documentation. You may make backup copies of the Software as long as they contain the entirety of the Software, including this license agreement, any other copyright notices distributed with the software, and the documentation.",
+									"text" : "The Software is copyright © 1992-2026 by Peter Castine. All rights reserved.\rYou may make copies of the Software for your own use in accordance with the installation instructions in the accompanying documentation. You may make backup copies of the Software as long as they contain the entirety of the Software, including this license agreement, any other copyright notices distributed with the software, and the documentation.",
 									"linecount" : 4,
 									"patching_rect" : [ 1.0, 106.0, 592.0, 49.0 ],
 									"numoutlets" : 0,
