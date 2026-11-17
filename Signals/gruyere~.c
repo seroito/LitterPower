@@ -111,6 +111,7 @@ float	gCosine[kTableLen];
 
 	// Class message functions
 void*	GruyereNew(SymbolPtr, short, t_atom[]);
+static void GruyereFree(objGruyere*);
 
 	// Object message functions
 static void GruyereInt(objGruyere*, long);
@@ -173,7 +174,7 @@ void ext_main(void* r)
 	// Standard Max/MSP initialization mantra
 	c = class_new(kClassName,							// Pointer to our class definition
 			(method) GruyereNew,					// Instance creation function
-			(method) dsp_free,						// Default MSP deallocation function
+			(method) GruyereFree,					// Releases the buffer~ reference, too
 			sizeof(objGruyere),						// Class object size
 			NIL,									// No menu function
 			A_GIMME,								// We parse the argument list ourselves
@@ -358,9 +359,31 @@ GruyereNew(
 	
 	SetFreq(me, freq);						// Sets freq, stepFactor
 	SetEpsilon(me, epsilon);				// Sets epsilon, randThresh
-	GruyereSetBuf(me, bufSym, offset);			// Sets bufSym, buf, bufOffset
+	me->bufref			= NIL;
+	GruyereSetBuf(me, bufSym, offset);			// Sets bufref, bufname, bufOffset
 	
 	return me;
+	}
+
+/******************************************************************************************
+ *
+ *	GruyereFree(me)
+ *
+ ******************************************************************************************/
+
+void
+GruyereFree(
+	objGruyere*	me)
+	
+	{
+	dsp_free(&me->coreObject);
+	
+	// The buffer~ reference must go, too: otherwise the buffer~ keeps notifying an
+	// object that no longer exists.
+	if (me->bufref != NIL) {
+		object_free(me->bufref);
+		me->bufref = NIL;
+		}
 	}
 
 #pragma mark -
@@ -410,34 +433,36 @@ GruyereSetBuf(
 	long		iOff)
 	
 	{
-        if (iSym == gensym("") || iSym == NULL) {
-            me->bufname     = NIL;
-            me->bufOffset	= 0;
-            return;
-        }
-        
-        if (!me->bufref)
-            me->bufref = buffer_ref_new((t_object*)me, iSym);
-        else
-            buffer_ref_set(me->bufref, iSym);
-        
-        if( !buffer_ref_exists(me->bufref) ) {
-            me->bufref = NULL;
-            object_error((t_object *)me, "buffer %s doesn't exist!", iSym->s_name);
-            //return 0;
-        }
-        
-        if (iSym == gensym(""))
-            iSym = NIL;
-        
-        if (iOff < 0) {
-            error("%s: invalid offset %ld", kClassName, iOff);
-            iOff = 0;
-        }
-        
-        me->bufname = iSym;
-        me->bufOffset	= iOff;
-        
+	
+	if (iOff < 0) {
+		error("%s: invalid offset %ld", kClassName, iOff);
+		iOff = 0;
+		}
+	
+	if (iSym == NIL || iSym == gensym("")) {
+		// No buffer~: use the built-in cosine table
+		if (me->bufref != NIL) {
+			object_free(me->bufref);
+			me->bufref = NIL;
+			}
+		me->bufname		= NIL;
+		me->bufOffset	= 0;
+		return;
+		}
+	
+	// Keep the reference even if the buffer~ does not exist yet: it finds the buffer~
+	// as soon as one with this name is created. Until then the cosine table is used.
+	if (me->bufref == NIL)
+		 me->bufref = buffer_ref_new((t_object*) me, iSym);
+	else buffer_ref_set(me->bufref, iSym);
+	
+	if (!buffer_ref_exists(me->bufref))
+		object_warn((t_object*) me, "no buffer~ %s (yet); using the cosine table until there is one",
+					iSym->s_name);
+	
+	me->bufname		= iSym;
+	me->bufOffset	= iOff;
+	
 	}
 /*
 void
@@ -499,8 +524,9 @@ GruyereTattle(
 				kOffStr[] = "off";
 	
 	post("%s state:", kClassName);
-	if (me->bufSym != NIL)
-		 post("  Using wavetable in buffer %s", me->bufSym->s_name);
+	if (me->bufname != NIL)
+		 post("  Using wavetable in buffer %s (offset %lu)%s", me->bufname->s_name, me->bufOffset,
+				(me->bufref != NIL && buffer_ref_exists(me->bufref)) ? "" : " -- buffer~ not found yet");
 	else post("  Using default cosine wavetable (no buffer window available)");
 	post("  frequency is %lf (stepFactor %lf at sample rate %lf)",
 			me->freq, me->stepFactor, me->sr);
@@ -514,10 +540,11 @@ GruyereDClick(
 	
 	{
 	
-	//if (me->buf == NIL)
-		 GruyereTattle(me);
-	//else //mess0((t_object*) me->buf, gensym("dblclick"));
-        buffer_view(buffer_ref_getobject(me->bufref));
+	t_buffer_obj* b = (me->bufref != NIL) ? buffer_ref_getobject(me->bufref) : NIL;
+	
+	if (b != NIL)
+		 buffer_view(b);
+	else GruyereTattle(me);
 	
 	}
 
@@ -551,7 +578,7 @@ t_max_err GruyereNotify(objGruyere *me, t_symbol *s, t_symbol *msg, void *sender
     //post("notification/message: %s", msg->s_name);
     //TODO: should i be waiting for "buffer modified" message, and continue after that??
     // seems to work ok, like that...
-    return buffer_ref_notify(me->bufref, s, msg, sender, data);
+    return (me->bufref != NIL) ? buffer_ref_notify(me->bufref, s, msg, sender, data) : MAX_ERR_NONE;
 }
 
 
@@ -690,8 +717,8 @@ void GruyerePerform64(objGruyere *me, t_object *dsp64, double **ins, long numins
     rThresh		= me->randThresh;
     phi			= me->phi;
     
-    b = buffer_ref_getobject(me->bufref);
-    tab = buffer_locksamples(b);
+    b	= (me->bufref != NIL) ? buffer_ref_getobject(me->bufref) : NIL;
+    tab	= (b != NIL) ? buffer_locksamples(b) : NIL;
     
     if (tab == NULL)  {
         // No buffer~ specified, so use default cosine table
@@ -722,8 +749,9 @@ void GruyerePerform64(objGruyere *me, t_object *dsp64, double **ins, long numins
         }
         
         else {
-            // Either buffer or offset is invalid
+            // Offset beyond the end of the buffer
             // Zero output vector and punt
+            buffer_unlocksamples(b);
             do { *out++ = 0.0; } while (--i > 0);
             return;
         }
@@ -783,7 +811,8 @@ void GruyerePerform64(objGruyere *me, t_object *dsp64, double **ins, long numins
         *out++ = (1.0 - frac) * samp1 + frac * samp2;
     } while (--i > 0);
     
-    buffer_unlocksamples(b);
+    if (tab != NIL)
+        buffer_unlocksamples(b);
     
     // Update object members
     me->phi	= phi;
