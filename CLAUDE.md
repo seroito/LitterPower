@@ -128,6 +128,13 @@ workflow builds pushes to both branches. One commit per change:
    `lbj.bixmap` read past a group matrix smaller than the input (now resized to the input,
    global filter until one arrives) and gave every thread the top rows of the group matrix.
 
+10. Overview patch (`Litter Power Extras/Litter Pro Overview.maxpat`): the 26 objects
+    missing from its menus were added (64-bit/limiter variants, julie, lana, fiana~,
+    vera*, gruyere~, crottin~ marked experimental, galliard~, `lp.messages`) plus a new
+    seventh menu "Jitter Objects" for the lbj.* objects; window 70 px taller, copyright
+    line and License button moved down. `lbj.penize` deliberately left out (unfinished).
+    "Version 1.8" and "Copyright (c) 2002-08" in the patch are unchanged.
+
 Not done (reviewed, lower priority): A_GIMME new functions declaring argc as `short`,
 A_LONG handlers declaring `long` instead of `t_atom_long`; no reference pages
 (docs/refpages) for the objects.

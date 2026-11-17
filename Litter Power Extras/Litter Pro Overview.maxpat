@@ -1,9 +1,9 @@
 {
 	"patcher" : 	{
-		"rect" : [ 2.0, 44.0, 640.0, 462.0 ],
+		"rect" : [ 2.0, 44.0, 640.0, 532.0 ],
 		"bgcolor" : [ 1.0, 1.0, 1.0, 1.0 ],
 		"bglocked" : 1,
-		"defrect" : [ 2.0, 44.0, 640.0, 462.0 ],
+		"defrect" : [ 2.0, 44.0, 640.0, 532.0 ],
 		"openrect" : [ 0.0, 0.0, 0.0, 0.0 ],
 		"openinpresentation" : 0,
 		"default_fontsize" : 10.0,
@@ -16,7 +16,471 @@
 		"boxanimatetime" : 200,
 		"imprint" : 0,
 		"metadata" : [  ],
-		"boxes" : [ 			{
+		"boxes" : [ {
+	"box": {
+		"maxclass": "comment",
+		"text": "Jitter Objects",
+		"patching_rect": [
+			9.0,
+			466.0,
+			174.0,
+			22.0
+		],
+		"numoutlets": 0,
+		"fontname": "Palatino",
+		"fontsize": 12.0,
+		"fontface": 1,
+		"id": "obj-50",
+		"textcolor": [
+			0.4,
+			0.2,
+			1.0,
+			1.0
+		],
+		"frgb": [
+			0.4,
+			0.2,
+			1.0,
+			1.0
+		],
+		"numinlets": 1
+	}
+}, {
+	"box": {
+		"maxclass": "umenu",
+		"patching_rect": [
+			9.0,
+			488.0,
+			270.0,
+			17.0
+		],
+		"numoutlets": 3,
+		"items": [
+			"->",
+			"Choose",
+			"a",
+			"Jitter",
+			"object",
+			",",
+			"-",
+			",",
+			"lbj.shhh",
+			"—",
+			"Uniform",
+			"(white)",
+			"noise",
+			",",
+			"lbj.tata",
+			"—",
+			"Bounded",
+			"white",
+			"noise",
+			"(Tausworthe",
+			"88)",
+			",",
+			"lbj.titi",
+			"—",
+			"Bounded",
+			"white",
+			"noise",
+			"(TT800)",
+			",",
+			"-",
+			",",
+			"lbj.norm",
+			"—",
+			"Gaussian",
+			"noise",
+			",",
+			"lbj.expo",
+			"—",
+			"Exponential",
+			"and",
+			"Laplace",
+			"noise",
+			",",
+			"lbj.abbie",
+			"—",
+			"Arc",
+			"sine",
+			"and",
+			"beta",
+			"noise",
+			",",
+			"lbj.pfishie",
+			"—",
+			"Poisson",
+			"noise",
+			",",
+			"-",
+			",",
+			"lbj.stacey",
+			"—",
+			"Statistics",
+			"of",
+			"a",
+			"matrix",
+			",",
+			"lbj.bixmap",
+			"—",
+			"Value",
+			"mapping",
+			"by",
+			"region"
+		],
+		"outlettype": [
+			"int",
+			"",
+			""
+		],
+		"fontname": "Arial",
+		"labelclick": 1,
+		"fontsize": 7.9,
+		"types": [],
+		"id": "obj-51",
+		"textcolor": [
+			0.0,
+			0.0,
+			0.0,
+			1.0
+		],
+		"bgcolor": [
+			0.803922,
+			0.603922,
+			0.4,
+			1.0
+		],
+		"numinlets": 1
+	}
+}, {
+	"box": {
+		"maxclass": "comment",
+		"text": "Litter Bundle for Jitter: matrices of white, Gaussian, exponential, beta and Poisson noise; matrix statistics; value mapping by region.",
+		"linecount": 3,
+		"patching_rect": [
+			335.0,
+			470.0,
+			290.0,
+			46.0
+		],
+		"numoutlets": 0,
+		"fontname": "Arial",
+		"fontsize": 10.0,
+		"id": "obj-52",
+		"numinlets": 1
+	}
+}, {
+	"box": {
+		"maxclass": "newobj",
+		"text": "p DoHelp",
+		"patching_rect": [
+			135.0,
+			511.0,
+			47.0,
+			17.0
+		],
+		"numoutlets": 1,
+		"outlettype": [
+			""
+		],
+		"fontname": "Arial",
+		"fontsize": 7.9,
+		"id": "obj-53",
+		"hidden": 1,
+		"numinlets": 1,
+		"patcher": {
+			"rect": [
+				40.0,
+				55.0,
+				366.0,
+				163.0
+			],
+			"bgcolor": [
+				1.0,
+				1.0,
+				1.0,
+				1.0
+			],
+			"bglocked": 0,
+			"defrect": [
+				40.0,
+				55.0,
+				366.0,
+				163.0
+			],
+			"openrect": [
+				0.0,
+				0.0,
+				0.0,
+				0.0
+			],
+			"openinpresentation": 0,
+			"default_fontsize": 10.0,
+			"default_fontface": 0,
+			"default_fontname": "Arial",
+			"gridonopen": 0,
+			"gridsize": [
+				15.0,
+				15.0
+			],
+			"gridsnaponopen": 0,
+			"toolbarvisible": 1,
+			"boxanimatetime": 200,
+			"imprint": 0,
+			"metadata": [],
+			"boxes": [
+				{
+					"box": {
+						"maxclass": "comment",
+						"text": "The set message is not absolutely necessary, but they are a safety net if we edit the patch and the select box no longer matches the first menu item.",
+						"linecount": 3,
+						"patching_rect": [
+							0.0,
+							73.0,
+							232.0,
+							38.0
+						],
+						"numoutlets": 0,
+						"fontname": "Arial",
+						"fontsize": 7.9,
+						"id": "obj-1",
+						"numinlets": 1
+					}
+				},
+				{
+					"box": {
+						"maxclass": "outlet",
+						"patching_rect": [
+							241.0,
+							104.0,
+							15.0,
+							15.0
+						],
+						"numoutlets": 0,
+						"id": "obj-2",
+						"numinlets": 1,
+						"comment": "Message to reset help menu"
+					}
+				},
+				{
+					"box": {
+						"maxclass": "inlet",
+						"patching_rect": [
+							241.0,
+							4.0,
+							15.0,
+							15.0
+						],
+						"numoutlets": 1,
+						"outlettype": [
+							""
+						],
+						"id": "obj-3",
+						"numinlets": 0,
+						"comment": "Symbol from one of the help menus"
+					}
+				},
+				{
+					"box": {
+						"maxclass": "message",
+						"text": "set $1",
+						"patching_rect": [
+							241.0,
+							76.0,
+							35.0,
+							15.0
+						],
+						"numoutlets": 1,
+						"outlettype": [
+							""
+						],
+						"fontname": "Arial",
+						"fontsize": 7.9,
+						"id": "obj-4",
+						"numinlets": 2
+					}
+				},
+				{
+					"box": {
+						"maxclass": "newobj",
+						"text": "unpack s 0",
+						"patching_rect": [
+							279.0,
+							49.0,
+							55.0,
+							17.0
+						],
+						"numoutlets": 2,
+						"outlettype": [
+							"",
+							"int"
+						],
+						"fontname": "Arial",
+						"fontsize": 7.9,
+						"id": "obj-5",
+						"numinlets": 1
+					}
+				},
+				{
+					"box": {
+						"maxclass": "newobj",
+						"text": "prepend help",
+						"patching_rect": [
+							279.0,
+							76.0,
+							64.0,
+							17.0
+						],
+						"numoutlets": 1,
+						"outlettype": [
+							""
+						],
+						"fontname": "Arial",
+						"fontsize": 7.9,
+						"id": "obj-6",
+						"numinlets": 1
+					}
+				},
+				{
+					"box": {
+						"maxclass": "newobj",
+						"text": "lp.mrsnorris",
+						"patching_rect": [
+							279.0,
+							98.0,
+							67.0,
+							17.0
+						],
+						"numoutlets": 1,
+						"outlettype": [
+							""
+						],
+						"fontname": "Arial",
+						"fontsize": 7.9,
+						"id": "obj-7",
+						"numinlets": 1
+					}
+				},
+				{
+					"box": {
+						"maxclass": "newobj",
+						"text": "select ->",
+						"patching_rect": [
+							241.0,
+							27.0,
+							48.0,
+							17.0
+						],
+						"numoutlets": 2,
+						"outlettype": [
+							"bang",
+							""
+						],
+						"fontname": "Arial",
+						"fontsize": 7.9,
+						"id": "obj-8",
+						"numinlets": 1
+					}
+				}
+			],
+			"lines": [
+				{
+					"patchline": {
+						"source": [
+							"obj-3",
+							0
+						],
+						"destination": [
+							"obj-8",
+							0
+						],
+						"hidden": 0
+					}
+				},
+				{
+					"patchline": {
+						"source": [
+							"obj-5",
+							1
+						],
+						"destination": [
+							"obj-4",
+							0
+						],
+						"hidden": 0,
+						"midpoints": [
+							324.5,
+							73.0,
+							250.5,
+							73.0
+						]
+					}
+				},
+				{
+					"patchline": {
+						"source": [
+							"obj-4",
+							0
+						],
+						"destination": [
+							"obj-2",
+							0
+						],
+						"hidden": 0
+					}
+				},
+				{
+					"patchline": {
+						"source": [
+							"obj-8",
+							1
+						],
+						"destination": [
+							"obj-5",
+							0
+						],
+						"hidden": 0
+					}
+				},
+				{
+					"patchline": {
+						"source": [
+							"obj-5",
+							0
+						],
+						"destination": [
+							"obj-6",
+							0
+						],
+						"hidden": 0
+					}
+				},
+				{
+					"patchline": {
+						"source": [
+							"obj-6",
+							0
+						],
+						"destination": [
+							"obj-7",
+							0
+						],
+						"hidden": 0
+					}
+				}
+			]
+		},
+		"saved_object_attributes": {
+			"fontname": "Arial",
+			"fontsize": 10.0,
+			"default_fontsize": 10.0,
+			"fontface": 0,
+			"globalpatchername": "",
+			"default_fontname": "Arial",
+			"default_fontface": 0
+		}
+	}
+}, 			{
 				"box" : 				{
 					"maxclass" : "newobj",
 					"text" : "p loadbanger",
@@ -767,7 +1231,7 @@
 
 											}
  ],
-										"lines" : [ 											{
+										"lines" : [ {"patchline": {"source": ["obj-51", 1], "destination": ["obj-53", 0]}}, {"patchline": {"source": ["obj-53", 0], "destination": ["obj-51", 0]}}, 											{
 												"patchline" : 												{
 													"source" : [ "obj-13", 0 ],
 													"destination" : [ "obj-39", 0 ],
@@ -1654,7 +2118,7 @@
 				"box" : 				{
 					"maxclass" : "message",
 					"text" : "License",
-					"patching_rect" : [ 599.0, 446.0, 41.0, 15.0 ],
+					"patching_rect" : [ 599.0, 516.0, 41.0, 15.0 ],
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"fontname" : "Arial",
@@ -2762,9 +3226,9 @@
 , 			{
 				"box" : 				{
 					"maxclass" : "comment",
-					"text" : "Schuster\/Procaccia noise generator, Lyapunov spaces, population growth models",
-					"linecount" : 2,
-					"patching_rect" : [ 8.0, 371.0, 290.0, 33.0 ],
+					"text" : "Schuster\/Procaccia noise generator, Lyapunov spaces, population growth models, Julia sets, Latoocarfian attractors.",
+					"linecount" : 3,
+					"patching_rect" : [ 8.0, 371.0, 290.0, 46.0 ],
 					"numoutlets" : 0,
 					"fontname" : "Arial",
 					"fontsize" : 10.0,
@@ -2778,7 +3242,7 @@
 					"maxclass" : "umenu",
 					"patching_rect" : [ 9.0, 350.0, 270.0, 17.0 ],
 					"numoutlets" : 3,
-					"items" : [ "->", "Choose", "a", "chaos", "generator", ",", "-", ",", "lp.ccc", "—", "Schuster\/Procaccia", "sequences", ",", "lp.poppy", "—", "Simple", "population", "model", ",", "lp.lya", "—", "Lyapunov", "spaces", ",", "-", ",", "lp.ccc~", "—", "Schuster\/Procaccia", "1\/f", "noise", ",", "lp.poppy~", "—", "Population", "model", "as", "signal", "generator" ],
+					"items" : [ "->", "Choose", "a", "chaos", "generator", ",", "-", ",", "lp.ccc", "—", "Schuster\/Procaccia", "sequences", ",", "lp.poppy", "—", "Simple", "population", "model", ",", "lp.lya", "—", "Lyapunov", "spaces", ",", "lp.julie", "—", "Julia", "set", "iteration", ",", "lp.lana", "—", "Latoocarfian", "attractor", ",", "-", ",", "lp.vera", "—", "Population", "growth", "with", "a", "function", "of", "p", ",", "lp.vera+", "—", "Additive", "growth", "model", ",", "lp.vera=", "—", "Proportional", "growth", "model", ",", "lp.veral", "—", "Logistic-type", "growth", "model", ",", "lp.veras", "—", "Quadratic", "growth", "model", ",", "lp.veram", "—", "Population", "model", "with", "exponent", "beta", ",", "-", ",", "lp.ccc~", "—", "Schuster\/Procaccia", "1\/f", "noise", ",", "lp.poppy~", "—", "Population", "model", "as", "signal", "generator", ",", "lp.julie~", "—", "Julia", "set", "as", "signal", "generator", ",", "lp.fiana~", "—", "Latoocarfian", "attractor", "as", "signal", "generator" ],
 					"outlettype" : [ "int", "", "" ],
 					"fontname" : "Arial",
 					"labelclick" : 1,
@@ -3014,7 +3478,7 @@
 					"maxclass" : "umenu",
 					"patching_rect" : [ 335.0, 352.0, 270.0, 17.0 ],
 					"numoutlets" : 3,
-					"items" : [ "->", "Choose", "a", "utility", ",", "-", ",", "lp.sigma", "—", "Add", "(many)", "numbers", ",", "lp.delta", "—", "Differences", "between", "numbers", ",", "lp.pi", "—", "Multiply", "(many)", "numbers", ",", "lp.logos", "—", "Division", "and", "remainder", ",", "lp.scampf", "—", "Scale\/map\/limit", "to", "floating", "point", ",", "lp.scampi", "—", "Scale\/map\/limit", "to", "integers", ",", "lp.scamp~", "—", "Scale\/map\/limit", "to", "signals", ",", "-", ",", "lp.stacey", "—", "Statistics", ",", "-", ",", "lp.c2p~", "—", "Cartesian", "to", "polar", ",", "lp.p2c~", "—", "Polar", "to", "Cartesian", ",", "lp.grl~", "—", "Phase", "unwrapping", ",", "-", ",", "lp.i", "—", "Read", "text", "of", "I", "Ching", "oracles", ",", "lp.kg", "—", "Map", "I", "Ching", "to", "other", "ranges", ",", "-", ",", "lp.crabelms", "— Scramble", "a", "list", ",", "lp.ale", "—", "Choose", "random", "items", "from", "a", "list", "one", "at", "a", "time", ",", "-", ",", "lp.nn~", "—", "Signal", "degradation", ",", "-", ",", "lp.mrsnorris", "—", "Open", "other", "patchers", "once", "only", ",", "lp.argus", "—", "Open", "this", "patcher", "once", "only" ],
+					"items" : [ "->", "Choose", "a", "utility", ",", "-", ",", "lp.sigma", "—", "Add", "(many)", "numbers", ",", "lp.delta", "—", "Differences", "between", "numbers", ",", "lp.pi", "—", "Multiply", "(many)", "numbers", ",", "lp.logos", "—", "Division", "and", "remainder", ",", "lp.scampf", "—", "Scale\/map\/limit", "to", "floating", "point", ",", "lp.scampi", "—", "Scale\/map\/limit", "to", "integers", ",", "lp.scamp~", "—", "Scale\/map\/limit", "to", "signals", ",", "-", ",", "lp.stacey", "—", "Statistics", ",", "-", ",", "lp.c2p~", "—", "Cartesian", "to", "polar", ",", "lp.p2c~", "—", "Polar", "to", "Cartesian", ",", "lp.grl~", "—", "Phase", "unwrapping", ",", "-", ",", "lp.i", "—", "Read", "text", "of", "I", "Ching", "oracles", ",", "lp.kg", "—", "Map", "I", "Ching", "to", "other", "ranges", ",", "-", ",", "lp.crabelms", "— Scramble", "a", "list", ",", "lp.ale", "—", "Choose", "random", "items", "from", "a", "list", "one", "at", "a", "time", ",", "-", ",", "lp.nn~", "—", "Signal", "degradation", ",", "lp.galliard~", "—", "Polynomial", "waveshaping", ",", "-", ",", "lp.mrsnorris", "—", "Open", "other", "patchers", "once", "only", ",", "lp.argus", "—", "Open", "this", "patcher", "once", "only", ",", "-", ",", "lp.messages", "—", "Messages", "common", "to", "all", "Litter", "Power", "objects" ],
 					"outlettype" : [ "int", "", "" ],
 					"fontname" : "Arial",
 					"labelclick" : 1,
@@ -3080,9 +3544,9 @@
 , 			{
 				"box" : 				{
 					"maxclass" : "comment",
-					"text" : "Noise: Colored noises (white, pink, brown, black, etc.), pitched noises, dither (triangular and Gaussian noise), gray, parametric linear congruence, chaotic noise, single-bit noise, plucked noise, and popcorn (\"dust\").",
-					"linecount" : 4,
-					"patching_rect" : [ 335.0, 90.0, 291.0, 60.0 ],
+					"text" : "Noise: Colored noises (white, pink, brown, black, etc.), pitched noises, dither (triangular and Gaussian noise), gray, parametric linear congruence, chaotic noise, single-bit noise, plucked noise, popcorn (\"dust\"), Markov wavetable and segment noise.",
+					"linecount" : 5,
+					"patching_rect" : [ 335.0, 90.0, 291.0, 73.0 ],
 					"numoutlets" : 0,
 					"fontname" : "Arial",
 					"fontsize" : 10.0,
@@ -3111,7 +3575,7 @@
 					"maxclass" : "umenu",
 					"patching_rect" : [ 335.0, 69.0, 270.0, 17.0 ],
 					"numoutlets" : 3,
-					"items" : [ "->", "Choose", "a", "signal", "generator", ",", "-", ",", "lp.shhh~", "—", "White", "noise", ",", "lp.sss~", "—", "Pink", "(1\/f)", "noise", "using", "Voss\/Gardner", "algorithm", ",", "lp.zzz~", "—", "Pink", "(1\/f)", "noise", "using", "McCartney", "algorithm", ",", "lp.pfff~", "—", "Brownian", "(\"red\")", "noise", ",", "lp.phhh~", "—", "Black", "noise", ",", "lp.pvvv~", "—", "Variable", "colored", "noise", "(integer", "arithmetic)", ",", "lp.qvvv~", "—", "Variable", "colored", "noise", "(float", "arithemtic)", ",", "-", ",", "lp.frrr~", "—", "Low", "frequency", "noise", ",", "lp.epoisse~", "—", "Pitched", "noise", ",", "lp.ksks~", "—", "Plucked", "noise", ",", "lp.poppy~", "—", "Chaotic", "pitched", "noise", ",", "-", ",", "lp.trrr~", "—", "Triangular", "dither", ",", "lp.gsss~", "—", "Gaussian", "dither", ",", "-", ",", "lp.ccc~", "—", "Chaotic", "1\/f", "noise", ",", "lp.feta~", "—", "Single-bit", "noise", ",", "lp.grrr~", "—", "Gray", "noise", ",", "lp.lll~", "—", "Parametric", "linear", "congruence", "noise", ",", "lp.ppp~", "—", "Popcorn", "noise", "(“dust”)" ],
+					"items" : [ "->", "Choose", "a", "signal", "generator", ",", "-", ",", "lp.shhh~", "—", "White", "noise", ",", "lp.sss~", "—", "Pink", "(1\/f)", "noise", "using", "Voss\/Gardner", "algorithm", ",", "lp.zzz~", "—", "Pink", "(1\/f)", "noise", "using", "McCartney", "algorithm", ",", "lp.pfff~", "—", "Brownian", "(\"red\")", "noise", ",", "lp.pfff64~", "—", "Brownian", "noise", "(no", "overflow;", "with", "limiter)", ",", "lp.phhh~", "—", "Black", "noise", ",", "lp.phhh64~", "—", "Black", "noise", "(no", "overflow;", "with", "limiter)", ",", "lp.pvvv~", "—", "Variable", "colored", "noise", "(integer", "arithmetic)", ",", "lp.pvvv64~", "—", "Variable", "colored", "noise", "(no", "overflow;", "with", "limiter)", ",", "lp.qvvv~", "—", "Variable", "colored", "noise", "(float", "arithemtic)", ",", "lp.qvvvl~", "—", "Variable", "colored", "noise", "(float", "arithmetic;", "with", "limiter)", ",", "-", ",", "lp.frrr~", "—", "Low", "frequency", "noise", ",", "lp.epoisse~", "—", "Pitched", "noise", ",", "lp.ksks~", "—", "Plucked", "noise", ",", "lp.poppy~", "—", "Chaotic", "pitched", "noise", ",", "lp.gruyere~", "—", "Markov", "wavetable", "noise", ",", "lp.crottin~", "—", "Segment", "noise", "(experimental)", ",", "-", ",", "lp.trrr~", "—", "Triangular", "dither", ",", "lp.gsss~", "—", "Gaussian", "dither", ",", "-", ",", "lp.ccc~", "—", "Chaotic", "1\/f", "noise", ",", "lp.feta~", "—", "Single-bit", "noise", ",", "lp.grrr~", "—", "Gray", "noise", ",", "lp.lll~", "—", "Parametric", "linear", "congruence", "noise", ",", "lp.ppp~", "—", "Popcorn", "noise", "(“dust”)" ],
 					"outlettype" : [ "int", "", "" ],
 					"fontname" : "Arial",
 					"labelclick" : 1,
@@ -3223,7 +3687,7 @@
 					"maxclass" : "comment",
 					"text" : "Thanks to Trond for making me do this! Copyright © 2002-08 Peter Castine.",
 					"linecount" : 2,
-					"patching_rect" : [ 0.0, 437.0, 198.0, 28.0 ],
+					"patching_rect" : [ 0.0, 507.0, 198.0, 28.0 ],
 					"numoutlets" : 0,
 					"fontname" : "Arial",
 					"fontsize" : 7.9,
@@ -3253,9 +3717,9 @@
 , 			{
 				"box" : 				{
 					"maxclass" : "comment",
-					"text" : "Statistics, texts of I Ching oracles, map I Ching to other ranges, scale\/map\/limit floating point\/integer\/signals, Cartesian\/polar conversion and phase unwrapping (MSP 1.x compatible), signal degradation.",
-					"linecount" : 5,
-					"patching_rect" : [ 335.0, 373.0, 290.0, 73.0 ],
+					"text" : "Statistics, texts of I Ching oracles, map I Ching to other ranges, scale\/map\/limit floating point\/integer\/signals, Cartesian\/polar conversion and phase unwrapping (MSP 1.x compatible), signal degradation, polynomial waveshaping.",
+					"linecount" : 6,
+					"patching_rect" : [ 335.0, 373.0, 290.0, 86.0 ],
 					"numoutlets" : 0,
 					"fontname" : "Arial",
 					"fontsize" : 10.0,
