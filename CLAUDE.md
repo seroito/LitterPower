@@ -1,7 +1,7 @@
 # LitterPower modernization notes
 
 What has been done to bring Litter Power to Max 9, where things stand, and how to
-continue. Last updated 2026-11-17.
+continue. Last updated 2026-11-18.
 
 ## Goal and decisions
 
@@ -31,8 +31,8 @@ Decisions made by the user:
 |---|---|
 | Source port | Done. `python3 tools/check.py` (gcc syntax check on Linux): 0 of 118 units failing |
 | Windows build | Succeeds: 104 externals (`.mxe64`) |
-| macOS build | Last succeeded at commit `6b5478a` (universal x86_64 + arm64, ad-hoc signed). Not built since: GitHub had no macOS runners for hours, so it was made manual |
-| Package | Latest: run 44140952620 on `rng-fixes` (help files for all objects, extended overview patch, reference pages), artifact `LitterPower-package`, Windows externals only |
+| macOS build | Succeeds: 104 externals (`.mxo`, universal x86_64 + arm64, ad-hoc signed), last at run 44200406957 (2026-11-18). Only built when started by hand |
+| Package | Latest: run 44200406957 on `rng-fixes` (help files for all objects, restyled for readability, extended overview patch, reference pages), artifact `LitterPower-package`, Windows and macOS externals |
 | Help files | Every built object has one (15 new ones written in 2026) |
 | Reference pages | `docs/*.maxref.xml` for all 104 objects |
 | Test in Max 9 | Not done yet. The user tests on Windows first |
@@ -60,6 +60,11 @@ Added for the `rng-fixes` package (2026-11-17):
    in the object-box autocomplete; the documentation sidebar lists "Litter Power". If
    the pages are not found, the folder placement (`docs/` flat, as in min-devkit) is the
    first thing to change.
+7. Readability (2026-11-18): help files and the overview at 12 pt, white background
+   locked, light grey in edit mode, titles orange (audio) / green (others); nothing cut
+   off or running into each other; the stretched background picture of the overview.
+8. macOS (first macOS package): externals load on Apple Silicon and Intel Macs; remove
+   the quarantine flag first if macOS blocks them (see `README.md`).
 
 Other things to watch: converted Max 4 patchers (clippings, `lp.doom`,
 `lp.pfft.frimWrap`, `lp.bibi`/`lp.ernie`/`lp.abbie` help, "Running CPU Usage") look and
