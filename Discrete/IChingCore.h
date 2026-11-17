@@ -23,6 +23,7 @@
 #pragma mark Include Files
 
 #include "LitterLib.h"			// For access to the Taus88 generator
+#include "Taus88.h"
 
 #pragma mark Constants
 
@@ -111,7 +112,7 @@ typedef struct Oracle {
 			} tOracle;
 typedef tOracle* tOraclePtr;
 
-typedef void(*ChingFunc)(tOraclePtr);
+typedef void(*ChingFunc)(tTaus88DataPtr, tOraclePtr);
 
 typedef struct HexagramInfo {
 	eLineBits	theLines,				// Bits set for Yin lines;
@@ -136,8 +137,8 @@ extern const tHexInfo		kHexagramInfo[64];
 
 #pragma mark Function Prototypes
 
-void	ThrowSticks(tOraclePtr);
-void	TossCoins(tOraclePtr);
+void	ThrowSticks(tTaus88DataPtr, tOraclePtr);
+void	TossCoins(tTaus88DataPtr, tOraclePtr);
 
 static inline eTrigram		BottomTrigram	(eLineBits);
 static inline eTrigram		TopTrigram		(eLineBits);

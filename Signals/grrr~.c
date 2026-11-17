@@ -67,6 +67,7 @@ enum {
 
 typedef struct {
 	t_pxobject		coreObject;
+	tTaus88Data		tausData;			// Private random number generator
 	
 	//unsigned long	prev;
     t_uint32        prev;
@@ -168,6 +169,8 @@ GrrrNew(void)
 	// Let Max/MSP allocate us, our inlets, and outlets.
 	//me = (tGray*) newobject(gObjectClass);
         me = object_alloc(gObjectClass);
+        if (me != NIL)
+        	Taus88Seed(&me->tausData, 0);		// Seed from clock, address etc.
 	dsp_setup(&(me->coreObject), 1);				// Signal inlet for benefit of begin~
 													// Otherwise left inlet does "NN" only
 	outlet_new(me, "signal");
@@ -285,7 +288,7 @@ void GrrrPerform64(tGray* me, t_object *dsp64, double **ins, long numins, double
 	
 	// Do our stuff
 	do {
-		prev ^= Taus88(NULL);
+		prev ^= Taus88(&me->tausData);
 		*outNoise++ = ULong2Signal(prev);
 		} while (--vecCounter > 0);
 	

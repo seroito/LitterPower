@@ -74,6 +74,7 @@ enum {
 
 typedef struct {
 	t_pxobject		coreObject;
+	tTaus88Data		tausData;			// Private random number generator
 	
 	unsigned short	counter;
 	int				nn;					// Number of bits to mask out
@@ -187,7 +188,7 @@ void ext_main(void* r)
 		t_uint32	sum		= 0;
 		t_uint32*	curDie	= me->dice;
 		
-		do { sum += *curDie++ = Taus88(NULL) / kArraySize; }
+		do { sum += *curDie++ = Taus88(&me->tausData) / kArraySize; }
 			while (--i > 0);
 		
 		me->sum = sum;
@@ -205,6 +206,8 @@ SssNew(
 
 	// Let Max/MSP allocate us, our inlets, and outlets.
 	me = object_alloc(gObjectClass);
+	if (me != NIL)
+		Taus88Seed(&me->tausData, 0);		// Seed from clock, address etc.
 	dsp_setup(&(me->coreObject), 1);				// Signal inlet for benefit of begin~
 													// Otherwise left inlet does "NN" only
 	outlet_new(me, "signal");
@@ -378,7 +381,7 @@ void SssPerform64(tPink* me, t_object *dsp64, double **ins, long numins, double 
 					curDie	+= 1;
 					}
 				sum -= *curDie;
-				sum += *curDie = Taus88(NULL) / kArraySize;
+				sum += *curDie = Taus88(&me->tausData) / kArraySize;
 				break;
 			
 			default:
@@ -388,7 +391,7 @@ void SssPerform64(tPink* me, t_object *dsp64, double **ins, long numins, double 
 					do {
 						if (bit & counter) {
 							sum -= *curDie;
-							sum += *curDie = Taus88(NULL) / kArraySize;
+							sum += *curDie = Taus88(&me->tausData) / kArraySize;
 							}
 						bit		*= 2;
 						curDie	+= 1;
@@ -400,7 +403,7 @@ void SssPerform64(tPink* me, t_object *dsp64, double **ins, long numins, double 
 					sum	= 0;
 					do {
 						if (bit & counter)
-							*curDie = Taus88(NULL) / kArraySize;
+							*curDie = Taus88(&me->tausData) / kArraySize;
 						sum += *curDie++;
 						bit *= 2;
 						} while (--i > 0);

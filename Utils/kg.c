@@ -72,6 +72,7 @@ enum {
 
 typedef struct {
 	t_object	coreObject;
+	tTaus88Data	tausData;			// Private random number generator
 	
 	voidPtr	futureOut;					// Main outlet accessed through coreObject.o_outlet
 	
@@ -195,7 +196,7 @@ SetThreshholds(
 	for (i = 1; i <= me->items; i += 1) {		// Rely on compiler to optimize loop
 												// condition, which is not particularly
 												// efficient.
-		theFunc(&theOracle);
+		theFunc(&me->tausData, &theOracle);
 		mainSum		+= *curItemMain++
 					 = theOracle.mainHexagram;
 		futureSum	+= *curItemFuture++
@@ -257,6 +258,8 @@ KgNew(
 	
 	// Let Max allocate the object, its outlets, and inlets.
 	me = object_alloc(gObjectClass);
+	if (me != NIL)
+		Taus88Seed(&me->tausData, 0);		// Seed from clock, address etc.
 		if (me == NIL) goto punt;
 	
 	me->futureOut = intout(me);

@@ -62,6 +62,7 @@ enum {
 
 typedef struct {
 	t_pxobject		coreObject;
+	tTaus88Data		tausData;			// Private random number generator
 	
 	double			amp;
 	} tOneBit;
@@ -177,6 +178,8 @@ FetaNew(
 	
 	// Let Max/MSP allocate us, our inlets, and outlets.
 	me = object_alloc(gObjectClass);
+	if (me != NIL)
+		Taus88Seed(&me->tausData, 0);		// Seed from clock, address etc.
 	dsp_setup(&(me->coreObject), 1);				// Signal inlet for benefit of begin~
 	
 	outlet_new(me, "signal");
@@ -338,7 +341,7 @@ void FetaPerformSimp64(tOneBit *me, t_object *dsp64, double **ins, long numins, 
     // a single 32-bit random value will sort us out or we will use some
     // exact integral multiple of 32-bits
     if (vecCounter < kRandBitCount) {
-        randBits = Taus88(NIL);
+        randBits = Taus88(&me->tausData);
         
         do {
             *outNoise++ = (randBits < 0) ? negAmp : amp;
@@ -349,7 +352,7 @@ void FetaPerformSimp64(tOneBit *me, t_object *dsp64, double **ins, long numins, 
     else while (vecCounter > 0) {
         int i = kRandBitCount;
         
-        randBits = Taus88(NIL);
+        randBits = Taus88(&me->tausData);
         do {
             *outNoise++ = (randBits < 0) ? negAmp : amp;
             randBits <<= 1;
@@ -381,7 +384,7 @@ void FetaPerformMod64(tOneBit *me, t_object *dsp64, double **ins, long numins, d
     // a single 32-bit random value will sort us out or we will use some
     // exact integral multiple of 32-bits
     if (vecCounter < kRandBitCount) {
-        randBits = Taus88(NIL);
+        randBits = Taus88(&me->tausData);
         
         do {
             *outNoise++ = (randBits < 0) ? -(*inAmp++) : *inAmp++;
@@ -392,7 +395,7 @@ void FetaPerformMod64(tOneBit *me, t_object *dsp64, double **ins, long numins, d
     else while (vecCounter > 0) {
         int i = kRandBitCount;
         
-        randBits = Taus88(NIL);
+        randBits = Taus88(&me->tausData);
         do {
             *outNoise++ = (randBits < 0) ? -(*inAmp++) : *inAmp++;
             randBits <<= 1;
@@ -457,7 +460,7 @@ FetaPerformMod(
 	// a single 32-bit random value will sort us out or we will use some
 	// exact integral multiple of 32-bits
 	if (vecCounter < kRandBitCount) {
-		randBits = Taus88(NIL);
+		randBits = Taus88(&me->tausData);
 		
 		do {
 			*outNoise++ = (randBits < 0) ? -(*inAmp++) : *inAmp++;
@@ -468,7 +471,7 @@ FetaPerformMod(
 	else while (vecCounter > 0) {
 		int i = kRandBitCount;
 		
-		randBits = Taus88(NIL);
+		randBits = Taus88(&me->tausData);
 		do {
 			*outNoise++ = (randBits < 0) ? -(*inAmp++) : *inAmp++;
 			randBits <<= 1;
@@ -517,7 +520,7 @@ FetaPerformSimp(
 	// a single 32-bit random value will sort us out or we will use some
 	// exact integral multiple of 32-bits
 	if (vecCounter < kRandBitCount) {
-		randBits = Taus88(NIL);
+		randBits = Taus88(&me->tausData);
 		
 		do {
 			*outNoise++ = (randBits < 0) ? negAmp : amp;
@@ -528,7 +531,7 @@ FetaPerformSimp(
 	else while (vecCounter > 0) {
 		int i = kRandBitCount;
 		
-		randBits = Taus88(NIL);
+		randBits = Taus88(&me->tausData);
 		do {
 			*outNoise++ = (randBits < 0) ? negAmp : amp;
 			randBits <<= 1;

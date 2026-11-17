@@ -59,16 +59,18 @@ extern tTaus88Data	gTausData;								// Default seed set
 
 
 	// Tausworthe 88...
-UInt32			Taus88			(tTaus88DataPtr);
+	// Taus88() itself is defined inline below. Pass a private tTaus88Data (seeded with
+	// Taus88Seed()) to get a stream of one's own; NULL uses the global seed pool, which
+	// is shared by everything in the external and not safe to use from several threads.
 void			Taus88Init		(void);
 void			Taus88Seed		(tTaus88DataPtr, UInt32);
 tTaus88DataPtr	Taus88New		(UInt32);					// Do not call New/Free at
 void			Taus88Free		(tTaus88DataPtr);			// interrupt level.
 
 #ifdef __MAX_MSP_OBJECT__
-	void		Taus88SigVector	(tSampleVector, UInt32);
-	void		Taus88SigVectorMasked(tSampleVector, UInt32, UInt32, UInt32);
-	float		Taus88TriSig	(void);
+	void		Taus88SigVector	(tTaus88DataPtr, tSampleVector, UInt32);
+	void		Taus88SigVectorMasked(tTaus88DataPtr, tSampleVector, UInt32, UInt32, UInt32);
+	float		Taus88TriSig	(tTaus88DataPtr);
 #endif	// __MAX_MSP_OBJECT__
 
 	// These functions, which will be defined inline, abstract the
@@ -109,6 +111,22 @@ static inline UInt32 Taus88Process(UInt32* ioReg1, UInt32* ioReg2, UInt32* ioReg
 	*ioReg3 = ((*ioReg3 & tausMagic3) << 17) ^ x;
 	
 	return *ioReg1 ^ *ioReg2 ^ *ioReg3; 
+	}
+
+	// One random 32-bit value. Inline, so that in loops the compiler can keep the
+	// generator state in registers.
+static inline UInt32 Taus88(tTaus88DataPtr ioData)
+	{
+	UInt32 x, s1, s2, s3;
+
+	if (ioData == NULL)
+		ioData = &gTausData;
+
+	Taus88Load(ioData, &s1, &s2, &s3);
+	x = Taus88Process(&s1, &s2, &s3);
+	Taus88Store(ioData, s1, s2, s3);
+
+	return x;
 	}
 
 static inline double Taus88Unit(tTaus88DataPtr ioData)

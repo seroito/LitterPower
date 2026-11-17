@@ -61,6 +61,7 @@ typedef struct {
 
 typedef struct {
 	t_object		coreObject;
+	tTaus88Data	tausData;		// Private random number generator
 	
 	long		ltCount,				// Same counts for lambda and tau
 				locCount,
@@ -310,6 +311,8 @@ static jcobExpo* ExpoJitNew()
 	{
 	int			i;
 	jcobExpo*	me = (jcobExpo*) jit_object_alloc(gExpoJitClass);
+	if (me == NIL) return NIL;
+	Taus88Seed(&me->tausData, 0);		// Seed from clock, address etc.
 	
 	me->ltCount		= 1;
 	me->locCount	= 1;
@@ -345,6 +348,7 @@ static void ExpoJitFree(jcobExpo* me)
 
 static void
 ExpoCharVector(
+	tTaus88DataPtr	ioTaus,
 	double			iTau,
 	double			iLoc,
 	eSymmetry		iSym,
@@ -358,7 +362,7 @@ ExpoCharVector(
 	long	stride  = oMatrix->stride;
 	UInt32	s1, s2, s3;
 	
-	Taus88LoadGlobal(&s1, &s2, &s3);
+	Taus88Load(ioTaus, &s1, &s2, &s3);
 	
 	// Sanity check
 	if		(iLoc < 0.0)	iLoc = 0.0;
@@ -463,11 +467,12 @@ ExpoCharVector(
 		}
 		
 	
-	Taus88StoreGlobal(s1, s2, s3);
+	Taus88Store(ioTaus, s1, s2, s3);
 	}
 	
 static void
 ExpoLongVector(
+	tTaus88DataPtr	ioTaus,
 	double			iTau,
 	double			iLoc,
 	eSymmetry		iSym,
@@ -479,7 +484,7 @@ ExpoLongVector(
 	long	stride  = oMatrix->stride;
 	UInt32	s1, s2, s3;
 	
-	Taus88LoadGlobal(&s1, &s2, &s3);
+	Taus88Load(ioTaus, &s1, &s2, &s3);
 	
 	// Sanity check
 	// Prepare for rounding while we're at it
@@ -534,11 +539,12 @@ ExpoLongVector(
 			}
 		}
 	
-	Taus88StoreGlobal(s1, s2, s3);
+	Taus88Store(ioTaus, s1, s2, s3);
 	}
 
 static void 
 ExpoFloatVector(
+	tTaus88DataPtr	ioTaus,
 	double			iTau,
 	double			iLoc,
 	eSymmetry		iSym,
@@ -550,7 +556,7 @@ ExpoFloatVector(
 	long	stride  = oMatrix->stride;
 	UInt32	s1, s2, s3;
 	
-	Taus88LoadGlobal(&s1, &s2, &s3);
+	Taus88Load(ioTaus, &s1, &s2, &s3);
 	
 	CLAMP(iLoc, 0.0, 1.0);					// No rounding worries, just CLAMP
 	
@@ -591,11 +597,12 @@ ExpoFloatVector(
 			}
 		}
 	
-	Taus88StoreGlobal(s1, s2, s3);
+	Taus88Store(ioTaus, s1, s2, s3);
 	}
 
 static void 
 ExpoDoubleVector(
+	tTaus88DataPtr	ioTaus,
 	double			iTau,
 	double			iLoc,
 	eSymmetry		iSym,
@@ -607,7 +614,7 @@ ExpoDoubleVector(
 	long	stride  = oMatrix->stride;
 	UInt32	s1, s2, s3;
 	
-	Taus88LoadGlobal(&s1, &s2, &s3);
+	Taus88Load(ioTaus, &s1, &s2, &s3);
 	
 	if (iTau > 0.0) {
 		UInt32 x;
@@ -649,7 +656,7 @@ ExpoDoubleVector(
 			}
 		}
 	
-	Taus88StoreGlobal(s1, s2, s3);
+	Taus88Store(ioTaus, s1, s2, s3);
 	}
 
 static void
@@ -702,28 +709,28 @@ RecurseDimensions(
 		if (iMInfo->type == _jit_sym_char) {
 			for (i = 0; i < iDimVec[1]; i += 1) for (j=0; j < iPlaneCount; j += 1) {
 				outOpInfo.p = iBOP + i * iMInfo->dimstride[1] + j;
-				ExpoCharVector(me->tau[j], me->loc[j], me->sym[j], n, &outOpInfo);
+				ExpoCharVector(&me->tausData, me->tau[j], me->loc[j], me->sym[j], n, &outOpInfo);
 				}
 			}
 		
 		else if (iMInfo->type == _jit_sym_long) {
 			for (i = 0; i < iDimVec[1]; i += 1) for (j=0; j < iPlaneCount; j += 1) {
 				outOpInfo.p = iBOP + i * iMInfo->dimstride[1] + j * sizeof(t_int32);
-				ExpoLongVector(me->tau[j], me->loc[j], me->sym[j], n, &outOpInfo);
+				ExpoLongVector(&me->tausData, me->tau[j], me->loc[j], me->sym[j], n, &outOpInfo);
 				}
 			}
 		
 		else if (iMInfo->type == _jit_sym_float32) {
 			for (i = 0; i < iDimVec[1]; i += 1) for (j=0; j < iPlaneCount; j += 1) {
 				outOpInfo.p = iBOP + i * iMInfo->dimstride[1] + j * sizeof(float);
-				ExpoFloatVector(me->tau[j], me->loc[j], me->sym[j], n, &outOpInfo);
+				ExpoFloatVector(&me->tausData, me->tau[j], me->loc[j], me->sym[j], n, &outOpInfo);
 				}
 			}
 		
 		else if (iMInfo->type == _jit_sym_float64) {
 			for (i = 0; i < iDimVec[1]; i += 1) for (j=0; j < iPlaneCount; j += 1) {
 				outOpInfo.p = iBOP + i * iMInfo->dimstride[1] + j * sizeof(double);
-				ExpoDoubleVector(me->tau[j], me->loc[j], me->sym[j], n, &outOpInfo);
+				ExpoDoubleVector(&me->tausData, me->tau[j], me->loc[j], me->sym[j], n, &outOpInfo);
 				}
 			
 			}

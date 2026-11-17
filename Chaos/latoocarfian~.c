@@ -120,6 +120,7 @@ typedef double (*tLatooFunc)(double);
 
 typedef struct {
 	t_pxobject		coreObject;
+	tTaus88Data		tausData;			// Private random number generator
 	
 	double			x0,	y0,						// Initial coordinates
 					x,	y,						// Current coordinates
@@ -296,14 +297,14 @@ MapStrToFunction(
  *	
  ******************************************************************************************/
 
-	static double RandXY(void)
-		{ return 2.5 * ULong2Unit_zO(Taus88(NIL)); }
+	static double RandXY(tTaus88DataPtr iTaus)
+		{ return 2.5 * ULong2Unit_zO(Taus88(iTaus)); }
 	
-	static double RandAC(void)
-		{ return kPi * ULong2Unit_zO(Taus88(NIL)); }
+	static double RandAC(tTaus88DataPtr iTaus)
+		{ return kPi * ULong2Unit_zO(Taus88(iTaus)); }
 	
-	static double RandBD(void)
-		{ return ULong2Unit_zO(Taus88(NIL)); }
+	static double RandBD(tTaus88DataPtr iTaus)
+		{ return ULong2Unit_zO(Taus88(iTaus)); }
 
 void*
 Newfiana(
@@ -323,6 +324,8 @@ Newfiana(
 	// Let Max allocate us, our inlets, and outlets
 	//
 	me = (tfiana*) object_alloc(gObjectClass);
+	if (me != NIL)
+		Taus88Seed(&me->tausData, 0);		// Seed from clock, address etc.
 		if (me == NIL) goto punt;
 	
 		// fiana does proxies; even if we don't want signals in all of them.
@@ -336,12 +339,12 @@ Newfiana(
 	// Set up initial values
 	//
 	
-	me->x = me->x0	= RandXY();
-	me->y = me->y0	= RandXY();
-	me->a			= RandAC();
-	me->b			= RandBD();
-	me->c			= RandAC();
-	me->d			= RandBD();
+	me->x = me->x0	= RandXY(&me->tausData);
+	me->y = me->y0	= RandXY(&me->tausData);
+	me->a			= RandAC(&me->tausData);
+	me->b			= RandBD(&me->tausData);
+	me->c			= RandAC(&me->tausData);
+	me->d			= RandBD(&me->tausData);
 	me->fnA			= kDefFunc;
 	me->fnB			= kDefFunc;
 	me->fnC			= kDefFunc;
@@ -454,15 +457,15 @@ DoBang(
 	{
 	
 	if (me->autoParam) {
-		me->a	= RandAC();
-		me->b	= RandBD();
-		me->c	= RandAC();
-		me->d	= RandBD();
+		me->a	= RandAC(&me->tausData);
+		me->b	= RandBD(&me->tausData);
+		me->c	= RandAC(&me->tausData);
+		me->d	= RandBD(&me->tausData);
 		}
 	
 	if (me->autoSeed) {
-		me->x0	= RandXY();
-		me->y0	= RandXY();
+		me->x0	= RandXY(&me->tausData);
+		me->y0	= RandXY(&me->tausData);
 		}
 	
 	me->x = me->x0;

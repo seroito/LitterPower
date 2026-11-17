@@ -148,7 +148,8 @@ const tHexInfo	kHexagramInfo[]
 
 static int
 DivideSticksAndCountFours(
-				long iHowMany)
+				tTaus88DataPtr	ioTaus,
+				long			iHowMany)
 	
 	{
 	// For mystical reasons, we do not use stick number 0.
@@ -163,9 +164,9 @@ DivideSticksAndCountFours(
 	
 	// Divide sticks randomly into two piles
 	do {
-		unsigned long threshhold = Taus88(NULL);
+		unsigned long threshhold = Taus88(ioTaus);
 		for (s = iHowMany; s > 0; s -= 1) {
-			sticks[s] = Taus88(NULL);
+			sticks[s] = Taus88(ioTaus);
 			}
 		leftPile = 0;
 		rightPile = 0;
@@ -257,7 +258,8 @@ FinalizeOracle
 
 void
 ThrowSticks(
-	tOraclePtr oOracle)
+	tTaus88DataPtr	ioTaus,				// Private generator (NULL: global)
+	tOraclePtr		oOracle)
 	
 	{
 	tLinePtr	lineBase = oOracle->lines - 1;		// Allows us to use unit-based indices
@@ -268,17 +270,17 @@ ThrowSticks(
 				sticksInHand,
 				yySum			= 0;
 		
-		sticksInHand = DivideSticksAndCountFours(sticksToThrow);
+		sticksInHand = DivideSticksAndCountFours(ioTaus, sticksToThrow);
 		yySum	+= lineBase[lineIndex].components[0]
 				 = (sticksInHand == 5) ? yang : yin;
 		
 		sticksToThrow -= sticksInHand;
-		sticksInHand = DivideSticksAndCountFours(sticksToThrow);
+		sticksInHand = DivideSticksAndCountFours(ioTaus, sticksToThrow);
 		yySum	+= lineBase[lineIndex].components[1]
 				 = (sticksInHand == 4) ? yang : yin;
 		
 		sticksToThrow -= sticksInHand;
-		sticksInHand = DivideSticksAndCountFours(sticksToThrow);
+		sticksInHand = DivideSticksAndCountFours(ioTaus, sticksToThrow);
 		yySum	+= lineBase[lineIndex].components[2]
 				 = (sticksInHand == 4) ? yang : yin;
 		
@@ -298,7 +300,8 @@ ThrowSticks(
 
 void
 TossCoins(
-	tOraclePtr oOracle)
+	tTaus88DataPtr	ioTaus,				// Private generator (NULL: global)
+	tOraclePtr		oOracle)
 	
 	{
 	const unsigned long kCoin1Mask		= 0x80000000,
@@ -315,7 +318,7 @@ TossCoins(
 	// and the "odd" bit. Hence the mapping of "bit set" to yin.
 	for (lineIndex = 1; lineIndex <= kLineCount; lineIndex += 1) {
 		// Throw three coins at once.
-		unsigned long	threeCoins	= Taus88(NULL) & kThreeCoinMask;
+		unsigned long	threeCoins	= Taus88(ioTaus) & kThreeCoinMask;
 		int				yySum		= 0;
 		
 		yySum	+= lineBase[lineIndex].components[0]

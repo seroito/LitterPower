@@ -65,6 +65,7 @@ enum {
 
 typedef struct {
 	t_pxobject		coreObject;
+	tTaus88Data		tausData;			// Private random number generator
 	
 	int				nn;					// Number of bits to mask out
 	t_uint32        mask,				// Value depends on nn
@@ -173,7 +174,7 @@ void ext_main(void* r)
         t_uint32	sum		= 0;
 		t_uint32*	curDie	= me->dice;
 		
-		do { sum += *curDie++ = Taus88(NULL) / kArraySize; }
+		do { sum += *curDie++ = Taus88(&me->tausData) / kArraySize; }
 			while (--i > 0);
 		
 		me->sum = sum;
@@ -191,6 +192,8 @@ ZzzNew(
 
 	// Let Max/MSP allocate us, our inlets, and outlets.
 	me = object_alloc(gObjectClass);
+	if (me != NIL)
+		Taus88Seed(&me->tausData, 0);		// Seed from clock, address etc.
 	dsp_setup(&(me->coreObject), 1);				// Signal inlet for benefit of begin~
 													// Otherwise left inlet does "NN" only
 	outlet_new(me, "signal");
@@ -352,13 +355,13 @@ void ZzzPerform64(tPink* me, t_object *dsp64, double **ins, long numins, double 
 			// this time around. Calculate the address once
 			curDie = firstDie + rightZeroes;
 			sum -= *curDie;
-			sum += *curDie = Taus88(NULL) / kArraySize;
+			sum += *curDie = Taus88(&me->tausData) / kArraySize;
 			}
 		// If c == 0, nothing gets changed (aside from the hi-freq. white noise component)
 		counter++;
 		
 		// Add high frequency white-noise component to sum
-		samp  = Taus88(NULL) / kArraySize;
+		samp  = Taus88(&me->tausData) / kArraySize;
 		samp += sum;
 		samp &= mask;
 		*outNoise++	= ULong2Signal(samp + offset);

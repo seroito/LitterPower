@@ -78,51 +78,35 @@ tTaus88Data gTausData = {0x4a1fcf79, 0xb86271cc, 0x6c986d11};
  *	
  ******************************************************************************************/
 
-UInt32
-Taus88(
-	tTaus88DataPtr	iData)
-	
-	{
-	UInt32	x, s1, s2, s3;
-	
-	if (iData == NULL)
-		iData = &gTausData;
-	
-	// Model sequence for calling the three core inlined functions defined in LitterLib.h
-	Taus88Load(iData, &s1, &s2, &s3);
-	
-	x = Taus88Process(&s1, &s2, &s3);
-	
-	Taus88Store(iData, s1, s2, s3);
-	
-	return x; 
-	}
-
-	
-
+	// Taus88() is now an inline function in Taus88.h.
 
 #ifdef __MAX_MSP_OBJECT__
 	void
 	Taus88SigVector(
+		tTaus88DataPtr	ioData,					// NULL: global seed pool
 		tSampleVector	ioVector,
 		UInt32			iCount)
 		
 		{
 		UInt32			s1, s2, s3;
 		
+		if (ioData == NULL)
+			ioData = &gTausData;
+		
 		// Get seed data into registers
-		Taus88Load(&gTausData, &s1, &s2, &s3);
+		Taus88Load(ioData, &s1, &s2, &s3);
 		
 		while (iCount-- > 0)
 			*ioVector++ = ULong2Signal( Taus88Process(&s1, &s2, &s3) );
 		
 		// Save seed data
-		Taus88Store(&gTausData, s1, s2, s3);
+		Taus88Store(ioData, s1, s2, s3);
 		
 		}
 
 	void
 	Taus88SigVectorMasked(
+		tTaus88DataPtr	ioData,					// NULL: global seed pool
 		tSampleVector	ioVector,
 		UInt32			iCount,
 		UInt32			iMask,
@@ -131,26 +115,33 @@ Taus88(
 		{
 		UInt32	s1, s2, s3;
 		
+		if (ioData == NULL)
+			ioData = &gTausData;
+		
 		// Get seed data into registers
-		Taus88Load(&gTausData, &s1, &s2, &s3);
+		Taus88Load(ioData, &s1, &s2, &s3);
 		
 		while (iCount-- > 0)
 			*ioVector++ = ULong2Signal((Taus88Process(&s1, &s2, &s3) & iMask) + iOffset);
 		
 		// Save seed data
-		Taus88Store(&gTausData, s1, s2, s3);
+		Taus88Store(ioData, s1, s2, s3);
 		
 		}
 
 // TODO: vb - should be changed some day to return double
 	float
-	Taus88TriSig(void)
+	Taus88TriSig(
+		tTaus88DataPtr	ioData)					// NULL: global seed pool
 		
 		{
 		UInt32	s1, s2, s3, t;
 		
+		if (ioData == NULL)
+			ioData = &gTausData;
+		
 		// Get seed data into registers
-		Taus88Load(&gTausData, &s1, &s2, &s3);
+		Taus88Load(ioData, &s1, &s2, &s3);
 		
 		// Calculate first value, store it in fraction field (23 least significant bits)
 		// of what will become our result, then add second value
@@ -158,7 +149,7 @@ Taus88(
 		t += Taus88Process(&s1, &s2, &s3) >> 10;
 		
 		// Save seed data
-		Taus88Store(&gTausData, s1, s2, s3);
+		Taus88Store(ioData, s1, s2, s3);
 		
 		// Munge t to look like a float in the range 2 ≤ t < 4
 		t  |= 0x40000000;

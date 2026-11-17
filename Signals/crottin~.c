@@ -88,6 +88,7 @@ typedef tSegment	tSegmentVec[];
 
 typedef struct {
 	t_pxobject		coreObject;
+	tTaus88Data		tausData;			// Private random number generator
 	
 	Boolean			interpAmp,
 					interpWidth,
@@ -358,7 +359,7 @@ GenNewAmpGoals(
 	double		f  = 1.0 / me->ampRateCycles;
 	
 	do  {
-		sp->goalAmp = ULong2Signal(Taus88(NIL));
+		sp->goalAmp = ULong2Signal(Taus88(&me->tausData));
 		sp->deltaAmp = f * (sp->goalAmp - sp->curAmp);
 		sp += 1;
 		} while (--i > 0);
@@ -377,7 +378,7 @@ GenNewWidthGoals(
 	double		f  = 1.0 / me->widthRateCycles,
 				l  = 0.0;
 	
-	do { l += sp++->goalWidth = ULong2Unit_zO(Taus88(NIL)); } while (--i > 0);
+	do { l += sp++->goalWidth = ULong2Unit_zO(Taus88(&me->tausData)); } while (--i > 0);
 	
 	l  = me->waveLen / l;
 	i  = me->segCount;
@@ -492,9 +493,9 @@ RollOverGoals(
 			seg->curWidth 	= 0.0;
 			seg->deltaAmp	= 0.0;
 			seg->deltaWidth	= 0.0;
-			seg->goalAmp 	= ULong2Signal(Taus88(NIL));
+			seg->goalAmp 	= ULong2Signal(Taus88(NULL));
 			
-			widthSum += seg->goalWidth = ULong2Unit_zO(Taus88(NIL));
+			widthSum += seg->goalWidth = ULong2Unit_zO(Taus88(NULL));
 			}
 		
 		// Normalize widths; take inverse of widthSum so we can multiply instead of divide
@@ -571,6 +572,8 @@ CrottinNew(
 	
 	// Let Max/MSP allocate us, our inlets, and outlets.
 	me = object_alloc(gObjectClass);
+	if (me != NIL)
+		Taus88Seed(&me->tausData, 0);		// Seed from clock, address etc.
 	dsp_setup(&(me->coreObject), 3);		// Signal inlets for frequency, etc.
 	
 	outlet_new(me, "signal");				// Outlet

@@ -74,6 +74,7 @@ typedef struct {
 
 typedef struct {
 	t_object		coreObject;
+	tTaus88Data	tausData;		// Private random number generator
 	
 	long		lambdaCount;
 	ePoisAlg	alg[JIT_MATRIX_MAX_PLANECOUNT];
@@ -414,6 +415,8 @@ static jcobPfishie* PfishieJitNew()
 	{
 	int			i;
 	jcobPfishie*	me = (jcobPfishie*) jit_object_alloc(gPfishieJitClass);
+	if (me == NIL) return NIL;
+	Taus88Seed(&me->tausData, 0);		// Seed from clock, address etc.
 	
 	me->lambdaCount	= 1;
 	
@@ -437,12 +440,13 @@ static void PfishieJitFree(jcobPfishie* me)
 
 /******************************************************************************************
  *
- *	PfishieCharVector(iAlg, iFlipped, iParams, iCount, oMatrix)
+ *	PfishieCharVector(&me->tausData, iAlg, iFlipped, iParams, iCount, oMatrix)
  *
  ******************************************************************************************/
 
 static void
 PfishieCharVector(
+	tTaus88DataPtr	ioTaus,
 	ePoisAlg		iAlg,
 	Boolean			iFlipped,
 	uPoisParams*	iParams,
@@ -454,7 +458,7 @@ PfishieCharVector(
 	long			stride  = oMatrix->stride;
 	
 	if (iAlg != algConstZero) {
-		tTaus88Data*	tausData = Taus88GetGlobals();
+		tTaus88Data*	tausData = ioTaus;
 		UInt32			s1, s2, s3, p;
 		
 		Taus88Load(tausData, &s1, &s2, &s3);
@@ -572,7 +576,7 @@ RecurseDimensions(
 		
 		for (i = 0; i < iDimVec[1]; i += 1) for (j=0; j < iPlaneCount; j += 1) {
 			outOpInfo.p = iBOP + i * iMInfo->dimstride[1] + j;
-			PfishieCharVector(me->alg[j], me->flipped[j], me->params + j, n, &outOpInfo);
+			PfishieCharVector(&me->tausData, me->alg[j], me->flipped[j], me->params + j, n, &outOpInfo);
 			}
 		
 		break;

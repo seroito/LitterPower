@@ -70,6 +70,7 @@ enum {
 
 typedef struct {
 	t_pxobject		coreObject;
+	tTaus88Data		tausData;			// Private random number generator
 	
 	double		hurstExp,
 				hurstFac,
@@ -193,7 +194,7 @@ void ext_main(void* r)
 		
 		for (i = 0; i < kMaxBuf; i += 1)
 			me->buffer[i] = 0;
-		me->buffer[kMaxBuf] = Taus88Signal(NIL) / 3.0;			// Dividing by  3 is a fudge
+		me->buffer[kMaxBuf] = Taus88Signal(&me->tausData) / 3.0;			// Dividing by  3 is a fudge
 	
 		me->bufPos = kMaxBuf;
 		
@@ -213,6 +214,8 @@ Pvvv2New(
 	// Let Max/MSP allocate us, our inlets, and outlets.
 	//me = (objBrown*) newobject(gObjectClass);
     me = object_alloc(gObjectClass);
+    if (me != NIL)
+    	Taus88Seed(&me->tausData, 0);		// Seed from clock, address etc.
 
 	dsp_setup(&(me->coreObject), 1);				// Signal inlet for benefit of begin~
 													// Otherwise left inlet does "NN" only
@@ -469,8 +472,8 @@ void Pvvv2DSP64(objBrown* me, t_object *dsp64, short *count, double samplerate,
 		// modification to the Voss algorithm made in this implementation.)
 		//
 		buf[0]			= buf[kMaxBuf];
-		buf[stride]		= scale * Taus88Signal(NIL);
-		buf[kMaxBuf]	= scale * Taus88Signal(NIL);
+		buf[stride]		= scale * Taus88Signal(&me->tausData);
+		buf[kMaxBuf]	= scale * Taus88Signal(&me->tausData);
 		
 		// Recursive interpolation
 		// Initial state: stride = cycle/2, offset = stride/2
@@ -486,7 +489,7 @@ void Pvvv2DSP64(objBrown* me, t_object *dsp64, short *count, double samplerate,
 			// Add noise with reduced variance while we're at it
 			scale *= hurstFac;
 			for (i = offset; i < kMaxBuf; i += stride) 
-				buf[i] = 0.5 * (buf[i-offset] + buf[i+offset]) + scale * Taus88Signal(NIL);
+				buf[i] = 0.5 * (buf[i-offset] + buf[i+offset]) + scale * Taus88Signal(&me->tausData);
 			
 			// Next generation: halve stride and offset
 			stride = offset;								// ASSERT: offset == stride/2

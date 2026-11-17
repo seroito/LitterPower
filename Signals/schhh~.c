@@ -63,6 +63,7 @@ enum {
 
 typedef struct {
 	t_pxobject		coreObject;
+	tTaus88Data		tausData;			// Private random number generator
 	
 	int				nn;					// Number of bits to mask out
 	//unsigned long	mask,				// Values depend on nn
@@ -173,6 +174,8 @@ ShhhNew(
 	// Let Max/MSP allocate us, our inlets, and outlets.
 	//me = (tWhite*) newobject(gObjectClass);
       me = object_alloc(gObjectClass);
+      if (me != NIL)
+      	Taus88Seed(&me->tausData, 0);		// Seed from clock, address etc.
 	dsp_setup(&(me->coreObject), 1);				// Signal inlet for benefit of begin~
 													// Otherwise left inlet does "NN" only
 	outlet_new(me, "signal");
@@ -319,8 +322,8 @@ void ShhhPerform64(tWhite* me, t_object *dsp64, double **ins, long numins, doubl
 	
 	// Do our stuff
 	if (me->nn == 0)
-			Taus88SigVector(outNoise, vecCounter);
-	else	Taus88SigVectorMasked(outNoise, vecCounter, me->mask, me->offset);
+			Taus88SigVector(&me->tausData, outNoise, vecCounter);
+	else	Taus88SigVectorMasked(&me->tausData, outNoise, vecCounter, me->mask, me->offset);
 	
 
 	}

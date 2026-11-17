@@ -77,6 +77,7 @@ enum {
 
 typedef struct {
 	LITTER_CORE_OBJECT(t_object, coreObject);
+	tTaus88Data		tausData;			// Private random number generator
 	
 	voidPtr		futureOut,		// Outlets (main "present" outlet accessed through coreObject)
 				oracleOut,
@@ -126,6 +127,8 @@ GingerNew(
 	
 	// Let Max allocate us. iching has only the default inlet
 	me = (objIChing*) LitterAllocateObject();
+	if (me != NIL)
+		Taus88Seed(&me->tausData, 0);		// Seed from clock, address etc.
 
 	
 	// Add three outlets, from right to left
@@ -161,8 +164,8 @@ GingerBang(
 	AtomPtr		curDetailAtom;
 					
 	if (me->type == yyCoin)
-			TossCoins(&theOracle);
-	else	ThrowSticks(&theOracle);
+			TossCoins(&me->tausData, &theOracle);
+	else	ThrowSticks(&me->tausData, &theOracle);
 	
 	// Set up elements in details lists
 	curDetailAtom = me->details;

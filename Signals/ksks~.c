@@ -88,6 +88,7 @@ enum eFlags {
 
 typedef struct {
 	t_pxobject	coreObject;
+	tTaus88Data		tausData;			// Private random number generator
 	
 	Boolean		trigger;
 	
@@ -227,7 +228,7 @@ GenBuf(
 	
 	{
 	
-	Taus88SigVector(me->buf, kBufSize);
+	Taus88SigVector(&me->tausData, me->buf, kBufSize);
 	me->buf[kBufSize] = me->buf[0];
 	
 	me->trigger = false;
@@ -339,6 +340,8 @@ PluckNew(
 	
 	// Let Max/MSP allocate us, our inlets, and outlets.
 	me = object_alloc(gObjectClass);
+	if (me != NIL)
+		Taus88Seed(&me->tausData, 0);		// Seed from clock, address etc.
 	dsp_setup(&(me->coreObject), kInletCount);
 
 	outlet_new(me, "signal");
@@ -641,7 +644,7 @@ void    PluckPerform64(objPluck *me, t_object *dsp64, double **ins, long numins,
         
         if (blendTau > 0) do {
             // Do magic blend sign switch?
-            if (Taus88(NIL) < blendTau)
+            if (Taus88(&me->tausData) < blendTau)
                 buf[curPhi] *= -1.0;
             
             // Calculate output value
@@ -676,7 +679,7 @@ void    PluckPerform64(objPluck *me, t_object *dsp64, double **ins, long numins,
         
         if (blendTau > 0) do {
             // Do magic blend sign switch?
-            if (Taus88(NIL) < blendTau)
+            if (Taus88(&me->tausData) < blendTau)
                 buf[curPhi] *= -1.0;
             
             // Calculate output value
@@ -687,7 +690,7 @@ void    PluckPerform64(objPluck *me, t_object *dsp64, double **ins, long numins,
             curPhi = IncrPhi(curPhi, phiStep, &cumPhiErr, phiFrac);
             
             // Tick stochastically-delayed low-pass filter
-            if (curPhi != prevPhi && Taus88(NIL) <= tau)
+            if (curPhi != prevPhi && Taus88(&me->tausData) <= tau)
                 SmoothBuf(buf, prevPhi, curPhi, kMaxRho);
             
         } while (--n > 0);
@@ -701,7 +704,7 @@ void    PluckPerform64(objPluck *me, t_object *dsp64, double **ins, long numins,
             curPhi = IncrPhi(curPhi, phiStep, &cumPhiErr, phiFrac);
             
             // Tick stochastically-delayed low-pass filter
-            if (curPhi != prevPhi && Taus88(NIL) <= tau)
+            if (curPhi != prevPhi && Taus88(&me->tausData) <= tau)
                 SmoothBuf(buf, prevPhi, curPhi, kMaxRho);
             
         } while (--n > 0);
@@ -777,7 +780,7 @@ PluckPerform(
 		
 		if (blendTau > 0) do {
 			// Do magic blend sign switch?
-			if (Taus88(NIL) < blendTau)
+			if (Taus88(&me->tausData) < blendTau)
 				buf[curPhi] *= -1.0;
 			
 			// Calculate output value
@@ -812,7 +815,7 @@ PluckPerform(
 		
 		if (blendTau > 0) do {
 			// Do magic blend sign switch?
-			if (Taus88(NIL) < blendTau)
+			if (Taus88(&me->tausData) < blendTau)
 				buf[curPhi] *= -1.0;
 			
 			// Calculate output value
@@ -823,7 +826,7 @@ PluckPerform(
 			curPhi = IncrPhi(curPhi, phiStep, &cumPhiErr, phiFrac);
 			
 			// Tick stochastically-delayed low-pass filter
-			if (curPhi != prevPhi && Taus88(NIL) <= tau)
+			if (curPhi != prevPhi && Taus88(&me->tausData) <= tau)
 				SmoothBuf(buf, prevPhi, curPhi, kMaxRho);
 			
 			} while (--n > 0);
@@ -837,7 +840,7 @@ PluckPerform(
 			curPhi = IncrPhi(curPhi, phiStep, &cumPhiErr, phiFrac);
 			
 			// Tick stochastically-delayed low-pass filter
-			if (curPhi != prevPhi && Taus88(NIL) <= tau)
+			if (curPhi != prevPhi && Taus88(&me->tausData) <= tau)
 				SmoothBuf(buf, prevPhi, curPhi, kMaxRho);
 			
 			} while (--n > 0);

@@ -83,6 +83,7 @@ typedef enum Interpolation	tInterp;
 
 typedef struct {
 	t_pxobject		coreObject;
+	tTaus88Data		tausData;			// Private random number generator
 	
 	double			curVal,
 					goal,
@@ -234,6 +235,8 @@ noMoreDefaults:
 	// Let Max/MSP allocate us, our inlets (from right to left), and outlets.
         me =
         object_alloc(gObjectClass);
+        if (me != NIL)
+        	Taus88Seed(&me->tausData, 0);		// Seed from clock, address etc.
 	dsp_setup(&(me->coreObject), 1);			// Signal inlet for benefit of begin~
 												// Otherwise left inlet does Base 
 												// Frequency only
@@ -513,7 +516,7 @@ void    FrrrDSP64(objLoFreq *me, t_object *dsp64, short *count, double samplerat
 			
 			if (sampsToGo == 0) {
 				curVal		= goal;
-				goal		= Long2Signal((long) Taus88(NULL));
+				goal		= Long2Signal((long) Taus88(&me->tausData));
 				sampsToGo	= baseFreqSamps;
 				// Note that we don't have to worry about interpolation parameters because
 				// me->interp == interpNone;
@@ -556,7 +559,7 @@ void    FrrrDSP64(objLoFreq *me, t_object *dsp64, short *count, double samplerat
 			if (sampsToGo == 0) {
 				// ASSERT:	curVal == goal
 				// Leastaways close enough so as not to make any difference. So no need to update!
-				goal		= Long2Signal((long) Taus88(NULL));
+				goal		= Long2Signal((long) Taus88(&me->tausData));
 				sampsToGo	= baseFreqSamps;
 				slope		= (goal - curVal) / baseFreqSamps;
 				}
@@ -603,7 +606,7 @@ void    FrrrDSP64(objLoFreq *me, t_object *dsp64, short *count, double samplerat
 						durInv2;
 				// ASSERT:	curVal == goal
 				// Leastaways close enough so as not to make any difference. So no need to update!
-				goal		= Long2Signal((long) Taus88(NULL));
+				goal		= Long2Signal((long) Taus88(&me->tausData));
 				sampsToGo	= baseFreqSamps;
 				diff		= goal - curVal;
 				durInv		= 0.5 / sampsToGo;			// Take parabolic curve over twice

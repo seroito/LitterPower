@@ -138,6 +138,7 @@ typedef struct resonBuf	{
 
 typedef struct {
 	t_pxobject		coreObject;
+	tTaus88Data		tausData;			// Private random number generator
 	
 	float			omega;				// In range 0 <= omega <= 1
 	unsigned long	noiseThresh;		// Depends on omega; threshold used to decide
@@ -659,6 +660,8 @@ EmericNew(
 
 	// Let Max/MSP allocate us, our inlets, and outlets.
 	me = object_alloc(gObjectClass);
+	if (me != NIL)
+		Taus88Seed(&me->tausData, 0);		// Seed from clock, address etc.
 		if (me == NIL) goto punt;
 		
 	dsp_setup(&(me->coreObject), 3);		// Signal inlets: Source, Target, Omega
@@ -1090,6 +1093,7 @@ PerformNull(
 	// Have now inlined the Taus88 code so we can keep stuff in registers
 	static inline void
 	MungeExcitationBuffer(
+		tTaus88DataPtr	ioTaus,
 		long			iBufSize,
 		long			iNoiseThresh,
 		const t_sample*	iSrc,
@@ -1099,7 +1103,7 @@ PerformNull(
 		{
 		UInt32	s1, s2, s3;
 			
-		Taus88LoadGlobal(&s1, &s2, &s3);
+		Taus88Load(ioTaus, &s1, &s2, &s3);
 		
 		do {
 			*oExc++ = (Taus88Process(&s1, &s2, &s3) > iNoiseThresh) ? *iSrc : *iTgt;
@@ -1107,7 +1111,7 @@ PerformNull(
 			iSrc++;
 			} while (--iBufSize > 0);
 		
-		Taus88StoreGlobal(s1, s2, s3);
+		Taus88Store(ioTaus, s1, s2, s3);
 		
 		}
 	
@@ -1178,7 +1182,7 @@ Perform(
 	ClearOutputBuffer(iVecSize, oOut);
 	
 	// 2) Set up "real" excitation buffer
-	MungeExcitationBuffer(iVecSize, me->noiseThresh, iSrc, iTgt, me->exciteBuf);
+	MungeExcitationBuffer(&me->tausData, iVecSize, me->noiseThresh, iSrc, iTgt, me->exciteBuf);
 
 	// 3) Loop through filters in filterbank
 	curAmpSum = me->ampSums;

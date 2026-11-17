@@ -119,6 +119,7 @@ typedef enum Function tFunction;
 
 typedef struct {
 	Object			coreObject;
+	tTaus88Data		tausData;			// Private random number generator
 	voidPtr			proxies[kProxyCount];
 	long			curProxy;
 	voidPtr			outY;						// outX accessed through coreObject.o_outlet
@@ -291,14 +292,14 @@ MapStrToFunction(
  *	
  ******************************************************************************************/
 
-	static double RandXY(void)
-		{ return 2.5 * ULong2Unit_zO(Taus88(NIL)); }
+	static double RandXY(tTaus88DataPtr iTaus)
+		{ return 2.5 * ULong2Unit_zO(Taus88(iTaus)); }
 	
-	static double RandAC(void)
-		{ return kPi * ULong2Unit_zO(Taus88(NIL)); }
+	static double RandAC(tTaus88DataPtr iTaus)
+		{ return kPi * ULong2Unit_zO(Taus88(iTaus)); }
 	
-	static double RandBD(void)
-		{ return ULong2Unit_zO(Taus88(NIL)); }
+	static double RandBD(tTaus88DataPtr iTaus)
+		{ return ULong2Unit_zO(Taus88(iTaus)); }
 
 void*
 NewLana(
@@ -318,6 +319,8 @@ NewLana(
 	// Let Max allocate us, our inlets, and outlets
 	//
 	me = (tLana*) object_alloc(gObjectClass);
+	if (me != NIL)
+		Taus88Seed(&me->tausData, 0);		// Seed from clock, address etc.
 		if (me == NIL) goto punt;
 	
 		// Extra inlets: all proxies
@@ -339,12 +342,12 @@ NewLana(
 	// Make sure pointers and counters are set to valid initial states
 	//
 	
-	me->x = me->x0	= RandXY();
-	me->y = me->y0	= RandXY();
-	me->a			= RandAC();
-	me->b			= RandBD();
-	me->c			= RandAC();
-	me->d			= RandBD();
+	me->x = me->x0	= RandXY(&me->tausData);
+	me->y = me->y0	= RandXY(&me->tausData);
+	me->a			= RandAC(&me->tausData);
+	me->b			= RandBD(&me->tausData);
+	me->c			= RandAC(&me->tausData);
+	me->d			= RandBD(&me->tausData);
 	me->fnA			= kDefFunc;
 	me->fnB			= kDefFunc;
 	me->fnC			= kDefFunc;
@@ -627,15 +630,15 @@ DoReset(
 	{
 	
 	if (me->autoParam) {
-		me->a	= RandAC();
-		me->b	= RandBD();
-		me->c	= RandAC();
-		me->d	= RandBD();
+		me->a	= RandAC(&me->tausData);
+		me->b	= RandBD(&me->tausData);
+		me->c	= RandAC(&me->tausData);
+		me->d	= RandBD(&me->tausData);
 		}
 	
 	if (me->autoSeed) {
-		me->x0	= RandXY();
-		me->y0	= RandXY();
+		me->x0	= RandXY(&me->tausData);
+		me->y0	= RandXY(&me->tausData);
 		}
 	
 	me->x = me->x0;

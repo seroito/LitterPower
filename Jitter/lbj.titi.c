@@ -69,6 +69,7 @@ typedef struct {
 
 typedef struct {
 	Object	coreObject;
+	tTaus88Data	tausData;		// Private random number generator
 	
 	long	minCount,
 			maxCount;
@@ -104,7 +105,7 @@ static t_jit_err TitiJitInit		(void);
 
 /******************************************************************************************
  *
- *	Taus88CharVector(n, iTaus88Data, out)
+ *	Taus88CharVector(&me->tausData, n, iTaus88Data, out)
  *	
  *	Standard Max External Object Entry Point Function
  *	
@@ -112,6 +113,7 @@ static t_jit_err TitiJitInit		(void);
 
 static inline void
 Taus88CharVector(
+	tTaus88DataPtr	ioTaus,
 	long			iCount,
 	tVecData*		iVecData,
 	t_jit_op_info*	out)
@@ -148,7 +150,7 @@ Taus88CharVector(
 		
 		scale = max - min + 1;		// The plus one is not obvious but necessary
 		
-		Taus88LoadGlobal(&s1, &s2, &s3);
+		Taus88Load(ioTaus, &s1, &s2, &s3);
 		
 		if (stride > 1 || scale < 256.0) {
 			double fMin = min;
@@ -180,7 +182,7 @@ Taus88CharVector(
 				}
 			}
 		
-		Taus88StoreGlobal(s1, s2, s3);
+		Taus88Store(ioTaus, s1, s2, s3);
 		}
 		
 	else  while (iCount-- > 0) {
@@ -193,6 +195,7 @@ Taus88CharVector(
 
 static inline void
  Taus88LongVector(
+	tTaus88DataPtr	ioTaus,
 	long			iCount,
 	tVecData*		iVecData,
 	t_jit_op_info*	out)
@@ -226,7 +229,7 @@ static inline void
 			max = realMax;
 			}
 		
-		Taus88LoadGlobal(&s1, &s2, &s3);
+		Taus88Load(ioTaus, &s1, &s2, &s3);
 		
 		if (min != kLongMin && max != kLongMax) {
 			double	scale = ((double) (max - min)) + 1.0,
@@ -243,7 +246,7 @@ static inline void
 			}
 				
 		
-		Taus88StoreGlobal(s1, s2, s3);
+		Taus88Store(ioTaus, s1, s2, s3);
 		}
 		
 	else while (iCount-- > 0) {
@@ -255,6 +258,7 @@ static inline void
 
 static inline void
 Taus88FloatVector(
+	tTaus88DataPtr	ioTaus,
 	long			iCount,
 	tVecData*		iVecData,
 	t_jit_op_info*	out)
@@ -291,7 +295,7 @@ Taus88FloatVector(
 		
 		scale = max - min;
 				
-		Taus88LoadGlobal(&s1, &s2, &s3);
+		Taus88Load(ioTaus, &s1, &s2, &s3);
 		
 		if (scale < 1.0) {
 			if (min > 0.0) while (iCount-- > 0) {
@@ -308,7 +312,7 @@ Taus88FloatVector(
 			data += stride;
 			}
 		
-		Taus88StoreGlobal(s1, s2, s3);
+		Taus88Store(ioTaus, s1, s2, s3);
 		}
 		
 	else while (iCount-- > 0) {
@@ -320,6 +324,7 @@ Taus88FloatVector(
 
 static inline void 
 Taus88DoubleVector(
+	tTaus88DataPtr	ioTaus,
 	long			iCount,
 	tVecData*		iVecData,
 	t_jit_op_info*	out)
@@ -349,7 +354,7 @@ Taus88DoubleVector(
 		
 		scale = max - min;
 				
-		Taus88LoadGlobal(&s1, &s2, &s3);
+		Taus88Load(ioTaus, &s1, &s2, &s3);
 		
 		if (scale < 1.0) {
 			if (min > 0.0) while (iCount-- > 0) {
@@ -366,7 +371,7 @@ Taus88DoubleVector(
 			data += stride;
 			}
 		
-		Taus88StoreGlobal(s1, s2, s3);
+		Taus88Store(ioTaus, s1, s2, s3);
 		}
 		
 	else while (iCount-- > 0) {
@@ -574,6 +579,8 @@ void TitiAssist(msobTiti* me, void* unused, long iDir, long iArgNum, char* oCStr
 static jcobTiti* TitiJitNew()
 	{
 	jcobTiti* me = (jcobTiti*) jit_object_alloc(gTitiJitClass);
+	if (me == NIL) return NIL;
+	Taus88Seed(&me->tausData, 0);		// Seed from clock, address etc.
 	
 	
 	return me;
@@ -664,7 +671,7 @@ RecurseDimensions(
 						maxIndex = 0;
 					vecData.max = me->max[maxIndex++];
 					outOpInfo.p = iBOP + i * iMInfo->dimstride[1] + j;
-					Taus88CharVector(n, &vecData, &outOpInfo);
+					Taus88CharVector(&me->tausData, n, &vecData, &outOpInfo);
 					}
 				}
 			}
@@ -682,7 +689,7 @@ RecurseDimensions(
 						maxIndex = 0;
 					vecData.max = me->max[maxIndex++];
 					outOpInfo.p = iBOP + i * iMInfo->dimstride[1] + j * sizeof(t_int32);
-					Taus88LongVector(n, &vecData, &outOpInfo);
+					Taus88LongVector(&me->tausData, n, &vecData, &outOpInfo);
 					}
 				}
 			}
@@ -700,7 +707,7 @@ RecurseDimensions(
 						maxIndex = 0;
 					vecData.max = me->max[maxIndex++];
 					outOpInfo.p = iBOP + i * iMInfo->dimstride[1] + j * sizeof(float);
-					Taus88FloatVector(n, &vecData, &outOpInfo);
+					Taus88FloatVector(&me->tausData, n, &vecData, &outOpInfo);
 					}
 				}
 			}
@@ -718,7 +725,7 @@ RecurseDimensions(
 						maxIndex = 0;
 					vecData.max = me->max[maxIndex++];
 					outOpInfo.p = iBOP + i * iMInfo->dimstride[1] + j * sizeof(double);
-					Taus88DoubleVector(n, &vecData, &outOpInfo);
+					Taus88DoubleVector(&me->tausData, n, &vecData, &outOpInfo);
 					}
 				}
 			}

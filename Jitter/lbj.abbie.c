@@ -69,6 +69,7 @@ typedef struct {
 
 typedef struct {
 	t_object	coreObject;
+	tTaus88Data	tausData;		// Private random number generator
 	
 	long		alphaCount,
 				betaCount;
@@ -453,6 +454,8 @@ static jcobAbbie* AbbieJitNew()
 	{
 	int			i;
 	jcobAbbie*	me = (jcobAbbie*) jit_object_alloc(gAbbieJitClass);
+	if (me == NIL) return NIL;
+	Taus88Seed(&me->tausData, 0);		// Seed from clock, address etc.
 	
 	for (i = 0; i < JIT_MATRIX_MAX_PLANECOUNT; i += 1) {
 		me->alpha[i]		= 0.5;
@@ -486,6 +489,7 @@ static void AbbieJitFree(jcobAbbie* me)
 
 static void
 AbbieCharVector(
+	tTaus88DataPtr	ioTaus,
 	eBetaAlg			iAlg,
 	const uBetaParams*	iParams,
 	long				iCount,
@@ -507,7 +511,7 @@ AbbieCharVector(
 	
 	else {
 		double			beta;
-		tTaus88Data*	tausData = Taus88GetGlobals();
+		tTaus88Data*	tausData = ioTaus;
 		UInt32			s1, s2, s3;
 		
 		Taus88Load(tausData, &s1, &s2, &s3);
@@ -587,6 +591,7 @@ AbbieCharVector(
 	
 static void
 AbbieLongVector(
+	tTaus88DataPtr	ioTaus,
 	eBetaAlg			iAlg,
 	const uBetaParams*	iParams,
 	long				iCount,
@@ -608,7 +613,7 @@ AbbieLongVector(
 	
 	else {
 		double			beta;
-		tTaus88Data*	tausData = Taus88GetGlobals();
+		tTaus88Data*	tausData = ioTaus;
 		UInt32			s1, s2, s3;
 		
 		Taus88Load(tausData, &s1, &s2, &s3);
@@ -688,6 +693,7 @@ AbbieLongVector(
 
 static void 
 AbbieFloatVector(
+	tTaus88DataPtr	ioTaus,
 	eBetaAlg			iAlg,
 	const uBetaParams*	iParams,
 	long				iCount,
@@ -708,7 +714,7 @@ AbbieFloatVector(
 		}
 	
 	else {
-		tTaus88Data*	tausData = Taus88GetGlobals();
+		tTaus88Data*	tausData = ioTaus;
 		UInt32			s1, s2, s3;
 		
 		Taus88Load(tausData, &s1, &s2, &s3);
@@ -775,6 +781,7 @@ AbbieFloatVector(
 
 static void 
 AbbieDoubleVector(
+	tTaus88DataPtr	ioTaus,
 	eBetaAlg			iAlg,
 	const uBetaParams*	iParams,
 	long				iCount,
@@ -795,7 +802,7 @@ AbbieDoubleVector(
 		}
 	
 	else {
-		tTaus88Data*	tausData = Taus88GetGlobals();
+		tTaus88Data*	tausData = ioTaus;
 		UInt32			s1, s2, s3;
 		
 		Taus88Load(tausData, &s1, &s2, &s3);
@@ -909,28 +916,28 @@ RecurseDimensions(
 		if (iMInfo->type == _jit_sym_char) {
 			for (i = 0; i < iDimVec[1]; i += 1) for (j=0; j < iPlaneCount; j += 1) {
 				outOpInfo.p = iBOP + i * iMInfo->dimstride[1] + j;
-				AbbieCharVector(me->alg[j], me->params + j, n, &outOpInfo);
+				AbbieCharVector(&me->tausData, me->alg[j], me->params + j, n, &outOpInfo);
 				}
 			}
 		
 		else if (iMInfo->type == _jit_sym_long) {
 			for (i = 0; i < iDimVec[1]; i += 1) for (j=0; j < iPlaneCount; j += 1) {
 				outOpInfo.p = iBOP + i * iMInfo->dimstride[1] + j * sizeof(t_int32);
-				AbbieLongVector(me->alg[j], me->params + j, n, &outOpInfo);
+				AbbieLongVector(&me->tausData, me->alg[j], me->params + j, n, &outOpInfo);
 				}
 			}
 		
 		else if (iMInfo->type == _jit_sym_float32) {
 			for (i = 0; i < iDimVec[1]; i += 1) for (j=0; j < iPlaneCount; j += 1) {
 				outOpInfo.p = iBOP + i * iMInfo->dimstride[1] + j * sizeof(float);
-				AbbieFloatVector(me->alg[j], me->params + j, n, &outOpInfo);
+				AbbieFloatVector(&me->tausData, me->alg[j], me->params + j, n, &outOpInfo);
 				}
 			}
 		
 		else if (iMInfo->type == _jit_sym_float64) {
 			for (i = 0; i < iDimVec[1]; i += 1) for (j=0; j < iPlaneCount; j += 1) {
 				outOpInfo.p = iBOP + i * iMInfo->dimstride[1] + j * sizeof(double);
-				AbbieDoubleVector(me->alg[j], me->params + j, n, &outOpInfo);
+				AbbieDoubleVector(&me->tausData, me->alg[j], me->params + j, n, &outOpInfo);
 				}
 			
 			}

@@ -53,7 +53,7 @@ enum architecture {
 
 	// Recursive midpoint displacement on a buffer of 64-bit integers. Arithmetic is the
 	// same as in GNB_NativeLoop() of the original objects, but nothing can overflow.
-static void GNB_Native64Loop(int64_t* ioBuf, int iStride, double iHurst)
+static void GNB_Native64Loop(tTaus88DataPtr iTaus, int64_t* ioBuf, int iStride, double iHurst)
 	{
 	int		i,
 			stride	= iStride,
@@ -68,7 +68,7 @@ static void GNB_Native64Loop(int64_t* ioBuf, int iStride, double iHurst)
 		// Add noise with reduced variance
 		scale *= iHurst;
 		for (i = offset; i <= kMaxBuf; i += offset)
-			ioBuf[i] = (int64_t) ((double) (int32_t) Taus88(NULL) * scale + (double) ioBuf[i]);
+			ioBuf[i] = (int64_t) ((double) (int32_t) Taus88(iTaus) * scale + (double) ioBuf[i]);
 
 		// Next generation: halve stride and offset
 		stride = offset;
@@ -98,7 +98,7 @@ static inline int64_t PC415Convert(double t)	// Integer part modulo 2^32
 	return (int64_t) (int32_t) (uint32_t) m;
 	}
 
-static void GNB_EmulationLoop(int64_t* ioBuf, int iStride, double iHurst, int iArch)
+static void GNB_EmulationLoop(tTaus88DataPtr iTaus, int64_t* ioBuf, int iStride, double iHurst, int iArch)
 	{
 	int		i,
 			stride	= iStride,
@@ -111,7 +111,7 @@ static void GNB_EmulationLoop(int64_t* ioBuf, int iStride, double iHurst, int iA
 
 		scale *= iHurst;
 		for (i = offset; i <= kMaxBuf; i += offset) {
-			double t = (double) (int32_t) Taus88(NULL) * scale + (double) ioBuf[i];
+			double t = (double) (int32_t) Taus88(iTaus) * scale + (double) ioBuf[i];
 
 			switch (iArch) {
 				case archPPC:	ioBuf[i] = PPCConvert(t);	break;
@@ -127,7 +127,7 @@ static void GNB_EmulationLoop(int64_t* ioBuf, int iStride, double iHurst, int iA
 
 	// Fill ioBuf[0..kMaxBuf]. ioBuf[kMaxBuf] of the previous buffer becomes ioBuf[0], so
 	// consecutive buffers join without a jump.
-static void GenerateBuffer64(int64_t* ioBuf, double iHurstFac, int iArch)
+static void GenerateBuffer64(tTaus88DataPtr iTaus, int64_t* ioBuf, double iHurstFac, int iArch)
 	{
 	const int	stride = kMaxBuf / 2;
 
@@ -140,12 +140,12 @@ static void GenerateBuffer64(int64_t* ioBuf, double iHurstFac, int iArch)
 		}
 
 	// Random values in the signed 32-bit equivalent of [-.25 .. .25), as in the original
-	ioBuf[stride]	= (int32_t) Taus88(NULL) / 4;
-	ioBuf[kMaxBuf]	= (int32_t) Taus88(NULL) / 4;
+	ioBuf[stride]	= (int32_t) Taus88(iTaus) / 4;
+	ioBuf[kMaxBuf]	= (int32_t) Taus88(iTaus) / 4;
 
 	if (iArch == archNative)
-		 GNB_Native64Loop(ioBuf, stride, iHurstFac);
-	else GNB_EmulationLoop(ioBuf, stride, iHurstFac, iArch);
+		 GNB_Native64Loop(iTaus, ioBuf, stride, iHurstFac);
+	else GNB_EmulationLoop(iTaus, ioBuf, stride, iHurstFac, iArch);
 	}
 
 	// Map a buffer value to a signal value. 2^31 corresponds to full scale (1.0).

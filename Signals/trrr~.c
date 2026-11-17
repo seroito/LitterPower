@@ -65,6 +65,7 @@ enum {
 
 typedef struct {
 	t_pxobject		coreObject;
+	tTaus88Data		tausData;			// Private random number generator
 	
 	int				nn;					// Number of bits to mask out
 	unsigned int	mask,				// Values depend on nn
@@ -171,6 +172,8 @@ TrrrNew(
 
 	// Let Max/MSP allocate us, our inlets, and outlets.
 	me = object_alloc(gObjectClass);
+	if (me != NIL)
+		Taus88Seed(&me->tausData, 0);		// Seed from clock, address etc.
 	dsp_setup(&(me->coreObject), 1);				// Signal inlet for benefit of begin~
 													// Otherwise left inlet does "NN" and
 													// symmetry
@@ -325,13 +328,13 @@ void    TrrrPerform64(tTriNoise *me, t_object *dsp64, double **ins, long numins,
         unsigned int	mask	= me->mask,
         offset	= me->offset;
         do {
-            unsigned int t = (Taus88(NULL) >> 1) + (Taus88(NULL) >> 1);
+            unsigned int t = (Taus88(&me->tausData) >> 1) + (Taus88(&me->tausData) >> 1);
             *outNoise++ = ULong2Signal((t & mask) + offset);
         } while (--vecCounter > 0);
     }
     
     else do {
-        *outNoise++ = Taus88TriSig();
+        *outNoise++ = Taus88TriSig(&me->tausData);
     } while (--vecCounter > 0);
 }
    /*
@@ -364,13 +367,13 @@ TrrrPerform(
 		unsigned long	mask	= me->mask,
 						offset	= me->offset;
 		do {
-			unsigned long t = (Taus88(NULL) >> 1) + (Taus88(NULL) >> 1);
+			unsigned long t = (Taus88(&me->tausData) >> 1) + (Taus88(&me->tausData) >> 1);
 			*outNoise++ = ULong2Signal((t & mask) + offset);
 			} while (--vecCounter > 0);
 		}
 	
 	else do {
-		*outNoise++ = Taus88TriSig();
+		*outNoise++ = Taus88TriSig(&me->tausData);
 		} while (--vecCounter > 0);
 
 exit:

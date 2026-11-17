@@ -140,6 +140,7 @@ typedef enum CommonSymbols	eCommonSyms;
 
 typedef struct {
 	LITTER_CORE_OBJECT(t_object, coreObject);
+	tTaus88Data		tausData;			// Private random number generator
 	
 	int			mainHex,			// Stash input hexagrams here.
 				futureHex;			// Valid range is [1 .. 64] only.
@@ -197,6 +198,8 @@ IChingNew(
 	// Let Max allocate us, our outlets, and additional inlets
 	//
 	me = object_alloc(gObjectClass);
+	if (me != NIL)
+		Taus88Seed(&me->tausData, 0);		// Seed from clock, address etc.
 		if (me == NIL) goto punt;
 	
 	// One additional inlet
@@ -817,7 +820,7 @@ IChingBang(
 	
 	if (me->bangResets || me->mainHex == 0) {
 		tOracle theOracle;
-		ThrowSticks(&theOracle);
+		ThrowSticks(&me->tausData, &theOracle);
 		me->mainHex		= theOracle.mainHexagram;
 		me->futureHex	= theOracle.futureHexagram;
 		}

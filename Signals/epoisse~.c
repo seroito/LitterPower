@@ -73,6 +73,7 @@ enum eFlags {
 
 typedef struct {
 	t_pxobject	coreObject;
+	tTaus88Data		tausData;			// Private random number generator
 	
 	double		freq,			// Center frequency
 				pi,				// Pitchiness factor (0 = noise, larger values are more stable)
@@ -158,7 +159,7 @@ GenBuf(
 	
 	// Set buf[0] and buf[kMaxBuf] to zero, choose a random value for the midpoint
 	goal[0]			= 0.0;
-	goal[stride]	= kEnergy * ULong2Signal(Taus88(NIL));	// ASSERT: stride = kMaxBuf/2
+	goal[stride]	= kEnergy * ULong2Signal(Taus88(&me->tausData));	// ASSERT: stride = kMaxBuf/2
 	goal[kMaxBuf]	= 0.0;
 	
 	// Recursive interpolation
@@ -174,7 +175,7 @@ GenBuf(
 		// Add noise with reduced variance
 		scale *= kHurstFac;
 		for (i = offset; i < kMaxBuf; i += offset) {
-			goal[i] += ULong2Signal(Taus88(NIL)) * scale;
+			goal[i] += ULong2Signal(Taus88(&me->tausData)) * scale;
 			} 
 		
 		// Next generation: halve stride and offset
@@ -453,7 +454,7 @@ EpoissePerform(
 			}
 		else {
 			cur[interpSamp] += stochInterp
-								? interp[interpSamp] * (ULong2Signal(Taus88(NIL)) + 1.0)
+								? interp[interpSamp] * (ULong2Signal(Taus88(&me->tausData)) + 1.0)
 								: interp[interpSamp];
 			// Move incrementer index to next sample; wrap around at end of 
 			interpSamp += 1;
@@ -518,7 +519,7 @@ void    EpoissePerform64(objEpoisse *me, t_object *dsp64, double **ins, long num
         }
         else {
             cur[interpSamp] += stochInterp
-            ? interp[interpSamp] * (ULong2Signal(Taus88(NIL)) + 1.0)    
+            ? interp[interpSamp] * (ULong2Signal(Taus88(&me->tausData)) + 1.0)    
             : interp[interpSamp];
             // Move incrementer index to next sample; wrap around at end of
             interpSamp += 1;
@@ -608,6 +609,8 @@ EpoisseNew(
 
 	// Let Max/MSP allocate us, our inlets, and outlets.
 	me = object_alloc(gObjectClass);
+	if (me != NIL)
+		Taus88Seed(&me->tausData, 0);		// Seed from clock, address etc.
 	dsp_setup(&(me->coreObject), 0);
 	floatin(me, 2);							// Extra inlet for rho
 	floatin(me, 1);							// Extra inlet for pi

@@ -81,6 +81,7 @@ enum {
 
 typedef struct {
 	t_pxobject		coreObject;
+	tTaus88Data		tausData;			// Private random number generator
 	
 	SymbolPtr		bufSym;
 	tBufferPtr		buf;
@@ -349,6 +350,8 @@ GruyereNew(
 	
 	// Let Max/MSP allocate us, our inlets, and outlets.
 	me = object_alloc(gObjectClass);
+	if (me != NIL)
+		Taus88Seed(&me->tausData, 0);		// Seed from clock, address etc.
 	dsp_setup(&(me->coreObject), 2);		// Signal inlets for frequency, etc.
 	
 	outlet_new(me, "signal");				// Outlet
@@ -763,7 +766,7 @@ void GruyerePerform64(objGruyere *me, t_object *dsp64, double **ins, long numins
     // We can do this a little faster with the default sine table or a single-channel table
     // of the same size
     if (nChans == 1 && tLen == kTableLen) do {
-        unsigned long	rand = Taus88(NIL);
+        unsigned long	rand = Taus88(&me->tausData);
         double			samp1, samp2, frac;
         int				index;
         
@@ -786,7 +789,7 @@ void GruyerePerform64(objGruyere *me, t_object *dsp64, double **ins, long numins
     } while (--i > 0);
     
     else do {
-        unsigned long	rand = Taus88(NIL);
+        unsigned long	rand = Taus88(&me->tausData);
         double			samp1, samp2, frac;
         int				index;
         
@@ -921,7 +924,7 @@ GruyerePerform(
 	// We can do this a little faster with the default sine table or a single-channel table
 	// of the same size
 	if (nChans == 1 && tLen == kTableLen) do {
-		unsigned long	rand = Taus88(NIL);
+		unsigned long	rand = Taus88(&me->tausData);
 		double			samp1, samp2, frac;
 		int				index;
 		
@@ -944,7 +947,7 @@ GruyerePerform(
 		} while (--i > 0);
 	
 	else do {
-		unsigned long	rand = Taus88(NIL);
+		unsigned long	rand = Taus88(&me->tausData);
 		double			samp1, samp2, frac;
 		int				index;
 		

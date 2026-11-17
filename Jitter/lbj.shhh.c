@@ -75,6 +75,7 @@ typedef struct {
 
 typedef struct {
 	t_object			coreObject;
+	tTaus88Data	tausData;		// Private random number generator
 	
 	int				nn;					// Number of bits to mask out
 	unsigned long	nnMask,				// Values depends on nn
@@ -115,7 +116,7 @@ static t_jit_err ShhhJitInit		(void);
 
 /******************************************************************************************
  *
- *	Taus88CharVector(n, iTaus88Data, out)
+ *	Taus88CharVector(&me->tausData, n, iTaus88Data, out)
  *	
  *	Standard Max External Object Entry Point Function
  *	
@@ -123,6 +124,7 @@ static t_jit_err ShhhJitInit		(void);
 
 static inline void
 Taus88CharVector(
+	tTaus88DataPtr	ioTaus,
 	long			iCount,
 	t_jit_op_info*	out)
 	
@@ -132,7 +134,7 @@ Taus88CharVector(
 			longCount;
 	UInt32	s1, s2, s3;
 	
-	Taus88LoadGlobal(&s1, &s2, &s3);
+	Taus88Load(ioTaus, &s1, &s2, &s3);
 	
 	longCount	 = iCount >> 2;
 	iCount		&= 0x00000003;
@@ -171,12 +173,13 @@ Taus88CharVector(
 			} while (--iCount > 0);
 		}
 
-	Taus88StoreGlobal(s1, s2, s3);
+	Taus88Store(ioTaus, s1, s2, s3);
 	}
 
 
 static inline void
  Taus88LongVector(
+	tTaus88DataPtr	ioTaus,
 	long			n,
 	t_jit_op_info*	out)
 
@@ -185,17 +188,18 @@ static inline void
 	long	stride  = out->stride;
 	UInt32			s1, s2, s3;
 	
-	Taus88LoadGlobal(&s1, &s2, &s3);
+	Taus88Load(ioTaus, &s1, &s2, &s3);
 	
 	if (stride == 1)
 		 do { *data++ = Taus88Process(&s1, &s2, &s3); } while (--n > 0);
 	else do { *data = Taus88Process(&s1, &s2, &s3); data += stride; } while (--n > 0);
 	
-	Taus88StoreGlobal(s1, s2, s3);
+	Taus88Store(ioTaus, s1, s2, s3);
 	}
 
 static inline void
 Taus88FloatVector(
+	tTaus88DataPtr	ioTaus,
 	long			n,
 	t_jit_op_info*	out)
 
@@ -204,7 +208,7 @@ Taus88FloatVector(
 	long	stride  = out->stride;
 	UInt32			s1, s2, s3;
 	
-	Taus88LoadGlobal(&s1, &s2, &s3);
+	Taus88Load(ioTaus, &s1, &s2, &s3);
 	
 	if (stride == 1)
 		 do { *data++ = ULong2Unit_Zo(Taus88Process(&s1, &s2, &s3)); }
@@ -212,11 +216,12 @@ Taus88FloatVector(
 	else do { *data = ULong2Unit_Zo(Taus88Process(&s1, &s2, &s3)); data += stride; }
 			while (--n > 0);
 	
-	Taus88StoreGlobal(s1, s2, s3);
+	Taus88Store(ioTaus, s1, s2, s3);
 	}
 
 static inline void 
 Taus88DoubleVector(
+	tTaus88DataPtr	ioTaus,
 	long			n,
 	t_jit_op_info*	out)
 	
@@ -226,7 +231,7 @@ Taus88DoubleVector(
 	long	stride  = out->stride;
 	UInt32			s1, s2, s3;
 	
-	Taus88LoadGlobal(&s1, &s2, &s3);
+	Taus88Load(ioTaus, &s1, &s2, &s3);
 	
 	if (stride == 1)
 		 do { *data++ = ULong2Unit_Zo(Taus88Process(&s1, &s2, &s3)); }
@@ -234,7 +239,7 @@ Taus88DoubleVector(
 	else do { *data = ULong2Unit_Zo(Taus88Process(&s1, &s2, &s3)); data += stride; }
 			while (--n > 0);
 	
-	Taus88StoreGlobal(s1, s2, s3);
+	Taus88Store(ioTaus, s1, s2, s3);
 	}
 
 
@@ -451,6 +456,8 @@ void ShhhAssist(msobShhh* me, void* box, long iDir, long iArgNum, char* oCStr)
 static jcobShhh* ShhhJitNew()
 	{
 	jcobShhh* me = (jcobShhh*) jit_object_alloc(gShhhJitClass);
+	if (me == NIL) return NIL;
+	Taus88Seed(&me->tausData, 0);		// Seed from clock, address etc.
 	
 		// Still need to implement nn stuff !! ??
 	me->nn			= 0;
@@ -475,6 +482,7 @@ static void ShhhJitFree(jcobShhh* me)
 
 static void
 RecurseDimensions(
+	jcobShhh*			me,
 	long				iDimCount,
 	long				iDimVec[],
 	long				iPlaneCount,
@@ -501,28 +509,28 @@ RecurseDimensions(
 		if (iMInfo->type == _jit_sym_char) {
 			for (i = 0; i < iDimVec[1]; i += 1) {
 				outOpInfo.p = iBOP + i * iMInfo->dimstride[1];
-				Taus88CharVector(n, &outOpInfo);
+				Taus88CharVector(&me->tausData, n, &outOpInfo);
 				}
 			}
 		
 		else if (iMInfo->type == _jit_sym_long) {
 			for (i = 0; i < iDimVec[1]; i += 1) {
 				outOpInfo.p = iBOP + i * iMInfo->dimstride[1];
-				Taus88LongVector(n, &outOpInfo);
+				Taus88LongVector(&me->tausData, n, &outOpInfo);
 				}
 			}
 		
 		else if (iMInfo->type == _jit_sym_float32) {
 			for (i = 0; i < iDimVec[1]; i += 1){
 				outOpInfo.p = iBOP + i * iMInfo->dimstride[1];
-				Taus88FloatVector(n, &outOpInfo);
+				Taus88FloatVector(&me->tausData, n, &outOpInfo);
 				}
 			}
 		
 		else if (iMInfo->type == _jit_sym_float64) {
 			for (i = 0; i < iDimVec[1]; i += 1){
 				outOpInfo.p = iBOP + i * iMInfo->dimstride[1];
-				Taus88DoubleVector(n, &outOpInfo);
+				Taus88DoubleVector(&me->tausData, n, &outOpInfo);
 				}
 			
 			}
@@ -533,7 +541,7 @@ RecurseDimensions(
 		// Larger values
 		for	(i = 0; i < iDimVec[iDimCount-1]; i += 1) {
 			char* op  = iBOP  + i * iMInfo->dimstride[iDimCount-1];
-			RecurseDimensions(iDimCount - 1, iDimVec, iPlaneCount, iMInfo, op);
+			RecurseDimensions(me, iDimCount - 1, iDimVec, iPlaneCount, iMInfo, op);
 			}
 		}
 	
@@ -578,7 +586,7 @@ ShhhJitMatrixCalc(
 		for (i = 0; i < outMInfo.dimcount; i += 1)
 			dim[i] = outMInfo.dim[i];
 				
-		RecurseDimensions(outMInfo.dimcount, dim, outMInfo.planecount, &outMInfo, outMData);
+		RecurseDimensions(me, outMInfo.dimcount, dim, outMInfo.planecount, &outMInfo, outMData);
 		}
 	else err = JIT_ERR_INVALID_OUTPUT;
 	

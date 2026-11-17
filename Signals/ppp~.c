@@ -69,6 +69,7 @@ enum {
 
 typedef struct {
 	t_pxobject		coreObject;
+	tTaus88Data		tausData;			// Private random number generator
 	
 	double			curSR,
 					curLevel,		// This is 0.0 a lot of the time...
@@ -224,6 +225,8 @@ noMoreDefaults:
 
 	// Let Max/MSP allocate us, our inlets, and outlets.
 	me = object_alloc(gObjectClass);
+	if (me != NIL)
+		Taus88Seed(&me->tausData, 0);		// Seed from clock, address etc.
 	dsp_setup(&(me->coreObject), 1);				// Signal inlet for benefit of begin~
 													// Otherwise left inlet does "NN" only
 	
@@ -396,9 +399,9 @@ void PppInfo(tPop* me)
  *
  ******************************************************************************************/
 
-	static inline double CalcExponential()		// Exponential with lamda = 1
+	static inline double CalcExponential(tTaus88DataPtr iTaus)		// Exponential with lamda = 1
 		{
-		return log( ULong2Unit_zO(Taus88(NULL)) );
+		return log( ULong2Unit_zO(Taus88(iTaus)) );
 		}
 	
 	void PppCalcNext(tPop* me)
@@ -415,7 +418,7 @@ void PppInfo(tPop* me)
 			x	= 1.0;
 			do {
 				pw	+= 1;
-				x	*= ULong2Unit_Zo(Taus88(NULL));
+				x	*= ULong2Unit_Zo(Taus88(&me->tausData));
 				} while (x > t);
 			me->popWidth = pw;
 			}
@@ -423,13 +426,13 @@ void PppInfo(tPop* me)
 		
 		x = me->minusTau;
 		if (x < 0.0) {
-			x *= CalcExponential();
+			x *= CalcExponential(&me->tausData);
 			}
 		s2n = x * me->curSR + 0.5;
 		s2n -= pw;
 		me->sampsToNext = (s2n > 0) ? s2n : 0;
 		
-		x = ULong2Unit_zO(Taus88(NULL));		// x in range (0 .. 1]
+		x = ULong2Unit_zO(Taus88(&me->tausData));		// x in range (0 .. 1]
 		switch (me->sym) {
 			case symNeg:
 				x = -x;								// x in range [-1 .. 0)

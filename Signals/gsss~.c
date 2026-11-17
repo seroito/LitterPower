@@ -77,6 +77,7 @@ enum {
 
 typedef struct {
 	t_pxobject		coreObject;
+	tTaus88Data		tausData;			// Private random number generator
 	
 	double			mu,
 					stdDev;
@@ -190,6 +191,8 @@ GsssNew(
 
 	// Let Max/MSP allocate us, our inlets, and outlets.
 	me = object_alloc(gObjectClass);
+	if (me != NIL)
+		Taus88Seed(&me->tausData, 0);		// Seed from clock, address etc.
 		if (me == NIL) goto punt;
 		
 	dsp_setup(&(me->coreObject), 2);
@@ -399,8 +402,8 @@ void GsssPerformStat64(objGaussNoise *me, t_object *dsp64, double **ins, long nu
     
     // Do our stuff
     if (mu == 0.0 && stdDev == 1.0)
-        do { *outNoise++ = NormalKRTaus88(NIL); } while (--vecCounter > 0);
-    else do { *outNoise++ = stdDev * NormalKRTaus88(NIL) + mu; } while (--vecCounter > 0);
+        do { *outNoise++ = NormalKRTaus88(&me->tausData); } while (--vecCounter > 0);
+    else do { *outNoise++ = stdDev * NormalKRTaus88(&me->tausData) + mu; } while (--vecCounter > 0);
     
 
 }
@@ -428,21 +431,21 @@ void GsssPerformDyn64(objGaussNoise *me, t_object *dsp64, double **ins, long num
     
     // ASSERT: vecCount is even.
     if (muSig && sdSig) do {
-        *outNoise++ = *sdSig++ * NormalKRTaus88(NIL) + *muSig++;
+        *outNoise++ = *sdSig++ * NormalKRTaus88(&me->tausData) + *muSig++;
     } while (--vecCounter > 0);
     
     else if (muSig) {
         // No signal for Std. Dev.
         double stdDev = me->stdDev;
         do	{
-            *outNoise++ = stdDev * NormalKRTaus88(NIL) + *muSig++;
+            *outNoise++ = stdDev * NormalKRTaus88(&me->tausData) + *muSig++;
         } while (--vecCounter > 0);
     }
     else {
         // ASSERT: no signal for µ, but there must be one for Std.Dev.
         double mu = me->mu;
         do	{
-            *outNoise++ = *sdSig++ * NormalKRTaus88(NIL) + mu;
+            *outNoise++ = *sdSig++ * NormalKRTaus88(&me->tausData) + mu;
         } while (--vecCounter > 0);
     }
     
@@ -480,8 +483,8 @@ GsssPerformStat(
 	
 	// Do our stuff
 	if (mu == 0.0 && stdDev == 1.0)
-		 do { *outNoise++ = NormalKRTaus88(NIL); } while (--vecCounter > 0);
-	else do { *outNoise++ = stdDev * NormalKRTaus88(NIL) + mu; } while (--vecCounter > 0);
+		 do { *outNoise++ = NormalKRTaus88(&me->tausData); } while (--vecCounter > 0);
+	else do { *outNoise++ = stdDev * NormalKRTaus88(&me->tausData) + mu; } while (--vecCounter > 0);
 		
 exit:
 	return iParams + paramNextLink;
@@ -519,21 +522,21 @@ GsssPerformDyn(
 	
 	// ASSERT: vecCount is even.
 	if (muSig && sdSig) do {
-		*outNoise++ = *sdSig++ * NormalKRTaus88(NIL) + *muSig++;
+		*outNoise++ = *sdSig++ * NormalKRTaus88(&me->tausData) + *muSig++;
 		} while (--vecCounter > 0);
 		
 	else if (muSig) {
 		// No signal for Std. Dev.
 		double stdDev = me->stdDev;
 		do	{
-			*outNoise++ = stdDev * NormalKRTaus88(NIL) + *muSig++;
+			*outNoise++ = stdDev * NormalKRTaus88(&me->tausData) + *muSig++;
 			} while (--vecCounter > 0);
 		}
 	else {
 		// ASSERT: no signal for µ, but there must be one for Std.Dev.
 		double mu = me->mu;
 		do	{
-			*outNoise++ = *sdSig++ * NormalKRTaus88(NIL) + mu;
+			*outNoise++ = *sdSig++ * NormalKRTaus88(&me->tausData) + mu;
 			} while (--vecCounter > 0);
 		}
 	

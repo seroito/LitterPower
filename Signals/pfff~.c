@@ -133,6 +133,7 @@ typedef enum architecture eArch;
 
 typedef struct {
 	t_pxobject		coreObject;
+	tTaus88Data		tausData;			// Private random number generator
 	
 	#ifdef VARICOLOR
 		double	hurstExp,
@@ -307,6 +308,8 @@ PvvvNew(
 	// Let Max/MSP allocate us, our inlets, and outlets.
 	//me = (tBrown*) newobject(gObjectClass);
     me = object_alloc(gObjectClass);
+    if (me != NIL)
+    	Taus88Seed(&me->tausData, 0);		// Seed from clock, address etc.
 	dsp_setup(&(me->coreObject), 1);				// Signal inlet for benefit of begin~
 													// Otherwise left inlet does "NN" only
 													// or, with the multi-color object, the
@@ -544,7 +547,7 @@ void PvvvDSP64(tBrown* me, t_object *dsp64, short *count, double samplerate,
  *
  ******************************************************************************************/
 
-	static void GNB_NativeLoop(t_int32* ioBuf, int iStride, double iHurst)
+	static void GNB_NativeLoop(tTaus88DataPtr iTaus, t_int32* ioBuf, int iStride, double iHurst)
 		{
 		int		i,
 				stride	= iStride,
@@ -565,8 +568,8 @@ void PvvvDSP64(tBrown* me, t_object *dsp64, short *count, double samplerate,
 			// Add noise with reduced variance
 			scale *= iHurst;
 			for (i = offset; i <= kMaxBuf; i += offset) {	
-				//ioBuf[i] += (long) Taus88(NIL) * scale;
-                ioBuf[i] += (t_int32) Taus88(NIL) * scale;
+				//ioBuf[i] += (long) Taus88(iTaus) * scale;
+                ioBuf[i] += (t_int32) Taus88(iTaus) * scale;
 				} 
 			
 			// Next generation: halve stride and offset
@@ -578,7 +581,7 @@ void PvvvDSP64(tBrown* me, t_object *dsp64, short *count, double samplerate,
 #if !TARGET_CPU_PPC
 	// Need to be able to emulate PPC handling of double-to-int overflow
 	// See GNB_NativeLoop for more extensive comments
-	static void GNB_PPCLoop(t_int32* ioBuf, int iStride, double iHurst)
+	static void GNB_PPCLoop(tTaus88DataPtr iTaus, t_int32* ioBuf, int iStride, double iHurst)
 		{
 		const double	kLongMaxAsDouble	= kLongMax,
 						kLongMinAsDouble	= kLongMin;
@@ -595,8 +598,8 @@ void PvvvDSP64(tBrown* me, t_object *dsp64, short *count, double samplerate,
 			scale *= iHurst;
 			for (i = offset; i <= kMaxBuf; i += offset) {	
 				// Here's where we emulate PPC
-				//double t = (long) Taus88(NIL) * scale + ioBuf[i];
-				double t = (t_int32) Taus88(NIL) * scale + ioBuf[i];
+				//double t = (long) Taus88(iTaus) * scale + ioBuf[i];
+				double t = (t_int32) Taus88(iTaus) * scale + ioBuf[i];
 				ioBuf[i] = (t > kLongMaxAsDouble)
 							? kLongMax
 							: (t < kLongMinAsDouble) ? kLongMin : (t_int32) t;
@@ -611,7 +614,7 @@ void PvvvDSP64(tBrown* me, t_object *dsp64, short *count, double samplerate,
 #if !TARGET_CPU_X86
 	// Need to be able to emulate Intel handling of double-to-int overflow
 	// See GNB_NativeLoop for more extensive comments
-	static void GNB_IntelLoop(t_int32* ioBuf, int iStride, double iHurst)
+	static void GNB_IntelLoop(tTaus88DataPtr iTaus, t_int32* ioBuf, int iStride, double iHurst)
 		{
 		const double	kLongMaxAsDouble	= kLongMax,
 						kLongMinAsDouble	= kLongMin;
@@ -627,8 +630,8 @@ void PvvvDSP64(tBrown* me, t_object *dsp64, short *count, double samplerate,
 			scale *= iHurst;
 			for (i = offset; i <= kMaxBuf; i += offset) {	
 				// Here's where we emulate Intel
-				//double t = (long) Taus88(NIL) * scale + ioBuf[i];
-				double t = (t_int32) Taus88(NIL) * scale + ioBuf[i];
+				//double t = (long) Taus88(iTaus) * scale + ioBuf[i];
+				double t = (t_int32) Taus88(iTaus) * scale + ioBuf[i];
                 
 				ioBuf[i] = (t > kLongMaxAsDouble || t < kLongMinAsDouble)
 							? kLongMin
@@ -644,7 +647,7 @@ void PvvvDSP64(tBrown* me, t_object *dsp64, short *count, double samplerate,
 	// This emulates the behavior of the PC415 processor, a mythical processor that
 	// exists only in the imagination of Peter Castine. It handles overflow in double-to-int
 	// typecasts by taking the integer part of the double value modulo 2^32.
-	static void GNB_PC415Loop(t_int32* ioBuf, int iStride, double iHurst)
+	static void GNB_PC415Loop(tTaus88DataPtr iTaus, t_int32* ioBuf, int iStride, double iHurst)
 		{
 		const double	kLongMaxAsDouble	= kLongMax,
 						kLongMinAsDouble	= kLongMin;
@@ -663,8 +666,8 @@ void PvvvDSP64(tBrown* me, t_object *dsp64, short *count, double samplerate,
 				// We take advantage of the fact that -2^32 <= t < 2^32, allowing us to
 				// substitute a simple addition or subtraction for a more expensive modulo
 				// operation
-				//double t = (long) Taus88(NIL) * scale + ioBuf[i];
-				double t = (t_int32) Taus88(NIL) * scale + ioBuf[i];
+				//double t = (long) Taus88(iTaus) * scale + ioBuf[i];
+				double t = (t_int32) Taus88(iTaus) * scale + ioBuf[i];
                 
 				ioBuf[i] = (t > kLongMaxAsDouble)
 							? (t_int32) (t + kLongMinAsDouble)
@@ -702,11 +705,11 @@ void PvvvDSP64(tBrown* me, t_object *dsp64, short *count, double samplerate,
 		//
 		buf[0]			= buf[kMaxBuf];
 // vb: ouch! in 32bit mode natural overflow of long is used to map to signed range! have to use 'int' in 64bit mode!?
-		//buf[stride]		= (long) Taus88(NIL) / 4;
-            buf[stride]		= (int) Taus88(NIL) / 4;
+		//buf[stride]		= (long) Taus88(&me->tausData) / 4;
+            buf[stride]		= (int) Taus88(&me->tausData) / 4;
             // ASSERT: stride = kMaxBuffer/2
-		//buf[kMaxBuf]	= (long) Taus88(NIL) / 4;
-            buf[kMaxBuf]	= (int) Taus88(NIL) / 4;
+		//buf[kMaxBuf]	= (long) Taus88(&me->tausData) / 4;
+            buf[kMaxBuf]	= (int) Taus88(&me->tausData) / 4;
 							// Taking random values in the signed int equivalent of
 							// [-.25 .. .25) was a completely arbitrary decision made
 							// in the first implementation. It works well enough for
@@ -715,21 +718,21 @@ void PvvvDSP64(tBrown* me, t_object *dsp64, short *count, double samplerate,
 							// At some stage an 'autoscale' option similar to pvvv2 might
 							// be hip.
 		switch (me->arch) {
-			default:		GNB_NativeLoop(buf, stride, hurstFac);
+			default:		GNB_NativeLoop(&me->tausData, buf, stride, hurstFac);
                 break;
 			// The conditional compilation conveniently  causes the object to use the
 			// 'native' loop when the host architecture matches the specified float-to-int
 			// conversion type
                 
 #if !TARGET_CPU_PPC
-			case archPPC:	GNB_PPCLoop(buf, stride, hurstFac);
+			case archPPC:	GNB_PPCLoop(&me->tausData, buf, stride, hurstFac);
                 break;
 #endif
 #if !TARGET_CPU_X86
-			case archIntel:	GNB_IntelLoop(buf, stride, hurstFac);
+			case archIntel:	GNB_IntelLoop(&me->tausData, buf, stride, hurstFac);
                 break;
 #endif
-			case archPC415: GNB_PC415Loop(buf, stride, hurstFac);
+			case archPC415: GNB_PC415Loop(&me->tausData, buf, stride, hurstFac);
                 break;
                 
 			}

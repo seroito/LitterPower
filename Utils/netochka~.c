@@ -73,6 +73,7 @@ enum {
 
 typedef struct {
 	t_pxobject		coreObject;
+	tTaus88Data		tausData;			// Private random number generator
 	
 	int				nn;					// Number of bits to mask out or dither
 	double			factor,				// Values depend on nn.
@@ -190,6 +191,8 @@ NetochkaNew(
 
 	// Let Max/MSP allocate us, our inlets, and outlets.
 	me = object_alloc(gObjectClass);
+	if (me != NIL)
+		Taus88Seed(&me->tausData, 0);		// Seed from clock, address etc.
 		if (me == NIL) goto punt;
 		
 	dsp_setup(&(me->coreObject), 1);			// Signal inlet
@@ -402,7 +405,7 @@ void NetochkaDSP64(tDegrade* me, t_object *dsp64, short *count, double samplerat
  ******************************************************************************************/
 
 	static /*inline*/ double
-	Mask(double iSamp, double iFactor, double iOffset, long iShift)
+	Mask(tTaus88DataPtr iTaus, double iSamp, double iFactor, double iOffset, long iShift)
 		{
 		iSamp += 1.0;
 		
@@ -414,7 +417,7 @@ void NetochkaDSP64(tDegrade* me, t_object *dsp64, short *count, double samplerat
 		}
 	
 	static /*inline*/ double
-	MaskAndNudge(double iSamp, double iFactor, double iOffset, double iNudge, long iShift)
+	MaskAndNudge(tTaus88DataPtr iTaus, double iSamp, double iFactor, double iOffset, double iNudge, long iShift)
 		{
 		iSamp += 1.0;
 		
@@ -435,31 +438,31 @@ void NetochkaDSP64(tDegrade* me, t_object *dsp64, short *count, double samplerat
 		}
 		
 	static /*inline*/ double
-	Dither(double iSamp, double iFactor, double iOffset, long iShift)
+	Dither(tTaus88DataPtr iTaus, double iSamp, double iFactor, double iOffset, long iShift)
 		{
 		iSamp += 1.0;
 		
 		if (iSamp < 2.0) {
 			unsigned long	intSamp = iSamp * iFactor;
-			double			dither = Taus88TriSig() + 1.0;
+			double			dither = Taus88TriSig(iTaus) + 1.0;
 			
 			return ULong2Signal(intSamp << iShift) + iOffset * dither;
 			}
 		else {
-			double dither = Taus88TriSig() + 1.0;
+			double dither = Taus88TriSig(iTaus) + 1.0;
 			
 			return 1.0 - iOffset * dither;
 			}
 		}
 
 	static /*inline*/ double
-	DitherAndNudge(double iSamp, double iFactor, double iOffset, double iNudge, long iShift)
+	DitherAndNudge(tTaus88DataPtr iTaus, double iSamp, double iFactor, double iOffset, double iNudge, long iShift)
 		{
 		iSamp += 1.0;
 		
 		if (iSamp < 2.0) {
 			unsigned long	intSamp = iSamp * iFactor;
-			double			dither = (1.0 + iNudge) * Taus88TriSig() + 1.0;
+			double			dither = (1.0 + iNudge) * Taus88TriSig(iTaus) + 1.0;
 			
 			if (intSamp & 0x01)
 					iNudge *= -iOffset;
@@ -468,7 +471,7 @@ void NetochkaDSP64(tDegrade* me, t_object *dsp64, short *count, double samplerat
 			return ULong2Signal(intSamp << iShift) + iOffset * dither + iNudge;
 			}
 		else {
-			double dither = Taus88TriSig() + 1.0;
+			double dither = Taus88TriSig(iTaus) + 1.0;
 			iNudge += 1.0;
 			
 			return 1.0 - iNudge * iOffset * dither;
@@ -556,7 +559,7 @@ void NetochkaPerform64(tDegrade *me, t_object *dsp64, double **ins, long numins,
             
             if (nnFrac == 0.0) {
                 // Integral NN/Dither
-                double (*IntNNFunc)(double, double, double, long);
+                double (*IntNNFunc)(tTaus88DataPtr, double, double, double, long);
                 
                 if (nn < 0) {
                     IntNNFunc = Dither;
@@ -566,7 +569,7 @@ void NetochkaPerform64(tDegrade *me, t_object *dsp64, double **ins, long numins,
                 
                 if (skipSamps == 0.0) do {
                     // Just mask/dither
-                    *outSig++ = IntNNFunc(*inSig++, factor, offset, nn);
+                    *outSig++ = IntNNFunc(&me->tausData, *inSig++, factor, offset, nn);
                 } while (--vecCounter > 0);
                 
                 else {
@@ -592,7 +595,7 @@ void NetochkaPerform64(tDegrade *me, t_object *dsp64, double **ins, long numins,
                         
                         // ... and run through the rest of the vector
                         while (vecCounter > 0) {
-                            curSamp = *outSig++ = IntNNFunc(*inSig++, factor, offset, nn);
+                            curSamp = *outSig++ = IntNNFunc(&me->tausData, *inSig++, factor, offset, nn);
                             vecCounter -= 1;
                             
                             extraSteps	= skipSamps + curSkipFrac;
@@ -614,7 +617,7 @@ void NetochkaPerform64(tDegrade *me, t_object *dsp64, double **ins, long numins,
             
             else {
                 // Fractional NN/Dither
-                double (*FloatNNFunc)(double, double, double, double, long);
+                double (*FloatNNFunc)(tTaus88DataPtr, double, double, double, double, long);
                 
                 if (nn < 0) {
                     FloatNNFunc = DitherAndNudge;
@@ -624,7 +627,7 @@ void NetochkaPerform64(tDegrade *me, t_object *dsp64, double **ins, long numins,
                 
                 if (skipSamps == 0.0) do {
                     // Just mask/dither
-                    *outSig++ = FloatNNFunc(*inSig++, factor, offset, nnFrac, nn);
+                    *outSig++ = FloatNNFunc(&me->tausData, *inSig++, factor, offset, nnFrac, nn);
                 } while (--vecCounter > 0);
                 
                 else {
@@ -650,7 +653,7 @@ void NetochkaPerform64(tDegrade *me, t_object *dsp64, double **ins, long numins,
                         
                         // ... and run through the rest of the vector
                         while (vecCounter > 0) {
-                            curSamp = *outSig++ = FloatNNFunc(*inSig++, factor, offset, nnFrac, nn);
+                            curSamp = *outSig++ = FloatNNFunc(&me->tausData, *inSig++, factor, offset, nnFrac, nn);
                             vecCounter -= 1;
                             
                             extraSteps	= skipSamps + curSkipFrac;

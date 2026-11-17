@@ -78,6 +78,7 @@ typedef enum architecture eArch;
 
 typedef struct {
 	t_pxobject		coreObject;
+	tTaus88Data		tausData;			// Private random number generator
 
 	#ifdef VARICOLOR
 		double	hurstExp,
@@ -202,6 +203,8 @@ PvvvNew(
 
 	if (me == NIL)
 		return NIL;
+
+	Taus88Seed(&me->tausData, 0);					// Private generator, seeded from the clock etc.
 
 	dsp_setup(&(me->coreObject), 1);				// Signal inlet for benefit of begin~
 
@@ -357,7 +360,7 @@ void PvvvDSP64(tBrown* me, t_object* dsp64, short* count, double samplerate,
 		const double hurstFac = me->hurstFac;
 #endif
 
-		GenerateBuffer64(me->buffer, hurstFac, me->arch);
+		GenerateBuffer64(&me->tausData, me->buffer, hurstFac, me->arch);
 		me->bufPos = 0;
 		}
 

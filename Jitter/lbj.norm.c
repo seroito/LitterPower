@@ -65,6 +65,7 @@ typedef struct {
 
 typedef struct {
 	t_object		coreObject;
+	tTaus88Data	tausData;		// Private random number generator
 	
 	char		clip;								// Use this as a Boolean
 	long		planeCount;
@@ -462,6 +463,8 @@ static jcobNorm* NormJitNew()
 	{
 	int			i;
 	jcobNorm*	me = (jcobNorm*) jit_object_alloc(gNormJitClass);
+	if (me == NIL) return NIL;
+	Taus88Seed(&me->tausData, 0);		// Seed from clock, address etc.
 	
 	me->clip		= false;
 	me->planeCount	= 0;
@@ -486,17 +489,18 @@ static void NormJitFree(jcobNorm* me)
 
 /******************************************************************************************
  *
- *	GausCharVector(iMu, iSigma, iCount, oMatrix)
- *	GausCharVectorClip(iMu, iSigma, iCount, oMatrix)
- *	GausLongVector(iMu, iSigma, iCount, oMatrix)
- *	GausLongVectorClip(iMu, iSigma, iCount, oMatrix)
- *	GausFloatVector(iMu, iSigma, iCount, oMatrix)
- *	GausDoubleVector(iMu, iSigma, iCount, oMatrix)
+ *	GausCharVector(&me->tausData, iMu, iSigma, iCount, oMatrix)
+ *	GausCharVectorClip(&me->tausData, iMu, iSigma, iCount, oMatrix)
+ *	GausLongVector(&me->tausData, iMu, iSigma, iCount, oMatrix)
+ *	GausLongVectorClip(&me->tausData, iMu, iSigma, iCount, oMatrix)
+ *	GausFloatVector(&me->tausData, iMu, iSigma, iCount, oMatrix)
+ *	GausDoubleVector(&me->tausData, iMu, iSigma, iCount, oMatrix)
  *
  ******************************************************************************************/
 
 static void
 GausCharVector(
+	tTaus88DataPtr	ioTaus,
 	double			iMu,
 	double			iSigma,
 	long			iCount,
@@ -515,7 +519,7 @@ GausCharVector(
 		}
 	
 	else {
-		tTaus88Data* seeds	= Taus88GetGlobals();
+		tTaus88Data* seeds	= ioTaus;
 		UInt32		s1, s2, s3;
 	
 		Taus88Load(seeds, &s1, &s2, &s3);
@@ -549,6 +553,7 @@ GausCharVector(
 
 static void
 GausCharVectorClip(
+	tTaus88DataPtr	ioTaus,
 	double			iMu,
 	double			iSigma,
 	long			iCount,
@@ -566,7 +571,7 @@ GausCharVectorClip(
 		}
 	
 	else {
-		tTaus88Data* seeds	= Taus88GetGlobals();
+		tTaus88Data* seeds	= ioTaus;
 		UInt32		s1, s2, s3;
 	
 		Taus88Load(seeds, &s1, &s2, &s3);
@@ -604,6 +609,7 @@ GausCharVectorClip(
 
 static void
 GausLongVector(
+	tTaus88DataPtr	ioTaus,
 	double			iMu,
 	double			iSigma,
 	long			iCount,
@@ -622,7 +628,7 @@ GausLongVector(
 		}
 	
 	else {
-		tTaus88Data* seeds	= Taus88GetGlobals();
+		tTaus88Data* seeds	= ioTaus;
 		UInt32		s1, s2, s3;
 		
 		Taus88Load(seeds, &s1, &s2, &s3);
@@ -656,6 +662,7 @@ GausLongVector(
 
 static void
 GausLongVectorClip(
+	tTaus88DataPtr	ioTaus,
 	double			iMu,
 	double			iSigma,
 	long			iCount,
@@ -683,7 +690,7 @@ GausLongVectorClip(
 		}
 	
 	else {
-		tTaus88Data* seeds	= Taus88GetGlobals();
+		tTaus88Data* seeds	= ioTaus;
 		UInt32		s1, s2, s3;
 		
 		Taus88Load(seeds, &s1, &s2, &s3);
@@ -722,6 +729,7 @@ GausLongVectorClip(
 
 static void
 GausFloatVector(
+	tTaus88DataPtr	ioTaus,
 	double			iMu,
 	double			iSigma,
 	long			iCount,
@@ -730,7 +738,7 @@ GausFloatVector(
 	{
 	float*		data	= (float*) oMatrix->p;
 	long		stride  = oMatrix->stride;
-	tTaus88Data* seeds	= Taus88GetGlobals();
+	tTaus88Data* seeds	= ioTaus;
 	UInt32		s1, s2, s3;
 	
 	Taus88Load(seeds, &s1, &s2, &s3);
@@ -762,6 +770,7 @@ GausFloatVector(
 
 static void
 GausDoubleVector(
+	tTaus88DataPtr	ioTaus,
 	double			iMu,
 	double			iSigma,
 	long			iCount,
@@ -770,7 +779,7 @@ GausDoubleVector(
 	{
 	double*		data	= (double*) oMatrix->p;
 	long		stride  = oMatrix->stride;
-	tTaus88Data* seeds	= Taus88GetGlobals();
+	tTaus88Data* seeds	= ioTaus;
 	UInt32		s1, s2, s3;
 	
 	Taus88Load(seeds, &s1, &s2, &s3);
@@ -856,11 +865,11 @@ RecurseDimensions(
 			if (me->clip)
 				 for (i = 0; i < iDimVec[1]; i += 1) for (j = 0; j < iPlaneCount; j += 1) {
 					outOpInfo.p = iBOP + i * iMInfo->dimstride[1] + j;
-					GausCharVectorClip(me->mean[j], me->sigma[j], n, &outOpInfo);
+					GausCharVectorClip(&me->tausData, me->mean[j], me->sigma[j], n, &outOpInfo);
 					}
 			else for (i = 0; i < iDimVec[1]; i += 1) for (j = 0; j < iPlaneCount; j += 1) {
 					outOpInfo.p = iBOP + i * iMInfo->dimstride[1] + j;
-					GausCharVector(me->mean[j], me->sigma[j], n, &outOpInfo);
+					GausCharVector(&me->tausData, me->mean[j], me->sigma[j], n, &outOpInfo);
 					}
 			}
 		
@@ -868,11 +877,11 @@ RecurseDimensions(
 			if (me->clip)
 				 for (i = 0; i < iDimVec[1]; i += 1) for (j = 0; j < iPlaneCount; j += 1) {
 					outOpInfo.p = iBOP + i * iMInfo->dimstride[1] + j * sizeof(t_int32);
-					GausLongVectorClip(me->mean[j], me->sigma[j], n, &outOpInfo);
+					GausLongVectorClip(&me->tausData, me->mean[j], me->sigma[j], n, &outOpInfo);
 					}
 			else for (i = 0; i < iDimVec[1]; i += 1) for (j = 0; j < iPlaneCount; j += 1) {
 					outOpInfo.p = iBOP + i * iMInfo->dimstride[1] + j * sizeof(t_int32);
-					GausLongVector(me->mean[j], me->sigma[j], n, &outOpInfo);
+					GausLongVector(&me->tausData, me->mean[j], me->sigma[j], n, &outOpInfo);
 					}
 			}
 		
@@ -880,7 +889,7 @@ RecurseDimensions(
 			// Float always clips
 			for (i = 0; i < iDimVec[1]; i += 1) for (j = 0; j < iPlaneCount; j += 1) {
 				outOpInfo.p = iBOP + i * iMInfo->dimstride[1] + j * sizeof(float);
-				GausFloatVector(me->mean[j], me->sigma[j], n, &outOpInfo);
+				GausFloatVector(&me->tausData, me->mean[j], me->sigma[j], n, &outOpInfo);
 				}
 			}
 		
@@ -888,7 +897,7 @@ RecurseDimensions(
 			// Double never clips
 			for (i = 0; i < iDimVec[1]; i += 1) for (j = 0; j < iPlaneCount; j += 1) {
 				outOpInfo.p = iBOP + i * iMInfo->dimstride[1] + j * sizeof(double);
-				GausDoubleVector(me->mean[j], me->sigma[j], n, &outOpInfo);
+				GausDoubleVector(&me->tausData, me->mean[j], me->sigma[j], n, &outOpInfo);
 				}
 			
 			}
