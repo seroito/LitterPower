@@ -18,7 +18,7 @@
 			<digest>NN factor (bit masking)</digest>
 		</objarg>
 		<objarg name='mode' optional='1' type='int'>
-			<digest>Overflow mode: 0 native, 1 PPC, 2 Intel, 3 PC415</digest>
+			<digest>Overflow mode: 0 native (behaves like Intel on all platforms), 1 PPC, 2 Intel, 3 PC415</digest>
 		</objarg>
 	</objarglist>
 
@@ -34,8 +34,8 @@
 			<arglist>
 				<arg name='value' optional='1' type='int' />
 			</arglist>
-			<digest>Set the mode: 0 native, 1 PPC, 2 Intel, 3 PC415 (overflow emulations)</digest>
-			<description>Set the mode: 0 native, 1 PPC, 2 Intel, 3 PC415 (overflow emulations).</description>
+			<digest>Function depends on inlet</digest>
+			<description>Set the overflow mode: 0 native, 1 PPC (clips), 2 Intel (jumps to the minimum), 3 PC415 (wraps).</description>
 		</method>
 		<method name='tattle'>
 			<digest>Print the state of the object to the Max Console (double-click does the same)</digest>

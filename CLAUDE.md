@@ -192,6 +192,17 @@ workflow builds pushes to both branches. One commit per change:
     `fix_comment_colors.py` there); `tools/make_help64.py` now reads the unscaled
     originals from commit `be8f44b`. Not yet checked in Max.
 
+13. Overflow modes of `lp.pfff~`, `lp.phhh~`, `lp.pvvv~` (2026-11-18, checked against
+    the 64 variants sample by sample): a 2016 workaround at the top of `pfff~.c` declared
+    every non-Windows build a PowerPC, so on macOS PPC mode silently fell back to the
+    native conversion (Intel Macs: jumps to -1 instead of clipping); removed, all
+    emulations are compiled everywhere. Native mode (0) relied on the processor's
+    conversion (undefined in C: Windows/Intel jump to the minimum, Apple Silicon clips);
+    it now behaves like Intel on all platforms (user's choice). The help files of these
+    objects still say "the sound native to your hardware" (texts unchanged by request).
+    `lp.pfff64~` & Co.: PC415 corrected to match the original (see above); PPC, Intel and
+    PC415 identical to the originals where those are defined.
+
 Not done (reviewed, lower priority): A_GIMME new functions declaring argc as `short`,
 A_LONG handlers declaring `long` instead of `t_atom_long`.
 
@@ -269,8 +280,9 @@ flaw of the original code; `lp.pfff~` overflows rarely too.
 
 - `Signals/pfff64~.c` + `Signals/pfff64core.h`: native mode in 64-bit integers;
   identical to the original where the original did not overflow. Mode emulations (PPC,
-  Intel, PC415) unchanged; PC415 now wraps exactly modulo 2^32 where the original was
-  undefined (strongly negative Hurst values).
+  Intel, PC415) as in the originals: PC415 wraps by 2^31 like the original code (whose
+  comment wrongly says 2^32), and continues the same rule beyond +/-2^32, where the
+  original gets stuck at the minimum (strongly negative Hurst values).
 - Look-ahead limiter: ceiling 1.0, 2 ms look-ahead (constant output delay, also when
   off), 50 ms release. Rightmost inlet (3rd on `lp.pvvv64~`, 2nd on the others) and
   message `limit 0/1`. On by default in `lp.pvvv64~`, off in the others. Hurst values

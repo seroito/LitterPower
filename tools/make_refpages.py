@@ -31,7 +31,7 @@ COMMON = {
     'clip': 'Clip output to the signal range', 'wrap': 'Wrap output into the signal range',
     'reflect': 'Reflect output back into the signal range', 'stet': 'Leave the output range as it is (default)',
     'sym': 'Use the symmetric form', 'pos': 'Positive values only', 'neg': 'Negative values only',
-    'mode': 'Set the mode: 0 native, 1 PPC, 2 Intel, 3 PC415 (overflow emulations)',
+    'mode': 'Set the overflow mode: 0 native, 1 PPC (clips), 2 Intel (jumps to the minimum), 3 PC415 (wraps)',
     'limit': 'Turn the look-ahead limiter on (1) or off (0)',
     'reset': 'Start again', 'clear': 'Clear stored values',
 }
