@@ -96,11 +96,12 @@ SymbolPtr	gSymSymbol	= NIL,
 #pragma mark Function Prototypes
 
 	// Class message functions
-void*	PppNew(double, long, t_symbol*);
+void*	PppNew(double, double, t_symbol*);
 
 	// Object message functions
 static void PppDensity(tPop*, double);
 static void	PppConstWidth(tPop*, long);
+static void	PppWidth(tPop*, double);
 static void	PppPoisWidth(tPop*, double);
 static void PppPos(tPop*);
 static void PppNeg(tPop*);
@@ -147,7 +148,7 @@ void ext_main(void* r)
 			sizeof(tPop),			// Class object size
 			NIL,					// No menu function
 			A_DEFFLOAT,				// Optional arguments:	1. Density
-			A_DEFLONG,				//						2. Pop Width
+			A_DEFFLOAT,				//						2. Pop Width (fractional: Poisson)
 			A_DEFSYM,				//						3. Symmetry
 			0);		
 	
@@ -156,7 +157,10 @@ void ext_main(void* r)
 	// Messages
     class_addmethod(c,(method) PppDensity, "float", A_FLOAT, 0);
 	class_addmethod(c,(method) PppConstWidth,	"in1",		A_LONG, 0);
-//	addmess	((method) PppPoisWidth,	"fl1",		A_FLOAT, 0);
+	// 2026: the pop width inlet takes floats; a value with a fractional part gives
+	// Poisson-distributed widths with that mean (as documented in Litter Power 1.8,
+	// where the float inlet had been disabled).
+	class_addmethod(c,(method) PppWidth,		"ft1",		A_FLOAT, 0);
 	class_addmethod(c,(method) PppSym,		"sym",		A_NOTHING);
 	class_addmethod(c,(method) PppPos,		"pos",		A_NOTHING);
 	class_addmethod(c,(method) PppNeg,		"neg",		A_NOTHING);
@@ -201,7 +205,7 @@ void ext_main(void* r)
 void*
 PppNew(
 	double	iDensity,
-	long	iPopWidth,
+	double	iPopWidth,
 	t_symbol*	iSymmetry)
 	
 	{
@@ -215,7 +219,7 @@ PppNew(
 		iSymmetry = gPosSymbol;
 	else goto noMoreDefaults;
 	
-	if (iPopWidth == 0)
+	if (iPopWidth == 0.0)
 		iPopWidth = kDefPopWidth;
 	else goto noMoreDefaults;
 	
@@ -231,7 +235,7 @@ noMoreDefaults:
 	dsp_setup(&(me->coreObject), 1);				// Signal inlet for benefit of begin~
 													// Otherwise left inlet does "NN" only
 	
-	intin(me, 1);									// Add inlet for pop width
+	floatin(me, 1);									// Add inlet for pop width (int or float)
 	
 	outlet_new(me, "signal");
 	
@@ -253,7 +257,7 @@ noMoreDefaults:
 	me->nextLevel	= 0.0;
 	me->sampsToNext	= -1;						// Negative value flags recalc in DSP method
 	PppDensity(me, iDensity);
-	PppConstWidth(me, iPopWidth);
+	PppWidth(me, iPopWidth);
 
 	return me;
 	}
@@ -289,8 +293,18 @@ PppConstWidth(
 	long iWidth)
 	
 	{ 
-	me->popWidth	= (iWidth >= 0) ? iWidth : 0;
+	// 2026: at least one sample -- a width of 0 divided by zero when shaping the pop
+	me->popWidth	= (iWidth >= 1) ? iWidth : 1;
 	me->threshhold	= 0.0;
+	}
+
+	// Whole numbers: constant width. Values with a fractional part: Poisson-distributed
+	// widths with that mean.
+static void PppWidth(tPop* me, double iWidth)
+	{
+	if (iWidth == floor(iWidth))
+		 PppConstWidth(me, (long) iWidth);
+	else PppPoisWidth(me, iWidth);
 	}
 
 static void
@@ -421,6 +435,7 @@ void PppInfo(tPop* me)
 				pw	+= 1;
 				x	*= ULong2Unit_Zo(Taus88(&me->tausData));
 				} while (x > t);
+			if (pw < 1) pw = 1;				// 2026: a width of 0 would divide by zero
 			me->popWidth = pw;
 			}
 		else pw = me->popWidth;
