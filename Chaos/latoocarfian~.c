@@ -133,6 +133,9 @@ typedef struct {
 	} tfiana;
 
 
+	// Largest |x| or |y| before the orbit is restarted at x0, y0 (see Performfiana)
+#define kRunaway	1.0e6
+
 #pragma mark Global Variables
 
 
@@ -756,8 +759,17 @@ Performfiana(
 	do {
 		double xx = fnA(a*y) + c * fnB(a*x);
 		
-		*outY++	= y = fnC(b*x) + d * fnD(b*y);
-		*outX++ = x = xx;
+		y = fnC(b*x) + d * fnD(b*y);
+		x = xx;
+		if ( !(fabs(x) <= kRunaway && fabs(y) <= kRunaway) ) {
+			// Functions like exp, sinh, sqr or log can run away towards infinity or NaN
+			// (NaN fails the test, too), which would stay in the signal chain. Start
+			// again at x0, y0 (2026). The bound lies above the peaks of tan and cot.
+			x = me->x0;
+			y = me->y0;
+			}
+		*outY++	= y;
+		*outX++ = x;
 		
 		} while (--vecSize > 0);
 	
