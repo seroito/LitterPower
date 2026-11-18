@@ -31,8 +31,8 @@ Decisions made by the user:
 |---|---|
 | Source port | Done. `python3 tools/check.py` (gcc syntax check on Linux): 0 of 118 units failing |
 | Windows build | Succeeds: 104 externals (`.mxe64`) |
-| macOS build | Succeeds: 104 externals (`.mxo`, universal x86_64 + arm64, ad-hoc signed), last at run 44200406957 (2026-11-18). Only built when started by hand |
-| Package | Latest: run 44200406957 on `rng-fixes` (help files for all objects, restyled for readability, extended overview patch, reference pages), artifact `LitterPower-package`, Windows and macOS externals |
+| macOS build | Succeeds: 104 externals (`.mxo`, universal x86_64 + arm64, ad-hoc signed), last at run 44210215097 (2026-11-18). Only built when started by hand |
+| Package | Latest with macOS: run 44210215097 on `rng-fixes` (all fixes up to the signal-object options), artifact `LitterPower-package`, Windows and macOS externals. Later pushes build Windows-only packages |
 | Help files | Every built object has one (15 new ones written in 2026) |
 | Reference pages | `docs/*.maxref.xml` for all 104 objects |
 | Test in Max 9 | Not done yet. The user tests on Windows first |
@@ -65,6 +65,12 @@ Added for the `rng-fixes` package (2026-11-17):
    off or running into each other; the stretched background picture of the overview.
 8. macOS (first macOS package): externals load on Apple Silicon and Intel Macs; remove
    the quarantine flag first if macOS blocks them (see `README.md`).
+9. Overflow modes (rng-fixes item 13): `lp.pvvv~` & Co. sound the same in mode 0 and
+   mode 2 on every computer; mode 1 clips also on Macs.
+10. Signal object options (item 14): `lp.tim~` with `uuim` at an index between 0 and 1
+   (now keeps the source sign, no drift); `lp.fiana~` with `exp`/`sinh` (regular
+   restarts instead of silence); `lp.scamp~` map mode reacts to the input range inlets;
+   `lp.ppp~` with a fractional pop width (random widths).
 
 Other things to watch: converted Max 4 patchers (clippings, `lp.doom`,
 `lp.pfft.frimWrap`, `lp.bibi`/`lp.ernie`/`lp.abbie` help, "Running CPU Usage") look and
@@ -84,6 +90,9 @@ removed (see `README.md`).
    (`gh workflow run build.yml --repo seroito/LitterPower --ref rng-fixes`) builds
    Windows only. Cancelling a queued macOS job also skips the package job; cancel the
    whole run and start it again with `-f macos=false` instead.
+   Runs of one branch share a queue: a newer run cancels an older one. After a push,
+   wait until the push build has started, cancel it, then start the manual run;
+   otherwise the push build cancels the manual (macOS) run.
 4. Generated files: rerun the generator instead of editing the output.
    - `tools/gen_strings.py`: string tables (`LitterLib/Strings/`) from `Resources/*/*.r`.
    - `tools/make_help64.py`, `tools/make_jitter_help.py`, `tools/make_extra_help.py`:
