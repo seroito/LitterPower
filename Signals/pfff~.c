@@ -34,20 +34,12 @@
 
 
 
-// Kludge
-#ifndef TARGET_CPU_X86
-	#if defined(WIN_VERSION) && WIN_VERSION
-		#define TARGET_CPU_X86 1
-		#define TARGET_CPU_PPC 0
-	#else
-		#define TARGET_CPU_X86 0
-		#define TARGET_CPU_PPC 1
-	#endif
-#endif
-
-#if (!TARGET_CPU_PPC && !TARGET_CPU_X86)
-	//#error This file can currently only compiler for PPC or Intel (X86) processors
-#endif
+// 2026: the overflow behaviour no longer depends on the build platform. All emulations
+// (PPC, Intel, PC415) are compiled everywhere, and "native" mode behaves like Intel on
+// every computer. (A 2016 workaround here declared every non-Windows build a PowerPC,
+// which silently replaced PPC mode by the native conversion on macOS; and the native
+// conversion itself is undefined in C on overflow and differs between processors:
+// Intel and Windows jump to the minimum, Apple Silicon clips.)
 	
 
 #pragma mark Include Files
@@ -424,13 +416,7 @@ PvvvTattle(
 	char*	archStr;
 	
 	switch (me->arch) {
-		default: archStr = "Native ";
-	#if		TARGET_CPU_PPC
-							"(PPC)";
-	#elif	TARGET_CPU_X86
-							"(Intel/X86)";
-	#endif
-			break;
+		default:		archStr = "Native (Intel behaviour on all platforms)";	break;
 			
 		case archPPC:	archStr = "PPC";							break;
 		case archIntel:	archStr = "Intel";							break;
@@ -548,40 +534,8 @@ void PvvvDSP64(tBrown* me, t_object *dsp64, short *count, double samplerate,
  *
  ******************************************************************************************/
 
-	static void GNB_NativeLoop(tTaus88DataPtr iTaus, t_int32* ioBuf, int iStride, double iHurst)
-		{
-		int		i,
-				stride	= iStride,
-				offset	= iStride / 2;
-		double	scale	= 0.5;			// Initial scale value
-		
-		// Recursive interpolation
-		// Initial state: stride = cycle/2, offset = stride/2
-		while (offset > 0) {
-			// Interpolate initial values at midpoints between values
-			// calculated so far
-			for (i = offset; i <= kMaxBuf - offset; i += stride)
-			    ioBuf[i] = ioBuf[i-offset] / 2 + ioBuf[i+offset] / 2;
-					// Let compiler optimize division to right-shifts. But don't simplify to
-					// (a + b) / 2 because that has a real potential for arithmetic
-			    	// overflow.
-					
-			// Add noise with reduced variance
-			scale *= iHurst;
-			for (i = offset; i <= kMaxBuf; i += offset) {	
-				//ioBuf[i] += (long) Taus88(iTaus) * scale;
-                ioBuf[i] += (t_int32) Taus88(iTaus) * scale;
-				} 
-			
-			// Next generation: halve stride and offset
-			stride = offset;										// ASSERT: offset == stride/2
-			offset /= 2;											// Again, let compiler optimize.
-			}
-		}
-
-#if !TARGET_CPU_PPC
 	// Need to be able to emulate PPC handling of double-to-int overflow
-	// See GNB_NativeLoop for more extensive comments
+	// Random midpoint displacement (see GNB_Native64Loop in pfff64core.h for comments)
 	static void GNB_PPCLoop(tTaus88DataPtr iTaus, t_int32* ioBuf, int iStride, double iHurst)
 		{
 		const double	kLongMaxAsDouble	= kLongMax,
@@ -610,11 +564,9 @@ void PvvvDSP64(tBrown* me, t_object *dsp64, short *count, double samplerate,
 			offset /= 2;
 			}
 		}
-#endif
 
-#if !TARGET_CPU_X86
 	// Need to be able to emulate Intel handling of double-to-int overflow
-	// See GNB_NativeLoop for more extensive comments
+	// Random midpoint displacement (see GNB_Native64Loop in pfff64core.h for comments)
 	static void GNB_IntelLoop(tTaus88DataPtr iTaus, t_int32* ioBuf, int iStride, double iHurst)
 		{
 		const double	kLongMaxAsDouble	= kLongMax,
@@ -643,7 +595,6 @@ void PvvvDSP64(tBrown* me, t_object *dsp64, short *count, double samplerate,
 			offset /= 2;
 			}
 		}
-#endif
 
 	// This emulates the behavior of the PC415 processor, a mythical processor that
 	// exists only in the imagination of Peter Castine. It handles overflow in double-to-int
@@ -719,20 +670,12 @@ void PvvvDSP64(tBrown* me, t_object *dsp64, short *count, double samplerate,
 							// At some stage an 'autoscale' option similar to pvvv2 might
 							// be hip.
 		switch (me->arch) {
-			default:		GNB_NativeLoop(&me->tausData, buf, stride, hurstFac);
-                break;
-			// The conditional compilation conveniently  causes the object to use the
-			// 'native' loop when the host architecture matches the specified float-to-int
-			// conversion type
-                
-#if !TARGET_CPU_PPC
-			case archPPC:	GNB_PPCLoop(&me->tausData, buf, stride, hurstFac);
-                break;
-#endif
-#if !TARGET_CPU_X86
+			// Native mode behaves like Intel on all platforms (2026, see top of file)
+			default:
 			case archIntel:	GNB_IntelLoop(&me->tausData, buf, stride, hurstFac);
                 break;
-#endif
+			case archPPC:	GNB_PPCLoop(&me->tausData, buf, stride, hurstFac);
+                break;
 			case archPC415: GNB_PC415Loop(&me->tausData, buf, stride, hurstFac);
                 break;
                 
