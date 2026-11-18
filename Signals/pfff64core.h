@@ -10,7 +10,8 @@
 				range: the original objects produced clicks (Windows, Intel Macs) or
 				clipping (Apple Silicon) there. Values that would not have overflowed are
 				computed exactly as before. The "mode" emulations of the PPC, Intel and
-				PC415 overflow behaviour keep their 32-bit semantics.
+				PC415 overflow behaviour keep their 32-bit semantics (PC415 as the
+				original code behaves, see PC415Convert()).
 
 				Values above full scale are passed on as they are (MSP signals are floating
 				point); the optional look-ahead limiter keeps the output within +/- 1.0
@@ -84,18 +85,17 @@ static inline int64_t PPCConvert(double t)		// Saturate
 static inline int64_t IntelConvert(double t)	// Out of range becomes the "integer indefinite"
 	{ return (t > kInt32MaxAsDouble || t < kInt32MinAsDouble) ? -2147483647 - 1 : (int64_t) t; }
 
-static inline int64_t PC415Convert(double t)	// Integer part modulo 2^32
+static inline int64_t PC415Convert(double t)	// Overflow wraps by 2^31, as in lp.pvvv~
 	{
-	// The original added or subtracted 2^31 once, which is only right for
-	// -2^32 <= t < 2^32 (and undefined beyond, which strongly negative Hurst exponents
-	// reach). Here the wrap-around is exact for any value.
-	double m;
-
+	// The original (GNB_PC415Loop in pfff~.c) adds or subtracts 2^31 once when the value
+	// is out of range -- not 2^32, as its comment says -- so a value just above the
+	// maximum lands near zero. That is only defined for -2^32 <= t < 2^32; strongly
+	// negative Hurst exponents go beyond, where the original gets stuck at the minimum.
+	// fmod() gives the same result as the original wherever the original is defined and
+	// continues the same rule beyond.
 	if (t >= kInt32MinAsDouble && t <= kInt32MaxAsDouble)
 		return (int64_t) t;
-	m = fmod(trunc(t), 4294967296.0);				// -2^32 < m < 2^32
-	if (m < 0.0) m += 4294967296.0;					// 0 <= m < 2^32
-	return (int64_t) (int32_t) (uint32_t) m;
+	return (int64_t) fmod(trunc(t), 2147483648.0);	// -2^31 < result < 2^31
 	}
 
 static void GNB_EmulationLoop(tTaus88DataPtr iTaus, int64_t* ioBuf, int iStride, double iHurst, int iArch)

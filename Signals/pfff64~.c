@@ -11,7 +11,7 @@
 				Macs) or clipping (Apple Silicon). These variants compute the default
 				("native") mode in 64-bit integers, so nothing overflows; where the
 				originals did not overflow, the noise is the same. The "mode" emulations of
-				PPC, Intel and PC415 overflow behaviour are unchanged.
+				PPC, Intel and PC415 overflow behaviour as in the originals.
 
 				Without overflow the signal can exceed full scale (+/- 1.0) at low Hurst
 				exponents. The look-ahead limiter keeps it within +/- 1.0 without clipping.
