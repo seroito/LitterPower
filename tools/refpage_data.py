@@ -121,7 +121,9 @@ OBJ = {
                      see=['lp.poppy~', 'lp.lya', 'lp.vera']),
     'lp.poppy~': dict(cat=CHAOS, digest='Generate population growth noise',
                       desc='lp.poppy~ uses the logistic population model as a signal generator: '
-                           'new values are computed at a base frequency and interpolated.',
+                           'new values are computed at a base frequency and interpolated. The 4th '
+                           'inlet sets the interpolation: -1 geometric (default), 0 none, 1 linear, '
+                           '2 quadratic.',
                       args=[('rate', 'float', 'Growth rate'),
                             ('seed', 'float', 'Starting population'),
                             ('baseFreq', 'float', 'Base frequency in Hz (default 1000)')],
@@ -451,7 +453,9 @@ OBJ = {
                     desc='lp.ppp~ generates random "pops" (dust or popcorn noise). density is '
                          'the average number of pops per second.',
                     args=[('density', 'float', 'Pops per second (default 100)'),
-                          ('popWidth', 'int', 'Samples before and after each pop peak (default 1)'),
+                          ('popWidth', 'float', 'Samples before and after each pop peak (default 1); '
+                                                'a value with a fractional part (e.g. 2.5) gives '
+                                                'Poisson-distributed widths with that mean'),
                           ('symmetry', 'symbol', 'pos (default), sym or neg')],
                     msgs={'sym': 'Positive and negative pops', 'pos': 'Positive pops only',
                           'neg': 'Negative pops only'}, see=['lp.pfishie', 'lp.shhh~']),
@@ -492,7 +496,9 @@ OBJ = {
                    see=['lp.tim~', 'lp.frim~']),
     'lp.tim~': dict(cat=MUTATION, digest='Mutate signals in the time domain',
                     desc='lp.tim~ performs interval mutation between two signals, sample by '
-                         'sample.',
+                         'sample. With relative intervals (rel, the default) the output is a sum '
+                         'of intervals and can drift away from zero over time; a negative delta '
+                         'emphasis keeps it close.',
                     args=[('options', 'symbol', 'Algorithm and rel or abs'),
                           ('omega', 'float', 'Mutation index 0-1 (default 0)')],
                     msgs=MUT_MSGS, see=['lp.frim~', 'lp.vim', 'lp.emeric~']),
@@ -501,7 +507,7 @@ OBJ = {
                           'pfft~).',
                      args=[('options', 'symbol', 'Algorithm and rel or abs'),
                            ('omega', 'float', 'Mutation index 0-1 (default 0)')],
-                     msgs=dict(MUT_MSGS, obands='Set the number of bands mutated'),
+                     msgs=dict(MUT_MSGS, obands='Set the number of bands per octave (0-15)'),
                      see=['lp.tim~', 'lp.vim', 'lp.emeric~']),
     'lp.emeric~': dict(cat=MUTATION, digest='Cross-synthesize two signals',
                        desc='lp.emeric~ is a single-parameter cross-synthesis: omega moves the '

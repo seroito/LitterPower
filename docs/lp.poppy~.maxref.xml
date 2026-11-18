@@ -5,7 +5,7 @@
 <c74object name='lp.poppy~' category='Litter Power, Chaos'>
 
 	<digest>Generate population growth noise</digest>
-	<description>lp.poppy~ uses the logistic population model as a signal generator: new values are computed at a base frequency and interpolated.</description>
+	<description>lp.poppy~ uses the logistic population model as a signal generator: new values are computed at a base frequency and interpolated. The 4th inlet sets the interpolation: -1 geometric (default), 0 none, 1 linear, 2 quadratic.</description>
 
 	<metadatalist>
 		<metadata name='author'>Peter Castine</metadata>

@@ -17,8 +17,8 @@
 		<objarg name='density' optional='1' type='float'>
 			<digest>Pops per second (default 100)</digest>
 		</objarg>
-		<objarg name='popWidth' optional='1' type='int'>
-			<digest>Samples before and after each pop peak (default 1)</digest>
+		<objarg name='popWidth' optional='1' type='float'>
+			<digest>Samples before and after each pop peak (default 1); a value with a fractional part (e.g. 2.5) gives Poisson-distributed widths with that mean</digest>
 		</objarg>
 		<objarg name='symmetry' optional='1' type='symbol'>
 			<digest>pos (default), sym or neg</digest>
@@ -30,8 +30,8 @@
 			<arglist>
 				<arg name='value' optional='0' type='float' />
 			</arglist>
-			<digest>Clicks/second (left inlet)</digest>
-			<description>Clicks/second (left inlet).</description>
+			<digest>Function depends on inlet</digest>
+			<description>In the left inlet: Clicks/second. In the 2nd inlet: Pop width.</description>
 		</method>
 		<method name='int'>
 			<arglist>

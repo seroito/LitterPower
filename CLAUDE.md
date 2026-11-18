@@ -205,6 +205,21 @@ workflow builds pushes to both branches. One commit per change:
     `lp.pfff64~` & Co.: PC415 corrected to match the original (see above); PPC, Intel and
     PC415 identical to the originals where those are defined.
 
+14. Options of the signal objects, all checked with test programs built from the real
+    code (2026-11-18). Working as intended: lp.qvvv~/qvvvl~ range modes, lp.ppp~
+    symmetry, lp.feta~ defamp, lp.nn~, lp.frrr~ / lp.crottin~ / lp.poppy~
+    interpolation, lp.grl~ thresholds, lp.tim~/lp.frim~ algorithms, lp.scamp~ modes and
+    curves. Fixed: `uuim` (imLib.c CalcUIMutant: lost the source sign for negative
+    values at 0 < omega < 1; lp.vim, lp.tim~, lp.frim~); lp.fiana~ restarts at x0/y0
+    when |x| or |y| exceeds 1e6 or is NaN (7 functions ran away to inf/NaN); scampLib
+    map mode recalculates after input-range changes and after `map` (lp.scamp~,
+    lp.scampf, lp.scampi); lp.grl~ read one sample past an in-place vector (negative
+    threshold); lp.ppp~ accepts float pop widths again (fractional part = Poisson
+    widths, as documented in 1.8) and never uses width 0 (division by zero).
+    Documented: lp.tim~ relative mode drifts (sum of intervals), lp.poppy~ default
+    interpolation is -1 (geometric), lp.frim~ obands = bands per octave. The test
+    harness lived in the scratchpad only (not in the repository).
+
 Not done (reviewed, lower priority): A_GIMME new functions declaring argc as `short`,
 A_LONG handlers declaring `long` instead of `t_atom_long`.
 

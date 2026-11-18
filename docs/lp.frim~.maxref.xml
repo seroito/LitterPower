@@ -54,8 +54,8 @@
 			<arglist>
 				<arg name='value' optional='1' type='int' />
 			</arglist>
-			<digest>Set the number of bands mutated</digest>
-			<description>Set the number of bands mutated.</description>
+			<digest>Set the number of bands per octave (0-15)</digest>
+			<description>Set the number of bands per octave (0-15).</description>
 		</method>
 		<method name='rel'>
 			<arglist>
