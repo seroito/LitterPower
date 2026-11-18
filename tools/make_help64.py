@@ -56,11 +56,35 @@ def rename_text(text):
     return ' '.join(words)
 
 
+# The mode explanation of the originals (subpatcher "Mode-Messages") describes their
+# overflow behaviour; in the 64 variants mode 0 computes in 64 bits and never overflows.
+MODE_TEXT = {
+    "By default lp.pvvv~ & Co. will produce the sound native to your hardware. By sending "
+    "the message 'mode 1' you will force the PPC behavior (even if running on an Intel "
+    "processor). By sending the message 'mode 2' you will force the Intel behavior (even "
+    "when running on a PPC machine). By sending the message 'mode 0' the lp.pvvv~ objects "
+    "will revert to the behavior native to the processor you are running on (which is "
+    "always most CPU efficient, by the way).":
+    "By default (mode 0) lp.pvvv64~ & Co. compute in 64 bits: nothing overflows, and the "
+    "sound is the same on every computer. 'mode 1' (PPC), 'mode 2' (Intel) and 'mode 3' "
+    "(PC 415) reproduce the overflow sounds of the original lp.pvvv~ & Co., also the same "
+    "on every computer. 'mode 0' reverts to the default.",
+    'Since you will generally want your patches to sound the same no matter what hardware '
+    'is being used, this is not a good situation. But the question is, should lp.pvvv~ and '
+    'friends prefer the "Intel sound" or the "PPC sound"?':
+    'Since you will generally want your patches to sound the same no matter what hardware '
+    'is being used, all modes now sound the same everywhere. Choose the "Intel sound" '
+    "('mode 2') or the \"PPC sound\" ('mode 1') if you want the overflow character.",
+}
+
+
 def walk(patcher, top):
     for entry in patcher['boxes']:
         b = entry['box']
         if b.get('maxclass') == 'newobj' and 'text' in b:
             b['text'] = rename_text(b['text'])
+        if b.get('maxclass') == 'comment' and b.get('text') in MODE_TEXT:
+            b['text'] = MODE_TEXT[b['text']]
         if 'patcher' in b:
             walk(b['patcher'], False)
 

@@ -316,7 +316,7 @@
 										1.0
 									],
 									"maxclass": "comment",
-									"text": "By default lp.pvvv~ & Co. will produce the sound native to your hardware. By sending the message 'mode 1' you will force the PPC behavior (even if running on an Intel processor). By sending the message 'mode 2' you will force the Intel behavior (even when running on a PPC machine). By sending the message 'mode 0' the lp.pvvv~ objects will revert to the behavior native to the processor you are running on (which is always most CPU efficient, by the way).",
+									"text": "By default (mode 0) lp.pvvv~ & Co. produce the Intel sound on every computer, including Apple Silicon Macs (since 2026; before, they produced the sound native to the processor). By sending the message 'mode 1' you will force the PPC behavior. By sending the message 'mode 2' you will force the Intel behavior, which is the same as the default. 'mode 0' reverts to the default.",
 									"linecount": 4,
 									"numoutlets": 0,
 									"fontsize": 12.0,
@@ -363,7 +363,7 @@
 										1.0
 									],
 									"maxclass": "comment",
-									"text": "Since you will generally want your patches to sound the same no matter what hardware is being used, this is not a good situation. But the question is, should lp.pvvv~ and friends prefer the \"Intel sound\" or the \"PPC sound\"?",
+									"text": "Since you will generally want your patches to sound the same no matter what hardware is being used, lp.pvvv~ and friends now prefer the \"Intel sound\" everywhere. Send 'mode 1' if you prefer the \"PPC sound\".",
 									"linecount": 2,
 									"numoutlets": 0,
 									"fontsize": 12.0,
@@ -785,7 +785,7 @@
 										1.0
 									],
 									"maxclass": "comment",
-									"text": "By default lp.pvvv~ & Co. will produce the sound native to your hardware. By sending the message 'mode 1' you will force the PPC behavior (even if running on an Intel processor). By sending the message 'mode 2' you will force the Intel behavior (even when running on a PPC machine). By sending the message 'mode 0' the lp.pvvv~ objects will revert to the behavior native to the processor you are running on (which is always most CPU efficient, by the way).",
+									"text": "By default (mode 0) lp.pvvv~ & Co. produce the Intel sound on every computer, including Apple Silicon Macs (since 2026; before, they produced the sound native to the processor). By sending the message 'mode 1' you will force the PPC behavior. By sending the message 'mode 2' you will force the Intel behavior, which is the same as the default. 'mode 0' reverts to the default.",
 									"linecount": 4,
 									"numoutlets": 0,
 									"fontsize": 12.0,
@@ -832,7 +832,7 @@
 										1.0
 									],
 									"maxclass": "comment",
-									"text": "Since you will generally want your patches to sound the same no matter what hardware is being used, this is not a good situation. But the question is, should lp.pvvv~ and friends prefer the \"Intel sound\" or the \"PPC sound\"?",
+									"text": "Since you will generally want your patches to sound the same no matter what hardware is being used, lp.pvvv~ and friends now prefer the \"Intel sound\" everywhere. Send 'mode 1' if you prefer the \"PPC sound\".",
 									"linecount": 2,
 									"numoutlets": 0,
 									"fontsize": 12.0,

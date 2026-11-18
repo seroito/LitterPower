@@ -198,8 +198,10 @@ workflow builds pushes to both branches. One commit per change:
     native conversion (Intel Macs: jumps to -1 instead of clipping); removed, all
     emulations are compiled everywhere. Native mode (0) relied on the processor's
     conversion (undefined in C: Windows/Intel jump to the minimum, Apple Silicon clips);
-    it now behaves like Intel on all platforms (user's choice). The help files of these
-    objects still say "the sound native to your hardware" (texts unchanged by request).
+    it now behaves like Intel on all platforms (user's choice). The mode explanation in
+    the help files (subpatcher "Mode-Messages") was rewritten to say so (user's request);
+    the 64 variants' help files say that mode 0 computes in 64 bits without overflow
+    (texts in `tools/make_help64.py`, MODE_TEXT).
     `lp.pfff64~` & Co.: PC415 corrected to match the original (see above); PPC, Intel and
     PC415 identical to the originals where those are defined.
 
