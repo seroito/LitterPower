@@ -404,7 +404,7 @@ void GrlPerformSimple64(tRanger *me, t_object *dsp64, double **ins, long numins,
     
     else {
         // We just need an updated value for prevSig
-        prevSamp = outSig[vecCounter];
+        prevSamp = outSig[vecCounter - 1];		// 2026: was outSig[vecCounter], one past the end
     }
     
     // Whether or not we used me->prevSamp in this run, we must update it. It might
