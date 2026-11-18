@@ -133,8 +133,11 @@ double CalcUIMutant(tInterval iSource, tInterval iTarget, double iOmega)
 	//
 	// which reduces to:
 	{
+	// 2026: the negative branch computed -(s + omega * (|t| - s)), which loses the
+	// sign of the source for 0 < omega < 1 (and made relative mutations drift).
+	// Now exactly Sign(s) * (|s| + omega * (|t| - |s|)), as stated above.
 	if (iSource > 0)		return iSource + iOmega * (Abs(iTarget) - iSource);
-	else if (iSource < 0)	return -( iSource + iOmega * (Abs(iTarget) - iSource) );
+	else if (iSource < 0)	return -( -iSource + iOmega * (Abs(iTarget) + iSource) );
 	else					return 0.0;
 	}
 
