@@ -391,8 +391,10 @@ void ScampInt(objScamp*	me, long iVal)
 
 void ScampFloat1(objScamp* me, double iVal)
 	{
-	if (me->flags.map)
-		 me->inMin = iVal;
+	if (me->flags.map) {
+		me->inMin = iVal;
+		me->flags.rangeInval = true;		// 2026: was missing, so the change had no effect
+		}
 	else {
 		me->slope = iVal;
 		me->flags.rangeInval = true;
@@ -401,8 +403,10 @@ void ScampFloat1(objScamp* me, double iVal)
 	
 void ScampFloat2(objScamp* me, double iVal)
 	{
-	if (me->flags.map)
-		 me->inMax = iVal;
+	if (me->flags.map) {
+		me->inMax = iVal;
+		me->flags.rangeInval = true;		// 2026: was missing, so the change had no effect
+		}
 	else {
 		me->offset = iVal;
 		me->flags.rangeInval = true;
@@ -453,6 +457,7 @@ void ScampMap(objScamp* me, t_symbol* sym, short iArgC, t_atom iArgV[])
 	me->flags.map = (iArgC == 0)
 						? true:
 						(AtomGetLong(iArgV) != 0);
+	me->flags.rangeInval = true;			// 2026: switching modes needs a recalculation
 	}
 
 void ScampSym(objScamp* me, long iSymType)
