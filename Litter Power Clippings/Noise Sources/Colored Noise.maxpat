@@ -72,14 +72,14 @@
 					"patching_rect": [
 						164.0,
 						30.0,
-						80.0,
+						105.0,
 						20.0
 					],
 					"fontname": "Arial",
 					"fontsize": 9.0,
 					"parameter_enable": 0,
 					"items": [
-						"Native",
+						"Native (= Intel)",
 						"PPC",
 						"Intel (X86)",
 						"PC 415"
