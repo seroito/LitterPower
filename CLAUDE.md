@@ -3,15 +3,30 @@
 What has been done to bring Litter Power to Max 9, where things stand, and how to
 continue. Last updated 2026-11-22.
 
-## Resume here (paused 2026-11-22)
+## Resume here (paused 2026-11-22, user reboots to test)
 
-Work is paused while the user tests. Nothing is waiting on Claude.
+Waiting for the user's test of the redesign samples (rng-fixes item 16).
 
-- The package to test is run 44967061395 on `rng-fixes` (artifact `LitterPower-package`,
-  Windows and macOS). Test points 1-11 are listed under "Where things stand"; points 9-11
-  (overflow modes, signal object options, threads and NN factor) are the newest.
-- When the user is back: ask for the test results, fix what they report (one commit per
-  fix, `python3 tools/check.py` before every push), then build again (macOS by hand).
+- Package to test: run 45014711842 on `rng-fixes` (artifact `LitterPower-package`, Windows
+  externals; the patchers are the same on macOS). Last package with macOS externals:
+  run 44967061395.
+- Samples: `lp.abbie`, `lp.pvvv~`, `lp.julie` help files and the overview patch. The user
+  checks in Max 9: (1) nothing cut off at the right/bottom, main tab and other tabs;
+  (2) how the tabs are labelled (root tab probably shows the file name, not "basic");
+  (3) dark colours readable (coloured hints, dark panels); (4) overview layout, all seven
+  menus open their help files; (5) nothing overlaps. The overview's subtitle ("Random
+  numbers, noise, chaos, mutation and utilities for Max, MSP and Jitter") is new text -
+  user may want other wording.
+- If the samples are approved: run `tools/redesign_help.py` on all other help files
+  (`Litter Power Help/*.maxhelp`; lp.messages, lp.doom.maxpat and lp.dotell.maxpat need
+  a look first), then on the extras and clippings (they have no object-name title: only
+  colours, scaling, windows); switch the generators (make_extra_help, make_jitter_help,
+  make_help64) from restyle_help.py to redesign_help.py and check that regenerating
+  reproduces the files; keep lp.doom.maxpat as an empty abstraction; build (macOS by
+  hand), update the test points. If not approved: adjust redesign_help.py, redo the
+  samples from git (`git checkout be8f44b`-era files are NOT the base - the base is the
+  committed state before commit "Redesign samples"), push, let the user test again.
+- Earlier test results (points 1-11 under "Where things stand") are still outstanding.
 - After the user has tested `rng-fixes`: merge it into `64-bit-version` (ask first).
 - Still open: licensing with Peter Castine before publishing binaries; the reviewed but
   unfixed thread points in rng-fixes item 15; A_GIMME/`t_atom_long` signatures.
