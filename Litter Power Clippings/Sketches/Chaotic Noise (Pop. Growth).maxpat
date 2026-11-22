@@ -12,8 +12,8 @@
 		"rect": [
 			100.0,
 			80.0,
-			600.0,
-			400.0
+			465,
+			273
 		],
 		"bglocked": 0,
 		"openinpresentation": 0,

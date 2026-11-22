@@ -193,3 +193,5 @@ if __name__ == '__main__':
     # Readability: size, backgrounds, text colours (see tools/restyle_help.py)
     import subprocess, sys
     subprocess.run([sys.executable, os.path.join(ROOT, 'tools', 'restyle_help.py')] + outs, check=True)
+    # Max 9 help style / RNBO look (see tools/redesign_help.py)
+    subprocess.run([sys.executable, os.path.join(ROOT, 'tools', 'redesign_help.py')] + outs, check=True)

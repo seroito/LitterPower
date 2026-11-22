@@ -12,12 +12,12 @@
 		"rect": [
 			100.0,
 			80.0,
-			720.0,
-			678.0
+			818,
+			806
 		],
 		"bglocked": 0,
 		"openinpresentation": 0,
-		"default_fontsize": 12.0,
+		"default_fontsize": 13.0,
 		"default_fontface": 0,
 		"default_fontname": "Arial",
 		"gridonopen": 1,
@@ -41,21 +41,21 @@
 					"maxclass": "comment",
 					"patching_rect": [
 						10.0,
-						8.0,
-						400.0,
-						21.0
+						6.0,
+						228,
+						62.0
 					],
 					"text": "lbj.tata",
-					"fontname": "Arial",
-					"fontsize": 24.0,
+					"fontname": "Lato",
+					"fontsize": 48.0,
 					"numinlets": 1,
 					"numoutlets": 0,
 					"linecount": 1,
-					"fontface": 1,
+					"fontface": 0,
 					"textcolor": [
-						0.0,
-						0.392157,
-						0.066667,
+						0.870588235294118,
+						0.870588235294118,
+						0.870588235294118,
 						1.0
 					]
 				}
@@ -65,23 +65,24 @@
 					"id": "obj-2",
 					"maxclass": "comment",
 					"patching_rect": [
-						10.0,
-						42.0,
-						500.0,
+						12.0,
+						68.0,
+						765.667,
 						21.0
 					],
 					"text": "Bounded white noise (Tausworthe 88)",
-					"fontname": "Arial",
-					"fontsize": 14.0,
+					"fontname": "Lato",
+					"fontsize": 13.0,
 					"numinlets": 1,
 					"numoutlets": 0,
 					"linecount": 1,
 					"textcolor": [
-						0.0,
-						0.0,
-						0.0,
+						0.870588235294118,
+						0.870588235294118,
+						0.870588235294118,
 						1.0
-					]
+					],
+					"fontface": 0
 				}
 			},
 			{
@@ -89,17 +90,17 @@
 					"id": "obj-3",
 					"maxclass": "panel",
 					"patching_rect": [
-						5.0,
-						68.0,
-						710.0,
-						62.0
+						5.417,
+						111.0,
+						769.167,
+						67.167
 					],
 					"numinlets": 1,
 					"numoutlets": 0,
 					"bgcolor": [
-						0.93,
-						0.87,
-						0.8,
+						0.196078,
+						0.227451,
+						0.282353,
 						1.0
 					],
 					"background": 1,
@@ -111,21 +112,21 @@
 					"id": "obj-4",
 					"maxclass": "comment",
 					"patching_rect": [
-						12.0,
-						72.0,
-						696.0,
-						55.0
+						13.0,
+						115.333,
+						754.0,
+						59.583
 					],
 					"text": "lbj.tata fills a matrix with evenly distributed random values between min and max, using the Tausworthe 88 generator. min and max take one value per plane; without them the full range of the matrix type is used (0-255 for char).",
 					"fontname": "Arial",
-					"fontsize": 12.0,
+					"fontsize": 13.0,
 					"numinlets": 1,
 					"numoutlets": 0,
 					"linecount": 3,
 					"textcolor": [
-						0.0,
-						0.0,
-						0.0,
+						0.870588235294118,
+						0.870588235294118,
+						0.870588235294118,
 						1.0
 					]
 				}
@@ -135,10 +136,10 @@
 					"id": "obj-5",
 					"maxclass": "toggle",
 					"patching_rect": [
-						10.0,
-						145.0,
-						24.0,
-						24.0
+						10.833,
+						194.416,
+						26.0,
+						26.0
 					],
 					"numinlets": 1,
 					"numoutlets": 1,
@@ -153,21 +154,21 @@
 					"id": "obj-6",
 					"maxclass": "comment",
 					"patching_rect": [
-						40.0,
-						147.0,
-						200.0,
-						21.0
+						43.333,
+						196.583,
+						216.667,
+						22.75
 					],
 					"text": "start/stop",
 					"fontname": "Arial",
-					"fontsize": 12.0,
+					"fontsize": 13.0,
 					"numinlets": 1,
 					"numoutlets": 0,
 					"linecount": 1,
 					"textcolor": [
-						0.0,
-						0.0,
-						0.0,
+						0.870588235294118,
+						0.870588235294118,
+						0.870588235294118,
 						1.0
 					]
 				}
@@ -177,14 +178,14 @@
 					"id": "obj-7",
 					"maxclass": "newobj",
 					"patching_rect": [
-						10.0,
-						180.0,
-						90.0,
-						22.0
+						10.833,
+						232.333,
+						97.5,
+						23.833
 					],
 					"text": "qmetro 40",
 					"fontname": "Arial",
-					"fontsize": 12.0,
+					"fontsize": 13.0,
 					"numinlets": 2,
 					"numoutlets": 1,
 					"outlettype": [
@@ -197,14 +198,14 @@
 					"id": "obj-8",
 					"maxclass": "newobj",
 					"patching_rect": [
-						10.0,
-						333.0,
-						420.0,
-						22.0
+						10.833,
+						398.08299999999997,
+						455.0,
+						23.833
 					],
 					"text": "lbj.tata @type char @dim 320 240 @planecount 4",
 					"fontname": "Arial",
-					"fontsize": 12.0,
+					"fontsize": 13.0,
 					"numinlets": 1,
 					"numoutlets": 2,
 					"outlettype": [
@@ -218,10 +219,10 @@
 					"id": "obj-9",
 					"maxclass": "jit.pwindow",
 					"patching_rect": [
-						10.0,
-						368.0,
-						320.0,
-						240.0
+						10.833,
+						436.0,
+						346.667,
+						260.0
 					],
 					"numinlets": 1,
 					"numoutlets": 2,
@@ -236,21 +237,21 @@
 					"id": "obj-10",
 					"maxclass": "comment",
 					"patching_rect": [
-						360.0,
-						145.0,
-						340.0,
-						21.0
+						390.0,
+						194.416,
+						368.333,
+						22.75
 					],
 					"text": "Click to set the attributes:",
 					"fontname": "Arial",
-					"fontsize": 12.0,
+					"fontsize": 13.0,
 					"numinlets": 1,
 					"numoutlets": 0,
 					"linecount": 1,
 					"textcolor": [
-						0.0,
-						0.0,
-						0.0,
+						0.870588235294118,
+						0.870588235294118,
+						0.870588235294118,
 						1.0
 					]
 				}
@@ -260,14 +261,14 @@
 					"id": "obj-11",
 					"maxclass": "message",
 					"patching_rect": [
-						360.0,
-						171.0,
-						170.0,
-						22.0
+						390.0,
+						222.583,
+						184.167,
+						23.833
 					],
 					"text": "min 0 0 0 0",
 					"fontname": "Arial",
-					"fontsize": 12.0,
+					"fontsize": 13.0,
 					"numinlets": 2,
 					"numoutlets": 1,
 					"outlettype": [
@@ -280,21 +281,21 @@
 					"id": "obj-12",
 					"maxclass": "comment",
 					"patching_rect": [
-						536.0,
-						172.0,
-						180.0,
-						21.0
+						580.667,
+						223.666,
+						195.0,
+						22.75
 					],
 					"text": "full range (default)",
 					"fontname": "Arial",
-					"fontsize": 12.0,
+					"fontsize": 13.0,
 					"numinlets": 1,
 					"numoutlets": 0,
 					"linecount": 1,
 					"textcolor": [
-						0.0,
-						0.0,
-						0.0,
+						0.870588235294118,
+						0.870588235294118,
+						0.870588235294118,
 						1.0
 					]
 				}
@@ -304,14 +305,14 @@
 					"id": "obj-13",
 					"maxclass": "message",
 					"patching_rect": [
-						360.0,
-						197.0,
-						170.0,
-						22.0
+						390.0,
+						250.75,
+						184.167,
+						23.833
 					],
 					"text": "max 255 255 255 255",
 					"fontname": "Arial",
-					"fontsize": 12.0,
+					"fontsize": 13.0,
 					"numinlets": 2,
 					"numoutlets": 1,
 					"outlettype": [
@@ -324,14 +325,14 @@
 					"id": "obj-14",
 					"maxclass": "message",
 					"patching_rect": [
-						360.0,
-						223.0,
-						170.0,
-						22.0
+						390.0,
+						278.916,
+						184.167,
+						23.833
 					],
 					"text": "min 0 100 0 0",
 					"fontname": "Arial",
-					"fontsize": 12.0,
+					"fontsize": 13.0,
 					"numinlets": 2,
 					"numoutlets": 1,
 					"outlettype": [
@@ -344,21 +345,21 @@
 					"id": "obj-15",
 					"maxclass": "comment",
 					"patching_rect": [
-						536.0,
-						224.0,
-						180.0,
-						21.0
+						580.667,
+						280.0,
+						195.0,
+						22.75
 					],
 					"text": "per-plane ranges:",
 					"fontname": "Arial",
-					"fontsize": 12.0,
+					"fontsize": 13.0,
 					"numinlets": 1,
 					"numoutlets": 0,
 					"linecount": 1,
 					"textcolor": [
-						0.0,
-						0.0,
-						0.0,
+						0.870588235294118,
+						0.870588235294118,
+						0.870588235294118,
 						1.0
 					]
 				}
@@ -368,14 +369,14 @@
 					"id": "obj-16",
 					"maxclass": "message",
 					"patching_rect": [
-						360.0,
-						249.0,
-						170.0,
-						22.0
+						390.0,
+						307.08299999999997,
+						184.167,
+						23.833
 					],
 					"text": "max 255 160 80 40",
 					"fontname": "Arial",
-					"fontsize": 12.0,
+					"fontsize": 13.0,
 					"numinlets": 2,
 					"numoutlets": 1,
 					"outlettype": [
@@ -388,21 +389,21 @@
 					"id": "obj-17",
 					"maxclass": "comment",
 					"patching_rect": [
-						536.0,
-						250.0,
-						180.0,
-						21.0
+						580.667,
+						308.16600000000005,
+						195.0,
+						22.75
 					],
 					"text": "tinted noise",
 					"fontname": "Arial",
-					"fontsize": 12.0,
+					"fontsize": 13.0,
 					"numinlets": 1,
 					"numoutlets": 0,
 					"linecount": 1,
 					"textcolor": [
-						0.0,
-						0.0,
-						0.0,
+						0.870588235294118,
+						0.870588235294118,
+						0.870588235294118,
 						1.0
 					]
 				}
@@ -412,14 +413,14 @@
 					"id": "obj-18",
 					"maxclass": "message",
 					"patching_rect": [
-						360.0,
-						275.0,
-						170.0,
-						22.0
+						390.0,
+						335.25,
+						184.167,
+						23.833
 					],
 					"text": "min 120",
 					"fontname": "Arial",
-					"fontsize": 12.0,
+					"fontsize": 13.0,
 					"numinlets": 2,
 					"numoutlets": 1,
 					"outlettype": [
@@ -432,21 +433,21 @@
 					"id": "obj-19",
 					"maxclass": "comment",
 					"patching_rect": [
-						536.0,
-						276.0,
-						180.0,
-						21.0
+						580.667,
+						336.33299999999997,
+						195.0,
+						22.75
 					],
 					"text": "narrow range",
 					"fontname": "Arial",
-					"fontsize": 12.0,
+					"fontsize": 13.0,
 					"numinlets": 1,
 					"numoutlets": 0,
 					"linecount": 1,
 					"textcolor": [
-						0.0,
-						0.0,
-						0.0,
+						0.870588235294118,
+						0.870588235294118,
+						0.870588235294118,
 						1.0
 					]
 				}
@@ -456,14 +457,14 @@
 					"id": "obj-20",
 					"maxclass": "message",
 					"patching_rect": [
-						360.0,
-						301.0,
-						170.0,
-						22.0
+						390.0,
+						363.41600000000005,
+						184.167,
+						23.833
 					],
 					"text": "max 136",
 					"fontname": "Arial",
-					"fontsize": 12.0,
+					"fontsize": 13.0,
 					"numinlets": 2,
 					"numoutlets": 1,
 					"outlettype": [
@@ -476,22 +477,98 @@
 					"id": "obj-21",
 					"maxclass": "comment",
 					"patching_rect": [
-						10.0,
-						618.0,
-						700.0,
-						55.0
+						10.833,
+						706.833,
+						758.333,
+						59.583
 					],
 					"text": "This help file was written in 2026 for the Max 9 version of Litter Power, from the source code; the original help files of the Litter Bundle for Jitter were not available. Like all Jitter objects, the object also understands the standard attributes @type, @dim and @planecount of its output matrix.",
 					"fontname": "Arial",
-					"fontsize": 10.0,
+					"fontsize": 10.833,
 					"numinlets": 1,
 					"numoutlets": 0,
 					"linecount": 3,
 					"textcolor": [
-						0.4,
-						0.4,
-						0.4,
+						0.870588235294118,
+						0.870588235294118,
+						0.870588235294118,
 						1.0
+					]
+				}
+			},
+			{
+				"box": {
+					"id": "obj-22",
+					"maxclass": "live.line",
+					"numinlets": 1,
+					"numoutlets": 0,
+					"patching_rect": [
+						10.0,
+						93.0,
+						765.667,
+						6.0
+					]
+				}
+			},
+			{
+				"box": {
+					"id": "obj-23",
+					"maxclass": "message",
+					"text": "lpo",
+					"hidden": 1,
+					"numinlets": 2,
+					"numoutlets": 1,
+					"outlettype": [
+						""
+					],
+					"fontname": "Arial",
+					"fontsize": 13.0,
+					"patching_rect": [
+						248.0,
+						6.0,
+						40.0,
+						23.0
+					]
+				}
+			},
+			{
+				"box": {
+					"id": "obj-24",
+					"maxclass": "newobj",
+					"text": "lp.mrsnorris",
+					"hidden": 1,
+					"numinlets": 1,
+					"numoutlets": 1,
+					"outlettype": [
+						""
+					],
+					"fontname": "Arial",
+					"fontsize": 13.0,
+					"patching_rect": [
+						298.0,
+						6.0,
+						90.0,
+						23.0
+					]
+				}
+			},
+			{
+				"box": {
+					"id": "obj-25",
+					"maxclass": "ubutton",
+					"numinlets": 1,
+					"numoutlets": 4,
+					"outlettype": [
+						"bang",
+						"bang",
+						"",
+						"int"
+					],
+					"patching_rect": [
+						10.0,
+						6.0,
+						228,
+						62.0
 					]
 				}
 			}
@@ -604,18 +681,42 @@
 						0
 					]
 				}
+			},
+			{
+				"patchline": {
+					"source": [
+						"obj-25",
+						0
+					],
+					"destination": [
+						"obj-23",
+						0
+					]
+				}
+			},
+			{
+				"patchline": {
+					"source": [
+						"obj-23",
+						0
+					],
+					"destination": [
+						"obj-24",
+						0
+					]
+				}
 			}
 		],
 		"bgcolor": [
-			1.0,
-			1.0,
-			1.0,
+			0.337254901960784,
+			0.337254901960784,
+			0.337254901960784,
 			1.0
 		],
 		"editing_bgcolor": [
-			0.9,
-			0.9,
-			0.9,
+			0.337254901960784,
+			0.337254901960784,
+			0.337254901960784,
 			1.0
 		]
 	}

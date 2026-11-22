@@ -21,7 +21,7 @@
 			<digest>NN factor (bit masking)</digest>
 		</objarg>
 		<objarg name='mode' optional='1' type='int'>
-			<digest>Overflow mode: 0 native (behaves like Intel on all platforms), 1 PPC, 2 Intel, 3 PC415</digest>
+			<digest>Overflow mode: 0 native (behaves like PPC on all platforms), 1 PPC, 2 Intel, 3 PC415</digest>
 		</objarg>
 	</objarglist>
 

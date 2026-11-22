@@ -12,8 +12,8 @@
 		"rect": [
 			100.0,
 			80.0,
-			299.0,
-			128.0
+			309,
+			130
 		],
 		"bglocked": 0,
 		"openinpresentation": 0,
@@ -79,7 +79,7 @@
 					"fontsize": 9.0,
 					"parameter_enable": 0,
 					"items": [
-						"Native (= Intel)",
+						"Native (= PPC)",
 						",",
 						"PPC",
 						",",

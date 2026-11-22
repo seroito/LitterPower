@@ -12,12 +12,12 @@
 		"rect": [
 			100.0,
 			80.0,
-			657.333,
-			628.0
+			756,
+			804
 		],
 		"bglocked": 0,
 		"openinpresentation": 0,
-		"default_fontsize": 12.0,
+		"default_fontsize": 13.0,
 		"default_fontface": 0,
 		"default_fontname": "Arial",
 		"gridonopen": 1,
@@ -40,13 +40,13 @@
 					"id": "obj-25",
 					"maxclass": "newobj",
 					"patching_rect": [
-						277.333,
-						597.333,
-						62.667,
-						26.667
+						300.444,
+						720.555,
+						67.889,
+						28.889
 					],
 					"fontname": "Arial",
-					"fontsize": 12.0,
+					"fontsize": 13.0,
 					"text": "p confer",
 					"hidden": 1,
 					"patcher": {
@@ -62,12 +62,12 @@
 						"rect": [
 							71.0,
 							362.0,
-							902.667,
-							209.333
+							989,
+							236
 						],
 						"bglocked": 0,
 						"openinpresentation": 0,
-						"default_fontsize": 12.0,
+						"default_fontsize": 13.0,
 						"default_fontface": 0,
 						"default_fontname": "Arial",
 						"gridonopen": 1,
@@ -90,13 +90,13 @@
 									"id": "obj-1",
 									"maxclass": "message",
 									"patching_rect": [
-										657.333,
-										129.333,
-										44.0,
-										26.667
+										712.111,
+										140.111,
+										47.667,
+										28.889
 									],
 									"fontname": "Arial",
-									"fontsize": 12.0,
+									"fontsize": 13.0,
 									"text": "set 0"
 								}
 							},
@@ -105,13 +105,13 @@
 									"id": "obj-15",
 									"maxclass": "newobj",
 									"patching_rect": [
-										368.0,
-										96.0,
-										146.667,
-										26.667
+										398.667,
+										104.0,
+										158.889,
+										28.889
 									],
 									"fontname": "Arial",
-									"fontsize": 12.0,
+									"fontsize": 13.0,
 									"text": "p \"What's in a Name?\"",
 									"patcher": {
 										"fileversion": 1,
@@ -126,12 +126,12 @@
 										"rect": [
 											37.0,
 											87.0,
-											806.667,
-											170.667
+											885,
+											128
 										],
 										"bglocked": 0,
 										"openinpresentation": 0,
-										"default_fontsize": 12.0,
+										"default_fontsize": 13.0,
 										"default_fontface": 0,
 										"default_fontname": "Arial",
 										"gridonopen": 1,
@@ -154,18 +154,18 @@
 													"id": "obj-2",
 													"maxclass": "comment",
 													"patching_rect": [
-														142.667,
-														12.0,
-														254.667,
-														26.667
+														154.556,
+														13.0,
+														275.889,
+														28.889
 													],
 													"fontname": "Arial",
-													"fontsize": 24.0,
+													"fontsize": 26.0,
 													"text": "What's in a Name?",
 													"textcolor": [
-														0.527453,
-														0.396233,
-														0.26244,
+														0.870588235294118,
+														0.870588235294118,
+														0.870588235294118,
 														1.0
 													]
 												}
@@ -175,10 +175,10 @@
 													"id": "obj-3",
 													"maxclass": "ubutton",
 													"patching_rect": [
-														1.333,
-														1.333,
-														141.333,
-														42.667
+														1.444,
+														1.444,
+														153.111,
+														46.223
 													],
 													"parameter_enable": 0
 												}
@@ -188,10 +188,10 @@
 													"id": "obj-4",
 													"maxclass": "fpic",
 													"patching_rect": [
-														-1.333,
-														-1.333,
-														145.333,
-														48.0
+														-1.444,
+														-1.444,
+														157.444,
+														52.0
 													],
 													"pic": "lp.Logo.png",
 													"autofit": 1
@@ -202,13 +202,13 @@
 													"id": "obj-5",
 													"maxclass": "newobj",
 													"patching_rect": [
-														1.333,
-														24.0,
-														81.333,
-														26.667
+														1.444,
+														26.0,
+														88.111,
+														28.889
 													],
 													"fontname": "Arial",
-													"fontsize": 12.0,
+													"fontsize": 13.0,
 													"text": "thispatcher",
 													"hidden": 1,
 													"numinlets": 1,
@@ -220,10 +220,10 @@
 													"id": "obj-6",
 													"maxclass": "inlet",
 													"patching_rect": [
-														1.333,
+														1.444,
 														0.0,
-														20.0,
-														20.0
+														21.667,
+														21.667
 													],
 													"hidden": 1,
 													"numinlets": 0,
@@ -233,21 +233,21 @@
 											{
 												"box": {
 													"textcolor": [
-														0.0,
-														0.0,
-														0.0,
+														0.870588235294118,
+														0.870588235294118,
+														0.870588235294118,
 														1.0
 													],
 													"id": "obj-7",
 													"maxclass": "comment",
 													"patching_rect": [
-														1.333,
-														54.667,
-														766.667,
-														26.667
+														1.444,
+														59.223,
+														830.556,
+														28.889
 													],
 													"fontname": "Arial",
-													"fontsize": 13.333,
+													"fontsize": 14.444,
 													"text": "A deliberate "
 												}
 											},
@@ -256,13 +256,13 @@
 													"id": "obj-13",
 													"maxclass": "newobj",
 													"patching_rect": [
-														1.333,
-														53.333,
-														141.333,
-														26.667
+														1.444,
+														57.777,
+														153.111,
+														28.889
 													],
 													"fontname": "Arial",
-													"fontsize": 12.0,
+													"fontsize": 13.0,
 													"text": "p OverviewLoader",
 													"hidden": 1,
 													"patcher": {
@@ -278,12 +278,12 @@
 														"rect": [
 															384.0,
 															252.0,
-															250.667,
-															170.667
+															200,
+															120
 														],
 														"bglocked": 0,
 														"openinpresentation": 0,
-														"default_fontsize": 12.0,
+														"default_fontsize": 13.0,
 														"default_fontface": 0,
 														"default_fontname": "Arial",
 														"gridonopen": 1,
@@ -306,13 +306,13 @@
 																	"id": "obj-8",
 																	"maxclass": "newobj",
 																	"patching_rect": [
-																		13.333,
-																		68.0,
-																		38.667,
-																		26.667
+																		14.444,
+																		73.667,
+																		41.889,
+																		28.889
 																	],
 																	"fontname": "Arial",
-																	"fontsize": 12.0,
+																	"fontsize": 13.0,
 																	"text": "gate",
 																	"hidden": 1,
 																	"numinlets": 2,
@@ -324,13 +324,13 @@
 																	"id": "obj-9",
 																	"maxclass": "newobj",
 																	"patching_rect": [
-																		13.333,
-																		126.667,
-																		62.667,
-																		26.667
+																		14.444,
+																		137.223,
+																		67.889,
+																		28.889
 																	],
 																	"fontname": "Arial",
-																	"fontsize": 12.0,
+																	"fontsize": 13.0,
 																	"text": "pcontrol",
 																	"hidden": 1,
 																	"numinlets": 1,
@@ -342,13 +342,13 @@
 																	"id": "obj-10",
 																	"maxclass": "message",
 																	"patching_rect": [
-																		13.333,
-																		98.667,
-																		177.333,
-																		26.667
+																		14.444,
+																		106.889,
+																		192.111,
+																		28.889
 																	],
 																	"fontname": "Arial",
-																	"fontsize": 12.0,
+																	"fontsize": 13.0,
 																	"text": "load \"Litter Pro Overview\"",
 																	"hidden": 1
 																}
@@ -358,10 +358,10 @@
 																	"id": "obj-11",
 																	"maxclass": "inlet",
 																	"patching_rect": [
-																		38.667,
-																		32.0,
-																		20.0,
-																		20.0
+																		41.889,
+																		34.667,
+																		21.667,
+																		21.667
 																	],
 																	"numinlets": 0,
 																	"numoutlets": 1
@@ -372,10 +372,10 @@
 																	"id": "obj-12",
 																	"maxclass": "inlet",
 																	"patching_rect": [
-																		98.667,
-																		30.667,
-																		20.0,
-																		20.0
+																		106.889,
+																		33.223,
+																		21.667,
+																		21.667
 																	],
 																	"numinlets": 0,
 																	"numoutlets": 1
@@ -394,10 +394,10 @@
 																		0
 																	],
 																	"midpoints": [
-																		105.333,
-																		60.0,
-																		20.0,
-																		60.0
+																		114.111,
+																		65.0,
+																		21.667,
+																		65.0
 																	]
 																}
 															},
@@ -441,15 +441,15 @@
 															}
 														],
 														"bgcolor": [
-															1.0,
-															1.0,
-															1.0,
+															0.337254901960784,
+															0.337254901960784,
+															0.337254901960784,
 															1.0
 														],
 														"editing_bgcolor": [
-															0.9,
-															0.9,
-															0.9,
+															0.337254901960784,
+															0.337254901960784,
+															0.337254901960784,
 															1.0
 														]
 													},
@@ -462,16 +462,16 @@
 													"id": "obj-14",
 													"maxclass": "panel",
 													"patching_rect": [
-														1.333,
-														52.0,
-														778.667,
-														26.667
+														1.444,
+														56.333,
+														843.556,
+														28.889
 													],
 													"mode": 0,
 													"bgcolor": [
-														0.9019607843137255,
-														0.8,
-														0.7019607843137254,
+														0.196078,
+														0.227451,
+														0.282353,
 														1.0
 													],
 													"bordercolor": [
@@ -527,15 +527,15 @@
 											}
 										],
 										"bgcolor": [
-											1.0,
-											1.0,
-											1.0,
+											0.337254901960784,
+											0.337254901960784,
+											0.337254901960784,
 											1.0
 										],
 										"editing_bgcolor": [
-											0.9,
-											0.9,
-											0.9,
+											0.337254901960784,
+											0.337254901960784,
+											0.337254901960784,
 											1.0
 										]
 									},
@@ -548,13 +548,13 @@
 									"id": "obj-16",
 									"maxclass": "message",
 									"patching_rect": [
-										368.0,
-										66.667,
-										44.0,
-										26.667
+										398.667,
+										72.223,
+										47.667,
+										28.889
 									],
 									"fontname": "Arial",
-									"fontsize": 12.0,
+									"fontsize": 13.0,
 									"text": "front"
 								}
 							},
@@ -563,13 +563,13 @@
 									"id": "obj-17",
 									"maxclass": "newobj",
 									"patching_rect": [
-										548.0,
-										96.0,
-										88.0,
-										26.667
+										593.667,
+										104.0,
+										95.333,
+										28.889
 									],
 									"fontname": "Arial",
-									"fontsize": 12.0,
+									"fontsize": 13.0,
 									"text": "prepend load",
 									"numinlets": 1,
 									"numoutlets": 1
@@ -580,10 +580,10 @@
 									"id": "obj-18",
 									"maxclass": "outlet",
 									"patching_rect": [
-										829.333,
-										161.333,
-										20.0,
-										20.0
+										898.444,
+										174.777,
+										21.667,
+										21.667
 									],
 									"comment": "Message to reset help menu",
 									"numinlets": 1,
@@ -595,10 +595,10 @@
 									"id": "obj-19",
 									"maxclass": "inlet",
 									"patching_rect": [
-										8.0,
-										5.333,
-										20.0,
-										20.0
+										8.667,
+										5.777,
+										21.667,
+										21.667
 									],
 									"comment": "Symbol from one of the help menus",
 									"numinlets": 0,
@@ -610,13 +610,13 @@
 									"id": "obj-20",
 									"maxclass": "message",
 									"patching_rect": [
-										829.333,
-										96.0,
-										46.667,
-										26.667
+										898.444,
+										104.0,
+										50.556,
+										28.889
 									],
 									"fontname": "Arial",
-									"fontsize": 12.0,
+									"fontsize": 13.0,
 									"text": "set $1"
 								}
 							},
@@ -625,13 +625,13 @@
 									"id": "obj-21",
 									"maxclass": "newobj",
 									"patching_rect": [
-										728.0,
-										65.333,
-										114.667,
-										26.667
+										788.667,
+										70.777,
+										124.223,
+										28.889
 									],
 									"fontname": "Arial",
-									"fontsize": 12.0,
+									"fontsize": 13.0,
 									"text": "unpack s 0",
 									"numinlets": 1,
 									"numoutlets": 2
@@ -642,13 +642,13 @@
 									"id": "obj-22",
 									"maxclass": "newobj",
 									"patching_rect": [
-										728.0,
-										96.0,
-										85.333,
-										26.667
+										788.667,
+										104.0,
+										92.444,
+										28.889
 									],
 									"fontname": "Arial",
-									"fontsize": 12.0,
+									"fontsize": 13.0,
 									"text": "prepend help",
 									"numinlets": 1,
 									"numoutlets": 1
@@ -659,13 +659,13 @@
 									"id": "obj-23",
 									"maxclass": "newobj",
 									"patching_rect": [
-										728.0,
-										125.333,
-										89.333,
-										26.667
+										788.667,
+										135.777,
+										96.777,
+										28.889
 									],
 									"fontname": "Arial",
-									"fontsize": 12.0,
+									"fontsize": 13.0,
 									"text": "lp.mrsnorris",
 									"numinlets": 1,
 									"numoutlets": 0
@@ -676,13 +676,13 @@
 									"id": "obj-24",
 									"maxclass": "newobj",
 									"patching_rect": [
-										8.0,
-										36.0,
-										733.333,
-										26.667
+										8.667,
+										39.0,
+										794.444,
+										28.889
 									],
 									"fontname": "Arial",
-									"fontsize": 12.0,
+									"fontsize": 13.0,
 									"text": "select -> Bibliography \"What's in a Name?\" X-ample:",
 									"numinlets": 1,
 									"numoutlets": 5
@@ -749,10 +749,10 @@
 										0
 									],
 									"midpoints": [
-										194.667,
-										61.333,
-										664.0,
-										61.333
+										210.889,
+										66.444,
+										719.333,
+										66.444
 									]
 								}
 							},
@@ -767,10 +767,10 @@
 										0
 									],
 									"midpoints": [
-										374.667,
-										61.333,
-										664.0,
-										61.333
+										405.889,
+										66.444,
+										719.333,
+										66.444
 									]
 								}
 							},
@@ -785,10 +785,10 @@
 										0
 									],
 									"midpoints": [
-										554.667,
-										61.333,
-										664.0,
-										61.333
+										600.889,
+										66.444,
+										719.333,
+										66.444
 									]
 								}
 							},
@@ -827,10 +827,10 @@
 										0
 									],
 									"midpoints": [
-										554.667,
-										121.333,
-										734.667,
-										121.333
+										600.889,
+										131.444,
+										795.889,
+										131.444
 									]
 								}
 							},
@@ -869,10 +869,10 @@
 										0
 									],
 									"midpoints": [
-										664.0,
-										154.667,
-										836.0,
-										154.667
+										719.333,
+										167.556,
+										905.667,
+										167.556
 									]
 								}
 							},
@@ -890,15 +890,15 @@
 							}
 						],
 						"bgcolor": [
-							1.0,
-							1.0,
-							1.0,
+							0.337254901960784,
+							0.337254901960784,
+							0.337254901960784,
 							1.0
 						],
 						"editing_bgcolor": [
-							0.9,
-							0.9,
-							0.9,
+							0.337254901960784,
+							0.337254901960784,
+							0.337254901960784,
 							1.0
 						]
 					},
@@ -911,13 +911,13 @@
 					"id": "obj-26",
 					"maxclass": "umenu",
 					"patching_rect": [
-						10.667,
-						572.0,
-						280.0,
-						26.667
+						11.556,
+						693.111,
+						303.333,
+						28.889
 					],
 					"fontname": "Arial",
-					"fontsize": 12.0,
+					"fontsize": 13.0,
 					"parameter_enable": 0,
 					"items": [
 						"-> See also",
@@ -949,18 +949,18 @@
 					"id": "obj-27",
 					"maxclass": "comment",
 					"patching_rect": [
-						542.667,
-						610.667,
-						116.0,
-						26.667
+						587.889,
+						735.0,
+						125.667,
+						28.889
 					],
 					"fontname": "Arial",
-					"fontsize": 12.0,
+					"fontsize": 13.0,
 					"text": "Version 1.2",
 					"textcolor": [
-						0.38823529411764707,
-						0.19215686274509805,
-						1.0,
+						0.870588235294118,
+						0.870588235294118,
+						0.870588235294118,
 						1.0
 					],
 					"varname": "version"
@@ -971,13 +971,13 @@
 					"id": "obj-28",
 					"maxclass": "newobj",
 					"patching_rect": [
-						424.0,
-						454.667,
-						37.333,
-						26.667
+						459.333,
+						566.0,
+						40.444,
+						28.889
 					],
 					"fontname": "Arial",
-					"fontsize": 12.0,
+					"fontsize": 13.0,
 					"text": "grab",
 					"hidden": 1,
 					"numinlets": 1,
@@ -989,13 +989,13 @@
 					"id": "obj-47",
 					"maxclass": "newobj",
 					"patching_rect": [
-						424.0,
-						425.333,
-						85.333,
-						26.667
+						459.333,
+						534.221,
+						92.444,
+						28.889
 					],
 					"fontname": "Arial",
-					"fontsize": 12.0,
+					"fontsize": 13.0,
 					"text": "p loadbanger",
 					"hidden": 1,
 					"patcher": {
@@ -1011,12 +1011,12 @@
 						"rect": [
 							10.0,
 							383.0,
-							1048.0,
-							196.0
+							1144,
+							228
 						],
 						"bglocked": 0,
 						"openinpresentation": 0,
-						"default_fontsize": 12.0,
+						"default_fontsize": 13.0,
 						"default_fontface": 0,
 						"default_fontname": "Arial",
 						"gridonopen": 1,
@@ -1039,13 +1039,13 @@
 									"id": "obj-29",
 									"maxclass": "message",
 									"patching_rect": [
-										642.667,
-										64.0,
-										188.0,
-										26.667
+										696.223,
+										69.333,
+										203.667,
+										28.889
 									],
 									"fontname": "Arial",
-									"fontsize": 12.0,
+									"fontsize": 13.0,
 									"text": "window flags nogrow, savewindow 1, window exec"
 								}
 							},
@@ -1054,13 +1054,13 @@
 									"id": "obj-30",
 									"maxclass": "message",
 									"patching_rect": [
-										658.667,
-										102.667,
-										172.0,
-										26.667
+										713.556,
+										111.223,
+										186.333,
+										28.889
 									],
 									"fontname": "Arial",
-									"fontsize": 12.0,
+									"fontsize": 13.0,
 									"text": "window flags grow, window exec"
 								}
 							},
@@ -1069,18 +1069,18 @@
 									"id": "obj-31",
 									"maxclass": "comment",
 									"patching_rect": [
-										836.0,
-										64.0,
-										173.333,
-										26.667
+										905.667,
+										69.333,
+										187.777,
+										28.889
 									],
 									"fontname": "Arial",
-									"fontsize": 12.0,
+									"fontsize": 13.0,
 									"text": "These are just for convenience, to toggle scroll bars & grow bar in the mother patch",
 									"textcolor": [
-										0.0,
-										0.0,
-										0.0,
+										0.870588235294118,
+										0.870588235294118,
+										0.870588235294118,
 										1.0
 									]
 								}
@@ -1090,16 +1090,16 @@
 									"id": "obj-32",
 									"maxclass": "panel",
 									"patching_rect": [
-										634.667,
-										53.333,
-										384.0,
-										90.667
+										687.556,
+										57.777,
+										416.0,
+										98.223
 									],
 									"mode": 0,
 									"bgcolor": [
-										1.0,
-										0.49019607843137253,
-										0.49019607843137253,
+										0.196078,
+										0.227451,
+										0.282353,
 										1.0
 									],
 									"bordercolor": [
@@ -1117,10 +1117,10 @@
 									"id": "obj-33",
 									"maxclass": "inlet",
 									"patching_rect": [
-										300.0,
-										8.0,
-										20.0,
-										20.0
+										325.0,
+										8.667,
+										21.667,
+										21.667
 									],
 									"comment": "window size message from thispatcher in the mother patch.",
 									"numinlets": 0,
@@ -1132,18 +1132,18 @@
 									"id": "obj-35",
 									"maxclass": "comment",
 									"patching_rect": [
-										573.333,
-										5.333,
-										445.333,
-										26.667
+										621.111,
+										5.777,
+										482.444,
+										28.889
 									],
 									"fontname": "Arial",
-									"fontsize": 12.0,
+									"fontsize": 13.0,
 									"text": "Grab sends version symbol to us. Format this into a scripting message for an object named 'version' and send that to a thispatcher object in the mother patch.",
 									"textcolor": [
-										0.0,
-										0.0,
-										0.0,
+										0.870588235294118,
+										0.870588235294118,
+										0.870588235294118,
 										1.0
 									]
 								}
@@ -1153,10 +1153,10 @@
 									"id": "obj-36",
 									"maxclass": "outlet",
 									"patching_rect": [
-										544.0,
-										153.333,
-										20.0,
-										20.0
+										589.333,
+										166.111,
+										21.667,
+										21.667
 									],
 									"comment": "Messages to thispatcher in mother patch",
 									"numinlets": 1,
@@ -1168,13 +1168,13 @@
 									"id": "obj-37",
 									"maxclass": "message",
 									"patching_rect": [
-										341.333,
-										77.333,
-										128.0,
-										26.667
+										369.777,
+										83.777,
+										138.667,
+										28.889
 									],
 									"fontname": "Arial",
-									"fontsize": 12.0,
+									"fontsize": 13.0,
 									"text": "script send version set Version"
 								}
 							},
@@ -1183,10 +1183,10 @@
 									"id": "obj-38",
 									"maxclass": "button",
 									"patching_rect": [
-										341.333,
-										50.667,
-										20.0,
-										20.0
+										369.777,
+										54.889,
+										21.667,
+										21.667
 									],
 									"parameter_enable": 0
 								}
@@ -1196,13 +1196,13 @@
 									"id": "obj-39",
 									"maxclass": "newobj",
 									"patching_rect": [
-										544.0,
-										122.667,
-										50.667,
-										26.667
+										589.333,
+										132.889,
+										54.889,
+										28.889
 									],
 									"fontname": "Arial",
-									"fontsize": 12.0,
+									"fontsize": 13.0,
 									"text": "append",
 									"numinlets": 1,
 									"numoutlets": 1
@@ -1213,13 +1213,13 @@
 									"id": "obj-40",
 									"maxclass": "newobj",
 									"patching_rect": [
-										544.0,
-										61.333,
-										80.0,
-										26.667
+										589.333,
+										66.444,
+										86.667,
+										28.889
 									],
 									"fontname": "Arial",
-									"fontsize": 12.0,
+									"fontsize": 13.0,
 									"text": "prepend set",
 									"numinlets": 1,
 									"numoutlets": 1
@@ -1230,10 +1230,10 @@
 									"id": "obj-41",
 									"maxclass": "inlet",
 									"patching_rect": [
-										544.0,
-										6.667,
-										20.0,
-										20.0
+										589.333,
+										7.223,
+										21.667,
+										21.667
 									],
 									"comment": "\"Grabbed\" version",
 									"numinlets": 0,
@@ -1245,10 +1245,10 @@
 									"id": "obj-42",
 									"maxclass": "outlet",
 									"patching_rect": [
-										156.0,
-										153.333,
-										20.0,
-										20.0
+										169.0,
+										166.111,
+										21.667,
+										21.667
 									],
 									"comment": "vers message for the object documented in this .help file",
 									"numinlets": 1,
@@ -1260,13 +1260,13 @@
 									"id": "obj-43",
 									"maxclass": "message",
 									"patching_rect": [
-										156.0,
-										93.333,
-										60.0,
-										26.667
+										169.0,
+										101.111,
+										65.0,
+										28.889
 									],
 									"fontname": "Arial",
-									"fontsize": 12.0,
+									"fontsize": 13.0,
 									"text": "vers 1 1"
 								}
 							},
@@ -1275,13 +1275,13 @@
 									"id": "obj-44",
 									"maxclass": "newobj",
 									"patching_rect": [
-										228.0,
-										57.333,
-										60.0,
-										26.667
+										247.0,
+										62.111,
+										65.0,
+										28.889
 									],
 									"fontname": "Arial",
-									"fontsize": 12.0,
+									"fontsize": 13.0,
 									"text": "loadbang",
 									"numinlets": 1,
 									"numoutlets": 1
@@ -1292,18 +1292,18 @@
 									"id": "obj-45",
 									"maxclass": "comment",
 									"patching_rect": [
-										5.333,
-										14.667,
-										218.667,
-										26.667
+										5.777,
+										15.889,
+										236.889,
+										28.889
 									],
 									"fontname": "Arial",
-									"fontsize": 12.0,
+									"fontsize": 13.0,
 									"text": "Loadbang triggers a \"vers\" message to a grab object in the mother patcher at loadbang time, as well as banging Judge Doom",
 									"textcolor": [
-										0.0,
-										0.0,
-										0.0,
+										0.870588235294118,
+										0.870588235294118,
+										0.870588235294118,
 										1.0
 									]
 								}
@@ -1313,18 +1313,18 @@
 									"id": "obj-46",
 									"maxclass": "comment",
 									"patching_rect": [
-										326.667,
-										4.0,
-										206.667,
-										26.667
+										353.889,
+										4.333,
+										223.889,
+										28.889
 									],
 									"fontname": "Arial",
-									"fontsize": 12.0,
+									"fontsize": 13.0,
 									"text": "window size message from thispatcher in the mother patch.",
 									"textcolor": [
-										0.0,
-										0.0,
-										0.0,
+										0.870588235294118,
+										0.870588235294118,
+										0.870588235294118,
 										1.0
 									]
 								}
@@ -1342,10 +1342,10 @@
 										0
 									],
 									"midpoints": [
-										234.667,
-										85.333,
-										162.667,
-										85.333
+										254.223,
+										92.444,
+										176.223,
+										92.444
 									]
 								}
 							},
@@ -1372,10 +1372,10 @@
 										0
 									],
 									"midpoints": [
-										550.667,
-										44.0,
-										348.0,
-										44.0
+										596.556,
+										47.667,
+										377.0,
+										47.667
 									]
 								}
 							},
@@ -1414,10 +1414,10 @@
 										0
 									],
 									"midpoints": [
-										348.0,
-										117.333,
-										550.667,
-										117.333
+										377.0,
+										127.111,
+										596.556,
+										127.111
 									]
 								}
 							},
@@ -1444,10 +1444,10 @@
 										0
 									],
 									"midpoints": [
-										649.333,
-										149.333,
-										550.667,
-										149.333
+										703.444,
+										161.777,
+										596.556,
+										161.777
 									]
 								}
 							},
@@ -1462,10 +1462,10 @@
 										0
 									],
 									"midpoints": [
-										665.333,
-										149.333,
-										550.667,
-										149.333
+										720.777,
+										161.777,
+										596.556,
+										161.777
 									]
 								}
 							},
@@ -1483,15 +1483,15 @@
 							}
 						],
 						"bgcolor": [
-							1.0,
-							1.0,
-							1.0,
+							0.337254901960784,
+							0.337254901960784,
+							0.337254901960784,
 							1.0
 						],
 						"editing_bgcolor": [
-							0.9,
-							0.9,
-							0.9,
+							0.337254901960784,
+							0.337254901960784,
+							0.337254901960784,
 							1.0
 						]
 					},
@@ -1504,13 +1504,13 @@
 					"id": "obj-48",
 					"maxclass": "newobj",
 					"patching_rect": [
-						496.0,
-						454.667,
-						78.667,
-						26.667
+						537.333,
+						566.0,
+						85.223,
+						28.889
 					],
 					"fontname": "Arial",
-					"fontsize": 12.0,
+					"fontsize": 13.0,
 					"text": "thispatcher",
 					"hidden": 1,
 					"numinlets": 1,
@@ -1522,13 +1522,13 @@
 					"id": "obj-49",
 					"maxclass": "message",
 					"patching_rect": [
-						174.667,
-						534.667,
-						42.667,
-						26.667
+						189.223,
+						652.6669999999999,
+						46.223,
+						28.889
 					],
 					"fontname": "Arial",
-					"fontsize": 12.0,
+					"fontsize": 13.0,
 					"text": "reset"
 				}
 			},
@@ -1537,13 +1537,13 @@
 					"id": "obj-50",
 					"maxclass": "message",
 					"patching_rect": [
-						105.333,
-						534.667,
-						41.333,
-						26.667
+						114.111,
+						652.6669999999999,
+						44.777,
+						28.889
 					],
 					"fontname": "Arial",
-					"fontsize": 12.0,
+					"fontsize": 13.0,
 					"text": "clear"
 				}
 			},
@@ -1552,13 +1552,13 @@
 					"id": "obj-51",
 					"maxclass": "message",
 					"patching_rect": [
-						24.0,
-						534.667,
-						54.667,
-						26.667
+						26.0,
+						652.6669999999999,
+						59.223,
+						28.889
 					],
 					"fontname": "Arial",
-					"fontsize": 12.0,
+					"fontsize": 13.0,
 					"text": "const 3"
 				}
 			},
@@ -1567,18 +1567,18 @@
 					"id": "obj-52",
 					"maxclass": "comment",
 					"patching_rect": [
-						10.667,
-						492.0,
-						641.333,
-						49.333
+						11.556,
+						606.444,
+						694.777,
+						53.444
 					],
 					"fontname": "Arial",
-					"fontsize": 12.0,
+					"fontsize": 13.0,
 					"text": "You can set lp.ernie's urn to contain equal counts of each ball number with the const message. The clear message empties the urn. The reset message returns all balls to the urn, refilling it.",
 					"textcolor": [
-						0.0,
-						0.0,
-						0.0,
+						0.870588235294118,
+						0.870588235294118,
+						0.870588235294118,
 						1.0
 					]
 				}
@@ -1588,13 +1588,13 @@
 					"id": "obj-53",
 					"maxclass": "newobj",
 					"patching_rect": [
-						461.333,
-						2.667,
-						82.667,
-						26.667
+						499.777,
+						76.333,
+						89.556,
+						28.889
 					],
 					"fontname": "Arial",
-					"fontsize": 12.0,
+					"fontsize": 13.0,
 					"text": "r clearMess",
 					"hidden": 1,
 					"numinlets": 1,
@@ -1606,13 +1606,13 @@
 					"id": "obj-65",
 					"maxclass": "newobj",
 					"patching_rect": [
-						221.333,
-						440.0,
-						120.0,
-						26.667
+						239.777,
+						550.111,
+						130.0,
+						28.889
 					],
 					"fontname": "Arial",
-					"fontsize": 12.0,
+					"fontsize": 13.0,
 					"text": "patcher drawBalls",
 					"patcher": {
 						"fileversion": 1,
@@ -1627,12 +1627,12 @@
 						"rect": [
 							176.0,
 							387.0,
-							444.0,
-							241.333
+							486,
+							267
 						],
 						"bglocked": 0,
 						"openinpresentation": 0,
-						"default_fontsize": 12.0,
+						"default_fontsize": 13.0,
 						"default_fontface": 0,
 						"default_fontname": "Arial",
 						"gridonopen": 1,
@@ -1655,13 +1655,13 @@
 									"id": "obj-54",
 									"maxclass": "newobj",
 									"patching_rect": [
-										329.333,
-										69.333,
-										82.667,
-										26.667
+										356.777,
+										75.111,
+										89.556,
+										28.889
 									],
 									"fontname": "Arial",
-									"fontsize": 12.0,
+									"fontsize": 13.0,
 									"text": "s ernieMess",
 									"numinlets": 1,
 									"numoutlets": 0
@@ -1672,13 +1672,13 @@
 									"id": "obj-55",
 									"maxclass": "number",
 									"patching_rect": [
-										210.667,
-										150.667,
-										46.667,
-										26.667
+										228.223,
+										163.223,
+										50.556,
+										28.889
 									],
 									"fontname": "Arial",
-									"fontsize": 12.0,
+									"fontsize": 13.0,
 									"parameter_enable": 0
 								}
 							},
@@ -1687,13 +1687,13 @@
 									"id": "obj-56",
 									"maxclass": "newobj",
 									"patching_rect": [
-										210.667,
-										105.333,
-										58.667,
-										26.667
+										228.223,
+										114.111,
+										63.556,
+										28.889
 									],
 									"fontname": "Arial",
-									"fontsize": 12.0,
+									"fontsize": 13.0,
 									"text": "!/ 4000",
 									"numinlets": 1,
 									"numoutlets": 1
@@ -1704,13 +1704,13 @@
 									"id": "obj-57",
 									"maxclass": "newobj",
 									"patching_rect": [
-										213.333,
-										69.333,
-										82.667,
-										26.667
+										231.111,
+										75.111,
+										89.556,
+										28.889
 									],
 									"fontname": "Arial",
-									"fontsize": 12.0,
+									"fontsize": 13.0,
 									"text": "s clearMess",
 									"numinlets": 1,
 									"numoutlets": 0
@@ -1721,13 +1721,13 @@
 									"id": "obj-58",
 									"maxclass": "newobj",
 									"patching_rect": [
-										157.333,
-										182.667,
-										36.0,
-										26.667
+										170.444,
+										197.889,
+										39.0,
+										28.889
 									],
 									"fontname": "Arial",
-									"fontsize": 12.0,
+									"fontsize": 13.0,
 									"text": "!= 1",
 									"numinlets": 1,
 									"numoutlets": 1
@@ -1738,13 +1738,13 @@
 									"id": "obj-59",
 									"maxclass": "newobj",
 									"patching_rect": [
-										109.333,
-										148.0,
-										88.0,
-										26.667
+										118.444,
+										160.333,
+										95.333,
+										28.889
 									],
 									"fontname": "Arial",
-									"fontsize": 12.0,
+									"fontsize": 13.0,
 									"text": "counter",
 									"numinlets": 5,
 									"numoutlets": 3
@@ -1755,13 +1755,13 @@
 									"id": "obj-60",
 									"maxclass": "newobj",
 									"patching_rect": [
-										14.667,
-										148.0,
-										82.667,
-										26.667
+										15.889,
+										160.333,
+										89.556,
+										28.889
 									],
 									"fontname": "Arial",
-									"fontsize": 12.0,
+									"fontsize": 13.0,
 									"text": "s ernieMess",
 									"numinlets": 1,
 									"numoutlets": 0
@@ -1772,13 +1772,13 @@
 									"id": "obj-61",
 									"maxclass": "newobj",
 									"patching_rect": [
-										14.667,
-										105.333,
-										66.667,
-										26.667
+										15.889,
+										114.111,
+										72.223,
+										28.889
 									],
 									"fontname": "Arial",
-									"fontsize": 12.0,
+									"fontsize": 13.0,
 									"text": "metro 20",
 									"numinlets": 2,
 									"numoutlets": 1
@@ -1789,13 +1789,13 @@
 									"id": "obj-62",
 									"maxclass": "newobj",
 									"patching_rect": [
-										93.333,
-										69.333,
-										113.333,
-										26.667
+										101.111,
+										75.111,
+										122.777,
+										28.889
 									],
 									"fontname": "Arial",
-									"fontsize": 12.0,
+									"fontsize": 13.0,
 									"text": "grab 1 ernieMess",
 									"numinlets": 1,
 									"numoutlets": 1
@@ -1806,13 +1806,13 @@
 									"id": "obj-63",
 									"maxclass": "newobj",
 									"patching_rect": [
-										14.667,
-										37.333,
-										330.667,
-										26.667
+										15.889,
+										40.444,
+										358.223,
+										28.889
 									],
 									"fontname": "Arial",
-									"fontsize": 12.0,
+									"fontsize": 13.0,
 									"text": "trigger b count b 0 s",
 									"numinlets": 1,
 									"numoutlets": 5
@@ -1823,10 +1823,10 @@
 									"id": "obj-64",
 									"maxclass": "inlet",
 									"patching_rect": [
-										14.667,
-										10.667,
-										20.0,
-										20.0
+										15.889,
+										11.556,
+										21.667,
+										21.667
 									],
 									"numinlets": 0,
 									"numoutlets": 1
@@ -1869,14 +1869,14 @@
 										0
 									],
 									"midpoints": [
-										164.0,
-										209.333,
-										8.0,
-										209.333,
-										8.0,
-										97.333,
-										21.333,
-										97.333
+										177.667,
+										226.777,
+										8.667,
+										226.777,
+										8.667,
+										105.444,
+										23.111,
+										105.444
 									]
 								}
 							},
@@ -1903,10 +1903,10 @@
 										1
 									],
 									"midpoints": [
-										217.333,
-										134.667,
-										74.667,
-										98.667
+										235.444,
+										145.889,
+										80.889,
+										106.889
 									]
 								}
 							},
@@ -1933,10 +1933,10 @@
 										0
 									],
 									"midpoints": [
-										21.333,
-										138.667,
-										116.0,
-										138.667
+										23.111,
+										150.223,
+										125.667,
+										150.223
 									]
 								}
 							},
@@ -1963,14 +1963,14 @@
 										3
 									],
 									"midpoints": [
-										257.333,
-										65.333,
-										298.667,
-										65.333,
-										298.667,
-										138.667,
-										172.0,
-										138.667
+										278.777,
+										70.777,
+										323.556,
+										70.777,
+										323.556,
+										150.223,
+										186.333,
+										150.223
 									]
 								}
 							},
@@ -1985,10 +1985,10 @@
 										4
 									],
 									"midpoints": [
-										100.0,
-										101.333,
-										190.667,
-										101.333
+										108.333,
+										109.777,
+										206.556,
+										109.777
 									]
 								}
 							},
@@ -2003,10 +2003,10 @@
 										0
 									],
 									"midpoints": [
-										100.0,
-										101.333,
-										217.333,
-										101.333
+										108.333,
+										109.777,
+										235.444,
+										109.777
 									]
 								}
 							},
@@ -2033,10 +2033,10 @@
 										0
 									],
 									"midpoints": [
-										178.667,
-										62.667,
-										220.0,
-										62.667
+										193.556,
+										67.889,
+										238.333,
+										67.889
 									]
 								}
 							},
@@ -2054,15 +2054,15 @@
 							}
 						],
 						"bgcolor": [
-							1.0,
-							1.0,
-							1.0,
+							0.337254901960784,
+							0.337254901960784,
+							0.337254901960784,
 							1.0
 						],
 						"editing_bgcolor": [
-							0.9,
-							0.9,
-							0.9,
+							0.337254901960784,
+							0.337254901960784,
+							0.337254901960784,
 							1.0
 						]
 					},
@@ -2075,13 +2075,13 @@
 					"id": "obj-66",
 					"maxclass": "message",
 					"patching_rect": [
-						121.333,
-						440.0,
-						86.667,
-						26.667
+						131.444,
+						550.111,
+						93.889,
+						28.889
 					],
 					"fontname": "Arial",
-					"fontsize": 12.0,
+					"fontsize": 13.0,
 					"text": "refer ernieIn"
 				}
 			},
@@ -2090,13 +2090,13 @@
 					"id": "obj-67",
 					"maxclass": "newobj",
 					"patching_rect": [
-						24.0,
-						440.0,
-						85.333,
-						26.667
+						26.0,
+						550.111,
+						92.444,
+						28.889
 					],
 					"fontname": "Arial",
-					"fontsize": 12.0,
+					"fontsize": 13.0,
 					"text": "table ernieIn",
 					"numinlets": 1,
 					"numoutlets": 0
@@ -2107,18 +2107,18 @@
 					"id": "obj-68",
 					"maxclass": "comment",
 					"patching_rect": [
-						157.333,
-						318.667,
-						494.667,
-						49.333
+						170.444,
+						418.66700000000003,
+						535.889,
+						53.444
 					],
 					"fontname": "Arial",
-					"fontsize": 12.0,
+					"fontsize": 13.0,
 					"text": "Uzi will use up all the balls in the urn. When this happens lp.ernie will automatically refill itself and a bang message is sent out the right outlet.",
 					"textcolor": [
-						0.0,
-						0.0,
-						0.0,
+						0.870588235294118,
+						0.870588235294118,
+						0.870588235294118,
 						1.0
 					]
 				}
@@ -2128,18 +2128,18 @@
 					"id": "obj-69",
 					"maxclass": "comment",
 					"patching_rect": [
-						10.667,
-						381.333,
-						641.333,
-						72.0
+						11.556,
+						486.555,
+						694.777,
+						78.0
 					],
 					"fontname": "Arial",
-					"fontsize": 12.0,
+					"fontsize": 13.0,
 					"text": "You can specify the number of different kinds of balls by refering lp.ernie to a table. Double-click on the table ernieIn, draw in the table window, and then click the refer message. This starts a process that rapidly draws balls from lp.ernie until the urn has been emptied. Watch the ernieOut table!",
 					"textcolor": [
-						0.0,
-						0.0,
-						0.0,
+						0.870588235294118,
+						0.870588235294118,
+						0.870588235294118,
 						1.0
 					]
 				}
@@ -2149,13 +2149,13 @@
 					"id": "obj-70",
 					"maxclass": "newobj",
 					"patching_rect": [
-						94.667,
-						346.667,
-						53.333,
-						26.667
+						102.556,
+						449.0,
+						57.777,
+						28.889
 					],
 					"fontname": "Arial",
-					"fontsize": 12.0,
+					"fontsize": 13.0,
 					"text": "uzi 42",
 					"numinlets": 1,
 					"numoutlets": 1
@@ -2166,10 +2166,10 @@
 					"id": "obj-71",
 					"maxclass": "button",
 					"patching_rect": [
-						94.667,
-						318.667,
-						20.0,
-						20.0
+						102.556,
+						418.66700000000003,
+						21.667,
+						21.667
 					],
 					"parameter_enable": 0
 				}
@@ -2179,10 +2179,10 @@
 					"id": "obj-72",
 					"maxclass": "button",
 					"patching_rect": [
-						21.333,
-						318.667,
-						52.0,
-						52.0
+						23.111,
+						418.66700000000003,
+						56.333,
+						56.333
 					],
 					"parameter_enable": 0
 				}
@@ -2192,18 +2192,18 @@
 					"id": "obj-73",
 					"maxclass": "comment",
 					"patching_rect": [
-						10.667,
-						260.0,
-						641.333,
-						72.0
+						11.556,
+						355.111,
+						694.777,
+						78.0
 					],
 					"fontname": "Arial",
-					"fontsize": 12.0,
+					"fontsize": 13.0,
 					"text": "Once there are balls are in the urn, you bang lp.ernie to choose a ball at random. Use the button to see results one at a time, or bang Uzi and watch the table ernieOut (if the table isn't visible, double-click on the table object above).",
 					"textcolor": [
-						0.0,
-						0.0,
-						0.0,
+						0.870588235294118,
+						0.870588235294118,
+						0.870588235294118,
 						1.0
 					]
 				}
@@ -2213,13 +2213,13 @@
 					"id": "obj-74",
 					"maxclass": "newobj",
 					"patching_rect": [
-						21.333,
-						238.667,
-						82.667,
-						26.667
+						23.111,
+						332.0,
+						89.556,
+						28.889
 					],
 					"fontname": "Arial",
-					"fontsize": 12.0,
+					"fontsize": 13.0,
 					"text": "s ernieMess",
 					"hidden": 1,
 					"numinlets": 1,
@@ -2231,18 +2231,18 @@
 					"id": "obj-75",
 					"maxclass": "comment",
 					"patching_rect": [
-						136.0,
-						213.333,
-						516.0,
-						49.333
+						147.333,
+						304.555,
+						559.0,
+						53.444
 					],
 					"fontname": "Arial",
-					"fontsize": 12.0,
+					"fontsize": 13.0,
 					"text": "This example puts 2 balls marked zero into the urn, 4 balls marked one, 8 balls marked two, 14 balls marked three, and 14 balls marked four.",
 					"textcolor": [
-						0.0,
-						0.0,
-						0.0,
+						0.870588235294118,
+						0.870588235294118,
+						0.870588235294118,
 						1.0
 					]
 				}
@@ -2252,13 +2252,13 @@
 					"id": "obj-76",
 					"maxclass": "message",
 					"patching_rect": [
-						21.333,
-						213.333,
-						105.333,
-						26.667
+						23.111,
+						304.555,
+						114.111,
+						28.889
 					],
 					"fontname": "Arial",
-					"fontsize": 12.0,
+					"fontsize": 13.0,
 					"text": "set 2 4 8 14 14"
 				}
 			},
@@ -2267,18 +2267,18 @@
 					"id": "obj-77",
 					"maxclass": "comment",
 					"patching_rect": [
-						10.667,
-						170.667,
-						529.333,
-						49.333
+						11.556,
+						258.333,
+						573.444,
+						53.444
 					],
 					"fontname": "Arial",
-					"fontsize": 12.0,
+					"fontsize": 13.0,
 					"text": "The first thing you'll need to do with lp.ernie is to tell it how many of each kind of ball it should hold. You can do this with a set message:",
 					"textcolor": [
-						0.0,
-						0.0,
-						0.0,
+						0.870588235294118,
+						0.870588235294118,
+						0.870588235294118,
 						1.0
 					]
 				}
@@ -2288,10 +2288,10 @@
 					"id": "obj-78",
 					"maxclass": "button",
 					"patching_rect": [
-						609.333,
-						93.333,
-						20.0,
-						20.0
+						660.111,
+						174.555,
+						21.667,
+						21.667
 					],
 					"parameter_enable": 0
 				}
@@ -2301,13 +2301,13 @@
 					"id": "obj-79",
 					"maxclass": "message",
 					"patching_rect": [
-						646.667,
-						92.0,
-						41.333,
-						26.667
+						700.556,
+						173.111,
+						44.777,
+						28.889
 					],
 					"fontname": "Arial",
-					"fontsize": 12.0,
+					"fontsize": 13.0,
 					"text": "clear",
 					"hidden": 1
 				}
@@ -2317,13 +2317,13 @@
 					"id": "obj-80",
 					"maxclass": "newobj",
 					"patching_rect": [
-						549.333,
-						154.667,
-						94.667,
-						26.667
+						595.111,
+						241.0,
+						102.556,
+						28.889
 					],
 					"fontname": "Arial",
-					"fontsize": 12.0,
+					"fontsize": 13.0,
 					"text": "table ernieOut",
 					"numinlets": 2,
 					"numoutlets": 0
@@ -2334,13 +2334,13 @@
 					"id": "obj-81",
 					"maxclass": "newobj",
 					"patching_rect": [
-						549.333,
-						120.0,
-						94.667,
-						26.667
+						595.111,
+						203.44400000000002,
+						102.556,
+						28.889
 					],
 					"fontname": "Arial",
-					"fontsize": 12.0,
+					"fontsize": 13.0,
 					"text": "Histo",
 					"numinlets": 1,
 					"numoutlets": 2
@@ -2351,13 +2351,13 @@
 					"id": "obj-82",
 					"maxclass": "number",
 					"patching_rect": [
-						549.333,
-						92.0,
-						46.667,
-						26.667
+						595.111,
+						173.111,
+						50.556,
+						28.889
 					],
 					"fontname": "Arial",
-					"fontsize": 12.0,
+					"fontsize": 13.0,
 					"parameter_enable": 0
 				}
 			},
@@ -2366,13 +2366,13 @@
 					"id": "obj-83",
 					"maxclass": "newobj",
 					"patching_rect": [
-						549.333,
-						2.667,
-						82.667,
-						26.667
+						595.111,
+						76.333,
+						89.556,
+						28.889
 					],
 					"fontname": "Arial",
-					"fontsize": 12.0,
+					"fontsize": 13.0,
 					"text": "r ernieMess",
 					"hidden": 1,
 					"numinlets": 1,
@@ -2384,13 +2384,13 @@
 					"id": "obj-84",
 					"maxclass": "newobj",
 					"patching_rect": [
-						549.333,
-						58.667,
-						73.333,
-						26.667
+						595.111,
+						137.0,
+						79.444,
+						28.889
 					],
 					"fontname": "Arial",
-					"fontsize": 12.0,
+					"fontsize": 13.0,
 					"text": "lp.ernie 32",
 					"numinlets": 1,
 					"numoutlets": 2
@@ -2401,41 +2401,45 @@
 					"id": "obj-85",
 					"maxclass": "comment",
 					"patching_rect": [
-						156.0,
-						0.0,
-						146.667,
-						26.667
+						10.0,
+						6.0,
+						228,
+						62.0
 					],
-					"fontname": "Arial",
-					"fontsize": 24.0,
+					"fontname": "Lato",
+					"fontsize": 48.0,
 					"text": "lp.ernie",
 					"textcolor": [
-						0.0,
-						0.392157,
-						0.066667,
+						0.870588235294118,
+						0.870588235294118,
+						0.870588235294118,
 						1.0
-					]
+					],
+					"fontface": 0,
+					"linecount": 1
 				}
 			},
 			{
 				"box": {
 					"textcolor": [
-						0.0,
-						0.0,
-						0.0,
+						0.870588235294118,
+						0.870588235294118,
+						0.870588235294118,
 						1.0
 					],
 					"id": "obj-86",
 					"maxclass": "comment",
 					"patching_rect": [
-						156.0,
-						34.667,
-						389.333,
-						26.667
+						12.0,
+						68.0,
+						703.556,
+						21.0
 					],
-					"fontname": "Arial",
-					"fontsize": 12.0,
-					"text": "General-purpose urn model for generating random numbers."
+					"fontname": "Lato",
+					"fontsize": 13.0,
+					"text": "General-purpose urn model for generating random numbers.",
+					"fontface": 0,
+					"linecount": 1
 				}
 			},
 			{
@@ -2443,18 +2447,18 @@
 					"id": "obj-87",
 					"maxclass": "comment",
 					"patching_rect": [
-						10.667,
-						58.667,
-						529.333,
-						140.0
+						11.556,
+						137.0,
+						573.444,
+						151.667
 					],
 					"fontname": "Arial",
-					"fontsize": 12.0,
+					"fontsize": 13.0,
 					"text": "You can think of lp.ernie as an urn containing balls, each ball marked with a number between 0 and 127 (you can change the maximum number with an inizialization argument, as in this example). There can be any number of zeros, ones, twos, threes, and so on. When lp.ernie receives a bang, it chooses a ball at random and sends the number marked on the ball out its left outlet. The ball is not returned to the urn, so you can precisely control the distribution of events produced by lp.ernie.",
 					"textcolor": [
-						0.0,
-						0.0,
-						0.0,
+						0.870588235294118,
+						0.870588235294118,
+						0.870588235294118,
 						1.0
 					]
 				}
@@ -2464,16 +2468,16 @@
 					"id": "obj-88",
 					"maxclass": "panel",
 					"patching_rect": [
-						154.667,
-						34.667,
-						504.0,
-						17.333
+						167.556,
+						111.0,
+						546.0,
+						18.777
 					],
 					"mode": 0,
 					"bgcolor": [
-						1.0,
-						0.807843137254902,
-						0.6470588235294118,
+						0.196078,
+						0.227451,
+						0.282353,
 						1.0
 					],
 					"bordercolor": [
@@ -2491,13 +2495,13 @@
 					"id": "obj-89",
 					"maxclass": "newobj",
 					"patching_rect": [
-						394.667,
-						2.667,
-						61.333,
-						26.667
+						427.556,
+						76.333,
+						66.444,
+						28.889
 					],
 					"fontname": "Arial",
-					"fontsize": 12.0,
+					"fontsize": 13.0,
 					"text": "lp.argus",
 					"hidden": 1,
 					"numinlets": 1,
@@ -2509,13 +2513,13 @@
 					"id": "obj-94",
 					"maxclass": "newobj",
 					"patching_rect": [
-						1.333,
-						54.667,
-						141.333,
-						26.667
+						1.444,
+						132.667,
+						153.111,
+						28.889
 					],
 					"fontname": "Arial",
-					"fontsize": 12.0,
+					"fontsize": 13.0,
 					"text": "p OverviewLoader",
 					"hidden": 1,
 					"patcher": {
@@ -2531,12 +2535,12 @@
 						"rect": [
 							384.0,
 							252.0,
-							250.667,
-							170.667
+							200,
+							176
 						],
 						"bglocked": 0,
 						"openinpresentation": 0,
-						"default_fontsize": 12.0,
+						"default_fontsize": 13.0,
 						"default_fontface": 0,
 						"default_fontname": "Arial",
 						"gridonopen": 1,
@@ -2559,13 +2563,13 @@
 									"id": "obj-90",
 									"maxclass": "newobj",
 									"patching_rect": [
-										13.333,
-										68.0,
-										38.667,
-										26.667
+										14.444,
+										73.667,
+										41.889,
+										28.889
 									],
 									"fontname": "Arial",
-									"fontsize": 12.0,
+									"fontsize": 13.0,
 									"text": "gate",
 									"numinlets": 2,
 									"numoutlets": 1
@@ -2576,13 +2580,13 @@
 									"id": "obj-91",
 									"maxclass": "newobj",
 									"patching_rect": [
-										13.333,
-										98.667,
-										110.667,
-										26.667
+										14.444,
+										106.889,
+										119.889,
+										28.889
 									],
 									"fontname": "Arial",
-									"fontsize": 12.0,
+									"fontsize": 13.0,
 									"text": "lp.mrsnorris lpo",
 									"numinlets": 1,
 									"numoutlets": 0
@@ -2593,10 +2597,10 @@
 									"id": "obj-92",
 									"maxclass": "inlet",
 									"patching_rect": [
-										38.667,
-										32.0,
-										20.0,
-										20.0
+										41.889,
+										34.667,
+										21.667,
+										21.667
 									],
 									"numinlets": 0,
 									"numoutlets": 1
@@ -2607,10 +2611,10 @@
 									"id": "obj-93",
 									"maxclass": "inlet",
 									"patching_rect": [
-										98.667,
-										30.667,
-										20.0,
-										20.0
+										106.889,
+										33.223,
+										21.667,
+										21.667
 									],
 									"numinlets": 0,
 									"numoutlets": 1
@@ -2629,10 +2633,10 @@
 										0
 									],
 									"midpoints": [
-										105.333,
-										60.0,
-										20.0,
-										60.0
+										114.111,
+										65.0,
+										21.667,
+										65.0
 									]
 								}
 							},
@@ -2662,15 +2666,15 @@
 							}
 						],
 						"bgcolor": [
-							1.0,
-							1.0,
-							1.0,
+							0.337254901960784,
+							0.337254901960784,
+							0.337254901960784,
 							1.0
 						],
 						"editing_bgcolor": [
-							0.9,
-							0.9,
-							0.9,
+							0.337254901960784,
+							0.337254901960784,
+							0.337254901960784,
 							1.0
 						]
 					},
@@ -2683,26 +2687,26 @@
 					"id": "obj-95",
 					"maxclass": "ubutton",
 					"patching_rect": [
-						1.333,
-						2.667,
-						141.333,
-						41.333
+						10.0,
+						6.0,
+						228,
+						62.0
 					],
 					"parameter_enable": 0
 				}
 			},
 			{
 				"box": {
-					"id": "obj-96",
-					"maxclass": "fpic",
+					"id": "obj-97",
+					"maxclass": "live.line",
+					"numinlets": 1,
+					"numoutlets": 0,
 					"patching_rect": [
-						-1.333,
-						0.0,
-						145.333,
-						49.333
-					],
-					"pic": "lp.Logo.png",
-					"autofit": 1
+						10.0,
+						93.0,
+						703.556,
+						6.0
+					]
 				}
 			}
 		],
@@ -2732,14 +2736,14 @@
 					],
 					"hidden": 1,
 					"midpoints": [
-						284.0,
-						622.667,
-						5.333,
-						622.667,
-						5.333,
-						566.667,
-						17.333,
-						566.667
+						307.667,
+						748.0,
+						5.777,
+						748.0,
+						5.777,
+						687.333,
+						18.777,
+						687.333
 					]
 				}
 			},
@@ -2755,18 +2759,18 @@
 					],
 					"hidden": 1,
 					"midpoints": [
-						181.333,
-						564.0,
-						162.667,
-						564.0,
-						162.667,
-						564.0,
-						5.333,
-						564.0,
-						5.333,
-						236.0,
-						28.0,
-						236.0
+						196.444,
+						684.444,
+						176.223,
+						684.444,
+						176.223,
+						684.444,
+						5.777,
+						684.444,
+						5.777,
+						329.111,
+						30.333,
+						329.111
 					]
 				}
 			},
@@ -2782,14 +2786,14 @@
 					],
 					"hidden": 1,
 					"midpoints": [
-						101.333,
-						374.667,
-						5.333,
-						374.667,
-						5.333,
-						236.0,
-						28.0,
-						236.0
+						109.777,
+						479.333,
+						5.777,
+						479.333,
+						5.777,
+						329.111,
+						30.333,
+						329.111
 					]
 				}
 			},
@@ -2818,14 +2822,14 @@
 					],
 					"hidden": 1,
 					"midpoints": [
-						28.0,
-						374.667,
-						5.333,
-						374.667,
-						5.333,
-						236.0,
-						28.0,
-						236.0
+						30.333,
+						479.333,
+						5.777,
+						479.333,
+						5.777,
+						329.111,
+						30.333,
+						329.111
 					]
 				}
 			},
@@ -2866,14 +2870,14 @@
 					],
 					"hidden": 1,
 					"midpoints": [
-						112.0,
-						564.0,
-						348.0,
-						564.0,
-						348.0,
-						434.667,
-						228.0,
-						434.667
+						121.333,
+						684.444,
+						377.0,
+						684.444,
+						377.0,
+						544.333,
+						247.0,
+						544.333
 					]
 				}
 			},
@@ -2889,14 +2893,14 @@
 					],
 					"hidden": 1,
 					"midpoints": [
-						30.667,
-						564.0,
-						348.0,
-						564.0,
-						348.0,
-						434.667,
-						228.0,
-						434.667
+						33.223,
+						684.444,
+						377.0,
+						684.444,
+						377.0,
+						544.333,
+						247.0,
+						544.333
 					]
 				}
 			},
@@ -2911,14 +2915,14 @@
 						0
 					],
 					"midpoints": [
-						128.0,
-						466.667,
-						213.333,
-						466.667,
-						213.333,
-						434.667,
-						228.0,
-						434.667
+						138.667,
+						579.0,
+						231.111,
+						579.0,
+						231.111,
+						544.333,
+						247.0,
+						544.333
 					]
 				}
 			},
@@ -2947,14 +2951,14 @@
 					],
 					"hidden": 1,
 					"midpoints": [
-						502.667,
-						482.667,
-						577.333,
-						482.667,
-						577.333,
-						414.667,
-						430.667,
-						414.667
+						544.556,
+						596.333,
+						625.444,
+						596.333,
+						625.444,
+						522.667,
+						466.556,
+						522.667
 					]
 				}
 			},
@@ -2983,14 +2987,14 @@
 					],
 					"hidden": 1,
 					"midpoints": [
-						430.667,
-						480.0,
-						416.0,
-						480.0,
-						416.0,
-						418.667,
-						502.667,
-						418.667
+						466.556,
+						593.444,
+						450.667,
+						593.444,
+						450.667,
+						527.0,
+						544.556,
+						527.0
 					]
 				}
 			},
@@ -3032,14 +3036,14 @@
 					],
 					"hidden": 1,
 					"midpoints": [
-						454.667,
-						485.333,
-						644.0,
-						485.333,
-						644.0,
-						52.0,
-						556.0,
-						52.0
+						492.556,
+						599.221,
+						697.667,
+						599.221,
+						697.667,
+						129.777,
+						602.333,
+						129.777
 					]
 				}
 			},
@@ -3079,10 +3083,10 @@
 					],
 					"hidden": 1,
 					"midpoints": [
-						653.333,
-						116.0,
-						556.0,
-						116.0
+						707.777,
+						199.111,
+						602.333,
+						199.111
 					]
 				}
 			},
@@ -3110,10 +3114,10 @@
 					],
 					"hidden": 1,
 					"midpoints": [
-						653.333,
-						149.333,
-						556.0,
-						149.333
+						707.777,
+						235.221,
+						602.333,
+						235.221
 					]
 				}
 			},
@@ -3153,24 +3157,24 @@
 					],
 					"hidden": 1,
 					"midpoints": [
-						468.0,
-						29.333,
-						653.333,
-						29.333
+						507.0,
+						105.221,
+						707.777,
+						105.221
 					]
 				}
 			}
 		],
 		"bgcolor": [
-			1.0,
-			1.0,
-			1.0,
+			0.337254901960784,
+			0.337254901960784,
+			0.337254901960784,
 			1.0
 		],
 		"editing_bgcolor": [
-			0.9,
-			0.9,
-			0.9,
+			0.337254901960784,
+			0.337254901960784,
+			0.337254901960784,
 			1.0
 		]
 	}

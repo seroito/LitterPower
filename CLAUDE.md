@@ -5,31 +5,21 @@ continue. Last updated 2026-11-22.
 
 ## Resume here (2026-11-22)
 
-Waiting for the user's second test of the redesign samples (rng-fixes items 16, 17).
+All help files, the overview and the extras are redesigned (rng-fixes items 16-18); the
+user tests the package next.
 
-- Samples: `lp.abbie`, `lp.pvvv~`, `lp.julie` help files and the overview, redesigned
-  again after the first test (item 17). Package: run 45021132533 (Windows externals; the
-  later run for the .gitignore commit has the same patchers). User installs it after
-  deleting the old Documents/Max 9/Packages/LitterPower folder. Screenshots of findings go
-  to `Findings/` (git-ignored).
-- User to check: windows open at full size (also lp.pvvv~ and the overview) and can be
-  resized; window not between two monitors; "Tell me about the tell message" in lp.abbie
-  (tab New-In-Version-2) fills in its values; the See-also menus list one item per line;
-  no "multiple files in your search path" messages (delete the old
-  Documents/Max 9/Packages/LitterPower folder before installing); greyish blue panels,
-  one light grey text colour (also version info, former pink/green hints); lp.julie: both
-  outlets move with the rabbit preset, no NaN when switching c; load messages without
-  "(Classic OS)".
-- Decided NOT to do (user, 2026-11-22): hide the tab subpatcher boxes (e.g.
-  `p New-In-Version-2`) and their "Open patcher ... for details" hints - they stay visible.
-- If approved: run `tools/redesign_help.py` on all other help files (lp.messages,
-  lp.doom.maxpat, lp.dotell.maxpat need a look first), then extras and clippings (no
-  object-name title: colours, scaling, windows); switch the generators (make_extra_help,
-  make_jitter_help, make_help64) from restyle_help.py to redesign_help.py and check that
-  regenerating reproduces the files; build (macOS by hand); update the test points.
-  If not approved: adjust redesign_help.py, redo the samples from their state before the
-  redesign (`git checkout 9772835 -- <files>`, but regenerate lp.julie's help with
-  `tools/make_extra_help.py lp.julie` and run `tools/fix_patchers.py` on them first).
+- Package: the manual run with macOS after commit "Redesign: all help files, overview and
+  extras" (`gh run list --repo seroito/LitterPower --limit 3`). The user deletes the old
+  Documents/Max 9/Packages/LitterPower folder before installing. Screenshots of findings
+  go to `Findings/` (git-ignored).
+- User to check: windows open fully (old-format files too) and at 100/80; every help
+  file's title opens the overview when clicked; lp.abbie "Tell me about the tell message"
+  opens lp.messages; tell texts; lp.messages title; mode 0 of lp.pfff~/phhh~/pvvv~ sounds
+  like PPC (clipping, smoother than Intel); extras (X-amples, Running CPU Usage) readable;
+  large windows (Beatmania, lp.lya, lp.scamp~, the lp.vera* help) capped at 1600 x 940
+  with scrollbars.
+- Decided by the user: tab subpatcher boxes stay visible; clippings keep their design
+  (paste material) and get only the general fixes; the 64 variants keep mode 0 = 64-bit.
 - Earlier test results (points 1-11 under "Where things stand") are still outstanding.
 - After the user has tested `rng-fixes`: merge it into `64-bit-version` (ask first).
 - Still open: licensing with Peter Castine before publishing binaries; the reviewed but
@@ -145,8 +135,8 @@ removed (see `README.md`).
      set the light colours again).
    - `tools/fix_patchers.py`: window state, window position, menu separators, lp.doom;
      safe to rerun on any patcher.
-   - `tools/redesign_help.py`: the redesign (item 16/17); `overview` as argument for the
-     overview patch.
+   - `tools/redesign_help.py`: the redesign (items 16-18); help files, extras (`.maxpat`)
+     and `overview` as arguments. Safe to rerun (no second scaling or title area).
    - `tools/make_refpages.py`: reference pages; rerun after changing an object's
      messages, inlets or attributes; texts are in `tools/refpage_data.py`.
 5. Windows compiler warnings: artifact `build-log-windows`. `gh run download` refuses it
@@ -349,6 +339,29 @@ workflow builds pushes to both branches. One commit per change:
       to NaN); help: example starts with the "rabbit" c, note rewritten.
     - redesign_help.py: all note panels one greyish blue (0.196, 0.227, 0.282), all
       comments one light grey (version info and former coloured hints included).
+
+18. Second test of the samples (2026-11-22) and the redesign of everything:
+    - Window rectangles: files in the old Max 5 format (110 of 162, no "appversion")
+      store windows as left, top, right, bottom; newer ones as left, top, width, height.
+      Writing width/height into old files made lp.pvvv~ and the overview open too small.
+      `fix_patchers.fit_windows()` now sizes every window (root, tabs, subpatchers) from
+      its content (+40 px margin, +26 px tab bar), capped at 1600 x 940, in the form the
+      file's format expects; root windows at 100/80. redesign_help.py uses it too.
+    - Overview link: every help file's title is clickable and opens the overview (the 25
+      without the 1.8 ubutton/OverviewLoader get a ubutton -> "lpo" -> lp.mrsnorris).
+    - lp.abbie: the "Tell me about the tell message" button's clickable area was broken
+      already in the original (13 x -149 px); it now covers the button, and opens
+      lp.messages through lp.mrsnorris (pcontrol looks for an object of that name).
+      "Expect message" texts there now describe `tell`.
+    - Mode 0 of lp.pfff~/phhh~/pvvv~ behaves like PPC (clipping) on all platforms (user's
+      choice, was Intel); help texts (Mode-Messages), reference pages, tattle text and the
+      "Colored Noise" clipping ("Native (= PPC)") updated. The 64 variants keep mode 0 =
+      64-bit (no overflow).
+    - Redesign applied to all 105 help files (the 27 generated ones through their
+      generators, which now run restyle_help.py and then redesign_help.py; regenerating
+      reproduces the files), the overview and the 12 extras (13 pt, colours, windows; no
+      title area). lp.messages: "Litter Power Messages" as title, its subtitle unchanged.
+      Clippings and abstractions keep their design.
 
 Not done (reviewed, lower priority): A_GIMME new functions declaring argc as `short`,
 A_LONG handlers declaring `long` instead of `t_atom_long`.

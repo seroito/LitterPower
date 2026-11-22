@@ -12,12 +12,12 @@
 		"rect": [
 			100.0,
 			80.0,
-			760.0,
-			475.08
+			860,
+			579
 		],
 		"bglocked": 0,
 		"openinpresentation": 0,
-		"default_fontsize": 12.0,
+		"default_fontsize": 13.0,
 		"default_fontface": 0,
 		"default_fontname": "Arial",
 		"gridonopen": 1,
@@ -41,21 +41,21 @@
 					"maxclass": "comment",
 					"patching_rect": [
 						10.0,
-						8.0,
-						400.0,
-						21.0
+						6.0,
+						280,
+						62.0
 					],
 					"text": "lbj.penize",
-					"fontname": "Arial",
-					"fontsize": 24.0,
+					"fontname": "Lato",
+					"fontsize": 48.0,
 					"numinlets": 1,
 					"numoutlets": 0,
 					"linecount": 1,
-					"fontface": 1,
+					"fontface": 0,
 					"textcolor": [
-						0.0,
-						0.392157,
-						0.066667,
+						0.870588235294118,
+						0.870588235294118,
+						0.870588235294118,
 						1.0
 					]
 				}
@@ -65,23 +65,24 @@
 					"id": "obj-2",
 					"maxclass": "comment",
 					"patching_rect": [
-						10.0,
-						42.0,
-						740.0,
+						12.0,
+						68.0,
+						807.917,
 						21.0
 					],
 					"text": "Changes on a sampling of cells (unfinished)",
-					"fontname": "Arial",
-					"fontsize": 14.0,
+					"fontname": "Lato",
+					"fontsize": 13.0,
 					"numinlets": 1,
 					"numoutlets": 0,
 					"linecount": 1,
 					"textcolor": [
-						0.0,
-						0.0,
-						0.0,
+						0.870588235294118,
+						0.870588235294118,
+						0.870588235294118,
 						1.0
-					]
+					],
+					"fontface": 0
 				}
 			},
 			{
@@ -89,17 +90,17 @@
 					"id": "obj-3",
 					"maxclass": "panel",
 					"patching_rect": [
-						5.0,
-						68.0,
-						750.0,
-						65.0
+						5.417,
+						111.0,
+						812.5,
+						70.417
 					],
 					"numinlets": 1,
 					"numoutlets": 0,
 					"bgcolor": [
-						0.93,
-						0.87,
-						0.8,
+						0.196078,
+						0.227451,
+						0.282353,
 						1.0
 					],
 					"background": 1,
@@ -111,21 +112,21 @@
 					"id": "obj-4",
 					"maxclass": "comment",
 					"patching_rect": [
-						12.0,
-						72.0,
-						736.0,
-						55.0
+						13.0,
+						115.333,
+						797.333,
+						59.583
 					],
 					"text": "lbj.penize was meant to follow a sample of cells of the incoming matrices and output how much they changed (signed, absolute or RMS differences) as a list. The analysis was never written: the object accepts matrices but outputs nothing. It is built so that patches that contain it still load.",
 					"fontname": "Arial",
-					"fontsize": 12.0,
+					"fontsize": 13.0,
 					"numinlets": 1,
 					"numoutlets": 0,
 					"linecount": 3,
 					"textcolor": [
-						0.0,
-						0.0,
-						0.0,
+						0.870588235294118,
+						0.870588235294118,
+						0.870588235294118,
 						1.0
 					]
 				}
@@ -135,10 +136,10 @@
 					"id": "obj-5",
 					"maxclass": "toggle",
 					"patching_rect": [
-						10.0,
-						147.0,
-						24.0,
-						24.0
+						10.833,
+						196.583,
+						26.0,
+						26.0
 					],
 					"numinlets": 1,
 					"numoutlets": 1,
@@ -153,21 +154,21 @@
 					"id": "obj-6",
 					"maxclass": "comment",
 					"patching_rect": [
-						40.0,
-						149.0,
-						70.0,
-						21.0
+						43.333,
+						198.75,
+						75.833,
+						22.75
 					],
 					"text": "start/stop",
 					"fontname": "Arial",
-					"fontsize": 12.0,
+					"fontsize": 13.0,
 					"numinlets": 1,
 					"numoutlets": 0,
 					"linecount": 1,
 					"textcolor": [
-						0.0,
-						0.0,
-						0.0,
+						0.870588235294118,
+						0.870588235294118,
+						0.870588235294118,
 						1.0
 					]
 				}
@@ -177,14 +178,14 @@
 					"id": "obj-7",
 					"maxclass": "newobj",
 					"patching_rect": [
-						10.0,
-						181.0,
-						80.0,
-						22.0
+						10.833,
+						233.416,
+						86.667,
+						23.833
 					],
 					"text": "qmetro 100",
 					"fontname": "Arial",
-					"fontsize": 12.0,
+					"fontsize": 13.0,
 					"numinlets": 2,
 					"numoutlets": 1,
 					"outlettype": [
@@ -197,14 +198,14 @@
 					"id": "obj-8",
 					"maxclass": "newobj",
 					"patching_rect": [
-						10.0,
-						213.0,
-						200.0,
-						22.0
+						10.833,
+						268.08299999999997,
+						216.667,
+						23.833
 					],
 					"text": "jit.noise 1 char 64 48",
 					"fontname": "Arial",
-					"fontsize": 12.0,
+					"fontsize": 13.0,
 					"numinlets": 1,
 					"numoutlets": 2,
 					"outlettype": [
@@ -218,14 +219,14 @@
 					"id": "obj-9",
 					"maxclass": "newobj",
 					"patching_rect": [
-						10.0,
-						253.0,
-						200.0,
-						22.0
+						10.833,
+						311.41600000000005,
+						216.667,
+						23.833
 					],
 					"text": "lbj.penize",
 					"fontname": "Arial",
-					"fontsize": 12.0,
+					"fontsize": 13.0,
 					"numinlets": 1,
 					"numoutlets": 2,
 					"outlettype": [
@@ -239,14 +240,14 @@
 					"id": "obj-10",
 					"maxclass": "newobj",
 					"patching_rect": [
-						10.0,
-						287.0,
-						120.0,
-						22.0
+						10.833,
+						348.25,
+						130.0,
+						23.833
 					],
 					"text": "print lbj.penize",
 					"fontname": "Arial",
-					"fontsize": 12.0,
+					"fontsize": 13.0,
 					"numinlets": 1,
 					"numoutlets": 0,
 					"outlettype": []
@@ -257,21 +258,21 @@
 					"id": "obj-11",
 					"maxclass": "comment",
 					"patching_rect": [
-						220.0,
-						287.0,
-						400.0,
-						21.0
+						238.333,
+						348.25,
+						433.333,
+						22.75
 					],
 					"text": "<- stays silent: the analysis is missing",
 					"fontname": "Arial",
-					"fontsize": 12.0,
+					"fontsize": 13.0,
 					"numinlets": 1,
 					"numoutlets": 0,
 					"linecount": 1,
 					"textcolor": [
-						0.0,
-						0.0,
-						0.0,
+						0.870588235294118,
+						0.870588235294118,
+						0.870588235294118,
 						1.0
 					]
 				}
@@ -281,17 +282,17 @@
 					"id": "obj-12",
 					"maxclass": "panel",
 					"patching_rect": [
-						5.0,
-						337.0,
-						750.0,
-						78.08
+						5.417,
+						402.41600000000005,
+						812.5,
+						84.587
 					],
 					"numinlets": 1,
 					"numoutlets": 0,
 					"bgcolor": [
-						0.9,
-						0.92,
-						0.95,
+						0.196078,
+						0.227451,
+						0.282353,
 						1.0
 					],
 					"background": 1,
@@ -303,22 +304,22 @@
 					"id": "obj-13",
 					"maxclass": "comment",
 					"patching_rect": [
-						14.0,
-						345.0,
-						300.0,
-						21.0
+						15.167,
+						411.08299999999997,
+						325.0,
+						22.75
 					],
 					"text": "Status",
 					"fontname": "Arial",
-					"fontsize": 12.0,
+					"fontsize": 13.0,
 					"numinlets": 1,
 					"numoutlets": 0,
 					"linecount": 1,
 					"fontface": 1,
 					"textcolor": [
-						0.0,
-						0.0,
-						0.0,
+						0.870588235294118,
+						0.870588235294118,
+						0.870588235294118,
 						1.0
 					]
 				}
@@ -328,21 +329,21 @@
 					"id": "obj-14",
 					"maxclass": "comment",
 					"patching_rect": [
-						14.0,
-						365.0,
-						720.0,
-						38.0
+						15.167,
+						432.75,
+						780.0,
+						41.167
 					],
 					"text": "Unfinished draft by the original author (2005). Inlet: Jitter matrix. Outlets: list of changes (nothing yet), dump.",
 					"fontname": "Arial",
-					"fontsize": 12.0,
+					"fontsize": 13.0,
 					"numinlets": 1,
 					"numoutlets": 0,
 					"linecount": 2,
 					"textcolor": [
-						0.0,
-						0.0,
-						0.0,
+						0.870588235294118,
+						0.870588235294118,
+						0.870588235294118,
 						1.0
 					]
 				}
@@ -352,22 +353,98 @@
 					"id": "obj-15",
 					"maxclass": "comment",
 					"patching_rect": [
-						10.0,
-						425.08,
-						740.0,
-						38.0
+						10.833,
+						497.836,
+						801.667,
+						41.167
 					],
 					"text": "This help file was written in 2026 for the Max 9 version of Litter Power, from the source code: the object was never released, and no original help file exists.",
 					"fontname": "Arial",
-					"fontsize": 10.0,
+					"fontsize": 10.833,
 					"numinlets": 1,
 					"numoutlets": 0,
 					"linecount": 2,
 					"textcolor": [
-						0.4,
-						0.4,
-						0.4,
+						0.870588235294118,
+						0.870588235294118,
+						0.870588235294118,
 						1.0
+					]
+				}
+			},
+			{
+				"box": {
+					"id": "obj-16",
+					"maxclass": "live.line",
+					"numinlets": 1,
+					"numoutlets": 0,
+					"patching_rect": [
+						10.0,
+						93.0,
+						807.917,
+						6.0
+					]
+				}
+			},
+			{
+				"box": {
+					"id": "obj-17",
+					"maxclass": "message",
+					"text": "lpo",
+					"hidden": 1,
+					"numinlets": 2,
+					"numoutlets": 1,
+					"outlettype": [
+						""
+					],
+					"fontname": "Arial",
+					"fontsize": 13.0,
+					"patching_rect": [
+						300.0,
+						6.0,
+						40.0,
+						23.0
+					]
+				}
+			},
+			{
+				"box": {
+					"id": "obj-18",
+					"maxclass": "newobj",
+					"text": "lp.mrsnorris",
+					"hidden": 1,
+					"numinlets": 1,
+					"numoutlets": 1,
+					"outlettype": [
+						""
+					],
+					"fontname": "Arial",
+					"fontsize": 13.0,
+					"patching_rect": [
+						350.0,
+						6.0,
+						90.0,
+						23.0
+					]
+				}
+			},
+			{
+				"box": {
+					"id": "obj-19",
+					"maxclass": "ubutton",
+					"numinlets": 1,
+					"numoutlets": 4,
+					"outlettype": [
+						"bang",
+						"bang",
+						"",
+						"int"
+					],
+					"patching_rect": [
+						10.0,
+						6.0,
+						280,
+						62.0
 					]
 				}
 			}
@@ -420,18 +497,42 @@
 						0
 					]
 				}
+			},
+			{
+				"patchline": {
+					"source": [
+						"obj-19",
+						0
+					],
+					"destination": [
+						"obj-17",
+						0
+					]
+				}
+			},
+			{
+				"patchline": {
+					"source": [
+						"obj-17",
+						0
+					],
+					"destination": [
+						"obj-18",
+						0
+					]
+				}
 			}
 		],
 		"bgcolor": [
-			1.0,
-			1.0,
-			1.0,
+			0.337254901960784,
+			0.337254901960784,
+			0.337254901960784,
 			1.0
 		],
 		"editing_bgcolor": [
-			0.9,
-			0.9,
-			0.9,
+			0.337254901960784,
+			0.337254901960784,
+			0.337254901960784,
 			1.0
 		]
 	}

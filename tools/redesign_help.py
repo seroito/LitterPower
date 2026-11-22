@@ -136,48 +136,41 @@ def colour(p, fname, skip_ids=()):
             colour(b['patcher'], fname)
 
 
-def fit_windows(p, tabs_in_root):
-    """Root and subpatcher windows: content plus a margin."""
-    right, bottom = bbox(p)
-    tab_subs = [e['box']['patcher'] for e in p['boxes']
-                if 'patcher' in e['box'] and e['box']['patcher'].get('showontab')]
-    for s in tab_subs:
-        sr, sb = bbox(s)
-        right, bottom = max(right, sr), max(bottom, sb)
-    w = right + MARGIN
-    h = bottom + MARGIN + (TAB_BAR if tabs_in_root else 0.0)
-    x, y = p['rect'][:2]
-    p['rect'] = [x, y, round(w), round(h)]
-    for s in tab_subs:
-        s['rect'] = [x, y + TAB_BAR, round(w), round(h - TAB_BAR)]
-    for e in p['boxes']:
-        s = e['box'].get('patcher')
-        if s is not None and not s.get('showontab') and s['boxes']:
-            sr, sb = bbox(s, include_hidden=False)
-            sx, sy = s.get('rect', [50, 80, 0, 0])[:2]
-            s['rect'] = [sx, sy, round(max(200.0, sr + MARGIN)), round(max(120.0, sb + MARGIN))]
-            fit_windows_sub(s)
-
-
-def fit_windows_sub(p):
-    for e in p['boxes']:
-        s = e['box'].get('patcher')
-        if s is not None and s['boxes']:
-            sr, sb = bbox(s)
-            sx, sy = s.get('rect', [50, 80, 0, 0])[:2]
-            s['rect'] = [sx, sy, round(max(200.0, sr + MARGIN)), round(max(120.0, sb + MARGIN))]
-            fit_windows_sub(s)
-
-
 # ---------------------------------------------------------------------------------------
 # Help files
 
-def header(p, name):
+def overview_link(p, title):
+    """Clicking the title opens the overview (as the logo did in the 1.8 help files)."""
+    nid = next_id(p)
+    tx, ty, tw, th = title['patching_rect']
+    p['boxes'].append({'box': {'id': 'obj-%d' % nid, 'maxclass': 'message', 'text': 'lpo',
+                               'hidden': 1, 'numinlets': 2, 'numoutlets': 1, 'outlettype': [''],
+                               'fontname': 'Arial', 'fontsize': 13.0,
+                               'patching_rect': [tx + tw + 10.0, ty, 40.0, 23.0]}})
+    p['boxes'].append({'box': {'id': 'obj-%d' % (nid + 1), 'maxclass': 'newobj',
+                               'text': 'lp.mrsnorris', 'hidden': 1, 'numinlets': 1,
+                               'numoutlets': 1, 'outlettype': [''], 'fontname': 'Arial',
+                               'fontsize': 13.0,
+                               'patching_rect': [tx + tw + 60.0, ty, 90.0, 23.0]}})
+    p['boxes'].append({'box': {'id': 'obj-%d' % (nid + 2), 'maxclass': 'ubutton',
+                               'numinlets': 1, 'numoutlets': 4,
+                               'outlettype': ['bang', 'bang', '', 'int'],
+                               'patching_rect': list(title['patching_rect'])}})
+    p['lines'].append({'patchline': {'source': ['obj-%d' % (nid + 2), 0],
+                                     'destination': ['obj-%d' % nid, 0]}})
+    p['lines'].append({'patchline': {'source': ['obj-%d' % nid, 0],
+                                     'destination': ['obj-%d' % (nid + 1), 0]}})
+
+
+def header(p, name, title_text=None, with_subtitle=True):
     boxes = [e['box'] for e in p['boxes']]
+    title_text = title_text or name
     title = next((b for b in boxes if b['maxclass'] == 'comment' and not b.get('hidden')
-                  and b.get('text', '').strip() == name), None)
+                  and b.get('text', '').strip() == title_text), None)
     if title is None:
         return set()
+    if any(b['maxclass'] == 'live.line' for b in boxes):
+        return {title['id']}                        # title area exists already: leave it
     tx, ty, tw, th = title['patching_rect']
     logos = [b for b in boxes if b['maxclass'] == 'fpic' and not b.get('hidden')
              and b['patching_rect'][1] < ty + 60 and b['patching_rect'][0] < 250]
@@ -188,7 +181,7 @@ def header(p, name):
                    and b is not title and len(b.get('text', '').strip()) > 3
                    and ty - 5 <= b['patching_rect'][1] <= ty + th + 40],
                   key=lambda b: b['patching_rect'][1])
-    subtitle = subs[0] if subs else None
+    subtitle = subs[0] if subs and with_subtitle else None
     head = {id(b) for b in [title, subtitle] + logos + hot if b is not None}
 
     rest = [b for b in boxes if id(b) not in head]
@@ -199,7 +192,7 @@ def header(p, name):
 
     # New title area
     title.update(fontname='Lato', fontsize=48.0, fontface=0, linecount=1,
-                 patching_rect=[10.0, 6.0, round(len(name) * 26.0 + 20.0), 62.0])
+                 patching_rect=[10.0, 6.0, round(len(title_text) * 26.0 + 20.0), 62.0])
     title.pop('frgb', None)
     title['textcolor'] = list(TEXT)
     y = 68.0
@@ -217,6 +210,8 @@ def header(p, name):
         p['boxes'] = [e for e in p['boxes'] if e['box'] is not l]
     for b in hot:                                   # clicking the title opens the overview
         b['patching_rect'] = list(title['patching_rect'])
+    if not hot:
+        overview_link(p, title)
 
     # Everything else moves down below the line
     shift = (y + 18.0) - old_top
@@ -240,7 +235,10 @@ def redesign_help(path):
         scale_patcher(p, TARGET_PT / body)
     p['default_fontsize'] = TARGET_PT
     fix_patchers.fix(d)                             # window state, position, menus, lp.doom
-    head_ids = header(p, name)
+    if name == 'lp.messages':                       # its title is not its file name; its
+        head_ids = header(p, name, 'Litter Power Messages', with_subtitle=False)  # subtitle stays
+    else:
+        head_ids = header(p, name)
     colour(p, fname, skip_ids=head_ids)
     tabs = False
     for e in p['boxes']:
@@ -252,11 +250,29 @@ def redesign_help(path):
                 tabs = True
     if tabs:
         p['showrootpatcherontab'] = 1
-    fit_windows(p, tabs)
+    fix_patchers.fit_windows(d)
     with open(path, 'w', encoding='utf-8', newline='\n') as f:
         json.dump(d, f, indent='\t', ensure_ascii=False)
         f.write('\n')
     return body, tabs
+
+
+def redesign_extra(path):
+    """Example patches and other extras: 13 pt, colours, windows (no title area)."""
+    with open(path, encoding='utf-8') as f:
+        d = json.load(f)
+    p = d['patcher']
+    body = body_size(p)
+    if body < TARGET_PT - 0.5:
+        scale_patcher(p, TARGET_PT / body)
+    p['default_fontsize'] = TARGET_PT
+    fix_patchers.fix(d)
+    colour(p, os.path.basename(path))
+    fix_patchers.fit_windows(d)
+    with open(path, 'w', encoding='utf-8', newline='\n') as f:
+        json.dump(d, f, indent='\t', ensure_ascii=False)
+        f.write('\n')
+    return body
 
 
 # ---------------------------------------------------------------------------------------
@@ -334,10 +350,8 @@ def redesign_overview(path):
                                                   if b['box']['maxclass'] == 'comment'
                                                   and 'textcolor' in b['box']})
     p['default_fontsize'] = TARGET_PT
-    right, bot = bbox(p)
-    x0, y0 = p['rect'][:2]
-    p['rect'] = [x0, y0, round(right + MARGIN), round(bot + MARGIN)]
     p.pop('defrect', None)
+    fix_patchers.fit_windows(d)
     with open(path, 'w', encoding='utf-8', newline='\n') as f:
         json.dump(d, f, indent='\t', ensure_ascii=False)
         f.write('\n')
@@ -345,6 +359,9 @@ def redesign_overview(path):
 
 if __name__ == '__main__':
     for a in sys.argv[1:]:
+        if a.endswith('.maxpat') and 'Litter Pro Overview' not in a:
+            print('%-40s extra, from %.1f pt' % (os.path.basename(a), redesign_extra(a)))
+            continue
         if a == 'overview':
             redesign_overview(os.path.join(ROOT, 'Litter Power Extras', 'Litter Pro Overview.maxpat'))
             print('overview')

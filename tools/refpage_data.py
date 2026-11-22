@@ -369,11 +369,11 @@ OBJ = {
                       ['lp.gsss~', 'lp.shhh~', 'lp.nn~']),
     'lp.pfff~': dict(noise('lp.pfff~', 'Brownian (1/f^2) noise'),
                      args=[('nn', 'int', 'NN factor (bit masking)'),
-                           ('mode', 'int', 'Overflow mode: 0 native (behaves like Intel on all platforms), 1 PPC, 2 Intel, 3 PC415')],
+                           ('mode', 'int', 'Overflow mode: 0 native (behaves like PPC on all platforms), 1 PPC, 2 Intel, 3 PC415')],
                      see=['lp.pfff64~', 'lp.phhh~', 'lp.pvvv~']),
     'lp.phhh~': dict(noise('lp.phhh~', 'black (1/f^3) noise'),
                      args=[('nn', 'int', 'NN factor (bit masking)'),
-                           ('mode', 'int', 'Overflow mode: 0 native (behaves like Intel on all platforms), 1 PPC, 2 Intel, 3 PC415')],
+                           ('mode', 'int', 'Overflow mode: 0 native (behaves like PPC on all platforms), 1 PPC, 2 Intel, 3 PC415')],
                      see=['lp.phhh64~', 'lp.pfff~', 'lp.pvvv~']),
     'lp.pvvv~': dict(noise('lp.pvvv~', 'noise of variable colour',
                            ' The Hurst exponent sets the colour: 0 pink, 1 black, negative values '
@@ -381,7 +381,7 @@ OBJ = {
                            'lp.pvvv64~ does not.'),
                      args=[('hurst', 'float', 'Hurst exponent (default 0)'),
                            ('nn', 'int', 'NN factor (bit masking)'),
-                           ('mode', 'int', 'Overflow mode: 0 native (behaves like Intel on all platforms), 1 PPC, 2 Intel, 3 PC415')],
+                           ('mode', 'int', 'Overflow mode: 0 native (behaves like PPC on all platforms), 1 PPC, 2 Intel, 3 PC415')],
                      see=['lp.pvvv64~', 'lp.qvvv~', 'lp.pfff~']),
     'lp.pfff64~': dict(noise('lp.pfff64~', 'Brownian (1/f^2) noise without overflow',
                              ' Like lp.pfff~, but computed in 64-bit integers, with an optional '

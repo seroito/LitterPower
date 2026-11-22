@@ -240,5 +240,7 @@ if __name__ == '__main__':
     print('lbj.stacey')
     # Readability: size, backgrounds, text colours (see tools/restyle_help.py)
     import subprocess, sys
-    subprocess.run([sys.executable, os.path.join(ROOT, 'tools', 'restyle_help.py')]
-                   + [os.path.join(HELP, n + '.maxhelp') for n in list(OBJECTS) + ['lbj.stacey']], check=True)
+    paths = [os.path.join(HELP, n + '.maxhelp') for n in list(OBJECTS) + ['lbj.stacey']]
+    subprocess.run([sys.executable, os.path.join(ROOT, 'tools', 'restyle_help.py')] + paths, check=True)
+    # Max 9 help style / RNBO look (see tools/redesign_help.py)
+    subprocess.run([sys.executable, os.path.join(ROOT, 'tools', 'redesign_help.py')] + paths, check=True)
