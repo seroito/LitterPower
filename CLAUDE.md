@@ -290,6 +290,23 @@ workflow builds pushes to both branches. One commit per change:
     does not run at the same time as the object's perform routine (allocations there are
     the usual SDK practice).
 
+16. Redesign (2026-11-22, user's request; samples first): `tools/redesign_help.py` gives
+    the help files the Max 9 help-file style and the RNBO Intro look ("Max 9/resources/
+    packages/RNBO/extras/RNBO Intro.maxpat" in Reference/): body text 13 pt (whole layout
+    scaled once more), title area (object name in Lato 48, the author's subtitle in Lato
+    13, live.line) instead of the logo, dark grey background (0.337) locked and in edit
+    mode, light grey text (0.87), coloured text lightened to 4.5:1, light note panels as
+    dark tints, explanation subpatchers (MoreInfo, New-In-Version-..., Mode-Messages,
+    newStuff) as tabs (root patcher shown as the first tab, boxes and wiring unchanged),
+    lp.doom removed (window positioning for Mac OS 9/X and Windows XP), windows = content
+    + 40 px (+26 px tab bar). Titles light grey (user dropped the orange/green rule).
+    Overview: RNBO title area ("Litter Power", subtitle, line), background picture
+    removed, the seven menus in two columns. Option A chosen: own title area with the
+    author's subtitle, not Max's helpname.js/helpdetails.js (those would show the
+    reference-page digests instead). Applied so far to the samples lp.abbie, lp.pvvv~,
+    lp.julie and the overview, for the user to check in Max; then all help files, the
+    generators (make_extra_help, make_jitter_help, make_help64) and extras/clippings.
+
 Not done (reviewed, lower priority): A_GIMME new functions declaring argc as `short`,
 A_LONG handlers declaring `long` instead of `t_atom_long`.
 
