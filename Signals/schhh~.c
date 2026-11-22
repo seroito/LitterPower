@@ -321,10 +321,19 @@ void ShhhPerform64(tWhite* me, t_object *dsp64, double **ins, long numins, doubl
         vecCounter	= (t_uint32)sampleframes;
 	outNoise	= outs[0];
 	
-	// Do our stuff
-	if (me->nn == 0)
+	// 2026: read nn once and derive mask and offset here, as the nn message does. Reading
+	// mask and offset separately could mix old and new values when a message arrives
+	// meanwhile (from another thread).
+	{
+	const int nn = LitterReadOnce(int, me->nn);
+	
+	if (nn == 0)
 			Taus88SigVector(&me->tausData, outNoise, vecCounter);
-	else	Taus88SigVectorMasked(&me->tausData, outNoise, vecCounter, me->mask, me->offset);
+	else {
+		const t_uint32 mask = kULongMax << (t_uint32) nn;
+		Taus88SigVectorMasked(&me->tausData, outNoise, vecCounter, mask, (~mask) >> 1);
+		}
+	}
 	
 
 	}

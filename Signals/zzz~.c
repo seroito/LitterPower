@@ -330,8 +330,11 @@ void ZzzPerform64(tPink* me, t_object *dsp64, double **ins, long numins, double 
 	outNoise	= outs[0];
 	sum			= me->sum;
 	firstDie	= me->dice;
-	mask		= me->mask;
-	offset		= me->offset;
+	// 2026: read nn once and derive mask and offset here, as the nn message does. Reading
+	// mask and offset separately could mix old and new values when a message arrives
+	// meanwhile (from another thread).
+	mask		= kULongMax << LitterReadOnce(int, me->nn);	// nn 0: all bits, offset 0
+	offset		= (~mask) >> 1;
 	counter		= me->counter;
 	
 	// Do our stuff

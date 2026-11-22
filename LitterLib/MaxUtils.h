@@ -175,6 +175,12 @@ static inline long ObjectGetInlet(t_object* iObj, long iRecepticle)
 	#define CLIP(a, lo, hi) ( (a)>(lo)?( (a)<(hi)?(a):(hi) ):(lo) )
 #endif
 
+	// 2026: read a value that another thread may change exactly once. Perform routines use
+	// this for parameters set by messages: they read one aligned 32- or 64-bit value (never
+	// half-written on x86-64 or arm64) and derive everything else from their local copy.
+	// The volatile access keeps the compiler from reading the field again later.
+#define LitterReadOnce(TYPE, FIELD)	(*(volatile TYPE*) &(FIELD))
+
 #pragma mark Constants
 
 	// Used with KeyIsPressed()

@@ -691,6 +691,7 @@ void PvvvPerform64(tBrown* me, t_object *dsp64, double **ins, long numins, doubl
 	
 	t_int32*		curSamp;
 	long			vecSize;
+	int				nn;
 	tSampleVector	outNoise;			// Do integer arithmetic in buffer, then convert
 										// to floating point before exit.
 
@@ -709,11 +710,15 @@ void PvvvPerform64(tBrown* me, t_object *dsp64, double **ins, long numins, doubl
 	me->bufPos += vecSize;
 	
 	// Do we have to deal with NN factor?
-	if (me->nn == 0)
+	// 2026: read nn once and derive mask and offset here, as PvvvNN() does (same bits as
+	// -1 << nn). Reading mask and offset separately could mix old and new values when a
+	// message arrives meanwhile (from another thread).
+	nn = LitterReadOnce(int, me->nn);
+	if (nn == 0)
 		do { *outNoise++ = Long2Signal(*curSamp++); } while (--vecSize > 0);
 	else {
-		t_int32	mask	= me->mask,
-				offset	= me->offset;
+		t_int32	mask	= (t_int32) (~(t_uint32) 0 << nn),
+				offset	= (~mask) >> 1;
 
 		do {
 			*outNoise++ = Long2Signal((*curSamp++ & mask) + offset);

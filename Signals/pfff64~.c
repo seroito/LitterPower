@@ -379,6 +379,7 @@ void PvvvPerform64(tBrown* me, t_object* dsp64, double** ins, long numins,
 	// The buffer is used up in pieces; vectors larger than the buffer are allowed, too.
 	while (remain > 0) {
 		long		n;
+		int			nn;
 		int64_t*	curSamp;
 
 		if (me->bufPos >= kMaxBuf)
@@ -391,13 +392,17 @@ void PvvvPerform64(tBrown* me, t_object* dsp64, double** ins, long numins,
 		me->bufPos += (int) n;
 		remain -= n;
 
-		if (me->nn == 0) {
+		// 2026: read nn once and derive mask and offset here, as PvvvNN() does. Reading
+		// mask and offset separately could mix old and new values when a message arrives
+		// meanwhile (from another thread).
+		nn = LitterReadOnce(int, me->nn);
+		if (nn == 0) {
 			while (n-- > 0)
 				*out++ = LimiterProcess(&me->limiter, Sample64ToSignal(*curSamp++), active);
 			}
 		else {
-			int64_t	mask	= me->mask,
-					offset	= me->offset;
+			int64_t	mask	= (int64_t) -1 * ((int64_t) 1 << nn),	// as in PvvvNN()
+					offset	= (~mask) >> 1;
 
 			while (n-- > 0)
 				*out++ = LimiterProcess(&me->limiter,
