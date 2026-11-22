@@ -31,8 +31,8 @@ Decisions made by the user:
 |---|---|
 | Source port | Done. `python3 tools/check.py` (gcc syntax check on Linux): 0 of 118 units failing |
 | Windows build | Succeeds: 104 externals (`.mxe64`) |
-| macOS build | Succeeds: 104 externals (`.mxo`, universal x86_64 + arm64, ad-hoc signed), last at run 44210215097 (2026-11-18). Only built when started by hand |
-| Package | Latest with macOS: run 44210215097 on `rng-fixes` (all fixes up to the signal-object options), artifact `LitterPower-package`, Windows and macOS externals. Later pushes build Windows-only packages |
+| macOS build | Succeeds: 104 externals (`.mxo`, universal x86_64 + arm64, ad-hoc signed), last at run 44966196985 (2026-11-22). Only built when started by hand |
+| Package | Latest with macOS: run 44966196985 on `rng-fixes` (all fixes up to the thread review, item 15), artifact `LitterPower-package`, Windows and macOS externals (208 files). Later pushes build Windows-only packages |
 | Help files | Every built object has one (15 new ones written in 2026) |
 | Reference pages | `docs/*.maxref.xml` for all 104 objects |
 | Test in Max 9 | Not done yet. The user tests on Windows first |
@@ -274,7 +274,8 @@ A_LONG handlers declaring `long` instead of `t_atom_long`.
   checkout). `CMakeLists.txt` lists every external, one `litter_external(...)` line each;
   shared code is the static library `litterlib`. Not-built sources are named in
   comments there.
-- `.github/workflows/build.yml`: Windows x64 job on every push; macOS universal job on
+- `.github/workflows/build.yml` (actions on Node.js 24 since 2026-11-22: checkout v7,
+  upload-artifact v7, download-artifact v8): Windows x64 job on every push; macOS universal job on
   request; "Max package" job assembles the package with `tools/make_package.py`
   (externals, `help`, `extras`, `misc`, `media`, `patchers`, `package-info.json`).
 - `tools/check.py` compiles every unit with gcc against the SDK headers, with options
