@@ -1,8 +1,8 @@
 {
 	"patcher": {
 		"rect": [
-			2.0,
-			44.0,
+			100.0,
+			80.0,
 			884,
 			833
 		],
@@ -674,9 +674,9 @@
 									"rounded": 0,
 									"id": "obj-5",
 									"bgcolor": [
-										0.372,
-										0.108,
-										0.108,
+										0.196078,
+										0.227451,
+										0.282353,
 										1.0
 									],
 									"numinlets": 1
@@ -1160,44 +1160,7 @@
 					"fontsize": 10.533,
 					"id": "obj-3",
 					"hidden": 1,
-					"numinlets": 1,
-					"save": [
-						"#N",
-						"thispatcher",
-						";",
-						"#Q",
-						"window",
-						"flags",
-						"nogrow",
-						"close",
-						"zoom",
-						"nofloat",
-						"nomenu",
-						";",
-						"#Q",
-						"window",
-						"size",
-						2,
-						44,
-						642,
-						506,
-						";",
-						"#Q",
-						"window",
-						"title",
-						";",
-						"#Q",
-						"window",
-						"exec",
-						";",
-						"#Q",
-						"savewindow",
-						1,
-						";",
-						"#Q",
-						"end",
-						";"
-					]
+					"numinlets": 1
 				}
 			},
 			{
@@ -1833,15 +1796,7 @@
 									"fontsize": 10.533,
 									"id": "obj-10",
 									"hidden": 1,
-									"numinlets": 1,
-									"save": [
-										"#N",
-										"thispatcher",
-										";",
-										"#Q",
-										"end",
-										";"
-									]
+									"numinlets": 1
 								}
 							},
 							{

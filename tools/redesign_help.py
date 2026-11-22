@@ -29,11 +29,16 @@ import colorsys, glob, json, math, os, re, sys
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from restyle_help import body_size, scale_patcher, luminance, contrast, panel_color  # noqa: E402
+import fix_patchers                                                                  # noqa: E402
+from fix_patchers import remove_window_positioning                                   # noqa: E402
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 TARGET_PT = 13.0
 BG = [0.337254901960784, 0.337254901960784, 0.337254901960784, 1.0]    # RNBO Intro
 TEXT = [0.870588235294118, 0.870588235294118, 0.870588235294118, 1.0]  # RNBO Intro
+# Note panels: one greyish blue for all (user's choice, 2026-11-22; the dark version of the
+# pale blue info panels of the 2026 help files)
+PANEL = [0.196078, 0.227451, 0.282353, 1.0]
 MARGIN = 40.0
 TAB_BAR = 26.0
 INFO_TABS = re.compile(r'^(MoreInfo|More-Info|New-In-Version.*|Mode-Messages|newStuff)$')
@@ -104,29 +109,15 @@ def under(b, panels, patcher_bg):
     return bg
 
 
-def remove_window_positioning(p):
-    """Delete lp.doom / p doom boxes and their patch cords, in every patcher."""
-    gone = {e['box']['id'] for e in p['boxes']
-            if re.match(r'(lp\.doom|p doom)\b', e['box'].get('text', ''))}
-    p['boxes'] = [e for e in p['boxes'] if e['box']['id'] not in gone]
-    p['lines'] = [l for l in p.get('lines', [])
-                  if l['patchline']['source'][0] not in gone
-                  and l['patchline']['destination'][0] not in gone]
-    for e in p['boxes']:
-        if 'patcher' in e['box']:
-            remove_window_positioning(e['box']['patcher'])
-
-
 def colour(p, fname, skip_ids=()):
     p['bgcolor'] = list(BG)
     p['editing_bgcolor'] = list(BG)
     panels = [e['box'] for e in p['boxes']
               if e['box']['maxclass'] == 'panel' and not e['box'].get('hidden')]
-    for q in panels:                                # light note panels become dark ones
+    for q in panels:                                # all note panels: one greyish blue
         for key in ('bgcolor', 'bgfillcolor_color'):
-            c = q.get(key)
-            if isinstance(c, list) and luminance(c) > 0.3:
-                q[key] = dark_tint(c)
+            if isinstance(q.get(key), list):
+                q[key] = list(PANEL)
     for e in p['boxes']:
         b = e['box']
         if b['maxclass'] == 'comment' and b['id'] not in skip_ids:
@@ -134,19 +125,13 @@ def colour(p, fname, skip_ids=()):
                 pass
             else:
                 c = b.get('bgcolor')
-                if isinstance(c, list) and len(c) > 3 and c[3] > 0 and luminance(c) > 0.3:
-                    b['bgcolor'] = dark_tint(c)
-                bg = under(b, panels, p['bgcolor'])
-                tc = b.get('textcolor', b.get('frgb'))
-                if not isinstance(tc, list):
-                    new = list(TEXT)
-                elif contrast(tc, bg) < 4.5:
-                    new = lighten(tc, bg)
-                else:
-                    new = tc
-                b['textcolor'] = new
+                if isinstance(c, list) and len(c) > 3 and c[3] > 0:
+                    b['bgcolor'] = list(PANEL)
+                # One text colour, as in the RNBO Intro (user's choice, 2026-11-22): also for
+                # the formerly coloured hints and the version info. Bold/italic stay.
+                b['textcolor'] = list(TEXT)
                 if 'frgb' in b:
-                    b['frgb'] = list(new)
+                    b['frgb'] = list(TEXT)
         if 'patcher' in b:
             colour(b['patcher'], fname)
 
@@ -254,7 +239,7 @@ def redesign_help(path):
     if body < TARGET_PT - 0.5:
         scale_patcher(p, TARGET_PT / body)
     p['default_fontsize'] = TARGET_PT
-    remove_window_positioning(p)
+    fix_patchers.fix(d)                             # window state, position, menus, lp.doom
     head_ids = header(p, name)
     colour(p, fname, skip_ids=head_ids)
     tabs = False
@@ -295,7 +280,7 @@ def redesign_overview(path):
         d = json.load(f)
     p = d['patcher']
     boxes = {e['box']['id']: e['box'] for e in p['boxes']}
-    remove_window_positioning(p)
+    fix_patchers.fix(d)                             # window state, position, menus, lp.doom
     # Background picture out
     p['boxes'] = [e for e in p['boxes'] if e['box']['maxclass'] != 'fpic']
     boxes = {e['box']['id']: e['box'] for e in p['boxes']}

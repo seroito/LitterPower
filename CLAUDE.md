@@ -3,34 +3,35 @@
 What has been done to bring Litter Power to Max 9, where things stand, and how to
 continue. Last updated 2026-11-22.
 
-## Resume here (paused 2026-11-22, user reboots to test)
+## Resume here (2026-11-22)
 
-Waiting for the user's test of the redesign samples (rng-fixes item 16).
+Waiting for the user's second test of the redesign samples (rng-fixes items 16, 17).
 
-- Package to test: run 45014711842 on `rng-fixes` (artifact `LitterPower-package`, Windows
-  externals; the patchers are the same on macOS). Last package with macOS externals:
-  run 44967061395.
-- Samples: `lp.abbie`, `lp.pvvv~`, `lp.julie` help files and the overview patch. The user
-  checks in Max 9: (1) nothing cut off at the right/bottom, main tab and other tabs;
-  (2) how the tabs are labelled (root tab probably shows the file name, not "basic");
-  (3) dark colours readable (coloured hints, dark panels); (4) overview layout, all seven
-  menus open their help files; (5) nothing overlaps. The overview's subtitle ("Random
-  numbers, noise, chaos, mutation and utilities for Max, MSP and Jitter") is new text -
-  user may want other wording.
-- If the samples are approved: run `tools/redesign_help.py` on all other help files
-  (`Litter Power Help/*.maxhelp`; lp.messages, lp.doom.maxpat and lp.dotell.maxpat need
-  a look first), then on the extras and clippings (they have no object-name title: only
-  colours, scaling, windows); switch the generators (make_extra_help, make_jitter_help,
-  make_help64) from restyle_help.py to redesign_help.py and check that regenerating
-  reproduces the files; keep lp.doom.maxpat as an empty abstraction; build (macOS by
-  hand), update the test points. If not approved: adjust redesign_help.py, redo the
-  samples from their state before the redesign (`git checkout 9772835 -- <files>`; the
-  redesign itself is commit 3f0837a), push, let the user test again.
+- Samples: `lp.abbie`, `lp.pvvv~`, `lp.julie` help files and the overview, redesigned
+  again after the first test (item 17). Package: the Windows build after commit "Redesign
+  samples, second round" (`gh run list --repo seroito/LitterPower --limit 3`).
+- User to check: windows open at full size (also lp.pvvv~ and the overview) and can be
+  resized; window not between two monitors; "Tell me about the tell message" in lp.abbie
+  (tab New-In-Version-2) fills in its values; the See-also menus list one item per line;
+  no "multiple files in your search path" messages (delete the old
+  Documents/Max 9/Packages/LitterPower folder before installing); greyish blue panels,
+  one light grey text colour (also version info, former pink/green hints); lp.julie: both
+  outlets move with the rabbit preset, no NaN when switching c; load messages without
+  "(Classic OS)".
+- Decided NOT to do (user, 2026-11-22): hide the tab subpatcher boxes (e.g.
+  `p New-In-Version-2`) and their "Open patcher ... for details" hints - they stay visible.
+- If approved: run `tools/redesign_help.py` on all other help files (lp.messages,
+  lp.doom.maxpat, lp.dotell.maxpat need a look first), then extras and clippings (no
+  object-name title: colours, scaling, windows); switch the generators (make_extra_help,
+  make_jitter_help, make_help64) from restyle_help.py to redesign_help.py and check that
+  regenerating reproduces the files; build (macOS by hand); update the test points.
+  If not approved: adjust redesign_help.py, redo the samples from their state before the
+  redesign (`git checkout 9772835 -- <files>`, but regenerate lp.julie's help with
+  `tools/make_extra_help.py lp.julie` and run `tools/fix_patchers.py` on them first).
 - Earlier test results (points 1-11 under "Where things stand") are still outstanding.
 - After the user has tested `rng-fixes`: merge it into `64-bit-version` (ask first).
 - Still open: licensing with Peter Castine before publishing binaries; the reviewed but
   unfixed thread points in rng-fixes item 15; A_GIMME/`t_atom_long` signatures.
-- `gh run list --repo seroito/LitterPower --limit 3` shows whether later runs exist.
 
 ## Goal and decisions
 
@@ -138,7 +139,12 @@ removed (see `README.md`).
    - `tools/make_help64.py`, `tools/make_jitter_help.py`, `tools/make_extra_help.py`:
      the help files written or derived in 2026 (they run `tools/restyle_help.py`).
    - `tools/restyle_help.py`: text size and colours of all help files and the overview;
-     safe to rerun (does not scale twice).
+     safe to rerun (does not scale twice). Do not run it on redesigned files (it would
+     set the light colours again).
+   - `tools/fix_patchers.py`: window state, window position, menu separators, lp.doom;
+     safe to rerun on any patcher.
+   - `tools/redesign_help.py`: the redesign (item 16/17); `overview` as argument for the
+     overview patch.
    - `tools/make_refpages.py`: reference pages; rerun after changing an object's
      messages, inlets or attributes; texts are in `tools/refpage_data.py`.
 5. Windows compiler warnings: artifact `build-log-windows`. `gh run download` refuses it
@@ -321,6 +327,26 @@ workflow builds pushes to both branches. One commit per change:
     reference-page digests instead). Applied so far to the samples lp.abbie, lp.pvvv~,
     lp.julie and the overview, for the user to check in Max; then all help files, the
     generators (make_extra_help, make_jitter_help, make_help64) and extras/clippings.
+
+17. First test of the redesign samples (2026-11-22) and fixes for all patchers:
+    - `tools/fix_patchers.py` (run on all 162 patchers; also called by restyle_help.py
+      and redesign_help.py, so generated help files get it): removed the window state
+      saved inside 239 thispatcher objects (Max 4/5 "savewindow": "window size ...",
+      "window flags nogrow"; it overrode the window size and blocked resizing - why
+      lp.pvvv~ and the overview opened small); root windows open at 100/80 (lp.abbie
+      opened between two monitors); umenu items without "," separators (13 menus in 9
+      files, already in the supplied originals) get them; lp.doom removed from all
+      patchers (74).
+    - Support files moved from "Litter Power Extras/~lib" to the repository folders
+      `patchers/` (lp.grabprops, lp.pfft.frimWrap) and `media/` (lp.Logo.png/.pict,
+      lp.rain.midi); make_package.py copies them once (four were in the package twice);
+      "What's this directory for" (Max 4 notes about ~lib) dropped.
+    - `patchers/lp.grabprops.maxpat` sends `tell` instead of the 1.8 `expect`, routes `var`.
+    - String tables: "(Classic OS)" removed (gen_strings.py; lp.julie, lp.lana, lp.vera...).
+    - lp.julie restarts at z0 when |z| > 2 or NaN (switching c while z was far out ran away
+      to NaN); help: example starts with the "rabbit" c, note rewritten.
+    - redesign_help.py: all note panels one greyish blue (0.196, 0.227, 0.282), all
+      comments one light grey (version info and former coloured hints included).
 
 Not done (reviewed, lower priority): A_GIMME new functions declaring argc as `short`,
 A_LONG handlers declaring `long` instead of `t_atom_long`.
