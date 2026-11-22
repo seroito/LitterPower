@@ -6,8 +6,12 @@ abstractions), found when testing in Max 9 (2026-11-22):
    "window flags nogrow ...", "savewindow 1") and applied it when the patcher opened. It
    overrode the window size in the file and made the window impossible to resize. The
    saved state is removed; the window size in the file counts.
-2. Window position: the root window opens 100 px from the left and 80 px from the top (as
-   Max's own help files do), not at the screen edge (which put it between two monitors).
+2. Window position and size: the root window opens 100 px from the left and 80 px from
+   the top (as Max's own help files do), not at the screen edge (which put it between two
+   monitors). Every window (root, tabs, subpatchers) is as large as its content plus a
+   margin (40 px, plus 26 px for a tab bar). Files in the old Max 5 format (no
+   "appversion") store a window as left, top, right, bottom; newer files as left, top,
+   width, height - each file gets the form Max expects from it.
 3. Menus (umenu) whose items had no separators showed all items as one entry; the
    separators are added.
 4. lp.doom (window positioning for Mac OS 9/X and Windows XP) and its patch cords are
@@ -71,11 +75,61 @@ def remove_window_positioning(p):
     return n
 
 
-def place_window(p):
-    if isinstance(p.get('rect'), list) and len(p['rect']) == 4:
-        p['rect'][0], p['rect'][1] = WINDOW_POS
-    if isinstance(p.get('defrect'), list) and len(p['defrect']) == 4:
-        p['defrect'][0], p['defrect'][1] = WINDOW_POS
+MARGIN = 40.0
+TAB_BAR = 26.0
+MAX_W, MAX_H = 1600.0, 940.0        # fits a 1920 x 1080 screen at WINDOW_POS; larger content
+                                    # gets scrollbars
+
+
+def content(p):
+    right = bottom = 0.0
+    for e in p['boxes']:
+        b = e['box']
+        if b.get('hidden'):
+            continue
+        x, y, w, h = b['patching_rect']
+        right, bottom = max(right, x + w), max(bottom, y + h)
+    return right, bottom
+
+
+def set_window(p, x, y, w, h, ltrb):
+    rect = [x, y, round(x + w), round(y + h)] if ltrb else [x, y, round(w), round(h)]
+    p['rect'] = rect
+    if 'defrect' in p:
+        p['defrect'] = list(rect)
+
+
+def fit_windows(d):
+    """Root window at WINDOW_POS, every window as large as its content plus a margin."""
+    root = d['patcher']
+    ltrb = 'appversion' not in root
+    tabs = [e['box']['patcher'] for e in root['boxes']
+            if e['box']['maxclass'] == 'newobj' and 'patcher' in e['box']
+            and e['box']['patcher'].get('showontab')]
+    right, bottom = content(root)
+    for t in tabs:
+        tr, tb = content(t)
+        right, bottom = max(right, tr), max(bottom, tb)
+    w = min(MAX_W, right + MARGIN)
+    h = min(MAX_H, bottom + MARGIN + (TAB_BAR if tabs else 0.0))
+    x, y = WINDOW_POS
+    set_window(root, x, y, w, h, ltrb)
+    for t in tabs:
+        set_window(t, x, y + TAB_BAR, w, h - TAB_BAR, ltrb)
+
+    def subs(p):
+        for e in p['boxes']:
+            b = e['box']
+            s = b.get('patcher')
+            if s is None or b['maxclass'] != 'newobj':
+                continue
+            if s is not root and s not in tabs and s['boxes']:
+                r, bt = content(s)
+                sx, sy = (s.get('rect') or [50.0, 80.0])[:2]
+                set_window(s, sx, sy, min(MAX_W, max(200.0, r + MARGIN)),
+                           min(MAX_H, max(120.0, bt + MARGIN)), ltrb)
+            subs(s)
+    subs(root)
 
 
 def fix(d, is_abstraction=False):
@@ -85,7 +139,7 @@ def fix(d, is_abstraction=False):
                   menus=add_menu_separators(p),
                   doom=0 if is_abstraction else remove_window_positioning(p))
     if not is_abstraction:
-        place_window(p)
+        fit_windows(d)
     return report
 
 
