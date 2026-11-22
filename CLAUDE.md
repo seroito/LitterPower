@@ -31,8 +31,8 @@ Decisions made by the user:
 |---|---|
 | Source port | Done. `python3 tools/check.py` (gcc syntax check on Linux): 0 of 118 units failing |
 | Windows build | Succeeds: 104 externals (`.mxe64`) |
-| macOS build | Succeeds: 104 externals (`.mxo`, universal x86_64 + arm64, ad-hoc signed), last at run 44966196985 (2026-11-22). Only built when started by hand |
-| Package | Latest with macOS: run 44966196985 on `rng-fixes` (all fixes up to the thread review, item 15), artifact `LitterPower-package`, Windows and macOS externals (208 files). Later pushes build Windows-only packages |
+| macOS build | Succeeds: 104 externals (`.mxo`, universal x86_64 + arm64, ad-hoc signed), last at run 44967061395 (2026-11-22). Only built when started by hand |
+| Package | Latest with macOS: run 44967061395 on `rng-fixes` (all fixes up to the NN factor change, item 15), artifact `LitterPower-package`, Windows and macOS externals (208 files). Later pushes build Windows-only packages |
 | Help files | Every built object has one (15 new ones written in 2026) |
 | Reference pages | `docs/*.maxref.xml` for all 104 objects |
 | Test in Max 9 | Not done yet. The user tests on Windows first |
