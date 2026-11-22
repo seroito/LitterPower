@@ -8,8 +8,10 @@ continue. Last updated 2026-11-22.
 Waiting for the user's second test of the redesign samples (rng-fixes items 16, 17).
 
 - Samples: `lp.abbie`, `lp.pvvv~`, `lp.julie` help files and the overview, redesigned
-  again after the first test (item 17). Package: the Windows build after commit "Redesign
-  samples, second round" (`gh run list --repo seroito/LitterPower --limit 3`).
+  again after the first test (item 17). Package: run 45021132533 (Windows externals; the
+  later run for the .gitignore commit has the same patchers). User installs it after
+  deleting the old Documents/Max 9/Packages/LitterPower folder. Screenshots of findings go
+  to `Findings/` (git-ignored).
 - User to check: windows open at full size (also lp.pvvv~ and the overview) and can be
   resized; window not between two monitors; "Tell me about the tell message" in lp.abbie
   (tab New-In-Version-2) fills in its values; the See-also menus list one item per line;
