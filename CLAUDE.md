@@ -3,6 +3,20 @@
 What has been done to bring Litter Power to Max 9, where things stand, and how to
 continue. Last updated 2026-11-22.
 
+## Resume here (paused 2026-11-22)
+
+Work is paused while the user tests. Nothing is waiting on Claude.
+
+- The package to test is run 44967061395 on `rng-fixes` (artifact `LitterPower-package`,
+  Windows and macOS). Test points 1-11 are listed under "Where things stand"; points 9-11
+  (overflow modes, signal object options, threads and NN factor) are the newest.
+- When the user is back: ask for the test results, fix what they report (one commit per
+  fix, `python3 tools/check.py` before every push), then build again (macOS by hand).
+- After the user has tested `rng-fixes`: merge it into `64-bit-version` (ask first).
+- Still open: licensing with Peter Castine before publishing binaries; the reviewed but
+  unfixed thread points in rng-fixes item 15; A_GIMME/`t_atom_long` signatures.
+- `gh run list --repo seroito/LitterPower --limit 3` shows whether later runs exist.
+
 ## Goal and decisions
 
 LitterPower is a library of Max externals by Peter Castine (Max, MSP and Jitter
@@ -35,7 +49,7 @@ Decisions made by the user:
 | Package | Latest with macOS: run 44967061395 on `rng-fixes` (all fixes up to the NN factor change, item 15), artifact `LitterPower-package`, Windows and macOS externals (208 files). Later pushes build Windows-only packages |
 | Help files | Every built object has one (15 new ones written in 2026) |
 | Reference pages | `docs/*.maxref.xml` for all 104 objects |
-| Test in Max 9 | Not done yet. The user tests on Windows first |
+| Test in Max 9 | Under way since 2026-11-22 with run 44967061395 (user). No results reported yet |
 
 "Builds" does not mean "works": nothing has been loaded in Max by Claude, and only the
 user can test.
