@@ -87,7 +87,8 @@ def process(tmp, path):
         rid = head[0].strip()
         name = eval_item(head[1]) if len(head) > 1 and '"' in head[1] else ''
         try:
-            items = [update_copyright(eval_item(i)) for i in split_top(m.group(2))]
+            items = [update_copyright(eval_item(i)).replace(' (Classic OS)', '')
+                     for i in split_top(m.group(2))]     # 2026: label without meaning today
         except Exception as e:
             print('!!', path, rid, e, file=sys.stderr); continue
         lists.append((rid, name, items))
