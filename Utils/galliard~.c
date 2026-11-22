@@ -240,12 +240,16 @@ GalliardCoeffs(
 		}
 	
 	order = iArgC - 1;
-	me->order = order;
 	
+	// 2026: write the coefficients first, then the order. The perform routine (audio
+	// thread) may run meanwhile; with the order first, a longer list was evaluated for
+	// one vector with stale higher coefficients from an earlier list.
+	// (A shorter list still gives one vector of new low and old high coefficients.)
 	do	{
 		*coeff++ = AtomGetFloat(iArgV++);	// Handles ints and symbols nicely for us
 		} while (--order >= 0);
 	
+	me->order = iArgC - 1;
 	}
 
 	// We could implement these directly with a bit more efficiency, but using a single
