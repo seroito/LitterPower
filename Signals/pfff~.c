@@ -35,8 +35,9 @@
 
 
 // 2026: the overflow behaviour no longer depends on the build platform. All emulations
-// (PPC, Intel, PC415) are compiled everywhere, and "native" mode behaves like Intel on
-// every computer. (A 2016 workaround here declared every non-Windows build a PowerPC,
+// (PPC, Intel, PC415) are compiled everywhere, and "native" mode behaves like PPC on
+// every computer (user's choice, 2026-11-22: clipping sounds smoother than the jumps of
+// the Intel behaviour; before that it behaved like Intel). (A 2016 workaround here declared every non-Windows build a PowerPC,
 // which silently replaced PPC mode by the native conversion on macOS; and the native
 // conversion itself is undefined in C on overflow and differs between processors:
 // Intel and Windows jump to the minimum, Apple Silicon clips.)
@@ -416,7 +417,7 @@ PvvvTattle(
 	char*	archStr;
 	
 	switch (me->arch) {
-		default:		archStr = "Native (Intel behaviour on all platforms)";	break;
+		default:		archStr = "Native (PPC behaviour on all platforms)";	break;
 			
 		case archPPC:	archStr = "PPC";							break;
 		case archIntel:	archStr = "Intel";							break;
@@ -670,11 +671,11 @@ void PvvvDSP64(tBrown* me, t_object *dsp64, short *count, double samplerate,
 							// At some stage an 'autoscale' option similar to pvvv2 might
 							// be hip.
 		switch (me->arch) {
-			// Native mode behaves like Intel on all platforms (2026, see top of file)
+			// Native mode behaves like PPC on all platforms (2026, see top of file)
 			default:
-			case archIntel:	GNB_IntelLoop(&me->tausData, buf, stride, hurstFac);
-                break;
 			case archPPC:	GNB_PPCLoop(&me->tausData, buf, stride, hurstFac);
+                break;
+			case archIntel:	GNB_IntelLoop(&me->tausData, buf, stride, hurstFac);
                 break;
 			case archPC415: GNB_PC415Loop(&me->tausData, buf, stride, hurstFac);
                 break;
