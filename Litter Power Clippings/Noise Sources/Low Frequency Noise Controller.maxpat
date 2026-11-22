@@ -10,8 +10,8 @@
 		},
 		"classnamespace": "box",
 		"rect": [
-			323.0,
-			372.0,
+			100.0,
+			80.0,
 			442.0,
 			135.0
 		],
@@ -210,7 +210,9 @@
 					"parameter_enable": 0,
 					"items": [
 						"No Interpolation",
+						",",
 						"Linear Interpolation",
+						",",
 						"Quadratic Interpolation"
 					]
 				}

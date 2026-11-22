@@ -10,10 +10,10 @@
 		},
 		"classnamespace": "box",
 		"rect": [
-			50.0,
+			100.0,
 			80.0,
 			860,
-			889
+			908
 		],
 		"bglocked": 0,
 		"openinpresentation": 0,
@@ -98,9 +98,9 @@
 					"numinlets": 1,
 					"numoutlets": 0,
 					"bgcolor": [
-						0.303556,
-						0.244889,
-						0.176444,
+						0.196078,
+						0.227451,
+						0.282353,
 						1.0
 					],
 					"background": 1,
@@ -290,7 +290,7 @@
 						390.0,
 						23.833
 					],
-					"text": "lp.julie 0. 0. -1.8 0.",
+					"text": "lp.julie 0. 0. -0.123 0.745",
 					"fontname": "Arial",
 					"fontsize": 13.0,
 					"numinlets": 4,
@@ -622,7 +622,7 @@
 						253.5,
 						22.75
 					],
-					"text": "c = 0.3: escapes (see below)",
+					"text": "c = 0.3: escapes and restarts",
 					"fontname": "Arial",
 					"fontsize": 13.0,
 					"numinlets": 1,
@@ -801,14 +801,14 @@
 						5.417,
 						509.66600000000005,
 						812.5,
-						287.387
+						305.847
 					],
 					"numinlets": 1,
 					"numoutlets": 0,
 					"bgcolor": [
-						0.196,
-						0.2312,
-						0.284,
+						0.196078,
+						0.227451,
+						0.282353,
 						1.0
 					],
 					"background": 1,
@@ -995,14 +995,14 @@
 						15.167,
 						742.8,
 						780.0,
-						41.167
+						59.583
 					],
-					"text": "For c outside the Mandelbrot set (for example 0.3) the values grow without bound and soon become inf or nan; send reset (or a new z0) to start again.",
+					"text": "When the orbit escapes (|z| > 2, for example with c = 0.3, or when c is changed while z is far out) it would run away to infinity. Since 2026 lp.julie then starts again at z0. With a real c and a real z0 the imaginary part stays 0, so the right outlet does not change.",
 					"fontname": "Arial",
 					"fontsize": 13.0,
 					"numinlets": 1,
 					"numoutlets": 0,
-					"linecount": 2,
+					"linecount": 3,
 					"textcolor": [
 						0.870588235294118,
 						0.870588235294118,
@@ -1017,7 +1017,7 @@
 					"maxclass": "comment",
 					"patching_rect": [
 						10.833,
-						807.886,
+						826.346,
 						801.667,
 						41.167
 					],

@@ -1,8 +1,8 @@
 {
 	"patcher": {
 		"rect": [
-			0.0,
-			65.0,
+			100.0,
+			80.0,
 			891.646,
 			461.772
 		],
@@ -14,8 +14,8 @@
 		],
 		"bglocked": 0,
 		"defrect": [
-			0.0,
-			65.0,
+			100.0,
+			80.0,
 			891.646,
 			461.772
 		],
@@ -300,15 +300,7 @@
 														""
 													],
 													"id": "obj-4",
-													"fontsize": 12.0,
-													"save": [
-														"#N",
-														"thispatcher",
-														";",
-														"#Q",
-														"end",
-														";"
-													]
+													"fontsize": 12.0
 												}
 											},
 											{
@@ -826,15 +818,7 @@
 														""
 													],
 													"id": "obj-4",
-													"fontsize": 12.0,
-													"save": [
-														"#N",
-														"thispatcher",
-														";",
-														"#Q",
-														"end",
-														";"
-													]
+													"fontsize": 12.0
 												}
 											},
 											{
@@ -2086,27 +2070,6 @@
 							},
 							{
 								"box": {
-									"maxclass": "newobj",
-									"text": "lp.doom 5 21",
-									"linecount": 2,
-									"numinlets": 2,
-									"patching_rect": [
-										259.747,
-										106.329,
-										97.215,
-										42.532
-									],
-									"numoutlets": 1,
-									"fontname": "Arial",
-									"outlettype": [
-										""
-									],
-									"id": "obj-6",
-									"fontsize": 12.0
-								}
-							},
-							{
-								"box": {
 									"textcolor": [
 										0.0,
 										0.0,
@@ -2399,25 +2362,6 @@
 							{
 								"patchline": {
 									"source": [
-										"obj-6",
-										0
-									],
-									"destination": [
-										"obj-8",
-										0
-									],
-									"hidden": 0,
-									"midpoints": [
-										274.177,
-										170.127,
-										633.418,
-										170.127
-									]
-								}
-							},
-							{
-								"patchline": {
-									"source": [
 										"obj-9",
 										0
 									],
@@ -2495,32 +2439,6 @@
 							{
 								"patchline": {
 									"source": [
-										"obj-5",
-										0
-									],
-									"destination": [
-										"obj-6",
-										1
-									],
-									"hidden": 0
-								}
-							},
-							{
-								"patchline": {
-									"source": [
-										"obj-16",
-										0
-									],
-									"destination": [
-										"obj-6",
-										0
-									],
-									"hidden": 0
-								}
-							},
-							{
-								"patchline": {
-									"source": [
 										"obj-15",
 										0
 									],
@@ -2588,44 +2506,7 @@
 						""
 					],
 					"id": "obj-8",
-					"fontsize": 12.0,
-					"save": [
-						"#N",
-						"thispatcher",
-						";",
-						"#Q",
-						"window",
-						"flags",
-						"nogrow",
-						"close",
-						"zoom",
-						"nofloat",
-						"nomenu",
-						";",
-						"#Q",
-						"window",
-						"size",
-						0,
-						65,
-						587,
-						369,
-						";",
-						"#Q",
-						"window",
-						"title",
-						";",
-						"#Q",
-						"window",
-						"exec",
-						";",
-						"#Q",
-						"savewindow",
-						1,
-						";",
-						"#Q",
-						"end",
-						";"
-					]
+					"fontsize": 12.0
 				}
 			},
 			{

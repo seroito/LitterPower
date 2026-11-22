@@ -1,8 +1,8 @@
 {
 	"patcher": {
 		"rect": [
-			5.0,
-			65.0,
+			100.0,
+			80.0,
 			692.0,
 			440.0
 		],
@@ -14,8 +14,8 @@
 		],
 		"bglocked": 0,
 		"defrect": [
-			5.0,
-			65.0,
+			100.0,
+			80.0,
 			692.0,
 			440.0
 		],
@@ -2632,27 +2632,6 @@
 							},
 							{
 								"box": {
-									"maxclass": "newobj",
-									"text": "lp.doom 5 21",
-									"linecount": 2,
-									"numoutlets": 1,
-									"fontsize": 10.533,
-									"patching_rect": [
-										228.0,
-										93.333,
-										85.333,
-										37.333
-									],
-									"outlettype": [
-										""
-									],
-									"fontname": "Geneva",
-									"id": "obj-6",
-									"numinlets": 2
-								}
-							},
-							{
-								"box": {
 									"textcolor": [
 										0.0,
 										0.0,
@@ -2945,25 +2924,6 @@
 							{
 								"patchline": {
 									"source": [
-										"obj-6",
-										0
-									],
-									"destination": [
-										"obj-8",
-										0
-									],
-									"hidden": 0,
-									"midpoints": [
-										240.667,
-										149.333,
-										556.0,
-										149.333
-									]
-								}
-							},
-							{
-								"patchline": {
-									"source": [
 										"obj-9",
 										0
 									],
@@ -3041,32 +3001,6 @@
 							{
 								"patchline": {
 									"source": [
-										"obj-5",
-										0
-									],
-									"destination": [
-										"obj-6",
-										1
-									],
-									"hidden": 0
-								}
-							},
-							{
-								"patchline": {
-									"source": [
-										"obj-16",
-										0
-									],
-									"destination": [
-										"obj-6",
-										0
-									],
-									"hidden": 0
-								}
-							},
-							{
-								"patchline": {
-									"source": [
 										"obj-15",
 										0
 									],
@@ -3135,44 +3069,7 @@
 					"fontname": "Arial",
 					"hidden": 1,
 					"id": "obj-26",
-					"numinlets": 1,
-					"save": [
-						"#N",
-						"thispatcher",
-						";",
-						"#Q",
-						"window",
-						"flags",
-						"nogrow",
-						"close",
-						"zoom",
-						"nofloat",
-						"nomenu",
-						";",
-						"#Q",
-						"window",
-						"size",
-						5,
-						65,
-						524,
-						395,
-						";",
-						"#Q",
-						"window",
-						"title",
-						";",
-						"#Q",
-						"window",
-						"exec",
-						";",
-						"#Q",
-						"savewindow",
-						1,
-						";",
-						"#Q",
-						"end",
-						";"
-					]
+					"numinlets": 1
 				}
 			},
 			{

@@ -1,8 +1,8 @@
 {
 	"patcher": {
 		"rect": [
-			5.0,
-			65.0,
+			100.0,
+			80.0,
 			800.506,
 			490.633
 		],
@@ -14,8 +14,8 @@
 		],
 		"bglocked": 0,
 		"defrect": [
-			5.0,
-			65.0,
+			100.0,
+			80.0,
 			800.506,
 			490.633
 		],
@@ -2396,44 +2396,7 @@
 					"id": "obj-21",
 					"numinlets": 1,
 					"hidden": 1,
-					"numoutlets": 2,
-					"save": [
-						"#N",
-						"thispatcher",
-						";",
-						"#Q",
-						"window",
-						"flags",
-						"nogrow",
-						"close",
-						"zoom",
-						"nofloat",
-						"nomenu",
-						";",
-						"#Q",
-						"window",
-						"size",
-						5,
-						65,
-						532,
-						388,
-						";",
-						"#Q",
-						"window",
-						"title",
-						";",
-						"#Q",
-						"window",
-						"exec",
-						";",
-						"#Q",
-						"savewindow",
-						1,
-						";",
-						"#Q",
-						"end",
-						";"
-					]
+					"numoutlets": 2
 				}
 			},
 			{

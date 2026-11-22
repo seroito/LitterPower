@@ -1,8 +1,8 @@
 {
 	"patcher": {
 		"rect": [
-			5.0,
-			65.0,
+			100.0,
+			80.0,
 			560.506,
 			422.278
 		],
@@ -14,8 +14,8 @@
 		],
 		"bglocked": 0,
 		"defrect": [
-			5.0,
-			65.0,
+			100.0,
+			80.0,
 			560.506,
 			422.278
 		],
@@ -612,44 +612,7 @@
 					"id": "obj-6",
 					"numinlets": 1,
 					"hidden": 1,
-					"numoutlets": 2,
-					"save": [
-						"#N",
-						"thispatcher",
-						";",
-						"#Q",
-						"window",
-						"flags",
-						"nogrow",
-						"close",
-						"zoom",
-						"nofloat",
-						"nomenu",
-						";",
-						"#Q",
-						"window",
-						"size",
-						5,
-						65,
-						374,
-						343,
-						";",
-						"#Q",
-						"window",
-						"title",
-						";",
-						"#Q",
-						"window",
-						"exec",
-						";",
-						"#Q",
-						"savewindow",
-						1,
-						";",
-						"#Q",
-						"end",
-						";"
-					]
+					"numoutlets": 2
 				}
 			},
 			{
@@ -884,15 +847,7 @@
 													"id": "obj-4",
 													"numinlets": 1,
 													"hidden": 1,
-													"numoutlets": 2,
-													"save": [
-														"#N",
-														"thispatcher",
-														";",
-														"#Q",
-														"end",
-														";"
-													]
+													"numoutlets": 2
 												}
 											},
 											{

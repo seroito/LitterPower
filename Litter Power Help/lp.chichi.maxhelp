@@ -1,8 +1,8 @@
 {
 	"patcher": {
 		"rect": [
-			5.0,
-			65.0,
+			100.0,
+			80.0,
 			798.987,
 			417.722
 		],
@@ -14,8 +14,8 @@
 		],
 		"bglocked": 0,
 		"defrect": [
-			5.0,
-			65.0,
+			100.0,
+			80.0,
 			798.987,
 			417.722
 		],
@@ -272,15 +272,7 @@
 														"",
 														""
 													],
-													"fontname": "Arial",
-													"save": [
-														"#N",
-														"thispatcher",
-														";",
-														"#Q",
-														"end",
-														";"
-													]
+													"fontname": "Arial"
 												}
 											},
 											{
@@ -875,15 +867,7 @@
 														"",
 														""
 													],
-													"fontname": "Arial",
-													"save": [
-														"#N",
-														"thispatcher",
-														";",
-														"#Q",
-														"end",
-														";"
-													]
+													"fontname": "Arial"
 												}
 											},
 											{
@@ -2495,44 +2479,7 @@
 						"",
 						""
 					],
-					"fontname": "Arial",
-					"save": [
-						"#N",
-						"thispatcher",
-						";",
-						"#Q",
-						"window",
-						"flags",
-						"nogrow",
-						"close",
-						"zoom",
-						"nofloat",
-						"nomenu",
-						";",
-						"#Q",
-						"window",
-						"size",
-						5,
-						65,
-						531,
-						340,
-						";",
-						"#Q",
-						"window",
-						"title",
-						";",
-						"#Q",
-						"window",
-						"exec",
-						";",
-						"#Q",
-						"savewindow",
-						1,
-						";",
-						"#Q",
-						"end",
-						";"
-					]
+					"fontname": "Arial"
 				}
 			},
 			{

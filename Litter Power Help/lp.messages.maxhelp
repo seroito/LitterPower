@@ -2,15 +2,15 @@
 	"patcher": {
 		"fileversion": 1,
 		"rect": [
-			1.0,
-			44.0,
+			100.0,
+			80.0,
 			666.923,
 			621.923
 		],
 		"bglocked": 0,
 		"defrect": [
-			1.0,
-			44.0,
+			100.0,
+			80.0,
 			666.923,
 			621.923
 		],
@@ -376,53 +376,7 @@
 						""
 					],
 					"hidden": 1,
-					"fontsize": 12.041,
-					"save": [
-						"#N",
-						"thispatcher",
-						";",
-						"#Q",
-						"window",
-						"flags",
-						"nogrow",
-						"close",
-						"zoom",
-						"nofloat",
-						"nomenu",
-						"minimize",
-						";",
-						"#Q",
-						"window",
-						"constrain",
-						2,
-						2,
-						32768,
-						32768,
-						";",
-						"#Q",
-						"window",
-						"size",
-						1,
-						44,
-						579,
-						583,
-						";",
-						"#Q",
-						"window",
-						"title",
-						";",
-						"#Q",
-						"window",
-						"exec",
-						";",
-						"#Q",
-						"savewindow",
-						1,
-						";",
-						"#Q",
-						"end",
-						";"
-					]
+					"fontsize": 12.041
 				}
 			},
 			{
@@ -711,27 +665,6 @@
 										0.0,
 										1.0
 									]
-								}
-							},
-							{
-								"box": {
-									"maxclass": "newobj",
-									"text": "lp.doom 5 21",
-									"linecount": 2,
-									"numinlets": 2,
-									"patching_rect": [
-										203.077,
-										102.692,
-										73.846,
-										32.308
-									],
-									"fontname": "Arial",
-									"id": "obj-6",
-									"numoutlets": 1,
-									"outlettype": [
-										""
-									],
-									"fontsize": 10.569
 								}
 							},
 							{
@@ -1076,20 +1009,6 @@
 							{
 								"patchline": {
 									"source": [
-										"obj-16",
-										0
-									],
-									"destination": [
-										"obj-6",
-										1
-									],
-									"hidden": 0,
-									"midpoints": []
-								}
-							},
-							{
-								"patchline": {
-									"source": [
 										"obj-4",
 										0
 									],
@@ -1142,34 +1061,6 @@
 										213.462,
 										195.0
 									]
-								}
-							},
-							{
-								"patchline": {
-									"source": [
-										"obj-6",
-										0
-									],
-									"destination": [
-										"obj-17",
-										0
-									],
-									"hidden": 0,
-									"midpoints": []
-								}
-							},
-							{
-								"patchline": {
-									"source": [
-										"obj-13",
-										0
-									],
-									"destination": [
-										"obj-6",
-										0
-									],
-									"hidden": 0,
-									"midpoints": []
 								}
 							},
 							{

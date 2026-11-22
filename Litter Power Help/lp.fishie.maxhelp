@@ -1,8 +1,8 @@
 {
 	"patcher": {
 		"rect": [
-			5.0,
-			65.0,
+			100.0,
+			80.0,
 			607.595,
 			460.253
 		],
@@ -14,8 +14,8 @@
 		],
 		"bglocked": 0,
 		"defrect": [
-			5.0,
-			65.0,
+			100.0,
+			80.0,
 			607.595,
 			460.253
 		],
@@ -314,15 +314,7 @@
 													"fontname": "Arial",
 													"hidden": 1,
 													"id": "obj-4",
-													"numinlets": 1,
-													"save": [
-														"#N",
-														"thispatcher",
-														";",
-														"#Q",
-														"end",
-														";"
-													]
+													"numinlets": 1
 												}
 											},
 											{
@@ -850,15 +842,7 @@
 													"fontname": "Arial",
 													"hidden": 1,
 													"id": "obj-4",
-													"numinlets": 1,
-													"save": [
-														"#N",
-														"thispatcher",
-														";",
-														"#Q",
-														"end",
-														";"
-													]
+													"numinlets": 1
 												}
 											},
 											{
@@ -2896,44 +2880,7 @@
 					"fontname": "Arial",
 					"hidden": 1,
 					"id": "obj-8",
-					"numinlets": 1,
-					"save": [
-						"#N",
-						"thispatcher",
-						";",
-						"#Q",
-						"window",
-						"flags",
-						"nogrow",
-						"close",
-						"zoom",
-						"nofloat",
-						"nomenu",
-						";",
-						"#Q",
-						"window",
-						"size",
-						5,
-						65,
-						405,
-						368,
-						";",
-						"#Q",
-						"window",
-						"title",
-						";",
-						"#Q",
-						"window",
-						"exec",
-						";",
-						"#Q",
-						"savewindow",
-						1,
-						";",
-						"#Q",
-						"end",
-						";"
-					]
+					"numinlets": 1
 				}
 			},
 			{

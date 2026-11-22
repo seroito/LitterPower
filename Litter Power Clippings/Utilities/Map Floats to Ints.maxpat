@@ -10,8 +10,8 @@
 		},
 		"classnamespace": "box",
 		"rect": [
-			328.0,
-			75.0,
+			100.0,
+			80.0,
 			309.0,
 			128.0
 		],
@@ -80,9 +80,13 @@
 					"parameter_enable": 0,
 					"items": [
 						"trunc",
+						",",
 						"round",
+						",",
 						"floor",
+						",",
 						"ceil",
+						",",
 						"toinf"
 					]
 				}
@@ -363,7 +367,9 @@
 					"parameter_enable": 0,
 					"items": [
 						"No Symmetry",
+						",",
 						"Point Symmetry",
+						",",
 						"Axie Symmetry"
 					]
 				}
@@ -398,7 +404,9 @@
 					"parameter_enable": 0,
 					"items": [
 						"lin",
+						",",
 						"exp",
+						",",
 						"pow"
 					]
 				}

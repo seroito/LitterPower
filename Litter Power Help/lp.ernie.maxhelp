@@ -10,8 +10,8 @@
 		},
 		"classnamespace": "box",
 		"rect": [
-			5.0,
-			65.0,
+			100.0,
+			80.0,
 			657.333,
 			628.0
 		],
@@ -921,15 +921,25 @@
 					"parameter_enable": 0,
 					"items": [
 						"-> See also",
+						",",
 						"-",
+						",",
 						"lp.tata — Tausworthe 88 generator",
+						",",
 						"lp.crabelms — Scramble a list",
+						",",
 						"lp.ale — Choose random items from a list one at a time",
+						",",
 						"-",
+						",",
 						"lp.messages — Litter Power messages",
+						",",
 						"-",
+						",",
 						"table — Store numbers",
+						",",
 						"-",
+						",",
 						"\"What's in a Name?\""
 					]
 				}
@@ -1114,23 +1124,6 @@
 									],
 									"comment": "window size message from thispatcher in the mother patch.",
 									"numinlets": 0,
-									"numoutlets": 1
-								}
-							},
-							{
-								"box": {
-									"id": "obj-34",
-									"maxclass": "newobj",
-									"patching_rect": [
-										228.0,
-										93.333,
-										85.333,
-										26.667
-									],
-									"fontname": "Arial",
-									"fontsize": 12.0,
-									"text": "lp.doom 5 21",
-									"numinlets": 2,
 									"numoutlets": 1
 								}
 							},
@@ -1371,30 +1364,6 @@
 							{
 								"patchline": {
 									"source": [
-										"obj-44",
-										0
-									],
-									"destination": [
-										"obj-34",
-										0
-									]
-								}
-							},
-							{
-								"patchline": {
-									"source": [
-										"obj-33",
-										0
-									],
-									"destination": [
-										"obj-34",
-										1
-									]
-								}
-							},
-							{
-								"patchline": {
-									"source": [
 										"obj-41",
 										0
 									],
@@ -1509,24 +1478,6 @@
 									"destination": [
 										"obj-36",
 										0
-									]
-								}
-							},
-							{
-								"patchline": {
-									"source": [
-										"obj-34",
-										0
-									],
-									"destination": [
-										"obj-36",
-										0
-									],
-									"midpoints": [
-										234.667,
-										149.333,
-										550.667,
-										149.333
 									]
 								}
 							}

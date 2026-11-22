@@ -22,6 +22,9 @@ Texts are not changed.
 """
 import collections, glob, json, os, sys
 
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+import fix_patchers                                                          # noqa: E402
+
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 TARGET_PT = 12.0
 WHITE = [1.0, 1.0, 1.0, 1.0]
@@ -162,6 +165,7 @@ def restyle(path):
         scale_patcher(p, k)
     title = fname[:-8] if fname.endswith('.maxhelp') else None
     colour_patcher(p, fname, title)
+    fix_patchers.fix(d)                       # window state, position, menus, lp.doom
     with open(path, 'w', encoding='utf-8', newline='\n') as f:
         json.dump(d, f, indent='\t', ensure_ascii=False)
         f.write('\n')

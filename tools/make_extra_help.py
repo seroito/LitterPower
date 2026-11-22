@@ -125,7 +125,7 @@ C_PRESETS = [('-1.8 0.', 'c = -1.8: chaotic'),
              ('-1. 0.', 'c = -1: period 2'),
              ('-1.3 0.', 'c = -1.3: period 4'),
              ('-0.123 0.745', '"rabbit": period 3'),
-             ('0.3 0.', 'c = 0.3: escapes (see below)')]
+             ('0.3 0.', 'c = 0.3: escapes and restarts')]
 
 
 def julie():
@@ -145,7 +145,7 @@ def julie():
     z0i = p.flonum(180.0, y + 34.0)
     p.comment(110.0, y + 8.0, 140.0, 'z0 real, imag.')
     up = p.obj(250.0, y + 64.0, 120.0, 'unpack 0. 0.', 1, 2, ['float', 'float'])
-    obj = p.obj(10.0, y + 104.0, 360.0, 'lp.julie 0. 0. -1.8 0.', 4, 2, ['float', 'float'])
+    obj = p.obj(10.0, y + 104.0, 360.0, 'lp.julie 0. 0. -0.123 0.745', 4, 2, ['float', 'float'])
     p.connect(met, 0, obj, 0)
     p.connect(z0r, 0, obj, 0)
     p.connect(z0i, 0, obj, 1)
@@ -173,8 +173,10 @@ def julie():
                    '3rd: real part of c. 4th: imaginary part of c.'),
         ('Messages', 'bang, reset, tattle (or double-click), plus the common Litter Power '
                      'messages (vers, info).'),
-        ('Note', 'For c outside the Mandelbrot set (for example 0.3) the values grow without '
-                 'bound and soon become inf or nan; send reset (or a new z0) to start again.'),
+        ('Note', 'When the orbit escapes (|z| > 2, for example with c = 0.3, or when c is '
+                 'changed while z is far out) it would run away to infinity. Since 2026 lp.julie '
+                 'then starts again at z0. With a real c and a real z0 the imaginary part stays '
+                 '0, so the right outlet does not change.'),
     ])
     p.foot(y)
     return p

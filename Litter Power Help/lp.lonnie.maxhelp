@@ -2,15 +2,15 @@
 	"patcher": {
 		"fileversion": 1,
 		"rect": [
-			5.0,
-			65.0,
+			100.0,
+			80.0,
 			656.087,
 			345.652
 		],
 		"bglocked": 0,
 		"defrect": [
-			5.0,
-			65.0,
+			100.0,
+			80.0,
 			656.087,
 			345.652
 		],
@@ -299,14 +299,6 @@
 													"outlettype": [
 														"",
 														""
-													],
-													"save": [
-														"#N",
-														"thispatcher",
-														";",
-														"#Q",
-														"end",
-														";"
 													]
 												}
 											},
@@ -1822,14 +1814,6 @@
 													"outlettype": [
 														"",
 														""
-													],
-													"save": [
-														"#N",
-														"thispatcher",
-														";",
-														"#Q",
-														"end",
-														";"
 													]
 												}
 											},
@@ -3144,27 +3128,6 @@
 							},
 							{
 								"box": {
-									"maxclass": "newobj",
-									"text": "lp.doom 5 21",
-									"linecount": 2,
-									"patching_rect": [
-										223.043,
-										91.304,
-										83.478,
-										36.522
-									],
-									"fontname": "Arial",
-									"id": "obj-6",
-									"numinlets": 2,
-									"fontsize": 11.948,
-									"numoutlets": 1,
-									"outlettype": [
-										""
-									]
-								}
-							},
-							{
-								"box": {
 									"maxclass": "comment",
 									"text": "Grab sends version symbol to us. Format this into a scripting message for an object named 'version' and send that to a thispatcher object in the mother patch.",
 									"linecount": 2,
@@ -3439,34 +3402,6 @@
 							{
 								"patchline": {
 									"source": [
-										"obj-16",
-										0
-									],
-									"destination": [
-										"obj-6",
-										0
-									],
-									"hidden": 0,
-									"midpoints": []
-								}
-							},
-							{
-								"patchline": {
-									"source": [
-										"obj-5",
-										0
-									],
-									"destination": [
-										"obj-6",
-										1
-									],
-									"hidden": 0,
-									"midpoints": []
-								}
-							},
-							{
-								"patchline": {
-									"source": [
 										"obj-13",
 										0
 									],
@@ -3595,25 +3530,6 @@
 									"hidden": 0,
 									"midpoints": []
 								}
-							},
-							{
-								"patchline": {
-									"source": [
-										"obj-6",
-										0
-									],
-									"destination": [
-										"obj-8",
-										0
-									],
-									"hidden": 0,
-									"midpoints": [
-										235.435,
-										146.087,
-										543.913,
-										146.087
-									]
-								}
 							}
 						],
 						"bgcolor": [
@@ -3660,52 +3576,6 @@
 					"outlettype": [
 						"",
 						""
-					],
-					"save": [
-						"#N",
-						"thispatcher",
-						";",
-						"#Q",
-						"window",
-						"flags",
-						"nogrow",
-						"close",
-						"zoom",
-						"nofloat",
-						"nomenu",
-						"minimize",
-						";",
-						"#Q",
-						"window",
-						"constrain",
-						2,
-						2,
-						32768,
-						32768,
-						";",
-						"#Q",
-						"window",
-						"size",
-						5,
-						65,
-						508,
-						330,
-						";",
-						"#Q",
-						"window",
-						"title",
-						";",
-						"#Q",
-						"window",
-						"exec",
-						";",
-						"#Q",
-						"savewindow",
-						1,
-						";",
-						"#Q",
-						"end",
-						";"
 					]
 				}
 			},

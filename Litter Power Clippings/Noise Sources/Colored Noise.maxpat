@@ -10,8 +10,8 @@
 		},
 		"classnamespace": "box",
 		"rect": [
-			10.0,
-			59.0,
+			100.0,
+			80.0,
 			299.0,
 			128.0
 		],
@@ -80,8 +80,11 @@
 					"parameter_enable": 0,
 					"items": [
 						"Native (= Intel)",
+						",",
 						"PPC",
+						",",
 						"Intel (X86)",
+						",",
 						"PC 415"
 					]
 				}

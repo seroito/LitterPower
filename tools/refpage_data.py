@@ -132,7 +132,8 @@ OBJ = {
     'lp.julie': dict(cat=CHAOS, digest='Iterate the Julia set map',
                      desc='lp.julie iterates the complex quadratic map z\' = z^2 + c that defines '
                           'the Julia and Mandelbrot sets. Every bang outputs the next point: the '
-                          'real part on the left, the imaginary part on the right.',
+                          'real part on the left, the imaginary part on the right. An orbit that '
+                          'escapes starts again at z0.',
                      args=[('z0real', 'float', 'Real part of the starting point'),
                            ('z0imag', 'float', 'Imaginary part of the starting point'),
                            ('creal', 'float', 'Real part of c'),

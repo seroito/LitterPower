@@ -1,8 +1,8 @@
 {
 	"patcher": {
 		"rect": [
-			5.0,
-			65.0,
+			100.0,
+			80.0,
 			601.333,
 			360.0
 		],
@@ -14,8 +14,8 @@
 		],
 		"bglocked": 0,
 		"defrect": [
-			5.0,
-			65.0,
+			100.0,
+			80.0,
 			601.333,
 			360.0
 		],
@@ -272,14 +272,6 @@
 													"outlettype": [
 														"",
 														""
-													],
-													"save": [
-														"#N",
-														"thispatcher",
-														";",
-														"#Q",
-														"end",
-														";"
 													]
 												}
 											},
@@ -831,14 +823,6 @@
 													"outlettype": [
 														"",
 														""
-													],
-													"save": [
-														"#N",
-														"thispatcher",
-														";",
-														"#Q",
-														"end",
-														";"
 													]
 												}
 											},
@@ -2514,26 +2498,6 @@
 							},
 							{
 								"box": {
-									"maxclass": "newobj",
-									"text": "lp.doom 5 21",
-									"id": "obj-6",
-									"fontsize": 12.0,
-									"numinlets": 2,
-									"patching_rect": [
-										228.0,
-										93.333,
-										94.667,
-										24.0
-									],
-									"numoutlets": 1,
-									"fontname": "Arial",
-									"outlettype": [
-										""
-									]
-								}
-							},
-							{
-								"box": {
 									"maxclass": "outlet",
 									"id": "obj-8",
 									"numinlets": 1,
@@ -2740,51 +2704,6 @@
 										0
 									],
 									"destination": [
-										"obj-6",
-										0
-									],
-									"hidden": 0
-								}
-							},
-							{
-								"patchline": {
-									"source": [
-										"obj-5",
-										0
-									],
-									"destination": [
-										"obj-6",
-										1
-									],
-									"hidden": 0
-								}
-							},
-							{
-								"patchline": {
-									"source": [
-										"obj-6",
-										0
-									],
-									"destination": [
-										"obj-8",
-										0
-									],
-									"hidden": 0,
-									"midpoints": [
-										240.667,
-										160.0,
-										556.667,
-										160.0
-									]
-								}
-							},
-							{
-								"patchline": {
-									"source": [
-										"obj-16",
-										0
-									],
-									"destination": [
 										"obj-19",
 										0
 									],
@@ -2970,43 +2889,6 @@
 					"outlettype": [
 						"",
 						""
-					],
-					"save": [
-						"#N",
-						"thispatcher",
-						";",
-						"#Q",
-						"window",
-						"flags",
-						"nogrow",
-						"close",
-						"zoom",
-						"nofloat",
-						"nomenu",
-						";",
-						"#Q",
-						"window",
-						"size",
-						5,
-						65,
-						456,
-						335,
-						";",
-						"#Q",
-						"window",
-						"title",
-						";",
-						"#Q",
-						"window",
-						"exec",
-						";",
-						"#Q",
-						"savewindow",
-						1,
-						";",
-						"#Q",
-						"end",
-						";"
 					]
 				}
 			},

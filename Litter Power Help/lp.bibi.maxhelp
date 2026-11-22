@@ -10,8 +10,8 @@
 		},
 		"classnamespace": "box",
 		"rect": [
-			0.0,
-			65.0,
+			100.0,
+			80.0,
 			644.0,
 			394.667
 		],
@@ -1531,14 +1531,23 @@
 					"parameter_enable": 0,
 					"items": [
 						"-> See also",
+						",",
 						"-",
+						",",
 						"lp.bernie — Binomial distribution",
+						",",
 						"lp.abbie — Arc-sine and beta distributions",
+						",",
 						"-",
+						",",
 						"lp.messages — Litter Power messages",
+						",",
 						"-",
+						",",
 						"Bibliography",
+						",",
 						"-",
+						",",
 						"\"What's in a Name?\""
 					]
 				}
@@ -1741,23 +1750,6 @@
 									],
 									"comment": "window size message from thispatcher in the mother patch.",
 									"numinlets": 0,
-									"numoutlets": 1
-								}
-							},
-							{
-								"box": {
-									"id": "obj-56",
-									"maxclass": "newobj",
-									"patching_rect": [
-										228.0,
-										93.333,
-										85.333,
-										26.667
-									],
-									"fontname": "Arial",
-									"fontsize": 12.0,
-									"text": "lp.doom 5 21",
-									"numinlets": 2,
 									"numoutlets": 1
 								}
 							},
@@ -1998,30 +1990,6 @@
 							{
 								"patchline": {
 									"source": [
-										"obj-66",
-										0
-									],
-									"destination": [
-										"obj-56",
-										0
-									]
-								}
-							},
-							{
-								"patchline": {
-									"source": [
-										"obj-55",
-										0
-									],
-									"destination": [
-										"obj-56",
-										1
-									]
-								}
-							},
-							{
-								"patchline": {
-									"source": [
 										"obj-63",
 										0
 									],
@@ -2136,24 +2104,6 @@
 									"destination": [
 										"obj-58",
 										0
-									]
-								}
-							},
-							{
-								"patchline": {
-									"source": [
-										"obj-56",
-										0
-									],
-									"destination": [
-										"obj-58",
-										0
-									],
-									"midpoints": [
-										234.667,
-										149.333,
-										550.667,
-										149.333
 									]
 								}
 							}

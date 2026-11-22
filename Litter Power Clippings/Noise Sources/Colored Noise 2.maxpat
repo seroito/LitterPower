@@ -11,7 +11,7 @@
 		"classnamespace": "box",
 		"rect": [
 			100.0,
-			100.0,
+			80.0,
 			258.0,
 			128.0
 		],
@@ -65,8 +65,11 @@
 					"parameter_enable": 0,
 					"items": [
 						"stet",
+						",",
 						"clip",
+						",",
 						"wrap",
+						",",
 						"reflect"
 					]
 				}

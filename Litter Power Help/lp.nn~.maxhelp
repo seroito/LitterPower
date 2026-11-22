@@ -1,8 +1,8 @@
 {
 	"patcher": {
 		"rect": [
-			5.0,
-			65.0,
+			100.0,
+			80.0,
 			809.62,
 			770.127
 		],
@@ -14,8 +14,8 @@
 		],
 		"bglocked": 0,
 		"defrect": [
-			5.0,
-			65.0,
+			100.0,
+			80.0,
 			809.62,
 			770.127
 		],
@@ -314,15 +314,7 @@
 													"fontname": "Arial",
 													"hidden": 1,
 													"id": "obj-4",
-													"numinlets": 1,
-													"save": [
-														"#N",
-														"thispatcher",
-														";",
-														"#Q",
-														"end",
-														";"
-													]
+													"numinlets": 1
 												}
 											},
 											{
@@ -870,15 +862,7 @@
 													"fontname": "Arial",
 													"hidden": 1,
 													"id": "obj-5",
-													"numinlets": 1,
-													"save": [
-														"#N",
-														"thispatcher",
-														";",
-														"#Q",
-														"end",
-														";"
-													]
+													"numinlets": 1
 												}
 											},
 											{
@@ -2103,27 +2087,6 @@
 							},
 							{
 								"box": {
-									"maxclass": "newobj",
-									"text": "lp.doom 5 21",
-									"linecount": 2,
-									"numoutlets": 1,
-									"fontsize": 12.0,
-									"patching_rect": [
-										259.747,
-										106.329,
-										97.215,
-										42.532
-									],
-									"outlettype": [
-										""
-									],
-									"fontname": "Arial",
-									"id": "obj-6",
-									"numinlets": 2
-								}
-							},
-							{
-								"box": {
 									"textcolor": [
 										0.0,
 										0.0,
@@ -2397,32 +2360,6 @@
 							{
 								"patchline": {
 									"source": [
-										"obj-16",
-										0
-									],
-									"destination": [
-										"obj-6",
-										0
-									],
-									"hidden": 0
-								}
-							},
-							{
-								"patchline": {
-									"source": [
-										"obj-5",
-										0
-									],
-									"destination": [
-										"obj-6",
-										1
-									],
-									"hidden": 0
-								}
-							},
-							{
-								"patchline": {
-									"source": [
 										"obj-13",
 										0
 									],
@@ -2547,25 +2484,6 @@
 									],
 									"hidden": 0
 								}
-							},
-							{
-								"patchline": {
-									"source": [
-										"obj-6",
-										0
-									],
-									"destination": [
-										"obj-8",
-										0
-									],
-									"hidden": 0,
-									"midpoints": [
-										274.177,
-										217.215,
-										633.418,
-										217.215
-									]
-								}
 							}
 						],
 						"editing_bgcolor": [
@@ -2605,44 +2523,7 @@
 					"fontname": "Arial",
 					"hidden": 1,
 					"id": "obj-8",
-					"numinlets": 1,
-					"save": [
-						"#N",
-						"thispatcher",
-						";",
-						"#Q",
-						"window",
-						"flags",
-						"nogrow",
-						"close",
-						"zoom",
-						"nofloat",
-						"nomenu",
-						";",
-						"#Q",
-						"window",
-						"size",
-						5,
-						65,
-						538,
-						572,
-						";",
-						"#Q",
-						"window",
-						"title",
-						";",
-						"#Q",
-						"window",
-						"exec",
-						";",
-						"#Q",
-						"savewindow",
-						1,
-						";",
-						"#Q",
-						"end",
-						";"
-					]
+					"numinlets": 1
 				}
 			},
 			{
