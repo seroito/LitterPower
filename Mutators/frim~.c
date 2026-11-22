@@ -848,7 +848,7 @@ void    PerformMutator64(tMutator *me, t_object *dsp64, double **ins, long numin
                          (t_sample*) ins[paramSource1], (t_sample*) ins[paramSource2],
                          (t_sample*) ins[paramTarget1], (t_sample*) ins[paramTarget2],
                          (t_sample*) outs[0], (t_sample*) outs[1],
-                         ins[paramOmega]
+                         me->connected[paramOmega]
                          ? *((t_sample*) ins[paramOmega])
                          : (t_sample) curParams.omega,
                          me->connected[paramPi]
