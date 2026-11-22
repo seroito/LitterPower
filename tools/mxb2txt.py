@@ -15,6 +15,7 @@ The binary format is a token stream of the patcher's binbuf:
   0xa0        semicolon
   0xa1        comma
   0xc0-0xc9   dollar argument $0..$9
+  0x90-0x9f   dollar symbol 0..15 (e.g. $1gain.coll), same rule as 0x70-0x7f
   0xd1 b      dollar symbol ($ followed by symbol 16..255, e.g. $0-rs), same rule as 0x31
   0xd2 bb     dollar symbol, symbol 256..65535
 The file starts with the 4-byte header 02 00 00 00.
@@ -53,6 +54,7 @@ def tokens(data):
         elif c == 0xa0: yield ('semi', ';')
         elif c == 0xa1: yield ('comma', ',')
         elif 0xc0 <= c <= 0xc9: yield ('dollar', c - 0xc0)
+        elif 0x90 <= c <= 0x9f: yield ('dollsym', symbol(c - 0x90))
         elif c == 0xd1: idx = data[i]; i += 1; yield ('dollsym', symbol(idx))
         elif c == 0xd2: idx = struct.unpack_from('<H', data, i)[0]; i += 2; yield ('dollsym', symbol(idx))
         else:
