@@ -468,6 +468,11 @@ DoClear(
 	tMutationPtr	mPtr;
 	BytePtr			sPtr;
 	
+	// 2026: lp.frim~ without a history size has no buffers; clear wrote through
+	// a NULL pointer
+	if (me->history.bufSize <= 0)
+		return;
+	
 	index	= me->history.bufSize;
 	mPtr	= me->history.muBuffer + index;
 	do {

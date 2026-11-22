@@ -210,7 +210,10 @@ void ext_main(void* r)
 		long	nyquist		= me->history.nyquist;
 		BytePtr	stateBuf;
 		
-		if ( !HasHistory(me) )
+		// 2026: the state buffer holds nyquist + 1 bytes (bins 0 to nyquist). Bins 0-2
+		// are always band leaders, so with nyquist < 3 there is nothing to do (the loops
+		// below wrote from bin 3 on regardless of the buffer size).
+		if ( !HasHistory(me) || nyquist < 3 )
 			return;
 		
 		stateBuf =	me->history.stateBuf + 3;		// Skip DC component and first two
@@ -257,13 +260,19 @@ void ext_main(void* r)
 			// a band follower (this is sort of cheesy, but there are no bins to
 			// follow it and there is normally not enough energy up around here
 			// to make it worth worrying much about).
-			*stateBuf |= stateFollowLeadBit;
+			// 2026: the loop has already moved past the Nyquist bin; this wrote one byte
+			// beyond the buffer.
+			me->history.stateBuf[nyquist] |= stateFollowLeadBit;
 			}
 		
-		else do {
+		else {
 			// No grouping of bins into frequency bands; every bin is a "Band Leader"
-			*stateBuf++ &= ~stateFollowLeadBit;
-			} while (--nyquist >= 0);
+			// 2026: bins 3 to nyquist (this wrote nyquist + 1 bytes from bin 3 on,
+			// three bytes beyond the buffer; done for every new lp.frim~)
+			long bin;
+			for (bin = 3; bin <= nyquist; bin += 1)
+				me->history.stateBuf[bin] &= ~stateFollowLeadBit;
+			}
 		
 		}
 
