@@ -79,6 +79,7 @@ void*	MrsNorrisNew(t_symbol*, long);
 
 	// Object message functions
 static void MrsNorrisBang	(objMrsNorris*);
+static void MrsNorrisOpen	(objMrsNorris*, t_symbol*, long, t_atom*);
 static void MrsNorrisSet	(objMrsNorris*, t_symbol*, long);
 static void MrsNorrisLoad	(objMrsNorris*, t_symbol*);
 static void MrsNorrisHelp	(objMrsNorris*, t_symbol*);
@@ -219,15 +220,19 @@ MrsNorrisNew(
  *	
  ******************************************************************************************/
 
-	// Parameter block for SniffAndMeow()
+	// 2026: opening a patcher (and changing the default search path) must happen in the
+	// main thread. A bang can come from the scheduler thread (Overdrive) or the audio
+	// thread (Scheduler in Audio Interrupt), so MrsNorrisBang() hands the work to
+	// MrsNorrisOpen() with defer_low(). The file name and search settings travel with
+	// the deferred call, so two quick load messages open both files.
+	enum { openArgSearchDir = 0, openArgHelpSuffix, openArgRecurse, openArgCount };
+
 void
 MrsNorrisBang(
 	objMrsNorris*	me)
 	
 	{
-	char	name[kMaxResourceStrSize];
-	short	oldPath		= 0;
-	void*	loadResult	= NIL;
+	t_atom	args[openArgCount];
 	
 	if (me->filename == NIL || me->filename->s_name[0] == '\0') {
 		if (me->isOverview)
@@ -236,18 +241,49 @@ MrsNorrisBang(
 		return;
 		}
 	
-	strncpy(name, me->filename->s_name, kMaxResourceStrLen);
+	atom_setlong(&args[openArgSearchDir],	me->searchDir);
+	atom_setlong(&args[openArgHelpSuffix],	me->helpSuffix);
+	atom_setlong(&args[openArgRecurse],		me->recurse);
+	defer_low(me, (method) MrsNorrisOpen, me->filename, openArgCount, args);
+	}
+
+static void
+MrsNorrisOpen(
+	objMrsNorris*	me,
+	t_symbol*		iFilename,
+	long			iArgC,
+	t_atom*			iArgV)
+	
+	{
+	#pragma unused(me)
+	// Do not use me here: the object may have been deleted before the deferred call runs.
+	
+	char	name[kMaxResourceStrSize];
+	short	oldPath		= 0;
+	void*	loadResult	= NIL;
+	short	searchDir	= 0;
+	Boolean	helpSuffix	= false,
+			recurse		= false;
+	
+	if (iFilename == NIL || iArgC < openArgCount)
+		return;
+	
+	searchDir	= (short) atom_getlong(&iArgV[openArgSearchDir]);
+	helpSuffix	= atom_getlong(&iArgV[openArgHelpSuffix]) != 0;
+	recurse		= atom_getlong(&iArgV[openArgRecurse]) != 0;
+	
+	strncpy(name, iFilename->s_name, kMaxResourceStrLen);
 	name[kMaxResourceStrLen] = '\0';
 	
 	// (Under Max 4 we first looked for an already open window with this name and brought
 	// it to the front. Max does that by itself now when a file is opened twice.)
 	
-	if (me->searchDir != 0) {
+	if (searchDir != 0) {
 		oldPath = path_getdefault();
-		path_setdefault(me->searchDir, me->recurse);
+		path_setdefault(searchDir, recurse);
 		}
 		
-	if (me->helpSuffix) {
+	if (helpSuffix) {
 		char	helpSuffix[kMaxResourceStrSize],
 				helpFileName[2 * kMaxResourceStrSize];
 		
@@ -276,7 +312,7 @@ MrsNorrisBang(
 			}
 		}
 	
-	if (me->searchDir != 0) path_setdefault(oldPath, false);
+	if (searchDir != 0) path_setdefault(oldPath, false);
 	
 	}
 
