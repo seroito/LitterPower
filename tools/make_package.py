@@ -32,24 +32,12 @@ copy_tree(os.path.join(ROOT, 'Litter Power Clippings'), os.path.join(OUT, 'misc'
 copy_tree(os.path.join(ROOT, 'Litter'), os.path.join(OUT, 'misc', 'Object Lists'))
 copy_tree(os.path.join(ROOT, 'Litter Power Documentation'), os.path.join(OUT, 'misc', 'Documentation'))
 
-# Files that help files and examples load by name must be in Max's search path:
-# abstractions go into 'patchers', pictures and other media into 'media'.
-LIB = os.path.join(ROOT, 'Litter Power Extras', '~lib')
-for name, folder in (('lp.pfft.frimWrap.maxpat', 'patchers'),
-                     ('lp.grabprops.maxpat', 'patchers'),
-                     ('lp.Logo.png', 'media'),
-                     ('lp.Logo.pict', 'media'),
-                     ('lp.rain.midi', 'media')):
-    src = os.path.join(LIB, name)
-    if os.path.exists(src):
-        os.makedirs(os.path.join(OUT, folder), exist_ok=True)
-        shutil.copy2(src, os.path.join(OUT, folder, name))
-
-# The logo is only needed once, in 'media' (search path); drop the copy that came along
-# with the extras folder.
-dup = os.path.join(OUT, 'extras', 'Litter Power Extras', '~lib', 'lp.Logo.png')
-if os.path.exists(os.path.join(OUT, 'media', 'lp.Logo.png')) and os.path.exists(dup):
-    os.remove(dup)
+# Files that help files and examples load by name must be in Max's search path. They
+# live in the repository folders 'patchers' (abstractions) and 'media' (pictures, MIDI)
+# and are copied once, to the package folders of the same names. (Until 2026-11-22 they
+# were in "Litter Power Extras/~lib" and ended up in the package twice.)
+copy_tree(os.path.join(ROOT, 'patchers'), os.path.join(OUT, 'patchers'))
+copy_tree(os.path.join(ROOT, 'media'), os.path.join(OUT, 'media'))
 
 info = {
     "name": "LitterPower",
