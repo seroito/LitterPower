@@ -276,8 +276,14 @@ void ext_main(void* r)
 		
 		}
 
+	// 2026: called only where the perform routine cannot run at the same time: in the
+	// perform routine itself (frame boundary) and in new.
 	void UpdateFrameParams(tMutator* me)
 		{
+		// Clear the flag first: a message arriving while we copy sets it again and is
+		// applied at the next frame boundary instead of being lost.
+		me->paramUpdatePending = false;
+		
 
 		if (me->params.bandsPerOctave != me->frameParams.bandsPerOctave) {
 			RecalcBandLeaders(me, me->params.bandsPerOctave);
@@ -294,8 +300,6 @@ void ext_main(void* r)
 			}
 		
 		me->frameParams	= me->params;
-		
-		me->paramUpdatePending = false;
 		}
 
 
@@ -422,8 +426,10 @@ NewMutator(
 	me->params.bandsPerOctave = 0;
 	me->params.relInterval	= gotInitDelta;
 	
-	DoOBands(me, 0);					// Calls RecalcBandLeaders()
-	SetMutatorType(me, initType);		// Calls UpdateFrameParams()
+	DoOBands(me, 0);
+	SetMutatorType(me, initType);
+	if (HasHistory(me))
+		UpdateFrameParams(me);			// 2026: messages only flag the update now
 						
 	return me;
 
@@ -572,10 +578,12 @@ DoOBands(
 	
 	me->params.bandsPerOctave = iBpO;
 	
-	if (me->history.bufIndex == 0) {
-		me->frameParams.bandsPerOctave = iBpO;
-		RecalcBandLeaders(me, iBpO);
-		}
+	// 2026: applied by the perform routine at the next frame boundary (audio thread).
+	// Before, a change while audio ran was only picked up together with another
+	// parameter change, and the immediate update at buffer index 0 could run at the
+	// same time as the perform routine.
+	if (HasHistory(me))
+		me->paramUpdatePending = true;
 	}
 
 #pragma mark -
@@ -817,7 +825,10 @@ void    PerformMutator64(tMutator *me, t_object *dsp64, double **ins, long numin
     
     if (me->coreObject.z_disabled) return;
     
-    //me->connected[paramOmega]
+    // 2026: parameter messages only flag an update; apply it here (audio thread) at the
+    // start of a frame. PutHistory() does the same when a frame ends inside a vector.
+    if (me->paramUpdatePending && HasHistory(me) && me->history.bufIndex == 0)
+        UpdateFrameParams(me);
     
     // Copy mutation parameters; we use them a lot
     curParams = ( HasHistory(me) )

@@ -364,11 +364,9 @@ SetMutatorType(tMutator* me, short iType)
 		}
 	
 #if __IM_HISTORY__
-	if (me->history.bufSize > 0) {
-		if (me->history.bufIndex == 0)
-				UpdateFrameParams(me);
-		else	me->paramUpdatePending = true;	
-		}
+	// 2026: applied by the perform routine at the next frame boundary (audio thread)
+	if (me->history.bufSize > 0)
+		me->paramUpdatePending = true;
 #endif
 	
 	}
@@ -439,11 +437,9 @@ void DoDelta(tMutator* me, double iDelta)
 			}
 		
 		#if __IM_HISTORY__
-			if (me->history.bufSize > 0) {
-				if (me->history.bufIndex == 0)
-						UpdateFrameParams(me);
-				else	me->paramUpdatePending = true;	
-				}
+			// 2026: applied by the perform routine at the next frame boundary
+			if (me->history.bufSize > 0)
+				me->paramUpdatePending = true;
 		#endif
 	
 		}
@@ -535,11 +531,9 @@ DoAbsInt(
 	me->params.relInterval = false;
 	
 #if __IM_HISTORY__
-	if (me->history.bufSize > 0) {
-		if (me->history.bufIndex == 0)
-				UpdateFrameParams(me);
-		else	me->paramUpdatePending = true;	
-		}
+	// 2026: applied by the perform routine at the next frame boundary (audio thread)
+	if (me->history.bufSize > 0)
+		me->paramUpdatePending = true;
 #endif
 	}
 
@@ -564,9 +558,8 @@ DoRelInt(
 	
 #if __IM_HISTORY__
 	// ASSERT: (me->history.bufSize > 0)
-	if (me->history.bufIndex == 0)
-			UpdateFrameParams(me);
-	else	me->paramUpdatePending = true;	
+	// 2026: applied by the perform routine at the next frame boundary
+	me->paramUpdatePending = true;
 #endif
 	}
 
