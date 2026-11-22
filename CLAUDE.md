@@ -79,6 +79,9 @@ Added for the `rng-fixes` package (2026-11-17):
    `bang` from a `metro` or `delay` (patcher opens, no crash). Also `clear` on an
    `lp.frim~` without arguments (crashed before) and a float into the left inlet of
    `lp.emeric~` (crashed before).
+   NN factor: automate NN from a `metro 1` (e.g. alternating 0 and 31) on `lp.qvvv~` in
+   all range modes, `lp.netochka~` (positive and negative NN, with fractions),
+   `lp.pvvv~`, `lp.sss~`: no single loud clicks; the sound otherwise as before.
 
 Other things to watch: converted Max 4 patchers (clippings, `lp.doom`,
 `lp.pfft.frimWrap`, `lp.bibi`/`lp.ernie`/`lp.abbie` help, "Running CPU Usage") look and
@@ -251,9 +254,20 @@ workflow builds pushes to both branches. One commit per change:
     thread), and ignored float omega in irregular relative mode; `lp.galliard~` set the
     order before the coefficients; `lp.mrsnorris` opened patchers in whatever thread the
     bang came from (now `defer_low`).
+    NN factor (2026-11-22, user's request): the perform routines read nn, mask and
+    offset (lp.qvvv~: factor, factor1 = 1/factor, offset; lp.netochka~: nn, nnFrac,
+    factor, offset) separately, so an NN message from another thread could mix old and
+    new values for one vector: harmless DC shift in the integer noise objects, wrong
+    values up to full scale in lp.netochka~, and in lp.qvvv~ a piece scaled by up to
+    2^23 (138 dB). Now every perform routine reads one value once per vector with the
+    new `LitterReadOnce()` (MaxUtils.h, volatile read of an aligned 32/64-bit value) and
+    derives the rest with the setter's formula (lp.schhh~, lp.sss~, lp.zzz~, lp.trrr~,
+    lp.pfff~/phhh~/pvvv~, the 64 variants, lp.qvvv~/qvvvl~, lp.netochka~). Output
+    unchanged: derived values compared with the old setters bit for bit over the whole
+    NN range (test programs in the scratchpad only).
     Reviewed and left (no crash, at most one vector or one ramp segment with mixed old
-    and new values when a message arrives exactly during the perform routine): the noise
-    objects' NN/mask/offset setters, `lp.epoisse~` pi (rescales `interp[]`/countdown),
+    and new values when a message arrives exactly during the perform routine):
+    `lp.epoisse~` pi (rescales `interp[]`/countdown),
     `lp.poppy~` and `lp.frrr~` (recompute the interpolation ramp), `lp.tim~` and
     `lp.frim~` without history (mode flag and mutation function read separately, wrong
     function type possible for one vector), the per-instance Taus88 state that `lp.epoisse~`
