@@ -24,8 +24,8 @@ Waiting for the user's test of the redesign samples (rng-fixes item 16).
   make_help64) from restyle_help.py to redesign_help.py and check that regenerating
   reproduces the files; keep lp.doom.maxpat as an empty abstraction; build (macOS by
   hand), update the test points. If not approved: adjust redesign_help.py, redo the
-  samples from git (`git checkout be8f44b`-era files are NOT the base - the base is the
-  committed state before commit "Redesign samples"), push, let the user test again.
+  samples from their state before the redesign (`git checkout 9772835 -- <files>`; the
+  redesign itself is commit 3f0837a), push, let the user test again.
 - Earlier test results (points 1-11 under "Where things stand") are still outstanding.
 - After the user has tested `rng-fixes`: merge it into `64-bit-version` (ask first).
 - Still open: licensing with Peter Castine before publishing binaries; the reviewed but
