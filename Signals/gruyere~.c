@@ -441,11 +441,10 @@ GruyereSetBuf(
 		}
 	
 	if (iSym == NIL || iSym == gensym("")) {
-		// No buffer~: use the built-in cosine table
-		if (me->bufref != NIL) {
-			object_free(me->bufref);
-			me->bufref = NIL;
-			}
+		// No buffer~: use the built-in cosine table.
+		// 2026: the buffer reference is kept (freed only in GruyereFree): the perform
+		// routine may be using it right now in the audio thread. A NIL bufname tells
+		// the perform routine to ignore it.
 		me->bufname		= NIL;
 		me->bufOffset	= 0;
 		return;
@@ -541,7 +540,8 @@ GruyereDClick(
 	
 	{
 	
-	t_buffer_obj* b = (me->bufref != NIL) ? buffer_ref_getobject(me->bufref) : NIL;
+	t_buffer_obj* b = (me->bufref != NIL && me->bufname != NIL)
+							? buffer_ref_getobject(me->bufref) : NIL;
 	
 	if (b != NIL)
 		 buffer_view(b);
@@ -718,7 +718,7 @@ void GruyerePerform64(objGruyere *me, t_object *dsp64, double **ins, long numins
     rThresh		= me->randThresh;
     phi			= me->phi;
     
-    b	= (me->bufref != NIL) ? buffer_ref_getobject(me->bufref) : NIL;
+    b	= (me->bufref != NIL && me->bufname != NIL) ? buffer_ref_getobject(me->bufref) : NIL;
     tab	= (b != NIL) ? buffer_locksamples(b) : NIL;
     
     if (tab == NULL)  {
