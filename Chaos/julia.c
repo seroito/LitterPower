@@ -259,8 +259,18 @@ DoNext(
 			i	= me->zImag;
 	
 	// Complex z' = z^2 + c
-	me->zReal = r * r - i * i + me->cReal;
-	me->zImag = 2 * r * i + me->cImag;
+	r = r * r - i * i + me->cReal;
+	i = 2 * me->zReal * i + me->cImag;
+	
+	// Once |z| > 2 (with |c| <= 2) the orbit runs away to infinity and soon gives inf
+	// and NaN (which also happened when c was changed while z was far out). Since 2026
+	// the orbit then starts again at z0, as in lp.julie~. NaN fails the test, too.
+	if ( !(r * r + i * i <= 4.0) ) {
+		r = me->z0Real;
+		i = me->z0Imag;
+		}
+	me->zReal = r;
+	me->zImag = i;
 	}
 	
 static void
