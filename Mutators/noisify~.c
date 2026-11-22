@@ -55,16 +55,9 @@
 #include <float.h>				// For FLT_EPSILON
 
 
-#if defined(MAC_VERSION) || defined(WIN_VERSION)
-	#define __HAS_CRITICAL_REGIONS__ 1
-#else
-	#define __HAS_CRITICAL_REGIONS__ 0
-#endif
-
-#if __HAS_CRITICAL_REGIONS__
-	#include "ext_critical.h"	// For critical_enter() and critical_exit()
-								// Should this be in MaxUtils.h or something?
-#endif
+	// 2026: the ring buffer is only resized in the audio thread (or before audio starts:
+	// new and dsp64 methods), so no lock is needed. The old critical region did not
+	// protect against the perform routine anyway.
 
 
 #if __PROFILER_ONFLAG__
@@ -141,6 +134,8 @@ typedef struct {
 	tTaus88Data		tausData;			// Private random number generator
 	
 	float			omega;				// In range 0 <= omega <= 1
+	float			userOmega;			// 2026: omega from the float inlet; applied by the
+										// perform routine (audio thread) and the dsp64 method
 	unsigned long	noiseThresh;		// Depends on omega; threshold used to decide
 										// whether to use source or target sample as
 										// excitation source
@@ -186,6 +181,7 @@ void	EmericFree(objEmeric*);
 
 	// Object message functions
 static void EmericOmega(objEmeric*, double);
+static void EmericSetOmega(objEmeric*, double);
 static void EmericFloat(objEmeric*, double);
 static void EmericTattle(objEmeric*);
 static void	EmericAssist(objEmeric*, void*, long, long, char*);
@@ -456,12 +452,6 @@ SetVocBufSize(
 	double*		p;								// General-purpose pointers
 	double*			s;
 	
-#if __HAS_CRITICAL_REGIONS__
-	critical_enter(0);
-#else
-	short prevLock = lockout_set(1);
-#endif
-
 	// Two basic alternatives
 	if (iNewSize < 	me->ringBufCurSize) {
 		// Need to shrink the ring buffer
@@ -537,7 +527,7 @@ SetVocBufSize(
 		
 		do	{
 			//BlockMoveData((Ptr) curMeans, (Ptr) p, kFBankSize);
-            memmove(p, curMeans, kFBankSize);       // ?????? size correct ????? vb
+            memmove(p, curMeans, kFBankSize * sizeof(double));	// 2026: was kFBankSize bytes
 			
 			p += kFBankSize;
 			i -= kFBankSize;
@@ -547,12 +537,6 @@ SetVocBufSize(
 	
 	// Don't forget to update cur size component
 	me->ringBufCurSize = iNewSize;
-
-#if __HAS_CRITICAL_REGIONS__
-	critical_exit(0);
-#else
-	lockout_set(prevLock);
-#endif
 	}
 
 /******************************************************************************************
@@ -674,6 +658,7 @@ EmericNew(
 	
 	// Initialize members
 	me->omega			= kDefOmega;		// Default value for omega/noise thresh
+	me->userOmega		= kDefOmega;
 	me->noiseThresh		= 0;
 	me->srcXFade		= 0.0;
 	me->vocXFade		= 0.0;
@@ -686,8 +671,10 @@ EmericNew(
 								// With omega == 0, this call simply clears all rParams
 								// Ignore return value at this time.
 	
-	if (iOmega != kDefOmega)				// Now, finally, try the user argument
-		EmericOmega(me, iOmega);
+	if (iOmega != kDefOmega) {				// Now, finally, try the user argument
+		EmericSetOmega(me, iOmega);			// Validates and posts an error if necessary
+		EmericOmega(me, me->userOmega);		// No audio yet: safe to apply directly
+		}
 
 punt:
 	return me;
@@ -735,10 +722,12 @@ void EmericOmega(
 	const double	kXFadeCutoff = 0.05;	// Point where we no longer cross-fade between
 											// source and vocoder output
 	
-	if (iOmega < 0.0 || 1.0 < iOmega) {
-		error("%s: invalid omega %ld", kClassName, iOmega);
+	// 2026: this function resizes the ring buffer, so it must only run where the perform
+	// routine cannot run at the same time: in the perform routine itself, in the dsp64
+	// method, or in new. Messages go through EmericSetOmega(). It posts nothing, as it
+	// may run in the audio thread; values out of range are ignored.
+	if (iOmega < 0.0 || 1.0 < iOmega)
 		return;
-		}
 	
 	me->omega		= iOmega;
 	me->noiseThresh = ((double) kULongMax) * iOmega * iOmega + 0.5;
@@ -765,6 +754,22 @@ void EmericOmega(
 	
 	}
 
+	// 2026: omega from the float inlet. Only stores the value; the perform routine applies
+	// it at the start of the next signal vector (the dsp64 method does it when audio
+	// starts), so the ring buffer is never reorganized while the perform routine uses it.
+static void EmericSetOmega(
+	objEmeric*	me,
+	double		iOmega)
+	
+	{
+	if (iOmega < 0.0 || 1.0 < iOmega) {
+		error("%s: invalid omega %f", kClassName, iOmega);
+		return;
+		}
+	
+	me->userOmega = iOmega;
+	}
+
 void EmericFloat(
 	objEmeric*	me,
 	double		iVal)
@@ -779,8 +784,8 @@ void EmericFloat(
 	long proxyNum = ObjectGetInlet(&me->coreObject.z_ob, me->coreObject.z_in);
 	
 	if (proxyNum == inletOmega)
-		 EmericOmega(me, iVal);
-	else error("%s: doesn't accept floats in inlet %ld", proxyNum);
+		 EmericSetOmega(me, iVal);
+	else error("%s: doesn't accept floats in inlet %ld", kClassName, proxyNum);
 	
 	}
 
@@ -810,6 +815,8 @@ EmericTattle(
 	post("  Calculations based on sample rate of %lf", me->curSR);
 	post("  Omega: %lf (Q = %lf, noiseThresh = %lu, energy latency %lf ms)",
 			me->omega, q, me->noiseThresh, kLatency);
+	if (me->userOmega != me->omega)
+		post("  New omega %lf from the inlet will be applied when audio runs", me->userOmega);
 	if (me->srcXFade > 0.0) {
 		post("Crossfading wet/dry: %lf source, %lf mutant", me->srcXFade, me->vocXFade);
 		}
@@ -1009,7 +1016,8 @@ void EmericDSP64(objEmeric *me, t_object *dsp64, short *count, double samplerate
     // Always recalculate omega-related parameters!
     // This is necessary in case this object had a signal in the omega inlet the last time the DSP chain
     // was built, and the user has since deleted the signal.
-    EmericOmega(me, me->omega);
+    // 2026: userOmega is the latest value from the float inlet.
+    EmericOmega(me, me->userOmega);
     
     if (count[inletOmega] > 0)
         object_method(dsp64, gensym("dsp_add64"), me, EmericPerform6_64, 0, NULL);
@@ -1356,6 +1364,9 @@ void EmericPerform5_64(objEmeric *me, t_object *dsp64, double **ins, long numins
     
     if (me->coreObject.z_disabled || me->ringBuf == NIL) return;
     
+    // 2026: apply a new omega from the float inlet here, in the audio thread
+    if (me->userOmega != me->omega)
+        EmericOmega(me, me->userOmega);
     
     if (me->omega == 0.0)
         PerformNull(me, sampleframes,
