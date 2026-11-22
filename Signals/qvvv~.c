@@ -558,56 +558,49 @@ void Pvvv2DSP64(objBrown* me, t_object *dsp64, short *count, double samplerate,
 		long			vecSize)
 		
 		{
+	// 2026: read the NN factor once and derive factor1 and offset here, exactly as
+	// Pvvv2FloatNN() does. Reading the three values separately could mix old and new
+	// ones when an NN message arrives meanwhile (from another thread): factor1 must be
+	// 1/factor, or the piece is scaled by their ratio (up to 2^23). factor == 0 means
+	// no NN factor (nn == 0).
+	const float	factor	= LitterReadOnce(float, me->factor);
+	const float	factor1	= (factor != 0.0f) ? 1.0 / factor : 0.0f;
+	const float	offset	= 0.5 * factor1;
+	
     // Do we have to deal with NN factor and/or Range actions?
 	    switch(me->action) {
 	        default:
 	            // actStet
-	            if (me->nn == 0)
+	            if (factor == 0.0f)
 	                do { *outNoise++ = (double)(*curSamp++); } while (--vecSize > 0);
 	            else {
-	                float	factor	= me->factor,
-	                factor1	= me->factor1,
-	                offset	= me->offset;
-	                
 	                do { *outNoise++ = factor1 * floor(factor * (*curSamp++)) + offset; }
 	                while (--vecSize > 0);
 	            }
 	            break;
 	            
 	        case actClip:
-	            if (me->nn == 0)
+	            if (factor == 0.0f)
 	                do { *outNoise++ = ClipSignal(*curSamp++); } while (--vecSize > 0);
 	            else {
-	                float	factor	= me->factor,
-	                factor1	= me->factor1,
-	                offset	= me->offset;
-	                
 	                do { *outNoise++ = factor1 * floor(factor * ClipSignal(*curSamp++)) + offset; }
 	                while (--vecSize > 0);
 	            }
 	            break;
 	            
 	        case actWrap:
-	            if (me->nn == 0)
+	            if (factor == 0.0f)
 	                do { *outNoise++ = WrapSignal(*curSamp++); } while (--vecSize > 0);
 	            else {
-	                float	factor	= me->factor,
-	                factor1	= me->factor1,
-	                offset	= me->offset;
-	                
 	                do { *outNoise++ = factor1 * floor(factor * WrapSignal(*curSamp++)) + offset; }
 	                while (--vecSize > 0);
 	            }
 	            break;
 	            
 	        case actReflect:
-	            if (me->nn == 0)
+	            if (factor == 0.0f)
 	                do { *outNoise++ = ReflectSignal(*curSamp++); } while (--vecSize > 0);
 	            else {
-	                float	factor	= me->factor,
-	                factor1	= me->factor1,
-	                offset	= me->offset;
-	                
 	                do { *outNoise++ = factor1 * floor(factor * ReflectSignal(*curSamp++)) + offset; }
 	                while (--vecSize > 0);
 	            }
