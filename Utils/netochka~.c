@@ -75,9 +75,11 @@ typedef struct {
 	t_pxobject		coreObject;
 	tTaus88Data		tausData;			// Private random number generator
 	
+	double			nnValue;			// 2026: NN factor as set by the message (one value,
+										// read once per vector by the perform routine)
 	int				nn;					// Number of bits to mask out or dither
-	double			factor,				// Values depend on nn.
-					offset,
+	double			factor,				// Values depend on nn (kept for tattle; the perform
+					offset,				// routine derives its own from nnValue)
 					nnFrac;
 	
 	double			curSR,				// Current MSP sample rate.
@@ -227,39 +229,55 @@ punt:
  *
  ******************************************************************************************/
 
-void NetochkaNN(
-	tDegrade* me,
-	double	iNN)
+	// 2026: the calculation formerly in NetochkaNN(), shared by the message handler and the
+	// perform routine. The perform routine reads nnValue once per vector and derives the
+	// four values from it; reading nn, nnFrac, factor and offset separately could mix old
+	// and new values when an NN message arrives meanwhile (from another thread).
+static void CalcNNParams(
+	double	iNN,
+	int*	oNN,
+	double*	oNNFrac,
+	double*	oFactor,
+	double*	oOffset)
 	
 	{
 //	int	intNN	= (iNN >= 0.0) ? floor(iNN) : ceil(iNN);
 	int	intNN	= iNN;											// Truncate to integer
 	
 	if (intNN == 0) {
-		me->nn			= 0;
-		me->nnFrac		= 0.0;
-		me->factor		= 0.0;
-		me->offset		= 0.0;
+		*oNN			= 0;
+		*oNNFrac		= 0.0;
+		*oFactor		= 0.0;
+		*oOffset		= 0.0;
 		}
 	
 	else if (intNN > 0) {
 		if (iNN > kMaxNN) iNN = intNN = kMaxNN;
 		
-		me->nn		= intNN;
-		me->nnFrac	= iNN - intNN;
-		me->factor	= 1 << (31 - intNN);
-		me->offset	= 0.5 / me->factor;
+		*oNN		= intNN;
+		*oNNFrac	= iNN - intNN;
+		*oFactor	= 1 << (31 - intNN);
+		*oOffset	= 0.5 / *oFactor;
 		}
 	
 	else {
 		if (iNN < kMinNN) iNN = intNN = kMinNN;
 		
-		me->nn		= intNN;
-		me->nnFrac	= intNN - iNN;
-		me->factor	= 1 << (31 + intNN);
-		me->offset	= 0.5 / me->factor;
+		*oNN		= intNN;
+		*oNNFrac	= intNN - iNN;
+		*oFactor	= 1 << (31 + intNN);
+		*oOffset	= 0.5 / *oFactor;
 		}
 	
+	}
+
+void NetochkaNN(
+	tDegrade* me,
+	double	iNN)
+	
+	{
+	me->nnValue = iNN;					// The only value the perform routine reads
+	CalcNNParams(iNN, &me->nn, &me->nnFrac, &me->factor, &me->offset);
 	}
 
 void NetochkaESR(
@@ -486,7 +504,10 @@ void NetochkaPerform64(tDegrade *me, t_object *dsp64, double **ins, long numins,
         long			vecCounter;
         tSampleVector	inSig, outSig;
         int				nn;
-        double			skipSamps;
+        double			skipSamps,
+                        nnFracV,	// 2026: derived from one read of nnValue
+                        offsetV,
+                        factorV;
 
         
         if (me->coreObject.z_disabled) return;
@@ -497,7 +518,7 @@ void NetochkaPerform64(tDegrade *me, t_object *dsp64, double **ins, long numins,
         outSig		= outs[0];
         
         // Do our stuff
-        nn			= me->nn;
+        CalcNNParams(LitterReadOnce(double, me->nnValue), &nn, &nnFracV, &factorV, &offsetV);
         skipSamps	= me->skipSamps;
         
         if (nn == 0) {
@@ -554,9 +575,9 @@ void NetochkaPerform64(tDegrade *me, t_object *dsp64, double **ins, long numins,
         }														// END IF (nn == 0)
         
         else {
-            double	nnFrac	= me->nnFrac,
-            offset	= me->offset,
-            factor	= me->factor;
+            double	nnFrac	= nnFracV,
+            offset	= offsetV,
+            factor	= factorV;
             
             if (nnFrac == 0.0) {
                 // Integral NN/Dither
