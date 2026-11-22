@@ -8,8 +8,7 @@ continue. Last updated 2026-11-22.
 All help files, the overview and the extras are redesigned (rng-fixes items 16-18); the
 user tests the package next.
 
-- Package: the manual run with macOS after commit "Redesign: all help files, overview and
-  extras" (`gh run list --repo seroito/LitterPower --limit 3`). The user deletes the old
+- Package: run 45031210288 (with macOS, commit 3b6389e), artifact `LitterPower-package`. The user deletes the old
   Documents/Max 9/Packages/LitterPower folder before installing. Screenshots of findings
   go to `Findings/` (git-ignored).
 - User to check: windows open fully (old-format files too) and at 100/80; every help
@@ -53,8 +52,8 @@ Decisions made by the user:
 |---|---|
 | Source port | Done. `python3 tools/check.py` (gcc syntax check on Linux): 0 of 118 units failing |
 | Windows build | Succeeds: 104 externals (`.mxe64`) |
-| macOS build | Succeeds: 104 externals (`.mxo`, universal x86_64 + arm64, ad-hoc signed), last at run 44967061395 (2026-11-22). Only built when started by hand |
-| Package | Latest with macOS: run 44967061395 on `rng-fixes` (all fixes up to the NN factor change, item 15), artifact `LitterPower-package`, Windows and macOS externals (208 files). Later pushes build Windows-only packages |
+| macOS build | Succeeds: 104 externals (`.mxo`, universal x86_64 + arm64, ad-hoc signed), last at run 45031210288 (2026-11-22). Only built when started by hand |
+| Package | Latest with macOS: run 45031210288 on `rng-fixes` (everything up to the redesign, item 18), artifact `LitterPower-package`, Windows and macOS externals (208 files). Later pushes build Windows-only packages |
 | Help files | Every built object has one (15 new ones written in 2026) |
 | Reference pages | `docs/*.maxref.xml` for all 104 objects |
 | Test in Max 9 | Under way since 2026-11-22 with run 44967061395 (user). No results reported yet |
