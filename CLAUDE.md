@@ -1,7 +1,7 @@
 # LitterPower modernization notes
 
 What has been done to bring Litter Power to Max 9, where things stand, and how to
-continue. Last updated 2026-11-18.
+continue. Last updated 2026-11-22.
 
 ## Goal and decisions
 
@@ -71,6 +71,14 @@ Added for the `rng-fixes` package (2026-11-17):
    (now keeps the source sign, no drift); `lp.fiana~` with `exp`/`sinh` (regular
    restarts instead of silence); `lp.scamp~` map mode reacts to the input range inlets;
    `lp.ppp~` with a fractional pop width (random widths).
+11. Threads (item 15, 2026-11-22): with Overdrive on, and again with "Scheduler in Audio
+   Interrupt" on, and inside `poly~ ... @parallel 1`, send messages fast (`metro 1`) while
+   audio runs: `lp.emeric~` omega floats (no crash, omega changes audibly), `lp.gruyere~`
+   `set` / `set <buffer>` alternating, `lp.frim~ 512` `obands` and mode messages (now
+   take effect), `lp.galliard~` lists of different lengths (no clicks), `lp.mrsnorris`
+   `bang` from a `metro` or `delay` (patcher opens, no crash). Also `clear` on an
+   `lp.frim~` without arguments (crashed before) and a float into the left inlet of
+   `lp.emeric~` (crashed before).
 
 Other things to watch: converted Max 4 patchers (clippings, `lp.doom`,
 `lp.pfft.frimWrap`, `lp.bibi`/`lp.ernie`/`lp.abbie` help, "Running CPU Usage") look and
@@ -228,6 +236,31 @@ workflow builds pushes to both branches. One commit per change:
     Documented: lp.tim~ relative mode drifts (sum of intervals), lp.poppy~ default
     interpolation is -1 (geometric), lp.frim~ obands = bands per octave. The test
     harness lived in the scratchpad only (not in the repository).
+
+15. Threads (2026-11-22, user's request after asking about Overdrive / Scheduler in
+    Audio Interrupt): every built signal object reviewed for message handlers that change
+    what the perform routine (audio thread) uses, plus main-thread-only work. Fixed:
+    `lp.emeric~` resized its ring buffer from the float inlet while the perform routine
+    wrote to it (now only the audio thread / dsp64 method resizes it; the useless global
+    critical region removed; mean values copied with the wrong size; an error message
+    that crashed on floats into the signal inlets); `lp.gruyere~` freed its buffer~
+    reference on `set` without a name (kept now, flag instead); `lp.frim~` wrote 1-3
+    bytes past its state buffer (every new object; checked with AddressSanitizer), crashed
+    on `clear` without history, applied parameter changes in the message thread and
+    ignored `obands` while audio ran (now all applied at frame boundaries in the audio
+    thread), and ignored float omega in irregular relative mode; `lp.galliard~` set the
+    order before the coefficients; `lp.mrsnorris` opened patchers in whatever thread the
+    bang came from (now `defer_low`).
+    Reviewed and left (no crash, at most one vector or one ramp segment with mixed old
+    and new values when a message arrives exactly during the perform routine): the noise
+    objects' NN/mask/offset setters, `lp.epoisse~` pi (rescales `interp[]`/countdown),
+    `lp.poppy~` and `lp.frrr~` (recompute the interpolation ramp), `lp.tim~` and
+    `lp.frim~` without history (mode flag and mutation function read separately, wrong
+    function type possible for one vector), the per-instance Taus88 state that `lp.epoisse~`
+    uses both in `bang` and in the perform routine (random values only). No built object uses clocks or qelems, so Scheduler in Audio
+    Interrupt only changes which thread messages arrive in. Assumption: the dsp64 method
+    does not run at the same time as the object's perform routine (allocations there are
+    the usual SDK practice).
 
 Not done (reviewed, lower priority): A_GIMME new functions declaring argc as `short`,
 A_LONG handlers declaring `long` instead of `t_atom_long`.
