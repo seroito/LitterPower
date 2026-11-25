@@ -4604,7 +4604,7 @@
 			{
 				"box": {
 					"maxclass": "comment",
-					"text": "Thanks to Trond for making me do this! Copyright © 2002-26 Peter Castine.",
+					"text": "Thanks to Trond for making me do this! Copyright © 2001-2026 Peter Castine.",
 					"linecount": 1,
 					"patching_rect": [
 						44.0,

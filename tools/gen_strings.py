@@ -99,9 +99,9 @@ VERSION_RE = re.compile(r'^\d+\.\d')
 CR_RE = re.compile(r'(Copyright \u00a9 ?)(\d{4})(?:-(\d{2}|\d{4}))?( Peter Castine)')
 
 def update_copyright(item):
-    """Copyright years up to 2026 (user's request, 2026-11-17): '2001-08' -> '2001-26'."""
-    return CR_RE.sub(lambda m: '%s%s-26%s' % (m.group(1), m.group(2), m.group(4))
-                     if m.group(2) != '2026' else m.group(0), item)
+    """Copyright years: always '2001-2026' (user's request, 2026-11-25; first year 2001
+    for every object, replacing the per-object start years and the short form '-26')."""
+    return CR_RE.sub(lambda m: '%s2001-2026%s' % (m.group(1), m.group(4)), item)
 
 def standard_layout(items):
     """Return items with the six standard version strings LitterAssist() expects in front.
@@ -117,7 +117,7 @@ def standard_layout(items):
     if len(items) >= 4 and VERSION_RE.match(items[0]) and items[3].startswith('Litter'):
         return [items[0], items[1], '0', items[2], items[3], '18008002'] + items[4:]
     if items and not VERSION_RE.match(items[0]) and not items[0].startswith('LP'):
-        return ['1.8i1', '1.8i1, Copyright \u00a9 2001-26 Peter Castine.', '0',
+        return ['1.8i1', '1.8i1, Copyright \u00a9 2001-2026 Peter Castine.', '0',
                 '1.8i1', 'Litter Power Package 1.8i1', '18008002'] + items
     return items
 
