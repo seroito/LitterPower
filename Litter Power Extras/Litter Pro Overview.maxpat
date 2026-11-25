@@ -5137,6 +5137,32 @@
 						298.667
 					]
 				}
+			},
+			{
+				"patchline": {
+					"source": [
+						"obj-51",
+						1
+					],
+					"destination": [
+						"obj-53",
+						0
+					],
+					"hidden": 1
+				}
+			},
+			{
+				"patchline": {
+					"source": [
+						"obj-53",
+						0
+					],
+					"destination": [
+						"obj-51",
+						0
+					],
+					"hidden": 1
+				}
 			}
 		],
 		"editing_bgcolor": [
