@@ -8,10 +8,12 @@ abstractions), found when testing in Max 9 (2026-11-22):
    saved state is removed; the window size in the file counts.
 2. Window position and size: the root window opens 100 px from the left and 80 px from
    the top (as Max's own help files do), not at the screen edge (which put it between two
-   monitors). Every window (root, tabs, subpatchers) is as large as its content plus a
-   margin (40 px, plus 26 px for a tab bar). Files in the old Max 5 format (no
-   "appversion") store a window as left, top, right, bottom; newer files as left, top,
-   width, height - each file gets the form Max expects from it.
+   monitors). Every window is as large as its content plus a margin (40 px, plus 26 px
+   for a tab bar); a window with tabs is sized to its root page (user's choice,
+   2026-11-25), wider tabs get scrollbars. Max 9 reads "rect" as left, top, width,
+   height in every file format (shown by the user's screenshots on 2026-11-25; from
+   2026-11-22 to 11-25 old-format files were wrongly given right/bottom edges, which
+   made every window 100 px too wide and 80 px too tall).
 3. Menus (umenu) whose items had no separators showed all items as one entry; the
    separators are added.
 4. lp.doom (window positioning for Mac OS 9/X and Windows XP) and its patch cords are
@@ -92,30 +94,30 @@ def content(p):
     return right, bottom
 
 
-def set_window(p, x, y, w, h, ltrb):
-    rect = [x, y, round(x + w), round(y + h)] if ltrb else [x, y, round(w), round(h)]
+def set_window(p, x, y, w, h):
+    rect = [x, y, round(w), round(h)]
     p['rect'] = rect
     if 'defrect' in p:
         p['defrect'] = list(rect)
 
 
 def fit_windows(d):
-    """Root window at WINDOW_POS, every window as large as its content plus a margin."""
+    """Root window at WINDOW_POS, every window as large as its content plus a margin.
+
+    Tabs share the root window, which is sized to the root page; tabs wider or taller
+    than that scroll.
+    """
     root = d['patcher']
-    ltrb = 'appversion' not in root
     tabs = [e['box']['patcher'] for e in root['boxes']
             if e['box']['maxclass'] == 'newobj' and 'patcher' in e['box']
             and e['box']['patcher'].get('showontab')]
     right, bottom = content(root)
-    for t in tabs:
-        tr, tb = content(t)
-        right, bottom = max(right, tr), max(bottom, tb)
     w = min(MAX_W, right + MARGIN)
     h = min(MAX_H, bottom + MARGIN + (TAB_BAR if tabs else 0.0))
     x, y = WINDOW_POS
-    set_window(root, x, y, w, h, ltrb)
+    set_window(root, x, y, w, h)
     for t in tabs:
-        set_window(t, x, y + TAB_BAR, w, h - TAB_BAR, ltrb)
+        set_window(t, x, y + TAB_BAR, w, h - TAB_BAR)
 
     def subs(p):
         for e in p['boxes']:
@@ -127,7 +129,7 @@ def fit_windows(d):
                 r, bt = content(s)
                 sx, sy = (s.get('rect') or [50.0, 80.0])[:2]
                 set_window(s, sx, sy, min(MAX_W, max(200.0, r + MARGIN)),
-                           min(MAX_H, max(120.0, bt + MARGIN)), ltrb)
+                           min(MAX_H, max(120.0, bt + MARGIN)))
             subs(s)
     subs(root)
 
