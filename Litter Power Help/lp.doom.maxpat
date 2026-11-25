@@ -229,7 +229,7 @@
 					],
 					"fontname": "Arial",
 					"fontsize": 12.0,
-					"text": "Copyright 2001-2026 Peter Castine.",
+					"text": "Copyright 1992-2026 Peter Castine.",
 					"textcolor": [
 						0.0,
 						0.0,

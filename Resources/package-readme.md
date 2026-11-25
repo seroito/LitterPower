@@ -3,7 +3,7 @@
 Random number generators and distributions, noise sources, chaos, mutation and
 utility externals for Max, MSP and Jitter, by Peter Castine.
 
-Copyright © 2001-2026 Peter Castine. All rights reserved.
+Copyright © 1992-2026 Peter Castine. All rights reserved.
 
 ## Requirements
 

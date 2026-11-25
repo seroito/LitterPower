@@ -7,12 +7,10 @@ continue. Last updated 2026-11-25.
 
 All help files, the overview and the extras are redesigned (rng-fixes items 16-18); the
 user tests the package next. Added 2026-11-25 (item 19): package readme and icon,
-copyright years 2001-2026 everywhere users see them, the DSP skill (How to continue, 6).
+copyright years 1992-2026 everywhere users see them, the DSP skill (How to continue, 6).
 MC versions were investigated and postponed by the user; everything needed to resume
 is in item 19. Not pushed yet at the time of writing.
 
-- Open decision: the overview's licence text says "copyright © 1992-2026"; the user
-  asked for 2001-2026 everywhere but this legal text was left until they decide.
 
 - Package: run 45031210288 (with macOS, commit 3b6389e), artifact `LitterPower-package`. The user deletes the old
   Documents/Max 9/Packages/LitterPower folder before installing. Screenshots of findings
@@ -111,8 +109,8 @@ Added for the `rng-fixes` package (2026-11-17):
    `lp.pvvv~`, `lp.sss~`: no single loud clicks; the sound otherwise as before.
 12. Package files (rng-fixes item 19, 2026-11-25): `readme.md` and `icon.png` at the
    package root; whether Max shows the icon (Package Manager or file browser) and how it
-   looks; copyright "2001-2026" where objects show their version (e.g. `vers` in the
-   Max console, assistance) and in the overview credit line.
+   looks; copyright where objects show their version (e.g. `vers` in the
+   Max console, assistance) and in the overview credit line: "1992-2026".
 
 Other things to watch: converted Max 4 patchers (clippings, `lp.doom`,
 `lp.pfft.frimWrap`, `lp.bibi`/`lp.ernie`/`lp.abbie` help, "Running CPU Usage") look and
@@ -388,18 +386,19 @@ workflow builds pushes to both branches. One commit per change:
 
 19. Package files, copyright, Cycling '74 resources (2026-11-25, user's requests):
     - Readme: `Resources/package-readme.md` -> package root `readme.md` (Max's user
-      guide lists readme/licence/icon at the root): "Copyright © 2001-2026 Peter
+      guide lists readme/licence/icon at the root): "Copyright © 1992-2026 Peter
       Castine. All rights reserved.", requirements, installation with the quarantine
       step, where to start, and the Max SDK licence notice (its MIT-style terms require
       it in copies; checked word for word against max-sdk-base/LICENSE.md).
     - Icon: `icon.png` (500 x 500) from `tools/make_icon.py`: the overview's former
       background picture (Gaussian bell curve), square crop below the title text,
       contrast x1.8, colour x2.2 (user chose this "version B" from two samples).
-    - Copyright years 2001-2026 (first year 2001 for every object, user's choice): string
+    - Copyright years 1992-2026 everywhere users see them (user's choice; first set to
+      2001-2026, then aligned with the overview's licence text "1992-2026"): string
       tables (gen_strings.py rule + the four hand-written tables), bundle info (CMake),
-      package-info.json (both were 2001-08), overview credit line, Running CPU Usage,
-      Poisson Rhythms, lp.doom. Left: the overview's licence text ("1992-2026", open
-      decision) and the comment headers of the C sources (file history, not shipped).
+      package-info.json (both were 2001-08), readme, overview credit line, Running CPU
+      Usage, Poisson Rhythms, lp.doom. The comment headers of the C sources keep their
+      own years (file history, not shipped; user's decision).
     - Cycling '74 resources reviewed (max-sdk, max-sdk-base, max-package-template, user
       guide, SDK 8.2 docs): `max-sdk-base` is at upstream main; SDK 8.2.0 (2021) is still
       the latest release. All 91 perform routines scanned: no outlet, qelem, defer,
