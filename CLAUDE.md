@@ -1,7 +1,7 @@
 # LitterPower modernization notes
 
 What has been done to bring Litter Power to Max 9, where things stand, and how to
-continue. Last updated 2026-11-22.
+continue. Last updated 2026-11-25.
 
 ## Resume here (2026-11-22)
 
@@ -141,6 +141,13 @@ removed (see `README.md`).
 5. Windows compiler warnings: artifact `build-log-windows`. `gh run download` refuses it
    ("path traversal"); fetch it with
    `gh api repos/seroito/LitterPower/actions/artifacts/<id>/zip`.
+6. DSP rules: the project skill `.claude/skills/litter-dsp/SKILL.md` (2026-11-25, user's
+   request instead of a third-party JUCE "dsp-cookbook" skill, which was reviewed and
+   not installed: wrong platform, several bugs, no licence). It collects the rules from
+   rng-fixes items 1-15 (perform routines, threads and `LitterReadOnce`, numeric safety,
+   denormals, per-instance Taus88, the limiter) plus reference formulas (all eight RBJ
+   biquads, TPT SVF, one-pole/T60 smoothing) checked by a test program (scratchpad
+   only). Keep it in step with this file when a rule changes.
 
 ## Branch rng-fixes (2026-11-17, not merged yet)
 
