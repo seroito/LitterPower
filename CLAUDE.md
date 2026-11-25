@@ -9,8 +9,9 @@ All help files, the overview and the extras are redesigned (rng-fixes items 16-1
 user tests the package next. Added 2026-11-25 (item 19): package readme and icon,
 copyright years 1992-2026 everywhere users see them, the DSP skill (How to continue, 6).
 MC versions were investigated and postponed by the user; everything needed to resume
-is in item 19. Not pushed yet at the time of writing.
-
+is in item 19. User's findings of 2026-11-25 handled in item 20 (overview-link cords,
+lp.poppy~ NaN); lp.shhh~ NN works as designed, the user re-checks its scope~ picture.
+Help window sizes: the user asked to leave them as they are (lp.poppy~ was "too big").
 
 - Package: run 45031210288 (with macOS, commit 3b6389e), artifact `LitterPower-package`. The user deletes the old
   Documents/Max 9/Packages/LitterPower folder before installing. Screenshots of findings
@@ -111,6 +112,13 @@ Added for the `rng-fixes` package (2026-11-17):
    package root; whether Max shows the icon (Package Manager or file browser) and how it
    looks; copyright where objects show their version (e.g. `vers` in the
    Max console, assistance) and in the overview credit line: "1992-2026".
+13. User's findings fixed (rng-fixes item 20, 2026-11-25): no cords visible at the title of
+   the 26 help files with the added overview link (e.g. lp.veral), clicking the title
+   still opens the overview; lp.poppy~ with growth below 1, growth 4 and seed 0.5, a
+   growth signal above 4 (e.g. `sig~ 4.2`) and 0, each with geometric (default), linear
+   and two-sample interpolation (base frequency SR/2): the audio keeps running; the
+   normal range sounds as before. lp.shhh~: with `scope~ @calccount 1` (or `number~`),
+   NN 27-31 should show 32 ... 2 levels of noise, not a flat line.
 
 Other things to watch: converted Max 4 patchers (clippings, `lp.doom`,
 `lp.pfft.frimWrap`, `lp.bibi`/`lp.ernie`/`lp.abbie` help, "Running CPU Usage") look and
@@ -431,6 +439,30 @@ workflow builds pushes to both branches. One commit per change:
         are identical until each gets its own seed (e.g. `applyvalues seed 1 2 3 4`;
         worth a help note); lp.scamp~ is the only object with a message (int) outlet,
         whose handling in the wrapper is not documented; lp.gruyere~ with a buffer~.
+
+20. User's findings from the redesign test (2026-11-25):
+    - lp.veral (and 25 other help files): the cords of the overview link were visible.
+      `redesign_help.overview_link()` hid the objects but not the cords (Max does not
+      hide a cord whose objects are hidden); the cords now get the hidden flag and
+      `hide_link_cords()` repairs existing links on every run (diff: 52 hidden flags).
+    - lp.poppy~ "destroyed the audio": inf/NaN, checked with a test program built from
+      poppy~.c itself (22 scenarios). Geometric interpolation (default) divided by a
+      population of 0 (growth below 1: the population dies out; growth 4 with seed
+      0.5); the two-sample path took sqrt of a negative product; a growth signal above
+      4 (the float inlet clamps, the signal inlet does not) ran away to -1e173. Fix:
+      `NextPopSafe()` (restart at the seed when |p| > 2 or NaN, values below 1e-300 ->
+      0), `GeoSlope()`/`GeoMid()` hold the value for steps that start at 0 or cross
+      zero. Null test: the 14 scenarios that worked are bit for bit identical.
+      The help window (1148 x 918) was reported as too big; the user decided to leave
+      window sizes as they are (25 of 105 help windows are taller than 860 px).
+    - lp.shhh~ NN "no audible difference, scope~ flat from 27": the real noise code
+      (Taus88SigVectorMasked, as called by the perform routine) measured over 1 million
+      samples per NN: the NN factor works (levels halve per step: 32 at NN 27, 2 at 31,
+      i.e. +-0.5), the output stays white noise (no correlation, level -4.8 to -6
+      dBFS). Coarse white noise sounds and looks (spectroscope~) like white noise, so no
+      audible difference is expected. The flat scope~ picture does not match the
+      output; asked the user to re-check with `scope~ @calccount 1` (test point 13). A
+      help note on what NN does to white noise would make sense.
 
 Not done (reviewed, lower priority): A_GIMME new functions declaring argc as `short`,
 A_LONG handlers declaring `long` instead of `t_atom_long`.
