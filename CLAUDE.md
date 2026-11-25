@@ -20,7 +20,16 @@ State at the end of 2026-11-25 (after the user's second test, item 21):
   (complete); tell the user to take the package. After the item-21 push the package of
   the push build was unpacked to
   `/media/sone/TAD1/DATA/DEV/MAX/LitterPower/rng-fixes/LitterPower-package/LitterPower`
-  for the user to install (delete the old Max 9 package folder first).
+  for the user to install (delete the old Max 9 package folder first): push build
+  45697975751 (commit 72f6211, Windows; checked: 104 externals, 107 help files, the
+  item-21 help files and overview identical to the repository, icon, readme, copyright
+  1992-2026).
+- After this notes commit a macOS build was started by hand (`-f macos=true`, push build
+  cancelled first); see `gh run list --repo seroito/LitterPower --branch rng-fixes`.
+  If it got a runner, its `LitterPower-package` holds Windows and macOS externals.
+  The user's Windows Max folder is mounted at
+  `/media/sone/E4188FB0188F8072/Users/sone/Documents/Max 9/Packages/` (installed
+  LitterPower there: the 22 Nov package with newer externals copied over).
 - Test points 12-14, plus the older open points.
 - macOS: two hand-started runs (45675422948, 45678059389) got no GitHub macOS runner
   ("not acquired by Runner", capacity notice for macOS arm64); the user cancelled the
