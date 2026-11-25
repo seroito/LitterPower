@@ -13,7 +13,23 @@ is in item 19. User's findings of 2026-11-25 handled in item 20 (overview-link c
 lp.poppy~ NaN); lp.shhh~ NN works as designed, the user re-checks its scope~ picture.
 Help window sizes: the user asked to leave them as they are (lp.poppy~ was "too big").
 
-- Package: run 45031210288 (with macOS, commit 3b6389e), artifact `LitterPower-package`. The user deletes the old
+State at the end of 2026-11-25 (user rebooting to test in Max):
+- Everything up to commit 8885195 is pushed; build 45674851784 (push, Windows + package)
+  succeeded: artifact `LitterPower-package` = current Windows externals with items 19-20.
+  Test that one (test points 12 and 13, plus the older open points).
+- macOS: two hand-started runs (45675422948, 45678059389) got no GitHub macOS runner
+  ("not acquired by Runner", capacity notice for macOS arm64); the user cancelled the
+  second. The latest package with macOS externals is still run 45031210288 (older code).
+- `/media/sone/TAD1/DATA/DEV/MAX/LitterPower/Litter Power 1.9d1/` (outside the repo)
+  was reviewed: 79 compiled 32-bit Intel `.mxo` bundles from March 2013 (labelled
+  "Litter Power 1.8 -interim-" inside), no sources or help. Nothing new: all objects are
+  in our build, 77 have the same version and lp.abbie/lp.stacey are newer here, all
+  1560 hover/version strings match our string tables, and the 53 function names not in
+  today's sources are old Carbon/window-API code that Peter Castine's 2017 upload had
+  and that was removed later. Not added to the repository; at most a historical
+  reference (needs macOS 10.14 or older to run).
+
+- Package (older, with macOS): run 45031210288 (commit 3b6389e), artifact `LitterPower-package`. The user deletes the old
   Documents/Max 9/Packages/LitterPower folder before installing. Screenshots of findings
   go to `Findings/` (git-ignored).
 - User to check: windows open fully (old-format files too) and at 100/80; every help
