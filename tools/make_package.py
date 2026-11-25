@@ -40,6 +40,8 @@ copy_tree(os.path.join(ROOT, 'patchers'), os.path.join(OUT, 'patchers'))
 copy_tree(os.path.join(ROOT, 'media'), os.path.join(OUT, 'media'))
 # Package readme at the package root, where Max's user guide expects it (2026-11-25).
 shutil.copy2(os.path.join(ROOT, 'Resources', 'package-readme.md'), os.path.join(OUT, 'readme.md'))
+# Package icon, 500 x 500 as the user guide asks (tools/make_icon.py, 2026-11-25).
+shutil.copy2(os.path.join(ROOT, 'Resources', 'package-icon.png'), os.path.join(OUT, 'icon.png'))
 
 info = {
     "name": "LitterPower",
