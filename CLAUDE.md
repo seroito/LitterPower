@@ -9,14 +9,19 @@ All help files, the overview and the extras are redesigned (rng-fixes items 16-1
 user tests the package next. Added 2026-11-25 (item 19): package readme and icon,
 copyright years 1992-2026 everywhere users see them, the DSP skill (How to continue, 6).
 MC versions were investigated and postponed by the user; everything needed to resume
-is in item 19. User's findings of 2026-11-25 handled in item 20 (overview-link cords,
-lp.poppy~ NaN); lp.shhh~ NN works as designed, the user re-checks its scope~ picture.
-Help window sizes: the user asked to leave them as they are (lp.poppy~ was "too big").
+is in item 19. User's findings of 2026-11-25 handled in items 20 and 21 (overview-link
+cords, lp.poppy~ NaN, reset and dying out, window sizes, the overview's Jitter menu,
+lp.shhh~ help).
 
-State at the end of 2026-11-25 (user rebooting to test in Max):
-- Everything up to commit 8885195 is pushed; build 45674851784 (push, Windows + package)
-  succeeded: artifact `LitterPower-package` = current Windows externals with items 19-20.
-  Test that one (test points 12 and 13, plus the older open points).
+State at the end of 2026-11-25 (after the user's second test, item 21):
+- The user's first test used the `LitterPower-windows` artifact (externals only) on top
+  of the 22 Nov package, so help files, overview, icon and readme were old. Every run
+  has two artifacts: `LitterPower-windows` (externals) and `LitterPower-package`
+  (complete); tell the user to take the package. After the item-21 push the package of
+  the push build was unpacked to
+  `/media/sone/TAD1/DATA/DEV/MAX/LitterPower/rng-fixes/LitterPower-package/LitterPower`
+  for the user to install (delete the old Max 9 package folder first).
+- Test points 12-14, plus the older open points.
 - macOS: two hand-started runs (45675422948, 45678059389) got no GitHub macOS runner
   ("not acquired by Runner", capacity notice for macOS arm64); the user cancelled the
   second. The latest package with macOS externals is still run 45031210288 (older code).
@@ -133,8 +138,15 @@ Added for the `rng-fixes` package (2026-11-17):
    still opens the overview; lp.poppy~ with growth below 1, growth 4 and seed 0.5, a
    growth signal above 4 (e.g. `sig~ 4.2`) and 0, each with geometric (default), linear
    and two-sample interpolation (base frequency SR/2): the audio keeps running; the
-   normal range sounds as before. lp.shhh~: with `scope~ @calccount 1` (or `number~`),
-   NN 27-31 should show 32 ... 2 levels of noise, not a flat line.
+   normal range sounds as before. lp.shhh~: see test point 14.
+14. Second round of fixes (rng-fixes item 21, 2026-11-25), with the complete package:
+   help windows, extras and the overview fit their content (+40 px, no large empty
+   area on the right and at the bottom); tabbed help files are sized to the root page
+   (wider tabs scroll); the overview's "Jitter Objects" menu opens the lbj.* help files;
+   lp.poppy~: a growth rate below 1 still silences it (the population dies out), but
+   raising it above 1 brings the sound back, and `reset` works in every interpolation
+   mode and with the growth signal; lp.shhh~ help: scope~ shows stepped noise at NN
+   27-31 (calccount 2), the note below the displays reads well; icon and readme present.
 
 Other things to watch: converted Max 4 patchers (clippings, `lp.doom`,
 `lp.pfft.frimWrap`, `lp.bibi`/`lp.ernie`/`lp.abbie` help, "Running CPU Usage") look and
@@ -386,8 +398,10 @@ workflow builds pushes to both branches. One commit per change:
       comments one light grey (version info and former coloured hints included).
 
 18. Second test of the samples (2026-11-22) and the redesign of everything:
-    - Window rectangles: files in the old Max 5 format (110 of 162, no "appversion")
-      store windows as left, top, right, bottom; newer ones as left, top, width, height.
+    - Window rectangles: [WRONG, corrected in item 21: Max 9 reads left, top, width,
+      height in every file format; the "too small" windows had another cause] files in
+      the old Max 5 format (110 of 162, no "appversion") store windows as left, top,
+      right, bottom; newer ones as left, top, width, height.
       Writing width/height into old files made lp.pvvv~ and the overview open too small.
       `fix_patchers.fit_windows()` now sizes every window (root, tabs, subpatchers) from
       its content (+40 px margin, +26 px tab bar), capped at 1600 x 940, in the form the
@@ -478,7 +492,36 @@ workflow builds pushes to both branches. One commit per change:
       dBFS). Coarse white noise sounds and looks (spectroscope~) like white noise, so no
       audible difference is expected. The flat scope~ picture does not match the
       output; asked the user to re-check with `scope~ @calccount 1` (test point 13). A
-      help note on what NN does to white noise would make sense.
+      help note on what NN does to white noise would make sense. Resolved in item 21.
+
+21. User's second test (2026-11-25; screenshots in
+    `/media/sone/TAD1/DATA/DEV/MAX/LitterPower/rng-fixes/Findings/`). The user had
+    installed only the `LitterPower-windows` artifact over the 22 Nov package (see Resume
+    here); the findings below still apply to the current files.
+    - Windows too large (empty space right and bottom): Max 9 reads "rect" as left, top,
+      width, height in every file format (lp.frrr~ saved 1174/766 opened 1176 px wide
+      with 766 px inside; overview and lp.expo likewise). Commit 9996d5e (item 18) had
+      written right/bottom edges into the old-format files, so every window was 100 px
+      too wide and 80 px too tall (the window position). `set_window()` now always
+      writes width and height; windows with tabs are sized to the root page (user's
+      choice), wider tabs scroll. Rerun on all patchers (only rect/defrect changed).
+    - Overview: the "Jitter Objects" menu (added in 9c1e837, item 10) had its p DoHelp
+      but no cords, so lbj.* help never opened. Added the two hidden cords as the other
+      six menus have them; all nine entries have a help file and an external.
+    - lp.poppy~ "growth rate leads to silence": old and new code behaved the same; a
+      growth rate below 1 lets the population die out (0), and it stayed 0. Original
+      bug: reset/seed mid-step only worked in the static loop without interpolation,
+      so with geometric (default), linear, quadratic interpolation and with a growth
+      signal nothing could restart it. Fixed: `TakePendingSeed()` in all loops (reads
+      the flag from the object); user's request: a population that died out restarts
+      at the seed once the growth rate is above 1 (`NextPopSafe()`). Null test: the 14
+      scenarios that worked are bit for bit identical; 0 of 22 scenarios give NaN.
+    - lp.shhh~: Max 9's scope~ shows "the most maximum or minimum value" of calccount
+      (256) samples; with NN >= 26 the lowest level is 2^-32 further from 0 than the
+      highest, so scope~ almost always showed it (simulation with the real noise code
+      matches the screenshots: NN 26 126 of 128 points at the bottom, NN 27 all). Object
+      unchanged (changing the level mapping would change every noise object); help:
+      scope~ calccount 2 (minimum) and a note on what NN does to white noise.
 
 Not done (reviewed, lower priority): A_GIMME new functions declaring argc as `short`,
 A_LONG handlers declaring `long` instead of `t_atom_long`.
