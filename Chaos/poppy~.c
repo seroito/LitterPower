@@ -143,8 +143,44 @@ void Perform64Static(tPoppy*, t_object *dsp64, double **ins, long numins, double
 static inline double NextPop(double iPop, double iGrowth)
 			{ return iGrowth * iPop * (1.0 - iPop); }
 
+	// 2026: NextPop() with two guards (user's finding: "playing with the parameters
+	// destroyed the audio"). A population that runs away (|p| > 2, or NaN) restarts at
+	// the seed, as lp.fiana~ and lp.julie~ do; this happens with growth rates above 4,
+	// which only the signal inlet can deliver (the float inlet clamps to 0..4). In the
+	// normal range |p| never exceeds 1.5 (0..1 for growth 0..4, -0.5..1.5 for negative
+	// growth down to -2). Values below 1e-300 (a population dying out) become 0, so the
+	// object produces no denormals.
+static inline double NextPopSafe(const tPoppy* me, double iPop, double iGrowth)
+			{
+			double p = NextPop(iPop, iGrowth);
+			
+			if (!(fabs(p) <= 2.0))		p = me->seed;
+			else if (fabs(p) < 1e-300)	p = 0.0;
+			
+			return p;
+			}
+
+	// Geometric interpolation is undefined when a step starts at 0 or crosses zero (it
+	// produced NaN, e.g. once a population had died out, with growth below 1 or growth 4
+	// and seed 0.5). Such a step holds the current value instead (slope 1). Steps ending
+	// at 0 keep their old behaviour (slope 0: the output drops to 0), as do all others.
 static inline double GeoSlope(double iNow, double iGoal, unsigned long iSteps)
-			{ return pow(iGoal/iNow, 1.0/(double)iSteps); }
+			{
+			double ratio = iGoal / iNow;
+			
+			return (ratio >= 0.0 && ratio <= DBL_MAX)
+					? pow(ratio, 1.0/(double)iSteps)
+					: 1.0;
+			}
+
+	// Geometric mean for the two-sample case; holds the current value where it is
+	// undefined (opposite signs gave NaN).
+static inline double GeoMid(double iNow, double iGoal)
+			{
+			double prod = iNow * iGoal;
+			
+			return (prod >= 0.0) ? sqrt(prod) : iNow;
+			}
 
 static inline double LinSlope(double iNow, double iGoal, unsigned long iSteps)
 			{ return (iGoal - iNow) / (double) iSteps; }
@@ -633,7 +669,7 @@ void DoDSP(tPoppy* me, t_object *dsp64, short *count, double samplerate, long ma
 				growth	= me->growth;
 		
 		do {
-			*oPoppy++ = curPop = NextPop(curPop, growth);
+			*oPoppy++ = curPop = NextPopSafe(me, curPop, growth);
 			} while (--iVecSize > 0);
 		
 		me->curPop = curPop;
@@ -654,7 +690,7 @@ void DoDSP(tPoppy* me, t_object *dsp64, short *count, double samplerate, long ma
 			case interpNone:
 				do {
 					curPop		= goal;
-					goal		= NextPop(curPop, growth);
+					goal		= NextPopSafe(me, curPop, growth);
 					*oPoppy++	= curPop;
 					*oPoppy++	= curPop;
 					} while ((iVecSize -= 2) > 0);
@@ -663,7 +699,7 @@ void DoDSP(tPoppy* me, t_object *dsp64, short *count, double samplerate, long ma
 			case interpLin:
 				do {
 					curPop		= goal;
-					goal		= NextPop(curPop, growth);
+					goal		= NextPopSafe(me, curPop, growth);
 					*oPoppy++	= curPop;
 					*oPoppy++	= (curPop + goal) * 0.5;
 					} while ((iVecSize -= 2) > 0);
@@ -676,9 +712,9 @@ void DoDSP(tPoppy* me, t_object *dsp64, short *count, double samplerate, long ma
 				// two samples/cycle
 				do {
 					curPop		= goal;
-					goal		= NextPop(curPop, growth);
+					goal		= NextPopSafe(me, curPop, growth);
 					*oPoppy++	= curPop;
-					*oPoppy++	= curPop = sqrt(curPop * goal);
+					*oPoppy++	= curPop = GeoMid(curPop, goal);
 					} while ((iVecSize -= 2) > 0);
 				
 				curPop = oPoppy[-1];		// Store last sample in case base freq changes.
@@ -707,7 +743,7 @@ void DoDSP(tPoppy* me, t_object *dsp64, short *count, double samplerate, long ma
 					me->seedPending = seedPending = false;
 					}
 				curPop 		= goal;
-				goal		= NextPop(curPop, growth);
+				goal		= NextPopSafe(me, curPop, growth);
 				sampsToGo	= iSPC;
 				}
 			
@@ -744,7 +780,7 @@ void DoDSP(tPoppy* me, t_object *dsp64, short *count, double samplerate, long ma
 			
 			if (sampsToGo == 0) {
 				curPop		= goal;
-				goal		= NextPop(curPop, growth);
+				goal		= NextPopSafe(me, curPop, growth);
 				slope		= LinSlope(curPop, goal, iSPC);
 				sampsToGo	= iSPC;
 				}
@@ -784,7 +820,7 @@ void DoDSP(tPoppy* me, t_object *dsp64, short *count, double samplerate, long ma
 			if (sampsToGo == 0) {
 //				double	diff, durInv, durInv2;
 				curPop		= goal;
-				goal		= NextPop(curPop, growth);
+				goal		= NextPopSafe(me, curPop, growth);
 				slope		= QuadSlope(curPop, goal, iSPC, &curve);
 				sampsToGo	= iSPC;
 				
@@ -833,7 +869,7 @@ void DoDSP(tPoppy* me, t_object *dsp64, short *count, double samplerate, long ma
 			
 			if (sampsToGo == 0) {
 				curPop		= goal;
-				goal		= NextPop(curPop, growth);
+				goal		= NextPopSafe(me, curPop, growth);
 				slope		= GeoSlope(curPop, goal, iSPC);
 				sampsToGo	= iSPC;
 				}
@@ -938,7 +974,7 @@ void Perform64Static(tPoppy* me, t_object *dsp64, double **ins, long numins, dou
 		double	curPop	= me->curPop;
 		
 		do {
-			*oPoppy++ = curPop = NextPop(curPop, *iGrowth++);
+			*oPoppy++ = curPop = NextPopSafe(me, curPop, *iGrowth++);
 			} while (--iVecSize > 0);
 		
 		me->curPop = curPop;
@@ -961,7 +997,7 @@ void Perform64Static(tPoppy* me, t_object *dsp64, double **ins, long numins, dou
 			case interpNone:
 				do {
 					curPop		= goal;
-					goal		= NextPop(curPop, *iGrowth);
+					goal		= NextPopSafe(me, curPop, *iGrowth);
 					iGrowth		+= 2;
 					*oPoppy++	= curPop;
 					*oPoppy++	= curPop;
@@ -971,7 +1007,7 @@ void Perform64Static(tPoppy* me, t_object *dsp64, double **ins, long numins, dou
 			case interpLin:
 				do {
 					curPop		= goal;
-					goal		= NextPop(curPop, *iGrowth);
+					goal		= NextPopSafe(me, curPop, *iGrowth);
 					iGrowth		+= 2;
 					*oPoppy++	= curPop;
 					*oPoppy++	= (curPop + goal) * 0.5;
@@ -985,10 +1021,10 @@ void Perform64Static(tPoppy* me, t_object *dsp64, double **ins, long numins, dou
 				// two samples/cycle
 				do {
 					curPop		= goal;
-					goal		= NextPop(curPop, *iGrowth);
+					goal		= NextPopSafe(me, curPop, *iGrowth);
 					iGrowth		+= 2;
 					*oPoppy++	= curPop;
-					*oPoppy++	= curPop = sqrt(curPop * goal);
+					*oPoppy++	= curPop = GeoMid(curPop, goal);
 					} while ((iVecSize -= 2) > 0);
 				
 				curPop = oPoppy[-1];		// Store last sample in case base freq changes.
@@ -1016,7 +1052,7 @@ void Perform64Static(tPoppy* me, t_object *dsp64, double **ins, long numins, dou
 			
 			if (sampsToGo == 0) {
 				curPop		= goal;
-				goal		= NextPop(curPop, *iGrowth);
+				goal		= NextPopSafe(me, curPop, *iGrowth);
 				sampsToGo	= iSPC;
 				}
 			
@@ -1057,7 +1093,7 @@ void Perform64Static(tPoppy* me, t_object *dsp64, double **ins, long numins, dou
 			
 			if (sampsToGo == 0) {
 				curPop		= goal;
-				goal		= NextPop(curPop, *iGrowth);
+				goal		= NextPopSafe(me, curPop, *iGrowth);
 				slope		= LinSlope(curPop, goal, iSPC);
 				sampsToGo	= iSPC;
 				}
@@ -1101,7 +1137,7 @@ void Perform64Static(tPoppy* me, t_object *dsp64, double **ins, long numins, dou
 			
 			if (sampsToGo == 0) {
 				curPop		= goal;
-				goal		= NextPop(curPop, *iGrowth);
+				goal		= NextPopSafe(me, curPop, *iGrowth);
 				slope		= QuadSlope(curPop, goal, iSPC, &curve);
 				sampsToGo	= iSPC;
 				}
@@ -1147,7 +1183,7 @@ void Perform64Static(tPoppy* me, t_object *dsp64, double **ins, long numins, dou
 			
 			if (sampsToGo == 0) {
 				curPop		= goal;
-				goal		= NextPop(curPop, *iGrowth);
+				goal		= NextPopSafe(me, curPop, *iGrowth);
 				slope		= GeoSlope(curPop, goal, iSPC);
 				sampsToGo	= iSPC;
 				}
