@@ -24,9 +24,11 @@ State at the end of 2026-11-25 (after the user's second test, item 21):
   45697975751 (commit 72f6211, Windows; checked: 104 externals, 107 help files, the
   item-21 help files and overview identical to the repository, icon, readme, copyright
   1992-2026).
-- After this notes commit a macOS build was started by hand (`-f macos=true`, push build
-  cancelled first); see `gh run list --repo seroito/LitterPower --branch rng-fixes`.
-  If it got a runner, its `LitterPower-package` holds Windows and macOS externals.
+- macOS: run 45698579601 (started by hand with `-f macos=true` after cancelling the push
+  build of d4d0678) succeeded: its `LitterPower-package` holds 104 Windows and 104
+  macOS externals (universal x86_64 + arm64) with all of item 21. It is the latest
+  package for both platforms; the user's test folder has the Windows-only one of
+  45697975751 (same Windows externals and help files).
   The user's Windows Max folder is mounted at
   `/media/sone/E4188FB0188F8072/Users/sone/Documents/Max 9/Packages/` (installed
   LitterPower there: the 22 Nov package with newer externals copied over).
