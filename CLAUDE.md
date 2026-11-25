@@ -147,7 +147,10 @@ removed (see `README.md`).
    rng-fixes items 1-15 (perform routines, threads and `LitterReadOnce`, numeric safety,
    denormals, per-instance Taus88, the limiter) plus reference formulas (all eight RBJ
    biquads, TPT SVF, one-pole/T60 smoothing) checked by a test program (scratchpad
-   only). Keep it in step with this file when a rule changes.
+   only), the measurement rules (null test, level statistics) and a checklist before
+   pushing (both added the same day after reviewing a second third-party plugin,
+   RavenClaude audio-dsp-engineering: MIT, but JUCE/C++ and tied to its own agent
+   framework, not installed). Keep it in step with this file when a rule changes.
 
 ## Branch rng-fixes (2026-11-17, not merged yet)
 

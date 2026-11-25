@@ -1,6 +1,7 @@
 ---
 name: litter-dsp
-description: DSP and signal-object rules for LitterPower (plain C on the Max SDK) - dsp64/perform64 pattern, thread safety for message-set parameters, numeric safety (overflow, NaN, denormals, division by zero), per-instance RNG state, the look-ahead limiter, correct reference formulas (all eight RBJ biquads, TPT state-variable filter, one-pole smoothing) and how to verify DSP changes outside Max. Use when writing, fixing or reviewing an lp.*~ signal object, a perform routine or any DSP math in this repository.
+description: DSP and signal-object rules for LitterPower (plain C on the Max SDK) - dsp64/perform64 pattern, thread safety for message-set parameters, numeric safety (overflow, NaN, denormals, division by zero), per-instance RNG state, the look-ahead limiter, correct reference formulas (all eight RBJ biquads, TPT state-variable filter, one-pole smoothing), how to verify DSP changes outside Max (null test, level
+  statistics, frequency response) and a checklist before pushing. Use when writing, fixing or reviewing an lp.*~ signal object, a perform routine or any DSP math in this repository.
 ---
 
 # LitterPower DSP rules
@@ -68,10 +69,18 @@ perform routine runs. Rules (rng-fixes item 15):
 - **Indices:** check every table and list index against its real size, including
   lists longer than a fixed array (lp.galliard~ with more than 255 coefficients) and
   in-place vectors read one sample ahead (lp.grl~).
-- **Denormals:** Max sets the SSE flush-to-zero flags on Intel. The build also
-  defines `DENORM_WANT_FIX=1`, so `FIX_DENORM_DOUBLE(v)` and `FIX_DENORM_NAN_DOUBLE(v)`
-  from `z_sampletype.h` are active; apply them to recursive state (filter memories,
-  feedback paths) once per vector. On arm64 don't assume a flush-to-zero mode.
+- **Denormals:** two sources say Max flushes denormals on Intel: Cycling '74's gen~
+  and RNBO references (`fixdenorm`, `isdenorm`: since Max 6.0 audio processing runs
+  with flush-to-zero, "so denormal fixing should only be required for exported code")
+  and the SDK comment in `z_sampletype.h` (Windows and Intel Macs use the SSE
+  processor flags). Neither covers Apple Silicon, and neither has been checked at
+  runtime. So:
+  - never change the processor's floating-point flags in an external; they belong to
+    Max's audio thread and affect every other object;
+  - the build defines `DENORM_WANT_FIX=1`, so `FIX_DENORM_DOUBLE(v)` and
+    `FIX_DENORM_NAN_DOUBLE(v)` from `z_sampletype.h` are active; apply them to
+    recursive state (filter memories, feedback paths) once per vector, which is cheap
+    and also covers arm64.
 - **Over full scale:** objects whose output can exceed +/-1 use `LitterLimiter.h`
   (look-ahead, constant delay of about 2 ms, Max-independent, testable outside Max).
   Existing objects keep their sound: a fix that changes the sound goes into a new
@@ -207,9 +216,18 @@ Claude can't run Max; only the user tests in Max 9 (Windows first).
 2. For DSP behaviour, write a standalone test program in the session scratchpad (not
    in the repository): copy or `#include` the real function or a Max-independent header
    (`LitterLimiter.h`, RNG files), build with
-   `gcc -std=gnu11 -O2 -fsanitize=address,undefined -lm`, and check concrete numbers
-   (peak level, NaN count, frequency response, bit-for-bit equality with the old code
-   when a refactoring must not change the sound).
+   `gcc -std=gnu11 -O2 -fsanitize=address,undefined -lm`, and measure with numbers:
+   - **Null test** for every change that must not change the sound: run the old and
+     the new code on the same input and subtract. For a refactoring or a thread fix
+     the residual must be exactly 0 (bit for bit); any other result is reported with
+     its size and explained. Noise objects need a fixed seed: `Taus88Seed(&state, 0)`
+     seeds from date, time and uptime, any other value is reproducible.
+   - **Level statistics** for noise and chaos objects: peak, share of samples above
+     full scale, DC offset, count of NaN/inf.
+   - **Frequency or impulse response** for filters, against the formula.
+   - **Sweep test for aliasing** only where an object is meant to be clean. Many
+     LitterPower objects alias on purpose (the overflow emulations of lp.pfff~ & Co.,
+     bit noise); that is their sound, not a defect.
 3. Report "built", "checked with a test program" and "tested in Max by the user"
    separately, and add every change that needs a check in Max to the numbered test list
    in `CLAUDE.md`.
@@ -221,3 +239,30 @@ shelves +3 dB at f0), the transposed direct form II tick against the analytic
 response, the SVF outputs against the analog prototype (Q at fc, notch 0), no NaN or
 blow-up with cutoffs modulated every 64 samples including values at Nyquist, one-pole
 and T60 coefficients, the dB floor. It is not used by any external yet.
+
+## 7. Checklist before pushing a change to a signal object
+
+Each line comes from a rule above or from `CLAUDE.md`.
+
+- [ ] Perform routine: no allocation, no `post`/`object_error`, no `defer`, no
+      blocking lock; every `buffer_locksamples` paired with an unlock on every path;
+      reads only up to `sampleframes`; safe when input and output are the same vector.
+- [ ] Every message-set parameter read once per vector with `LitterReadOnce`;
+      dependent values derived locally with the setter's formula.
+- [ ] No message handler frees or resizes memory the perform routine uses; such
+      changes applied in `dsp64` or at a frame boundary.
+- [ ] Float-to-integer conversions clamped first; divisors guarded; indices checked
+      against real sizes; runaway iterations restart; no inf/NaN at the output.
+- [ ] Recursive state through `FIX_DENORM_DOUBLE` once per vector; no change to the
+      processor's floating-point flags.
+- [ ] Random numbers from the instance's own Taus88 state.
+- [ ] Existing objects sound the same (null test with residual 0), or the change is
+      in a new variant object, or the user approved the change in sound.
+- [ ] `python3 tools/check.py` passes; generated files rerun with their generator
+      (`tools/make_refpages.py` after changing messages, inlets or attributes; the
+      help generators for help files).
+- [ ] `CLAUDE.md`: the change in its section, the Max test added to the numbered
+      test list, the date updated.
+- [ ] Files staged by name (never `commit -a`; the Scamp zip deletion stays
+      uncommitted), one commit per change; reported as built / checked with a test
+      program / to be tested in Max.
