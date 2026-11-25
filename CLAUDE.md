@@ -3,10 +3,16 @@
 What has been done to bring Litter Power to Max 9, where things stand, and how to
 continue. Last updated 2026-11-25.
 
-## Resume here (2026-11-22)
+## Resume here (2026-11-25)
 
 All help files, the overview and the extras are redesigned (rng-fixes items 16-18); the
-user tests the package next.
+user tests the package next. Added 2026-11-25 (item 19): package readme and icon,
+copyright years 2001-2026 everywhere users see them, the DSP skill (How to continue, 6).
+MC versions were investigated and postponed by the user; everything needed to resume
+is in item 19. Not pushed yet at the time of writing.
+
+- Open decision: the overview's licence text says "copyright © 1992-2026"; the user
+  asked for 2001-2026 everywhere but this legal text was left until they decide.
 
 - Package: run 45031210288 (with macOS, commit 3b6389e), artifact `LitterPower-package`. The user deletes the old
   Documents/Max 9/Packages/LitterPower folder before installing. Screenshots of findings
@@ -103,6 +109,10 @@ Added for the `rng-fixes` package (2026-11-17):
    NN factor: automate NN from a `metro 1` (e.g. alternating 0 and 31) on `lp.qvvv~` in
    all range modes, `lp.netochka~` (positive and negative NN, with fractions),
    `lp.pvvv~`, `lp.sss~`: no single loud clicks; the sound otherwise as before.
+12. Package files (rng-fixes item 19, 2026-11-25): `readme.md` and `icon.png` at the
+   package root; whether Max shows the icon (Package Manager or file browser) and how it
+   looks; copyright "2001-2026" where objects show their version (e.g. `vers` in the
+   Max console, assistance) and in the overview credit line.
 
 Other things to watch: converted Max 4 patchers (clippings, `lp.doom`,
 `lp.pfft.frimWrap`, `lp.bibi`/`lp.ernie`/`lp.abbie` help, "Running CPU Usage") look and
@@ -138,6 +148,10 @@ removed (see `README.md`).
      and `overview` as arguments. Safe to rerun (no second scaling or title area).
    - `tools/make_refpages.py`: reference pages; rerun after changing an object's
      messages, inlets or attributes; texts are in `tools/refpage_data.py`.
+   - `tools/make_icon.py`: `Resources/package-icon.png` from the old overview's
+     embedded background picture (commit 597136d^); needs git history and Pillow.
+   - Not generated: `Resources/package-readme.md` (copied to the package as
+     `readme.md`).
 5. Windows compiler warnings: artifact `build-log-windows`. `gh run download` refuses it
    ("path traversal"); fetch it with
    `gh api repos/seroito/LitterPower/actions/artifacts/<id>/zip`.
@@ -371,6 +385,53 @@ workflow builds pushes to both branches. One commit per change:
       reproduces the files), the overview and the 12 extras (13 pt, colours, windows; no
       title area). lp.messages: "Litter Power Messages" as title, its subtitle unchanged.
       Clippings and abstractions keep their design.
+
+19. Package files, copyright, Cycling '74 resources (2026-11-25, user's requests):
+    - Readme: `Resources/package-readme.md` -> package root `readme.md` (Max's user
+      guide lists readme/licence/icon at the root): "Copyright © 2001-2026 Peter
+      Castine. All rights reserved.", requirements, installation with the quarantine
+      step, where to start, and the Max SDK licence notice (its MIT-style terms require
+      it in copies; checked word for word against max-sdk-base/LICENSE.md).
+    - Icon: `icon.png` (500 x 500) from `tools/make_icon.py`: the overview's former
+      background picture (Gaussian bell curve), square crop below the title text,
+      contrast x1.8, colour x2.2 (user chose this "version B" from two samples).
+    - Copyright years 2001-2026 (first year 2001 for every object, user's choice): string
+      tables (gen_strings.py rule + the four hand-written tables), bundle info (CMake),
+      package-info.json (both were 2001-08), overview credit line, Running CPU Usage,
+      Poisson Rhythms, lp.doom. Left: the overview's licence text ("1992-2026", open
+      decision) and the comment headers of the C sources (file history, not shipped).
+    - Cycling '74 resources reviewed (max-sdk, max-sdk-base, max-package-template, user
+      guide, SDK 8.2 docs): `max-sdk-base` is at upstream main; SDK 8.2.0 (2021) is still
+      the latest release. All 91 perform routines scanned: no outlet, qelem, defer,
+      post, allocation, lock or clock calls (SDK: a clock is allowed, qelems and outlets
+      are not). `package-info.json` "aarch64" is what the user guide documents (the
+      template's "arm64" is not). Reference page names disagree between Cycling '74
+      sources: the package template uses `docs/<object>.maxref`, min-devkit and we use
+      `.maxref.xml`; if test point 6 finds no pages, renaming is the second thing to try
+      after the folder placement. Not adopted: the template's CMake/CI (ours does more),
+      a Windows version resource (user: not now).
+    - MC versions (`mc.lp.xxx~`), investigated and postponed by the user. To resume:
+      - No C changes needed: all 35 signal objects are plain MSP objects, which the MC
+        wrapper hosts as they are (user guide: mc.xxx~ is xxx~ in the MC wrapper).
+      - Add `init/litterpower-objectmappings.txt` with one line per object in the
+        format of Cycling '74's own `max-sdk/init/audio-objectmappings.txt`:
+        `max objectfile mc.lp.pfff~ mc.wrapper~ lp.pfff~ mc;` (the template README
+        omits the final `mc`). Optionally, as in `max-sdk/init/mc-helpconfig.txt`, per
+        object `max classnamehelpcategory mc.lp.pfff~ mcwrap;` and `... mcmess;`
+        (MC tabs in the help). Best generated from the `litter_external(lp.*~ ...)`
+        lines in CMakeLists.txt so new objects are included.
+      - `tools/make_package.py`: copy `init/` into the package.
+      - Checked in the code: 24 objects seed their own Taus88 state with 0, which
+        mixes in the state's address and a call counter (MachineKharma), so channels
+        created together get different noise; lp.ccc~ picks its start value the same
+        way. No shared static state (only lp.emeric~'s one-time profiler flag);
+        lp.crottin~'s global-pool calls are in the unused InitSegments(). Class names
+        equal object names (kClassName).
+      - To test in Max: objects load; channels differ; messages reach all instances,
+        `setvalue <n>` one; lp.lll~ starts every instance with seed 1, so all channels
+        are identical until each gets its own seed (e.g. `applyvalues seed 1 2 3 4`;
+        worth a help note); lp.scamp~ is the only object with a message (int) outlet,
+        whose handling in the wrapper is not documented; lp.gruyere~ with a buffer~.
 
 Not done (reviewed, lower priority): A_GIMME new functions declaring argc as `short`,
 A_LONG handlers declaring `long` instead of `t_atom_long`.
