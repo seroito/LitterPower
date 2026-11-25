@@ -38,6 +38,8 @@ copy_tree(os.path.join(ROOT, 'Litter Power Documentation'), os.path.join(OUT, 'm
 # were in "Litter Power Extras/~lib" and ended up in the package twice.)
 copy_tree(os.path.join(ROOT, 'patchers'), os.path.join(OUT, 'patchers'))
 copy_tree(os.path.join(ROOT, 'media'), os.path.join(OUT, 'media'))
+# Package readme at the package root, where Max's user guide expects it (2026-11-25).
+shutil.copy2(os.path.join(ROOT, 'Resources', 'package-readme.md'), os.path.join(OUT, 'readme.md'))
 
 info = {
     "name": "LitterPower",
