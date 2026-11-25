@@ -1313,7 +1313,8 @@
 					"destination": [
 						"obj-46",
 						0
-					]
+					],
+					"hidden": 1
 				}
 			},
 			{
@@ -1325,7 +1326,8 @@
 					"destination": [
 						"obj-47",
 						0
-					]
+					],
+					"hidden": 1
 				}
 			}
 		],

@@ -579,7 +579,8 @@
 					"destination": [
 						"obj-19",
 						0
-					]
+					],
+					"hidden": 1
 				}
 			},
 			{
@@ -591,7 +592,8 @@
 					"destination": [
 						"obj-20",
 						0
-					]
+					],
+					"hidden": 1
 				}
 			}
 		],

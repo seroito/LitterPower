@@ -157,9 +157,24 @@ def overview_link(p, title):
                                'outlettype': ['bang', 'bang', '', 'int'],
                                'patching_rect': list(title['patching_rect'])}})
     p['lines'].append({'patchline': {'source': ['obj-%d' % (nid + 2), 0],
-                                     'destination': ['obj-%d' % nid, 0]}})
+                                     'destination': ['obj-%d' % nid, 0], 'hidden': 1}})
     p['lines'].append({'patchline': {'source': ['obj-%d' % nid, 0],
-                                     'destination': ['obj-%d' % (nid + 1), 0]}})
+                                     'destination': ['obj-%d' % (nid + 1), 0], 'hidden': 1}})
+
+
+def hide_link_cords(p):
+    """Hide the cords of the overview link (ubutton -> hidden "lpo" -> hidden lp.mrsnorris).
+
+    Max does not hide a cord because the objects at its ends are hidden; until 2026-11-25
+    overview_link() left both cords visible (user's finding in lp.veral). Safe to rerun.
+    """
+    hidden_link = {e['box']['id'] for e in p['boxes'] if e['box'].get('hidden') and (
+        (e['box']['maxclass'] == 'message' and e['box'].get('text') == 'lpo')
+        or (e['box']['maxclass'] == 'newobj' and e['box'].get('text') == 'lp.mrsnorris'))}
+    for l in p.get('lines', []):
+        pl = l['patchline']
+        if pl['source'][0] in hidden_link or pl['destination'][0] in hidden_link:
+            pl['hidden'] = 1
 
 
 def header(p, name, title_text=None, with_subtitle=True):
@@ -239,6 +254,7 @@ def redesign_help(path):
         head_ids = header(p, name, 'Litter Power Messages', with_subtitle=False)  # subtitle stays
     else:
         head_ids = header(p, name)
+    hide_link_cords(p)
     colour(p, fname, skip_ids=head_ids)
     tabs = False
     for e in p['boxes']:

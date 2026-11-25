@@ -1039,7 +1039,8 @@
 					"destination": [
 						"obj-36",
 						0
-					]
+					],
+					"hidden": 1
 				}
 			},
 			{
@@ -1051,7 +1052,8 @@
 					"destination": [
 						"obj-37",
 						0
-					]
+					],
+					"hidden": 1
 				}
 			}
 		],
