@@ -22,7 +22,10 @@ first and don't contradict it. This file holds the general rules learned from th
   `object_method(dsp64, gensym("dsp_add64"), me, XxxPerform64, 0, NULL)`.
 - `XxxPerform64(me, dsp64, ins, numins, outs, numouts, sampleframes, flags, userparam)`:
   no allocation, no `post`/`object_error` per sample, no locks that can block, no calls
-  into the main thread. Inputs and outputs may be the same vector (in place), so read
+  into the main thread. The SDK (chapter "Anatomy of a MSP Object") allows a clock but
+  no qelems and no outlets there: a perform routine that must tell Max something sets
+  a clock (`clock_delay`), whose function then runs in the scheduler. Inputs and
+  outputs may be the same vector (in place), so read
   `ins[k][i]` before writing `outs[k][i]`, and never read past `sampleframes`.
 - `count[k]` says whether signal inlet k is connected; a disconnected inlet holds
   zeros, so fall back to the float value set by messages.
@@ -38,6 +41,11 @@ perform routine runs. Rules (rng-fixes item 15):
   value) and derives the dependent values locally with the setter's formula. Never read
   `nn`, `mask`, `offset`, `factor` separately: a message in between mixes old and new
   values for one vector (in lp.qvvv~ that meant up to 2^23, 138 dB).
+- No `critical_enter(0)` / `critical_exit(0)` in a perform routine, although the SDK's
+  threading chapter recommends critical sections as "the easiest method for thread
+  protection". That one is Max's global critical region: the audio thread would wait
+  for whichever main or scheduler thread holds it. Rng-fixes item 15 removed such a
+  region from lp.emeric~; `LitterReadOnce` is the replacement. Don't add it back.
 - A message handler never frees, reallocates or resizes memory the perform routine
   uses. Store the request (a flag or the new size) and apply it in `dsp64` or at a
   frame boundary in the perform routine.
@@ -244,8 +252,9 @@ and T60 coefficients, the dB floor. It is not used by any external yet.
 
 Each line comes from a rule above or from `CLAUDE.md`.
 
-- [ ] Perform routine: no allocation, no `post`/`object_error`, no `defer`, no
-      blocking lock; every `buffer_locksamples` paired with an unlock on every path;
+- [ ] Perform routine: no allocation, no `post`/`object_error`, no `defer`, no qelem,
+      no outlet call (a clock is the only allowed way to reach Max), no blocking lock
+      and no `critical_enter`; every `buffer_locksamples` paired with an unlock on every path;
       reads only up to `sampleframes`; safe when input and output are the same vector.
 - [ ] Every message-set parameter read once per vector with `LitterReadOnce`;
       dependent values derived locally with the setter's formula.
