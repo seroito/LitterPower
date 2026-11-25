@@ -4,7 +4,7 @@
 			100.0,
 			80.0,
 			1018,
-			590
+			657
 		],
 		"bgcolor": [
 			0.337254901960784,
@@ -17,7 +17,7 @@
 			100.0,
 			80.0,
 			1018,
-			590
+			657
 		],
 		"openrect": [
 			0.0,
@@ -1734,7 +1734,7 @@
 					"types": [],
 					"patching_rect": [
 						13.165,
-						476.317,
+						543.317,
 						385.063,
 						27.975
 					],
@@ -1920,7 +1920,7 @@
 					"fontsize": 13.0,
 					"patching_rect": [
 						827.722,
-						522.392,
+						589.392,
 						143.165,
 						27.975
 					],
@@ -2687,7 +2687,8 @@
 						0.529412,
 						0.529412,
 						1.0
-					]
+					],
+					"calccount": 2
 				}
 			},
 			{
@@ -3072,6 +3073,30 @@
 						965.822,
 						6.0
 					]
+				}
+			},
+			{
+				"box": {
+					"textcolor": [
+						0.870588235294118,
+						0.870588235294118,
+						0.870588235294118,
+						1.0
+					],
+					"maxclass": "comment",
+					"text": "About the NN factor: it clears the lowest NN bits of each 32-bit random number, so it sets how coarse the noise values are (NN 31: only two values, -0.5 and +0.5). Coarse white noise is still white noise: it sounds the same and spectroscope~ shows the same spectrum; only at NN 30-31 it gets slightly quieter. The scope~ above shows the most extreme of every 2 samples (calccount 2), so the steps become visible at high NN factors.",
+					"numoutlets": 0,
+					"fontsize": 13.0,
+					"patching_rect": [
+						13.0,
+						476.0,
+						960.0,
+						55.0
+					],
+					"fontname": "Arial",
+					"id": "obj-25",
+					"numinlets": 1,
+					"linecount": 3
 				}
 			}
 		],
