@@ -135,6 +135,14 @@ def make(old):
         sub, com = unit_comment(pa)
         set_comment_text(sub, com, com['text'] + ' This also holds with an NN factor: the values '
                          'stay on the NN grid and within +/- 1 (since 2026).')
+        # 2026: Hurst exponent limited to +-100 (same text as in lp.qvvv~.maxhelp)
+        for e in pa['boxes']:
+            bx = e['box']
+            if bx.get('maxclass') == 'comment' and 'limits of 32-bit floating point' in bx.get('text', ''):
+                set_comment_text(pa, bx, bx['text'].replace(
+                    '(well, to the limits of 32-bit floating point numbers)',
+                    '(since 2026 it is limited to -100 to 100; beyond, the numbers overflowed '
+                    'and the output became NaN)'))
 
     # Top-level comments that name the object
     for b in boxes:

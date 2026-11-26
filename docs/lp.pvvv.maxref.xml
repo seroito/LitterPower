@@ -18,7 +18,7 @@
 			<digest>Length of the generated cycle (a power of 2)</digest>
 		</objarg>
 		<objarg name='hurst' optional='1' type='float'>
-			<digest>Hurst exponent: the colour (default 0)</digest>
+			<digest>Hurst exponent: the colour (default 0; limited to -100 to 100 since 2026)</digest>
 		</objarg>
 		<objarg name='nn' optional='1' type='int'>
 			<digest>NN factor (bit masking)</digest>

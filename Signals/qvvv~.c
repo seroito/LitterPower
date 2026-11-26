@@ -343,6 +343,7 @@ void Pvvv2Hurst(
 	// Only the factor is stored. The audio thread computes the matching gain each time it
 	// generates a buffer; storing both here could leave it with a new factor and an old
 	// gain for one buffer, which was heard as an occasional pop.
+	iHurst			= LitterClampHurst(iHurst);		// 2026: +-100 (see MiscUtils.h)
 	me->hurstExp	= iHurst;
 	me->hurstFac	= pow(0.5, iHurst);
 	}

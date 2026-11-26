@@ -267,6 +267,8 @@ EpoisseRho(
 			xn,					// Hurst factor taken to the nth power
 			gain;				// Expected gain
 	
+	iRho = LitterClampHurst(iRho);	// 2026: +-100, beyond the gain overflowed (MiscUtils.h)
+	
 	// Calculate expected gain
 	hf = pow(0.5, iRho);		// Caluclate Hurst factor from Hurst exponent
 	gain = xn = hf;				// Initialize gain to hf^1; handling the first loop iteration 

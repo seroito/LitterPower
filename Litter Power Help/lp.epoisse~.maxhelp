@@ -4,7 +4,7 @@
 			100.0,
 			80.0,
 			982,
-			709
+			728
 		],
 		"bgcolor": [
 			0.337254901960784,
@@ -17,7 +17,7 @@
 			100.0,
 			80.0,
 			982,
-			709
+			728
 		],
 		"openrect": [
 			0.0,
@@ -1963,15 +1963,15 @@
 						1.0
 					],
 					"maxclass": "comment",
-					"text": "Three option float arguments, in order: intial frequency, initial pitchiness factor, initial Hurst exponent. All default to zero.",
-					"linecount": 3,
+					"text": "Three option float arguments, in order: intial frequency, initial pitchiness factor, initial Hurst exponent. All default to zero. The Hurst exponent is limited to -100 to 100 (since 2026; beyond, the output became NaN).",
+					"linecount": 4,
 					"numoutlets": 0,
 					"fontsize": 13.0,
 					"patching_rect": [
 						543.038,
 						278.849,
 						385.063,
-						62.532
+						82.043
 					],
 					"fontname": "Arial",
 					"id": "obj-9",
@@ -2055,7 +2055,7 @@
 					"fontsize": 13.0,
 					"patching_rect": [
 						794.81,
-						640.874,
+						660.385,
 						143.165,
 						27.975
 					],
@@ -2106,7 +2106,7 @@
 					"fontsize": 13.0,
 					"patching_rect": [
 						492.025,
-						578.3430000000001,
+						597.854,
 						105.316,
 						27.975
 					],
@@ -2690,7 +2690,7 @@
 					"fontsize": 13.0,
 					"patching_rect": [
 						580.887,
-						611.2550000000001,
+						630.7660000000001,
 						97.088,
 						27.975
 					],
@@ -3093,7 +3093,7 @@
 					],
 					"patching_rect": [
 						439.367,
-						395.684,
+						415.19500000000005,
 						493.671,
 						164.557
 					],

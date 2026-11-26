@@ -292,7 +292,7 @@ OBJ = {
                          ['lp.phhh~', 'lp.pfff', 'lp.pvvv']),
     'lp.pvvv': ctl_noise('lp.pvvv', 'variable-colour (1/f^h)',
                          [('cycle', 'int', 'Length of the generated cycle (a power of 2)'),
-                          ('hurst', 'float', 'Hurst exponent: the colour (default 0)'),
+                          ('hurst', 'float', 'Hurst exponent: the colour (default 0; limited to -100 to 100 since 2026)'),
                           ('nn', 'int', 'NN factor (bit masking)'), SEED_ARG],
                          ['lp.pvvv~', 'lp.pfff', 'lp.phhh']),
     'lp.shhh': dict(cat=CONTINUOUS, digest='Generate white noise values',
@@ -427,13 +427,13 @@ OBJ = {
                            ' The Hurst exponent sets the colour. Output can exceed +/- 1: clip, '
                            'wrap or reflect limit it (also with an NN factor, since 2026: the '
                            'values stay on the NN grid), stet (default) keeps it.'),
-                     args=[('hurst', 'float', 'Hurst exponent (default 0)'),
+                     args=[('hurst', 'float', 'Hurst exponent (default 0; limited to -100 to 100 since 2026)'),
                            ('nn', 'float', 'NN factor; fractional values allowed')],
                      see=['lp.qvvvl~', 'lp.pvvv~', 'lp.pvvv64~']),
     'lp.qvvvl~': dict(noise('lp.qvvvl~', 'variable-colour noise with a limiter',
                             ' Like lp.qvvv~, plus a look-ahead limiter (on by default) after the '
                             'range handling, so the output stays within +/- 1 without clipping.'),
-                      args=[('hurst', 'float', 'Hurst exponent (default 0)'),
+                      args=[('hurst', 'float', 'Hurst exponent (default 0; limited to -100 to 100 since 2026)'),
                             ('nn', 'float', 'NN factor; fractional values allowed')],
                       see=['lp.qvvv~', 'lp.pvvv64~']),
     'lp.feta~': dict(cat=SIGNAL, digest='Generate 1-bit white noise',
@@ -457,7 +457,7 @@ OBJ = {
     'lp.epoisse~': dict(cat=SIGNAL, digest='Generate pitched noise',
                         desc='lp.epoisse~ generates noise that is part pitch, part noise.',
                         args=[('freq', 'float', 'Frequency in Hz'), ('pi', 'float', 'Pitch factor'),
-                              ('rho', 'float', 'Hurst exponent')],
+                              ('rho', 'float', 'Hurst exponent (limited to -100 to 100 since 2026)')],
                         msgs={'reset': 'Restart the generator'}, see=['lp.ksks~', 'lp.gruyere~']),
     'lp.ksks~': dict(cat=SIGNAL, digest='Generate plucked-string noise',
                      desc='lp.ksks~ generates plucked-string sounds from noise, without the '

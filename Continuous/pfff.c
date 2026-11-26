@@ -545,7 +545,7 @@ void PvvvNN(
 		double	iHurst)
 		
 		{
-		
+		iHurst			= LitterClampHurst(iHurst);		// 2026: +-100 (see MiscUtils.h)
 		me->hurstExp	= iHurst;
 		me->hurstFac	= pow(0.5, iHurst);
 		

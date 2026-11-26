@@ -15,7 +15,7 @@
 
 	<objarglist>
 		<objarg name='hurst' optional='1' type='float'>
-			<digest>Hurst exponent (default 0)</digest>
+			<digest>Hurst exponent (default 0; limited to -100 to 100 since 2026)</digest>
 		</objarg>
 		<objarg name='nn' optional='1' type='float'>
 			<digest>NN factor; fractional values allowed</digest>

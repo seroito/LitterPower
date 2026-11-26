@@ -2544,7 +2544,7 @@
 						1.0
 					],
 					"maxclass": "comment",
-					"text": "Although the Hurst Exponent is technically defined only in the range 0 <= h <= 1, the math works for all real values (well, to the limits of 64-bit floating point numbers). Whether or not you want to do this is up to you.",
+					"text": "Although the Hurst Exponent is technically defined only in the range 0 <= h <= 1, the math works for all real values (since 2026 it is limited to -100 to 100; beyond, the numbers overflowed and the output became NaN). Whether or not you want to do this is up to you.",
 					"linecount": 3,
 					"numoutlets": 0,
 					"fontsize": 13.0,

@@ -21,7 +21,7 @@
 			<digest>Pitch factor</digest>
 		</objarg>
 		<objarg name='rho' optional='1' type='float'>
-			<digest>Hurst exponent</digest>
+			<digest>Hurst exponent (limited to -100 to 100 since 2026)</digest>
 		</objarg>
 	</objarglist>
 

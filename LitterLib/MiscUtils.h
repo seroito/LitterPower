@@ -164,6 +164,15 @@ static inline double ClipDouble(double x, double min, double max)
 	{ return (x < min) ? min : (x > max) ? max : x; }
 static inline double ClipUnit(double x)
 	{ return ClipDouble(x, 0.0, 1.0); }
+	// Hurst exponents of the colored-noise objects (lp.pvvv, lp.qvvv~, lp.qvvvl~,
+	// lp.epoisse~) are limited to +-100 (2026, found by tests/fuzz.py): the gain 0.5^-h
+	// overflowed beyond about -150 (lp.pvvv) or +-1024 (the others) and the output became
+	// NaN. Meaningful values are around 0 to 1; everything within +-100 is unchanged.
+	// NaN gives 0.
+#define kLitterMaxHurst	100.0
+static inline double LitterClampHurst(double h)
+	{ return (h > kLitterMaxHurst) ? kLitterMaxHurst : (h < -kLitterMaxHurst) ? -kLitterMaxHurst : (h == h) ? h : 0.0; }
+
 static inline float ClipSignal(float x)
 	{ return (x < -1.0f) ? -1.0f : (x > 1.0f) ? 1.0f : x; }
 	
