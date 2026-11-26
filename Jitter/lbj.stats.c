@@ -797,7 +797,11 @@ CalcNDim(
 				variance += cellCount * mean2;
 					// It is unlikely at this stage that we have zero variance, but
 					// check to avoid NaNs
-				if (variance != 0.0) {
+					// 2026: "> 0" (was "!= 0"): with many nearly equal, large values the
+					// formula above can round to a small negative variance (about 1 in 10
+					// tries with values around 1e8), and sqrt() then gave NaN for std. dev.,
+					// skew and kurtosis. Such a matrix counts as constant (0, 0, 0).
+				if (variance > 0.0) {
 					double	sum3	= iStatData[i][statSum3],
 							sum4	= iStatData[i][statSum4],
 							mean3	= mean2 * mean,
