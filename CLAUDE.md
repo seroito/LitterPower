@@ -1,9 +1,18 @@
 # LitterPower modernization notes
 
 What has been done to bring Litter Power to Max 9, where things stand, and how to
-continue. Last updated 2026-11-25.
+continue. Last updated 2026-11-26.
 
-## Resume here (2026-11-25)
+## Resume here (2026-11-26)
+
+User's third test (2026-11-26) handled in item 22: License patcher redesigned (author
+line, novanarecords URL), copyright 1992-2027 everywhere, lp.poppy restart and reset in
+its help, lp.messages header. Confirmed by the user: lp.veral cords (item 20), test point
+12 (icon, readme), lp.shhh~ scope~ (item 21, screenshots in `Findings/lp.shhh~screenshots`,
+amplitude drops with NN as expected). Next: test point 15 with the package of the push
+build after ea31101; then merge into `64-bit-version` (ask first).
+Postponed for later (not started): A_GIMME `short argc` (71 places, all with small
+values, so harmless on x64/arm64) and A_LONG `long` handlers.
 
 All help files, the overview and the extras are redesigned (rng-fixes items 16-18); the
 user tests the package next. Added 2026-11-25 (item 19): package readme and icon,
@@ -158,6 +167,13 @@ Added for the `rng-fixes` package (2026-11-17):
    raising it above 1 brings the sound back, and `reset` works in every interpolation
    mode and with the growth signal; lp.shhh~ help: scope~ shows stepped noise at NN
    27-31 (calccount 2), the note below the displays reads well; icon and readme present.
+   User (2026-11-26): lp.shhh~ and icon/readme confirmed, lp.poppy~ works.
+15. Third round (rng-fixes item 22, 2026-11-26): overview "License" button: new layout,
+   "Peter Castine" bottom left, the novanarecords URL bottom right, nothing cut off;
+   copyright 1992-2027 in `vers` / Max console / assistance, overview, readme;
+   lp.poppy help: the float above "t b f" to 0, then up again: values come back without
+   reset; the new reset box next to p moreInfo; lp.messages: subtitle, message list and
+   version text readable, window fits.
 
 Other things to watch: converted Max 4 patchers (clippings, `lp.doom`,
 `lp.pfft.frimWrap`, `lp.bibi`/`lp.ernie`/`lp.abbie` help, "Running CPU Usage") look and
@@ -533,6 +549,29 @@ workflow builds pushes to both branches. One commit per change:
       matches the screenshots: NN 26 126 of 128 points at the bottom, NN 27 all). Object
       unchanged (changing the level mapping would change every noise object); help:
       scope~ calccount 2 (minimum) and a note on what NN does to white noise.
+
+22. User's third test (2026-11-26):
+    - Overview License patcher (user's request): title "Litter Power License" (Lato 48),
+      the agreement's old title as subtitle, line, section headings Lato 18, text Arial
+      13 (bold capitals kept); bottom left "Peter Castine", bottom right
+      https://www.novanarecords.com/artists/peter-castine/ (texts given by the user);
+      window 852 x 780 at 100/80. Done by a one-off script (scratchpad), not in
+      redesign_help.py (redesign_overview() is not safe to rerun anyway).
+    - Copyright years 1992-2027 everywhere users see them (user's choice: all, not only
+      the licence text); also `LPVERSION` in LitterLib.h (Max console), still 2001-26
+      until now.
+    - lp.poppy (not ~): the float above "t b f" in the help sets two rates of the cycle;
+      0 (clamped to FLT_EPSILON) let the population die out, and 0 is a fixed point.
+      Now as in lp.poppy~: restart at the seed when the rate is above 1; populations
+      below 1e-15 count as died out (with rates near 0 mixed with rates above 1 it
+      otherwise hovered at ~1e-28, ~50 bangs before anything showed). Simulated: r = 4
+      chaos identical over 1e6 steps. Help: `reset` -> `s lp.popIn` next to p moreInfo
+      (as inside moreInfo).
+    - lp.messages help: subtitle in Lato 13 at y 68, line at 93 (was Arial, indented,
+      under the line; kept on purpose since item 5, now changed on the user's request,
+      KEEP emptied in redesign_help.py), message list no longer cut by its 16 px panel,
+      version text 13 pt. Body text was already 13 pt; if the user still finds it too
+      small, ask which text.
 
 Not done (reviewed, lower priority): A_GIMME new functions declaring argc as `short`,
 A_LONG handlers declaring `long` instead of `t_atom_long`.
