@@ -192,6 +192,13 @@ Added for the `rng-fixes` package (2026-11-17):
    version text readable, window fits.
    lp.qvvv~ (item 23): `clip` (or wrap/reflect) with NN 31 gives only -0.5/+0.5 in a
    number~ or scope~, never 1.5; with Hurst 0 and NN 30.5 never beyond +-1.
+17. lp.vera* (item 24): with e.g. lp.vera= and ident at r = 3 the values grow, then the
+   right outlet shows inf (or -inf/nan) in "restart after:" and the values start again
+   at the seed; the left outlet never shows inf/nan; hover text of the right outlet;
+   Help > Reference shows two outlets. lp.veral with ident: r 0.5 (dies out), then 3.57:
+   values come back. Small text: lp.bernie/lp.tata "What's in a Name?" and bibliography
+   windows, lp.bernie "New-In-Version-2" tab, overview credit line now 13 pt, windows
+   fit.
 16. Help-file check script (item 23): with Max closed, in PowerShell from the repository
    folder `powershell -ExecutionPolicy Bypass -File tools\windows\check-help.ps1`
    (about 10-15 min for 105 files; `-Only "lp.p*"` for a short first try). Report:
@@ -263,6 +270,8 @@ removed (see `README.md`).
    - `tools/windows/check-help.ps1` (user runs it on Windows; D: = /media/sone/TAD1, the
      repository is the same folder): opens every help file in Max, report in
      `Findings/help-check-<date>.txt`.
+   - `python3 tools/fix_small_text.py [--dry-run]`: text below 12.5 pt to 13 pt in any
+     patcher level (whole level scaled), windows refitted; safe to rerun.
 
 ## Branch rng-fixes (2026-11-17, not merged yet)
 
@@ -636,6 +645,28 @@ workflow builds pushes to both branches. One commit per change:
       `pcontrol load <name>.maxhelp` finds help files, whether the js driver may close the
       previous window with `dispose` (log lines with "dispose" are ignored), and a "save
       changes?" dialog at `;max quit` (the script ends Max 20 s after "done").
+
+24. Audit "were the fixes applied wherever they help?" (2026-11-26, user's request;
+    findings reported first, then done on the user's go-ahead):
+    - lp.vera, vera+, vera=, veral, veras ran to inf/NaN in 23-37 % of function/growth
+      combinations within 1000 steps and then sent inf/nan for ever. Now: restart at the
+      seed, and a new right outlet sends the message `inf`, `-inf` or `nan` (user first
+      chose a bang, then the words, to tell them apart). lp.veral with ident (logistic
+      map) also gets lp.poppy's dying-out restart (no message). Null test against the
+      old code: finite values identical except those lp.veral rules. Assist strings in
+      Resources/Chaos/vera*.r, help (make_extra_help.py: prepend set -> message box
+      "restart after:"), reference pages, tests/test_vera+.c, tests/test_veral.c.
+      lp.lya (-inf at r = 2 is correct), lp.ccc/ccc~, lp.netochka~: nothing to do.
+    - Small text: the 2026 note of the 23 generated help files (10.8 pt, generators now
+      write 12 -> 13 pt); `tools/fix_small_text.py` (safe to rerun) scaled every patcher
+      level below 12.5 pt to 13 pt as a whole and refitted windows: lp.bernie and lp.tata
+      ("What's in a Name?", bibliographies, confer, New-In-Version-2), hidden helpers
+      (loadbanger, OverviewLoader, DoHelp), the overview credit line, lp.grabprops,
+      lp.pfft.frimWrap, lp.dotell, lp.doom. Rule from the user: after patcher changes
+      always refit windows where advisable.
+    - Checked, left: two dead links in bibliography texts (Knuth preprint, Guinness page;
+      historical citations), lp.abbie/lp.bibi intro boxes extend below their panel but the
+      text fits (look by eye).
 
 ## Method signatures (postponed, 2026-11-26)
 
