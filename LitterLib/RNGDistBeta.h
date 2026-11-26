@@ -89,6 +89,19 @@ typedef struct bcParams {
 
 eBetaAlg	RecommendBetaAlg(double, double);
 
+	// Joehnk's ratio y1 / (y1 + y2) with y1 = v1^(1/a), y2 = v2^(1/b). 2026 (found by a test
+	// of lbj.abbie): with tiny a and b (about 1e-9) both powers underflow to 0, the sum 0 is
+	// accepted, and 0/0 gave NaN. Then the ratio is computed from the logarithms instead,
+	// 1 / (1 + y2/y1) with y2/y1 = exp(log y2 - log y1); the same value without the
+	// underflow (it is close to 0 or 1, as the distribution is for tiny a and b). All other
+	// draws are unchanged. Used by RNGDistBeta.c and lbj.abbie.
+static inline double JKRatio(double y1, double sum, double v1, double v2, double a1, double b1)
+	{
+	if (sum > 0.0)
+		return y1 / sum;
+	return 1.0 / (1.0 + exp(b1 * log(v2) - a1 * log(v1)));
+	}
+
 	// Jöhnk algorithm
 void	CalcJKParams	(tJKParams*, double, double);
 double	GenBetaJK		(const tJKParams*, tRandomFunc, void*);

@@ -118,11 +118,11 @@ GenBetaJK(
 	{
 	double	a1	= iParams->a1,
 			b1	= iParams->b1,
-			u1, u2;
+			u1, u2, v1, v2;
 	
 	do  {
-	    u1 = ULong2Unit_zO( iFunc(iData) ),
-	    u2 = ULong2Unit_zO( iFunc(iData) );
+	    v1 = u1 = ULong2Unit_zO( iFunc(iData) ),
+	    v2 = u2 = ULong2Unit_zO( iFunc(iData) );
 		// The following is a slightly compressed implementation of the more explicit:
 		//		y1 = u1 ^ 1/a
 		//		y2 = u2 ^ 1/b;
@@ -132,7 +132,7 @@ GenBetaJK(
 		u2 += u1;				// stash sum in u2 instead of separate register
 		} while (u2 > 1.0);
 	
-    return u1 / u2;   
+    return JKRatio(u1, u2, v1, v2, a1, b1);
 	}
 
 double
@@ -143,7 +143,7 @@ GenBetaJKTaus88(
 	{
 	double	a1	= iParams->a1,
 			b1	= iParams->b1,
-			u1, u2;
+			u1, u2, v1, v2;
 	UInt32	s1, s2, s3;
 	
 	if (iData == NIL)
@@ -151,8 +151,8 @@ GenBetaJKTaus88(
 	Taus88Load(iData, &s1, &s2, &s3);
 	
 	do  {
-	    u1 = ULong2Unit_zO( Taus88Process(&s1, &s2, &s3) ),
-	    u2 = ULong2Unit_zO( Taus88Process(&s1, &s2, &s3) );
+	    v1 = u1 = ULong2Unit_zO( Taus88Process(&s1, &s2, &s3) ),
+	    v2 = u2 = ULong2Unit_zO( Taus88Process(&s1, &s2, &s3) );
 		// The following is a slightly compressed implementation of the more explicit:
 		//		y1 = u1 ^ 1/a
 		//		y2 = u2 ^ 1/b;
@@ -164,7 +164,7 @@ GenBetaJKTaus88(
 	
 	Taus88Store(iData, s1, s2, s3);
 	
-    return u1 / u2;   
+    return JKRatio(u1, u2, v1, v2, a1, b1);
 	}
 
 

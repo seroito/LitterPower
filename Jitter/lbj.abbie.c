@@ -130,11 +130,11 @@ GenBetaJKTaus88Core(
 	{
 	double	a1	= iParams->a1,
 			b1	= iParams->b1,
-			u1, u2;
+			u1, u2, v1, v2;
 	
 	do  {
-	    u1 = ULong2Unit_zO( Taus88Process(s1, s2, s3) ),
-	    u2 = ULong2Unit_zO( Taus88Process(s1, s2, s3) );
+	    v1 = u1 = ULong2Unit_zO( Taus88Process(s1, s2, s3) ),
+	    v2 = u2 = ULong2Unit_zO( Taus88Process(s1, s2, s3) );
 		// The following is a slightly compressed implementation of the more explicit:
 		//		y1 = u1 ^ 1/a
 		//		y2 = u2 ^ 1/b;
@@ -144,7 +144,7 @@ GenBetaJKTaus88Core(
 		u2 += u1;				// stash sum in u2 instead of separate register
 		} while (u2 > 1.0);
 	
-    return u1 / u2;   
+    return JKRatio(u1, u2, v1, v2, a1, b1);		// 2026: no 0/0 for tiny a, b (RNGDistBeta.h)
 	}
 	
 static inline double
