@@ -662,6 +662,11 @@ DoBang(
 	
 	static Boolean SetRates(tVera* me, short iArgC, Atom* iArgV)
 		{
+			// 2026 (found by tests/fuzz.py): an empty list set a cycle of length 0, and the
+			// next bang read a rate that did not exist (crash). An empty list changes nothing.
+			if (iArgC <= 0)
+				return false;
+			
 		long	allocation = iArgC * sizeof(float);
 				// We could check for (iArgC < 8096), but that seems unnecessarily
 				// paranoid. If someone actually manages to construct a list of that size,

@@ -84,6 +84,14 @@ int main(void)
 		}
 	CHECK(diff == 0, "r = 4 differs from the logistic map at step %ld", i);
 
+	// An empty list changes nothing (until 2026: a cycle of length 0, crash at the next bang)
+	{
+	long len = me->cycleLen;
+	DoRates(me, gensym("list"), 0, NULL);
+	CHECK(me->cycleLen == len, "empty list changed the cycle length to %ld", me->cycleLen);
+	DoBang(me);
+	}
+	
 	FreePoppy(me);
 	free(me);
 	return lptest_result();

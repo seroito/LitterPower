@@ -36,5 +36,15 @@ static int VeraCheckAll(void)
 		FreeVera(me);
 		free(me);
 		}
+	// An empty list changes nothing (until 2026: a cycle of length 0, crash at the next bang)
+	{
+	tVera*	me = (tVera*) NewVera(gensym("lp.vera"), 0, NULL);
+	long	len = me->cycleLen;
+	DoRates(me, gensym("list"), 0, NULL);
+	CHECK(me->cycleLen == len, "empty list changed the cycle length to %ld", me->cycleLen);
+	DoBang(me);
+	FreeVera(me);
+	free(me);
+	}
 	return (int) restarts;
 	}
