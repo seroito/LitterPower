@@ -667,6 +667,16 @@ workflow builds pushes to both branches. One commit per change:
     - Checked, left: two dead links in bibliography texts (Knuth preprint, Guinness page;
       historical citations), lp.abbie/lp.bibi intro boxes extend below their panel but the
       text fits (look by eye).
+    - Documentation of earlier behaviour changes (user's request): lp.poppy, lp.poppy~
+      (its help said the output stays at zero indefinitely), lp.qvvv~/qvvvl~ (range modes
+      with NN), lp.fiana~ (restart at 1e6/NaN, item 14) in help files and reference
+      pages. `tools/help_text.py`: change a comment's text, move only the boxes below it
+      in the same column, enclosing panel grows. lp.qvvvl~'s sentence comes from
+      make_help64.py (it reads the original lp.qvvv~ help from be8f44b).
+    - Open, asked the user: lp.lana (message version of lp.fiana~) has no protection:
+      29 % of function/parameter combinations run to inf/NaN within 1000 steps (ident,
+      sinh, cosh, log, exp, sqr, sqrt; never with the default sin/cos) and stay there.
+      Proposal as for lp.vera*: restart at x0 y0 plus a third outlet with inf/-inf/nan.
 
 ## Method signatures (postponed, 2026-11-26)
 
