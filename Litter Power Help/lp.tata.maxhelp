@@ -63,8 +63,8 @@
 						"rect": [
 							71.0,
 							362.0,
-							982,
-							239
+							1114,
+							267
 						],
 						"bgcolor": [
 							0.337254901960784,
@@ -76,8 +76,8 @@
 						"defrect": [
 							71.0,
 							362.0,
-							982,
-							239
+							1114,
+							267
 						],
 						"openrect": [
 							0.0,
@@ -86,7 +86,7 @@
 							0.0
 						],
 						"openinpresentation": 0,
-						"default_fontsize": 14.444,
+						"default_fontsize": 16.471,
 						"default_fontface": 0,
 						"default_fontname": "Arial",
 						"gridonopen": 0,
@@ -105,12 +105,12 @@
 									"maxclass": "message",
 									"text": "set 0",
 									"numoutlets": 1,
-									"fontsize": 11.411,
+									"fontsize": 13.013,
 									"patching_rect": [
-										713.556,
-										141.556,
-										47.667,
-										21.667
+										813.704,
+										161.424,
+										54.357,
+										24.708
 									],
 									"outlettype": [
 										""
@@ -131,12 +131,12 @@
 									"maxclass": "newobj",
 									"text": "p \"What's in a Name?\"",
 									"numoutlets": 0,
-									"fontsize": 11.411,
+									"fontsize": 13.013,
 									"patching_rect": [
-										398.667,
-										104.0,
-										158.889,
-										24.556
+										454.62,
+										118.596,
+										181.189,
+										28.002
 									],
 									"fontname": "Arial",
 									"id": "obj-2",
@@ -145,8 +145,8 @@
 										"rect": [
 											37.0,
 											87.0,
-											885,
-											163
+											1004,
+											180
 										],
 										"bgcolor": [
 											0.337254901960784,
@@ -158,8 +158,8 @@
 										"defrect": [
 											37.0,
 											87.0,
-											885,
-											163
+											1004,
+											180
 										],
 										"openrect": [
 											0.0,
@@ -168,7 +168,7 @@
 											0.0
 										],
 										"openinpresentation": 0,
-										"default_fontsize": 14.444,
+										"default_fontsize": 16.471,
 										"default_fontface": 0,
 										"default_fontname": "Arial",
 										"gridonopen": 0,
@@ -187,12 +187,12 @@
 													"maxclass": "comment",
 													"text": "What's in a Name?",
 													"numoutlets": 0,
-													"fontsize": 22.823,
+													"fontsize": 26.026,
 													"patching_rect": [
-														154.556,
-														13.0,
-														275.889,
-														40.444
+														176.248,
+														14.825,
+														314.61,
+														46.12
 													],
 													"fontname": "Arial",
 													"id": "obj-1",
@@ -216,10 +216,10 @@
 													"maxclass": "ubutton",
 													"numoutlets": 4,
 													"patching_rect": [
-														1.444,
-														1.444,
-														154.556,
-														47.667
+														1.647,
+														1.647,
+														176.248,
+														54.357
 													],
 													"outlettype": [
 														"bang",
@@ -239,8 +239,8 @@
 													"patching_rect": [
 														0.0,
 														0.0,
-														156.0,
-														50.556
+														177.895,
+														57.652
 													],
 													"id": "obj-3",
 													"embed": 1,
@@ -258,12 +258,12 @@
 													"maxclass": "newobj",
 													"text": "thispatcher",
 													"numoutlets": 2,
-													"fontsize": 11.411,
+													"fontsize": 13.013,
 													"patching_rect": [
-														1.444,
-														26.0,
-														88.111,
-														24.556
+														1.647,
+														29.649,
+														100.477,
+														28.002
 													],
 													"outlettype": [
 														"",
@@ -280,10 +280,10 @@
 													"maxclass": "inlet",
 													"numoutlets": 1,
 													"patching_rect": [
-														1.444,
+														1.647,
 														0.0,
-														21.667,
-														21.667
+														24.708,
+														24.708
 													],
 													"outlettype": [
 														""
@@ -306,12 +306,12 @@
 													"text": "All basic random number generators are named based on a repeated short syllable drawn from the name commonly found in the statistical literature. The habit started with the TT800 algorithm (the first one implemented). It seemed like a nice idea at the time.",
 													"linecount": 3,
 													"numoutlets": 0,
-													"fontsize": 12.679,
+													"fontsize": 14.459,
 													"patching_rect": [
-														1.444,
-														59.223,
-														830.556,
-														60.667
+														1.647,
+														67.535,
+														947.125,
+														69.182
 													],
 													"fontname": "Arial",
 													"id": "obj-6",
@@ -323,12 +323,12 @@
 													"maxclass": "newobj",
 													"text": "p OverviewLoader",
 													"numoutlets": 0,
-													"fontsize": 11.411,
+													"fontsize": 13.013,
 													"patching_rect": [
-														1.444,
-														57.777,
-														153.111,
-														24.556
+														1.647,
+														65.886,
+														174.6,
+														28.002
 													],
 													"fontname": "Arial",
 													"hidden": 1,
@@ -361,7 +361,7 @@
 															0.0
 														],
 														"openinpresentation": 0,
-														"default_fontsize": 14.444,
+														"default_fontsize": 16.471,
 														"default_fontface": 0,
 														"default_fontname": "Arial",
 														"gridonopen": 0,
@@ -380,12 +380,12 @@
 																	"maxclass": "newobj",
 																	"text": "gate",
 																	"numoutlets": 1,
-																	"fontsize": 11.411,
+																	"fontsize": 13.013,
 																	"patching_rect": [
-																		14.444,
-																		73.667,
-																		41.889,
-																		24.556
+																		16.471,
+																		84.006,
+																		47.768,
+																		28.002
 																	],
 																	"outlettype": [
 																		""
@@ -401,12 +401,12 @@
 																	"maxclass": "newobj",
 																	"text": "pcontrol",
 																	"numoutlets": 1,
-																	"fontsize": 11.411,
+																	"fontsize": 13.013,
 																	"patching_rect": [
-																		14.444,
-																		137.223,
-																		67.889,
-																		24.556
+																		16.471,
+																		156.482,
+																		77.417,
+																		28.002
 																	],
 																	"outlettype": [
 																		""
@@ -422,12 +422,12 @@
 																	"maxclass": "message",
 																	"text": "load \"Litter Pro Overview\"",
 																	"numoutlets": 1,
-																	"fontsize": 11.411,
+																	"fontsize": 13.013,
 																	"patching_rect": [
-																		14.444,
-																		106.889,
-																		192.111,
-																		21.667
+																		16.471,
+																		121.891,
+																		219.074,
+																		24.708
 																	],
 																	"outlettype": [
 																		""
@@ -443,10 +443,10 @@
 																	"maxclass": "inlet",
 																	"numoutlets": 1,
 																	"patching_rect": [
-																		41.889,
-																		34.667,
-																		21.667,
-																		21.667
+																		47.768,
+																		39.533,
+																		24.708,
+																		24.708
 																	],
 																	"outlettype": [
 																		"bang"
@@ -461,10 +461,10 @@
 																	"maxclass": "inlet",
 																	"numoutlets": 1,
 																	"patching_rect": [
-																		106.889,
-																		33.223,
-																		21.667,
-																		21.667
+																		121.891,
+																		37.886,
+																		24.708,
+																		24.708
 																	],
 																	"outlettype": [
 																		"int"
@@ -527,10 +527,10 @@
 																	],
 																	"hidden": 0,
 																	"midpoints": [
-																		119.889,
-																		65.0,
-																		28.167,
-																		65.0
+																		136.716,
+																		74.123,
+																		32.12,
+																		74.123
 																	]
 																}
 															}
@@ -558,10 +558,10 @@
 													"maxclass": "panel",
 													"numoutlets": 0,
 													"patching_rect": [
-														1.444,
-														56.333,
-														843.556,
-														66.444
+														1.647,
+														64.239,
+														961.95,
+														75.769
 													],
 													"id": "obj-8",
 													"rounded": 0,
@@ -639,12 +639,12 @@
 									"maxclass": "message",
 									"text": "front",
 									"numoutlets": 1,
-									"fontsize": 11.411,
+									"fontsize": 13.013,
 									"patching_rect": [
-										398.667,
-										72.223,
-										47.667,
-										21.667
+										454.62,
+										82.36,
+										54.357,
+										24.708
 									],
 									"outlettype": [
 										""
@@ -659,12 +659,12 @@
 									"maxclass": "newobj",
 									"text": "p \"Tata Bibliography\"",
 									"numoutlets": 0,
-									"fontsize": 11.411,
+									"fontsize": 13.013,
 									"patching_rect": [
-										203.667,
-										104.0,
-										154.556,
-										24.556
+										232.252,
+										118.596,
+										176.248,
+										28.002
 									],
 									"fontname": "Arial",
 									"id": "obj-4",
@@ -673,8 +673,8 @@
 										"rect": [
 											37.0,
 											87.0,
-											885,
-											143
+											1004,
+											157
 										],
 										"bgcolor": [
 											0.337254901960784,
@@ -686,8 +686,8 @@
 										"defrect": [
 											37.0,
 											87.0,
-											885,
-											143
+											1004,
+											157
 										],
 										"openrect": [
 											0.0,
@@ -696,7 +696,7 @@
 											0.0
 										],
 										"openinpresentation": 0,
-										"default_fontsize": 14.444,
+										"default_fontsize": 16.471,
 										"default_fontface": 0,
 										"default_fontname": "Arial",
 										"gridonopen": 0,
@@ -715,12 +715,12 @@
 													"maxclass": "comment",
 													"text": "Tata Bibliography",
 													"numoutlets": 0,
-													"fontsize": 22.823,
+													"fontsize": 26.026,
 													"patching_rect": [
-														154.556,
-														13.0,
-														275.889,
-														40.444
+														176.248,
+														14.825,
+														314.61,
+														46.12
 													],
 													"fontname": "Arial",
 													"id": "obj-1",
@@ -744,10 +744,10 @@
 													"maxclass": "ubutton",
 													"numoutlets": 4,
 													"patching_rect": [
-														1.444,
-														1.444,
-														154.556,
-														47.667
+														1.647,
+														1.647,
+														176.248,
+														54.357
 													],
 													"outlettype": [
 														"bang",
@@ -767,8 +767,8 @@
 													"patching_rect": [
 														0.0,
 														0.0,
-														156.0,
-														50.556
+														177.895,
+														57.652
 													],
 													"id": "obj-3",
 													"embed": 1,
@@ -786,12 +786,12 @@
 													"maxclass": "newobj",
 													"text": "thispatcher",
 													"numoutlets": 2,
-													"fontsize": 11.411,
+													"fontsize": 13.013,
 													"patching_rect": [
-														1.444,
-														26.0,
-														88.111,
-														24.556
+														1.647,
+														29.649,
+														100.477,
+														28.002
 													],
 													"outlettype": [
 														"",
@@ -808,10 +808,10 @@
 													"maxclass": "inlet",
 													"numoutlets": 1,
 													"patching_rect": [
-														1.444,
+														1.647,
 														0.0,
-														21.667,
-														21.667
+														24.708,
+														24.708
 													],
 													"outlettype": [
 														""
@@ -834,12 +834,12 @@
 													"text": "L’Ecuyer, Pierre, \"Maximally Equidistributed Combined Tausworthe Generators,\" Mathematics of Computation 65 (1996): 203-213.",
 													"linecount": 2,
 													"numoutlets": 0,
-													"fontsize": 12.679,
+													"fontsize": 14.459,
 													"patching_rect": [
-														1.444,
-														59.223,
-														833.444,
-														43.333
+														1.647,
+														67.535,
+														950.419,
+														49.415
 													],
 													"fontname": "Arial",
 													"id": "obj-6",
@@ -851,12 +851,12 @@
 													"maxclass": "newobj",
 													"text": "p OverviewLoader",
 													"numoutlets": 0,
-													"fontsize": 11.411,
+													"fontsize": 13.013,
 													"patching_rect": [
-														1.444,
-														57.777,
-														153.111,
-														24.556
+														1.647,
+														65.886,
+														174.6,
+														28.002
 													],
 													"fontname": "Arial",
 													"hidden": 1,
@@ -889,7 +889,7 @@
 															0.0
 														],
 														"openinpresentation": 0,
-														"default_fontsize": 14.444,
+														"default_fontsize": 16.471,
 														"default_fontface": 0,
 														"default_fontname": "Arial",
 														"gridonopen": 0,
@@ -908,12 +908,12 @@
 																	"maxclass": "newobj",
 																	"text": "gate",
 																	"numoutlets": 1,
-																	"fontsize": 11.411,
+																	"fontsize": 13.013,
 																	"patching_rect": [
-																		14.444,
-																		73.667,
-																		41.889,
-																		24.556
+																		16.471,
+																		84.006,
+																		47.768,
+																		28.002
 																	],
 																	"outlettype": [
 																		""
@@ -929,12 +929,12 @@
 																	"maxclass": "newobj",
 																	"text": "pcontrol",
 																	"numoutlets": 1,
-																	"fontsize": 11.411,
+																	"fontsize": 13.013,
 																	"patching_rect": [
-																		14.444,
-																		137.223,
-																		67.889,
-																		24.556
+																		16.471,
+																		156.482,
+																		77.417,
+																		28.002
 																	],
 																	"outlettype": [
 																		""
@@ -950,12 +950,12 @@
 																	"maxclass": "message",
 																	"text": "load \"Litter Pro Overview\"",
 																	"numoutlets": 1,
-																	"fontsize": 11.411,
+																	"fontsize": 13.013,
 																	"patching_rect": [
-																		14.444,
-																		106.889,
-																		192.111,
-																		21.667
+																		16.471,
+																		121.891,
+																		219.074,
+																		24.708
 																	],
 																	"outlettype": [
 																		""
@@ -971,10 +971,10 @@
 																	"maxclass": "inlet",
 																	"numoutlets": 1,
 																	"patching_rect": [
-																		41.889,
-																		34.667,
-																		21.667,
-																		21.667
+																		47.768,
+																		39.533,
+																		24.708,
+																		24.708
 																	],
 																	"outlettype": [
 																		"bang"
@@ -989,10 +989,10 @@
 																	"maxclass": "inlet",
 																	"numoutlets": 1,
 																	"patching_rect": [
-																		106.889,
-																		33.223,
-																		21.667,
-																		21.667
+																		121.891,
+																		37.886,
+																		24.708,
+																		24.708
 																	],
 																	"outlettype": [
 																		"int"
@@ -1055,10 +1055,10 @@
 																	],
 																	"hidden": 0,
 																	"midpoints": [
-																		119.889,
-																		65.0,
-																		28.167,
-																		65.0
+																		136.716,
+																		74.123,
+																		32.12,
+																		74.123
 																	]
 																}
 															}
@@ -1086,10 +1086,10 @@
 													"maxclass": "panel",
 													"numoutlets": 0,
 													"patching_rect": [
-														1.444,
-														56.333,
-														843.556,
-														46.223
+														1.647,
+														64.239,
+														961.95,
+														52.71
 													],
 													"id": "obj-8",
 													"rounded": 0,
@@ -1167,12 +1167,12 @@
 									"maxclass": "message",
 									"text": "front",
 									"numoutlets": 1,
-									"fontsize": 11.411,
+									"fontsize": 13.013,
 									"patching_rect": [
-										203.667,
-										72.223,
-										47.667,
-										21.667
+										232.252,
+										82.36,
+										54.357,
+										24.708
 									],
 									"outlettype": [
 										""
@@ -1187,12 +1187,12 @@
 									"maxclass": "newobj",
 									"text": "prepend load",
 									"numoutlets": 1,
-									"fontsize": 11.411,
+									"fontsize": 13.013,
 									"patching_rect": [
-										593.667,
-										104.0,
-										95.333,
-										24.556
+										676.989,
+										118.596,
+										108.713,
+										28.002
 									],
 									"outlettype": [
 										""
@@ -1207,10 +1207,10 @@
 									"maxclass": "outlet",
 									"numoutlets": 0,
 									"patching_rect": [
-										891.223,
-										177.667,
-										21.667,
-										21.667
+										1016.307,
+										202.603,
+										24.708,
+										24.708
 									],
 									"id": "obj-7",
 									"numinlets": 1,
@@ -1222,10 +1222,10 @@
 									"maxclass": "inlet",
 									"numoutlets": 1,
 									"patching_rect": [
-										8.667,
-										5.777,
-										21.667,
-										21.667
+										9.883,
+										6.588,
+										24.708,
+										24.708
 									],
 									"outlettype": [
 										""
@@ -1240,12 +1240,12 @@
 									"maxclass": "message",
 									"text": "set $1",
 									"numoutlets": 1,
-									"fontsize": 11.411,
+									"fontsize": 13.013,
 									"patching_rect": [
-										891.223,
-										104.0,
-										50.556,
-										21.667
+										1016.307,
+										118.596,
+										57.652,
+										24.708
 									],
 									"outlettype": [
 										""
@@ -1266,12 +1266,12 @@
 									"maxclass": "newobj",
 									"text": "unpack s 0",
 									"numoutlets": 2,
-									"fontsize": 11.411,
+									"fontsize": 13.013,
 									"patching_rect": [
-										788.667,
-										70.777,
-										79.444,
-										24.556
+										899.357,
+										80.711,
+										90.594,
+										28.002
 									],
 									"outlettype": [
 										"",
@@ -1287,12 +1287,12 @@
 									"maxclass": "newobj",
 									"text": "prepend help",
 									"numoutlets": 1,
-									"fontsize": 11.411,
+									"fontsize": 13.013,
 									"patching_rect": [
-										788.667,
-										104.0,
-										92.444,
-										24.556
+										899.357,
+										118.596,
+										105.419,
+										28.002
 									],
 									"outlettype": [
 										""
@@ -1307,12 +1307,12 @@
 									"maxclass": "newobj",
 									"text": "lp.mrsnorris",
 									"numoutlets": 1,
-									"fontsize": 11.411,
+									"fontsize": 13.013,
 									"patching_rect": [
-										788.667,
-										135.777,
-										96.777,
-										24.556
+										899.357,
+										154.833,
+										110.36,
+										28.002
 									],
 									"outlettype": [
 										""
@@ -1327,12 +1327,12 @@
 									"maxclass": "newobj",
 									"text": "select -> Bibliography \"What's in a Name?\" X-ample:",
 									"numoutlets": 5,
-									"fontsize": 11.411,
+									"fontsize": 13.013,
 									"patching_rect": [
-										8.667,
-										39.0,
-										794.444,
-										24.556
+										9.883,
+										44.474,
+										905.945,
+										28.002
 									],
 									"outlettype": [
 										"bang",
@@ -1385,10 +1385,10 @@
 										1.0
 									],
 									"midpoints": [
-										727.277,
-										169.0,
-										904.223,
-										169.0
+										829.351,
+										192.719,
+										1031.131,
+										192.719
 									]
 								}
 							},
@@ -1410,10 +1410,10 @@
 										1.0
 									],
 									"midpoints": [
-										854.389,
-										99.667,
-										904.944,
-										99.667
+										974.303,
+										113.655,
+										1031.954,
+										113.655
 									]
 								}
 							},
@@ -1429,10 +1429,10 @@
 									],
 									"hidden": 0,
 									"midpoints": [
-										607.389,
-										131.444,
-										802.389,
-										131.444
+										692.637,
+										149.892,
+										915.005,
+										149.892
 									]
 								}
 							},
@@ -1493,10 +1493,10 @@
 										1.0
 									],
 									"midpoints": [
-										214.139,
-										67.889,
-										727.277,
-										67.889
+										244.194,
+										77.417,
+										829.351,
+										77.417
 									]
 								}
 							},
@@ -1518,10 +1518,10 @@
 										1.0
 									],
 									"midpoints": [
-										405.889,
-										67.889,
-										727.277,
-										67.889
+										462.856,
+										77.417,
+										829.351,
+										77.417
 									]
 								}
 							},
@@ -1543,10 +1543,10 @@
 										1.0
 									],
 									"midpoints": [
-										597.639,
-										67.889,
-										727.277,
-										67.889
+										681.518,
+										77.417,
+										829.351,
+										77.417
 									]
 								}
 							},
@@ -4260,7 +4260,7 @@
 							384.0,
 							252.0,
 							200,
-							171
+							190
 						],
 						"bgcolor": [
 							0.337254901960784,
@@ -4273,7 +4273,7 @@
 							384.0,
 							252.0,
 							200,
-							171
+							190
 						],
 						"openrect": [
 							0.0,
@@ -4282,7 +4282,7 @@
 							0.0
 						],
 						"openinpresentation": 0,
-						"default_fontsize": 14.444,
+						"default_fontsize": 16.471,
 						"default_fontface": 0,
 						"default_fontname": "Arial",
 						"gridonopen": 0,
@@ -4301,12 +4301,12 @@
 									"maxclass": "newobj",
 									"text": "gate",
 									"numoutlets": 1,
-									"fontsize": 11.411,
+									"fontsize": 13.013,
 									"patching_rect": [
-										14.444,
-										73.667,
-										41.889,
-										24.556
+										16.471,
+										84.006,
+										47.768,
+										28.002
 									],
 									"outlettype": [
 										""
@@ -4321,12 +4321,12 @@
 									"maxclass": "newobj",
 									"text": "lp.mrsnorris lpo",
 									"numoutlets": 1,
-									"fontsize": 11.411,
+									"fontsize": 13.013,
 									"patching_rect": [
-										14.444,
-										106.889,
-										119.889,
-										24.556
+										16.471,
+										121.891,
+										136.716,
+										28.002
 									],
 									"outlettype": [
 										""
@@ -4341,10 +4341,10 @@
 									"maxclass": "inlet",
 									"numoutlets": 1,
 									"patching_rect": [
-										41.889,
-										34.667,
-										21.667,
-										21.667
+										47.768,
+										39.533,
+										24.708,
+										24.708
 									],
 									"outlettype": [
 										"bang"
@@ -4359,10 +4359,10 @@
 									"maxclass": "inlet",
 									"numoutlets": 1,
 									"patching_rect": [
-										106.889,
-										33.223,
-										21.667,
-										21.667
+										121.891,
+										37.886,
+										24.708,
+										24.708
 									],
 									"outlettype": [
 										"int"
@@ -4412,10 +4412,10 @@
 									],
 									"hidden": 0,
 									"midpoints": [
-										119.889,
-										65.0,
-										28.167,
-										65.0
+										136.716,
+										74.123,
+										32.12,
+										74.123
 									]
 								}
 							}

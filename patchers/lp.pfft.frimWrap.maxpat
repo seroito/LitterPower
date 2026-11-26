@@ -12,12 +12,12 @@
 		"rect": [
 			100.0,
 			80.0,
-			546,
-			329
+			771,
+			457
 		],
 		"bglocked": 0,
 		"openinpresentation": 0,
-		"default_fontsize": 9.0,
+		"default_fontsize": 13.0,
 		"default_fontface": 0,
 		"default_fontname": "Arial",
 		"gridonopen": 1,
@@ -40,13 +40,13 @@
 					"id": "obj-1",
 					"maxclass": "comment",
 					"patching_rect": [
-						370.0,
-						170.0,
-						136.0,
-						37.0
+						534.444,
+						245.556,
+						196.444,
+						53.444
 					],
 					"fontname": "Arial",
-					"fontsize": 9.0,
+					"fontsize": 13.0,
 					"text": "Delta emphasis\nfor Re"
 				}
 			},
@@ -55,13 +55,13 @@
 					"id": "obj-2",
 					"maxclass": "comment",
 					"patching_rect": [
-						326.0,
-						142.0,
-						120.0,
-						37.0
+						470.889,
+						205.111,
+						173.333,
+						53.444
 					],
 					"fontname": "Arial",
-					"fontsize": 9.0,
+					"fontsize": 13.0,
 					"text": "Clumping Index (pi)\nfo"
 				}
 			},
@@ -70,13 +70,13 @@
 					"id": "obj-3",
 					"maxclass": "comment",
 					"patching_rect": [
-						282.0,
-						122.0,
-						115.0,
-						20.0
+						407.333,
+						176.222,
+						166.111,
+						28.889
 					],
 					"fontname": "Arial",
-					"fontsize": 9.0,
+					"fontsize": 13.0,
 					"text": "Mutation Index (omega)"
 				}
 			},
@@ -85,13 +85,13 @@
 					"id": "obj-4",
 					"maxclass": "comment",
 					"patching_rect": [
-						194.0,
-						77.0,
-						99.0,
-						20.0
+						280.222,
+						111.222,
+						143.0,
+						28.889
 					],
 					"fontname": "Arial",
-					"fontsize": 9.0,
+					"fontsize": 13.0,
 					"text": "“Target” signal"
 				}
 			},
@@ -100,13 +100,13 @@
 					"id": "obj-5",
 					"maxclass": "comment",
 					"patching_rect": [
-						106.0,
-						36.0,
-						99.0,
-						20.0
+						153.111,
+						52.0,
+						143.0,
+						28.889
 					],
 					"fontname": "Arial",
-					"fontsize": 9.0,
+					"fontsize": 13.0,
 					"text": "“Source” signal"
 				}
 			},
@@ -115,13 +115,13 @@
 					"id": "obj-6",
 					"maxclass": "newobj",
 					"patching_rect": [
-						238.0,
-						137.0,
-						40.0,
-						20.0
+						343.778,
+						197.889,
+						57.778,
+						28.889
 					],
 					"fontname": "Arial",
-					"fontsize": 9.0,
+					"fontsize": 13.0,
 					"text": "lp.grl~",
 					"numinlets": 1,
 					"numoutlets": 1
@@ -132,13 +132,13 @@
 					"id": "obj-7",
 					"maxclass": "newobj",
 					"patching_rect": [
-						150.0,
-						98.0,
-						40.0,
-						20.0
+						216.667,
+						141.556,
+						57.778,
+						28.889
 					],
 					"fontname": "Arial",
-					"fontsize": 9.0,
+					"fontsize": 13.0,
 					"text": "lp.grl~",
 					"numinlets": 1,
 					"numoutlets": 1
@@ -149,13 +149,13 @@
 					"id": "obj-8",
 					"maxclass": "newobj",
 					"patching_rect": [
-						106.0,
-						243.0,
-						277.0,
-						20.0
+						153.111,
+						351.0,
+						400.111,
+						28.889
 					],
 					"fontname": "Arial",
-					"fontsize": 9.0,
+					"fontsize": 13.0,
 					"text": "lp.p2c~",
 					"numinlets": 2,
 					"numoutlets": 2
@@ -166,13 +166,13 @@
 					"id": "obj-9",
 					"maxclass": "newobj",
 					"patching_rect": [
-						194.0,
-						115.0,
-						54.0,
-						20.0
+						280.222,
+						166.111,
+						78.0,
+						28.889
 					],
 					"fontname": "Arial",
-					"fontsize": 9.0,
+					"fontsize": 13.0,
 					"text": "lp.c2p~",
 					"numinlets": 2,
 					"numoutlets": 2
@@ -183,13 +183,13 @@
 					"id": "obj-10",
 					"maxclass": "newobj",
 					"patching_rect": [
-						106.0,
-						76.0,
-						54.0,
-						20.0
+						153.111,
+						109.778,
+						78.0,
+						28.889
 					],
 					"fontname": "Arial",
-					"fontsize": 9.0,
+					"fontsize": 13.0,
 					"text": "lp.c2p~",
 					"numinlets": 2,
 					"numoutlets": 2
@@ -200,13 +200,13 @@
 					"id": "obj-11",
 					"maxclass": "newobj",
 					"patching_rect": [
-						370.0,
-						196.0,
-						25.0,
-						20.0
+						534.444,
+						283.111,
+						36.111,
+						28.889
 					],
 					"fontname": "Arial",
-					"fontsize": 9.0,
+					"fontsize": 13.0,
 					"text": "in 6",
 					"comment": "Delta Emphasis",
 					"numinlets": 1,
@@ -218,13 +218,13 @@
 					"id": "obj-12",
 					"maxclass": "newobj",
 					"patching_rect": [
-						326.0,
-						169.0,
-						25.0,
-						20.0
+						470.889,
+						244.111,
+						36.111,
+						28.889
 					],
 					"fontname": "Arial",
-					"fontsize": 9.0,
+					"fontsize": 13.0,
 					"text": "in 5",
 					"comment": "Clumping Factor",
 					"numinlets": 1,
@@ -236,13 +236,13 @@
 					"id": "obj-13",
 					"maxclass": "newobj",
 					"patching_rect": [
-						282.0,
-						137.0,
-						25.0,
-						20.0
+						407.333,
+						197.889,
+						36.111,
+						28.889
 					],
 					"fontname": "Arial",
-					"fontsize": 9.0,
+					"fontsize": 13.0,
 					"text": "in 4",
 					"comment": "Mutation Index",
 					"numinlets": 1,
@@ -254,13 +254,13 @@
 					"id": "obj-14",
 					"maxclass": "newobj",
 					"patching_rect": [
-						70.0,
-						52.0,
-						25.0,
-						20.0
+						101.111,
+						75.111,
+						36.111,
+						28.889
 					],
 					"fontname": "Arial",
-					"fontsize": 9.0,
+					"fontsize": 13.0,
 					"text": "in 1",
 					"comment": "Mutation messages",
 					"numinlets": 1,
@@ -272,13 +272,13 @@
 					"id": "obj-15",
 					"maxclass": "newobj",
 					"patching_rect": [
-						106.0,
-						269.0,
-						277.0,
-						20.0
+						153.111,
+						388.556,
+						400.111,
+						28.889
 					],
 					"fontname": "Arial",
-					"fontsize": 9.0,
+					"fontsize": 13.0,
 					"text": "fftout~ 1",
 					"numinlets": 2,
 					"numoutlets": 0
@@ -289,13 +289,13 @@
 					"id": "obj-16",
 					"maxclass": "newobj",
 					"patching_rect": [
-						194.0,
-						93.0,
-						98.0,
-						20.0
+						280.222,
+						134.333,
+						141.556,
+						28.889
 					],
 					"fontname": "Arial",
-					"fontsize": 9.0,
+					"fontsize": 13.0,
 					"text": "fftin~ 3",
 					"numinlets": 1,
 					"numoutlets": 2
@@ -306,13 +306,13 @@
 					"id": "obj-17",
 					"maxclass": "newobj",
 					"patching_rect": [
-						106.0,
-						52.0,
-						98.0,
-						20.0
+						153.111,
+						75.111,
+						141.556,
+						28.889
 					],
 					"fontname": "Arial",
-					"fontsize": 9.0,
+					"fontsize": 13.0,
 					"text": "fftin~ 2",
 					"numinlets": 1,
 					"numoutlets": 2
@@ -323,13 +323,13 @@
 					"id": "obj-18",
 					"maxclass": "newobj",
 					"patching_rect": [
-						106.0,
-						219.0,
-						277.0,
-						20.0
+						153.111,
+						316.333,
+						400.111,
+						28.889
 					],
 					"fontname": "Arial",
-					"fontsize": 9.0,
+					"fontsize": 13.0,
 					"text": "lp.frim~ 2048",
 					"numinlets": 7,
 					"numoutlets": 2
@@ -340,13 +340,13 @@
 					"id": "obj-19",
 					"maxclass": "comment",
 					"patching_rect": [
-						31.0,
-						7.0,
-						359.0,
-						20.0
+						44.778,
+						10.111,
+						518.556,
+						28.889
 					],
 					"fontname": "Arial",
-					"fontsize": 9.0,
+					"fontsize": 13.0,
 					"text": "lp.pfft.frimWrap is a pfft~-abstraction used in the Spectral Mutation X-ample"
 				}
 			},
@@ -355,13 +355,13 @@
 					"id": "obj-20",
 					"maxclass": "comment",
 					"patching_rect": [
-						9.0,
-						53.0,
-						58.0,
-						37.0
+						13.0,
+						76.556,
+						83.778,
+						53.444
 					],
 					"fontname": "Arial",
-					"fontsize": 9.0,
+					"fontsize": 13.0,
 					"text": "Control Messages"
 				}
 			}
@@ -390,10 +390,10 @@
 						0
 					],
 					"midpoints": [
-						75.0,
-						138.0,
-						111.0,
-						138.0
+						108.333,
+						199.333,
+						160.333,
+						199.333
 					]
 				}
 			},

@@ -2490,8 +2490,8 @@
 						"rect": [
 							10.0,
 							383.0,
-							1144,
-							228
+							1298,
+							254
 						],
 						"bgcolor": [
 							0.337254901960784,
@@ -2503,8 +2503,8 @@
 						"defrect": [
 							10.0,
 							383.0,
-							1144,
-							228
+							1298,
+							254
 						],
 						"openrect": [
 							0.0,
@@ -2513,7 +2513,7 @@
 							0.0
 						],
 						"openinpresentation": 0,
-						"default_fontsize": 14.444,
+						"default_fontsize": 16.471,
 						"default_fontface": 0,
 						"default_fontname": "Arial",
 						"gridonopen": 0,
@@ -2533,12 +2533,12 @@
 									"text": "window flags nogrow, savewindow 1, window exec",
 									"linecount": 2,
 									"numoutlets": 1,
-									"fontsize": 11.411,
+									"fontsize": 13.013,
 									"patching_rect": [
-										696.223,
-										69.333,
-										203.667,
-										37.556
+										793.939,
+										79.064,
+										232.252,
+										42.827
 									],
 									"outlettype": [
 										""
@@ -2553,12 +2553,12 @@
 									"maxclass": "message",
 									"text": "window flags grow, window exec",
 									"numoutlets": 1,
-									"fontsize": 11.411,
+									"fontsize": 13.013,
 									"patching_rect": [
-										713.556,
-										111.223,
-										192.111,
-										21.667
+										813.704,
+										126.833,
+										219.074,
+										24.708
 									],
 									"outlettype": [
 										""
@@ -2574,12 +2574,12 @@
 									"text": "These are just for convenience, to toggle scroll bars & grow bar in the mother patch",
 									"linecount": 3,
 									"numoutlets": 0,
-									"fontsize": 11.411,
+									"fontsize": 13.013,
 									"patching_rect": [
-										905.667,
-										69.333,
-										187.777,
-										54.889
+										1032.778,
+										79.064,
+										214.132,
+										62.593
 									],
 									"fontname": "Geneva",
 									"id": "obj-3",
@@ -2597,10 +2597,10 @@
 									"maxclass": "panel",
 									"numoutlets": 0,
 									"patching_rect": [
-										687.556,
-										57.777,
-										416.0,
-										98.223
+										784.055,
+										65.886,
+										474.386,
+										112.009
 									],
 									"id": "obj-4",
 									"rounded": 0,
@@ -2618,10 +2618,10 @@
 									"maxclass": "inlet",
 									"numoutlets": 1,
 									"patching_rect": [
-										325.0,
-										8.667,
-										21.667,
-										21.667
+										370.614,
+										9.883,
+										24.708,
+										24.708
 									],
 									"outlettype": [
 										""
@@ -2643,12 +2643,12 @@
 									"text": "Grab sends version symbol to us. Format this into a scripting message for an object named 'version' and send that to a thispatcher object in the mother patch.",
 									"linecount": 2,
 									"numoutlets": 0,
-									"fontsize": 11.411,
+									"fontsize": 13.013,
 									"patching_rect": [
-										621.111,
-										5.777,
-										482.444,
-										40.444
+										708.284,
+										6.588,
+										550.155,
+										46.12
 									],
 									"fontname": "Geneva",
 									"id": "obj-7",
@@ -2660,10 +2660,10 @@
 									"maxclass": "outlet",
 									"numoutlets": 0,
 									"patching_rect": [
-										589.333,
-										166.111,
-										21.667,
-										21.667
+										672.046,
+										189.425,
+										24.708,
+										24.708
 									],
 									"id": "obj-8",
 									"numinlets": 1,
@@ -2676,12 +2676,12 @@
 									"text": "script send version set Version",
 									"linecount": 2,
 									"numoutlets": 1,
-									"fontsize": 11.411,
+									"fontsize": 13.013,
 									"patching_rect": [
-										369.777,
-										83.777,
-										138.667,
-										37.556
+										421.676,
+										95.535,
+										158.129,
+										42.827
 									],
 									"outlettype": [
 										""
@@ -2696,10 +2696,10 @@
 									"maxclass": "button",
 									"numoutlets": 1,
 									"patching_rect": [
-										369.777,
-										54.889,
-										21.667,
-										21.667
+										421.676,
+										62.593,
+										24.708,
+										24.708
 									],
 									"outlettype": [
 										"bang"
@@ -2713,12 +2713,12 @@
 									"maxclass": "newobj",
 									"text": "append",
 									"numoutlets": 1,
-									"fontsize": 11.411,
+									"fontsize": 13.013,
 									"patching_rect": [
-										589.333,
-										132.889,
-										54.889,
-										24.556
+										672.046,
+										151.54,
+										62.593,
+										28.002
 									],
 									"outlettype": [
 										""
@@ -2733,12 +2733,12 @@
 									"maxclass": "newobj",
 									"text": "prepend set",
 									"numoutlets": 1,
-									"fontsize": 11.411,
+									"fontsize": 13.013,
 									"patching_rect": [
-										589.333,
-										66.444,
-										86.667,
-										24.556
+										672.046,
+										75.769,
+										98.831,
+										28.002
 									],
 									"outlettype": [
 										""
@@ -2753,10 +2753,10 @@
 									"maxclass": "inlet",
 									"numoutlets": 1,
 									"patching_rect": [
-										589.333,
-										7.223,
-										21.667,
-										21.667
+										672.046,
+										8.237,
+										24.708,
+										24.708
 									],
 									"outlettype": [
 										""
@@ -2771,10 +2771,10 @@
 									"maxclass": "outlet",
 									"numoutlets": 0,
 									"patching_rect": [
-										169.0,
-										166.111,
-										21.667,
-										21.667
+										192.719,
+										189.425,
+										24.708,
+										24.708
 									],
 									"id": "obj-14",
 									"numinlets": 1,
@@ -2786,12 +2786,12 @@
 									"maxclass": "message",
 									"text": "vers 1 1",
 									"numoutlets": 1,
-									"fontsize": 11.411,
+									"fontsize": 13.013,
 									"patching_rect": [
-										169.0,
-										101.111,
-										65.0,
-										21.667
+										192.719,
+										115.302,
+										74.123,
+										24.708
 									],
 									"outlettype": [
 										""
@@ -2806,12 +2806,12 @@
 									"maxclass": "newobj",
 									"text": "loadbang",
 									"numoutlets": 1,
-									"fontsize": 11.411,
+									"fontsize": 13.013,
 									"patching_rect": [
-										247.0,
-										62.111,
-										65.0,
-										24.556
+										281.667,
+										70.828,
+										74.123,
+										28.002
 									],
 									"outlettype": [
 										"bang"
@@ -2833,12 +2833,12 @@
 									"text": "Loadbang triggers a \"vers\" message to a grab object in the mother patcher at loadbang time, as well as banging Judge Doom",
 									"linecount": 4,
 									"numoutlets": 0,
-									"fontsize": 11.411,
+									"fontsize": 13.013,
 									"patching_rect": [
-										5.777,
-										15.889,
-										236.889,
-										70.777
+										6.588,
+										18.119,
+										270.137,
+										80.711
 									],
 									"fontname": "Geneva",
 									"id": "obj-17",
@@ -2857,12 +2857,12 @@
 									"text": "window size message from thispatcher in the mother patch.",
 									"linecount": 2,
 									"numoutlets": 0,
-									"fontsize": 11.411,
+									"fontsize": 13.013,
 									"patching_rect": [
-										353.889,
-										4.333,
-										223.889,
-										40.444
+										403.558,
+										4.941,
+										255.312,
+										46.12
 									],
 									"fontname": "Geneva",
 									"id": "obj-18",
@@ -2883,10 +2883,10 @@
 									],
 									"hidden": 0,
 									"midpoints": [
-										709.944,
-										161.777,
-										602.333,
-										161.777
+										809.585,
+										184.483,
+										686.871,
+										184.483
 									]
 								}
 							},
@@ -2902,10 +2902,10 @@
 									],
 									"hidden": 0,
 									"midpoints": [
-										727.277,
-										161.777,
-										602.333,
-										161.777
+										829.351,
+										184.483,
+										686.871,
+										184.483
 									]
 								}
 							},
@@ -2934,10 +2934,10 @@
 									],
 									"hidden": 0,
 									"midpoints": [
-										383.5,
-										127.111,
-										603.056,
-										127.111
+										437.325,
+										144.951,
+										687.695,
+										144.951
 									]
 								}
 							},
@@ -2992,10 +2992,10 @@
 									],
 									"hidden": 0,
 									"midpoints": [
-										602.333,
-										47.667,
-										382.777,
-										47.667
+										686.871,
+										54.357,
+										436.5,
+										54.357
 									]
 								}
 							},
@@ -3024,10 +3024,10 @@
 									],
 									"hidden": 0,
 									"midpoints": [
-										260.723,
-										92.444,
-										182.723,
-										92.444
+										297.316,
+										105.419,
+										208.368,
+										105.419
 									]
 								}
 							}

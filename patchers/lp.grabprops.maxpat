@@ -3,8 +3,8 @@
 		"rect": [
 			100.0,
 			80.0,
-			611,
-			211
+			980,
+			321
 		],
 		"bgcolor": [
 			1.0,
@@ -16,8 +16,8 @@
 		"defrect": [
 			100.0,
 			80.0,
-			611,
-			211
+			980,
+			321
 		],
 		"openrect": [
 			0.0,
@@ -26,7 +26,7 @@
 			0.0
 		],
 		"openinpresentation": 0,
-		"default_fontsize": 10.0,
+		"default_fontsize": 16.456,
 		"default_fontface": 0,
 		"default_fontname": "Arial",
 		"gridonopen": 0,
@@ -47,10 +47,10 @@
 					"id": "obj-1",
 					"numoutlets": 0,
 					"patching_rect": [
-						519.0,
-						156.0,
-						15.0,
-						15.0
+						854.051,
+						256.709,
+						24.684,
+						24.684
 					],
 					"comment": "float (max)"
 				}
@@ -62,10 +62,10 @@
 					"id": "obj-2",
 					"numoutlets": 0,
 					"patching_rect": [
-						486.0,
-						156.0,
-						15.0,
-						15.0
+						799.747,
+						256.709,
+						24.684,
+						24.684
 					],
 					"comment": "float (min)"
 				}
@@ -75,7 +75,7 @@
 					"maxclass": "newobj",
 					"text": "route int",
 					"fontname": "Arial",
-					"fontsize": 7.9,
+					"fontsize": 13.0,
 					"numinlets": 1,
 					"id": "obj-3",
 					"numoutlets": 2,
@@ -84,10 +84,10 @@
 						""
 					],
 					"patching_rect": [
-						5.0,
-						86.0,
-						49.0,
-						17.0
+						8.228,
+						141.519,
+						80.633,
+						27.975
 					]
 				}
 			},
@@ -96,7 +96,7 @@
 					"maxclass": "newobj",
 					"text": "loadbang",
 					"fontname": "Arial",
-					"fontsize": 7.9,
+					"fontsize": 13.0,
 					"numinlets": 1,
 					"id": "obj-4",
 					"numoutlets": 1,
@@ -104,10 +104,10 @@
 						"bang"
 					],
 					"patching_rect": [
-						29.0,
-						45.0,
-						48.0,
-						17.0
+						47.722,
+						74.051,
+						78.987,
+						27.975
 					]
 				}
 			},
@@ -118,10 +118,10 @@
 					"id": "obj-5",
 					"numoutlets": 0,
 					"patching_rect": [
-						453.0,
-						156.0,
-						15.0,
-						15.0
+						745.443,
+						256.709,
+						24.684,
+						24.684
 					],
 					"comment": "float (entropy)"
 				}
@@ -133,10 +133,10 @@
 					"id": "obj-6",
 					"numoutlets": 0,
 					"patching_rect": [
-						420.0,
-						156.0,
-						15.0,
-						15.0
+						691.139,
+						256.709,
+						24.684,
+						24.684
 					],
 					"comment": "float (kurtosis)"
 				}
@@ -148,10 +148,10 @@
 					"id": "obj-7",
 					"numoutlets": 0,
 					"patching_rect": [
-						387.0,
-						156.0,
-						15.0,
-						15.0
+						636.835,
+						256.709,
+						24.684,
+						24.684
 					],
 					"comment": "float (skew)"
 				}
@@ -163,10 +163,10 @@
 					"id": "obj-8",
 					"numoutlets": 0,
 					"patching_rect": [
-						354.0,
-						156.0,
-						15.0,
-						15.0
+						582.532,
+						256.709,
+						24.684,
+						24.684
 					],
 					"comment": "float (variance)"
 				}
@@ -178,10 +178,10 @@
 					"id": "obj-9",
 					"numoutlets": 0,
 					"patching_rect": [
-						321.0,
-						156.0,
-						15.0,
-						15.0
+						528.228,
+						256.709,
+						24.684,
+						24.684
 					],
 					"comment": "float (standard deviation)"
 				}
@@ -193,10 +193,10 @@
 					"id": "obj-10",
 					"numoutlets": 0,
 					"patching_rect": [
-						288.0,
-						156.0,
-						15.0,
-						15.0
+						473.924,
+						256.709,
+						24.684,
+						24.684
 					],
 					"comment": "float (mode)"
 				}
@@ -208,10 +208,10 @@
 					"id": "obj-11",
 					"numoutlets": 0,
 					"patching_rect": [
-						255.0,
-						156.0,
-						15.0,
-						15.0
+						419.62,
+						256.709,
+						24.684,
+						24.684
 					],
 					"comment": "float (median)"
 				}
@@ -221,7 +221,7 @@
 					"maxclass": "newobj",
 					"text": "t b",
 					"fontname": "Arial",
-					"fontsize": 7.9,
+					"fontsize": 13.0,
 					"numinlets": 1,
 					"id": "obj-12",
 					"numoutlets": 1,
@@ -229,10 +229,10 @@
 						"bang"
 					],
 					"patching_rect": [
-						5.0,
-						45.0,
-						20.0,
-						17.0
+						8.228,
+						74.051,
+						32.911,
+						27.975
 					]
 				}
 			},
@@ -246,10 +246,10 @@
 						""
 					],
 					"patching_rect": [
-						5.0,
-						25.0,
-						15.0,
-						15.0
+						8.228,
+						41.139,
+						24.684,
+						24.684
 					],
 					"comment": "Bang to recalculate statistical properties"
 				}
@@ -261,10 +261,10 @@
 					"id": "obj-14",
 					"numoutlets": 0,
 					"patching_rect": [
-						222.0,
-						156.0,
-						15.0,
-						15.0
+						365.316,
+						256.709,
+						24.684,
+						24.684
 					],
 					"comment": "float (mean)"
 				}
@@ -274,7 +274,7 @@
 					"maxclass": "newobj",
 					"text": "r #0-rs",
 					"fontname": "Arial",
-					"fontsize": 7.9,
+					"fontsize": 13.0,
 					"numinlets": 0,
 					"id": "obj-15",
 					"numoutlets": 1,
@@ -282,10 +282,10 @@
 						""
 					],
 					"patching_rect": [
-						222.0,
-						110.0,
-						82.0,
-						17.0
+						365.316,
+						181.013,
+						134.937,
+						27.975
 					]
 				}
 			},
@@ -296,10 +296,10 @@
 					"id": "obj-16",
 					"numoutlets": 0,
 					"patching_rect": [
-						35.0,
-						156.0,
-						15.0,
-						15.0
+						57.595,
+						256.709,
+						24.684,
+						24.684
 					],
 					"comment": "expect messages to the RNG"
 				}
@@ -309,7 +309,7 @@
 					"maxclass": "newobj",
 					"text": "sprintf tell #0-rs %s",
 					"fontname": "Arial",
-					"fontsize": 7.9,
+					"fontsize": 13.0,
 					"numinlets": 1,
 					"id": "obj-17",
 					"numoutlets": 1,
@@ -317,10 +317,10 @@
 						""
 					],
 					"patching_rect": [
-						35.0,
-						110.0,
-						167.0,
-						17.0
+						57.595,
+						181.013,
+						274.81,
+						27.975
 					]
 				}
 			},
@@ -329,7 +329,7 @@
 					"maxclass": "message",
 					"text": "#1, #2, #3, #4, #5, #6, #7, #8, #9",
 					"fontname": "Arial",
-					"fontsize": 7.9,
+					"fontsize": 13.0,
 					"numinlets": 2,
 					"id": "obj-18",
 					"numoutlets": 1,
@@ -337,10 +337,10 @@
 						""
 					],
 					"patching_rect": [
-						5.0,
-						66.0,
-						515.0,
-						15.0
+						8.228,
+						108.608,
+						847.468,
+						24.684
 					]
 				}
 			},
@@ -350,7 +350,7 @@
 					"varname": "lp.chichi.help.exp",
 					"text": "route mean median mode stddev var skew kurtosis entropy min max",
 					"fontname": "Arial",
-					"fontsize": 7.9,
+					"fontsize": 13.0,
 					"numinlets": 1,
 					"id": "obj-19",
 					"numoutlets": 11,
@@ -368,10 +368,10 @@
 						""
 					],
 					"patching_rect": [
-						222.0,
-						135.0,
-						349.0,
-						17.0
+						365.316,
+						222.152,
+						574.304,
+						27.975
 					]
 				}
 			},
@@ -380,15 +380,15 @@
 					"maxclass": "comment",
 					"text": "Filter out unused arguments",
 					"fontname": "Arial",
-					"fontsize": 7.9,
+					"fontsize": 13.0,
 					"numinlets": 1,
 					"id": "obj-20",
 					"numoutlets": 0,
 					"patching_rect": [
-						57.0,
-						88.0,
-						135.0,
-						17.0
+						93.797,
+						144.81,
+						222.152,
+						27.975
 					]
 				}
 			}
@@ -588,10 +588,10 @@
 					],
 					"hidden": 0,
 					"midpoints": [
-						38.5,
-						64.0,
-						14.5,
-						64.0
+						63.354,
+						105.316,
+						23.861,
+						105.316
 					]
 				}
 			},

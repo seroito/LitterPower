@@ -63,8 +63,8 @@
 						"rect": [
 							71.0,
 							362.0,
-							989,
-							236
+							1122,
+							264
 						],
 						"bgcolor": [
 							0.337254901960784,
@@ -76,8 +76,8 @@
 						"defrect": [
 							71.0,
 							362.0,
-							989,
-							236
+							1122,
+							264
 						],
 						"openrect": [
 							0.0,
@@ -86,7 +86,7 @@
 							0.0
 						],
 						"openinpresentation": 0,
-						"default_fontsize": 14.444,
+						"default_fontsize": 16.471,
 						"default_fontface": 0,
 						"default_fontname": "Arial",
 						"gridonopen": 0,
@@ -105,7 +105,7 @@
 									"maxclass": "message",
 									"text": "set 0",
 									"id": "obj-1",
-									"fontsize": 11.411,
+									"fontsize": 13.013,
 									"bgcolor": [
 										0.156863,
 										0.8,
@@ -114,10 +114,10 @@
 									],
 									"numinlets": 2,
 									"patching_rect": [
-										712.111,
-										140.111,
-										47.667,
-										21.667
+										812.056,
+										159.776,
+										54.357,
+										24.708
 									],
 									"numoutlets": 1,
 									"fontname": "Arial",
@@ -131,13 +131,13 @@
 									"maxclass": "newobj",
 									"text": "p \"What's in a Name?\"",
 									"id": "obj-2",
-									"fontsize": 11.411,
+									"fontsize": 13.013,
 									"numinlets": 1,
 									"patching_rect": [
-										398.667,
-										104.0,
-										158.889,
-										24.556
+										454.62,
+										118.596,
+										181.189,
+										28.002
 									],
 									"numoutlets": 0,
 									"fontname": "Arial",
@@ -145,8 +145,8 @@
 										"rect": [
 											37.0,
 											87.0,
-											885,
-											125
+											1004,
+											137
 										],
 										"bgcolor": [
 											0.337254901960784,
@@ -158,8 +158,8 @@
 										"defrect": [
 											37.0,
 											87.0,
-											885,
-											125
+											1004,
+											137
 										],
 										"openrect": [
 											0.0,
@@ -168,7 +168,7 @@
 											0.0
 										],
 										"openinpresentation": 0,
-										"default_fontsize": 14.444,
+										"default_fontsize": 16.471,
 										"default_fontface": 0,
 										"default_fontname": "Arial",
 										"gridonopen": 0,
@@ -187,7 +187,7 @@
 													"maxclass": "comment",
 													"text": "What's in a Name?",
 													"id": "obj-1",
-													"fontsize": 22.823,
+													"fontsize": 26.026,
 													"textcolor": [
 														0.870588235294118,
 														0.870588235294118,
@@ -196,10 +196,10 @@
 													],
 													"numinlets": 1,
 													"patching_rect": [
-														154.556,
-														13.0,
-														275.889,
-														40.444
+														176.248,
+														14.825,
+														314.61,
+														46.12
 													],
 													"numoutlets": 0,
 													"frgb": [
@@ -218,10 +218,10 @@
 													"numinlets": 1,
 													"handoff": "",
 													"patching_rect": [
-														1.444,
-														1.444,
-														154.556,
-														47.667
+														1.647,
+														1.647,
+														176.248,
+														54.357
 													],
 													"numoutlets": 4,
 													"outlettype": [
@@ -240,8 +240,8 @@
 													"patching_rect": [
 														0.0,
 														0.0,
-														156.0,
-														50.556
+														177.895,
+														57.652
 													],
 													"numoutlets": 0,
 													"embed": 1,
@@ -258,13 +258,13 @@
 													"maxclass": "newobj",
 													"text": "thispatcher",
 													"id": "obj-4",
-													"fontsize": 11.411,
+													"fontsize": 13.013,
 													"numinlets": 1,
 													"patching_rect": [
-														1.444,
-														26.0,
-														88.111,
-														24.556
+														1.647,
+														29.649,
+														100.477,
+														28.002
 													],
 													"hidden": 1,
 													"numoutlets": 2,
@@ -281,10 +281,10 @@
 													"id": "obj-5",
 													"numinlets": 0,
 													"patching_rect": [
-														1.444,
+														1.647,
 														0.0,
-														21.667,
-														21.667
+														24.708,
+														24.708
 													],
 													"hidden": 1,
 													"numoutlets": 1,
@@ -305,13 +305,13 @@
 													"maxclass": "comment",
 													"text": "This is one of the (relatively few) names retained from the original Litter package.",
 													"id": "obj-6",
-													"fontsize": 12.679,
+													"fontsize": 14.459,
 													"numinlets": 1,
 													"patching_rect": [
-														1.444,
-														59.223,
-														830.556,
-														26.0
+														1.647,
+														67.535,
+														947.125,
+														29.649
 													],
 													"numoutlets": 0,
 													"fontname": "Arial"
@@ -322,13 +322,13 @@
 													"maxclass": "newobj",
 													"text": "p OverviewLoader",
 													"id": "obj-7",
-													"fontsize": 11.411,
+													"fontsize": 13.013,
 													"numinlets": 2,
 													"patching_rect": [
-														1.444,
-														57.777,
-														153.111,
-														24.556
+														1.647,
+														65.886,
+														174.6,
+														28.002
 													],
 													"hidden": 1,
 													"numoutlets": 0,
@@ -360,7 +360,7 @@
 															0.0
 														],
 														"openinpresentation": 0,
-														"default_fontsize": 14.444,
+														"default_fontsize": 16.471,
 														"default_fontface": 0,
 														"default_fontname": "Arial",
 														"gridonopen": 0,
@@ -379,13 +379,13 @@
 																	"maxclass": "newobj",
 																	"text": "gate",
 																	"id": "obj-1",
-																	"fontsize": 11.411,
+																	"fontsize": 13.013,
 																	"numinlets": 2,
 																	"patching_rect": [
-																		14.444,
-																		73.667,
-																		41.889,
-																		24.556
+																		16.471,
+																		84.006,
+																		47.768,
+																		28.002
 																	],
 																	"hidden": 1,
 																	"numoutlets": 1,
@@ -400,13 +400,13 @@
 																	"maxclass": "newobj",
 																	"text": "pcontrol",
 																	"id": "obj-2",
-																	"fontsize": 11.411,
+																	"fontsize": 13.013,
 																	"numinlets": 1,
 																	"patching_rect": [
-																		14.444,
-																		137.223,
-																		67.889,
-																		24.556
+																		16.471,
+																		156.482,
+																		77.417,
+																		28.002
 																	],
 																	"hidden": 1,
 																	"numoutlets": 1,
@@ -421,13 +421,13 @@
 																	"maxclass": "message",
 																	"text": "load \"Litter Pro Overview\"",
 																	"id": "obj-3",
-																	"fontsize": 11.411,
+																	"fontsize": 13.013,
 																	"numinlets": 2,
 																	"patching_rect": [
-																		14.444,
-																		106.889,
-																		192.111,
-																		21.667
+																		16.471,
+																		121.891,
+																		219.074,
+																		24.708
 																	],
 																	"hidden": 1,
 																	"numoutlets": 1,
@@ -443,10 +443,10 @@
 																	"id": "obj-4",
 																	"numinlets": 0,
 																	"patching_rect": [
-																		41.889,
-																		34.667,
-																		21.667,
-																		21.667
+																		47.768,
+																		39.533,
+																		24.708,
+																		24.708
 																	],
 																	"numoutlets": 1,
 																	"outlettype": [
@@ -461,10 +461,10 @@
 																	"id": "obj-5",
 																	"numinlets": 0,
 																	"patching_rect": [
-																		106.889,
-																		33.223,
-																		21.667,
-																		21.667
+																		121.891,
+																		37.886,
+																		24.708,
+																		24.708
 																	],
 																	"numoutlets": 1,
 																	"outlettype": [
@@ -526,10 +526,10 @@
 																	],
 																	"hidden": 0,
 																	"midpoints": [
-																		119.889,
-																		65.0,
-																		28.167,
-																		65.0
+																		136.716,
+																		74.123,
+																		32.12,
+																		74.123
 																	]
 																}
 															}
@@ -564,10 +564,10 @@
 													],
 													"numinlets": 1,
 													"patching_rect": [
-														1.444,
-														56.333,
-														843.556,
-														28.889
+														1.647,
+														64.239,
+														961.95,
+														32.944
 													],
 													"rounded": 0,
 													"numoutlets": 0
@@ -638,13 +638,13 @@
 									"maxclass": "message",
 									"text": "front",
 									"id": "obj-3",
-									"fontsize": 11.411,
+									"fontsize": 13.013,
 									"numinlets": 2,
 									"patching_rect": [
-										398.667,
-										72.223,
-										47.667,
-										21.667
+										454.62,
+										82.36,
+										54.357,
+										24.708
 									],
 									"numoutlets": 1,
 									"fontname": "Arial",
@@ -658,13 +658,13 @@
 									"maxclass": "newobj",
 									"text": "p \"Bernie Bibliography\"",
 									"id": "obj-4",
-									"fontsize": 11.411,
+									"fontsize": 13.013,
 									"numinlets": 1,
 									"patching_rect": [
-										203.667,
-										104.0,
-										167.556,
-										24.556
+										232.252,
+										118.596,
+										191.073,
+										28.002
 									],
 									"numoutlets": 0,
 									"fontname": "Arial",
@@ -672,8 +672,8 @@
 										"rect": [
 											37.0,
 											87.0,
-											885,
-											195
+											1004,
+											216
 										],
 										"bgcolor": [
 											0.337254901960784,
@@ -685,8 +685,8 @@
 										"defrect": [
 											37.0,
 											87.0,
-											885,
-											195
+											1004,
+											216
 										],
 										"openrect": [
 											0.0,
@@ -695,7 +695,7 @@
 											0.0
 										],
 										"openinpresentation": 0,
-										"default_fontsize": 14.444,
+										"default_fontsize": 16.471,
 										"default_fontface": 0,
 										"default_fontname": "Arial",
 										"gridonopen": 0,
@@ -721,13 +721,13 @@
 													"text": "Lorrain, Denis, “A Panoply of Stochastic ‘Cannons’,” in The Music Machine, ed. Curtis Roads (Cambridge, Massachusetts: MIT, 1989), 351-379.",
 													"linecount": 2,
 													"id": "obj-1",
-													"fontsize": 12.679,
+													"fontsize": 14.459,
 													"numinlets": 1,
 													"patching_rect": [
-														1.444,
-														109.777,
-														830.556,
-														43.333
+														1.647,
+														125.184,
+														947.125,
+														49.415
 													],
 													"numoutlets": 0,
 													"fontname": "Arial"
@@ -738,7 +738,7 @@
 													"maxclass": "comment",
 													"text": "lp.bernie Bibliography",
 													"id": "obj-2",
-													"fontsize": 22.823,
+													"fontsize": 26.026,
 													"textcolor": [
 														0.870588235294118,
 														0.870588235294118,
@@ -747,10 +747,10 @@
 													],
 													"numinlets": 1,
 													"patching_rect": [
-														154.556,
-														13.0,
-														275.889,
-														40.444
+														176.248,
+														14.825,
+														314.61,
+														46.12
 													],
 													"numoutlets": 0,
 													"frgb": [
@@ -769,10 +769,10 @@
 													"numinlets": 1,
 													"handoff": "",
 													"patching_rect": [
-														1.444,
-														1.444,
-														154.556,
-														47.667
+														1.647,
+														1.647,
+														176.248,
+														54.357
 													],
 													"numoutlets": 4,
 													"outlettype": [
@@ -791,8 +791,8 @@
 													"patching_rect": [
 														0.0,
 														0.0,
-														156.0,
-														50.556
+														177.895,
+														57.652
 													],
 													"numoutlets": 0,
 													"embed": 1,
@@ -809,13 +809,13 @@
 													"maxclass": "newobj",
 													"text": "thispatcher",
 													"id": "obj-5",
-													"fontsize": 11.411,
+													"fontsize": 13.013,
 													"numinlets": 1,
 													"patching_rect": [
-														1.444,
-														26.0,
-														88.111,
-														24.556
+														1.647,
+														29.649,
+														100.477,
+														28.002
 													],
 													"hidden": 1,
 													"numoutlets": 2,
@@ -832,10 +832,10 @@
 													"id": "obj-6",
 													"numinlets": 0,
 													"patching_rect": [
-														1.444,
+														1.647,
 														0.0,
-														21.667,
-														21.667
+														24.708,
+														24.708
 													],
 													"hidden": 1,
 													"numoutlets": 1,
@@ -857,13 +857,13 @@
 													"text": "Ahrens, Joachim. H. and Ulrich Dieter, “Computer Methods for Sampling from Gamma, Beta, Poisson, and Binomial Distributions,” Computing 12 (1974): 223-246.",
 													"linecount": 2,
 													"id": "obj-7",
-													"fontsize": 12.679,
+													"fontsize": 14.459,
 													"numinlets": 1,
 													"patching_rect": [
-														1.444,
-														59.223,
-														830.556,
-														43.333
+														1.647,
+														67.535,
+														947.125,
+														49.415
 													],
 													"numoutlets": 0,
 													"fontname": "Arial"
@@ -874,13 +874,13 @@
 													"maxclass": "newobj",
 													"text": "p OverviewLoader",
 													"id": "obj-8",
-													"fontsize": 11.411,
+													"fontsize": 13.013,
 													"numinlets": 2,
 													"patching_rect": [
-														1.444,
-														57.777,
-														153.111,
-														24.556
+														1.647,
+														65.886,
+														174.6,
+														28.002
 													],
 													"hidden": 1,
 													"numoutlets": 0,
@@ -912,7 +912,7 @@
 															0.0
 														],
 														"openinpresentation": 0,
-														"default_fontsize": 14.444,
+														"default_fontsize": 16.471,
 														"default_fontface": 0,
 														"default_fontname": "Arial",
 														"gridonopen": 0,
@@ -931,13 +931,13 @@
 																	"maxclass": "newobj",
 																	"text": "gate",
 																	"id": "obj-1",
-																	"fontsize": 11.411,
+																	"fontsize": 13.013,
 																	"numinlets": 2,
 																	"patching_rect": [
-																		14.444,
-																		73.667,
-																		41.889,
-																		24.556
+																		16.471,
+																		84.006,
+																		47.768,
+																		28.002
 																	],
 																	"hidden": 1,
 																	"numoutlets": 1,
@@ -952,13 +952,13 @@
 																	"maxclass": "newobj",
 																	"text": "pcontrol",
 																	"id": "obj-2",
-																	"fontsize": 11.411,
+																	"fontsize": 13.013,
 																	"numinlets": 1,
 																	"patching_rect": [
-																		14.444,
-																		137.223,
-																		67.889,
-																		24.556
+																		16.471,
+																		156.482,
+																		77.417,
+																		28.002
 																	],
 																	"hidden": 1,
 																	"numoutlets": 1,
@@ -973,13 +973,13 @@
 																	"maxclass": "message",
 																	"text": "load \"Litter Pro Overview\"",
 																	"id": "obj-3",
-																	"fontsize": 11.411,
+																	"fontsize": 13.013,
 																	"numinlets": 2,
 																	"patching_rect": [
-																		14.444,
-																		106.889,
-																		192.111,
-																		21.667
+																		16.471,
+																		121.891,
+																		219.074,
+																		24.708
 																	],
 																	"hidden": 1,
 																	"numoutlets": 1,
@@ -995,10 +995,10 @@
 																	"id": "obj-4",
 																	"numinlets": 0,
 																	"patching_rect": [
-																		41.889,
-																		34.667,
-																		21.667,
-																		21.667
+																		47.768,
+																		39.533,
+																		24.708,
+																		24.708
 																	],
 																	"numoutlets": 1,
 																	"outlettype": [
@@ -1013,10 +1013,10 @@
 																	"id": "obj-5",
 																	"numinlets": 0,
 																	"patching_rect": [
-																		106.889,
-																		33.223,
-																		21.667,
-																		21.667
+																		121.891,
+																		37.886,
+																		24.708,
+																		24.708
 																	],
 																	"numoutlets": 1,
 																	"outlettype": [
@@ -1078,10 +1078,10 @@
 																	],
 																	"hidden": 0,
 																	"midpoints": [
-																		119.889,
-																		65.0,
-																		28.167,
-																		65.0
+																		136.716,
+																		74.123,
+																		32.12,
+																		74.123
 																	]
 																}
 															}
@@ -1116,10 +1116,10 @@
 													],
 													"numinlets": 1,
 													"patching_rect": [
-														1.444,
-														56.333,
-														843.556,
-														47.667
+														1.647,
+														64.239,
+														961.95,
+														54.357
 													],
 													"rounded": 0,
 													"numoutlets": 0
@@ -1137,10 +1137,10 @@
 													],
 													"numinlets": 1,
 													"patching_rect": [
-														1.444,
-														106.889,
-														843.556,
-														47.667
+														1.647,
+														121.891,
+														961.95,
+														54.357
 													],
 													"rounded": 0,
 													"numoutlets": 0
@@ -1211,13 +1211,13 @@
 									"maxclass": "message",
 									"text": "front",
 									"id": "obj-5",
-									"fontsize": 11.411,
+									"fontsize": 13.013,
 									"numinlets": 2,
 									"patching_rect": [
-										203.667,
-										72.223,
-										47.667,
-										21.667
+										232.252,
+										82.36,
+										54.357,
+										24.708
 									],
 									"numoutlets": 1,
 									"fontname": "Arial",
@@ -1231,13 +1231,13 @@
 									"maxclass": "newobj",
 									"text": "prepend load",
 									"id": "obj-6",
-									"fontsize": 11.411,
+									"fontsize": 13.013,
 									"numinlets": 1,
 									"patching_rect": [
-										593.667,
-										104.0,
-										95.333,
-										24.556
+										676.989,
+										118.596,
+										108.713,
+										28.002
 									],
 									"numoutlets": 1,
 									"fontname": "Arial",
@@ -1252,10 +1252,10 @@
 									"id": "obj-7",
 									"numinlets": 1,
 									"patching_rect": [
-										898.444,
-										174.777,
-										21.667,
-										21.667
+										1024.541,
+										199.307,
+										24.708,
+										24.708
 									],
 									"numoutlets": 0,
 									"comment": "Message to reset help menu"
@@ -1267,10 +1267,10 @@
 									"id": "obj-8",
 									"numinlets": 0,
 									"patching_rect": [
-										8.667,
-										5.777,
-										21.667,
-										21.667
+										9.883,
+										6.588,
+										24.708,
+										24.708
 									],
 									"numoutlets": 1,
 									"outlettype": [
@@ -1284,7 +1284,7 @@
 									"maxclass": "message",
 									"text": "set $1",
 									"id": "obj-9",
-									"fontsize": 11.411,
+									"fontsize": 13.013,
 									"bgcolor": [
 										0.156863,
 										0.8,
@@ -1293,10 +1293,10 @@
 									],
 									"numinlets": 2,
 									"patching_rect": [
-										898.444,
-										104.0,
-										50.556,
-										21.667
+										1024.541,
+										118.596,
+										57.652,
+										24.708
 									],
 									"numoutlets": 1,
 									"fontname": "Arial",
@@ -1310,13 +1310,13 @@
 									"maxclass": "newobj",
 									"text": "unpack s 0",
 									"id": "obj-10",
-									"fontsize": 11.411,
+									"fontsize": 13.013,
 									"numinlets": 1,
 									"patching_rect": [
-										788.667,
-										70.777,
-										124.223,
-										24.556
+										899.357,
+										80.711,
+										141.658,
+										28.002
 									],
 									"numoutlets": 2,
 									"fontname": "Arial",
@@ -1331,13 +1331,13 @@
 									"maxclass": "newobj",
 									"text": "prepend help",
 									"id": "obj-11",
-									"fontsize": 11.411,
+									"fontsize": 13.013,
 									"numinlets": 1,
 									"patching_rect": [
-										788.667,
-										104.0,
-										92.444,
-										24.556
+										899.357,
+										118.596,
+										105.419,
+										28.002
 									],
 									"numoutlets": 1,
 									"fontname": "Arial",
@@ -1351,13 +1351,13 @@
 									"maxclass": "newobj",
 									"text": "lp.mrsnorris",
 									"id": "obj-12",
-									"fontsize": 11.411,
+									"fontsize": 13.013,
 									"numinlets": 1,
 									"patching_rect": [
-										788.667,
-										135.777,
-										96.777,
-										24.556
+										899.357,
+										154.833,
+										110.36,
+										28.002
 									],
 									"numoutlets": 1,
 									"fontname": "Arial",
@@ -1371,13 +1371,13 @@
 									"maxclass": "newobj",
 									"text": "select -> Bibliography \"What's in a Name?\" X-ample:",
 									"id": "obj-13",
-									"fontsize": 11.411,
+									"fontsize": 13.013,
 									"numinlets": 1,
 									"patching_rect": [
-										8.667,
-										39.0,
-										794.444,
-										24.556
+										9.883,
+										44.474,
+										905.945,
+										28.002
 									],
 									"numoutlets": 5,
 									"fontname": "Arial",
@@ -1396,7 +1396,7 @@
 									"text": "Edit/delete/position Bibliography and name subpatchers as appropriate",
 									"linecount": 2,
 									"id": "obj-14",
-									"fontsize": 11.411,
+									"fontsize": 13.013,
 									"textcolor": [
 										0.870588235294118,
 										0.870588235294118,
@@ -1405,10 +1405,10 @@
 									],
 									"numinlets": 1,
 									"patching_rect": [
-										202.223,
-										138.667,
-										355.333,
-										40.444
+										230.605,
+										158.129,
+										405.204,
+										46.12
 									],
 									"numoutlets": 0,
 									"frgb": [
@@ -1459,10 +1459,10 @@
 										1.0
 									],
 									"midpoints": [
-										725.833,
-										167.556,
-										911.444,
-										167.556
+										827.704,
+										191.073,
+										1039.366,
+										191.073
 									]
 								}
 							},
@@ -1510,10 +1510,10 @@
 									],
 									"hidden": 0,
 									"midpoints": [
-										607.389,
-										131.444,
-										802.389,
-										131.444
+										692.637,
+										149.892,
+										915.005,
+										149.892
 									]
 								}
 							},
@@ -1561,10 +1561,10 @@
 										1.0
 									],
 									"midpoints": [
-										597.639,
-										66.444,
-										725.833,
-										66.444
+										681.518,
+										75.769,
+										827.704,
+										75.769
 									]
 								}
 							},
@@ -1586,10 +1586,10 @@
 										1.0
 									],
 									"midpoints": [
-										405.889,
-										66.444,
-										725.833,
-										66.444
+										462.856,
+										75.769,
+										827.704,
+										75.769
 									]
 								}
 							},
@@ -1611,10 +1611,10 @@
 										1.0
 									],
 									"midpoints": [
-										214.139,
-										66.444,
-										725.833,
-										66.444
+										244.194,
+										75.769,
+										827.704,
+										75.769
 									]
 								}
 							},
@@ -1839,7 +1839,7 @@
 							0.0
 						],
 						"openinpresentation": 0,
-						"default_fontsize": 14.444,
+						"default_fontsize": 16.471,
 						"default_fontface": 0,
 						"default_fontname": "Arial",
 						"gridonopen": 0,
@@ -1864,13 +1864,13 @@
 									"maxclass": "comment",
 									"text": "The tell message",
 									"id": "obj-1",
-									"fontsize": 17.75,
+									"fontsize": 18.0,
 									"numinlets": 1,
 									"patching_rect": [
-										5.777,
-										96.777,
-										218.111,
-										33.223
+										6.588,
+										110.36,
+										248.723,
+										37.886
 									],
 									"numoutlets": 0,
 									"fontname": "Arial"
@@ -1888,13 +1888,13 @@
 									"text": "Improved algorithms allow bernie to generate values anything from 6 to 16 times faster than in previous versions, depending on the parameters. It is now completely reasonable to set the value of n to a four-digit or five-digit value and generate a few thousand random values.",
 									"linecount": 3,
 									"id": "obj-2",
-									"fontsize": 11.411,
+									"fontsize": 13.013,
 									"numinlets": 1,
 									"patching_rect": [
-										5.777,
-										33.223,
-										654.333,
-										54.889
+										6.588,
+										37.886,
+										746.169,
+										62.593
 									],
 									"numoutlets": 0,
 									"fontname": "Arial"
@@ -1911,13 +1911,13 @@
 									"maxclass": "comment",
 									"text": "Speed",
 									"id": "obj-3",
-									"fontsize": 17.75,
+									"fontsize": 18.0,
 									"numinlets": 1,
 									"patching_rect": [
-										5.777,
-										5.777,
-										115.556,
-										33.223
+										6.588,
+										6.588,
+										131.774,
+										37.886
 									],
 									"numoutlets": 0,
 									"fontname": "Arial"
@@ -1935,13 +1935,13 @@
 									"text": "Additionally: the tell message calculates properties of the random distribution: mean, median, standard variation, etc. Click on the button below for more information.",
 									"linecount": 2,
 									"id": "obj-4",
-									"fontsize": 11.411,
+									"fontsize": 13.013,
 									"numinlets": 1,
 									"patching_rect": [
-										5.777,
-										124.223,
-										654.333,
-										40.444
+										6.588,
+										141.658,
+										746.169,
+										46.12
 									],
 									"numoutlets": 0,
 									"fontname": "Arial"
@@ -1958,13 +1958,13 @@
 									"maxclass": "comment",
 									"text": "Tell me about the tell message",
 									"id": "obj-5",
-									"fontsize": 12.679,
+									"fontsize": 14.459,
 									"numinlets": 1,
 									"patching_rect": [
-										232.556,
-										174.777,
-										241.223,
-										26.0
+										265.195,
+										199.307,
+										275.079,
+										29.649
 									],
 									"numoutlets": 0,
 									"fontname": "Arial"
@@ -1975,13 +1975,13 @@
 									"maxclass": "newobj",
 									"text": "p",
 									"id": "obj-6",
-									"fontsize": 11.411,
+									"fontsize": 13.013,
 									"numinlets": 1,
 									"patching_rect": [
-										366.889,
-										173.333,
-										43.333,
-										24.556
+										418.382,
+										197.66,
+										49.415,
+										28.002
 									],
 									"hidden": 1,
 									"numoutlets": 0,
@@ -1990,8 +1990,8 @@
 										"rect": [
 											40.0,
 											104.0,
-											235,
-											161
+											262,
+											178
 										],
 										"bgcolor": [
 											0.337254901960784,
@@ -2003,8 +2003,8 @@
 										"defrect": [
 											40.0,
 											104.0,
-											235,
-											161
+											262,
+											178
 										],
 										"openrect": [
 											0.0,
@@ -2013,7 +2013,7 @@
 											0.0
 										],
 										"openinpresentation": 0,
-										"default_fontsize": 14.444,
+										"default_fontsize": 16.471,
 										"default_fontface": 0,
 										"default_fontname": "Arial",
 										"gridonopen": 0,
@@ -2032,13 +2032,13 @@
 													"maxclass": "newobj",
 													"text": "pcontrol",
 													"id": "obj-1",
-													"fontsize": 11.411,
+													"fontsize": 13.013,
 													"numinlets": 1,
 													"patching_rect": [
-														72.223,
-														96.777,
-														67.889,
-														24.556
+														82.36,
+														110.36,
+														77.417,
+														28.002
 													],
 													"numoutlets": 1,
 													"fontname": "Arial",
@@ -2052,13 +2052,13 @@
 													"maxclass": "message",
 													"text": "help lp.messages",
 													"id": "obj-2",
-													"fontsize": 11.411,
+													"fontsize": 13.013,
 													"numinlets": 2,
 													"patching_rect": [
-														72.223,
-														72.223,
-														122.777,
-														21.667
+														82.36,
+														82.36,
+														140.009,
+														24.708
 													],
 													"numoutlets": 1,
 													"fontname": "Arial",
@@ -2073,10 +2073,10 @@
 													"id": "obj-3",
 													"numinlets": 0,
 													"patching_rect": [
-														72.223,
-														43.333,
-														21.667,
-														21.667
+														82.36,
+														49.415,
+														24.708,
+														24.708
 													],
 													"numoutlets": 1,
 													"outlettype": [
@@ -2139,10 +2139,10 @@
 									"numinlets": 1,
 									"handoff": "",
 									"patching_rect": [
-										228.223,
-										170.444,
-										248.444,
-										30.333
+										260.254,
+										194.366,
+										283.313,
+										34.59
 									],
 									"numoutlets": 4,
 									"dragtrack": 1,
@@ -2173,10 +2173,10 @@
 									],
 									"numinlets": 1,
 									"patching_rect": [
-										229.667,
-										170.444,
-										247.0,
-										30.333
+										261.901,
+										194.366,
+										281.667,
+										34.59
 									],
 									"rounded": 2,
 									"numoutlets": 0,
@@ -4848,7 +4848,7 @@
 							384.0,
 							252.0,
 							200,
-							171
+							190
 						],
 						"bgcolor": [
 							0.337254901960784,
@@ -4861,7 +4861,7 @@
 							384.0,
 							252.0,
 							200,
-							171
+							190
 						],
 						"openrect": [
 							0.0,
@@ -4870,7 +4870,7 @@
 							0.0
 						],
 						"openinpresentation": 0,
-						"default_fontsize": 14.444,
+						"default_fontsize": 16.471,
 						"default_fontface": 0,
 						"default_fontname": "Arial",
 						"gridonopen": 0,
@@ -4889,13 +4889,13 @@
 									"maxclass": "newobj",
 									"text": "gate",
 									"id": "obj-1",
-									"fontsize": 11.411,
+									"fontsize": 13.013,
 									"numinlets": 2,
 									"patching_rect": [
-										14.444,
-										73.667,
-										41.889,
-										24.556
+										16.471,
+										84.006,
+										47.768,
+										28.002
 									],
 									"numoutlets": 1,
 									"fontname": "Arial",
@@ -4909,13 +4909,13 @@
 									"maxclass": "newobj",
 									"text": "lp.mrsnorris lpo",
 									"id": "obj-2",
-									"fontsize": 11.411,
+									"fontsize": 13.013,
 									"numinlets": 1,
 									"patching_rect": [
-										14.444,
-										106.889,
-										119.889,
-										24.556
+										16.471,
+										121.891,
+										136.716,
+										28.002
 									],
 									"numoutlets": 1,
 									"fontname": "Arial",
@@ -4930,10 +4930,10 @@
 									"id": "obj-3",
 									"numinlets": 0,
 									"patching_rect": [
-										41.889,
-										34.667,
-										21.667,
-										21.667
+										47.768,
+										39.533,
+										24.708,
+										24.708
 									],
 									"numoutlets": 1,
 									"outlettype": [
@@ -4948,10 +4948,10 @@
 									"id": "obj-4",
 									"numinlets": 0,
 									"patching_rect": [
-										106.889,
-										33.223,
-										21.667,
-										21.667
+										121.891,
+										37.886,
+										24.708,
+										24.708
 									],
 									"numoutlets": 1,
 									"outlettype": [
@@ -5000,10 +5000,10 @@
 									],
 									"hidden": 0,
 									"midpoints": [
-										119.889,
-										65.0,
-										28.167,
-										65.0
+										136.716,
+										74.123,
+										32.12,
+										74.123
 									]
 								}
 							}
