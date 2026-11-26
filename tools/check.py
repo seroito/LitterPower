@@ -25,8 +25,9 @@ BASE = [CC, '-fsyntax-only', '-std=gnu11', '-DLINUX_VERSION', '-D__MAX_MSP_OBJEC
         '-I', SDK + '/jit-includes', '-I', ROOT + '/LitterLib', '-I', ROOT + '/Discrete',
         '-I', ROOT + '/Mutators', '-I', ROOT + '/Utils', '-I', ROOT + '/Jitter']
 # Format strings of post()/error() checked against their arguments (tools/fmtcheck.h)
+# -Wformat-security as on GitHub's Ubuntu gcc (on by default there, not on Debian)
 FMT = ['-include', os.path.join(ROOT, 'tools', 'fmtcheck.h'), '-Werror=format',
-       '-Wno-format-zero-length']
+       '-Wformat-security', '-Werror=format-security', '-Wno-format-zero-length']
 
 def targets():
     cm = open(os.path.join(ROOT, 'CMakeLists.txt')).read()

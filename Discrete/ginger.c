@@ -256,7 +256,7 @@ GingerZen(
 	if (now > sNextZenTime) {
 		// Display text while incrementing counter, etc.
 		int i = sZenCounter++;
-		if (i <= kLastZenString) post((char*) (kZenStrings[i]));
+		if (i <= kLastZenString) post("%s", kZenStrings[i]);	// 2026: text as argument, not as format
 		sNextZenTime = now + sZenCounter * 7200;
 		}
 	
