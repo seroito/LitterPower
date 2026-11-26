@@ -173,7 +173,8 @@ Added for the `rng-fixes` package (2026-11-17):
    27-31 (calccount 2), the note below the displays reads well; icon and readme present.
    User (2026-11-26): lp.shhh~ and icon/readme confirmed, lp.poppy~ works.
 15. Third round (rng-fixes item 22, 2026-11-26): overview "License" button: new layout,
-   "Peter Castine" bottom left, the novanarecords URL bottom right, nothing cut off;
+   "Peter Castine" bottom left, the novanarecords URL bottom right (underlined; a click
+   opens it in the browser), nothing cut off;
    copyright 1992-2027 in `vers` / Max console / assistance, overview, readme;
    lp.poppy help: the float above "t b f" to 0, then up again: values come back without
    reset; the new reset box next to p moreInfo; lp.messages: subtitle, message list and
@@ -558,7 +559,7 @@ workflow builds pushes to both branches. One commit per change:
     - Overview License patcher (user's request): title "Litter Power License" (Lato 48),
       the agreement's old title as subtitle, line, section headings Lato 18, text Arial
       13 (bold capitals kept); bottom left "Peter Castine", bottom right
-      https://www.novanarecords.com/artists/peter-castine/ (texts given by the user);
+      https://www.novanarecords.com/artists/peter-castine/ (texts given by the user; the URL is clickable: ubutton -> hidden `;max launchbrowser`);
       window 852 x 780 at 100/80. Done by a one-off script (scratchpad), not in
       redesign_help.py (redesign_overview() is not safe to rerun anyway).
     - Copyright years 1992-2027 everywhere users see them (user's choice: all, not only
