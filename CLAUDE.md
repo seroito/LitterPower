@@ -16,6 +16,16 @@ amplitude drops with NN as expected). Next: test point 15 with the package of pu
 help files, item-22 files identical to the repository,
 1992-2027 in readme, package-info.json and the externals); then merge into
 `64-bit-version` (ask first).
+
+Added the same day (item 23, ideas from JamomaMax3): `tools/check_package.py`,
+`tests/` (test programs, CI job), `tools/windows/check-help.ps1` (test point 16: the
+user's first run tests the script itself), reading the user's Max.log directly.
+Contributors: the user asked whether Claude can be listed as in JamomaMax3; there it is
+only GitHub reading the `Co-Authored-By: Claude` trailers on the default branch. Ours
+carry them, but the fork's default branch is `master` (none of our commits). Proposed:
+switch the default branch to `64-bit-version` or merge into `master`; the user decides
+(public setting, not done). Optional readme line "Max 9 port: iosonik with Claude
+(Anthropic)" only for the port (the code is Peter Castine's); not done.
 A_GIMME/A_LONG signatures: postponed by the user (2026-11-26), see "Method signatures"
 below.
 
@@ -180,6 +190,10 @@ Added for the `rng-fixes` package (2026-11-17):
    lp.poppy help: the float above "t b f" to 0, then up again: values come back without
    reset; the new reset box next to p moreInfo; lp.messages: subtitle, message list and
    version text readable, window fits.
+16. Help-file check script (item 23): with Max closed, in PowerShell from the repository
+   folder `powershell -ExecutionPolicy Bypass -File tools\windows\check-help.ps1`
+   (about 10-15 min for 105 files; `-Only "lp.p*"` for a short first try). Report:
+   `Findings\help-check-<date>.txt`; tell Claude, who reads it and Max.log.
 
 Other things to watch: converted Max 4 patchers (clippings, `lp.doom`,
 `lp.pfft.frimWrap`, `lp.bibi`/`lp.ernie`/`lp.abbie` help, "Running CPU Usage") look and
@@ -232,6 +246,21 @@ removed (see `README.md`).
    pushing (both added the same day after reviewing a second third-party plugin,
    RavenClaude audio-dsp-engineering: MIT, but JUCE/C++ and tied to its own agent
    framework, not installed). Keep it in step with this file when a rule changes.
+7. Checks besides `tools/check.py` (item 23):
+   - `python3 tools/check_package.py`: static package checks (JSON, every lp.*/lbj.*
+     object exists, files loaded by name, help file + reference page per external, menu
+     entries, unconnected menus, fonts). Also runs on CI after the package is assembled.
+   - `python3 tests/run_tests.py [name]`: test programs `tests/test_*.c` that #include
+     one external's source (first line `// object: <name>`), linked with LitterLib,
+     `tests/maxstubs.c` and generated aborting stubs. Put every new DSP check here
+     instead of the scratchpad; check that it fails on the code before the fix. CI job
+     "Checks and tests (Linux)" runs check.py and the tests.
+   - The user's Max console log: `/media/sone/E4188FB0188F8072/Users/sone/AppData/
+     Roaming/Cycling '74/Max 9/Logs/Max.log` (older: Max.1.log, ...). Read it after the
+     user tests instead of asking for console text.
+   - `tools/windows/check-help.ps1` (user runs it on Windows; D: = /media/sone/TAD1, the
+     repository is the same folder): opens every help file in Max, report in
+     `Findings/help-check-<date>.txt`.
 
 ## Branch rng-fixes (2026-11-17, not merged yet)
 
@@ -578,6 +607,30 @@ workflow builds pushes to both branches. One commit per change:
       KEEP emptied in redesign_help.py), message list no longer cut by its 16 px panel,
       version text 13 pt. Body text was already 13 pt; if the user still finds it too
       small, ask which text.
+
+23. Ideas from JamomaMax3 (github.com/jamoma/JamomaMax3, branch milestone-3; reviewed
+    2026-11-26 on the user's request; a C++/Min rewrite of Jamoma for Max 9, BSD, also
+    written with Claude). Not taken: its C++/Min architecture, max-test (Cycling '74's
+    assertion framework; set up for macOS only). Taken, on the user's go-ahead:
+    - The Max log (see How to continue, 7). Found there: "Peter Castine.." in the Max
+      console (17 string tables end in '.', LitterHello adds one; fixed in LitterHello);
+      fonts Max 9 does not find on Windows (Book Antiqua in Poisson Rhythms, Helvetica
+      in lp.frim~ help, Lucida Grande in lp.scamp~ help; now Arial; Geneva and Sans Serif
+      are mapped silently). "dictionary_read error in package-info.json" in the log is
+      from other packages (ACToolkit, abclib, ...), not ours.
+    - `tools/check_package.py` found: lp.vilfrie's "See also" named lp.zippy (is
+      lp.zippie; already in 1.8), lp.scamp~'s X-ample entry "Phase distortion" (file:
+      "Phase Distortion"); both fixed. lp.dotell (22 help files) is an abstraction in
+      help/, fine.
+    - `tests/`: lp.poppy~, lp.poppy, lp.qvvvl~, lp.pvvv64~ (each checked to fail on the
+      code before its fix, the limiter tests with the limiter off).
+      Found on the way, not changed (original behaviour; user to decide): lp.qvvv~
+      without limiter in `clip` mode exceeds 1.0 when an NN factor is set (NN 20: 1.00024,
+      NN 31: 1.5): the NN quantisation comes after the clipping.
+    - `tools/windows/check-help.ps1`: written without Windows; known risks: whether
+      `pcontrol load <name>.maxhelp` finds help files, whether the js driver may close the
+      previous window with `dispose` (log lines with "dispose" are ignored), and a "save
+      changes?" dialog at `;max quit` (the script ends Max 20 s after "done").
 
 ## Method signatures (postponed, 2026-11-26)
 
