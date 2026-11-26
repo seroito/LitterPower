@@ -15,6 +15,20 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
+  tests:
+    name: Checks and tests (Linux)
+    # Syntax check of every unit and the test programs in tests/ (real object code with
+    # stand-ins for Max). Does not hold up the package; a failure shows on the run.
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          submodules: recursive
+      - name: Syntax check
+        run: python3 tools/check.py
+      - name: Test programs
+        run: python3 tests/run_tests.py
+
   macos:
     name: macOS (universal)
     # Only when started by hand ("Run workflow" on the Actions page). GitHub's macOS
