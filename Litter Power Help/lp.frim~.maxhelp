@@ -846,7 +846,7 @@
 														303.333,
 														34.667
 													],
-													"fontname": "Helvetica Bold",
+													"fontname": "Arial",
 													"id": "obj-4",
 													"numoutlets": 0,
 													"fontsize": 26.0,
@@ -861,7 +861,8 @@
 														0.870588235294118,
 														0.870588235294118,
 														1.0
-													]
+													],
+													"fontface": 1
 												}
 											},
 											{

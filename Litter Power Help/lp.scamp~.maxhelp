@@ -3890,7 +3890,7 @@
 										421.266,
 										34.557
 									],
-									"fontname": "Lucida Grande",
+									"fontname": "Arial",
 									"id": "obj-2",
 									"frgb": [
 										0.870588235294118,

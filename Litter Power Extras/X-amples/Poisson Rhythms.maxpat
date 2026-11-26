@@ -299,7 +299,7 @@
 					"text": "MIDI Port",
 					"fontsize": 17.333,
 					"numoutlets": 0,
-					"fontname": "Book Antiqua",
+					"fontname": "Arial",
 					"id": "obj-5",
 					"frgb": [
 						0.870588235294118,
@@ -328,7 +328,7 @@
 					"text": "MIDI Channel",
 					"fontsize": 17.333,
 					"numoutlets": 0,
-					"fontname": "Book Antiqua",
+					"fontname": "Arial",
 					"id": "obj-6",
 					"frgb": [
 						0.870588235294118,
@@ -357,7 +357,7 @@
 					"fontsize": 17.333,
 					"numoutlets": 2,
 					"minimum": 1,
-					"fontname": "Book Antiqua",
+					"fontname": "Arial",
 					"outlettype": [
 						"int",
 						"bang"
@@ -398,7 +398,7 @@
 					"linecount": 2,
 					"fontsize": 14.81,
 					"numoutlets": 0,
-					"fontname": "Book Antiqua",
+					"fontname": "Arial",
 					"id": "obj-8",
 					"numinlets": 1,
 					"patching_rect": [
@@ -517,7 +517,7 @@
 					"maxclass": "umenu",
 					"fontsize": 17.333,
 					"numoutlets": 3,
-					"fontname": "Book Antiqua",
+					"fontname": "Arial",
 					"types": [],
 					"outlettype": [
 						"int",
@@ -1155,7 +1155,7 @@
 					"text": "Master On/Off",
 					"fontsize": 17.333,
 					"numoutlets": 0,
-					"fontname": "Book Antiqua",
+					"fontname": "Arial",
 					"id": "obj-20",
 					"frgb": [
 						0.870588235294118,
@@ -1304,7 +1304,7 @@
 					"fontsize": 17.333,
 					"numoutlets": 2,
 					"minimum": 0.0,
-					"fontname": "Book Antiqua",
+					"fontname": "Arial",
 					"outlettype": [
 						"float",
 						"bang"
@@ -1421,7 +1421,7 @@
 					"linecount": 2,
 					"fontsize": 17.333,
 					"numoutlets": 0,
-					"fontname": "Book Antiqua",
+					"fontname": "Arial",
 					"id": "obj-31",
 					"frgb": [
 						0.870588235294118,
