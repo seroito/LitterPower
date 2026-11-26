@@ -9,8 +9,12 @@ User's third test (2026-11-26) handled in item 22: License patcher redesigned (a
 line, novanarecords URL), copyright 1992-2027 everywhere, lp.poppy restart and reset in
 its help, lp.messages header. Confirmed by the user: lp.veral cords (item 20), test point
 12 (icon, readme), lp.shhh~ scope~ (item 21, screenshots in `Findings/lp.shhh~screenshots`,
-amplitude drops with NN as expected). Next: test point 15 with the package of the push
-build after ea31101; then merge into `64-bit-version` (ask first).
+amplitude drops with NN as expected). Next: test point 15 with the package of push build
+45794948555 (commit e2cbfc4, Windows only), unpacked to
+`/media/sone/TAD1/DATA/DEV/MAX/LitterPower/rng-fixes/LitterPower-package-45794948555/LitterPower`
+(checked: 104 externals, 105 help files, item-22 files identical to the repository,
+1992-2027 in readme, package-info.json and the externals); then merge into
+`64-bit-version` (ask first).
 Postponed for later (not started): A_GIMME `short argc` (71 places, all with small
 values, so harmless on x64/arm64) and A_LONG `long` handlers.
 
