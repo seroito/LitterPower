@@ -673,10 +673,25 @@ workflow builds pushes to both branches. One commit per change:
       pages. `tools/help_text.py`: change a comment's text, move only the boxes below it
       in the same column, enclosing panel grows. lp.qvvvl~'s sentence comes from
       make_help64.py (it reads the original lp.qvvv~ help from be8f44b).
-    - Open, asked the user: lp.lana (message version of lp.fiana~) has no protection:
-      29 % of function/parameter combinations run to inf/NaN within 1000 steps (ident,
-      sinh, cosh, log, exp, sqr, sqrt; never with the default sin/cos) and stay there.
-      Proposal as for lp.vera*: restart at x0 y0 plus a third outlet with inf/-inf/nan.
+    - lp.lana (done, user's go-ahead): 29 % of function/parameter combinations ran to
+      inf/NaN (mathematically right: unbounded functions, log/sqrt of negatives, poles);
+      now restart at x0 y0 and a third outlet with inf/-inf/nan, as lp.vera*; null test
+      1404 restarts, no finite value changed; help, reference, tests/test_lana.c.
+    - `tests/fuzz.py` over all 85 lp.* message/signal objects (not Jitter, not lp.argus /
+      lp.mrsnorris), findings reported to the user, nothing fixed yet:
+      real bugs: lp.gammer hangs for ever with order <= 0 (except -0.5; freezes Max) and
+      posts a leftover debug line ("GammerOrder setting gamma to") in the Erlang range;
+      lp.ernie `error("%s size ...")` without the argument (crash risk for size <= 0, also
+      the allocation message) and `%lf` with a long; lp.crabelms registers `set` as
+      A_FLOAT but the function takes a list (crash on `set ...`); lp.linnie never sets
+      the apex `cc` (new object, list) so float mapping is wrong and 0 gives NaN;
+      lp.noisify~ `%s` without argument (allocation failure only); 52 more printf size
+      mismatches in tattle posts (gcc -Wformat with post/error declared printf-like;
+      harmless on Windows, wrong numbers on macOS).
+      Mathematically right but extreme: lp.lya -inf at r = 2; lp.vilfrie / lp.y inf with
+      shape parameter 1e-12 (overflow of extremely heavy tails); lp.pvvv, lp.qvvv~/qvvvl~,
+      lp.epoisse~ NaN for absurd Hurst values (about |H| >= 1000, gain overflow); lp.tim~
+      relative mode with a mutation index far outside 0..1 grows to inf.
 
 ## Method signatures (postponed, 2026-11-26)
 
