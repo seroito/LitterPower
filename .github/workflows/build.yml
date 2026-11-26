@@ -99,6 +99,8 @@ jobs:
           if [ -f macos/LitterPower-macos.zip ]; then unzip -q macos/LitterPower-macos.zip -d package; fi
           python3 tools/make_package.py
           ls package/LitterPower/externals | wc -l
+          # static checks: objects, files, menus, help files, reference pages, binaries
+          python3 tools/check_package.py --package package/LitterPower
           # zip here so that file permissions inside the .mxo bundles survive
           cd package && zip -qry ../LitterPower.zip LitterPower
       - uses: actions/upload-artifact@v7
