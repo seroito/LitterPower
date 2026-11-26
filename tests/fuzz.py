@@ -132,6 +132,116 @@ int main(void)
 '''
 
 
+
+DEEP_TEMPLATE = r"""// object: %(name)s
+#include "lptest.h"
+#include "%(src)s"
+#include "objrun.h"
+#include <signal.h>
+#include <unistd.h>
+
+static char gWhere[300] = "";
+static void Hung(int s) { (void) s; printf("HANG %%s\n", gWhere); fflush(stdout); _exit(3); }
+static void Crashed(int s) { printf("CRASH (signal %%d) %%s\n", s, gWhere); fflush(stdout); _exit(4); }
+static const double V[] = { -1e6, -1.0, 0.0, 1e-9, 0.5, 1.0, 1e6 };
+enum { kV = sizeof V / sizeof *V, kInlets = %(inlets)d };
+static const char* kSkip[] = { "dblclick", "assist", "info", "tattle", "dsp64", "dsp", "loadbang",
+							   "notify", "vers", "dumpout", "free", "bang", "anything", NULL };
+
+typedef struct { const tLPMethod* m; long inlet; } tTarget;
+
+static int Skipped(const char* n)
+	{ int i; for (i = 0; kSkip[i]; i += 1) if (!strcmp(n, kSkip[i])) return 1; return 0; }
+
+static void Send(void* me, const tTarget* t, double v)
+	{
+	gLPInlet = t->inlet;
+	lpSendNumber(me, t->m->name, v);
+	gLPInlet = 0;
+	}
+
+static long gFindings = 0;
+static void Report(const char* what)
+	{
+	gFindings += 1;
+	if (gFindings <= 40) printf("%%s: %%ld not finite (%%s)\n", what, gLPNonFinite, gLPLastNonFinite);
+	}
+
+int main(void)
+	{
+	tTarget	nums[64];
+	const tLPMethod* modes[64];
+	const tLPMethod* lists[16];
+	const tLPMethod* syms[16];
+	int nn = 0, nm = 0, nl = 0, ns = 0, i, j, a, b, m;
+	signal(SIGALRM, Hung); signal(SIGSEGV, Crashed); signal(SIGBUS, Crashed); signal(SIGFPE, Crashed);
+	ext_main(NULL);
+	for (i = 0; i < gLPMethodCount; i += 1) {
+		const tLPMethod* x = &gLPMethods[i];
+		long t = x->type;
+		if (Skipped(x->name)) continue;
+		if (t == A_FLOAT || t == A_DEFFLOAT || t == A_LONG || t == A_DEFLONG) {
+			int k, n = (!strcmp(x->name, "float") || !strcmp(x->name, "int")) ? kInlets : 1;
+			for (k = 0; k < n && nn < 64; k += 1) { nums[nn].m = x; nums[nn].inlet = k; nn += 1; }
+			}
+		else if (t == A_NOTHING && nm < 64) modes[nm++] = x;
+		else if (t == A_GIMME && nl < 16) lists[nl++] = x;
+		else if ((t == A_SYM || t == A_DEFSYM) && ns < 16) syms[ns++] = x;
+		}
+	// 1. Modes x pairs of numeric inputs
+	for (m = -1; m < nm; m += 1)
+	for (a = 0; a < nn; a += 1) for (b = a; b < nn; b += 1)
+	for (i = 0; i < kV; i += 1) for (j = 0; j < kV; j += 1) {
+		void* me = lpMake("%(name)s");
+		snprintf(gWhere, sizeof gWhere, "%%s | %%s(inlet %%ld) %%g, %%s(inlet %%ld) %%g", m < 0 ? "-" : modes[m]->name,
+				 nums[a].m->name, nums[a].inlet, V[i], nums[b].m->name, nums[b].inlet, V[j]);
+		alarm(5);
+		if (m >= 0) ((void (*)(void*)) modes[m]->m)(me);
+		Send(me, &nums[a], V[i]);
+		Send(me, &nums[b], V[j]);
+		if (lpRun(me, 20, V[i])) Report(gWhere);
+		alarm(0);
+		}
+	// 2. Lists of several lengths, numbers and symbols, to every list method
+	{
+	static const int lens[] = { 0, 1, 2, 3, 7, 40, 300 };
+	static t_atom av[300];
+	for (a = 0; a < nl; a += 1)
+	for (i = 0; i < (int) (sizeof lens / sizeof *lens); i += 1)
+	for (j = 0; j < kV + 1; j += 1) {
+		void* me = lpMake("%(name)s");
+		int k;
+		for (k = 0; k < lens[i]; k += 1) {
+			if (j == kV) atom_setsym(av + k, gensym(k %% 2 ? "foo" : ""));
+			else atom_setfloat(av + k, V[(j + k) %% kV]);
+			}
+		snprintf(gWhere, sizeof gWhere, "list to %%s, %%d items, %%s", lists[a]->name, lens[i], j == kV ? "symbols" : "numbers");
+		alarm(5);
+		((void (*)(void*, t_symbol*, long, t_atom*)) lists[a]->m)(me, gensym(lists[a]->name), lens[i], av);
+		if (lpRun(me, 20, 0.5)) Report(gWhere);
+		alarm(0);
+		}
+	}
+	// 3. Symbol methods with odd symbols
+	for (a = 0; a < ns; a += 1) {
+		static const char* ss[] = { "", "foo", "sinh", "-1", "list", NULL };
+		for (i = 0; ss[i]; i += 1) {
+			void* me = lpMake("%(name)s");
+			snprintf(gWhere, sizeof gWhere, "symbol %%s to %%s", ss[i], syms[a]->name);
+			alarm(5);
+			// two symbols: methods registered with A_SYM A_SYM (e.g. tell) read both
+			((void (*)(void*, t_symbol*, t_symbol*)) syms[a]->m)(me, gensym(ss[i]), gensym(ss[i]));
+			if (lpRun(me, 20, 0.5)) Report(gWhere);
+			alarm(0);
+			}
+		}
+	printf("checked: %%d numeric inputs, %%d modes, %%d list methods, %%d symbol methods; %%ld findings\n",
+		   nn, nm, nl, ns, gFindings);
+	return 0;
+	}
+"""
+
+
 def inlets(t):
     """Number of inlets of the object (default arguments), counted in the code as
     tools/make_refpages.py does, plus its known exceptions, so that float/int are only sent
@@ -154,7 +264,8 @@ def inlets(t):
 
 def main():
     targets, lib = run_tests.check.targets()
-    want = sys.argv[1:]
+    deep = '--deep' in sys.argv          # modes x pairs of inputs, lists, symbols, hangs
+    want = [a for a in sys.argv[1:] if a != '--deep']
     todo = [t for t in targets if not t['jitter'] and t['name'].startswith('lp.')
             and (not want or t['name'] in want)]
     with tempfile.TemporaryDirectory() as work:
@@ -162,18 +273,21 @@ def main():
             src = t['srcs'][0]
             test = os.path.join(work, 'test_fuzz.c')
             with open(test, 'w') as f:
-                f.write(TEMPLATE % dict(name=t['name'], src=src, inlets=inlets(t),
-                                        values=', '.join(repr(v) for v in VALUES)))
+                f.write((DEEP_TEMPLATE if deep else TEMPLATE) % dict(
+                    name=t['name'], src=src, inlets=inlets(t),
+                    values=', '.join(repr(v) for v in VALUES)))
             exe, err = run_tests.build(test, t, lib, work)
             if exe is None:
                 print('%-14s BUILD FAILED %s' % (t['name'], err.strip().splitlines()[-1][:120] if err.strip() else ''))
                 continue
             try:
-                r = subprocess.run([exe], capture_output=True, text=True, timeout=120)
+                r = subprocess.run([exe], capture_output=True, text=True, timeout=1800 if deep else 120)
             except subprocess.TimeoutExpired:
                 print('%-14s TIMEOUT' % t['name'])
                 continue
-            lines = [l for l in r.stdout.splitlines() if 'not finite' in l]
+            lines = [l for l in r.stdout.splitlines()
+                     if 'not finite' in l or l.startswith(('HANG', 'CRASH'))]
+            summary = [l for l in r.stdout.splitlines() if l.startswith('checked:')]
             stub = re.search(r'max stub called: (\S+)', r.stderr)
             status = ('stopped at Max function %s' % stub.group(1)) if stub else \
                      ('CRASH (exit %d)' % r.returncode) if r.returncode else ''
@@ -185,6 +299,8 @@ def main():
                     print('               ... %d more' % (len(lines) - 6))
             else:
                 print('%-14s ok' % t['name'])
+            if summary:
+                print('               ' + summary[0])
 
 
 if __name__ == '__main__':

@@ -252,3 +252,7 @@ void* defer(void* ob, method fn, t_symbol* sym, short argc, t_atom* argv)
 	{ ((void (*)(void*, t_symbol*, short, t_atom*)) fn)(ob, sym, argc, argv); return NULL; }
 void* defer_low(void* ob, method fn, t_symbol* sym, short argc, t_atom* argv)
 	{ ((void (*)(void*, t_symbol*, short, t_atom*)) fn)(ob, sym, argc, argv); return NULL; }
+
+	// Attribute values: none available (objects that ask fall back to their own messages)
+t_max_err object_attr_getvalueof(void* x, t_symbol* s, long* argc, t_atom** argv)
+	{ (void) x; (void) s; if (argc) *argc = 0; if (argv) *argv = NULL; return MAX_ERR_GENERIC; }
