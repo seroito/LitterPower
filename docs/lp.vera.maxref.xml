@@ -5,7 +5,7 @@
 <c74object name='lp.vera' category='Litter Power, Chaos'>
 
 	<digest>Iterate a population growth model</digest>
-	<description>lp.vera iterates p' = p + r f(p) (1 - f(p)): a population growth model. Every bang computes the next value; a float sets the growth rate r and bangs, a list sets a cycle of growth rates used in turn. f is a function of p (sin(pi p) by default).</description>
+	<description>lp.vera iterates p' = p + r f(p) (1 - f(p)): a population growth model. Every bang computes the next value; a float sets the growth rate r and bangs, a list sets a cycle of growth rates used in turn. f is a function of p (sin(pi p) by default). When the population is no longer finite (inf or NaN), the object restarts at the seed and sends a bang from its right outlet (until 2026 it sent inf or nan from then on); connect it to stop the bangs for the old behaviour.</description>
 
 	<metadatalist>
 		<metadata name='author'>Peter Castine</metadata>
@@ -134,7 +134,10 @@
 
 	<misc name='Output'>
 		<entry name='float'>
-			<digest>Next population</digest>
+			<digest>Left outlet: Next population</digest>
+		</entry>
+		<entry name='bang'>
+			<digest>Right outlet: Population was not finite: restarted at the seed</digest>
 		</entry>
 	</misc>
 

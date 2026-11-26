@@ -5,7 +5,7 @@
 <c74object name='lp.veram' category='Litter Power, Chaos'>
 
 	<digest>Iterate a population growth model</digest>
-	<description>lp.veram iterates p' = r p / (p + 1)^beta, a population model with the exponent beta. Every bang computes the next value; a float sets the growth rate r and bangs, a list sets a cycle of growth rates.</description>
+	<description>lp.veram iterates p' = r p / (p + 1)^beta, a population model with the exponent beta. Every bang computes the next value; a float sets the growth rate r and bangs, a list sets a cycle of growth rates. When the population is no longer finite (inf or NaN), the object restarts at the seed and sends a bang from its right outlet.</description>
 
 	<metadatalist>
 		<metadata name='author'>Peter Castine</metadata>
@@ -74,7 +74,10 @@
 
 	<misc name='Output'>
 		<entry name='float'>
-			<digest>Next population</digest>
+			<digest>Left outlet: Next population</digest>
+		</entry>
+		<entry name='bang'>
+			<digest>Right outlet: Population was not finite: restarted at the seed</digest>
 		</entry>
 	</misc>
 

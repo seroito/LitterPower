@@ -12,9 +12,10 @@ static const char* const sStrings0[] = {
 	/*  7 */ "Bang (Generate next point), Float/List (Growth rates), Symbol (Function)",
 	/*  8 */ "Float (Seed population)",
 	/*  9 */ "Float (Next population)",
+	/* 10 */ "Bang (Population was not finite: restarted at the seed)",
 	};
 
 const tLitterStrList gLitterStrLists[] = {
-	{ "lp.vera=", 9, sStrings0 },
+	{ "lp.vera=", 10, sStrings0 },
 	};
 const int gLitterStrListCount = 1;

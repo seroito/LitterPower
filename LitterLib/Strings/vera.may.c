@@ -13,9 +13,10 @@ static const char* const sStrings0[] = {
 	/*  8 */ "Float (Beta)",
 	/*  9 */ "Float (Seed population)",
 	/* 10 */ "Float (Next population)",
+	/* 11 */ "Bang (Population was not finite: restarted at the seed)",
 	};
 
 const tLitterStrList gLitterStrLists[] = {
-	{ "lp.veram", 10, sStrings0 },
+	{ "lp.veram", 11, sStrings0 },
 	};
 const int gLitterStrListCount = 1;

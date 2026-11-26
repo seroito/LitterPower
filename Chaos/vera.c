@@ -201,6 +201,9 @@ typedef struct {
 #if !__VERA_MAY__
 	tFunction		func;
 #endif
+	
+	void*			outRestart;			// 2026: bang when the population was no longer
+										// finite and restarted at the seed
 	} tVera;
 
 
@@ -423,7 +426,9 @@ NewVera(
 #endif
 	floatin(me, 1);		// Everyone else has one
 	
-		// One outlet, accessed through me->coreObject.o_outlet
+		// Two outlets, created right to left: the restart bang (2026) and the
+		// population, accessed through me->coreObject.o_outlet
+	me->outRestart = bangout(me);
 	floatout(me);
 	
 	//
@@ -547,7 +552,17 @@ FreeVera(
 static void DoOut(tVera* me)
 	{ outlet_float(me->coreObject.o_outlet, me->curPop); }
 
-static void
+	// 2026 (user's request): many settings let the population grow beyond the range of
+	// floating point numbers or produce NaN (log or sqrt of a negative number, 1/0, inf - inf;
+	// simulated: 23-37 % of function/growth combinations within 1000 steps in lp.vera,
+	// vera+, vera=, veral, veras). Before, the object then sent inf or nan for ever, which
+	// harms the objects downstream. Now a population that is no longer finite restarts at
+	// the seed and the right outlet sends a bang, so a patch can stop the bangs (the old
+	// behaviour) or react otherwise. Finite values are unchanged.
+	// lp.veral with the identity function is the logistic map of lp.poppy: there a
+	// population that died out (below 1e-15) restarts at the seed once the growth rate is
+	// above 1, as in lp.poppy (no bang: the population was finite).
+static Boolean
 DoNext(
 	tVera* me)
 	
@@ -578,16 +593,38 @@ DoNext(
 		}
 #endif
 	
+	{
+	double growth;
+	
 	if (me->cycleLen == 1)
-		p = NextPop(p, fnp, me->growth);
+		growth = me->growth;
 	else {
-		p = NextPop(p, fnp, me->rates[me->curElem++]);
+		growth = me->rates[me->curElem++];
 		
 		if (me->curElem >= me->cycleLen)
 			me->curElem = 0;
 		}
 	
+#if __VERA_LAM__
+	if (me->func == fnIdent && p == 0.0 && growth > 1.0)
+		p = fnp = me->seed;					// Died out: restart (see above)
+#endif
+	
+	p = NextPop(p, fnp, growth);
+	
+#if __VERA_LAM__
+	if (me->func == fnIdent && fabs(p) < 1e-15)
+		p = 0.0;
+#endif
+	}
+	
+	if (!isfinite(p)) {
+		me->curPop = me->seed;
+		return true;
+		}
+	
 	me->curPop = p;
+	return false;
 	}
 	
 static void
@@ -595,7 +632,8 @@ DoBang(
 	tVera* me)
 	
 	{
-	DoNext(me);
+	if (DoNext(me))
+		outlet_bang(me->outRestart);		// Right to left: the bang first
 	DoOut(me);
 	}
 

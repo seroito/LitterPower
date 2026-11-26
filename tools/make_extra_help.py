@@ -366,7 +366,7 @@ def vera(name):
         seed = p.flonum(190.0, y + 34.0)
     rate = p.flonum(110.0, y + 70.0)
     p.comment(176.0, y + 70.0, 200.0, '<- r (sets r and bangs)')
-    obj = p.obj(10.0, y + 104.0, 360.0, box, nin, 1, ['float'])
+    obj = p.obj(10.0, y + 104.0, 360.0, box, nin, 2, ['float', 'bang'])
     p.connect(met, 0, obj, 0)
     p.connect(rate, 0, obj, 0)
     if may:
@@ -377,6 +377,11 @@ def vera(name):
     out = p.flonum(10.0, y + 140.0, 100.0)
     p.connect(obj, 0, out, 0)
     p.comment(116.0, y + 140.0, 160.0, 'next population')
+    # 2026: right outlet, bang when the population was no longer finite (restart at the seed)
+    btn = p.box('button', 346.0, y + 140.0, 24.0, 24.0, numinlets=1, numoutlets=1,
+                outlettype=['bang'], parameter_enable=0)
+    p.connect(obj, 1, btn, 0)
+    p.comment(280.0, y + 141.0, 64.0, 'restarted')
     # A scrolling history of the values: multislider, slider style 2 = point scroll
     lo, hi = (0.0, 5.0) if may else (-1.0, 1.0)
     ms = p.box('multislider', 10.0, y + 170.0, 360.0, 90.0, numinlets=1, numoutlets=2,
@@ -418,16 +423,27 @@ def vera(name):
                 'function sinpi, r = 0, seed = 2/3.')
         inlets = ('Left: bang, float (r, then bang), list (cycle of rates, then bang), function '
                   'names. Right: seed (also restarts there).')
-    sections = [('Arguments', args), ('Inlets', inlets),
+    outlets = ('Left: the next population (float). Right: bang when the population was no '
+               'longer finite (inf or NaN); the object has restarted at the seed. Until 2026 it '
+               'sent inf or nan from then on, which upsets the objects that follow; to get the '
+               'old stop, connect this bang to the metro (e.g. through a "stop" message).')
+    sections = [('Arguments', args), ('Inlets', inlets), ('Outlets', outlets),
                 ('Messages', 'bang, reset (back to the seed), set (r or a list of rates, '
                              'without output), tattle (or double-click), plus the common Litter '
                              'Power messages.')]
     if not may:
-        sections.append(('Functions', FUNCS_VERA + '. The seed is kept between 0 and 1; the '
-                         'values that follow are not limited and can run away for large r.'))
+        funcs = (FUNCS_VERA + '. The seed is kept between 0 and 1; the values that follow are '
+                 'not limited and can run away for large r: when they are no longer finite, the '
+                 'object restarts at the seed and bangs its right outlet.')
+        if name == 'lp.veral':
+            funcs += (' With ident (the logistic map) a population that has died out (0, e.g. '
+                      'with r below 1) restarts at the seed as soon as r is above 1, as in '
+                      'lp.poppy; this restart does not bang.')
+        sections.append(('Functions', funcs))
     else:
         sections.append(('Note', 'The seed is kept between 0 and 1; the values that follow '
-                                 'are not limited.'))
+                                 'are not limited. When they are no longer finite, the object '
+                                 'restarts at the seed and bangs its right outlet.'))
     y = p.info(y, sections)
     p.foot(y)
     return p

@@ -297,9 +297,10 @@
 					"fontname": "Arial",
 					"fontsize": 13.0,
 					"numinlets": 2,
-					"numoutlets": 1,
+					"numoutlets": 2,
 					"outlettype": [
-						"float"
+						"float",
+						"bang"
 					]
 				}
 			},
@@ -351,6 +352,48 @@
 			{
 				"box": {
 					"id": "obj-15",
+					"maxclass": "button",
+					"patching_rect": [
+						374.833,
+						348.25,
+						26.0,
+						26.0
+					],
+					"numinlets": 1,
+					"numoutlets": 1,
+					"outlettype": [
+						"bang"
+					],
+					"parameter_enable": 0
+				}
+			},
+			{
+				"box": {
+					"id": "obj-16",
+					"maxclass": "comment",
+					"patching_rect": [
+						303.333,
+						349.33299999999997,
+						69.333,
+						22.75
+					],
+					"text": "restarted",
+					"fontname": "Arial",
+					"fontsize": 13.0,
+					"numinlets": 1,
+					"numoutlets": 0,
+					"linecount": 1,
+					"textcolor": [
+						0.870588235294118,
+						0.870588235294118,
+						0.870588235294118,
+						1.0
+					]
+				}
+			},
+			{
+				"box": {
+					"id": "obj-17",
 					"maxclass": "multislider",
 					"patching_rect": [
 						10.833,
@@ -375,7 +418,7 @@
 			},
 			{
 				"box": {
-					"id": "obj-16",
+					"id": "obj-18",
 					"maxclass": "comment",
 					"patching_rect": [
 						10.833,
@@ -399,7 +442,7 @@
 			},
 			{
 				"box": {
-					"id": "obj-17",
+					"id": "obj-19",
 					"maxclass": "comment",
 					"patching_rect": [
 						433.333,
@@ -424,7 +467,7 @@
 			},
 			{
 				"box": {
-					"id": "obj-18",
+					"id": "obj-20",
 					"maxclass": "message",
 					"patching_rect": [
 						433.333,
@@ -444,7 +487,7 @@
 			},
 			{
 				"box": {
-					"id": "obj-19",
+					"id": "obj-21",
 					"maxclass": "comment",
 					"patching_rect": [
 						537.333,
@@ -468,7 +511,7 @@
 			},
 			{
 				"box": {
-					"id": "obj-20",
+					"id": "obj-22",
 					"maxclass": "message",
 					"patching_rect": [
 						433.333,
@@ -488,7 +531,7 @@
 			},
 			{
 				"box": {
-					"id": "obj-21",
+					"id": "obj-23",
 					"maxclass": "comment",
 					"patching_rect": [
 						537.333,
@@ -512,7 +555,7 @@
 			},
 			{
 				"box": {
-					"id": "obj-22",
+					"id": "obj-24",
 					"maxclass": "message",
 					"patching_rect": [
 						433.333,
@@ -532,7 +575,7 @@
 			},
 			{
 				"box": {
-					"id": "obj-23",
+					"id": "obj-25",
 					"maxclass": "comment",
 					"patching_rect": [
 						537.333,
@@ -556,7 +599,7 @@
 			},
 			{
 				"box": {
-					"id": "obj-24",
+					"id": "obj-26",
 					"maxclass": "message",
 					"patching_rect": [
 						433.333,
@@ -576,7 +619,7 @@
 			},
 			{
 				"box": {
-					"id": "obj-25",
+					"id": "obj-27",
 					"maxclass": "comment",
 					"patching_rect": [
 						537.333,
@@ -600,7 +643,7 @@
 			},
 			{
 				"box": {
-					"id": "obj-26",
+					"id": "obj-28",
 					"maxclass": "message",
 					"patching_rect": [
 						433.333,
@@ -620,7 +663,7 @@
 			},
 			{
 				"box": {
-					"id": "obj-27",
+					"id": "obj-29",
 					"maxclass": "comment",
 					"patching_rect": [
 						537.333,
@@ -644,7 +687,7 @@
 			},
 			{
 				"box": {
-					"id": "obj-28",
+					"id": "obj-30",
 					"maxclass": "message",
 					"patching_rect": [
 						433.333,
@@ -664,7 +707,7 @@
 			},
 			{
 				"box": {
-					"id": "obj-29",
+					"id": "obj-31",
 					"maxclass": "comment",
 					"patching_rect": [
 						537.333,
@@ -688,7 +731,7 @@
 			},
 			{
 				"box": {
-					"id": "obj-30",
+					"id": "obj-32",
 					"maxclass": "message",
 					"patching_rect": [
 						433.333,
@@ -708,7 +751,7 @@
 			},
 			{
 				"box": {
-					"id": "obj-31",
+					"id": "obj-33",
 					"maxclass": "comment",
 					"patching_rect": [
 						537.333,
@@ -732,7 +775,7 @@
 			},
 			{
 				"box": {
-					"id": "obj-32",
+					"id": "obj-34",
 					"maxclass": "comment",
 					"patching_rect": [
 						433.333,
@@ -757,7 +800,7 @@
 			},
 			{
 				"box": {
-					"id": "obj-33",
+					"id": "obj-35",
 					"maxclass": "message",
 					"patching_rect": [
 						433.333,
@@ -777,7 +820,7 @@
 			},
 			{
 				"box": {
-					"id": "obj-34",
+					"id": "obj-36",
 					"maxclass": "comment",
 					"patching_rect": [
 						537.333,
@@ -801,7 +844,7 @@
 			},
 			{
 				"box": {
-					"id": "obj-35",
+					"id": "obj-37",
 					"maxclass": "message",
 					"patching_rect": [
 						433.333,
@@ -821,7 +864,7 @@
 			},
 			{
 				"box": {
-					"id": "obj-36",
+					"id": "obj-38",
 					"maxclass": "comment",
 					"patching_rect": [
 						537.333,
@@ -845,7 +888,7 @@
 			},
 			{
 				"box": {
-					"id": "obj-37",
+					"id": "obj-39",
 					"maxclass": "message",
 					"patching_rect": [
 						433.333,
@@ -865,7 +908,7 @@
 			},
 			{
 				"box": {
-					"id": "obj-38",
+					"id": "obj-40",
 					"maxclass": "comment",
 					"patching_rect": [
 						537.333,
@@ -889,7 +932,7 @@
 			},
 			{
 				"box": {
-					"id": "obj-39",
+					"id": "obj-41",
 					"maxclass": "message",
 					"patching_rect": [
 						433.333,
@@ -909,7 +952,7 @@
 			},
 			{
 				"box": {
-					"id": "obj-40",
+					"id": "obj-42",
 					"maxclass": "comment",
 					"patching_rect": [
 						537.333,
@@ -933,7 +976,7 @@
 			},
 			{
 				"box": {
-					"id": "obj-41",
+					"id": "obj-43",
 					"maxclass": "message",
 					"patching_rect": [
 						433.333,
@@ -953,7 +996,7 @@
 			},
 			{
 				"box": {
-					"id": "obj-42",
+					"id": "obj-44",
 					"maxclass": "comment",
 					"patching_rect": [
 						537.333,
@@ -977,7 +1020,7 @@
 			},
 			{
 				"box": {
-					"id": "obj-43",
+					"id": "obj-45",
 					"maxclass": "message",
 					"patching_rect": [
 						433.333,
@@ -997,7 +1040,7 @@
 			},
 			{
 				"box": {
-					"id": "obj-44",
+					"id": "obj-46",
 					"maxclass": "comment",
 					"patching_rect": [
 						537.333,
@@ -1021,13 +1064,13 @@
 			},
 			{
 				"box": {
-					"id": "obj-45",
+					"id": "obj-47",
 					"maxclass": "panel",
 					"patching_rect": [
 						5.417,
 						632.083,
 						812.5,
-						305.847
+						434.98
 					],
 					"numinlets": 1,
 					"numoutlets": 0,
@@ -1043,7 +1086,7 @@
 			},
 			{
 				"box": {
-					"id": "obj-46",
+					"id": "obj-48",
 					"maxclass": "comment",
 					"patching_rect": [
 						15.167,
@@ -1068,7 +1111,7 @@
 			},
 			{
 				"box": {
-					"id": "obj-47",
+					"id": "obj-49",
 					"maxclass": "comment",
 					"patching_rect": [
 						15.167,
@@ -1092,7 +1135,7 @@
 			},
 			{
 				"box": {
-					"id": "obj-48",
+					"id": "obj-50",
 					"maxclass": "comment",
 					"patching_rect": [
 						15.167,
@@ -1117,7 +1160,7 @@
 			},
 			{
 				"box": {
-					"id": "obj-49",
+					"id": "obj-51",
 					"maxclass": "comment",
 					"patching_rect": [
 						15.167,
@@ -1141,7 +1184,7 @@
 			},
 			{
 				"box": {
-					"id": "obj-50",
+					"id": "obj-52",
 					"maxclass": "comment",
 					"patching_rect": [
 						15.167,
@@ -1149,56 +1192,7 @@
 						325.0,
 						22.75
 					],
-					"text": "Messages",
-					"fontname": "Arial",
-					"fontsize": 13.0,
-					"numinlets": 1,
-					"numoutlets": 0,
-					"linecount": 1,
-					"fontface": 1,
-					"textcolor": [
-						0.870588235294118,
-						0.870588235294118,
-						0.870588235294118,
-						1.0
-					]
-				}
-			},
-			{
-				"box": {
-					"id": "obj-51",
-					"maxclass": "comment",
-					"patching_rect": [
-						15.167,
-						809.923,
-						780.0,
-						41.167
-					],
-					"text": "bang, reset (back to the seed), set (r or a list of rates, without output), tattle (or double-click), plus the common Litter Power messages.",
-					"fontname": "Arial",
-					"fontsize": 13.0,
-					"numinlets": 1,
-					"numoutlets": 0,
-					"linecount": 2,
-					"textcolor": [
-						0.870588235294118,
-						0.870588235294118,
-						0.870588235294118,
-						1.0
-					]
-				}
-			},
-			{
-				"box": {
-					"id": "obj-52",
-					"maxclass": "comment",
-					"patching_rect": [
-						15.167,
-						862.01,
-						325.0,
-						22.75
-					],
-					"text": "Functions",
+					"text": "Outlets",
 					"fontname": "Arial",
 					"fontsize": 13.0,
 					"numinlets": 1,
@@ -1219,11 +1213,60 @@
 					"maxclass": "comment",
 					"patching_rect": [
 						15.167,
-						883.6759999999999,
+						809.923,
+						780.0,
+						59.583
+					],
+					"text": "Left: the next population (float). Right: bang when the population was no longer finite (inf or NaN); the object has restarted at the seed. Until 2026 it sent inf or nan from then on, which upsets the objects that follow; to get the old stop, connect this bang to the metro (e.g. through a \"stop\" message).",
+					"fontname": "Arial",
+					"fontsize": 13.0,
+					"numinlets": 1,
+					"numoutlets": 0,
+					"linecount": 3,
+					"textcolor": [
+						0.870588235294118,
+						0.870588235294118,
+						0.870588235294118,
+						1.0
+					]
+				}
+			},
+			{
+				"box": {
+					"id": "obj-54",
+					"maxclass": "comment",
+					"patching_rect": [
+						15.167,
+						880.4699999999999,
+						325.0,
+						22.75
+					],
+					"text": "Messages",
+					"fontname": "Arial",
+					"fontsize": 13.0,
+					"numinlets": 1,
+					"numoutlets": 0,
+					"linecount": 1,
+					"fontface": 1,
+					"textcolor": [
+						0.870588235294118,
+						0.870588235294118,
+						0.870588235294118,
+						1.0
+					]
+				}
+			},
+			{
+				"box": {
+					"id": "obj-55",
+					"maxclass": "comment",
+					"patching_rect": [
+						15.167,
+						902.136,
 						780.0,
 						41.167
 					],
-					"text": "ident zero one recip sinpi cospi tanpi cotpi sinh cosh tanh log exp sqr sqrt. The seed is kept between 0 and 1; the values that follow are not limited and can run away for large r.",
+					"text": "bang, reset (back to the seed), set (r or a list of rates, without output), tattle (or double-click), plus the common Litter Power messages.",
 					"fontname": "Arial",
 					"fontsize": 13.0,
 					"numinlets": 1,
@@ -1239,11 +1282,60 @@
 			},
 			{
 				"box": {
-					"id": "obj-54",
+					"id": "obj-56",
+					"maxclass": "comment",
+					"patching_rect": [
+						15.167,
+						954.223,
+						325.0,
+						22.75
+					],
+					"text": "Functions",
+					"fontname": "Arial",
+					"fontsize": 13.0,
+					"numinlets": 1,
+					"numoutlets": 0,
+					"linecount": 1,
+					"fontface": 1,
+					"textcolor": [
+						0.870588235294118,
+						0.870588235294118,
+						0.870588235294118,
+						1.0
+					]
+				}
+			},
+			{
+				"box": {
+					"id": "obj-57",
+					"maxclass": "comment",
+					"patching_rect": [
+						15.167,
+						975.89,
+						780.0,
+						78.0
+					],
+					"text": "ident zero one recip sinpi cospi tanpi cotpi sinh cosh tanh log exp sqr sqrt. The seed is kept between 0 and 1; the values that follow are not limited and can run away for large r: when they are no longer finite, the object restarts at the seed and bangs its right outlet. With ident (the logistic map) a population that has died out (0, e.g. with r below 1) restarts at the seed as soon as r is above 1, as in lp.poppy; this restart does not bang.",
+					"fontname": "Arial",
+					"fontsize": 13.0,
+					"numinlets": 1,
+					"numoutlets": 0,
+					"linecount": 4,
+					"textcolor": [
+						0.870588235294118,
+						0.870588235294118,
+						0.870588235294118,
+						1.0
+					]
+				}
+			},
+			{
+				"box": {
+					"id": "obj-58",
 					"maxclass": "comment",
 					"patching_rect": [
 						10.833,
-						948.7629999999999,
+						1077.8960000000002,
 						801.667,
 						41.167
 					],
@@ -1263,7 +1355,7 @@
 			},
 			{
 				"box": {
-					"id": "obj-55",
+					"id": "obj-59",
 					"maxclass": "live.line",
 					"numinlets": 1,
 					"numoutlets": 0,
@@ -1277,7 +1369,7 @@
 			},
 			{
 				"box": {
-					"id": "obj-56",
+					"id": "obj-60",
 					"maxclass": "message",
 					"text": "lpo",
 					"hidden": 1,
@@ -1298,7 +1390,7 @@
 			},
 			{
 				"box": {
-					"id": "obj-57",
+					"id": "obj-61",
 					"maxclass": "newobj",
 					"text": "lp.mrsnorris",
 					"hidden": 1,
@@ -1319,7 +1411,7 @@
 			},
 			{
 				"box": {
-					"id": "obj-58",
+					"id": "obj-62",
 					"maxclass": "ubutton",
 					"numinlets": 1,
 					"numoutlets": 4,
@@ -1403,7 +1495,7 @@
 				"patchline": {
 					"source": [
 						"obj-12",
-						0
+						1
 					],
 					"destination": [
 						"obj-15",
@@ -1414,11 +1506,11 @@
 			{
 				"patchline": {
 					"source": [
-						"obj-18",
+						"obj-12",
 						0
 					],
 					"destination": [
-						"obj-12",
+						"obj-17",
 						0
 					]
 				}
@@ -1498,7 +1590,7 @@
 			{
 				"patchline": {
 					"source": [
-						"obj-33",
+						"obj-32",
 						0
 					],
 					"destination": [
@@ -1570,11 +1662,23 @@
 			{
 				"patchline": {
 					"source": [
-						"obj-58",
+						"obj-45",
 						0
 					],
 					"destination": [
-						"obj-56",
+						"obj-12",
+						0
+					]
+				}
+			},
+			{
+				"patchline": {
+					"source": [
+						"obj-62",
+						0
+					],
+					"destination": [
+						"obj-60",
 						0
 					],
 					"hidden": 1
@@ -1583,11 +1687,11 @@
 			{
 				"patchline": {
 					"source": [
-						"obj-56",
+						"obj-60",
 						0
 					],
 					"destination": [
-						"obj-57",
+						"obj-61",
 						0
 					],
 					"hidden": 1
