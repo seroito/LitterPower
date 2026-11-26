@@ -10,8 +10,8 @@ line, novanarecords URL), copyright 1992-2027 everywhere, lp.poppy restart and r
 its help, lp.messages header. Confirmed by the user: lp.veral cords (item 20), test point
 12 (icon, readme), lp.shhh~ scope~ (item 21, screenshots in `Findings/lp.shhh~screenshots`,
 amplitude drops with NN as expected). Next: test point 15 with the package of push build
-45801323142 (commit 9066c07, with item 23 and the lp.qvvv~ fix; Windows only), unpacked to
-`/media/sone/TAD1/DATA/DEV/MAX/LitterPower/rng-fixes/LitterPower-package-45801323142/LitterPower`
+45805259466 (items 23 and 24, lp.vera* restart messages, docs; Windows only), unpacked to
+`/media/sone/TAD1/DATA/DEV/MAX/LitterPower/rng-fixes/LitterPower-package-45805259466/LitterPower`
 (the older package folders next to it can go; checked: 104 externals,
 105 help files, check_package.py 0 problems, item-22 files identical to the repository,
 1992-2027 in readme, package-info.json and the externals); then merge into
