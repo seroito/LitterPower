@@ -310,16 +310,31 @@ DoNext(
 	tPoppy* me)
 	
 	{
-	double	p = me->curPop;
+	double	p = me->curPop,
+			growth;
 	
 	if (me->cycleLen == 1)
-		p = NextPop(p, me->growth);
+		growth = me->growth;
 	else {
-		p = NextPop(p, me->rates[me->curElem++]);
+		growth = me->rates[me->curElem++];
 		
 		if (me->curElem >= me->cycleLen)
 			me->curElem = 0;
 		}
+	
+	// A population that has died out (0) stays 0 in the model, whatever the growth rate
+	// (growth rates of 0 are clamped to FLT_EPSILON, which lets it die out within about 45
+	// steps). 2026 (user's request, as in lp.poppy~): once the growth rate is above 1
+	// again, it restarts at the seed. Populations below 1e-15 count as died out: there
+	// 1 - p is 1 in double precision, and with cycles that mix rates near 0 and above 1 the
+	// population would otherwise hover around 1e-28 and take ~50 steps to become visible.
+	// Chaotic orbits (r = 4) come that close to 0 with a probability of about 2e-8 a step.
+	if (p == 0.0 && growth > 1.0)
+		p = me->seed;
+	
+	p = NextPop(p, growth);
+	if (p < 1e-15)
+		p = 0.0;
 	
 	me->curPop = p;
 	}
