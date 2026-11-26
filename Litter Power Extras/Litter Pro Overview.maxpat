@@ -1525,10 +1525,10 @@
 					"numinlets": 1,
 					"patcher": {
 						"rect": [
-							0.0,
-							66.0,
-							840,
-							561
+							100.0,
+							80.0,
+							852,
+							780
 						],
 						"bgcolor": [
 							0.337254901960784,
@@ -1538,10 +1538,10 @@
 						],
 						"bglocked": 0,
 						"defrect": [
-							0.0,
-							66.0,
-							840,
-							561
+							100.0,
+							80.0,
+							852,
+							780
 						],
 						"openrect": [
 							0.0,
@@ -1550,7 +1550,7 @@
 							0.0
 						],
 						"openinpresentation": 0,
-						"default_fontsize": 13.333,
+						"default_fontsize": 13.0,
 						"default_fontface": 0,
 						"default_fontname": "Arial",
 						"gridonopen": 0,
@@ -1567,16 +1567,16 @@
 							{
 								"box": {
 									"maxclass": "comment",
-									"text": "http://www.bek.no/~pcastine/Litter/",
+									"text": "https://www.novanarecords.com/artists/peter-castine/",
 									"patching_rect": [
-										517.333,
-										498.667,
-										270.667,
-										22.667
+										392.0,
+										719.0,
+										420.0,
+										21.0
 									],
 									"numoutlets": 0,
 									"fontname": "Arial",
-									"fontsize": 10.667,
+									"fontsize": 13.0,
 									"id": "obj-1",
 									"numinlets": 1,
 									"textcolor": [
@@ -1584,22 +1584,24 @@
 										0.870588235294118,
 										0.870588235294118,
 										1.0
-									]
+									],
+									"linecount": 1,
+									"textjustification": 2
 								}
 							},
 							{
 								"box": {
 									"maxclass": "comment",
-									"text": "Peter Castine/4-15 Music & Technology",
+									"text": "Peter Castine",
 									"patching_rect": [
-										1.333,
-										498.667,
-										258.667,
-										22.667
+										12.0,
+										719.0,
+										300.0,
+										21.0
 									],
 									"numoutlets": 0,
 									"fontname": "Arial",
-									"fontsize": 10.667,
+									"fontsize": 13.0,
 									"id": "obj-2",
 									"numinlets": 1,
 									"textcolor": [
@@ -1607,7 +1609,8 @@
 										0.870588235294118,
 										0.870588235294118,
 										1.0
-									]
+									],
+									"linecount": 1
 								}
 							},
 							{
@@ -1616,14 +1619,14 @@
 									"text": "The Author expressly disclaims all warranties, express or implied. No oral or written information or advice given by the Author shall create a warranty or in any way increase the scope of this warranty.",
 									"linecount": 2,
 									"patching_rect": [
-										1.333,
-										406.667,
-										786.667,
-										37.333
+										12.0,
+										583.0,
+										800.0,
+										38.0
 									],
 									"numoutlets": 0,
 									"fontname": "Arial",
-									"fontsize": 10.667,
+									"fontsize": 13.0,
 									"id": "obj-3",
 									"numinlets": 1,
 									"textcolor": [
@@ -1639,14 +1642,14 @@
 									"maxclass": "comment",
 									"text": "THE SOFTWARE IS PROVIDED \"AS IS\" AND WITHOUT WARRANTY OF ANY KIND.",
 									"patching_rect": [
-										1.333,
-										388.0,
-										798.667,
-										22.667
+										12.0,
+										554.0,
+										800.0,
+										21.0
 									],
 									"numoutlets": 0,
 									"fontname": "Arial",
-									"fontsize": 10.667,
+									"fontsize": 13.0,
 									"fontface": 1,
 									"id": "obj-4",
 									"numinlets": 1,
@@ -1655,7 +1658,8 @@
 										0.870588235294118,
 										0.870588235294118,
 										1.0
-									]
+									],
+									"linecount": 1
 								}
 							},
 							{
@@ -1663,15 +1667,15 @@
 									"maxclass": "comment",
 									"text": "• No Warranty",
 									"patching_rect": [
-										1.333,
-										365.333,
-										474.667,
-										24.0
+										12.0,
+										523.0,
+										800.0,
+										27.0
 									],
 									"numoutlets": 0,
-									"fontname": "Book Antiqua",
-									"fontsize": 12.0,
-									"fontface": 1,
+									"fontname": "Lato",
+									"fontsize": 18.0,
+									"fontface": 0,
 									"id": "obj-5",
 									"numinlets": 1,
 									"textcolor": [
@@ -1679,23 +1683,24 @@
 										0.870588235294118,
 										0.870588235294118,
 										1.0
-									]
+									],
+									"linecount": 1
 								}
 							},
 							{
 								"box": {
 									"maxclass": "comment",
 									"text": "The Software is provided by Peter Castine (the Author) to you, a single user, for a license fee. This license gives you the royalty-free right to use components (external objects and patchers) of the Software in your own ORIGINAL WORKS (including but not limited to Max patchers, collectives, and stand-alone applications). You have the non-exclusive right to use, distribute, and license such ORIGINAL WORKS to third parties without payment of any further license fees, so long as a your terms of use for your ORIGINAL WORKS are sufficient to protect the copyright and license of the Software.",
-									"linecount": 5,
+									"linecount": 6,
 									"patching_rect": [
-										1.333,
-										232.0,
-										786.667,
-										80.0
+										12.0,
+										319.0,
+										800.0,
+										106.0
 									],
 									"numoutlets": 0,
 									"fontname": "Arial",
-									"fontsize": 10.667,
+									"fontsize": 13.0,
 									"id": "obj-6",
 									"numinlets": 1,
 									"textcolor": [
@@ -1709,17 +1714,17 @@
 							{
 								"box": {
 									"maxclass": "comment",
-									"text": "The Software is copyright © 1992-2026 by Peter Castine. All rights reserved.\rYou may make copies of the Software for your own use in accordance with the installation instructions in the accompanying documentation. You may make backup copies of the Software as long as they contain the entirety of the Software, including this license agreement, any other copyright notices distributed with the software, and the documentation.",
-									"linecount": 4,
+									"text": "The Software is copyright © 1992-2027 by Peter Castine. All rights reserved.\rYou may make copies of the Software for your own use in accordance with the installation instructions in the accompanying documentation. You may make backup copies of the Software as long as they contain the entirety of the Software, including this license agreement, any other copyright notices distributed with the software, and the documentation.",
+									"linecount": 5,
 									"patching_rect": [
-										1.333,
-										141.333,
-										789.333,
-										65.333
+										12.0,
+										181.0,
+										800.0,
+										89.0
 									],
 									"numoutlets": 0,
 									"fontname": "Arial",
-									"fontsize": 10.667,
+									"fontsize": 13.0,
 									"id": "obj-7",
 									"numinlets": 1,
 									"textcolor": [
@@ -1735,15 +1740,15 @@
 									"maxclass": "comment",
 									"text": "• Copyright",
 									"patching_rect": [
-										1.333,
-										118.667,
-										478.667,
-										24.0
+										12.0,
+										150.0,
+										800.0,
+										27.0
 									],
 									"numoutlets": 0,
-									"fontname": "Book Antiqua",
-									"fontsize": 12.0,
-									"fontface": 1,
+									"fontname": "Lato",
+									"fontsize": 18.0,
+									"fontface": 0,
 									"id": "obj-8",
 									"numinlets": 1,
 									"textcolor": [
@@ -1751,7 +1756,8 @@
 										0.870588235294118,
 										0.870588235294118,
 										1.0
-									]
+									],
+									"linecount": 1
 								}
 							},
 							{
@@ -1759,14 +1765,14 @@
 									"maxclass": "comment",
 									"text": "By using the Litter Power Professional Bundle (the Software) you agree to the terms of this agreement.",
 									"patching_rect": [
-										1.333,
-										90.667,
-										786.667,
-										24.0
+										12.0,
+										111.0,
+										800.0,
+										21.0
 									],
 									"numoutlets": 0,
-									"fontname": "Book Antiqua",
-									"fontsize": 12.0,
+									"fontname": "Arial",
+									"fontsize": 13.0,
 									"id": "obj-9",
 									"numinlets": 1,
 									"textcolor": [
@@ -1774,7 +1780,8 @@
 										0.870588235294118,
 										0.870588235294118,
 										1.0
-									]
+									],
+									"linecount": 1
 								}
 							},
 							{
@@ -1782,7 +1789,7 @@
 									"maxclass": "newobj",
 									"text": "thispatcher",
 									"patching_rect": [
-										840.0,
+										860.0,
 										66.667,
 										78.667,
 										22.667
@@ -1804,7 +1811,7 @@
 									"maxclass": "newobj",
 									"text": "t front",
 									"patching_rect": [
-										840.0,
+										860.0,
 										36.0,
 										50.667,
 										22.667
@@ -1824,7 +1831,7 @@
 								"box": {
 									"maxclass": "inlet",
 									"patching_rect": [
-										840.0,
+										860.0,
 										6.667,
 										20.0,
 										20.0
@@ -1843,17 +1850,17 @@
 								"box": {
 									"maxclass": "comment",
 									"text": "The Litter Power Professional Bundle Artistic License Agreement",
-									"linecount": 2,
+									"linecount": 1,
 									"patching_rect": [
-										1.333,
-										1.333,
-										477.333,
-										65.333
+										12.0,
+										68.0,
+										800.0,
+										21.0
 									],
 									"numoutlets": 0,
-									"fontname": "Book Antiqua",
-									"fontsize": 21.333,
-									"fontface": 1,
+									"fontname": "Lato",
+									"fontsize": 13.0,
+									"fontface": 0,
 									"id": "obj-13",
 									"numinlets": 1,
 									"textcolor": [
@@ -1869,15 +1876,15 @@
 									"maxclass": "comment",
 									"text": "• License",
 									"patching_rect": [
-										1.333,
-										209.333,
-										485.333,
-										24.0
+										12.0,
+										288.0,
+										800.0,
+										27.0
 									],
 									"numoutlets": 0,
-									"fontname": "Book Antiqua",
-									"fontsize": 12.0,
-									"fontface": 1,
+									"fontname": "Lato",
+									"fontsize": 18.0,
+									"fontface": 0,
 									"id": "obj-14",
 									"numinlets": 1,
 									"textcolor": [
@@ -1885,23 +1892,24 @@
 										0.870588235294118,
 										0.870588235294118,
 										1.0
-									]
+									],
+									"linecount": 1
 								}
 							},
 							{
 								"box": {
 									"maxclass": "comment",
 									"text": "YOU MAY NOT SELL OR LEASE THE SOFTWARE, NOR MAY YOU TAKE A FEE OR COMMISSION FOR PROVIDING THE SOFTWARE TO ANOTHER PERSON, NOR MAY YOU INCLUDE THE SOFTWARE WITH OTHER SOFTWARE THAT IS SOLD FOR A FEE WITHOUT PRIOR WRITTEN PERMISSION FROM THE AUTHOR.",
-									"linecount": 3,
+									"linecount": 4,
 									"patching_rect": [
-										1.333,
-										314.667,
-										796.0,
-										50.667
+										12.0,
+										433.0,
+										800.0,
+										72.0
 									],
 									"numoutlets": 0,
 									"fontname": "Arial",
-									"fontsize": 10.667,
+									"fontsize": 13.0,
 									"fontface": 1,
 									"id": "obj-15",
 									"numinlets": 1,
@@ -1917,16 +1925,16 @@
 								"box": {
 									"maxclass": "comment",
 									"text": "UNDER NO CIRCUMSTANCES, INCLUDING NEGLIGENCE, SHALL THE AUTHOR BE LIABLE FOR ANY INCIDENTAL, SPECIAL, OR CONSEQUENTIAL DAMAGES THAT RESULT FROM THE USE OR INABILITY TO USE THE SOFTWARE, EVEN IF THE AUTHOR HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGES.",
-									"linecount": 3,
+									"linecount": 4,
 									"patching_rect": [
-										1.333,
-										441.333,
-										796.0,
-										50.667
+										12.0,
+										629.0,
+										800.0,
+										72.0
 									],
 									"numoutlets": 0,
 									"fontname": "Arial",
-									"fontsize": 10.667,
+									"fontsize": 13.0,
 									"fontface": 1,
 									"id": "obj-16",
 									"numinlets": 1,
@@ -1935,6 +1943,43 @@
 										0.870588235294118,
 										0.870588235294118,
 										1.0
+									]
+								}
+							},
+							{
+								"box": {
+									"id": "obj-57",
+									"maxclass": "comment",
+									"text": "Litter Power License",
+									"fontname": "Lato",
+									"fontsize": 48.0,
+									"textcolor": [
+										0.870588235294118,
+										0.870588235294118,
+										0.870588235294118,
+										1.0
+									],
+									"numinlets": 1,
+									"numoutlets": 0,
+									"patching_rect": [
+										10.0,
+										6.0,
+										560.0,
+										62.0
+									]
+								}
+							},
+							{
+								"box": {
+									"id": "obj-58",
+									"maxclass": "live.line",
+									"numinlets": 1,
+									"numoutlets": 0,
+									"patching_rect": [
+										10.0,
+										93.0,
+										802.0,
+										6.0
 									]
 								}
 							}
