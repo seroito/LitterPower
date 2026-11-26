@@ -700,6 +700,30 @@ workflow builds pushes to both branches. One commit per change:
       lp.epoisse~ NaN for absurd Hurst values (about |H| >= 1000, gain overflow); lp.tim~
       relative mode with a mutation index far outside 0..1 grows to inf.
 
+25. User's go-ahead for all audit fixes (2026-11-26), done (each with test, help/reference
+    where the behaviour changed): lp.gammer (order 0 = degenerate distribution as the help
+    says, negative refused, debug post removed; had frozen Max); lp.crabelms `set` A_GIMME;
+    lp.norm ft1/ft2 A_FLOAT (right inlets set garbage, since 2017); 56 format strings
+    (tools/fmtcheck.h, check.py now fails on format mismatches); lp.linnie apex; Hurst
+    limited to +-100 (lp.pvvv, lp.qvvv~/qvvvl~, lp.epoisse~; LitterClampHurst in
+    MiscUtils.h); lp.tim~ runaway restart; beta distribution NaN for tiny alpha+beta
+    (JKRatio in RNGDistBeta.h; lp.abbie, lbj.abbie, lp.bibi); empty list crash in
+    lp.vera*/lp.poppy/lp.lya; lbj.stacey and lp.stacey NaN from a variance rounded below
+    0. Jitter fill functions checked (tests/jitcheck.h): float32 inf only for parameters
+    beyond FLT_MAX (correct). Left as agreed: lp.lya -inf at r = 2, lp.vilfrie/lp.y inf
+    for shape 1e-12.
+    Tools: tests/objrun.h (make/run objects like Max), tests/maxcall.h (call a method by
+    its registered type), tests/fuzz.py --deep (modes x pairs of inputs, lists of 0-300
+    items, symbols, hang/crash detection).
+    OPEN (next session, stopped because of the user's usage limit):
+    - Evaluate the full `python3 tests/fuzz.py --deep` run (started 2026-11-26; first
+      objects clean, lp.vera empty-list crash found and fixed); rerun it.
+    - User's request: put sensible default values into the number boxes of the help
+      files where they still show 0 while the object's default differs (e.g. via a hidden
+      `loadmess set <value>` per box), with windows refitted; update related help files and
+      reference pages as always.
+    - Push status: see git log; test the package of the last push build.
+
 ## Method signatures (postponed, 2026-11-26)
 
 Not started; the user decided "not now" after the explanation below. If ever done: after
