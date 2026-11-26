@@ -722,6 +722,16 @@ workflow builds pushes to both branches. One commit per change:
       files where they still show 0 while the object's default differs (e.g. via a hidden
       `loadmess set <value>` per box), with windows refitted; update related help files and
       reference pages as always.
+    - lp.pvvv64~ native mode (0) overflows 64 bits below about Hurst -3 (measured with
+      the limiter off: peak 2^63/2^31 = 4.295e9 from H -3, below -5 only extreme values
+      with rare full-range jumps). The double-to-int64_t conversion in GNB_Native64Loop
+      (Signals/pfff64core.h) is then undefined (Intel: jumps to INT64_MIN); help and
+      reference promise "64-bit, no overflow". The fuzzer missed it (it only looks for
+      inf/NaN), test_pvvv64~ checks steps only from Hurst 0.75. Agreed proposal (user,
+      2026-11-26), not done yet: saturate the conversion (bit-identical without
+      overflow); help text/reference: 64-bit range reached below about Hurst -3, the
+      signal saturates; extend test_pvvv64~ to negative Hurst values. lp.pvvv~ stays
+      unchanged (user's decision); lp.pfff64~/phhh64~ have fixed Hurst, not affected.
     - Push status: see git log; test the package of the last push build.
 
 ## Method signatures (postponed, 2026-11-26)
