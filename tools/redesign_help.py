@@ -42,7 +42,10 @@ PANEL = [0.196078, 0.227451, 0.282353, 1.0]
 MARGIN = 40.0
 TAB_BAR = 26.0
 INFO_TABS = re.compile(r'^(MoreInfo|More-Info|New-In-Version.*|Mode-Messages|newStuff)$')
-KEEP = {('lp.messages.maxhelp', 'Messages common to all (or most) Litter Power objects.')}
+# Comments whose colour stays. The lp.messages subtitle was here until 2026-11-26; the user
+# then asked for the help-file standard (Lato 13 subtitle at y 68, line at 93), done by hand
+# in the file (this tool leaves an existing title area alone).
+KEEP = set()
 
 
 # ---------------------------------------------------------------------------------------
