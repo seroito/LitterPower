@@ -317,8 +317,11 @@ StaceyBang(
 	var += sum2 + count * mean2;
 		// Divide out by denominator
 	var /= count - 1;
-	if (var == 0.0) goto puntStats;			// This can happen, in which case all other
+	if (!(var > 0.0)) goto puntStats;		// This can happen, in which case all other
 											// stats are meaningless and we get NANs.
+											// 2026: "> 0" (was "== 0"): with many nearly
+											// equal, large values the sum formula can round
+											// to a small negative variance; sqrt() gave NaN.
 		// StdDev is defined as sqrt(variance)
 	stdDev = sqrt(var);
 	
