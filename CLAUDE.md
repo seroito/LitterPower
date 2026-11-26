@@ -5,6 +5,14 @@ continue. Last updated 2026-11-26.
 
 ## Resume here (2026-11-26)
 
+After a restart: start with item 25 ("OPEN"): lp.pvvv64~ 64-bit overflow below Hurst -3,
+rerun `python3 tests/fuzz.py --deep` and evaluate it, default values in the help files.
+The package to test is that of the latest green push build (`gh run list --repo
+seroito/LitterPower --branch rng-fixes`; 712c86c was green, 2026-11-26): download it into
+the scratchpad, check sha256 (How to continue, 5). The folder 45811604177 named below is
+older (without the item-25 fixes). Checks before every push: `python3 tools/check.py`,
+`python3 tests/run_tests.py` (19 programs), `python3 tools/check_package.py`.
+
 User's third test (2026-11-26) handled in item 22: License patcher redesigned (author
 line, novanarecords URL), copyright 1992-2027 everywhere, lp.poppy restart and reset in
 its help, lp.messages header. Confirmed by the user: lp.veral cords (item 20), test point
