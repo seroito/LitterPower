@@ -1833,7 +1833,7 @@
 						"-",
 						",",
 						"X-ample:",
-						"Phase distortion with lp.scamp~",
+						"Phase Distortion with lp.scamp~",
 						",",
 						"X-ample:",
 						"WaveScamper",

@@ -475,7 +475,7 @@
 						",",
 						"-",
 						",",
-						"lp.zippy",
+						"lp.zippie",
 						"—",
 						"zeta",
 						"distribution",
