@@ -512,7 +512,7 @@ DoTattle(
 	post("  Current population is %lf (from initial pop. of %lf)",
 			me->curPop, me->seed);
 	post("  Length of growth cycle is: %d, currently at element %d, with following rates:",
-			me->cycleLen, me->curElem);
+			(int) me->cycleLen, (int) me->curElem);
 	if (me->cycleLen == 1)
 		post("    %lf", me->growth);
 	else for (i = 0; i < me->cycleLen; i += 1)

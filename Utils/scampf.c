@@ -584,7 +584,7 @@ ScampTattle(
 		default:			post("      invalid range correction setting"); break;
 		}
 	
-	post("   symmetry type %ld", me->symmetry);
+	post("   symmetry type %ld", (long) me->symmetry);
 	switch (me->symmetry) {
 		case symNone:	post("      --none--"); break;	
 		case symPoint:	post("      point symmetry"); break;	
@@ -592,7 +592,7 @@ ScampTattle(
 		default:		post("      invalid symmetry setting"); break;	
 		}
 	
-	post("   mapping type %ld", me->mappingType);
+	post("   mapping type %ld", (long) me->mappingType);
 	switch (me->mappingType) {
 	case mapLin:
 		post("      linear %s", me->flags.degenerate ? "" : "w/breakpoint factor");

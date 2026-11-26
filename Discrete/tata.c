@@ -240,7 +240,7 @@ TataTattle(
 	
 	if (myTausStuff != NIL) {
 		post("  Seeds: 0x%lx, 0x%lx, 0x%lx",
-				myTausStuff->seed1, myTausStuff->seed2, myTausStuff->seed3);
+				(unsigned long) myTausStuff->seed1, (unsigned long) myTausStuff->seed2, (unsigned long) myTausStuff->seed3);
 		}
 	else {
 		post("  Using global Taus88 data");

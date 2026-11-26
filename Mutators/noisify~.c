@@ -852,7 +852,7 @@ EmericTattle(
 	for (i = 0; i < kFBankSize; i += 1) {
 		double bandEnergy = me->ampSums[i] * kMeanFactor;
 		post("    band %ld sum of absolute amplitudes: %lf (mean %lf)",
-			 i, me->ampSums[i], bandEnergy);
+			 (long) i, me->ampSums[i], bandEnergy);
 		
 		energy += bandEnergy;
 		}
@@ -984,7 +984,7 @@ EmericDSP(
 
 	// Poor man's exception handling
 punt:
-	error("%s: can't allocate memory for buffers; object disabled.");
+	error("%s: can't allocate memory for buffers; object disabled.", kClassName);
 
 	}
 */
@@ -1031,7 +1031,7 @@ void EmericDSP64(objEmeric *me, t_object *dsp64, short *count, double samplerate
     
     // Poor man's exception handling
 punt:
-    error("%s: can't allocate memory for buffers; object disabled.");
+    error("%s: can't allocate memory for buffers; object disabled.", kClassName);
 }
 
 

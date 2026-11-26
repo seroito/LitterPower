@@ -238,7 +238,7 @@ ShhhTattle(
 			kClassName);
 	post(	"  NN factor is: %d (mask = %lx)",
 			me->nn,
-			me->mask);
+			(unsigned long) me->mask);
 	
 	}
 

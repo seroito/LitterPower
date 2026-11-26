@@ -407,12 +407,12 @@ ErnieSize(
 	long	sizeBytes;				// Use this for a couple of purposes
 						
 	if (iSize > kMaxSize) {
-			error("%s can't handle more than %lf different kinds of 'ball'.",
-					kClassName, kMaxSize);
+			error("%s can't handle more than %ld different kinds of 'ball'.",
+					kClassName, (long) kMaxSize);
 			iSize = kMaxSize;
 			}
 	else if (iSize <= 0) {
-		error("%s size parameter must be positive");
+		error("%s size parameter must be positive", kClassName);	// 2026: argument was missing (crash risk)
 		return;
 		}
 	
@@ -443,7 +443,7 @@ ErnieSize(
 	if (newMaster == NIL || newState == NIL) {
 		// Aw, shucks.
 		// Let's try to articulate the problem a little better than getbytes() does
-		error("%s: Max cannot allocate the required memory for size message.");
+		error("%s: Max cannot allocate the required memory for size message.", kClassName);
 		post ("    Try a smaller value.");
 		DisposeMemory(newMaster, newState, maxMemory ? sizeBytes : 0);
 		return;
@@ -565,7 +565,7 @@ ErnieTattle(
 	post("%s state",
 			kClassName);
 	post("  number of kinds of balls in urn is %lu",
-			me->dataSize);
+			(unsigned long) me->dataSize);
 	post("  total number of balls currently in urn is %lu (initial state is %lu)",
 			me->ballsInUrn,
 			me->totalBalls);

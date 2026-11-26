@@ -201,7 +201,7 @@ GrrrTattle(
 	{
 	
 	post("%s state", kClassName);
-	post("   last value: %lu", me->prev);
+	post("   last value: %lu", (unsigned long) me->prev);
 	
 	}
 

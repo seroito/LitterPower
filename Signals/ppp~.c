@@ -336,8 +336,8 @@ PppTattle(
 	{
 	double	minusTau = me->minusTau;
 	
-	post(	"%s state, object located at %lx",
-			kClassName, me);
+	post(	"%s state, object located at %p",
+			kClassName, (void*) me);
 	switch (me->sym) {
 		case symSym:
 			post("  Symmetrical dust");

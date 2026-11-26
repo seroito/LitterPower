@@ -194,7 +194,7 @@ HyppieTattle(
 		case 16:
 			{
 			int c = sTattleCount;
-			do { post(""); } while (--c > 16);
+			do { post(" "); } while (--c > 16);
 			post("   urp");
 			}
 			break;

@@ -321,7 +321,7 @@ ChichiTattle(
 	LitterGetIndString(GetDistStrIndex(me->variant), distName);
 	
 	post("%s state", kClassName);
-	post("  Degrees of freedom: %ld", me->dof);
+	post("  Degrees of freedom: %ld", (long) me->dof);
 	post("  Variant %ld ('%s', %s)", (long) me->variant, me->varSym->s_name, distName);
 	post("  Scale: %lf", me->scale);
 	if (me->scale != 1.0 && me->variant != distScaleInv)

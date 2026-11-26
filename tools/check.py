@@ -24,6 +24,9 @@ BASE = [CC, '-fsyntax-only', '-std=gnu11', '-DLINUX_VERSION', '-D__MAX_MSP_OBJEC
         '-I', SDK, '-I', SDK + '/max-includes', '-I', SDK + '/msp-includes',
         '-I', SDK + '/jit-includes', '-I', ROOT + '/LitterLib', '-I', ROOT + '/Discrete',
         '-I', ROOT + '/Mutators', '-I', ROOT + '/Utils', '-I', ROOT + '/Jitter']
+# Format strings of post()/error() checked against their arguments (tools/fmtcheck.h)
+FMT = ['-include', os.path.join(ROOT, 'tools', 'fmtcheck.h'), '-Werror=format',
+       '-Wno-format-zero-length']
 
 def targets():
     cm = open(os.path.join(ROOT, 'CMakeLists.txt')).read()
@@ -37,7 +40,7 @@ def targets():
     return out, lib
 
 def compile_one(src, defs):
-    cmd = BASE + ['-D' + d for d in defs] + [os.path.join(ROOT, src)]
+    cmd = BASE + FMT + ['-D' + d for d in defs] + [os.path.join(ROOT, src)]
     r = subprocess.run(cmd, capture_output=True, text=True)
     return r.returncode, r.stderr
 

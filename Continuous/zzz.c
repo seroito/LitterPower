@@ -351,9 +351,9 @@ ZzzTattle(
 	post("%s state",
 			kClassName);
 	post("  NN factor is: %d (mask = 0x%lx, offset = 0x%lx)",
-			me->nn, me->nnMask, me->nnOffset);
+			me->nn, (unsigned long) me->nnMask, (unsigned long) me->nnOffset);
 	post("  Current sum is: %lu",
-			me->sum);
+			(unsigned long) me->sum);
 	
 	}
 

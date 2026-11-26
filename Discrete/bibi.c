@@ -400,7 +400,7 @@ BibiTattle(
 	{
 	
 	post("%s state", kClassName);
-	post("  number of trials is %lu", me->nTrials);
+	post("  number of trials is %lu", (unsigned long) me->nTrials);
 	post("  beta distribution parameters are %lf, %lf", me->alpha, me->beta);
 	post("  Using beta generator:");
 	switch (me->betaAlg) {
@@ -408,10 +408,10 @@ BibiTattle(
 		post("    always 0");
 		break;
 	case algConstOne:
-		post("    always &lu", me->nTrials);
+		post("    always %lu", (unsigned long) me->nTrials);
 		break;
 	case algIndeterm:
-		post("    intederminate (select 0 and %lu randomly", me->nTrials);
+		post("    intederminate (select 0 and %lu randomly", (unsigned long) me->nTrials);
 		break;
 	case algUniform:
 		post("    'uniform'");

@@ -329,7 +329,7 @@ LinnieTattle(
 	post("%s state", kClassName);
 	post("  Parameters: %lf, %lf, %lf", me->a, me->c, me->b);
 	post("  Scale: %lf (left %lf, right %lf)", me->scale, me->scaleLeft, me->scaleRight);
-	post("  Normalized apex: %lf (UInt32 threshhold: 0x%.8lx)", me->cc, me->lrThresh);
+	post("  Normalized apex: %lf (UInt32 threshhold: 0x%.8lx)", me->cc, (unsigned long) me->lrThresh);
 	
 	}
 

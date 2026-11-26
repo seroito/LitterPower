@@ -431,12 +431,12 @@ PvvvTattle(
 			me->hurstExp, me->hurstFac);
 #endif
 	post("  NN factor is: %d (mask = 0x%lx, offset = 0x%lx)",
-			me->nn, me->mask, me->offset);
-	post("  Buffer starts at address 0x%lx",
-			me->buffer);
+			me->nn, (unsigned long) (t_uint32) me->mask, (unsigned long) (t_uint32) me->offset);
+	post("  Buffer starts at address %p",
+			(void*) me->buffer);
 	post("  Current buffer postion: %d, containing %ld",
-			bufPos, me->buffer[bufPos]);
-	post("  Double-to-int conversion mode: %ld -- %s", me->arch, archStr);
+			bufPos, (long) me->buffer[bufPos]);
+	post("  Double-to-int conversion mode: %ld -- %s", (long) me->arch, archStr);
 	
 	}
 

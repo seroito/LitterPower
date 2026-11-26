@@ -283,7 +283,7 @@ BernieTattle(
 	{
 	
 	post("%s state", kClassName);
-	post("  number of trials is %lu", me->nTrials);
+	post("  number of trials is %lu", (unsigned long) me->nTrials);
 	post("  p is %lf", me->prob);
 	post("  Using generator:");
 	switch (me->gen) {

@@ -229,10 +229,10 @@ LiliTattle(
 	
 	post("%s state",
 			kClassName);
-	post("  Current seed: %lu", me->seed);
-	post("  Current multiplier: %lu", me->mul);
-	post("  Current adder: %lu", me->add);
-	post("  Current modulo: %lu", me->mod);
+	post("  Current seed: %lu", (unsigned long) me->seed);
+	post("  Current multiplier: %lu", (unsigned long) me->mul);
+	post("  Current adder: %lu", (unsigned long) me->add);
+	post("  Current modulo: %lu", (unsigned long) me->mod);
 	if (me->mod == 0)
 		post("     ...which is treated as 4294967296");
 	

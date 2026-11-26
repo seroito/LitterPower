@@ -395,7 +395,7 @@ KgTattle(
 	
 	post("%s state:", (char*) kClassName);
 	post("  Method: %s", me->doYarrow ? "yarrow sticks" : "coins");
-	post("  Number of items: %ld", items);
+	post("  Number of items: %ld", (long) items);
 	post("  Main hexagram threshholds:");
 	curThresh = me->mainThresh;
 	for (i = items; i > 0; i -= 1) {

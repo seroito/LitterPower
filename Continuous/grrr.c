@@ -244,7 +244,7 @@ GrrrTattle(
 	post(	"%s state",
 			kClassName);
 	post(	"  previous seed: %ld",
-			me->prev);
+			(long) me->prev);
 	
 	}
 

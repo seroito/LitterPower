@@ -520,7 +520,7 @@ DoTattle(
 	
 	post("%s state", kClassName);
 	post("  Last exponent calculated: %lf, using precision %ld", me->lya, me->iter);
-	post("  Length of growth cycle is: %d, with following rate[s]:", me->cycleLen);
+	post("  Length of growth cycle is: %d, with following rate[s]:", (int) me->cycleLen);
 	if (me->cycleLen == 1)
 		post("    %lf", me->growth);
 	else for (i = 0; i < me->cycleLen; i += 1)

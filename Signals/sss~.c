@@ -271,9 +271,9 @@ SssTattle(
 			kClassName);
 	post("  NN factor is: %d (mask = 0x%lx)",
 			me->nn,
-			me->mask);
+			(unsigned long) me->mask);
 	post("  Current sum is: %lu",
-			me->sum);
+			(unsigned long) me->sum);
 	}
 
 

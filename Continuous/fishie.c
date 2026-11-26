@@ -168,7 +168,7 @@ FishieTattle(
 	
 	{
 	post("%s state", kClassName);
-	post("  Degrees of Freedom: %ld, %ld", me->dof1, me->dof2);
+	post("  Degrees of Freedom: %ld, %ld", (long) me->dof1, (long) me->dof2);
 	post("  Inverses: % lf, %lf", me->dofInv1, me->dofInv2);
 	post("  Algorithms: %s and %s",
 			(me->alg1 == algChi2Dir) ? "direct" : "rejection",

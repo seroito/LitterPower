@@ -398,8 +398,8 @@ Pvvv2Tattle(
 		}
 	post("  Range handling action: %ld (%s)", (long) me->action, actString);
 	
-	post("  Buffer starts at address 0x%lx",
-			me->buffer);
+	post("  Buffer starts at address %p",
+			(void*) me->buffer);
 	post("  Current buffer position: %ld, containing %lf",
 			(long) bufPos, (double) me->buffer[bufPos]);
 #ifdef QVVV_LIMITER

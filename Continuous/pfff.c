@@ -578,11 +578,11 @@ PvvvTattle(
 	
 	post("%s state", kClassName);
 	post("  Cycle length is: %ld",
-			me->cycle);
-	post("  Buffer starts at: %lx",
-			me->theBuffer);
+			(long) me->cycle);
+	post("  Buffer starts at: %p",
+			(void*) me->theBuffer);
 	post("  Current position is: %ld",
-			me->curPos);
+			(long) me->curPos);
 	post("  Current buffer value is: %lf",
 			me->theBuffer[me->curPos]);
 #ifdef VARICOLOR
@@ -590,7 +590,7 @@ PvvvTattle(
 			me->hurstExp, me->hurstFac);
 #endif
 	post("  NN factor is: %d (mask = 0x%lx, offset = 0x%lx)",
-			me->nn, me->nnMask, me->nnOffset);
+			me->nn, (unsigned long) me->nnMask, (unsigned long) me->nnOffset);
 	
 	}
 
