@@ -549,6 +549,25 @@ void Pvvv2DSP64(objBrown* me, t_object *dsp64, short *count, double samplerate,
 
 
 
+	// NN factor for the range modes clip, wrap and reflect, which promise a signal within
+	// +-1 (help file: "clip, wrap, or reflect into the unit amplitude range"). The grid
+	// cell whose midpoint lies outside +-1 is replaced by its neighbour inside: x = 1.0
+	// (what clip produces for every value above 1) fell into the cell above the range
+	// (NN 31: 1.5 instead of 0.5), and with fractional NN factors the outermost cells of
+	// the grid reach up to 0.5 steps beyond +-1 (NN 30.74: +-1.25). 2026, user's go-ahead
+	// after tests/test_qvvvl~.c found it. All other values are unchanged (same
+	// expression); the result is always a grid value. factor >= 1 (nn <= 31), so one step
+	// is enough.
+	static inline double NNUnit(float x, float factor, float factor1, float offset)
+		{
+		double y = factor1 * floor(factor * x) + offset;
+		
+		if (y > 1.0)		y -= factor1;
+		else if (y < -1.0)	y += factor1;
+		
+		return y;
+		}
+
 	// Range correction and NN factor for one stretch of the buffer
 	static void
 	CopyOut(
@@ -583,7 +602,7 @@ void Pvvv2DSP64(objBrown* me, t_object *dsp64, short *count, double samplerate,
 	            if (factor == 0.0f)
 	                do { *outNoise++ = ClipSignal(*curSamp++); } while (--vecSize > 0);
 	            else {
-	                do { *outNoise++ = factor1 * floor(factor * ClipSignal(*curSamp++)) + offset; }
+	                do { *outNoise++ = NNUnit(ClipSignal(*curSamp++), factor, factor1, offset); }
 	                while (--vecSize > 0);
 	            }
 	            break;
@@ -592,7 +611,7 @@ void Pvvv2DSP64(objBrown* me, t_object *dsp64, short *count, double samplerate,
 	            if (factor == 0.0f)
 	                do { *outNoise++ = WrapSignal(*curSamp++); } while (--vecSize > 0);
 	            else {
-	                do { *outNoise++ = factor1 * floor(factor * WrapSignal(*curSamp++)) + offset; }
+	                do { *outNoise++ = NNUnit(WrapSignal(*curSamp++), factor, factor1, offset); }
 	                while (--vecSize > 0);
 	            }
 	            break;
@@ -601,7 +620,7 @@ void Pvvv2DSP64(objBrown* me, t_object *dsp64, short *count, double samplerate,
 	            if (factor == 0.0f)
 	                do { *outNoise++ = ReflectSignal(*curSamp++); } while (--vecSize > 0);
 	            else {
-	                do { *outNoise++ = factor1 * floor(factor * ReflectSignal(*curSamp++)) + offset; }
+	                do { *outNoise++ = NNUnit(ReflectSignal(*curSamp++), factor, factor1, offset); }
 	                while (--vecSize > 0);
 	            }
 	            break;
