@@ -18,7 +18,9 @@ Checks:
  4. every external has a help file and a reference page (and, with --package, a binary);
  5. menus: every lp.*/lbj.* entry has a help file, every "X-ample:" entry an extra; every
     visible menu with entries is connected to something (the overview's Jitter menu was
-    not, 2026-11-25).
+    not, 2026-11-25);
+ 6. fonts: only fonts that Max finds on Windows and macOS (Max 9 on Windows logged
+    "typeface name ... not found" for Book Antiqua, Helvetica, Lucida Grande, Lucida Sans).
 Prints one line per problem and exits with 1 if there is any.
 """
 import argparse, glob, json, os, re, subprocess, sys, tempfile
@@ -26,6 +28,10 @@ import argparse, glob, json, os, re, subprocess, sys, tempfile
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # Files that Max itself provides (its examples and media folders)
 MAX_FILES = {'bball.mov', 'cherokee.aif'}
+# Fonts on both systems or bundled with Max; Geneva and Sans Serif are mapped by Max without
+# complaint (not in the Windows log of 2026-11-26)
+FONTS = {'Arial', 'Lato', 'Geneva', 'Sans Serif', 'Courier New', 'Times New Roman',
+         'Ableton Sans Light', 'Ableton Sans Medium', 'Ableton Sans Bold'}
 MEDIA = r'(?:png|pict|pct|jpg|gif|midi?|aiff?|wav|mov|mp4|txt|js|coll)'
 
 
@@ -85,8 +91,14 @@ def check(pkg, externals, binaries):
             continue
         if not isinstance(d, dict) or 'patcher' not in d:
             continue                                # package-info.json and the like
+        fonts = set()
         for b, p in walk(d['patcher']):
             mc, text = b.get('maxclass'), b.get('text', '') or ''
+            for key in ('fontname',):
+                if b.get(key):
+                    fonts.add(b[key])
+            if isinstance(b.get('patcher'), dict) and b['patcher'].get('default_fontname'):
+                fonts.add(b['patcher']['default_fontname'])
             words = text.split()
             if mc == 'newobj' and words:
                 if re.match(r'(lp|lbj)\.', words[0]) and words[0] not in known:
@@ -122,6 +134,10 @@ def check(pkg, externals, binaries):
                         l['patchline']['source'][0] == b['id'] for l in p.get('lines', [])):
                     problems.append('%s: menu "%s ..." is connected to nothing'
                                     % (rel, ' '.join(items[0])[:30]))
+        if d['patcher'].get('default_fontname'):
+            fonts.add(d['patcher']['default_fontname'])
+        for font in sorted(fonts - FONTS):
+            problems.append('%s: font "%s" may be missing on Windows or macOS' % (rel, font))
     for n in externals:
         if not exists(n + '.maxhelp'):
             problems.append('%s: no help file' % n)
