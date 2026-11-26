@@ -5,7 +5,7 @@
 <c74object name='lp.tim~' category='Litter Power, Mutation and Cross-Synthesis'>
 
 	<digest>Mutate signals in the time domain</digest>
-	<description>lp.tim~ performs interval mutation between two signals, sample by sample. With relative intervals (rel, the default) the output is a sum of intervals and can drift away from zero over time; a negative delta emphasis keeps it close.</description>
+	<description>lp.tim~ performs interval mutation between two signals, sample by sample. With relative intervals (rel, the default) the output is a sum of intervals and can drift away from zero over time; a negative delta emphasis keeps it close. If it runs away (beyond +/- 1e6, e.g. with a mutation index far outside 0-1), it starts again at the source (since 2026; before, the signal became inf).</description>
 
 	<metadatalist>
 		<metadata name='author'>Peter Castine</metadata>

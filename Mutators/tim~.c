@@ -560,6 +560,24 @@ void PerformMutator64(tMutator *me, t_object *dsp64, double **ins, long numins, 
                         me->connected[paramPi] ? *((t_sample*) ins[paramPi]) : me->params.pi,
                         me->connected[paramDelta] ? *((t_sample*) ins[paramDelta]) : me->params.delta);
     
+    // 2026 (found by tests/fuzz.py): relative intervals add up, and with a mutation index
+    // far outside 0..1 the sum grows exponentially until it is inf (then NaN) in the audio
+    // signal, for good. As in lp.fiana~: samples beyond +-1e6 or not finite become 0 and
+    // the relative chain starts again at the current source value. Other samples are
+    // unchanged.
+    {
+    t_sample*	out = (t_sample*) outs[0];
+    long		i;
+    Boolean		runaway = false;
+    
+    for (i = 0; i < sampleframes; i += 1)
+        if (!(fabs(out[i]) <= 1e6)) {
+            out[i] = 0.0;
+            runaway = true;
+            }
+    if (runaway)
+        me->history.mutant = me->history.source;
+    }
 
 }
 

@@ -4,7 +4,7 @@
 			100.0,
 			80.0,
 			1057,
-			706
+			756
 		],
 		"bgcolor": [
 			0.337254901960784,
@@ -17,7 +17,7 @@
 			100.0,
 			80.0,
 			1057,
-			706
+			756
 		],
 		"openrect": [
 			0.0,
@@ -3616,6 +3616,30 @@
 						93.0,
 						1005.316,
 						6.0
+					]
+				}
+			},
+			{
+				"box": {
+					"id": "obj-47",
+					"maxclass": "comment",
+					"text": "Relative intervals (rel) add up, so the output can drift. If it runs away (beyond +/- 1e6, for example with a mutation index far outside 0..1), lp.tim~ starts again at the source (since 2026; before, the signal became inf).",
+					"fontname": "Arial",
+					"fontsize": 13.0,
+					"textcolor": [
+						0.870588235294118,
+						0.870588235294118,
+						0.870588235294118,
+						1.0
+					],
+					"numinlets": 1,
+					"numoutlets": 0,
+					"linecount": 2,
+					"patching_rect": [
+						10.0,
+						677.557,
+						830.0,
+						38.0
 					]
 				}
 			}

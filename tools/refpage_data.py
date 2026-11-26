@@ -520,7 +520,9 @@ OBJ = {
                     desc='lp.tim~ performs interval mutation between two signals, sample by '
                          'sample. With relative intervals (rel, the default) the output is a sum '
                          'of intervals and can drift away from zero over time; a negative delta '
-                         'emphasis keeps it close.',
+                         'emphasis keeps it close. If it runs away (beyond +/- 1e6, e.g. with a '
+                         'mutation index far outside 0-1), it starts again at the source (since '
+                         '2026; before, the signal became inf).',
                     args=[('options', 'symbol', 'Algorithm and rel or abs'),
                           ('omega', 'float', 'Mutation index 0-1 (default 0)')],
                     msgs=MUT_MSGS, see=['lp.frim~', 'lp.vim', 'lp.emeric~']),
