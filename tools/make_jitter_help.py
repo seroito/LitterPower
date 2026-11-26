@@ -138,7 +138,8 @@ class Patch:
         self.comment(12.0, 72.0, self.width - 24.0, intro, lines=3)
 
     def footer(self, y):
-        self.comment(10.0, y, self.width - 20.0, NOTE, lines=3, size=10.0,
+        # 12 pt like the body text (13 pt after restyling; was 10, user's request 2026-11-26)
+        self.comment(10.0, y, self.width - 20.0, NOTE, lines=3, size=12.0,
                      textcolor=[0.4, 0.4, 0.4, 1.0])
 
     def save(self, name):

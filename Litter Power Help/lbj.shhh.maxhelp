@@ -244,7 +244,7 @@
 					],
 					"text": "This help file was written in 2026 for the Max 9 version of Litter Power, from the source code; the original help files of the Litter Bundle for Jitter were not available. Like all Jitter objects, the object also understands the standard attributes @type, @dim and @planecount of its output matrix.",
 					"fontname": "Arial",
-					"fontsize": 10.833,
+					"fontsize": 13.0,
 					"numinlets": 1,
 					"numoutlets": 0,
 					"linecount": 3,

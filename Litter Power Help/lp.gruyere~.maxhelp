@@ -915,7 +915,7 @@
 					],
 					"text": "This help file was written in 2026 for the Max 9 version of Litter Power, from the source code: the object was never released, and no original help file exists.",
 					"fontname": "Arial",
-					"fontsize": 10.833,
+					"fontsize": 13.0,
 					"numinlets": 1,
 					"numoutlets": 0,
 					"linecount": 2,

@@ -67,9 +67,11 @@ class Help(Patch):
         return y + total + 10.0
 
     def foot(self, y):
-        self.comment(10.0, y, W - 20.0, NOTE, lines=2, size=10.0, textcolor=GREY)
+        # 12 pt like the body text (13 pt after restyling; was 10, user's request 2026-11-26)
+        n = nlines(NOTE, W - 20.0)
+        self.comment(10.0, y, W - 20.0, NOTE, lines=n, size=12.0, textcolor=GREY)
         self.width = W
-        self.height = y + 50.0
+        self.height = y + n * 17.0 + 30.0
 
     # Boxes
     def toggle(self, x, y):
