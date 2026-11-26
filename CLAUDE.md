@@ -10,8 +10,8 @@ line, novanarecords URL), copyright 1992-2027 everywhere, lp.poppy restart and r
 its help, lp.messages header. Confirmed by the user: lp.veral cords (item 20), test point
 12 (icon, readme), lp.shhh~ scope~ (item 21, screenshots in `Findings/lp.shhh~screenshots`,
 amplitude drops with NN as expected). Next: test point 15 with the package of push build
-45805259466 (items 23 and 24, lp.vera* restart messages, docs; Windows only), unpacked to
-`/media/sone/TAD1/DATA/DEV/MAX/LitterPower/rng-fixes/LitterPower-package-45805259466/LitterPower`
+45811604177 (items 23 and 24, lp.vera* and lp.lana restart messages, docs; Windows only), unpacked to
+`/media/sone/TAD1/DATA/DEV/MAX/LitterPower/rng-fixes/LitterPower-package-45811604177/LitterPower`
 (the older package folders next to it can go; checked: 104 externals,
 105 help files, check_package.py 0 problems, item-22 files identical to the repository,
 1992-2027 in readme, package-info.json and the externals); then merge into
@@ -242,7 +242,14 @@ removed (see `README.md`).
      embedded background picture (commit 597136d^); needs git history and Pillow.
    - Not generated: `Resources/package-readme.md` (copied to the package as
      `readme.md`).
-5. Windows compiler warnings: artifact `build-log-windows`. `gh run download` refuses it
+5. Downloading artifacts: `gh api repos/seroito/LitterPower/actions/artifacts/<id>/zip`
+   into the scratchpad first, compare `sha256sum` with the artifact's `digest`
+   (`gh api .../actions/runs/<run>/artifacts`), then unpack/copy to TAD1. On 2026-11-26
+   two downloads streamed straight onto TAD1 (NTFS, ntfs3) had the right size but a
+   wrong checksum (bad CRC), copies of a good file were fine. If GitHub uploads or runs
+   hang (an ETIMEDOUT on the build-log upload needed `gh run rerun --failed`), work
+   locally and push only when the user says so.
+   Windows compiler warnings: artifact `build-log-windows`. `gh run download` refuses it
    ("path traversal"); fetch it with
    `gh api repos/seroito/LitterPower/actions/artifacts/<id>/zip`.
 6. DSP rules: the project skill `.claude/skills/litter-dsp/SKILL.md` (2026-11-25, user's
