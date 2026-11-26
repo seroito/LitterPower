@@ -116,7 +116,9 @@ void ext_main(void* r)
 	class_addmethod(c, (method) CrabElmsFloat, "float", A_FLOAT, 0);
 	class_addmethod(c, (method) CrabElmsList,		"list", A_GIMME, 0);
 	class_addmethod(c, (method) CrabElmsAnything, "anything", A_GIMME, 0);
-	class_addmethod(c, (method) CrabElmsSet,		"set",			A_FLOAT, 0);
+	// 2026: A_GIMME (was A_FLOAT): CrabElmsSet takes a list (sym, argc, argv); with A_FLOAT
+	// it read a garbage count and atom pointer and could crash Max (found by tests/fuzz.py).
+	class_addmethod(c, (method) CrabElmsSet,		"set",			A_GIMME, 0);
 	class_addmethod(c, (method) CrabElmsAssist,	"assist",		A_CANT, 0);
 	class_addmethod(c, (method) CrabElmsInfo,		"info",			A_CANT, 0);
 	class_addmethod(c, (method) CrabElmsTattle,	"tattle",	 	A_NOTHING);
