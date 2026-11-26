@@ -412,8 +412,12 @@ void ext_main(void* r)
 	
 	// Messages
 	LitterAddBang((method) NormBang);
-	LitterAddMess1	((method) NormMean,		"ft1",	A_LONG);
-	LitterAddMess1	((method) NormStdDev,	"ft2",	A_LONG);
+	// 2026: A_FLOAT (was A_LONG, already in the 2017 sources): the handlers take a double,
+	// so Max passed an integer where they read a floating-point register, and mean and
+	// standard deviation from the right inlets were garbage (found by a scan of the method
+	// registrations).
+	LitterAddMess1	((method) NormMean,		"ft1",	A_FLOAT);
+	LitterAddMess1	((method) NormStdDev,	"ft2",	A_FLOAT);
 	LitterAddMess1	((method) NormSeed,		"seed",	A_DEFLONG);
 	LitterAddMess2	((method) NormTell,		"tell", A_SYM, A_SYM);
 	LitterAddMess0	((method) NormTattle,	"tattle");
