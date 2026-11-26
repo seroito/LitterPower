@@ -1,7 +1,8 @@
 /*
  *	vera_common.h: checks shared by the lp.vera* tests (included after Chaos/vera.c).
  *	2026-11-26: a population that is no longer finite restarts at the seed, DoNext() reports
- *	it (DoBang() then bangs the right outlet), and no output is ever inf or NaN.
+ *	what it had become (inf, -inf or nan; DoBang() sends it from the right outlet), and no
+ *	output is ever inf or NaN.
  */
 static int VeraCheckAll(void)
 	{
@@ -23,10 +24,12 @@ static int VeraCheckAll(void)
 		if (fns[f]) fns[f](me);
 		Set1Rate(me, gs[g]);
 		for (i = 0; i < 2000; i += 1) {
-			Boolean restarted = DoNext(me);
+			const char* restarted = DoNext(me);
 			CHECK(isfinite(me->curPop), "function %u, growth %g, step %d: %g", f, gs[g], i, me->curPop);
 			if (restarted) {
 				restarts += 1;
+				CHECK(!strcmp(restarted, "inf") || !strcmp(restarted, "-inf") || !strcmp(restarted, "nan"),
+					  "unexpected restart message %s", restarted);
 				CHECK(me->curPop == me->seed, "function %u, growth %g: restart not at the seed", f, gs[g]);
 				}
 			}

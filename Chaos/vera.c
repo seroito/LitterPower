@@ -202,8 +202,8 @@ typedef struct {
 	tFunction		func;
 #endif
 	
-	void*			outRestart;			// 2026: bang when the population was no longer
-										// finite and restarted at the seed
+	void*			outRestart;			// 2026: inf, -inf or nan when the population was
+										// no longer finite and restarted at the seed
 	} tVera;
 
 
@@ -426,9 +426,9 @@ NewVera(
 #endif
 	floatin(me, 1);		// Everyone else has one
 	
-		// Two outlets, created right to left: the restart bang (2026) and the
-		// population, accessed through me->coreObject.o_outlet
-	me->outRestart = bangout(me);
+		// Two outlets, created right to left: the restart message (inf, -inf or nan; 2026)
+		// and the population, accessed through me->coreObject.o_outlet
+	me->outRestart = outlet_new(me, NULL);
 	floatout(me);
 	
 	//
@@ -557,12 +557,14 @@ static void DoOut(tVera* me)
 	// simulated: 23-37 % of function/growth combinations within 1000 steps in lp.vera,
 	// vera+, vera=, veral, veras). Before, the object then sent inf or nan for ever, which
 	// harms the objects downstream. Now a population that is no longer finite restarts at
-	// the seed and the right outlet sends a bang, so a patch can stop the bangs (the old
-	// behaviour) or react otherwise. Finite values are unchanged.
+	// the seed and the right outlet sends what the population had become: inf, -inf or nan
+	// (user's choice, to tell them apart), so a patch can stop the bangs (the old
+	// behaviour) or react otherwise. Finite values are unchanged. DoNext() returns that
+	// word, or NULL while the population is finite.
 	// lp.veral with the identity function is the logistic map of lp.poppy: there a
 	// population that died out (below 1e-15) restarts at the seed once the growth rate is
-	// above 1, as in lp.poppy (no bang: the population was finite).
-static Boolean
+	// above 1, as in lp.poppy (no message: the population was finite).
+static const char*
 DoNext(
 	tVera* me)
 	
@@ -620,11 +622,11 @@ DoNext(
 	
 	if (!isfinite(p)) {
 		me->curPop = me->seed;
-		return true;
+		return isnan(p) ? "nan" : (p > 0.0) ? "inf" : "-inf";
 		}
 	
 	me->curPop = p;
-	return false;
+	return NULL;
 	}
 	
 static void
@@ -632,8 +634,10 @@ DoBang(
 	tVera* me)
 	
 	{
-	if (DoNext(me))
-		outlet_bang(me->outRestart);		// Right to left: the bang first
+	const char* notFinite = DoNext(me);
+	
+	if (notFinite != NULL)					// Right to left: this message first
+		outlet_anything(me->outRestart, gensym(notFinite), 0, NULL);
 	DoOut(me);
 	}
 

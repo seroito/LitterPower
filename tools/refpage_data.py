@@ -68,10 +68,9 @@ def vera(name, formula, words):
                 desc='%s iterates %s: %s. Every bang computes the next value; a float sets the '
                      'growth rate r and bangs, a list sets a cycle of growth rates used in turn. '
                      'f is a function of p (sin(pi p) by default).' % (name, formula, words)
-                     + ' When the population is no longer finite (inf or NaN), the object '
-                     'restarts at the seed and sends a bang from its right outlet (until 2026 it '
-                     'sent inf or nan from then on); connect it to stop the bangs for the old '
-                     'behaviour.' + (' With ident, a population that has died out (0) restarts '
+                     + ' When the population is no longer finite, the object restarts at the '
+                     'seed and sends inf, -inf or nan from its right outlet (until 2026 it sent '
+                     'inf or nan from then on); use it to stop the bangs for the old behaviour.' + (' With ident, a population that has died out (0) restarts '
                                      'at the seed once r is above 1, as in lp.poppy.'
                                      if name == 'lp.veral' else ''),
                 args=[('function', 'symbol', 'Function name (default sinpi)'),
@@ -185,8 +184,8 @@ OBJ = {
                      desc="lp.veram iterates p' = r p / (p + 1)^beta, a population model with "
                           'the exponent beta. Every bang computes the next value; a float sets '
                           'the growth rate r and bangs, a list sets a cycle of growth rates. '
-                          'When the population is no longer finite (inf or NaN), the object '
-                          'restarts at the seed and sends a bang from its right outlet.',
+                          'When the population is no longer finite, the object restarts at '
+                          'the seed and sends inf, -inf or nan from its right outlet.',
                      args=[('beta', 'float', 'Exponent beta (default 1)'),
                            ('rates', 'float', 'One or more growth rates'),
                            ('seed', 'float', 'With two or more numbers after beta: the last '

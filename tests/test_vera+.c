@@ -1,7 +1,7 @@
 // object: lp.vera+
 /*
  *	lp.vera+ (p' = p + r*f(p)): no inf/NaN for any function and growth rate; restarts at
- *	the seed, reported for the restart outlet (vera_common.h).
+ *	the seed and reports inf, -inf or nan for the right outlet (vera_common.h).
  */
 #include "lptest.h"
 #include "Chaos/vera.c"

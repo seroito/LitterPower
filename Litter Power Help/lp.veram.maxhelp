@@ -345,7 +345,7 @@
 					"numoutlets": 2,
 					"outlettype": [
 						"float",
-						"bang"
+						""
 					]
 				}
 			},
@@ -397,32 +397,54 @@
 			{
 				"box": {
 					"id": "obj-17",
-					"maxclass": "button",
+					"maxclass": "newobj",
 					"patching_rect": [
-						374.833,
+						314.167,
 						348.25,
-						26.0,
-						26.0
+						86.667,
+						23.833
 					],
+					"text": "prepend set",
+					"fontname": "Arial",
+					"fontsize": 13.0,
 					"numinlets": 1,
 					"numoutlets": 1,
 					"outlettype": [
-						"bang"
-					],
-					"parameter_enable": 0
+						""
+					]
 				}
 			},
 			{
 				"box": {
 					"id": "obj-18",
+					"maxclass": "message",
+					"patching_rect": [
+						314.167,
+						380.75,
+						86.667,
+						23.833
+					],
+					"text": "",
+					"fontname": "Arial",
+					"fontsize": 13.0,
+					"numinlets": 2,
+					"numoutlets": 1,
+					"outlettype": [
+						""
+					]
+				}
+			},
+			{
+				"box": {
+					"id": "obj-19",
 					"maxclass": "comment",
 					"patching_rect": [
-						303.333,
-						349.33299999999997,
-						69.333,
+						195.0,
+						381.83299999999997,
+						117.0,
 						22.75
 					],
-					"text": "restarted",
+					"text": "restart after:",
 					"fontname": "Arial",
 					"fontsize": 13.0,
 					"numinlets": 1,
@@ -438,11 +460,11 @@
 			},
 			{
 				"box": {
-					"id": "obj-19",
+					"id": "obj-20",
 					"maxclass": "multislider",
 					"patching_rect": [
 						10.833,
-						380.75,
+						413.25,
 						390.0,
 						97.5
 					],
@@ -463,11 +485,11 @@
 			},
 			{
 				"box": {
-					"id": "obj-20",
+					"id": "obj-21",
 					"maxclass": "comment",
 					"patching_rect": [
 						10.833,
-						480.41600000000005,
+						512.916,
 						390.0,
 						22.75
 					],
@@ -487,7 +509,7 @@
 			},
 			{
 				"box": {
-					"id": "obj-21",
+					"id": "obj-22",
 					"maxclass": "comment",
 					"patching_rect": [
 						433.333,
@@ -512,7 +534,7 @@
 			},
 			{
 				"box": {
-					"id": "obj-22",
+					"id": "obj-23",
 					"maxclass": "message",
 					"patching_rect": [
 						433.333,
@@ -532,7 +554,7 @@
 			},
 			{
 				"box": {
-					"id": "obj-23",
+					"id": "obj-24",
 					"maxclass": "message",
 					"patching_rect": [
 						433.333,
@@ -552,7 +574,7 @@
 			},
 			{
 				"box": {
-					"id": "obj-24",
+					"id": "obj-25",
 					"maxclass": "message",
 					"patching_rect": [
 						433.333,
@@ -572,7 +594,7 @@
 			},
 			{
 				"box": {
-					"id": "obj-25",
+					"id": "obj-26",
 					"maxclass": "message",
 					"patching_rect": [
 						433.333,
@@ -592,7 +614,7 @@
 			},
 			{
 				"box": {
-					"id": "obj-26",
+					"id": "obj-27",
 					"maxclass": "message",
 					"patching_rect": [
 						433.333,
@@ -612,7 +634,7 @@
 			},
 			{
 				"box": {
-					"id": "obj-27",
+					"id": "obj-28",
 					"maxclass": "comment",
 					"patching_rect": [
 						537.333,
@@ -636,7 +658,7 @@
 			},
 			{
 				"box": {
-					"id": "obj-28",
+					"id": "obj-29",
 					"maxclass": "comment",
 					"patching_rect": [
 						433.333,
@@ -661,7 +683,7 @@
 			},
 			{
 				"box": {
-					"id": "obj-29",
+					"id": "obj-30",
 					"maxclass": "message",
 					"patching_rect": [
 						433.333,
@@ -681,7 +703,7 @@
 			},
 			{
 				"box": {
-					"id": "obj-30",
+					"id": "obj-31",
 					"maxclass": "comment",
 					"patching_rect": [
 						537.333,
@@ -705,7 +727,7 @@
 			},
 			{
 				"box": {
-					"id": "obj-31",
+					"id": "obj-32",
 					"maxclass": "message",
 					"patching_rect": [
 						433.333,
@@ -725,7 +747,7 @@
 			},
 			{
 				"box": {
-					"id": "obj-32",
+					"id": "obj-33",
 					"maxclass": "comment",
 					"patching_rect": [
 						537.333,
@@ -749,7 +771,7 @@
 			},
 			{
 				"box": {
-					"id": "obj-33",
+					"id": "obj-34",
 					"maxclass": "message",
 					"patching_rect": [
 						433.333,
@@ -769,7 +791,7 @@
 			},
 			{
 				"box": {
-					"id": "obj-34",
+					"id": "obj-35",
 					"maxclass": "comment",
 					"patching_rect": [
 						537.333,
@@ -793,7 +815,7 @@
 			},
 			{
 				"box": {
-					"id": "obj-35",
+					"id": "obj-36",
 					"maxclass": "message",
 					"patching_rect": [
 						433.333,
@@ -813,7 +835,7 @@
 			},
 			{
 				"box": {
-					"id": "obj-36",
+					"id": "obj-37",
 					"maxclass": "comment",
 					"patching_rect": [
 						537.333,
@@ -837,11 +859,11 @@
 			},
 			{
 				"box": {
-					"id": "obj-37",
+					"id": "obj-38",
 					"maxclass": "panel",
 					"patching_rect": [
 						5.417,
-						521.583,
+						554.083,
 						812.5,
 						379.6
 					],
@@ -859,11 +881,11 @@
 			},
 			{
 				"box": {
-					"id": "obj-38",
+					"id": "obj-39",
 					"maxclass": "comment",
 					"patching_rect": [
 						15.167,
-						530.25,
+						562.75,
 						325.0,
 						22.75
 					],
@@ -884,11 +906,11 @@
 			},
 			{
 				"box": {
-					"id": "obj-39",
+					"id": "obj-40",
 					"maxclass": "comment",
 					"patching_rect": [
 						15.167,
-						551.9159999999999,
+						584.4159999999999,
 						780.0,
 						41.167
 					],
@@ -908,11 +930,11 @@
 			},
 			{
 				"box": {
-					"id": "obj-40",
+					"id": "obj-41",
 					"maxclass": "comment",
 					"patching_rect": [
 						15.167,
-						604.0029999999999,
+						636.5029999999999,
 						325.0,
 						22.75
 					],
@@ -933,11 +955,11 @@
 			},
 			{
 				"box": {
-					"id": "obj-41",
+					"id": "obj-42",
 					"maxclass": "comment",
 					"patching_rect": [
 						15.167,
-						625.67,
+						658.17,
 						780.0,
 						22.75
 					],
@@ -957,11 +979,11 @@
 			},
 			{
 				"box": {
-					"id": "obj-42",
+					"id": "obj-43",
 					"maxclass": "comment",
 					"patching_rect": [
 						15.167,
-						659.2959999999999,
+						691.7959999999999,
 						325.0,
 						22.75
 					],
@@ -982,15 +1004,15 @@
 			},
 			{
 				"box": {
-					"id": "obj-43",
+					"id": "obj-44",
 					"maxclass": "comment",
 					"patching_rect": [
 						15.167,
-						680.963,
+						713.463,
 						780.0,
 						59.583
 					],
-					"text": "Left: the next population (float). Right: bang when the population was no longer finite (inf or NaN); the object has restarted at the seed. Until 2026 it sent inf or nan from then on, which upsets the objects that follow; to get the old stop, connect this bang to the metro (e.g. through a \"stop\" message).",
+					"text": "Left: the next population (float). Right: the message inf, -inf or nan when the population was no longer finite; the object has restarted at the seed. Until 2026 it sent inf or nan from then on, which upsets the objects that follow; to get the old stop, stop the metro with it (e.g. route inf -inf nan into a \"stop\" message).",
 					"fontname": "Arial",
 					"fontsize": 13.0,
 					"numinlets": 1,
@@ -1006,11 +1028,11 @@
 			},
 			{
 				"box": {
-					"id": "obj-44",
+					"id": "obj-45",
 					"maxclass": "comment",
 					"patching_rect": [
 						15.167,
-						751.51,
+						784.01,
 						325.0,
 						22.75
 					],
@@ -1031,11 +1053,11 @@
 			},
 			{
 				"box": {
-					"id": "obj-45",
+					"id": "obj-46",
 					"maxclass": "comment",
 					"patching_rect": [
 						15.167,
-						773.1759999999999,
+						805.6759999999999,
 						780.0,
 						41.167
 					],
@@ -1055,11 +1077,11 @@
 			},
 			{
 				"box": {
-					"id": "obj-46",
+					"id": "obj-47",
 					"maxclass": "comment",
 					"patching_rect": [
 						15.167,
-						825.2629999999999,
+						857.7629999999999,
 						325.0,
 						22.75
 					],
@@ -1080,15 +1102,15 @@
 			},
 			{
 				"box": {
-					"id": "obj-47",
+					"id": "obj-48",
 					"maxclass": "comment",
 					"patching_rect": [
 						15.167,
-						846.93,
+						879.43,
 						780.0,
 						41.167
 					],
-					"text": "The seed is kept between 0 and 1; the values that follow are not limited. When they are no longer finite, the object restarts at the seed and bangs its right outlet.",
+					"text": "The seed is kept between 0 and 1; the values that follow are not limited. When they are no longer finite, the object restarts at the seed and sends inf, -inf or nan from its right outlet.",
 					"fontname": "Arial",
 					"fontsize": 13.0,
 					"numinlets": 1,
@@ -1104,11 +1126,11 @@
 			},
 			{
 				"box": {
-					"id": "obj-48",
+					"id": "obj-49",
 					"maxclass": "comment",
 					"patching_rect": [
 						10.833,
-						912.016,
+						944.516,
 						801.667,
 						41.167
 					],
@@ -1128,7 +1150,7 @@
 			},
 			{
 				"box": {
-					"id": "obj-49",
+					"id": "obj-50",
 					"maxclass": "live.line",
 					"numinlets": 1,
 					"numoutlets": 0,
@@ -1142,7 +1164,7 @@
 			},
 			{
 				"box": {
-					"id": "obj-50",
+					"id": "obj-51",
 					"maxclass": "message",
 					"text": "lpo",
 					"hidden": 1,
@@ -1163,7 +1185,7 @@
 			},
 			{
 				"box": {
-					"id": "obj-51",
+					"id": "obj-52",
 					"maxclass": "newobj",
 					"text": "lp.mrsnorris",
 					"hidden": 1,
@@ -1184,7 +1206,7 @@
 			},
 			{
 				"box": {
-					"id": "obj-52",
+					"id": "obj-53",
 					"maxclass": "ubutton",
 					"numinlets": 1,
 					"numoutlets": 4,
@@ -1291,11 +1313,11 @@
 			{
 				"patchline": {
 					"source": [
-						"obj-14",
+						"obj-17",
 						0
 					],
 					"destination": [
-						"obj-19",
+						"obj-18",
 						0
 					]
 				}
@@ -1303,11 +1325,11 @@
 			{
 				"patchline": {
 					"source": [
-						"obj-22",
+						"obj-14",
 						0
 					],
 					"destination": [
-						"obj-14",
+						"obj-20",
 						0
 					]
 				}
@@ -1363,7 +1385,7 @@
 			{
 				"patchline": {
 					"source": [
-						"obj-29",
+						"obj-27",
 						0
 					],
 					"destination": [
@@ -1375,7 +1397,7 @@
 			{
 				"patchline": {
 					"source": [
-						"obj-31",
+						"obj-30",
 						0
 					],
 					"destination": [
@@ -1387,7 +1409,7 @@
 			{
 				"patchline": {
 					"source": [
-						"obj-33",
+						"obj-32",
 						0
 					],
 					"destination": [
@@ -1399,7 +1421,7 @@
 			{
 				"patchline": {
 					"source": [
-						"obj-35",
+						"obj-34",
 						0
 					],
 					"destination": [
@@ -1411,11 +1433,23 @@
 			{
 				"patchline": {
 					"source": [
-						"obj-52",
+						"obj-36",
 						0
 					],
 					"destination": [
-						"obj-50",
+						"obj-14",
+						0
+					]
+				}
+			},
+			{
+				"patchline": {
+					"source": [
+						"obj-53",
+						0
+					],
+					"destination": [
+						"obj-51",
 						0
 					],
 					"hidden": 1
@@ -1424,11 +1458,11 @@
 			{
 				"patchline": {
 					"source": [
-						"obj-50",
+						"obj-51",
 						0
 					],
 					"destination": [
-						"obj-51",
+						"obj-52",
 						0
 					],
 					"hidden": 1

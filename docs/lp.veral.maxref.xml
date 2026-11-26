@@ -5,7 +5,7 @@
 <c74object name='lp.veral' category='Litter Power, Chaos'>
 
 	<digest>Iterate a population growth model</digest>
-	<description>lp.veral iterates p' = r f(p) (1 - f(p)): with the function ident this is the logistic map. Every bang computes the next value; a float sets the growth rate r and bangs, a list sets a cycle of growth rates used in turn. f is a function of p (sin(pi p) by default). When the population is no longer finite (inf or NaN), the object restarts at the seed and sends a bang from its right outlet (until 2026 it sent inf or nan from then on); connect it to stop the bangs for the old behaviour. With ident, a population that has died out (0) restarts at the seed once r is above 1, as in lp.poppy.</description>
+	<description>lp.veral iterates p' = r f(p) (1 - f(p)): with the function ident this is the logistic map. Every bang computes the next value; a float sets the growth rate r and bangs, a list sets a cycle of growth rates used in turn. f is a function of p (sin(pi p) by default). When the population is no longer finite, the object restarts at the seed and sends inf, -inf or nan from its right outlet (until 2026 it sent inf or nan from then on); use it to stop the bangs for the old behaviour. With ident, a population that has died out (0) restarts at the seed once r is above 1, as in lp.poppy.</description>
 
 	<metadatalist>
 		<metadata name='author'>Peter Castine</metadata>
@@ -136,8 +136,8 @@
 		<entry name='float'>
 			<digest>Left outlet: Next population</digest>
 		</entry>
-		<entry name='bang'>
-			<digest>Right outlet: Population was not finite: restarted at the seed</digest>
+		<entry name='inf'>
+			<digest>Right outlet: inf, -inf or nan (Population was not finite: restarted at the seed)</digest>
 		</entry>
 	</misc>
 

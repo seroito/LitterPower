@@ -368,7 +368,7 @@ def vera(name):
         seed = p.flonum(190.0, y + 34.0)
     rate = p.flonum(110.0, y + 70.0)
     p.comment(176.0, y + 70.0, 200.0, '<- r (sets r and bangs)')
-    obj = p.obj(10.0, y + 104.0, 360.0, box, nin, 2, ['float', 'bang'])
+    obj = p.obj(10.0, y + 104.0, 360.0, box, nin, 2, ['float', ''])
     p.connect(met, 0, obj, 0)
     p.connect(rate, 0, obj, 0)
     if may:
@@ -379,18 +379,20 @@ def vera(name):
     out = p.flonum(10.0, y + 140.0, 100.0)
     p.connect(obj, 0, out, 0)
     p.comment(116.0, y + 140.0, 160.0, 'next population')
-    # 2026: right outlet, bang when the population was no longer finite (restart at the seed)
-    btn = p.box('button', 346.0, y + 140.0, 24.0, 24.0, numinlets=1, numoutlets=1,
-                outlettype=['bang'], parameter_enable=0)
-    p.connect(obj, 1, btn, 0)
-    p.comment(280.0, y + 141.0, 64.0, 'restarted')
+    # 2026: right outlet, inf, -inf or nan when the population was no longer finite (the
+    # object restarted at the seed); shown in a message box
+    pre = p.obj(290.0, y + 140.0, 80.0, 'prepend set', 1, 1, [''])
+    p.connect(obj, 1, pre, 0)
+    shown = p.msg(290.0, y + 170.0, 80.0, '')
+    p.connect(pre, 0, shown, 0)
+    p.comment(180.0, y + 171.0, 108.0, 'restart after:')
     # A scrolling history of the values: multislider, slider style 2 = point scroll
     lo, hi = (0.0, 5.0) if may else (-1.0, 1.0)
-    ms = p.box('multislider', 10.0, y + 170.0, 360.0, 90.0, numinlets=1, numoutlets=2,
+    ms = p.box('multislider', 10.0, y + 200.0, 360.0, 90.0, numinlets=1, numoutlets=2,
                outlettype=['', ''], parameter_enable=0, setstyle=2, setminmax=[lo, hi],
                size=1)
     p.connect(obj, 0, ms, 0)
-    p.comment(10.0, y + 262.0, 360.0, 'history (%g to %g)' % (lo, hi), textcolor=GREY)
+    p.comment(10.0, y + 292.0, 360.0, 'history (%g to %g)' % (lo, hi), textcolor=GREY)
 
     yy = p.heading(COL2, y, 'Growth rates:')
     if name == 'lp.veral':
@@ -412,7 +414,7 @@ def vera(name):
         more += [('ident', 'f(p) = p'), ('sqr', 'f(p) = p²')]
     more += [('tattle', 'print the state')]
     yy = p.msgs(COL2, yy, more, obj, mw=90.0)
-    y = max(y + 290.0, yy) + 10.0
+    y = max(y + 320.0, yy) + 10.0
     if may:
         args = ('β first, then one or more growth rates; if there are two or more numbers '
                 'after β, the last one is the seed (the starting population). Defaults: '
@@ -425,10 +427,11 @@ def vera(name):
                 'function sinpi, r = 0, seed = 2/3.')
         inlets = ('Left: bang, float (r, then bang), list (cycle of rates, then bang), function '
                   'names. Right: seed (also restarts there).')
-    outlets = ('Left: the next population (float). Right: bang when the population was no '
-               'longer finite (inf or NaN); the object has restarted at the seed. Until 2026 it '
-               'sent inf or nan from then on, which upsets the objects that follow; to get the '
-               'old stop, connect this bang to the metro (e.g. through a "stop" message).')
+    outlets = ('Left: the next population (float). Right: the message inf, -inf or nan when '
+               'the population was no longer finite; the object has restarted at the seed. '
+               'Until 2026 it sent inf or nan from then on, which upsets the objects that '
+               'follow; to get the old stop, stop the metro with it (e.g. route inf -inf nan '
+               'into a "stop" message).')
     sections = [('Arguments', args), ('Inlets', inlets), ('Outlets', outlets),
                 ('Messages', 'bang, reset (back to the seed), set (r or a list of rates, '
                              'without output), tattle (or double-click), plus the common Litter '
@@ -436,16 +439,17 @@ def vera(name):
     if not may:
         funcs = (FUNCS_VERA + '. The seed is kept between 0 and 1; the values that follow are '
                  'not limited and can run away for large r: when they are no longer finite, the '
-                 'object restarts at the seed and bangs its right outlet.')
+                 'object restarts at the seed and sends inf, -inf or nan from its right outlet.')
         if name == 'lp.veral':
             funcs += (' With ident (the logistic map) a population that has died out (0, e.g. '
                       'with r below 1) restarts at the seed as soon as r is above 1, as in '
-                      'lp.poppy; this restart does not bang.')
+                      'lp.poppy; this restart sends no message.')
         sections.append(('Functions', funcs))
     else:
         sections.append(('Note', 'The seed is kept between 0 and 1; the values that follow '
                                  'are not limited. When they are no longer finite, the object '
-                                 'restarts at the seed and bangs its right outlet.'))
+                                 'restarts at the seed and sends inf, -inf or nan from its '
+                                 'right outlet.'))
     y = p.info(y, sections)
     p.foot(y)
     return p
