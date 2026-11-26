@@ -5,7 +5,7 @@
 <c74object name='lp.gammer' category='Litter Power, Continuous Distributions'>
 
 	<digest>Generate gamma and Erlang random numbers</digest>
-	<description>lp.gammer generates random numbers from a gamma distribution; with an integer order this is the Erlang distribution.</description>
+	<description>lp.gammer generates random numbers from a gamma distribution; with an integer order this is the Erlang distribution. Order 0 gives a degenerate distribution (always 0); a negative order is refused and the current one kept (since 2026; before, 0 and negative orders froze Max).</description>
 
 	<metadatalist>
 		<metadata name='author'>Peter Castine</metadata>

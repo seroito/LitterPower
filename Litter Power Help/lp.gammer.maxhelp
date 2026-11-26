@@ -5,14 +5,14 @@
 			100.0,
 			80.0,
 			888,
-			620
+			654
 		],
 		"bglocked": 0,
 		"defrect": [
 			100.0,
 			80.0,
 			888,
-			620
+			654
 		],
 		"openrect": [
 			0.0,
@@ -66,7 +66,7 @@
 					],
 					"patching_rect": [
 						146.767,
-						518.526,
+						551.957,
 						66.971,
 						24.224
 					],
@@ -1800,7 +1800,7 @@
 					],
 					"patching_rect": [
 						11.4,
-						491.45300000000003,
+						524.884,
 						299.233,
 						24.224
 					],
@@ -1871,7 +1871,7 @@
 					],
 					"patching_rect": [
 						619.839,
-						256.341,
+						289.772,
 						206.613,
 						29.923
 					],
@@ -1885,14 +1885,14 @@
 							100.0,
 							106.0,
 							888,
-							594
+							628
 						],
 						"bglocked": 0,
 						"defrect": [
 							100.0,
 							106.0,
 							888,
-							594
+							628
 						],
 						"openrect": [
 							0.0,
@@ -2253,7 +2253,7 @@
 					],
 					"patching_rect": [
 						283.558,
-						445.856,
+						479.287,
 						49.872,
 						21.374
 					],
@@ -2280,7 +2280,7 @@
 					],
 					"patching_rect": [
 						283.558,
-						413.083,
+						446.514,
 						49.872,
 						24.224
 					],
@@ -2306,7 +2306,7 @@
 					"numoutlets": 0,
 					"patching_rect": [
 						340.555,
-						413.083,
+						446.514,
 						483.047,
 						54.147
 					],
@@ -2330,7 +2330,7 @@
 					"numoutlets": 0,
 					"patching_rect": [
 						11.4,
-						291.965,
+						325.39599999999996,
 						205.188,
 						39.898
 					],
@@ -2354,7 +2354,7 @@
 					"numoutlets": 0,
 					"patching_rect": [
 						11.4,
-						197.92000000000002,
+						231.35100000000003,
 						246.511,
 						84.071
 					],
@@ -2386,7 +2386,7 @@
 					],
 					"patching_rect": [
 						471.648,
-						197.92000000000002,
+						231.35100000000003,
 						49.872,
 						24.224
 					],
@@ -2411,7 +2411,7 @@
 					"numoutlets": 0,
 					"patching_rect": [
 						712.459,
-						529.9259999999999,
+						563.357,
 						123.968,
 						24.224
 					],
@@ -2444,7 +2444,7 @@
 					],
 					"patching_rect": [
 						665.436,
-						206.469,
+						239.9,
 						39.898,
 						24.224
 					],
@@ -2467,7 +2467,7 @@
 					],
 					"patching_rect": [
 						665.436,
-						175.122,
+						208.55300000000003,
 						91.194,
 						24.224
 					],
@@ -3058,7 +3058,7 @@
 					],
 					"patching_rect": [
 						729.558,
-						206.469,
+						239.9,
 						84.071,
 						24.224
 					],
@@ -3119,7 +3119,7 @@
 					"numoutlets": 0,
 					"patching_rect": [
 						498.722,
-						353.236,
+						386.667,
 						283.558,
 						39.898
 					],
@@ -3145,7 +3145,7 @@
 					],
 					"patching_rect": [
 						500.146,
-						326.163,
+						359.594,
 						123.968,
 						24.224
 					],
@@ -3159,14 +3159,14 @@
 							100.0,
 							106.0,
 							888,
-							594
+							628
 						],
 						"bglocked": 0,
 						"defrect": [
 							100.0,
 							106.0,
 							888,
-							594
+							628
 						],
 						"openrect": [
 							0.0,
@@ -4537,7 +4537,7 @@
 					],
 					"patching_rect": [
 						283.558,
-						361.786,
+						395.217,
 						51.298,
 						24.224
 					],
@@ -4573,7 +4573,7 @@
 					],
 					"patching_rect": [
 						283.558,
-						326.163,
+						359.594,
 						51.298,
 						24.224
 					],
@@ -4594,7 +4594,7 @@
 					],
 					"patching_rect": [
 						283.558,
-						291.965,
+						325.39599999999996,
 						139.642,
 						24.224
 					],
@@ -4611,7 +4611,7 @@
 					"numoutlets": 0,
 					"patching_rect": [
 						471.648,
-						173.69599999999997,
+						207.12699999999998,
 						69.821,
 						24.224
 					],
@@ -4638,7 +4638,7 @@
 					],
 					"patching_rect": [
 						239.386,
-						170.84699999999998,
+						204.278,
 						122.543,
 						24.224
 					],
@@ -4659,7 +4659,7 @@
 					],
 					"patching_rect": [
 						283.558,
-						260.617,
+						294.048,
 						215.163,
 						24.224
 					],
@@ -4681,7 +4681,7 @@
 					],
 					"patching_rect": [
 						283.558,
-						226.418,
+						259.849,
 						69.821,
 						24.224
 					],
@@ -4700,7 +4700,7 @@
 					],
 					"patching_rect": [
 						283.558,
-						197.92000000000002,
+						231.35100000000003,
 						21.374,
 						21.374
 					],
@@ -4724,7 +4724,7 @@
 					],
 					"patching_rect": [
 						377.603,
-						197.92000000000002,
+						231.35100000000003,
 						49.872,
 						24.224
 					],
@@ -4749,7 +4749,7 @@
 					"numoutlets": 0,
 					"patching_rect": [
 						377.603,
-						173.69599999999997,
+						207.12699999999998,
 						88.345,
 						24.224
 					],
@@ -4774,14 +4774,14 @@
 						1.0
 					],
 					"maxclass": "comment",
-					"text": "The gamma distribution has two parameters, referred to here as alpha and beta. The second parameter is a scaling factor. Sometimes it is called location, but then it specifies 1/beta. Alpha is defined to be a positive value, but you can set it to zero and get a degenerate distribution. Beta is defined for positive values, but the entire real range is supported by this object.",
-					"linecount": 3,
+					"text": "The gamma distribution has two parameters, referred to here as alpha and beta. The second parameter is a scaling factor. Sometimes it is called location, but then it specifies 1/beta. Alpha is defined to be a positive value, but you can set it to zero and get a degenerate distribution (always 0). A negative alpha is refused and the current one kept (since 2026; before, 0 and negative values froze Max). Beta is defined for positive values, but the entire real range is supported by this object.",
+					"linecount": 5,
 					"numoutlets": 0,
 					"patching_rect": [
 						11.4,
 						111.0,
 						813.628,
-						54.147
+						87.578
 					],
 					"id": "obj-29",
 					"fontname": "Arial",
@@ -4868,7 +4868,7 @@
 						0.0,
 						111.0,
 						846.402,
-						52.722
+						86.153
 					],
 					"bgcolor": [
 						0.196078,

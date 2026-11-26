@@ -241,7 +241,9 @@ OBJ = {
                       ['lp.chichi', 'lp.stu']),
     'lp.gammer': dist('Generate gamma and Erlang random numbers',
                       'lp.gammer generates random numbers from a gamma distribution; with an '
-                      'integer order this is the Erlang distribution.',
+                      'integer order this is the Erlang distribution. Order 0 gives a '
+                      'degenerate distribution (always 0); a negative order is refused and the '
+                      'current one kept (since 2026; before, 0 and negative orders froze Max).',
                       [('order', 'float', 'Order nu (default 1)'),
                        ('loc', 'float', 'Location (default 0)')], ['lp.expo'],
                       {'loc': 'Set the location (offset)'}),

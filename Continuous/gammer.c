@@ -232,9 +232,22 @@ GammerOrder(
 	{
 	// Grab current beta, in case the new order/alpha parameter causes us to change
 	// algorithm and, with it, the parameter structure that we use
-	double	beta = GammerGetBeta(me);
+	double	beta;
 	
-	switch ( me->alg = RecommendGammaAlg(iOrder) ) {
+	// 2026: with an order of 0 or below the generators looped for ever (Max froze; found
+	// by tests/fuzz.py): RecommendGammaAlg(0) chose the direct Erlang method, which then
+	// counted down from 0. The help file promises a degenerate distribution for 0, and
+	// GammerBang() has one (algUndef: always 0), so 0 now selects it. A negative order
+	// is refused and the current one kept (the creation argument replaced it by 1
+	// already).
+	if (iOrder < 0.0 || iOrder != iOrder) {
+		error("%s: order must not be negative (got %g); order unchanged", kClassName, iOrder);
+		return;
+		}
+	
+	beta = GammerGetBeta(me);
+	
+	switch ( me->alg = (iOrder == 0.0) ? algUndef : RecommendGammaAlg(iOrder) ) {
 	case algUndef:
 	case algErlDir:
 		me->params.ed.alpha = iOrder,
@@ -247,7 +260,7 @@ GammerOrder(
 		me->params.er.gamma	= CalcErlangRejGamma(me->params.er.alpha);
 				// The above assumes that it's cheaper to read from memory than
 				// to perform double-to-int conversion twice. I might be wrong.
-post("GammerOrder setting gamma to %lf", CalcErlangRejGamma(me->params.er.alpha));
+				// (2026: a leftover debug post of the gamma value removed here.)
 		break;
 	
 	case algGS:
