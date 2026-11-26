@@ -1586,7 +1586,8 @@
 										1.0
 									],
 									"linecount": 1,
-									"textjustification": 2
+									"textjustification": 2,
+									"underline": 1
 								}
 							},
 							{
@@ -1982,6 +1983,48 @@
 										6.0
 									]
 								}
+							},
+							{
+								"box": {
+									"id": "obj-59",
+									"maxclass": "ubutton",
+									"numinlets": 1,
+									"numoutlets": 4,
+									"outlettype": [
+										"bang",
+										"bang",
+										"",
+										"int"
+									],
+									"patching_rect": [
+										440.0,
+										719.0,
+										372.0,
+										21.0
+									]
+								}
+							},
+							{
+								"box": {
+									"id": "obj-60",
+									"maxclass": "message",
+									"text": ";\rmax launchbrowser https://www.novanarecords.com/artists/peter-castine/",
+									"hidden": 1,
+									"numinlets": 2,
+									"numoutlets": 1,
+									"outlettype": [
+										""
+									],
+									"fontname": "Arial",
+									"fontsize": 13.0,
+									"linecount": 2,
+									"patching_rect": [
+										860.0,
+										110.0,
+										420.0,
+										38.0
+									]
+								}
 							}
 						],
 						"lines": [
@@ -2006,6 +2049,19 @@
 									],
 									"destination": [
 										"obj-10",
+										0
+									],
+									"hidden": 1
+								}
+							},
+							{
+								"patchline": {
+									"source": [
+										"obj-59",
+										0
+									],
+									"destination": [
+										"obj-60",
 										0
 									],
 									"hidden": 1
