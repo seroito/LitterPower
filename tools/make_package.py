@@ -59,7 +59,7 @@ info = {
         "macintosh": {"platform": ["x64", "aarch64"], "min_version": "10.13"},
         "windows": {"platform": ["x64"], "min_version": "10"}
     },
-    "package_extra": {"reverse_domain": "de.castine", "copyright": "Copyright 1992-2026 Peter Castine"},
+    "package_extra": {"reverse_domain": "de.castine", "copyright": "Copyright 1992-2027 Peter Castine"},
     "filetype": "package",
     "website": "https://github.com/pcastine-lp/LitterPower"
 }

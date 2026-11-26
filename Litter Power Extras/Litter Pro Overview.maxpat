@@ -4649,7 +4649,7 @@
 			{
 				"box": {
 					"maxclass": "comment",
-					"text": "Thanks to Trond for making me do this! Copyright © 1992-2026 Peter Castine.",
+					"text": "Thanks to Trond for making me do this! Copyright © 1992-2027 Peter Castine.",
 					"linecount": 1,
 					"patching_rect": [
 						44.0,

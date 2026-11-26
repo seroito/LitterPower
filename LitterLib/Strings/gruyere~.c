@@ -4,7 +4,7 @@
 
 static const char* const sStrings0[] = {
 	/*  1 */ "1.0b1",
-	/*  2 */ "1.0b1 Copyright \xc2\xa9" " 1992-2026 Peter Castine",
+	/*  2 */ "1.0b1 Copyright \xc2\xa9" " 1992-2027 Peter Castine",
 	/*  3 */ "11006001",
 	/*  4 */ "1.8i1",
 	/*  5 */ "Litter Power Package 1.8i1 (Pro Bundles)",

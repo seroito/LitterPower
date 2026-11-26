@@ -242,7 +242,7 @@
 					],
 					"fontname": "Arial",
 					"fontsize": 13.0,
-					"text": "Written by Peter Castine, Copyright 1992-2026",
+					"text": "Written by Peter Castine, Copyright 1992-2027",
 					"textcolor": [
 						0.870588235294118,
 						0.870588235294118,

@@ -31,7 +31,7 @@ cmake_policy(SET CMP0091 NEW)
 
 project(LitterPower VERSION 1.8.0 LANGUAGES C)
 
-set(LITTER_COPYRIGHT "Copyright 1992-2026 Peter Castine")
+set(LITTER_COPYRIGHT "Copyright 1992-2027 Peter Castine")
 set(LITTER_BUNDLE_DOMAIN "de.castine")
 
 

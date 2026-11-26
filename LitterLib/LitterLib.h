@@ -95,7 +95,7 @@
 #pragma mark Constants
 
 	// Generic info string, printed when the class is loaded
-#define LPVERSION "Copyright 2001-26 Peter Castine. Part of Litter Power (64-bit, Max 8/9)"
+#define LPVERSION "Copyright 1992-2027 Peter Castine. Part of Litter Power (64-bit, Max 8/9)"
 
 	// Standard string table indices (see LitterStrings.h)
 enum {

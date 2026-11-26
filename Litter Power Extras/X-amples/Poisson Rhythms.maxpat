@@ -394,7 +394,7 @@
 			{
 				"box": {
 					"maxclass": "comment",
-					"text": "Copyright © 1992-2026 Peter Castine.\rFreeware: Enjoy, Share, Be Inspired. Not for Resale.",
+					"text": "Copyright © 1992-2027 Peter Castine.\rFreeware: Enjoy, Share, Be Inspired. Not for Resale.",
 					"linecount": 2,
 					"fontsize": 14.81,
 					"numoutlets": 0,
