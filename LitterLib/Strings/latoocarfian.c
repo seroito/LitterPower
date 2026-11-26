@@ -16,9 +16,10 @@ static const char* const sStrings0[] = {
 	/* 11 */ "Float (Parameter d), Symbol (Function4)",
 	/* 12 */ "Float (X Coordinate)",
 	/* 13 */ "Float (Y Coordinate)",
+	/* 14 */ "inf, -inf or nan (Point was not finite: restarted at x0 y0)",
 	};
 
 const tLitterStrList gLitterStrLists[] = {
-	{ "lp.lana", 13, sStrings0 },
+	{ "lp.lana", 14, sStrings0 },
 	};
 const int gLitterStrListCount = 1;

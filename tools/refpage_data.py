@@ -161,7 +161,11 @@ OBJ = {
     'lp.lana': dict(cat=CHAOS, digest='Iterate a Latoocarfian attractor',
                     desc='lp.lana iterates a Latoocarfian map: x\' = A(a y) + c C(a x), '
                          'y\' = B(b x) + d D(b y), with functions A to D (sin by default). Every '
-                         'bang outputs x (left) and y (right).',
+                         'bang outputs x (left) and y (middle). With unbounded functions (ident, '
+                         'sqr, sinh, cosh, exp), log or sqrt of negative values, or the poles of '
+                         'recip, cot and cotpi the point can become infinite or not a number; '
+                         'then it starts again at x0 y0 and the right outlet sends inf, -inf or '
+                         'nan (since 2026; before, inf or nan was sent from then on).',
                     args=[('functions', 'symbol', 'Up to four function names'),
                           ('parameters', 'float', 'Up to six numbers: a, b, c, d, x0, y0 (fewer '
                                                   'numbers set several parameters at once)')],

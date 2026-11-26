@@ -123,6 +123,8 @@ typedef struct {
 	voidPtr			proxies[kProxyCount];
 	long			curProxy;
 	voidPtr			outY;						// outX accessed through coreObject.o_outlet
+	voidPtr			outRestart;					// 2026: inf, -inf or nan when the point was no
+												// longer finite and restarted at x0 y0
 	
 	double			x0,	y0,						// Initial coordinates
 					x,	y,						// Current coordinates
@@ -334,7 +336,8 @@ NewLana(
 	}
 		
 	
-		// Two outlets, right to left
+		// Three outlets, right to left: restart message (2026), y, x
+	me->outRestart = outlet_new(me, NULL);
 	me->outY = floatout(me);
 	floatout(me);			// Accessed through me->coreObject.o_outlet
 	
@@ -507,7 +510,16 @@ FreeLana(
 			}
 		}
 
-static void
+	// 2026 (user's request, as in lp.vera*): with unbounded functions (ident, sqr, sinh,
+	// cosh, exp), outside their domain (log, sqrt of negative values) or at poles (recip,
+	// cot, cotpi at 0) the point leaves the range of floating point numbers or becomes NaN
+	// (simulated: 29 % of function/parameter combinations within 1000 steps; never with
+	// bounded functions such as the default sin). Before, the object then sent inf or nan
+	// for ever. Now a point that is no longer finite starts again at x0 y0, and DoNext()
+	// returns what it had become (nan if either coordinate is NaN, else the sign of the
+	// infinite one, x first) for the right outlet; NULL while finite. Finite points are
+	// unchanged.
+static const char*
 DoNext(
 	tLana* me)
 	
@@ -518,8 +530,20 @@ DoNext(
 			a	= me->a,
 			b	= me->b;
 	
-	me->x = CalcFunc(me->fnA, a*y) + me->c * CalcFunc(me->fnC, a*x);
-	me->y = CalcFunc(me->fnB, b*x) + me->d * CalcFunc(me->fnD, b*y);
+	x = CalcFunc(me->fnA, a*me->y) + me->c * CalcFunc(me->fnC, a*me->x);
+	y = CalcFunc(me->fnB, b*me->x) + me->d * CalcFunc(me->fnD, b*me->y);
+	
+	if (isfinite(x) && isfinite(y)) {
+		me->x = x;
+		me->y = y;
+		return NULL;
+		}
+	
+	me->x = me->x0;
+	me->y = me->y0;
+	if (isnan(x) || isnan(y))
+		return "nan";
+	return ((isinf(x) ? x : y) > 0.0) ? "inf" : "-inf";
 	}
 	
 static void DoOut(tLana* me)
@@ -542,7 +566,10 @@ DoBang(
 		error("%s doesn't understand bang in inlet %ld", kClassName, kInlet);
 	
 	else {
-		DoNext(me);
+		const char* notFinite = DoNext(me);
+		
+		if (notFinite != NULL)					// Right to left: this message first
+			outlet_anything(me->outRestart, gensym(notFinite), 0, NULL);
 		DoOut(me);
 		}
 		

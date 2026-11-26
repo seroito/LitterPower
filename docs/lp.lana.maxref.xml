@@ -5,7 +5,7 @@
 <c74object name='lp.lana' category='Litter Power, Chaos'>
 
 	<digest>Iterate a Latoocarfian attractor</digest>
-	<description>lp.lana iterates a Latoocarfian map: x' = A(a y) + c C(a x), y' = B(b x) + d D(b y), with functions A to D (sin by default). Every bang outputs x (left) and y (right).</description>
+	<description>lp.lana iterates a Latoocarfian map: x' = A(a y) + c C(a x), y' = B(b x) + d D(b y), with functions A to D (sin by default). Every bang outputs x (left) and y (middle). With unbounded functions (ident, sqr, sinh, cosh, exp), log or sqrt of negative values, or the poles of recip, cot and cotpi the point can become infinite or not a number; then it starts again at x0 y0 and the right outlet sends inf, -inf or nan (since 2026; before, inf or nan was sent from then on).</description>
 
 	<metadatalist>
 		<metadata name='author'>Peter Castine</metadata>
@@ -158,7 +158,10 @@
 			<digest>Left outlet: X Coordinate</digest>
 		</entry>
 		<entry name='float'>
-			<digest>Right outlet: Y Coordinate</digest>
+			<digest>2nd outlet: Y Coordinate</digest>
+		</entry>
+		<entry name='inf'>
+			<digest>Right outlet: inf, -inf or nan (Point was not finite: restarted at x0 y0)</digest>
 		</entry>
 	</misc>
 

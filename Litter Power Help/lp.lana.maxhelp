@@ -13,7 +13,7 @@
 			100.0,
 			80.0,
 			860,
-			903
+			940
 		],
 		"bglocked": 0,
 		"openinpresentation": 0,
@@ -117,7 +117,7 @@
 						797.333,
 						59.583
 					],
-					"text": "lp.lana iterates a two-dimensional map of the \"Latoocarfian\" family (after Clifford Pickover): x′ = A(a·y) + c·C(a·x), y′ = B(b·x) + d·D(b·y), where A, B, C and D are functions (sin by default). Every bang computes the next point and sends x out of the left outlet and y out of the right outlet.",
+					"text": "lp.lana iterates a two-dimensional map of the \"Latoocarfian\" family (after Clifford Pickover): x′ = A(a·y) + c·C(a·x), y′ = B(b·x) + d·D(b·y), where A, B, C and D are functions (sin by default). Every bang computes the next point and sends x out of the left outlet and y out of the middle outlet.",
 					"fontname": "Arial",
 					"fontsize": 13.0,
 					"numinlets": 1,
@@ -315,10 +315,11 @@
 					"fontname": "Arial",
 					"fontsize": 13.0,
 					"numinlets": 5,
-					"numoutlets": 2,
+					"numoutlets": 3,
 					"outlettype": [
 						"float",
-						"float"
+						"float",
+						""
 					]
 				}
 			},
@@ -348,7 +349,7 @@
 					"id": "obj-15",
 					"maxclass": "flonum",
 					"patching_rect": [
-						325.0,
+						162.5,
 						343.91600000000005,
 						97.5,
 						23.833
@@ -371,7 +372,7 @@
 					"patching_rect": [
 						10.833,
 						369.91600000000005,
-						65.0,
+						32.5,
 						22.75
 					],
 					"text": "x",
@@ -393,9 +394,9 @@
 					"id": "obj-17",
 					"maxclass": "comment",
 					"patching_rect": [
-						325.0,
+						162.5,
 						369.91600000000005,
-						65.0,
+						32.5,
 						22.75
 					],
 					"text": "y",
@@ -415,6 +416,70 @@
 			{
 				"box": {
 					"id": "obj-18",
+					"maxclass": "newobj",
+					"patching_rect": [
+						325.0,
+						343.91600000000005,
+						97.5,
+						23.833
+					],
+					"text": "prepend set",
+					"fontname": "Arial",
+					"fontsize": 13.0,
+					"numinlets": 1,
+					"numoutlets": 1,
+					"outlettype": [
+						""
+					]
+				}
+			},
+			{
+				"box": {
+					"id": "obj-19",
+					"maxclass": "message",
+					"patching_rect": [
+						325.0,
+						376.41600000000005,
+						97.5,
+						23.833
+					],
+					"text": "",
+					"fontname": "Arial",
+					"fontsize": 13.0,
+					"numinlets": 2,
+					"numoutlets": 1,
+					"outlettype": [
+						""
+					]
+				}
+			},
+			{
+				"box": {
+					"id": "obj-20",
+					"maxclass": "comment",
+					"patching_rect": [
+						212.333,
+						377.5,
+						110.5,
+						22.75
+					],
+					"text": "restart after:",
+					"fontname": "Arial",
+					"fontsize": 13.0,
+					"numinlets": 1,
+					"numoutlets": 0,
+					"linecount": 1,
+					"textcolor": [
+						0.870588235294118,
+						0.870588235294118,
+						0.870588235294118,
+						1.0
+					]
+				}
+			},
+			{
+				"box": {
+					"id": "obj-21",
 					"maxclass": "comment",
 					"patching_rect": [
 						433.333,
@@ -439,7 +504,7 @@
 			},
 			{
 				"box": {
-					"id": "obj-19",
+					"id": "obj-22",
 					"maxclass": "message",
 					"patching_rect": [
 						433.333,
@@ -459,7 +524,7 @@
 			},
 			{
 				"box": {
-					"id": "obj-20",
+					"id": "obj-23",
 					"maxclass": "comment",
 					"patching_rect": [
 						548.167,
@@ -483,7 +548,7 @@
 			},
 			{
 				"box": {
-					"id": "obj-21",
+					"id": "obj-24",
 					"maxclass": "message",
 					"patching_rect": [
 						433.333,
@@ -503,7 +568,7 @@
 			},
 			{
 				"box": {
-					"id": "obj-22",
+					"id": "obj-25",
 					"maxclass": "comment",
 					"patching_rect": [
 						548.167,
@@ -527,7 +592,7 @@
 			},
 			{
 				"box": {
-					"id": "obj-23",
+					"id": "obj-26",
 					"maxclass": "message",
 					"patching_rect": [
 						433.333,
@@ -547,7 +612,7 @@
 			},
 			{
 				"box": {
-					"id": "obj-24",
+					"id": "obj-27",
 					"maxclass": "comment",
 					"patching_rect": [
 						548.167,
@@ -571,7 +636,7 @@
 			},
 			{
 				"box": {
-					"id": "obj-25",
+					"id": "obj-28",
 					"maxclass": "message",
 					"patching_rect": [
 						433.333,
@@ -591,7 +656,7 @@
 			},
 			{
 				"box": {
-					"id": "obj-26",
+					"id": "obj-29",
 					"maxclass": "comment",
 					"patching_rect": [
 						548.167,
@@ -615,7 +680,7 @@
 			},
 			{
 				"box": {
-					"id": "obj-27",
+					"id": "obj-30",
 					"maxclass": "message",
 					"patching_rect": [
 						433.333,
@@ -635,7 +700,7 @@
 			},
 			{
 				"box": {
-					"id": "obj-28",
+					"id": "obj-31",
 					"maxclass": "comment",
 					"patching_rect": [
 						548.167,
@@ -659,7 +724,7 @@
 			},
 			{
 				"box": {
-					"id": "obj-29",
+					"id": "obj-32",
 					"maxclass": "message",
 					"patching_rect": [
 						433.333,
@@ -679,7 +744,7 @@
 			},
 			{
 				"box": {
-					"id": "obj-30",
+					"id": "obj-33",
 					"maxclass": "message",
 					"patching_rect": [
 						433.333,
@@ -699,7 +764,7 @@
 			},
 			{
 				"box": {
-					"id": "obj-31",
+					"id": "obj-34",
 					"maxclass": "comment",
 					"patching_rect": [
 						548.167,
@@ -723,7 +788,7 @@
 			},
 			{
 				"box": {
-					"id": "obj-32",
+					"id": "obj-35",
 					"maxclass": "message",
 					"patching_rect": [
 						433.333,
@@ -743,7 +808,7 @@
 			},
 			{
 				"box": {
-					"id": "obj-33",
+					"id": "obj-36",
 					"maxclass": "message",
 					"patching_rect": [
 						433.333,
@@ -763,7 +828,7 @@
 			},
 			{
 				"box": {
-					"id": "obj-34",
+					"id": "obj-37",
 					"maxclass": "comment",
 					"patching_rect": [
 						548.167,
@@ -787,13 +852,13 @@
 			},
 			{
 				"box": {
-					"id": "obj-35",
+					"id": "obj-38",
 					"maxclass": "panel",
 					"patching_rect": [
 						5.417,
 						486.91600000000005,
 						812.5,
-						324.307
+						471.9
 					],
 					"numinlets": 1,
 					"numoutlets": 0,
@@ -809,7 +874,7 @@
 			},
 			{
 				"box": {
-					"id": "obj-36",
+					"id": "obj-39",
 					"maxclass": "comment",
 					"patching_rect": [
 						15.167,
@@ -834,7 +899,7 @@
 			},
 			{
 				"box": {
-					"id": "obj-37",
+					"id": "obj-40",
 					"maxclass": "comment",
 					"patching_rect": [
 						15.167,
@@ -858,7 +923,7 @@
 			},
 			{
 				"box": {
-					"id": "obj-38",
+					"id": "obj-41",
 					"maxclass": "comment",
 					"patching_rect": [
 						15.167,
@@ -883,7 +948,7 @@
 			},
 			{
 				"box": {
-					"id": "obj-39",
+					"id": "obj-42",
 					"maxclass": "comment",
 					"patching_rect": [
 						15.167,
@@ -907,11 +972,60 @@
 			},
 			{
 				"box": {
-					"id": "obj-40",
+					"id": "obj-43",
 					"maxclass": "comment",
 					"patching_rect": [
 						15.167,
 						661.55,
+						325.0,
+						22.75
+					],
+					"text": "Outlets",
+					"fontname": "Arial",
+					"fontsize": 13.0,
+					"numinlets": 1,
+					"numoutlets": 0,
+					"linecount": 1,
+					"fontface": 1,
+					"textcolor": [
+						0.870588235294118,
+						0.870588235294118,
+						0.870588235294118,
+						1.0
+					]
+				}
+			},
+			{
+				"box": {
+					"id": "obj-44",
+					"maxclass": "comment",
+					"patching_rect": [
+						15.167,
+						683.216,
+						780.0,
+						59.583
+					],
+					"text": "Left: x. Middle: y. Right: the message inf, -inf or nan when the point was no longer finite (nan if either coordinate was NaN); the object has started again at x0 y0. Until 2026 it sent inf or nan from then on, which upsets the objects that follow; to get the old stop, stop the metro with it (e.g. route inf -inf nan into a \"stop\" message).",
+					"fontname": "Arial",
+					"fontsize": 13.0,
+					"numinlets": 1,
+					"numoutlets": 0,
+					"linecount": 3,
+					"textcolor": [
+						0.870588235294118,
+						0.870588235294118,
+						0.870588235294118,
+						1.0
+					]
+				}
+			},
+			{
+				"box": {
+					"id": "obj-45",
+					"maxclass": "comment",
+					"patching_rect": [
+						15.167,
+						753.7629999999999,
 						325.0,
 						22.75
 					],
@@ -932,20 +1046,20 @@
 			},
 			{
 				"box": {
-					"id": "obj-41",
+					"id": "obj-46",
 					"maxclass": "comment",
 					"patching_rect": [
 						15.167,
-						683.216,
+						775.43,
 						780.0,
-						41.167
+						96.417
 					],
-					"text": "ident zero one recip sin cos tan cot sinpi cospi tanpi cotpi sinh cosh tanh log exp sqr sqrt. sinpi and its relatives multiply by π first.",
+					"text": "ident zero one recip sin cos tan cot sinpi cospi tanpi cotpi sinh cosh tanh log exp sqr sqrt. sinpi and its relatives multiply by π first. With bounded functions (sin, cos, sinpi, cospi, tanh, zero, one) the point stays within +/- (1 + |c|) and +/- (1 + |d|). ident, sqr, sinh, cosh and exp can grow beyond all limits, log and sqrt have no value for negative numbers, and recip, cot and cotpi have poles at 0; the point then starts again at x0 y0 (see Outlets).",
 					"fontname": "Arial",
 					"fontsize": 13.0,
 					"numinlets": 1,
 					"numoutlets": 0,
-					"linecount": 2,
+					"linecount": 5,
 					"textcolor": [
 						0.870588235294118,
 						0.870588235294118,
@@ -956,11 +1070,11 @@
 			},
 			{
 				"box": {
-					"id": "obj-42",
+					"id": "obj-47",
 					"maxclass": "comment",
 					"patching_rect": [
 						15.167,
-						735.303,
+						882.896,
 						325.0,
 						22.75
 					],
@@ -981,11 +1095,11 @@
 			},
 			{
 				"box": {
-					"id": "obj-43",
+					"id": "obj-48",
 					"maxclass": "comment",
 					"patching_rect": [
 						15.167,
-						756.9699999999999,
+						904.563,
 						780.0,
 						41.167
 					],
@@ -1005,11 +1119,11 @@
 			},
 			{
 				"box": {
-					"id": "obj-44",
+					"id": "obj-49",
 					"maxclass": "comment",
 					"patching_rect": [
 						10.833,
-						822.0559999999999,
+						969.65,
 						801.667,
 						41.167
 					],
@@ -1029,7 +1143,7 @@
 			},
 			{
 				"box": {
-					"id": "obj-45",
+					"id": "obj-50",
 					"maxclass": "live.line",
 					"numinlets": 1,
 					"numoutlets": 0,
@@ -1043,7 +1157,7 @@
 			},
 			{
 				"box": {
-					"id": "obj-46",
+					"id": "obj-51",
 					"maxclass": "message",
 					"text": "lpo",
 					"hidden": 1,
@@ -1064,7 +1178,7 @@
 			},
 			{
 				"box": {
-					"id": "obj-47",
+					"id": "obj-52",
 					"maxclass": "newobj",
 					"text": "lp.mrsnorris",
 					"hidden": 1,
@@ -1085,7 +1199,7 @@
 			},
 			{
 				"box": {
-					"id": "obj-48",
+					"id": "obj-53",
 					"maxclass": "ubutton",
 					"numinlets": 1,
 					"numoutlets": 4,
@@ -1204,31 +1318,31 @@
 			{
 				"patchline": {
 					"source": [
+						"obj-13",
+						2
+					],
+					"destination": [
+						"obj-18",
+						0
+					]
+				}
+			},
+			{
+				"patchline": {
+					"source": [
+						"obj-18",
+						0
+					],
+					"destination": [
 						"obj-19",
 						0
-					],
-					"destination": [
-						"obj-13",
-						0
 					]
 				}
 			},
 			{
 				"patchline": {
 					"source": [
-						"obj-21",
-						0
-					],
-					"destination": [
-						"obj-13",
-						0
-					]
-				}
-			},
-			{
-				"patchline": {
-					"source": [
-						"obj-23",
+						"obj-22",
 						0
 					],
 					"destination": [
@@ -1240,7 +1354,7 @@
 			{
 				"patchline": {
 					"source": [
-						"obj-25",
+						"obj-24",
 						0
 					],
 					"destination": [
@@ -1252,7 +1366,7 @@
 			{
 				"patchline": {
 					"source": [
-						"obj-27",
+						"obj-26",
 						0
 					],
 					"destination": [
@@ -1264,7 +1378,7 @@
 			{
 				"patchline": {
 					"source": [
-						"obj-29",
+						"obj-28",
 						0
 					],
 					"destination": [
@@ -1312,11 +1426,35 @@
 			{
 				"patchline": {
 					"source": [
-						"obj-48",
+						"obj-35",
 						0
 					],
 					"destination": [
-						"obj-46",
+						"obj-13",
+						0
+					]
+				}
+			},
+			{
+				"patchline": {
+					"source": [
+						"obj-36",
+						0
+					],
+					"destination": [
+						"obj-13",
+						0
+					]
+				}
+			},
+			{
+				"patchline": {
+					"source": [
+						"obj-53",
+						0
+					],
+					"destination": [
+						"obj-51",
 						0
 					],
 					"hidden": 1
@@ -1325,11 +1463,11 @@
 			{
 				"patchline": {
 					"source": [
-						"obj-46",
+						"obj-51",
 						0
 					],
 					"destination": [
-						"obj-47",
+						"obj-52",
 						0
 					],
 					"hidden": 1

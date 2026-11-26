@@ -237,23 +237,30 @@ def lana():
                'Clifford Pickover): x′ = A(a·y) + c·C(a·x), '
                'y′ = B(b·x) + d·D(b·y), where A, B, C and D are functions '
                '(sin by default). Every bang computes the next point and sends x out of the left '
-               'outlet and y out of the right outlet.')
+               'outlet and y out of the middle outlet.')
     tog = p.toggle(10.0, y)
     p.comment(40.0, y + 2.0, 70.0, 'start/stop')
     met = p.obj(10.0, y + 34.0, 70.0, 'metro 50', 2, 1, ['bang'])
     p.connect(tog, 0, met, 0)
     p.comment(112.0, y + 8.0, 200.0, 'a, b, c, d:')
     nums = [p.flonum(112.0 + k * 68.0, y + 34.0, 62.0) for k in range(4)]
-    obj = p.obj(10.0, y + 100.0, 380.0, 'lp.lana ' + LANA_ARGS, 5, 2, ['float', 'float'])
+    obj = p.obj(10.0, y + 100.0, 380.0, 'lp.lana ' + LANA_ARGS, 5, 3, ['float', 'float', ''])
     p.connect(met, 0, obj, 0)
     for k, n in enumerate(nums):
         p.connect(n, 0, obj, k + 1)
     ox = p.flonum(10.0, y + 136.0, 90.0)
-    oy = p.flonum(300.0, y + 136.0, 90.0)
+    oy = p.flonum(150.0, y + 136.0, 90.0)
     p.connect(obj, 0, ox, 0)
     p.connect(obj, 1, oy, 0)
-    p.comment(10.0, y + 160.0, 60.0, 'x')
-    p.comment(300.0, y + 160.0, 60.0, 'y')
+    p.comment(10.0, y + 160.0, 30.0, 'x')
+    p.comment(150.0, y + 160.0, 30.0, 'y')
+    # 2026: right outlet, inf, -inf or nan when the point was no longer finite (the object
+    # restarted at x0 y0); shown in a message box
+    pre = p.obj(300.0, y + 136.0, 90.0, 'prepend set', 1, 1, [''])
+    p.connect(obj, 2, pre, 0)
+    shown = p.msg(300.0, y + 166.0, 90.0, '')
+    p.connect(pre, 0, shown, 0)
+    p.comment(196.0, y + 167.0, 102.0, 'restart after:')
 
     yy = p.heading(COL2, y, 'Messages (left inlet):')
     yy = p.msgs(COL2, yy, [('bang', 'next point'),
@@ -275,7 +282,17 @@ def lana():
         ('Inlets', 'Left: bang, list (x0 y0), and a float sets a, b, c and d together. '
                    'Inlets 2 to 5: a, b, c and d. A function name sent to the left inlet sets '
                    'all four functions; sent to inlet 2, 3, 4 or 5 it sets A, B, C or D.'),
-        ('Functions', FUNCS_LANA + '. sinpi and its relatives multiply by π first.'),
+        ('Outlets', 'Left: x. Middle: y. Right: the message inf, -inf or nan when the point '
+                    'was no longer finite (nan if either coordinate was NaN); the object has '
+                    'started again at x0 y0. Until 2026 it sent inf or nan from then on, which '
+                    'upsets the objects that follow; to get the old stop, stop the metro with '
+                    'it (e.g. route inf -inf nan into a "stop" message).'),
+        ('Functions', FUNCS_LANA + '. sinpi and its relatives multiply by π first. With '
+                      'bounded functions (sin, cos, sinpi, cospi, tanh, zero, one) the point '
+                      'stays within +/- (1 + |c|) and +/- (1 + |d|). ident, sqr, sinh, cosh and '
+                      'exp can grow beyond all limits, log and sqrt have no value for negative '
+                      'numbers, and recip, cot and cotpi have poles at 0; the point then starts '
+                      'again at x0 y0 (see Outlets).'),
         ('reset', 'Starts again at the starting point. Parameters and starting point that '
                   'were never set (by arguments or messages) are chosen at random again.'),
     ])
