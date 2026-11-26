@@ -16,8 +16,8 @@ amplitude drops with NN as expected). Next: test point 15 with the package of pu
 help files, item-22 files identical to the repository,
 1992-2027 in readme, package-info.json and the externals); then merge into
 `64-bit-version` (ask first).
-Postponed for later (not started): A_GIMME `short argc` (71 places, all with small
-values, so harmless on x64/arm64) and A_LONG `long` handlers.
+A_GIMME/A_LONG signatures: postponed by the user (2026-11-26), see "Method signatures"
+below.
 
 All help files, the overview and the extras are redesigned (rng-fixes items 16-18); the
 user tests the package next. Added 2026-11-25 (item 19): package readme and icon,
@@ -579,8 +579,29 @@ workflow builds pushes to both branches. One commit per change:
       version text 13 pt. Body text was already 13 pt; if the user still finds it too
       small, ask which text.
 
-Not done (reviewed, lower priority): A_GIMME new functions declaring argc as `short`,
-A_LONG handlers declaring `long` instead of `t_atom_long`.
+## Method signatures (postponed, 2026-11-26)
+
+Not started; the user decided "not now" after the explanation below. If ever done: after
+the user's test and the merge into `64-bit-version`, on its own branch, with a test list.
+
+- What: Max calls A_GIMME methods with `long argc` (64 bit) and A_LONG/A_DEFLONG methods
+  with `t_atom_long` (64 bit on both platforms). The old code declares `short iArgC`
+  (71 places, counted with a regex over `short <name>, t_atom*`/`Atom*`, mostly in
+  Chaos/ and Continuous/, plus helpers such as `SetRates()` that take them on) and
+  `long` values (about 129 `A_LONG` registrations plus the `A_DEFLONG` ones, e.g. 35
+  `seed` messages). `long` is 64 bit on macOS, 32 bit on Windows.
+- Effect today: none observable. Calling through a mismatched function type is undefined
+  behaviour in C, but on x64 (Windows, Intel Mac) and arm64 the value arrives in a
+  64-bit register and the callee reads the low part; correct for lists up to 32767
+  atoms (none longer in Litter Power) and integers within +-2^31 on Windows. Seeds:
+  Taus88Seed/TT800Seed use 32 bits anyway (e.g. `TitiSeed` casts to unsigned long), so
+  a seed above 2^31 already gives the same bits on Windows as on macOS.
+- Benefit: standard-conforming code; only matters if a future compiler or platform
+  checks call types more strictly (no sign of that).
+- Risk: about 200 mechanical edits (check.py catches typos, not logic); the real trap is
+  `post()`/`error()` formats: a `t_atom_long` printed with `%ld` is wrong on Windows,
+  so every format that prints such a value must change too (tattle, error messages).
+  Every object with int or list inlets would need retesting in Max.
 
 ## What was done
 
