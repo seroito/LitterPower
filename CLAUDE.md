@@ -190,6 +190,8 @@ Added for the `rng-fixes` package (2026-11-17):
    lp.poppy help: the float above "t b f" to 0, then up again: values come back without
    reset; the new reset box next to p moreInfo; lp.messages: subtitle, message list and
    version text readable, window fits.
+   lp.qvvv~ (item 23): `clip` (or wrap/reflect) with NN 31 gives only -0.5/+0.5 in a
+   number~ or scope~, never 1.5; with Hurst 0 and NN 30.5 never beyond +-1.
 16. Help-file check script (item 23): with Max closed, in PowerShell from the repository
    folder `powershell -ExecutionPolicy Bypass -File tools\windows\check-help.ps1`
    (about 10-15 min for 105 files; `-Only "lp.p*"` for a short first try). Report:
@@ -624,9 +626,12 @@ workflow builds pushes to both branches. One commit per change:
       help/, fine.
     - `tests/`: lp.poppy~, lp.poppy, lp.qvvvl~, lp.pvvv64~ (each checked to fail on the
       code before its fix, the limiter tests with the limiter off).
-      Found on the way, not changed (original behaviour; user to decide): lp.qvvv~
-      without limiter in `clip` mode exceeds 1.0 when an NN factor is set (NN 20: 1.00024,
-      NN 31: 1.5): the NN quantisation comes after the clipping.
+      Found on the way: lp.qvvv~ (and qvvvl~ with the limiter off) left +-1 in `clip`,
+      `wrap` and `reflect` with an NN factor (NN 31: 1.5; fractional NN up to +-1.25).
+      The help text promises the unit range for these modes, so not intended (user agreed):
+      fixed with `NNUnit()` (cell outside +-1 -> neighbour inside, values stay on the grid);
+      null test in `tests/test_qvvv~.c` (only values outside +-1 change, stet unchanged).
+      To test in Max (test point 15): lp.qvvv~ with `clip` and NN 31 gives only +-0.5.
     - `tools/windows/check-help.ps1`: written without Windows; known risks: whether
       `pcontrol load <name>.maxhelp` finds help files, whether the js driver may close the
       previous window with `dispose` (log lines with "dispose" are ignored), and a "save
