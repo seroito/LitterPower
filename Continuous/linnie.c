@@ -245,7 +245,12 @@ LinnieList(
 			me->c			= c;
 			me->scaleLeft	= ca;
 			me->scaleRight	= bc;
-			me->lrThresh	= (ca / (b - a)) * ((double) kULongMax) + 0.5;
+			// 2026: the apex cc (used by the float mapping) was never set here, so a float
+			// was mapped with the apex of the previous pos/sym/neg message; and a == b
+			// divided 0 by 0. A degenerate list (a == c == b) keeps the symmetric apex: its
+			// scales are 0, every value is a.
+			me->cc			= (b > a) ? ca / (b - a) : 0.5;
+			me->lrThresh	= me->cc * ((double) kULongMax) + 0.5;
 			// ASSERT: (ca == bc) <==> (lrThresh == 0x80000000UL)
 			}
 		}
@@ -610,6 +615,7 @@ noMoreDefaults:
 	me->scaleLeft	= 0.5;
 	me->scaleRight 	= 0.5;
 	me->lrThresh	= 0x80000000UL;
+	me->cc			= 0.5;		// 2026: was never set (float mapping used 0: wrong, NaN for 0)
 
 	return me;
 	}

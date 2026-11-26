@@ -35,9 +35,12 @@ long		gLPNonFinite = 0;				// outlet values that were inf or NaN
 char		gLPLastNonFinite[128] = "";
 long		gLPOutputs = 0;
 
+double		gLPLastFloat = 0.0;				// the last float sent out of any outlet
+
 static void LPRecordValue(const char* how, double v)
 	{
 	gLPOutputs += 1;
+	gLPLastFloat = v;
 	if (!isfinite(v)) {
 		gLPNonFinite += 1;
 		snprintf(gLPLastNonFinite, sizeof gLPLastNonFinite, "%s %g", how, v);
