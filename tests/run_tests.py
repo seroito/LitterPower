@@ -36,9 +36,12 @@ def build(test, target, lib, work):
     defs = ['-D' + d for d in target['defs']] + (
         ['-D__NEED_JITTER_HEADERS__=1'] if target['jitter'] else [])
     objs = []
+    # The object's further sources (e.g. imLib.c, scampLib.c); the first one is included by
+    # the test program itself
+    extra = [os.path.join(ROOT, s) for s in target['srcs'][1:]]
     for src in [test, os.path.join(HERE, 'maxstubs.c'),
                 os.path.join(ROOT, 'LitterLib', 'Strings', target['strings'] + '.c')] + \
-            [os.path.join(ROOT, s) for s in lib]:
+            extra + [os.path.join(ROOT, s) for s in lib]:
         obj = os.path.join(work, '%d_%s.o' % (len(objs), os.path.basename(src)))
         r = subprocess.run([CC, '-c'] + FLAGS + defs + [src, '-o', obj],
                            capture_output=True, text=True)

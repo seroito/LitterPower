@@ -9,6 +9,7 @@
 #include "z_dsp.h"
 #include "ext_critical.h"
 
+#include <math.h>
 #include <stdarg.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -18,6 +19,37 @@ static t_class* gLastClass = NULL;
 
 void* lptest_last_class(void)
 	{ return gLastClass; }
+
+	// Recording for generic tests (tests/fuzz.py): the constructor and its argument types,
+	// the registered methods with their first argument type, the perform routine handed to
+	// dsp_add64, and outlet values that are not finite.
+method	gLPNew = NULL;
+short	gLPNewTypes[16];
+int		gLPNewTypeCount = 0;
+typedef struct { const char* name; method m; long type; } tLPMethod;
+tLPMethod	gLPMethods[256];
+int			gLPMethodCount = 0;
+method		gLPPerform = NULL;
+long		gLPInlet = 0;					// what proxy_getinlet() answers
+long		gLPNonFinite = 0;				// outlet values that were inf or NaN
+char		gLPLastNonFinite[128] = "";
+long		gLPOutputs = 0;
+
+static void LPRecordValue(const char* how, double v)
+	{
+	gLPOutputs += 1;
+	if (!isfinite(v)) {
+		gLPNonFinite += 1;
+		snprintf(gLPLastNonFinite, sizeof gLPLastNonFinite, "%s %g", how, v);
+		}
+	}
+
+long proxy_getinlet(t_object* master)	{ (void) master; return gLPInlet; }
+
+void dsp_add64(t_object* chain, t_object* x, t_perfroutine64 f, long flags, void* userparam)
+	{ (void) chain; (void) x; (void) flags; (void) userparam; gLPPerform = (method) f; }
+t_max_err attr_addfilter_clip(void* x, double min, double max, long usemin, long usemax)
+	{ (void) x; (void) min; (void) usemin; (void) max; (void) usemax; return MAX_ERR_NONE; }
 
 	// Classes
 t_class* class_new(C74_CONST char* name, C74_CONST method mnew, C74_CONST method mfree,
@@ -30,11 +62,33 @@ t_class* class_new(C74_CONST char* name, C74_CONST method mnew, C74_CONST method
 	(void) mnew;
 	c->c_freefun = mfree;
 	gLastClass = c;
+	gLPNew = mnew;
+	{
+	va_list ap;
+	int t;
+	va_start(ap, type);
+	gLPNewTypeCount = 0;
+	for (t = type; t != 0 && gLPNewTypeCount < 16; t = va_arg(ap, int))
+		gLPNewTypes[gLPNewTypeCount++] = (short) t;
+	va_end(ap);
+	}
 	return c;
 	}
 
 t_max_err class_addmethod(t_class* c, C74_CONST method m, C74_CONST char* name, ...)
-	{ (void) c; (void) m; (void) name; return MAX_ERR_NONE; }
+	{
+	va_list ap;
+	(void) c;
+	if (gLPMethodCount < 256) {
+		va_start(ap, name);
+		gLPMethods[gLPMethodCount].type = va_arg(ap, int);
+		va_end(ap);
+		gLPMethods[gLPMethodCount].name = name;
+		gLPMethods[gLPMethodCount].m = m;
+		gLPMethodCount += 1;
+		}
+	return MAX_ERR_NONE;
+	}
 t_max_err class_register(t_symbol* name_space, t_class* c)
 	{ (void) name_space; (void) c; return MAX_ERR_NONE; }
 void class_dspinit(t_class* c)
@@ -55,8 +109,10 @@ void* object_alloc(t_class* c)
 void* object_method_imp(void* x, void* sym, void* p1, void* p2, void* p3, void* p4, void* p5,
 						void* p6, void* p7, void* p8)
 	{
-	(void) x; (void) sym; (void) p1; (void) p2; (void) p3; (void) p4;
+	(void) x; (void) p1; (void) p3; (void) p4;
 	(void) p5; (void) p6; (void) p7; (void) p8;
+	if (sym == gensym("dsp_add64"))
+		gLPPerform = (method) p2;
 	return NULL;
 	}
 
@@ -72,11 +128,25 @@ void* proxy_new(void* x, long id, long* stuffloc)
 	{ (void) x; (void) id; (void) stuffloc; return (void*) 1; }
 void dsp_setup(t_pxobject* x, long nsignals)		{ (void) x; (void) nsignals; }
 void dsp_free(t_pxobject* x)						{ (void) x; }
-void* outlet_float(void* o, double f)			{ (void) o; (void) f; return NULL; }
-void* outlet_int(void* o, t_atom_long n)			{ (void) o; (void) n; return NULL; }
+void* outlet_float(void* o, double f)			{ (void) o; LPRecordValue("float", f); return NULL; }
+void* outlet_int(void* o, t_atom_long n)			{ (void) o; (void) n; gLPOutputs += 1; return NULL; }
 void* outlet_bang(void* o)						{ (void) o; return NULL; }
 void* outlet_list(void* o, t_symbol* s, short ac, t_atom* av)
-	{ (void) o; (void) s; (void) ac; (void) av; return NULL; }
+	{
+	int i;
+	(void) o; (void) s;
+	for (i = 0; i < ac; i += 1)
+		if (av[i].a_type == A_FLOAT) LPRecordValue("list", av[i].a_w.w_float);
+	return NULL;
+	}
+void* outlet_anything(void* o, t_symbol* s, short ac, t_atom* av)
+	{
+	int i;
+	(void) o; (void) s;
+	for (i = 0; i < ac; i += 1)
+		if (av[i].a_type == A_FLOAT) LPRecordValue("anything", av[i].a_w.w_float);
+	return NULL;
+	}
 float sys_getsr(void)							{ return 44100.0f; }
 int sys_getblksize(void)							{ return 64; }
 
@@ -172,3 +242,10 @@ void error(C74_CONST char* s, ...)
 #include "ext_systime.h"
 t_uint32 systime_ticks(void)	{ static t_uint32 t = 1000; return t += 17; }
 t_uint32 systime_ms(void)	{ static t_uint32 t = 1000; return t += 17; }
+
+	// Scheduler helpers: the tests run in one thread, so deferred calls run at once
+long isr(void)	{ return 0; }
+void* defer(void* ob, method fn, t_symbol* sym, short argc, t_atom* argv)
+	{ ((void (*)(void*, t_symbol*, short, t_atom*)) fn)(ob, sym, argc, argv); return NULL; }
+void* defer_low(void* ob, method fn, t_symbol* sym, short argc, t_atom* argv)
+	{ ((void (*)(void*, t_symbol*, short, t_atom*)) fn)(ob, sym, argc, argv); return NULL; }
