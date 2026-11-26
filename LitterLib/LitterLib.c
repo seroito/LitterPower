@@ -631,7 +631,14 @@ LitterHello(
 	char	longVers[kMaxResourceStrSize];
 
 	if (HasStdStrings()) {
+		size_t	len;
+
 		LitterGetVersStr(lpVersIDObject, lpVersTypeLong, longVers);
+		// 17 string tables end in "." already ("Peter Castine..." in the Max console, seen
+		// in the user's Max.log 2026-11-26): drop it, the format adds one
+		len = strlen(longVers);
+		if (len > 0 && longVers[len - 1] == '.')
+			longVers[len - 1] = '\0';
 		post("Loaded %s. Version %s.", iClassName, longVers);
 		}
 	else post("%s: %s", iClassName, LPVERSION);
