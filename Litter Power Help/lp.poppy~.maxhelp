@@ -2887,14 +2887,14 @@
 						1.0
 					],
 					"maxclass": "comment",
-					"text": "In the interest of efficiency, lp.poppy~ does not check if the signal is a valid growth rate (i.e., in the range 0 < r ≤ 4). It is your responsibility to supply a “good” signal. Also note that growth rates smaller than one tend to “kill off the population”. When that happens, output will remain at zero indefinitely. You can deal with this situation by sending a reset message or by sending a new seed.",
+					"text": "In the interest of efficiency, lp.poppy~ does not check if the signal is a valid growth rate (i.e., in the range 0 < r ≤ 4). It is your responsibility to supply a “good” signal. Also note that growth rates smaller than one tend to “kill off the population”. When that happens, the output stays at zero until the growth rate is above 1 again; then lp.poppy~ starts again at the seed (since 2026). A reset message or a new seed restarts it at once. Values that run away (for example with a growth signal above 4) also start again at the seed.",
 					"linecount": 9,
 					"numoutlets": 0,
 					"fontsize": 13.0,
 					"patching_rect": [
 						677.975,
 						211.38,
-						350.506,
+						422.025,
 						166.203
 					],
 					"fontname": "Arial",

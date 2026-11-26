@@ -5,7 +5,7 @@
 <c74object name='lp.poppy' category='Litter Power, Chaos'>
 
 	<digest>Iterate a population growth model</digest>
-	<description>lp.poppy iterates the logistic population growth model. Every bang computes the next population; a float sets the growth rate and bangs, a list sets a cycle of growth rates.</description>
+	<description>lp.poppy iterates the logistic population growth model. Every bang computes the next population; a float sets the growth rate and bangs, a list sets a cycle of growth rates. A population that has died out (for example with a rate near 0) starts again at the seed as soon as the rate is above 1 (since 2026); reset starts it again at once.</description>
 
 	<metadatalist>
 		<metadata name='author'>Peter Castine</metadata>

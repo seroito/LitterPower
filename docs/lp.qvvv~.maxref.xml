@@ -5,7 +5,7 @@
 <c74object name='lp.qvvv~' category='Litter Power, Signal Generators'>
 
 	<digest>Generate variable-colour noise (floating point)</digest>
-	<description>lp.qvvv~ generates variable-colour noise (floating point). The Hurst exponent sets the colour. Output can exceed +/- 1: clip, wrap or reflect limit it, stet (default) keeps it.</description>
+	<description>lp.qvvv~ generates variable-colour noise (floating point). The Hurst exponent sets the colour. Output can exceed +/- 1: clip, wrap or reflect limit it (also with an NN factor, since 2026: the values stay on the NN grid), stet (default) keeps it.</description>
 
 	<metadatalist>
 		<metadata name='author'>Peter Castine</metadata>

@@ -13,7 +13,7 @@
 			100.0,
 			80.0,
 			860,
-			919
+			940
 		],
 		"bglocked": 0,
 		"openinpresentation": 0,
@@ -689,7 +689,7 @@
 						5.417,
 						521.583,
 						812.5,
-						305.847
+						342.767
 					],
 					"numinlets": 1,
 					"numoutlets": 0,
@@ -834,14 +834,14 @@
 						15.167,
 						699.423,
 						780.0,
-						41.167
+						78.0
 					],
-					"text": "ident zero one recip sin cos tan cot sinpi cospi tanpi cotpi sinh cosh tanh log exp sqr sqrt. With sin and cos the output stays within +/- (1 + |c|) and +/- (1 + |d|); tan, exp, recip and the like can produce very large values.",
+					"text": "ident zero one recip sin cos tan cot sinpi cospi tanpi cotpi sinh cosh tanh log exp sqr sqrt. With sin and cos the output stays within +/- (1 + |c|) and +/- (1 + |d|); tan, exp, recip and the like can produce very large values. When |x| or |y| exceeds 1e6 or is not a number, the orbit starts again at x0 y0 (since 2026; before, the signal became inf or NaN or fell silent).",
 					"fontname": "Arial",
 					"fontsize": 13.0,
 					"numinlets": 1,
 					"numoutlets": 0,
-					"linecount": 2,
+					"linecount": 4,
 					"textcolor": [
 						0.870588235294118,
 						0.870588235294118,
@@ -856,7 +856,7 @@
 					"maxclass": "comment",
 					"patching_rect": [
 						15.167,
-						751.51,
+						788.43,
 						325.0,
 						22.75
 					],
@@ -881,7 +881,7 @@
 					"maxclass": "comment",
 					"patching_rect": [
 						15.167,
-						773.1759999999999,
+						810.096,
 						780.0,
 						41.167
 					],
@@ -905,7 +905,7 @@
 					"maxclass": "comment",
 					"patching_rect": [
 						10.833,
-						838.2629999999999,
+						875.183,
 						801.667,
 						41.167
 					],

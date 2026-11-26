@@ -317,7 +317,9 @@ def fiana():
                    'four functions, inlets 2 to 5 = A, B, C or D.'),
         ('Functions', FUNCS_LANA + '. With sin and cos the output stays within '
                       '+/- (1 + |c|) and +/- (1 + |d|); tan, exp, recip and the like can '
-                      'produce very large values.'),
+                      'produce very large values. When |x| or |y| exceeds 1e6 or is not a '
+                      'number, the orbit starts again at x0 y0 (since 2026; before, the signal '
+                      'became inf or NaN or fell silent).'),
         ('bang', 'Chooses new random values for the parameters and the starting point that '
                  'were never set, then restarts. reset restarts without changing anything.'),
     ])

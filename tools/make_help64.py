@@ -117,6 +117,25 @@ def make(old):
     walk(pa, True)
     boxes = [e['box'] for e in pa['boxes']]
 
+    # 2026: lp.qvvv~'s range modes keep +-1 also with an NN factor (same sentence as in
+    # lp.qvvv~.maxhelp, which is not generated)
+    if old == 'lp.qvvv~':
+        from help_text import set_comment_text
+
+        def unit_comment(p):
+            for e in p['boxes']:
+                bx = e['box']
+                if bx.get('maxclass') == 'comment' and 'unit amplitude' in bx.get('text', ''):
+                    return p, bx
+                if 'patcher' in bx:
+                    found = unit_comment(bx['patcher'])
+                    if found:
+                        return found
+            return None
+        sub, com = unit_comment(pa)
+        set_comment_text(sub, com, com['text'] + ' This also holds with an NN factor: the values '
+                         'stay on the NN grid and within +/- 1 (since 2026).')
+
     # Top-level comments that name the object
     for b in boxes:
         if b.get('maxclass') == 'comment' and old in b.get('text', '') \

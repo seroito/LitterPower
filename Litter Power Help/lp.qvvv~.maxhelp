@@ -853,7 +853,7 @@
 											124.0,
 											398.0,
 											805,
-											387
+											407
 										],
 										"bgcolor": [
 											0.337254901960784,
@@ -866,7 +866,7 @@
 											124.0,
 											398.0,
 											805,
-											387
+											407
 										],
 										"openrect": [
 											0.0,
@@ -1248,7 +1248,7 @@
 													"fontsize": 13.0,
 													"patching_rect": [
 														8.228,
-														223.797,
+														243.308,
 														756.962,
 														46.076
 													],
@@ -1263,7 +1263,7 @@
 													"numoutlets": 0,
 													"patching_rect": [
 														406.456,
-														322.532,
+														342.043,
 														24.684,
 														24.684
 													],
@@ -1281,15 +1281,15 @@
 														1.0
 													],
 													"maxclass": "comment",
-													"text": "If producing signals with unit amplitude is important for your application, lp.qvvv~ supports the same range limiting messages as lp.scamp~ & Co., so you can clip, wrap, or reflect into the unit amplitude range as suits your needs. The default state is 'stet' (ie, no limits on the output signal).",
-													"linecount": 3,
+													"text": "If producing signals with unit amplitude is important for your application, lp.qvvv~ supports the same range limiting messages as lp.scamp~ & Co., so you can clip, wrap, or reflect into the unit amplitude range as suits your needs. The default state is 'stet' (ie, no limits on the output signal). This also holds with an NN factor: the values stay on the NN grid and within +/- 1 (since 2026).",
+													"linecount": 4,
 													"numoutlets": 0,
 													"fontsize": 13.0,
 													"patching_rect": [
 														8.228,
 														154.684,
 														756.962,
-														62.532
+														82.043
 													],
 													"fontname": "Arial",
 													"id": "obj-9",
@@ -1304,7 +1304,7 @@
 													"types": [],
 													"patching_rect": [
 														324.178,
-														289.62,
+														309.13100000000003,
 														98.734,
 														27.975
 													],

@@ -5,7 +5,7 @@
 <c74object name='lp.fiana~' category='Litter Power, Chaos'>
 
 	<digest>Generate a Latoocarfian attractor signal</digest>
-	<description>lp.fiana~ computes a Latoocarfian map once per sample and outputs x and y as signals. Functions and parameters work as in lp.lana.</description>
+	<description>lp.fiana~ computes a Latoocarfian map once per sample and outputs x and y as signals. Functions and parameters work as in lp.lana. When |x| or |y| exceeds 1e6 or is not a number, the orbit starts again at x0 y0 (since 2026).</description>
 
 	<metadatalist>
 		<metadata name='author'>Peter Castine</metadata>

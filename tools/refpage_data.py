@@ -117,7 +117,9 @@ OBJ = {
     'lp.poppy': dict(cat=CHAOS, digest='Iterate a population growth model',
                      desc='lp.poppy iterates the logistic population growth model. Every bang '
                           'computes the next population; a float sets the growth rate and bangs, '
-                          'a list sets a cycle of growth rates.',
+                          'a list sets a cycle of growth rates. A population that has died out '
+                          '(for example with a rate near 0) starts again at the seed as soon as '
+                          'the rate is above 1 (since 2026); reset starts it again at once.',
                      args=[('rates', 'float', 'One or more growth rates'),
                            ('seed', 'float', 'With two or more numbers: the last is the '
                                              'starting population')],
@@ -128,7 +130,10 @@ OBJ = {
                       desc='lp.poppy~ uses the logistic population model as a signal generator: '
                            'new values are computed at a base frequency and interpolated. The 4th '
                            'inlet sets the interpolation: -1 geometric (default), 0 none, 1 linear, '
-                           '2 quadratic.',
+                           '2 quadratic. A population that has died out (growth rate below 1) '
+                           'starts again at the seed as soon as the growth rate is above 1, and '
+                           'values that run away (e.g. a growth signal above 4) start again at '
+                           'the seed (since 2026); reset or a new seed restarts it at once.',
                       args=[('rate', 'float', 'Growth rate'),
                             ('seed', 'float', 'Starting population'),
                             ('baseFreq', 'float', 'Base frequency in Hz (default 1000)')],
@@ -166,7 +171,9 @@ OBJ = {
                     see=['lp.fiana~', 'lp.julie']),
     'lp.fiana~': dict(cat=CHAOS, digest='Generate a Latoocarfian attractor signal',
                       desc='lp.fiana~ computes a Latoocarfian map once per sample and outputs x '
-                           'and y as signals. Functions and parameters work as in lp.lana.',
+                           'and y as signals. Functions and parameters work as in lp.lana. When '
+                           '|x| or |y| exceeds 1e6 or is not a number, the orbit starts again at '
+                           'x0 y0 (since 2026).',
                       args=[('functions', 'symbol', 'Up to four function names'),
                             ('parameters', 'float', 'Up to six numbers: a, b, c, d, x0, y0')],
                       msgs=dict(FUNC_MSGS, list='Set the starting point (x y)',
@@ -412,7 +419,8 @@ OBJ = {
                        see=['lp.pvvv~', 'lp.qvvvl~', 'lp.pfff64~']),
     'lp.qvvv~': dict(noise('lp.qvvv~', 'variable-colour noise (floating point)',
                            ' The Hurst exponent sets the colour. Output can exceed +/- 1: clip, '
-                           'wrap or reflect limit it, stet (default) keeps it.'),
+                           'wrap or reflect limit it (also with an NN factor, since 2026: the '
+                           'values stay on the NN grid), stet (default) keeps it.'),
                      args=[('hurst', 'float', 'Hurst exponent (default 0)'),
                            ('nn', 'float', 'NN factor; fractional values allowed')],
                      see=['lp.qvvvl~', 'lp.pvvv~', 'lp.pvvv64~']),
