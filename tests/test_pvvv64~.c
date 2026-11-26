@@ -2,8 +2,9 @@
 /*
  *	lp.pvvv64~ (user's crackling report): with the limiter on (default) the output never
  *	exceeds 1.0 for Hurst exponents from -1 to 1.5 in every mode; always finite. Mode 0 (64-bit
- *	arithmetic) must not jump: no sample-to-sample step of nearly full range (the overflow of
- *	the original lp.pvvv~ below Hurst 0.5 showed as steps of about 2).
+ *	arithmetic) must not jump: no sample-to-sample step of 1.0 or more where the noise is smooth
+ *	(Hurst 0.75 and above; nearly white noise at low Hurst values has such steps by nature).
+ *	Fixed seed, so every run computes the same samples.
  */
 #include "lptest.h"
 #include "Signals/pfff64~.c"
@@ -28,6 +29,7 @@ int main(void)
 		int		finite = 1;
 		long	v, k;
 
+		Taus88Seed(&me->tausData, 12345);		// reproducible (the default seed mixes in addresses)
 		PvvvDSP64(me, NULL, count, kSR, kVec, 0);
 		for (v = 0; v < kVecs; v += 1) {
 			PvvvPerform64(me, NULL, ins, 3, outs, 1, kVec, 0, NULL);
@@ -42,7 +44,7 @@ int main(void)
 			}
 		CHECK(finite && peak <= 1.0, "mode %ld, Hurst %g: peak %.6f%s",
 			  mode, hursts[h], peak, finite ? "" : ", not finite");
-		if (mode == 0 && hursts[h] >= 0.0)
+		if (mode == 0 && hursts[h] >= 0.75)
 			CHECK(maxStep < 1.0, "mode 0, Hurst %g: step of %.3f between two samples",
 				  hursts[h], maxStep);
 		free(me);

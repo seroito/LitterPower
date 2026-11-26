@@ -29,6 +29,7 @@ int main(void)
 		long		v, k;
 
 		modes[m](me);
+		Taus88Seed(&me->tausData, 12345);		// reproducible
 		Pvvv2DSP64(me, NULL, count, kSR, kVec, 0);
 		for (v = 0; v < kVecs; v += 1) {
 			Pvvv2Perform64(me, NULL, ins, 3, outs, 1, kVec, 0, NULL);

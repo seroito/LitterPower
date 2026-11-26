@@ -52,6 +52,7 @@ int main(void)
 		long		changed = 0, wrong = 0, outside = 0, offGrid = 0;
 
 		modes[m](me);
+		Taus88Seed(&me->tausData, 12345);		// reproducible
 		Pvvv2FloatNN(me, nns[n]);
 		factor	= me->factor;
 		factor1	= (factor != 0.0f) ? 1.0 / factor : 0.0f;
