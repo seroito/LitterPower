@@ -47,7 +47,7 @@
 		</method>
 		<method name='set'>
 			<arglist>
-				<arg name='value' optional='0' type='float' />
+				<arg name='values' optional='0' type='list' />
 			</arglist>
 			<digest>Set the list without output</digest>
 			<description>Set the list without output.</description>
