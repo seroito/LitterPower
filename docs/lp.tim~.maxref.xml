@@ -5,7 +5,7 @@
 <c74object name='lp.tim~' category='Litter Power, Mutation and Cross-Synthesis'>
 
 	<digest>Mutate signals in the time domain</digest>
-	<description>lp.tim~ performs interval mutation between two signals, sample by sample. With relative intervals (rel, the default) the output is a sum of intervals and can drift away from zero over time; a negative delta emphasis keeps it close. If it runs away (beyond +/- 1e6, e.g. with a mutation index far outside 0-1), it starts again at the source (since 2026; before, the signal became inf).</description>
+	<description>lp.tim~ performs interval mutation between two signals, sample by sample. With relative intervals (rel; the default is abs) the output is a sum of intervals and can drift away from zero over time; a negative delta emphasis keeps it close. If it runs away (beyond +/- 1e6, e.g. with a mutation index far outside 0-1), it starts again at the source (since 2026; before, the signal became inf).</description>
 
 	<metadatalist>
 		<metadata name='author'>Peter Castine</metadata>
@@ -24,8 +24,8 @@
 
 	<methodlist>
 		<method name='abs'>
-			<digest>Use absolute intervals</digest>
-			<description>Use absolute intervals.</description>
+			<digest>Function depends on inlet</digest>
+			<description>Use absolute intervals (default; a delta emphasis argument in the object box switches to relative intervals).</description>
 		</method>
 		<method name='clear'>
 			<digest>Clear the stored previous values</digest>
@@ -54,8 +54,8 @@
 			<arglist>
 				<arg name='value' optional='1' type='float' />
 			</arglist>
-			<digest>Use relative intervals (default); an optional float sets the delta emphasis</digest>
-			<description>Use relative intervals (default); an optional float sets the delta emphasis.</description>
+			<digest>Use relative intervals; an optional float sets the delta emphasis</digest>
+			<description>Use relative intervals; an optional float sets the delta emphasis.</description>
 		</method>
 		<method name='tattle'>
 			<digest>Print the state of the object to the Max Console (double-click does the same)</digest>

@@ -12,7 +12,7 @@ import math
 
 
 def lines_needed(text, width, size):
-    per_line = max(1, int((width - 8.0) / (size * 0.5)))
+    per_line = max(1, int((width - 8.0) / (size * 0.55)))     # Arial: about 0.5-0.55 em per character
     return sum(max(1, math.ceil(len(par) / per_line))
                for par in text.replace('\r', '\n').split('\n'))
 

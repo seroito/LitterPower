@@ -15,7 +15,7 @@
 
 	<objarglist>
 		<objarg name='scale' optional='1' type='float'>
-			<digest>Scale (default 0.5)</digest>
+			<digest>Scale (default 0.707107, the square root of 1/2)</digest>
 		</objarg>
 		<objarg name='offset' optional='1' type='float'>
 			<digest>Offset (default 0)</digest>
@@ -24,10 +24,10 @@
 			<digest>clip, wrap, reflect or stet (default)</digest>
 		</objarg>
 		<objarg name='min' optional='1' type='float'>
-			<digest>Minimum (default -1)</digest>
+			<digest>Minimum (default -0.707107)</digest>
 		</objarg>
 		<objarg name='max' optional='1' type='float'>
-			<digest>Maximum (default 1)</digest>
+			<digest>Maximum (default 0.707107)</digest>
 		</objarg>
 	</objarglist>
 

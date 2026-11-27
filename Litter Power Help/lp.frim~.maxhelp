@@ -5,14 +5,14 @@
 			100.0,
 			80.0,
 			1039,
-			792
+			817
 		],
 		"bglocked": 0,
 		"defrect": [
 			100.0,
 			80.0,
 			1039,
-			792
+			817
 		],
 		"openrect": [
 			0.0,
@@ -2924,7 +2924,7 @@
 					"numinlets": 1,
 					"patching_rect": [
 						495.444,
-						560.223,
+						611.112,
 						325.0,
 						83.777
 					],
@@ -4083,7 +4083,7 @@
 					"numinlets": 1,
 					"patching_rect": [
 						495.444,
-						671.444,
+						722.333,
 						322.111,
 						54.889
 					],
@@ -4102,14 +4102,14 @@
 			{
 				"box": {
 					"maxclass": "comment",
-					"text": "Messages to control interval type. The rel message takes an optional parameter specifying delta emphasis (default value is zero).",
-					"linecount": 3,
+					"text": "Messages to control interval type. The rel message takes an optional parameter specifying delta emphasis (default value is zero). Absolute intervals are the default; a delta emphasis argument in the object box switches to relative intervals.",
+					"linecount": 6,
 					"numinlets": 1,
 					"patching_rect": [
 						495.444,
 						502.444,
 						322.111,
-						54.889
+						105.778
 					],
 					"fontname": "Arial",
 					"id": "obj-32",

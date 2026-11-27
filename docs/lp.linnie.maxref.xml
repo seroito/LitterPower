@@ -15,7 +15,7 @@
 
 	<objarglist>
 		<objarg name='slope' optional='1' type='symbol'>
-			<digest>neg (default), sym or pos</digest>
+			<digest>sym (default), pos or neg</digest>
 		</objarg>
 		<objarg name='seed' optional='1' type='int'>
 			<digest>Seed for the random number generator (0, the default, seeds automatically)</digest>
@@ -42,8 +42,8 @@
 			<description>Set the distribution from a list.</description>
 		</method>
 		<method name='neg'>
-			<digest>Decreasing linear distribution (default)</digest>
-			<description>Decreasing linear distribution (default).</description>
+			<digest>Decreasing linear distribution</digest>
+			<description>Decreasing linear distribution.</description>
 		</method>
 		<method name='pos'>
 			<digest>Increasing linear distribution</digest>
@@ -57,8 +57,8 @@
 			<description>Reseed the random number generator (0 seeds automatically).</description>
 		</method>
 		<method name='sym'>
-			<digest>Triangular distribution</digest>
-			<description>Triangular distribution.</description>
+			<digest>Triangular distribution (default)</digest>
+			<description>Triangular distribution (default).</description>
 		</method>
 		<method name='tell'>
 			<arglist>

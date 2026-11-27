@@ -4,7 +4,7 @@
 			100.0,
 			80.0,
 			916,
-			799
+			849
 		],
 		"bgcolor": [
 			0.337254901960784,
@@ -17,7 +17,7 @@
 			100.0,
 			80.0,
 			916,
-			799
+			849
 		],
 		"openrect": [
 			0.0,
@@ -3648,6 +3648,30 @@
 						278.46799999999996,
 						160.0,
 						24.0
+					]
+				}
+			},
+			{
+				"box": {
+					"id": "obj-51",
+					"maxclass": "comment",
+					"text": "Absolute intervals (abs) are the default; a delta emphasis argument in the object box switches to relative intervals (rel).",
+					"fontname": "Arial",
+					"fontsize": 13.0,
+					"textcolor": [
+						0.870588235294118,
+						0.870588235294118,
+						0.870588235294118,
+						1.0
+					],
+					"numinlets": 1,
+					"numoutlets": 0,
+					"linecount": 2,
+					"patching_rect": [
+						10.0,
+						771.355,
+						830.0,
+						38.0
 					]
 				}
 			}

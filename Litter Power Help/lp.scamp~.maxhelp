@@ -69,7 +69,7 @@
 					"fontsize": 13.0,
 					"patching_rect": [
 						398.228,
-						857.5010000000001,
+						876.6590000000001,
 						77.341,
 						27.975
 					],
@@ -1788,7 +1788,7 @@
 					"types": [],
 					"patching_rect": [
 						19.747,
-						826.234,
+						845.392,
 						396.582,
 						27.975
 					],
@@ -1878,7 +1878,7 @@
 					"fontsize": 13.0,
 					"patching_rect": [
 						23.038,
-						768.6400000000001,
+						787.7980000000001,
 						347.215,
 						46.076
 					],
@@ -1895,7 +1895,7 @@
 					"fontsize": 17.333,
 					"patching_rect": [
 						781.646,
-						760.412,
+						779.57,
 						125.063,
 						34.557
 					],
@@ -3135,7 +3135,7 @@
 					"fontsize": 17.333,
 					"patching_rect": [
 						520.0,
-						740.6650000000001,
+						759.8230000000001,
 						258.354,
 						57.595
 					],
@@ -3186,7 +3186,7 @@
 					"fontsize": 13.0,
 					"patching_rect": [
 						926.456,
-						873.956,
+						893.114,
 						143.165,
 						27.975
 					],
@@ -4186,7 +4186,7 @@
 					"fontsize": 13.0,
 					"patching_rect": [
 						521.646,
-						640.2860000000001,
+						659.4440000000001,
 						536.456,
 						62.532
 					],
@@ -4208,7 +4208,7 @@
 					"fontsize": 13.0,
 					"patching_rect": [
 						287.975,
-						684.715,
+						703.873,
 						85.569,
 						27.975
 					],
@@ -4305,7 +4305,7 @@
 					"fontsize": 13.0,
 					"patching_rect": [
 						320.887,
-						572.817,
+						591.975,
 						75.696,
 						27.975
 					],
@@ -4328,7 +4328,7 @@
 					"fontsize": 13.0,
 					"patching_rect": [
 						546.329,
-						571.171,
+						590.3290000000001,
 						83.924,
 						27.975
 					],
@@ -4350,7 +4350,7 @@
 					"fontsize": 13.0,
 					"patching_rect": [
 						434.431,
-						599.1460000000001,
+						618.3040000000001,
 						98.734,
 						27.975
 					],
@@ -4383,7 +4383,7 @@
 					"fontsize": 13.0,
 					"patching_rect": [
 						546.329,
-						599.1460000000001,
+						618.3040000000001,
 						98.734,
 						27.975
 					],
@@ -4417,7 +4417,7 @@
 					"fontsize": 13.0,
 					"patching_rect": [
 						434.431,
-						571.171,
+						590.3290000000001,
 						78.987,
 						27.975
 					],
@@ -4435,15 +4435,15 @@
 						1.0
 					],
 					"maxclass": "comment",
-					"text": "You can limit output values with clipping, wrapping, or reflecting, using eponymous messages. The default output range is [-1 .. 1], but you can modify minimum and maximum by sending other values into the fourth and fifth inlets, respectively. The stet message turns off limiting. (Again, connections from number boxes hidden here, signals can also be used). If minimum and maximum are equal, wrap and reflect leave values uncorrected (since 2026; before, the output became NaN).",
-					"linecount": 5,
+					"text": "You can limit output values with clipping, wrapping, or reflecting, using eponymous messages. The default output range is [-0.707 .. 0.707] (plus or minus the square root of 1/2, matching the default scale of 0.707), but you can modify minimum and maximum by sending other values into the fourth and fifth inlets, respectively. The stet message turns off limiting. (Again, connections from number boxes hidden here, signals can also be used). If minimum and maximum are equal, wrap and reflect leave values uncorrected (since 2026; before, the output became NaN).",
+					"linecount": 6,
 					"numoutlets": 0,
 					"fontsize": 13.0,
 					"patching_rect": [
 						301.14,
 						466.444,
 						756.962,
-						99.791
+						118.949
 					],
 					"fontname": "Arial",
 					"id": "obj-23",
@@ -4456,7 +4456,7 @@
 					"numoutlets": 1,
 					"patching_rect": [
 						408.101,
-						646.8670000000001,
+						666.0250000000001,
 						24.684,
 						24.684
 					],
@@ -4475,7 +4475,7 @@
 					"fontsize": 13.0,
 					"patching_rect": [
 						408.101,
-						683.07,
+						702.2280000000001,
 						102.025,
 						27.975
 					],
@@ -4495,7 +4495,7 @@
 					"types": [],
 					"patching_rect": [
 						320.887,
-						599.1460000000001,
+						618.3040000000001,
 						98.734,
 						27.975
 					],

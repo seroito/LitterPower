@@ -30,8 +30,9 @@ MUT_MSGS = {
     'uuim': 'Use uniform unsigned interval mutation',
     'iuim': 'Use irregular unsigned interval mutation',
     'wcm': 'Use weighted contour mutation', 'lcm': 'Use linear contour mutation',
-    'rel': 'Use relative intervals (default); an optional float sets the delta emphasis',
-    'abs': 'Use absolute intervals', 'clear': 'Clear the stored previous values'}
+    'rel': 'Use relative intervals; an optional float sets the delta emphasis',
+    'abs': 'Use absolute intervals (default; a delta emphasis argument in the object box '
+           'switches to relative intervals)', 'clear': 'Clear the stored previous values'}
 SCAMP_MSGS = {
     'map': 'Set scaling so that an input range maps to an output range: map in-min in-max out-min out-max',
     'sym': 'Set a symmetric curvature for the mapping', 'lin': 'Use a linear mapping',
@@ -245,8 +246,8 @@ OBJ = {
                       'degenerate distribution (always 0); a negative order is refused and the '
                       'current one kept (since 2026; before, 0 and negative orders froze Max).',
                       [('order', 'float', 'Order nu (default 1)'),
-                       ('loc', 'float', 'Location (default 0)')], ['lp.expo'],
-                      {'loc': 'Set the location (offset)'}),
+                       ('loc', 'float', 'Scale beta, also called location (default 1)')], ['lp.expo'],
+                      {'loc': 'Set beta, the scale factor (also called location)'}),
     'lp.grrr': dict(cat=CONTINUOUS, digest='Generate gray noise values',
                     desc='lp.grrr generates random values between 0 and 1 with a "gray" '
                          'distribution.', args=[SEED_ARG], see=['lp.grrr~', 'lp.shhh']),
@@ -263,10 +264,10 @@ OBJ = {
     'lp.linnie': dist('Generate linear and triangular random numbers',
                       'lp.linnie generates random numbers between 0 and 1 with a linear '
                       '(increasing or decreasing) or triangular distribution; the options name '
-                      'the slope.', [('slope', 'symbol', 'neg (default), sym or pos')],
+                      'the slope.', [('slope', 'symbol', 'sym (default), pos or neg')],
                       ['lp.trrr~'],
-                      {'neg': 'Decreasing linear distribution (default)',
-                       'sym': 'Triangular distribution', 'pos': 'Increasing linear distribution',
+                      {'neg': 'Decreasing linear distribution',
+                       'sym': 'Triangular distribution (default)', 'pos': 'Increasing linear distribution',
                        'list': 'Set the distribution from a list'}),
     'lp.loggie': dist('Generate logistic random numbers',
                       'lp.loggie generates random numbers from a logistic distribution.',
@@ -476,7 +477,7 @@ OBJ = {
     'lp.ppp~': dict(cat=SIGNAL, digest='Generate popcorn noise',
                     desc='lp.ppp~ generates random "pops" (dust or popcorn noise). density is '
                          'the average number of pops per second.',
-                    args=[('density', 'float', 'Pops per second (default 100)'),
+                    args=[('density', 'float', 'Pops per second (default 10)'),
                           ('popWidth', 'float', 'Samples before and after each pop peak (default 1); '
                                                 'a value with a fractional part (e.g. 2.5) gives '
                                                 'Poisson-distributed widths with that mean'),
@@ -520,7 +521,7 @@ OBJ = {
                    see=['lp.tim~', 'lp.frim~']),
     'lp.tim~': dict(cat=MUTATION, digest='Mutate signals in the time domain',
                     desc='lp.tim~ performs interval mutation between two signals, sample by '
-                         'sample. With relative intervals (rel, the default) the output is a sum '
+                         'sample. With relative intervals (rel; the default is abs) the output is a sum '
                          'of intervals and can drift away from zero over time; a negative delta '
                          'emphasis keeps it close. If it runs away (beyond +/- 1e6, e.g. with a '
                          'mutation index far outside 0-1), it starts again at the source (since '
@@ -582,9 +583,11 @@ OBJ = {
                            'In map mode with equal low and high input values, or with a curve '
                            'so extreme that the result overflows, the output is 0 (since 2026; '
                            'before, inf or NaN).',
-                      args=[('scale', 'float', 'Scale (default 0.5)'), ('offset', 'float', 'Offset (default 0)'),
+                      args=[('scale', 'float', 'Scale (default 0.707107, the square root of 1/2)'),
+                            ('offset', 'float', 'Offset (default 0)'),
                             ('limit', 'symbol', 'clip, wrap, reflect or stet (default)'),
-                            ('min', 'float', 'Minimum (default -1)'), ('max', 'float', 'Maximum (default 1)')],
+                            ('min', 'float', 'Minimum (default -0.707107)'),
+                            ('max', 'float', 'Maximum (default 0.707107)')],
                       msgs=SCAMP_MSGS, see=['lp.scampf', 'lp.scampi']),
     'lp.stacey': dict(cat=UTIL, digest='Calculate statistics of numbers',
                       desc='lp.stacey collects numbers and outputs count, minimum, maximum, mean, '

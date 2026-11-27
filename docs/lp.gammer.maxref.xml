@@ -18,7 +18,7 @@
 			<digest>Order nu (default 1)</digest>
 		</objarg>
 		<objarg name='loc' optional='1' type='float'>
-			<digest>Location (default 0)</digest>
+			<digest>Scale beta, also called location (default 1)</digest>
 		</objarg>
 		<objarg name='seed' optional='1' type='int'>
 			<digest>Seed for the random number generator (0, the default, seeds automatically)</digest>
@@ -41,8 +41,8 @@
 			<arglist>
 				<arg name='value' optional='0' type='float' />
 			</arglist>
-			<digest>Set the location (offset)</digest>
-			<description>Set the location (offset).</description>
+			<digest>Set beta, the scale factor (also called location)</digest>
+			<description>Set beta, the scale factor (also called location).</description>
 		</method>
 		<method name='seed'>
 			<arglist>

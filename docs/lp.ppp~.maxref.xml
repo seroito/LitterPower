@@ -15,7 +15,7 @@
 
 	<objarglist>
 		<objarg name='density' optional='1' type='float'>
-			<digest>Pops per second (default 100)</digest>
+			<digest>Pops per second (default 10)</digest>
 		</objarg>
 		<objarg name='popWidth' optional='1' type='float'>
 			<digest>Samples before and after each pop peak (default 1); a value with a fractional part (e.g. 2.5) gives Poisson-distributed widths with that mean</digest>
