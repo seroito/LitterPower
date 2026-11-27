@@ -456,7 +456,7 @@ LitterExpect(
 		}
 		
 	else {															// Invalid selector
-		error("%s: invalid selector for expect message: %s", ob_name(iObj), iSel->s_name);
+		error("%s: invalid selector for tell message: %s", ob_name(iObj), iSel->s_name);	// 2026: tell (was "expect", the 1.8 name)
 		}
 		
 	
