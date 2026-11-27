@@ -45,5 +45,15 @@ int main(void)
 		lpSendList(me, "list", lists[i], 3);
 		CheckTriangle(me, lists[i][0], lists[i][1], lists[i][2]);
 		}
+	// The symmetry argument is applied (2026; it was read and ignored): pos, neg, sym and
+	// none (symmetric, as before)
+	{
+	static const char* args[] = { "pos", "neg", "sym", "" };
+	static const double apex[] = { 1.0, 0.0, 0.5, 0.5 };
+	for (i = 0; i < 4; i += 1) {
+		objLinran* o = (objLinran*) LinnieNew(gensym(args[i]), 0);
+		CHECK(o->cc == apex[i], "argument '%s': apex %g, expected %g", args[i], o->cc, apex[i]);
+		}
+	}
 	return lptest_result();
 	}

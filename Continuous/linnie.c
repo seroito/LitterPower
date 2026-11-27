@@ -597,8 +597,6 @@ LinnieNew(
 		goto noMoreDefaults;
 		}
 	
-	if (iSymmetry == gNullSymbol)
-		iSymmetry = gNegSymbol;
 noMoreDefaults:
 	// Finished checking intialization parameters
 
@@ -616,6 +614,16 @@ noMoreDefaults:
 	me->scaleRight 	= 0.5;
 	me->lrThresh	= 0x80000000UL;
 	me->cc			= 0.5;		// 2026: was never set (float mapping used 0: wrong, NaN for 0)
+	
+	// 2026: the symmetry argument was read but never applied (also in the 2017 sources;
+	// a dead default of neg was set and then ignored), although the help file says the
+	// messages may be given as arguments. Without one the object stays symmetric, as it
+	// always behaved.
+	if (iSymmetry == gPosSymbol)		LinniePos(me);
+	else if (iSymmetry == gNegSymbol)	LinnieNeg(me);
+	else if (iSymmetry == gSymSymbol)	LinnieSym(me);
+	else if (iSymmetry != gNullSymbol && iSymmetry != NIL)
+		error("%s: unknown symmetry %s (pos, sym or neg); using sym", kClassName, iSymmetry->s_name);
 
 	return me;
 	}
