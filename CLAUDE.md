@@ -18,7 +18,14 @@ continue. Last updated 2026-11-26.
 
 Item 25's three open points were done on 2026-11-27 (item 26), the defaults check in item
 27. Open now: the user's test (test point 18 and the older ones).
-The package to test is that of the latest green push build (`gh run list --repo
+Latest package, Windows AND macOS (2026-11-27): run 45973710721 (commit 5417e40, all of
+items 1-27), https://github.com/seroito/LitterPower/actions/runs/45973710721, artifact
+`LitterPower-package`: 104 .mxe64 + 104 .mxo (universal x86_64 + arm64), check_package
+0 problems, sha256 checked against GitHub's digest, both zips tested. Copied (identical)
+to `/media/sone/TAD1/DATA/DEV/MAX/LitterPower/rng-fixes/LitterPower-package-45973710721-macos/`
+(`LitterPower/` unpacked for Windows, `LitterPower.zip` for the Mac: keeps the bundles'
+permissions). Older package folders next to it can go.
+Otherwise the package to test is that of the latest green push build (`gh run list --repo
 seroito/LitterPower --branch rng-fixes`; 712c86c was green, 2026-11-26): download it into
 the scratchpad, check sha256 (How to continue, 5). The folder 45811604177 named below is
 older (without the item-25 fixes). Checks before every push: `python3 tools/check.py`,
@@ -132,8 +139,8 @@ Decisions made by the user:
 |---|---|
 | Source port | Done. `python3 tools/check.py` (gcc syntax check on Linux): 0 of 118 units failing |
 | Windows build | Succeeds: 104 externals (`.mxe64`) |
-| macOS build | Succeeds: 104 externals (`.mxo`, universal x86_64 + arm64, ad-hoc signed), last at run 45031210288 (2026-11-22). Only built when started by hand |
-| Package | Latest with macOS: run 45031210288 on `rng-fixes` (everything up to the redesign, item 18), artifact `LitterPower-package`, Windows and macOS externals (208 files). Later pushes build Windows-only packages |
+| macOS build | Succeeds: 104 externals (`.mxo`, universal x86_64 + arm64, ad-hoc signed), last at run 45973710721 (2026-11-27). Only built when started by hand |
+| Package | Latest with macOS: run 45973710721 on `rng-fixes` (commit 5417e40, items 1-27), artifact `LitterPower-package`, Windows and macOS externals (208 files). Push builds make Windows-only packages |
 | Help files | Every built object has one (15 new ones written in 2026) |
 | Reference pages | `docs/*.maxref.xml` for all 104 objects |
 | Test in Max 9 | Under way since 2026-11-22 with run 44967061395 (user). No results reported yet |
