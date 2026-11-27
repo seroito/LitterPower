@@ -107,8 +107,16 @@ t_object* attr_offset_new(C74_CONST char* name, C74_CONST t_symbol* type, long f
 	{ (void) name; (void) type; (void) flags; (void) mget; (void) mset; (void) offset;
 	  return (t_object*) 1; }
 
+	// As in Max, the -1 entry of the object's message list points to its class, so that
+	// ob_class()/ob_name() work (they are macros; error messages use them)
 void* object_alloc(t_class* c)
-	{ return calloc(1, c->c_size); }
+	{
+	t_object*	x = (t_object*) calloc(1, c->c_size);
+	t_messlist*	ml = (t_messlist*) calloc(2, sizeof(t_messlist));
+	ml[0].m_sym = (t_symbol*) c;
+	x->o_messlist = ml + 1;
+	return x;
+	}
 void* object_method_imp(void* x, void* sym, void* p1, void* p2, void* p3, void* p4, void* p5,
 						void* p6, void* p7, void* p8)
 	{
@@ -256,3 +264,21 @@ void* defer_low(void* ob, method fn, t_symbol* sym, short argc, t_atom* argv)
 	// Attribute values: none available (objects that ask fall back to their own messages)
 t_max_err object_attr_getvalueof(void* x, t_symbol* s, long* argc, t_atom** argv)
 	{ (void) x; (void) s; if (argc) *argc = 0; if (argv) *argv = NULL; return MAX_ERR_GENERIC; }
+
+	// Tables and buffers: none exist (objects must cope, as in Max before the table or
+	// buffer~ is created)
+short table_get(t_symbol* s, long*** hp, long* sp)
+	{ (void) s; if (hp) *hp = NULL; if (sp) *sp = 0; return 1; }
+#include "ext_buffer.h"
+t_buffer_ref* buffer_ref_new(t_object* self, t_symbol* name)
+	{ (void) self; (void) name; return (t_buffer_ref*) calloc(1, 64); }
+void buffer_ref_set(t_buffer_ref* x, t_symbol* name)		{ (void) x; (void) name; }
+t_atom_long buffer_ref_exists(t_buffer_ref* x)				{ (void) x; return 0; }
+t_buffer_obj* buffer_ref_getobject(t_buffer_ref* x)			{ (void) x; return NULL; }
+t_max_err buffer_ref_notify(t_buffer_ref* x, t_symbol* s, t_symbol* msg, void* sender, void* data)
+	{ (void) x; (void) s; (void) msg; (void) sender; (void) data; return MAX_ERR_NONE; }
+float* buffer_locksamples(t_buffer_obj* b)					{ (void) b; return NULL; }
+void buffer_unlocksamples(t_buffer_obj* b)					{ (void) b; }
+t_atom_long buffer_getchannelcount(t_buffer_obj* b)			{ (void) b; return 0; }
+t_atom_long buffer_getframecount(t_buffer_obj* b)			{ (void) b; return 0; }
+long atom_gettype(const t_atom* a)							{ return a ? a->a_type : A_NOTHING; }

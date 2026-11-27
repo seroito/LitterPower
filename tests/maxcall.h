@@ -24,8 +24,15 @@ static inline void lpSendNumber(void* obj, const char* name, double v)
 	const tLPMethod* m = lpFindMethod(name);
 	if (m == NULL) return;
 	switch (m->type) {
-		case A_FLOAT: case A_DEFFLOAT:	((void (*)(void*, double)) m->m)(obj, v);					break;
-		case A_LONG: case A_DEFLONG:	((void (*)(void*, t_atom_long)) m->m)(obj, (t_atom_long) v);	break;
+		// The value goes to every typed argument (e.g. "set x y" registered A_FLOAT A_FLOAT); Max
+		// never calls such a method with fewer arguments, extra ones are ignored by the callee.
+		case A_FLOAT: case A_DEFFLOAT:
+			((void (*)(void*, double, double, double, double)) m->m)(obj, v, v, v, v);
+			break;
+		case A_LONG: case A_DEFLONG:
+			((void (*)(void*, t_atom_long, t_atom_long, t_atom_long, t_atom_long)) m->m)
+				(obj, (t_atom_long) v, (t_atom_long) v, (t_atom_long) v, (t_atom_long) v);
+			break;
 		case A_GIMME: {
 			t_atom a;
 			atom_setfloat(&a, v);
