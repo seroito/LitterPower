@@ -21,7 +21,7 @@
 			<digest>Starting population</digest>
 		</objarg>
 		<objarg name='baseFreq' optional='1' type='float'>
-			<digest>Base frequency in Hz (default 1000)</digest>
+			<digest>Base frequency in Hz (default 0 = the sample rate)</digest>
 		</objarg>
 	</objarglist>
 

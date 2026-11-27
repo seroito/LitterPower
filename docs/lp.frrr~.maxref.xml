@@ -15,7 +15,7 @@
 
 	<objarglist>
 		<objarg name='baseFreq' optional='1' type='float'>
-			<digest>Base frequency in Hz (default 1000)</digest>
+			<digest>Base frequency in Hz (default 100)</digest>
 		</objarg>
 		<objarg name='interp' optional='1' type='int'>
 			<digest>Interpolation order 0-2 (default 0)</digest>

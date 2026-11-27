@@ -136,7 +136,7 @@ OBJ = {
                            'the seed (since 2026); reset or a new seed restarts it at once.',
                       args=[('rate', 'float', 'Growth rate'),
                             ('seed', 'float', 'Starting population'),
-                            ('baseFreq', 'float', 'Base frequency in Hz (default 1000)')],
+                            ('baseFreq', 'float', 'Base frequency in Hz (default 0 = the sample rate)')],
                       msgs={'reset': 'Start again at the seed population'},
                       see=['lp.poppy', 'lp.ccc~']),
     'lp.julie': dict(cat=CHAOS, digest='Iterate the Julia set map',
@@ -446,7 +446,7 @@ OBJ = {
     'lp.frrr~': dict(cat=SIGNAL, digest='Generate low-frequency noise',
                      desc='lp.frrr~ generates random values at a base frequency and interpolates '
                           'between them (none, linear or quadratic).',
-                     args=[('baseFreq', 'float', 'Base frequency in Hz (default 1000)'),
+                     args=[('baseFreq', 'float', 'Base frequency in Hz (default 100)'),
                            ('interp', 'int', 'Interpolation order 0-2 (default 0)')],
                      see=['lp.shhh~', 'lp.poppy~']),
     'lp.grrr~': dict(cat=SIGNAL, digest='Generate gray noise',
