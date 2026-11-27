@@ -3629,6 +3629,27 @@
 						6.0
 					]
 				}
+			},
+			{
+				"box": {
+					"id": "obj-50",
+					"maxclass": "newobj",
+					"hidden": 1,
+					"text": "loadmess set 0.5",
+					"numinlets": 1,
+					"numoutlets": 1,
+					"outlettype": [
+						""
+					],
+					"fontname": "Arial",
+					"fontsize": 13.0,
+					"patching_rect": [
+						8.228,
+						278.46799999999996,
+						160.0,
+						24.0
+					]
+				}
 			}
 		],
 		"lines": [
@@ -4260,6 +4281,19 @@
 					],
 					"destination": [
 						"obj-45",
+						0
+					],
+					"hidden": 1
+				}
+			},
+			{
+				"patchline": {
+					"source": [
+						"obj-50",
+						0
+					],
+					"destination": [
+						"obj-26",
 						0
 					],
 					"hidden": 1

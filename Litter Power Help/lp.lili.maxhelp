@@ -4688,6 +4688,27 @@
 						6.0
 					]
 				}
+			},
+			{
+				"box": {
+					"id": "obj-41",
+					"maxclass": "newobj",
+					"hidden": 1,
+					"text": "loadmess set 65539",
+					"numinlets": 1,
+					"numoutlets": 1,
+					"outlettype": [
+						""
+					],
+					"fontname": "Arial",
+					"fontsize": 13.0,
+					"patching_rect": [
+						37.848,
+						286.697,
+						160.0,
+						24.0
+					]
+				}
 			}
 		],
 		"lines": [
@@ -5227,6 +5248,19 @@
 						15.632,
 						431.88599999999997
 					]
+				}
+			},
+			{
+				"patchline": {
+					"source": [
+						"obj-41",
+						0
+					],
+					"destination": [
+						"obj-12",
+						0
+					],
+					"hidden": 1
 				}
 			}
 		],

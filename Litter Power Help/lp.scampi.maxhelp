@@ -4898,6 +4898,27 @@
 										"default_fontname": "Arial"
 									}
 								}
+							},
+							{
+								"box": {
+									"id": "obj-49",
+									"maxclass": "newobj",
+									"hidden": 1,
+									"text": "loadmess set 1.0",
+									"numinlets": 1,
+									"numoutlets": 1,
+									"outlettype": [
+										""
+									],
+									"fontname": "Arial",
+									"fontsize": 13.0,
+									"patching_rect": [
+										426.203,
+										460.38,
+										160.0,
+										24.0
+									]
+								}
 							}
 						],
 						"lines": [
@@ -5266,6 +5287,19 @@
 										17.278,
 										487.088
 									]
+								}
+							},
+							{
+								"patchline": {
+									"source": [
+										"obj-49",
+										0
+									],
+									"destination": [
+										"obj-24",
+										0
+									],
+									"hidden": 1
 								}
 							}
 						],
@@ -7832,6 +7866,48 @@
 						6.0
 					]
 				}
+			},
+			{
+				"box": {
+					"id": "obj-47",
+					"maxclass": "newobj",
+					"hidden": 1,
+					"text": "loadmess set 0.0078125",
+					"numinlets": 1,
+					"numoutlets": 1,
+					"outlettype": [
+						""
+					],
+					"fontname": "Arial",
+					"fontsize": 13.0,
+					"patching_rect": [
+						715.822,
+						587.836,
+						160.0,
+						24.0
+					]
+				}
+			},
+			{
+				"box": {
+					"id": "obj-48",
+					"maxclass": "newobj",
+					"hidden": 1,
+					"text": "loadmess set 128.0",
+					"numinlets": 1,
+					"numoutlets": 1,
+					"outlettype": [
+						""
+					],
+					"fontname": "Arial",
+					"fontsize": 13.0,
+					"patching_rect": [
+						27.975,
+						587.836,
+						160.0,
+						24.0
+					]
+				}
 			}
 		],
 		"lines": [
@@ -8223,6 +8299,32 @@
 					],
 					"destination": [
 						"obj-43",
+						0
+					],
+					"hidden": 1
+				}
+			},
+			{
+				"patchline": {
+					"source": [
+						"obj-47",
+						0
+					],
+					"destination": [
+						"obj-13",
+						0
+					],
+					"hidden": 1
+				}
+			},
+			{
+				"patchline": {
+					"source": [
+						"obj-48",
+						0
+					],
+					"destination": [
+						"obj-17",
 						0
 					],
 					"hidden": 1

@@ -224,3 +224,6 @@ if __name__ == '__main__':
     subprocess.run([sys.executable, os.path.join(ROOT, 'tools', 'restyle_help.py')] + outs, check=True)
     # Max 9 help style / RNBO look (see tools/redesign_help.py)
     subprocess.run([sys.executable, os.path.join(ROOT, 'tools', 'redesign_help.py')] + outs, check=True)
+    # Number boxes show the object's values on load (see tools/help_defaults.py)
+    subprocess.run([sys.executable, os.path.join(ROOT, 'tools', 'help_defaults.py')] + outs,
+                   check=True, stdout=subprocess.DEVNULL)
