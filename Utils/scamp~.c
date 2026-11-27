@@ -978,6 +978,19 @@ PerformStatCurveLim(
 	}
 
 
+	// 2026 (found by tests/fuzz.py --deep): an empty input range in map mode (inMin ==
+	// inMax, e.g. the same signal into both range inlets) divides by 0 in the loops below,
+	// and extreme curvature in pow or exp overflows; inf or NaN then went to the audio
+	// output. Such samples become 0 (as in lp.tim~); finite samples are unchanged.
+static void ScampSanitize(tSampleVector ioOut, long n)
+	{
+	while (n-- > 0) {
+		if (!isfinite(*ioOut))
+			*ioOut = 0.0;
+		ioOut += 1;
+		}
+	}
+
 void ScampPerformStatic64(objScamp *me, t_object *dsp64, double **ins, long numins, double **outs, long numouts, long sampleframes, long pflags, void *userparam)
 {
 
@@ -1008,6 +1021,7 @@ void ScampPerformStatic64(objScamp *me, t_object *dsp64, double **ins, long numi
                                  (tSampleVector) ins[0],
                                  (tSampleVector) outs[0]);
     }
+    ScampSanitize((tSampleVector) outs[0], sampleframes);
 }
 
 /*
@@ -1701,6 +1715,7 @@ void ScampPerformDynamic64(objScamp *me, t_object *dsp64, double **ins, long num
                                 (tSampleVector) outs[paramOutput]);
     }
     
+    ScampSanitize((tSampleVector) outs[paramOutput], sampleframes);
 }
 
 

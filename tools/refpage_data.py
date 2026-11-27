@@ -578,7 +578,10 @@ OBJ = {
     'lp.scamp~': dict(cat=UTIL, digest='Scale, map and limit signals',
                       desc='lp.scamp~ scales and offsets signals and can limit them to a range '
                            'by clipping, wrapping or reflecting. If minimum and maximum are equal, '
-                           'wrap and reflect leave values uncorrected (since 2026; before, NaN).',
+                           'wrap and reflect leave values uncorrected (since 2026; before, NaN). '
+                           'In map mode with equal low and high input values, or with a curve '
+                           'so extreme that the result overflows, the output is 0 (since 2026; '
+                           'before, inf or NaN).',
                       args=[('scale', 'float', 'Scale (default 0.5)'), ('offset', 'float', 'Offset (default 0)'),
                             ('limit', 'symbol', 'clip, wrap, reflect or stet (default)'),
                             ('min', 'float', 'Minimum (default -1)'), ('max', 'float', 'Maximum (default 1)')],

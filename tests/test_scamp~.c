@@ -22,5 +22,21 @@ int main(void)
 		bad = lpRun(me, 20, vs[i]);			// every inlet (input, range, curve) at v
 		CHECK(bad == 0, "%s, all inlets at %g: %ld samples not finite", modes[m], vs[i], bad);
 		}
+	// map, pow and exp (list messages) with every inlet at the same value: an empty input
+	// range (division by 0) and extreme curvature; the output stays finite (2026)
+	{
+	static const char* lists[] = { "map", "pow", "exp" };
+	static const double args[] = { -1e6, 0, 1, 1e6 };
+	unsigned l, a;
+	for (l = 0; l < 3; l += 1)
+	for (a = 0; a < sizeof args / sizeof *args; a += 1)
+	for (i = 0; i < sizeof vs / sizeof *vs; i += 1) {
+		void* me = lpMake("lp.scamp~");
+		long bad;
+		lpSendList(me, lists[l], &args[a], 1);
+		bad = lpRun(me, 20, vs[i]);
+		CHECK(bad == 0, "%s %g, all inlets at %g: %ld samples not finite", lists[l], args[a], vs[i], bad);
+		}
+	}
 	return lptest_result();
 	}

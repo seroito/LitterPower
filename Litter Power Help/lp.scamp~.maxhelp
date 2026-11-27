@@ -1951,7 +1951,7 @@
 									"fontsize": 13.0,
 									"patching_rect": [
 										965.95,
-										176.076,
+										197.114,
 										51.013,
 										24.684
 									],
@@ -1972,7 +1972,7 @@
 									"fontsize": 13.0,
 									"patching_rect": [
 										965.95,
-										208.987,
+										230.025,
 										97.088,
 										27.975
 									],
@@ -1994,7 +1994,7 @@
 									"fontsize": 13.0,
 									"patching_rect": [
 										965.95,
-										141.519,
+										162.55700000000002,
 										268.228,
 										27.975
 									],
@@ -2015,7 +2015,7 @@
 									"fontsize": 13.0,
 									"patching_rect": [
 										74.05,
-										705.95,
+										726.988,
 										51.013,
 										24.684
 									],
@@ -2036,7 +2036,7 @@
 									"fontsize": 13.0,
 									"patching_rect": [
 										1155.19,
-										307.722,
+										328.76,
 										44.431,
 										24.684
 									],
@@ -2056,7 +2056,7 @@
 									"fontsize": 13.0,
 									"patching_rect": [
 										1122.278,
-										273.165,
+										294.20300000000003,
 										106.962,
 										24.684
 									],
@@ -2076,7 +2076,7 @@
 									"fontsize": 13.0,
 									"patching_rect": [
 										1122.278,
-										347.215,
+										368.253,
 										47.722,
 										27.975
 									],
@@ -2091,7 +2091,7 @@
 									"numoutlets": 0,
 									"patching_rect": [
 										763.544,
-										574.304,
+										595.342,
 										164.557,
 										164.557
 									],
@@ -2121,7 +2121,7 @@
 									"fontsize": 13.0,
 									"patching_rect": [
 										485.443,
-										589.113,
+										610.1510000000001,
 										256.709,
 										62.532
 									],
@@ -2138,7 +2138,7 @@
 									"fontsize": 13.0,
 									"patching_rect": [
 										11.519,
-										705.95,
+										726.988,
 										51.013,
 										24.684
 									],
@@ -2166,7 +2166,7 @@
 									"fontsize": 13.0,
 									"patching_rect": [
 										417.975,
-										661.519,
+										682.557,
 										325.822,
 										46.076
 									],
@@ -2189,7 +2189,7 @@
 									"fontsize": 13.0,
 									"patching_rect": [
 										70.759,
-										590.759,
+										611.797,
 										189.241,
 										27.975
 									],
@@ -2213,7 +2213,7 @@
 									"fontsize": 13.0,
 									"patching_rect": [
 										1.646,
-										465.696,
+										486.73400000000004,
 										1232.532,
 										62.532
 									],
@@ -2235,7 +2235,7 @@
 									"fontsize": 13.0,
 									"patching_rect": [
 										263.291,
-										589.113,
+										610.1510000000001,
 										57.595,
 										27.975
 									],
@@ -2265,7 +2265,7 @@
 									"fontsize": 13.0,
 									"patching_rect": [
 										263.291,
-										623.671,
+										644.7090000000001,
 										69.113,
 										24.684
 									],
@@ -2285,7 +2285,7 @@
 									"types": [],
 									"patching_rect": [
 										64.178,
-										623.671,
+										644.7090000000001,
 										77.341,
 										27.975
 									],
@@ -2322,7 +2322,7 @@
 									"fontsize": 13.0,
 									"patching_rect": [
 										1.646,
-										528.228,
+										549.266,
 										1232.532,
 										46.076
 									],
@@ -2345,7 +2345,7 @@
 									"fontsize": 13.0,
 									"patching_rect": [
 										1.646,
-										422.912,
+										443.95,
 										1346.076,
 										27.975
 									],
@@ -2362,7 +2362,7 @@
 									"fontsize": 17.333,
 									"patching_rect": [
 										0.0,
-										394.937,
+										415.975,
 										761.899,
 										34.557
 									],
@@ -2389,7 +2389,7 @@
 									"numoutlets": 0,
 									"patching_rect": [
 										594.05,
-										215.569,
+										236.607,
 										164.557,
 										164.557
 									],
@@ -2410,7 +2410,7 @@
 									"numoutlets": 0,
 									"patching_rect": [
 										390.0,
-										215.569,
+										236.607,
 										164.557,
 										164.557
 									],
@@ -2434,7 +2434,7 @@
 									"background": 1,
 									"patching_rect": [
 										539.747,
-										143.165,
+										164.203,
 										102.025,
 										27.975
 									],
@@ -2454,7 +2454,7 @@
 									"fontsize": 13.0,
 									"patching_rect": [
 										390.0,
-										182.659,
+										203.697,
 										130.0,
 										27.975
 									],
@@ -2475,7 +2475,7 @@
 									"fontsize": 13.0,
 									"patching_rect": [
 										594.05,
-										182.659,
+										203.697,
 										189.241,
 										27.975
 									],
@@ -2497,15 +2497,15 @@
 										1.0
 									],
 									"maxclass": "comment",
-									"text": "In map mode, the second and third inlets specify the low and high input values. These will be mapped to the low and high output values (the fourth and fifth inlets). If the range limiting mode is 'stet' (no limiting), the mapping function extrapolates for input values outside the specified input/output ranges.",
-									"linecount": 2,
+									"text": "In map mode, the second and third inlets specify the low and high input values. These will be mapped to the low and high output values (the fourth and fifth inlets). If the range limiting mode is 'stet' (no limiting), the mapping function extrapolates for input values outside the specified input/output ranges. If the low and high input values are equal, or a curve is so extreme that the result overflows, the output is 0 (since 2026; before, inf or NaN).",
+									"linecount": 3,
 									"numoutlets": 0,
 									"fontsize": 13.0,
 									"patching_rect": [
 										1.646,
 										90.506,
 										1230.887,
-										46.076
+										67.114
 									],
 									"fontname": "Arial",
 									"id": "obj-25",
@@ -2580,7 +2580,7 @@
 									"fontsize": 17.333,
 									"patching_rect": [
 										83.924,
-										184.304,
+										205.342,
 										291.266,
 										57.595
 									],
@@ -2598,7 +2598,7 @@
 									"background": 1,
 									"patching_rect": [
 										151.393,
-										623.671,
+										644.7090000000001,
 										102.025,
 										27.975
 									],
@@ -2619,7 +2619,7 @@
 									"background": 1,
 									"patching_rect": [
 										11.519,
-										669.747,
+										690.785,
 										75.696,
 										27.975
 									],
@@ -2641,7 +2641,7 @@
 									"background": 1,
 									"patching_rect": [
 										390.0,
-										589.113,
+										610.1510000000001,
 										279.747,
 										27.975
 									],
@@ -2668,7 +2668,7 @@
 									"background": 1,
 									"patching_rect": [
 										390.0,
-										626.962,
+										648.0,
 										88.86,
 										27.975
 									],
@@ -2697,7 +2697,7 @@
 									"background": 1,
 									"patching_rect": [
 										151.393,
-										661.519,
+										682.557,
 										255.063,
 										27.975
 									],
@@ -2725,7 +2725,7 @@
 									"fontsize": 13.0,
 									"patching_rect": [
 										83.924,
-										245.19,
+										266.228,
 										291.266,
 										97.088
 									],
