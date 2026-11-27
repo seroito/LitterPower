@@ -577,7 +577,8 @@ OBJ = {
                       msgs=dict(SCAMP_MSGS, **ROUND_MSGS), see=['lp.scampf', 'lp.scamp~']),
     'lp.scamp~': dict(cat=UTIL, digest='Scale, map and limit signals',
                       desc='lp.scamp~ scales and offsets signals and can limit them to a range '
-                           'by clipping, wrapping or reflecting.',
+                           'by clipping, wrapping or reflecting. If minimum and maximum are equal, '
+                           'wrap and reflect leave values uncorrected (since 2026; before, NaN).',
                       args=[('scale', 'float', 'Scale (default 0.5)'), ('offset', 'float', 'Offset (default 0)'),
                             ('limit', 'symbol', 'clip, wrap, reflect or stet (default)'),
                             ('min', 'float', 'Minimum (default -1)'), ('max', 'float', 'Maximum (default 1)')],

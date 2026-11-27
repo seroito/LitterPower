@@ -5,7 +5,7 @@
 <c74object name='lp.scamp~' category='Litter Power, Utilities'>
 
 	<digest>Scale, map and limit signals</digest>
-	<description>lp.scamp~ scales and offsets signals and can limit them to a range by clipping, wrapping or reflecting.</description>
+	<description>lp.scamp~ scales and offsets signals and can limit them to a range by clipping, wrapping or reflecting. If minimum and maximum are equal, wrap and reflect leave values uncorrected (since 2026; before, NaN).</description>
 
 	<metadatalist>
 		<metadata name='author'>Peter Castine</metadata>

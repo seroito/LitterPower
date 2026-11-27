@@ -283,8 +283,13 @@ static double UnitClip(double iVal, long* ioCounter)
 	return iVal;
 	}
 
+	// 2026 (found by tests/fuzz.py --deep): with an empty output range (min == max, e.g. the
+	// same signal into both range inlets) wrap and reflect divided by 0 and gave NaN. As in
+	// lp.scampf/lp.scampi, a value then passes uncorrected. Other ranges are unchanged.
 static double Wrap(double iVal, double iMin, double iMax, long* ioCounter)
 	{
+	if (!(iMax != iMin))
+		return iVal;
 	if (iVal < iMin) {
 		double range = iMax - iMin;							// Compensate for C's lousy 
 		iVal = fmod(iVal - iMin, range) + range + iMin;		// modulo arithmetic
@@ -315,6 +320,8 @@ static double UnitWrap(double iVal, long* ioCounter)
 
 static double Reflect(double iVal, double iMin, double iMax, long* ioCounter)
 	{
+	if (!(iMax != iMin))				// 2026: empty range, see Wrap()
+		return iVal;
 	if (iVal < iMin) {
 		double	range	= iMax - iMin,
 				range2	= range + range;
