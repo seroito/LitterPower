@@ -3,6 +3,17 @@
 What has been done to bring Litter Power to Max 9, where things stand, and how to
 continue. Last updated 2026-11-26.
 
+## Working rules (user's, keep them)
+
+- Stage files by name (`git add <files>`), never `git commit -a` or `git add -u`: the
+  deletion of `Utils/Scamp Sources.zip` and `Utils/Scamp Sources/` must stay uncommitted.
+- After any change to a patcher (boxes, texts, text sizes, also hidden subpatchers):
+  refit its windows (`tools/fix_patchers.fit_windows`) where advisable.
+- If GitHub pushes, uploads or runs are slow or hang: keep working locally (commits,
+  local checks) and push only when the user says so.
+- One commit per change; `tools/check.py`, `tests/run_tests.py` and
+  `tools/check_package.py` before every push (check their exit codes, not a piped tail).
+
 ## Resume here (2026-11-26)
 
 After a restart: start with item 25 ("OPEN"): lp.pvvv64~ 64-bit overflow below Hurst -3,
