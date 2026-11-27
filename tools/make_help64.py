@@ -66,7 +66,9 @@ MODE_TEXT = {
     "will revert to the behavior native to the processor you are running on (which is "
     "always most CPU efficient, by the way).":
     "By default (mode 0) lp.pvvv64~ & Co. compute in 64 bits: nothing overflows, and the "
-    "sound is the same on every computer. 'mode 1' (PPC), 'mode 2' (Intel) and 'mode 3' "
+    "sound is the same on every computer. Only lp.pvvv64~ with Hurst exponents below about "
+    "-3 exceeds even 64 bits; the values then saturate (since 2026; before, they jumped). "
+    "'mode 1' (PPC), 'mode 2' (Intel) and 'mode 3' "
     "(PC 415) reproduce the overflow sounds of the original lp.pvvv~ & Co., also the same "
     "on every computer. 'mode 0' reverts to the default.",
     'Since you will generally want your patches to sound the same no matter what hardware '

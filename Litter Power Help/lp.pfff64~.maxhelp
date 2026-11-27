@@ -316,7 +316,7 @@
 										1.0
 									],
 									"maxclass": "comment",
-									"text": "By default (mode 0) lp.pvvv64~ & Co. compute in 64 bits: nothing overflows, and the sound is the same on every computer. 'mode 1' (PPC), 'mode 2' (Intel) and 'mode 3' (PC 415) reproduce the overflow sounds of the original lp.pvvv~ & Co., also the same on every computer. 'mode 0' reverts to the default.",
+									"text": "By default (mode 0) lp.pvvv64~ & Co. compute in 64 bits: nothing overflows, and the sound is the same on every computer. Only lp.pvvv64~ with Hurst exponents below about -3 exceeds even 64 bits; the values then saturate (since 2026; before, they jumped). 'mode 1' (PPC), 'mode 2' (Intel) and 'mode 3' (PC 415) reproduce the overflow sounds of the original lp.pvvv~ & Co., also the same on every computer. 'mode 0' reverts to the default.",
 									"linecount": 4,
 									"numoutlets": 0,
 									"fontsize": 13.0,
@@ -786,7 +786,7 @@
 										1.0
 									],
 									"maxclass": "comment",
-									"text": "By default (mode 0) lp.pvvv64~ & Co. compute in 64 bits: nothing overflows, and the sound is the same on every computer. 'mode 1' (PPC), 'mode 2' (Intel) and 'mode 3' (PC 415) reproduce the overflow sounds of the original lp.pvvv~ & Co., also the same on every computer. 'mode 0' reverts to the default.",
+									"text": "By default (mode 0) lp.pvvv64~ & Co. compute in 64 bits: nothing overflows, and the sound is the same on every computer. Only lp.pvvv64~ with Hurst exponents below about -3 exceeds even 64 bits; the values then saturate (since 2026; before, they jumped). 'mode 1' (PPC), 'mode 2' (Intel) and 'mode 3' (PC 415) reproduce the overflow sounds of the original lp.pvvv~ & Co., also the same on every computer. 'mode 0' reverts to the default.",
 									"linecount": 4,
 									"numoutlets": 0,
 									"fontsize": 13.0,

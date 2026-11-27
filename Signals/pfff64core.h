@@ -29,6 +29,7 @@
 
 #include <stdint.h>
 #include <math.h>
+#include <float.h>			// DBL_MAX (kMaxScale)
 
 #pragma mark Constants
 
@@ -54,6 +55,20 @@ enum architecture {
 
 	// Recursive midpoint displacement on a buffer of 64-bit integers. Arithmetic is the
 	// same as in GNB_NativeLoop() of the original objects, but nothing can overflow.
+	// 2026 (user's go-ahead): below about Hurst -3 even 64 bits are exceeded (11 generations,
+	// each scaling by 2^-h). The conversion of such a double to int64_t is undefined in C
+	// (Intel: always INT64_MIN, so the signal jumped to the negative maximum). Sat64()
+	// saturates with the right sign instead; values within the range are unchanged.
+	// kMaxScale keeps the scale finite (it became inf for very negative Hurst values, and
+	// 0 * inf gave NaN): a random value times kMaxScale stays below DBL_MAX.
+#define kMaxScale (DBL_MAX / 4294967296.0)
+static inline int64_t Sat64(double t)
+	{
+	if (t >= 9223372036854775807.0)		return INT64_MAX;
+	if (t <= -9223372036854775808.0)	return INT64_MIN;
+	return (int64_t) t;
+	}
+
 static void GNB_Native64Loop(tTaus88DataPtr iTaus, int64_t* ioBuf, int iStride, double iHurst)
 	{
 	int		i,
@@ -68,8 +83,9 @@ static void GNB_Native64Loop(tTaus88DataPtr iTaus, int64_t* ioBuf, int iStride, 
 
 		// Add noise with reduced variance
 		scale *= iHurst;
+		if (scale > kMaxScale) scale = kMaxScale;
 		for (i = offset; i <= kMaxBuf; i += offset)
-			ioBuf[i] = (int64_t) ((double) (int32_t) Taus88(iTaus) * scale + (double) ioBuf[i]);
+			ioBuf[i] = Sat64((double) (int32_t) Taus88(iTaus) * scale + (double) ioBuf[i]);
 
 		// Next generation: halve stride and offset
 		stride = offset;
@@ -110,6 +126,7 @@ static void GNB_EmulationLoop(tTaus88DataPtr iTaus, int64_t* ioBuf, int iStride,
 			ioBuf[i] = ioBuf[i-offset] / 2 + ioBuf[i+offset] / 2;
 
 		scale *= iHurst;
+		if (scale > kMaxScale) scale = kMaxScale;		// 2026: finite (see Sat64)
 		for (i = offset; i <= kMaxBuf; i += offset) {
 			double t = (double) (int32_t) Taus88(iTaus) * scale + (double) ioBuf[i];
 

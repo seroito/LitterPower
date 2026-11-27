@@ -45,3 +45,19 @@ def set_comment_text(p, box, text, widen_to=None):
         elif overlaps_x and by >= bottom - 2:
             b['patching_rect'] = [bx, by + delta, bw, bh]
     return delta
+
+
+def overlaps(p):
+    """Pairs of box ids in this patcher level whose rectangles overlap (visible boxes, not
+    panels, lines or the title's click area). Compare before and after a change: only new
+    pairs are a problem, some overlaps are by design."""
+    boxes = [e['box'] for e in p['boxes'] if not e['box'].get('hidden')
+             and e['box']['maxclass'] not in ('panel', 'live.line', 'ubutton')]
+    out = set()
+    for i, a in enumerate(boxes):
+        ax, ay, aw, ah = a['patching_rect']
+        for b in boxes[i + 1:]:
+            bx, by, bw, bh = b['patching_rect']
+            if ax < bx + bw - 2 and bx < ax + aw - 2 and ay < by + bh - 2 and by < ay + ah - 2:
+                out.add((a['id'], b['id']))
+    return out

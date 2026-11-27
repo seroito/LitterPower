@@ -418,7 +418,9 @@ OBJ = {
     'lp.pvvv64~': dict(noise('lp.pvvv64~', 'variable-colour noise without overflow',
                              ' Like lp.pvvv~, but computed in 64-bit integers, so low Hurst values '
                              'no longer click; a look-ahead limiter (on by default) keeps the '
-                             'output within +/- 1.'),
+                             'output within +/- 1. Below about Hurst -3 even 64 bits are '
+                             'exceeded; the values then saturate (since 2026; before, they '
+                             'jumped to the negative maximum).'),
                        args=[('hurst', 'float', 'Hurst exponent (default 0)'),
                              ('nn', 'int', 'NN factor (bit masking)'),
                              ('mode', 'int', 'Mode: 0 native (64-bit), 1 PPC, 2 Intel, 3 PC415')],

@@ -49,5 +49,31 @@ int main(void)
 				  hursts[h], maxStep);
 		free(me);
 		}
+	// Native mode beyond 64 bits (2026): below about Hurst -3 the sums leave the 64-bit
+	// range. They now saturate with the right sign (both extremes occur, every sample is
+	// finite and within +-2^32); before, the undefined conversion gave INT64_MIN on Intel
+	// only. Limiter off, so the raw values are seen.
+	{
+	static const double deep[] = { -3, -5, -10, -100, -1000, -1e6 };
+	const double kSat = 9223372036854775807.0 / 2147483648.0;		// Sample64ToSignal(INT64_MAX)
+	for (h = 0; h < sizeof deep / sizeof *deep; h += 1) {
+		tBrown*	me = (tBrown*) PvvvNew(deep[h], 0, 0);
+		long	pos = 0, neg = 0, bad = 0, v, k;
+		Taus88Seed(&me->tausData, 12345);
+		PvvvLimit(me, 0);
+		PvvvDSP64(me, NULL, count, kSR, kVec, 0);
+		for (v = 0; v < 500; v += 1) {
+			PvvvPerform64(me, NULL, ins, 3, outs, 1, kVec, 0, NULL);
+			for (k = 0; k < kVec; k += 1) {
+				bad += !(isfinite(out[k]) && fabs(out[k]) <= kSat * 1.000001);
+				pos += out[k] >= kSat * 0.999999;
+				neg += out[k] <= -kSat * 0.999999;
+				}
+			}
+		CHECK(bad == 0, "Hurst %g, mode 0: %ld samples not finite or beyond the 64-bit range", deep[h], bad);
+		CHECK(pos > 0 && neg > 0, "Hurst %g, mode 0: saturation not symmetric (%ld at +max, %ld at -max)", deep[h], pos, neg);
+		free(me);
+		}
+	}
 	return lptest_result();
 	}

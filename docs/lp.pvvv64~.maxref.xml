@@ -5,7 +5,7 @@
 <c74object name='lp.pvvv64~' category='Litter Power, Signal Generators'>
 
 	<digest>Generate variable-colour noise without overflow</digest>
-	<description>lp.pvvv64~ generates variable-colour noise without overflow. Like lp.pvvv~, but computed in 64-bit integers, so low Hurst values no longer click; a look-ahead limiter (on by default) keeps the output within +/- 1.</description>
+	<description>lp.pvvv64~ generates variable-colour noise without overflow. Like lp.pvvv~, but computed in 64-bit integers, so low Hurst values no longer click; a look-ahead limiter (on by default) keeps the output within +/- 1. Below about Hurst -3 even 64 bits are exceeded; the values then saturate (since 2026; before, they jumped to the negative maximum).</description>
 
 	<metadatalist>
 		<metadata name='author'>Peter Castine</metadata>
