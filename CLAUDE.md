@@ -16,8 +16,8 @@ continue. Last updated 2026-11-26.
 
 ## Resume here (2026-11-26)
 
-After a restart: start with item 25 ("OPEN"): lp.pvvv64~ 64-bit overflow below Hurst -3,
-rerun `python3 tests/fuzz.py --deep` and evaluate it, default values in the help files.
+Item 25's three open points were done on 2026-11-27 (item 26). Open now: the user's test
+(test point 18 and the older ones), the lp.scamp~ documentation question in item 26.
 The package to test is that of the latest green push build (`gh run list --repo
 seroito/LitterPower --branch rng-fixes`; 712c86c was green, 2026-11-26): download it into
 the scratchpad, check sha256 (How to continue, 5). The folder 45811604177 named below is
@@ -218,6 +218,14 @@ Added for the `rng-fixes` package (2026-11-17):
    values come back. Small text: lp.bernie/lp.tata "What's in a Name?" and bibliography
    windows, lp.bernie "New-In-Version-2" tab, overview credit line now 13 pt, windows
    fit.
+18. Item 26 (2026-11-27): lp.pvvv64~ mode 0 with Hurst -3 to -10 and the limiter off: the
+   signal saturates at both extremes instead of only negative jumps (with the limiter on:
+   clipped noise, no crackle from INT64_MIN); lp.scamp~ in wrap/reflect with the same
+   value in both output-range inlets and in map mode with equal input range: no NaN (the
+   output stays audible / silent instead of breaking the audio); help files: the number
+   boxes show values on open, e.g. lp.sigma (1 2 3 5 8 13 21 34), lp.pi, lp.logos,
+   lp.vera* (rate and seed), lp.lana/lp.fiana~ (a b c d), lp.gsss~ std. dev. 0.408,
+   lp.ksks~ 440, lp.scampi/lp.scampf scale; nothing is sent on open (outputs unchanged).
 16. Help-file check script (item 23): with Max closed, in PowerShell from the repository
    folder `powershell -ExecutionPolicy Bypass -File tools\windows\check-help.ps1`
    (about 10-15 min for 105 files; `-Only "lp.p*"` for a short first try). Report:
@@ -752,6 +760,31 @@ workflow builds pushes to both branches. One commit per change:
       signal saturates; extend test_pvvv64~ to negative Hurst values. lp.pvvv~ stays
       unchanged (user's decision); lp.pfff64~/phhh64~ have fixed Hurst, not affected.
     - Push status: see git log; test the package of the last push build.
+
+26. 2026-11-27, item 25's open points:
+    - lp.pvvv64~: mode 0 saturates beyond 64 bits (Sat64, kMaxScale in pfff64core.h)
+      instead of jumping to INT64_MIN below about Hurst -3; null test 768000 samples of
+      all modes at Hurst 1.5 to -2.5 identical; test_pvvv64~ checks -3 to -1e6.
+    - Deep fuzz run evaluated: real: lp.scamp~ wrap/reflect with min == max (now as
+      lp.scampf: value passes uncorrected) and map mode with input low == high or extreme
+      pow/exp curves (ScampSanitize: non-finite samples -> 0); test_scamp~.c. Test
+      environment, not the objects: lp.lana/lp.fiana~ `set` with one argument (Max never
+      does that; maxcall.h now fills every typed argument), lp.shhh `tell` crash
+      (ob_name needs the message list; object_alloc stand-in sets it). Text fix: the
+      tell error said "expect". Rerun with the fixes: all objects clean except lp.vilfrie
+      and lp.y (left as agreed).
+    - Help files: `tools/help_defaults.py` (rules per object, safe to rerun, run by the
+      generators): 69 number boxes in 28 help files get a hidden `loadmess set <value>`
+      (the object's argument or default); data inputs, boxes with a value already and 5
+      ambiguous boxes (int/float comparisons feeding two objects) left alone. No window
+      changed. `tools/help_defaults_scan.py` lists the boxes.
+    - Reference pages: base frequency defaults lp.poppy~ (0 = SR) and lp.frrr~ (100 Hz)
+      were 1000.
+    - OPEN, for the user: lp.scamp~'s help says "The default output range is [-1 .. 1]",
+      the code uses +-0.707 (kDefOutMin/Max = -/+sqrt(0.5), slope sqrt(0.5)), and the
+      reference page says scale default 0.5. Which is intended? (The help examples give
+      arguments, so it rarely shows.) A systematic check of all "default" claims in the
+      reference pages against the constructors would be worth doing (two were wrong).
 
 ## Method signatures (postponed, 2026-11-26)
 
