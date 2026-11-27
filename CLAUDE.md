@@ -16,8 +16,8 @@ continue. Last updated 2026-11-26.
 
 ## Resume here (2026-11-26)
 
-Item 25's three open points were done on 2026-11-27 (item 26). Open now: the user's test
-(test point 18 and the older ones), the lp.scamp~ documentation question in item 26.
+Item 25's three open points were done on 2026-11-27 (item 26), the defaults check in item
+27. Open now: the user's test (test point 18 and the older ones).
 The package to test is that of the latest green push build (`gh run list --repo
 seroito/LitterPower --branch rng-fixes`; 712c86c was green, 2026-11-26): download it into
 the scratchpad, check sha256 (How to continue, 5). The folder 45811604177 named below is
@@ -226,6 +226,8 @@ Added for the `rng-fixes` package (2026-11-17):
    boxes show values on open, e.g. lp.sigma (1 2 3 5 8 13 21 34), lp.pi, lp.logos,
    lp.vera* (rate and seed), lp.lana/lp.fiana~ (a b c d), lp.gsss~ std. dev. 0.408,
    lp.ksks~ 440, lp.scampi/lp.scampf scale; nothing is sent on open (outputs unchanged).
+   Item 27: `lp.linnie pos` / `lp.linnie neg` give increasing / decreasing distributions
+   (before, always triangular); lp.scamp~ help text names +-0.707 as the default range.
 16. Help-file check script (item 23): with Max closed, in PowerShell from the repository
    folder `powershell -ExecutionPolicy Bypass -File tools\windows\check-help.ps1`
    (about 10-15 min for 105 files; `-Only "lp.p*"` for a short first try). Report:
@@ -780,11 +782,24 @@ workflow builds pushes to both branches. One commit per change:
       changed. `tools/help_defaults_scan.py` lists the boxes.
     - Reference pages: base frequency defaults lp.poppy~ (0 = SR) and lp.frrr~ (100 Hz)
       were 1000.
-    - OPEN, for the user: lp.scamp~'s help says "The default output range is [-1 .. 1]",
-      the code uses +-0.707 (kDefOutMin/Max = -/+sqrt(0.5), slope sqrt(0.5)), and the
-      reference page says scale default 0.5. Which is intended? (The help examples give
-      arguments, so it rarely shows.) A systematic check of all "default" claims in the
-      reference pages against the constructors would be worth doing (two were wrong).
+    - lp.scamp~'s defaults question: answered in item 27 (the code is right).
+
+27. Defaults check (2026-11-27, user's request: take the code values where they are
+    sensible, in reference pages and help texts): all 159 "default" claims in
+    tools/refpage_data.py compared with the constructors. Wrong were: lp.ppp~ density
+    (10, not 100), lp.gammer second argument (scale beta, default 1; not "location 0",
+    `loc` is no offset), lp.linnie (sym is the default, not neg), lp.tim~/lp.vim/
+    lp.frim~ (abs is the default; a delta emphasis argument switches to rel), lp.scamp~
+    (scale and output range +-0.707 = sqrt(1/2); its own help tab "scampArg" shows
+    these as the default settings, the main text said [-1 .. 1]); earlier lp.poppy~ and
+    lp.frrr~ base frequency (item 26). Code bug found on the way: lp.linnie ignored its
+    symmetry argument (since 2017); now applied, default stays sym. Help texts updated
+    (lp.scamp~, lp.frim~, lp.tim~ and lp.vim bottom notes). tools/help_text.py now
+    estimates 0.55 em per character; four comments grew or were shortened to fit.
+    User's question answered: "lp.vilfrie and lp.y left as agreed" = inf for shape
+    parameters around 1e-9 is the true overflow of extremely heavy-tailed distributions
+    (Pareto, Weibull), proposed to keep in the fuzz evaluation and agreed ("alle Punkte
+    wie vorgeschlagen"); a clamp to the largest finite value would be easy if wanted.
 
 ## Method signatures (postponed, 2026-11-26)
 
